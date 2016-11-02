@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Hi | World</title><link href="http://king32783784.github.io/" rel="alternate"></link><link href="http://king32783784.github.io/feeds/others.atom.xml" rel="self"></link><id>http://king32783784.github.io/</id><updated>2016-08-12T00:00:00+08:00</updated><entry><title>Docker基础技术：Linux Namespace（下）</title><link href="http://king32783784.github.io/2016/08/12/Docker/" rel="alternate"></link><published>2016-08-12T00:00:00+08:00</published><author><name>others</name></author><id>tag:king32783784.github.io,2016-08-12:2016/08/12/Docker/</id><summary type="html">&lt;/head&gt;&lt;body&gt;&lt;p&gt;在 &lt;a href="https://king32783784.github.io/lipeng/2016/08/11/Docker/"&gt;Docker基础技术：Linux Namespace（上篇)&lt;/a&gt;中我们了解了，UTD、IPC、PID、Mount 四个namespace，我们模仿Docker做了一个相当相当山寨的镜像。在这一篇中，主要想向大家介绍Linux的User和Network的Namespace。
-&lt;img alt="" src="https://king32783784.github.io/lipeng/tmpfile/jail_cell.jpg"/&gt;&lt;/p&gt;
+&lt;img alt="" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/jail_cell.jpg"/&gt;&lt;/p&gt;
 &lt;p&gt;好，下面我们就介绍一下还剩下的这两个Namespace。&lt;/p&gt;
 &lt;h4 id="user-namespace"&gt;User Namespace&lt;/h4&gt;
 &lt;p&gt;&lt;strong&gt;User Namespace&lt;/strong&gt; 主要是用了CLONE_NEWUSER的参数。使用了这个参数后，内部看到的UID和GID已经与外部不同了，默认显示为65534。那是因为容器找不到其真正的UID所以，设置上了最大的UID（其设置定义在/proc/sys/kernel/overflowuid）。&lt;/p&gt;
