@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="link">
+<head>
+
+        <title>Autotest-client control</title>
+        <meta charset="utf-8" />
+        <link href="http://king32783784.github.io/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Hi | World Full Atom Feed" />
+        <link href="http://king32783784.github.io/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Hi | World Full RSS Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="../../../../theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="../../../../theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="../../../../theme/pygment.css" />
+        <link rel="stylesheet" type="text/css" href="../../../../theme/SentyZHAO/SentyZHAO.css" />
+
+        <script src="../../../../theme/js/libs/jquery-1.9.1.min.js"></script>
+        <script src="../../../../theme/js/libs/modernizr-2.6.2.min.js"></script>
+</head>
+
+<body id="index" class="home">
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1 style='font-family: "SentyZHAO";'><a href="../../../..">Hi | World <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+
+              <ul class="columns" style='font-family: "SentyZHAO";'>
+                <li><a href="../../../..">主 页</a></li>
+
+                <li><a href="../../../../pages/tech-share.html">归档</a></li>
+                <li><a href="../../../../pages/opensource.html">开源项目</a></li>
+                <li><a href="../../../../pages/links.html">链接</a></li>
+                <li><a href="../../../../pages/Reference material.html">参考资料</a></li>
+                <li><a href="../../../../pages/tools.html">工具集</a></li>
+                <li class="active"><a href="../../../../pages/aboutme.html">关于我</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+   <div class="row">
+        <div class="columns">
+            <header>
+              <h2 class="entry-title">
+                <a href="../../../../2015/08/14/autotest/" rel="bookmark" title="Permalink to Autotest-client control">Autotest-client control</a></h2>
+           Translations: 
+<a href="../../../../2015/08/18/autotest/">link</a>
+<a href="../../../../2015/08/15/autotest/">link</a>
+<a href="../../../../2015/08/19/autotest/">link</a>
+<a href="../../../../2015/08/21/autotest/">link</a>
+<a href="../../../../2015/08/16/autotest/">link</a>
+<a href="../../../../2015/08/22/autotest/">link</a>
+<a href="../../../../2015/11/01/autotest/">link</a>
+<a href="../../../../2015/08/17/autotest/">link</a>
+<a href="../../../../2015/08/20/autotest/">link</a>
+
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2015-08-14T00:00:00+08:00">
+                五 14 八月 2015
+              </abbr>
+              <address class="vcard author">
+                By <a class="url fn" href="../../../../author/penglee.html">penglee</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              </head><body><p><img alt="" src="https://king32783784.github.io/lipeng/tmpfile/autotestlogo.png"/></p>
+<h2 id="client-control-files">Client Control files</h2>
+<p><strong>主要内容</strong></p>
+<ul>
+<li>jobs 例子</li>
+<li>扩展测试</li>
+<li>流程控制</li>
+<li>系统信息抓取</li>
+<li>分析器</li>
+<li>创建文件系统</li>
+<li>job执行期间重启</li>
+<li>并行运行多个测试</li>
+</ul>
+<p>control file定义了一次test job 关键信息,它定义了一次测试的方方面面.control文件是一个python脚本,它驱动这个测试.</p>
+<h2 id="jobli-zi">job例子</h2>
+<p>可以添加一个job对象用来驱动测试和一些服务支持.一个job例子可以是这样:</p>
+<div class="highlight"><pre><span></span>job.run_test('kernbench')
+</pre></div>
+<p>参数只有测试的名字(kernbench).autotest有很多测试用例,每个测试都有一个简单的control文件(tests/<testname>/control
+在autotestclient端的顶层目录下,你可以执行测试:</testname></p>
+<div class="highlight"><pre><span></span>$ client/autotest-local &lt;control_file_name&gt;
+</pre></div>
+<p>在control文件中同样可以指定测试参数</p>
+<div class="highlight"><pre><span></span>job.run_test('kernbench', iterations=2, threads=5)
+</pre></div>
+<ul>
+<li>第一个参数是测试名称;</li>
+<li>第二个参数是执行次数和线程数,大多数你可以执行它的默认参数.</li>
+</ul>
+<p>还可以指定一个tag参数,用来给测试结果目录命名:</p>
+<div class="highlight"><pre><span></span>job.run_test('kernbench', iterations=2, threads=5, tag='mine')
+</pre></div>
+<p>测试时会创建结果目录"kernbench.mine"来替代之前的"kernbench".这个功能非常重要,当你执行了多次测试,可以用来区分测试结果.</p>
+<h2 id="kuo-zhan-ce-shi">扩展测试</h2>
+<p>当开发一个测试时,为了让它能正常的下载和执行时,需要符合扩展测试的要求.</p>
+<h2 id="liu-cheng-kong-zhi">流程控制</h2>
+<p>真正掌握一门语言用于脚本控制是学会它的控制结构和错误检查机制.这里给出一个kernbench运行不同threads的例子.</p>
+<div class="highlight"><pre><span></span>for t in [8, 16, 32]:
+    job.run_test('kernbench', iterations=2, threads=t, tag='%d' % t)
+</pre></div>
+<h2 id="xi-tong-xin-xi-zhua-qu">系统信息抓取</h2>
+<p>每次重启和测试时,autotest都会生成一个目录用来保存系统的信息.比如/proc/meminfo文件内容,"uname-a"的输出信息.可以在测试结果目录找那个查看.
+sysinfo/(每次重启前的数据), <testname>/sysinfo(每次测试前的数据)
+每次收集的信息列表的内容,可以通过查看<strong>clent/bin/base_sysinfo.py</strong>.当然autotest也提供了自定义收集系统信息的机制.可以通过这个方式进行自定义
+的系统信息收集:</testname></p>
+<div class="highlight"><pre><span></span>job.add_sysinfo_file("/proc/vmstat")
+</pre></div>
+<p>可以设置每次重启后,收集/proc/vmstat的信息.可以通过on_every_test参数实现:</p>
+<div class="highlight"><pre><span></span>job.add_sysinfo_file("/proc/vmstat", on_ervey_test=True)
+</pre></div>
+<p>另外一种方式:</p>
+<div class="highlight"><pre><span></span>job.add_sysinfo_command("lspci -v", logfile="lspci.txt")
+</pre></div>
+<p>这样每次重启都可以执行lspci -v,并把信息导入到lspci.txt. logfile的参数是可选的.如果不指定它,就会默认以lspci_ -v作为名字.这个方法,同样是每次reboot都会
+ 执行.</p>
+<h2 id="shi-yong-fen-xi-qi">使用分析器</h2>
+<p>你可以启用一个或多个分析器.下面是添加和移除的例子:
+    job.profilers.add('oprofile')
+    job.run_test('sleeptest')
+    job.profilers.delete('oprofile')</p>
+<p>多个测试使用方式:</p>
+<div class="highlight"><pre><span></span>job.profilers.add('oprofile')
+job.run_test('kernbench')
+job.run_test('dbench')
+job.profilers.delete('oprofile')
+</pre></div>
+<p>它会为每个测试生成独立的分析结果,以免不影响性能结果.分析结果会在测试结果目录下的<testname profiling="">
+当然,在profilers/<profiler-name>/control下有所有的示例.</profiler-name></testname></p>
+<h2 id="chuang-jian-wen-jian-xi-tong">创建文件系统</h2>
+<p>autotest内建支持创建文件系统.用来支持在不同文件系统中进行fsx测试:</p>
+<div class="highlight"><pre><span></span># uncomment this line, and replace the device with something sensible
+# for you ...
+# fs = job.filesystem('/dev/hda2', job.tmpdir)
+
+for fstype in ('ext2', 'ext3'):
+    fs.mkfs(fstype)
+    fs.mount()
+    try:
+        job.run_test('fsx', job.tmpdir, tag=fstype)
+    finally:
+        fs.unmount()
+</pre></div>
+<p>同样支持为不同的文件系统添加不同的挂载参数:</p>
+<div class="highlight"><pre><span></span>fs = job.filesystem('/dev/sda3', job.tmpdir)
+iters=10
+for fstype, mountopts, tag in (('ext2', '', 'ext2'),
+                               ('ext3', '-o data=writeback', 'ext3writeback'),
+                               ('ext3', '-o data=ordered', 'ext3ordered'),
+                               ('ext3', '-o data=journal', 'ext3journal')):
+    fs.mkfs(fstype)
+    fs.mount(args=mountopts)
+    try:
+        job.run_test('fsx', job.tmpdir, tag=tag)
+        job.run_test('iozone', job.tmpdir, iterations=iters, tag=tag)
+        job.run_test('dbench', iterations=iters, dir=job.tmpdir, tag=tag)
+        job.run_test('tiobench', dir=job.tmpdir, tag=tag)
+    finally:
+        fs.umount()
+</pre></div>
+<h2 id="jobce-shi-zhong-zhong-qi">job测试中重启</h2>
+<p>当一个job需要重启时,比如导入一个新的内核.这样就会导致control脚本执行中断.这样就需要分布执行的模块.</p>
+<div class="highlight"><pre><span></span>def step_init():
+    job.next_step([step_test])
+    testkernel = job.kernel('2.6.18')
+    testkernel.config('http://mbligj.org/congig/opteron2')
+    testkernel.build()
+    testkernel.boot()  #does autotest by default
+
+def step_test():
+    job.run_test('kernbench', iterations=2, threads=5)
+    job.run_test('dbench', iterations=5)
+</pre></div>
+<p>通过指定<strong>step_init</strong>表明控制脚本已一种分布模式执行.在执行中断时(如reboot)会保存测试环境.</p>
+<p>一个重要的提示是分布执行引擎并不意味支持这个测试过程的分步执行.只能支持再控制文件级别中实现.因为在测试程序执行时一些返回值.实现自动测试过程中中断测试
+不太现实.如果出现超时,会杀死子线程.
+因此,代码插入到control文件中是正确的:</p>
+<div class="highlight"><pre><span></span> def step_init():
+     job.next_step([step_test])
+     testkernel = job.kernel('testkernel.rpm')
+     testkernel.install()
+     testkernel.boot()
+
+def step_test()
+     job.run_test('ltp')
+</pre></div>
+<p>相关代码插入到测试模块中,是不行的.</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">Kerneltest</span>(<span class="n">test</span>.<span class="n">test</span>):
+    <span class="n">def</span> <span class="n">execute</span>(<span class="k">self</span>):
+        <span class="n">testkernel</span> = <span class="n">job</span>.<span class="n">kernel</span>(<span class="s">'testkernel.rpm'</span>)
+        <span class="n">testkernel</span>.<span class="n">boot</span>()
+</pre></div>
+<p>直接的,当使用分布引擎时,控制文件不是简单的执行一次.而是循环执行,直到测试完成.在一个独立的情况下，当一个控制文件存在，在重启之后会自动启动执行.在托管环境中管理服务器将执行相同的作用.
+当面对分步执行时,循环会变得更加困难.</p>
+<div class="highlight"><pre><span></span>def step_init():
+    step_test(1)
+
+def step_test(iteration):
+    if (iteration &lt; 5):
+        job.next_step([step_test, iteration + 1])
+
+    print "boot: %d" % iteration
+
+    job.run_test('kernbench', tag="%s" % i)
+    job.reboot()
+</pre></div>
+<h2 id="bing-xing-yun-xing">并行运行</h2>
+<p>job对象同样提供一个并行运行多个测试的方法. 该方法采用可变数量的参数，分别代表不同的任务并行运行。 每个参数应该是一个列表，其中该列表中的第一项是一个函数的调用和所有其余元素都将被传递给函数被调用时的参数。</p>
+<div class="highlight"><pre><span></span>def first_task():
+    job.run_test('kernbench')
+
+def second_task():
+    job.run_test('dbench')
+
+job.parallel([first_task], [second_task])
+</pre></div>
+<p>控制文件会同时执行kernbench和dbench.代码还可以如此写:</p>
+<div class="highlight"><pre><span></span>job.parallel([job.run_test, 'kernbench', [job.run_test, 'dbench'])
+</pre></div>
+<p>如果你想这样更复杂的东西在你的任务中,而不是要求单一的功能，那么你就必须定义自己的函数来做到这一点，如在第一个例子。</p>
+<p>并行任务执行在自己的地址空间,你不比担心.但是毕竟是运行在同一台物理机中.仍然需要主要避免访问同一资源,如相同的文件.</p>
+<p>Top<a href="">^</a></p>
+<p>上一篇<a href="https://king32783784.github.io/lipeng/2015/08/13/autotest/">Autotest：Autotest-Local&gt;&gt;&gt;</a>
+下一篇<a href="https://king32783784.github.io/lipeng/2015/08/15/autotest/">Autotest：Autotest-Control file specification&gt;&gt;&gt;</a></p>
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "2015/08/14/autotest/";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://xiayfblackwhite.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+        </div><!-- /.twelve.columns -->
+ </div><!-- /.row -->
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="http://github.com/king32783784" target="_blank">Github</a></div></li>
+
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'xiayfblackwhite';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="../../../../theme/js/libs/gumby.min.js"></script>
+  <script src="../../../../theme/js/plugins.js"></script>
+  <script src="../../../../theme/js/main.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../../../theme/emoji/css/basic/emojify.min.css" />
+  <script src="../../../../theme/emoji/js/emojify.min.js"></script>
+  <script>
+    emojify.setConfig({
+        img_dir : '../../../../theme/emoji/images/basic'
+    });
+    emojify.run();
+</script>
+</body>
+</html>

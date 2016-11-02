@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="link">
+<head>
+
+        <title>Hi | World - 算法</title>
+        <meta charset="utf-8" />
+        <link href="http://king32783784.github.io/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Hi | World Full Atom Feed" />
+        <link href="http://king32783784.github.io/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Hi | World Full RSS Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="../theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="../theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="../theme/pygment.css" />
+        <link rel="stylesheet" type="text/css" href="../theme/SentyZHAO/SentyZHAO.css" />
+
+        <script src="../theme/js/libs/jquery-1.9.1.min.js"></script>
+        <script src="../theme/js/libs/modernizr-2.6.2.min.js"></script>
+</head>
+
+<body id="index" class="home">
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1 style='font-family: "SentyZHAO";'><a href="..">Hi | World <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+
+              <ul class="columns" style='font-family: "SentyZHAO";'>
+                <li><a href="..">主 页</a></li>
+
+                <li><a href="../pages/tech-share.html">归档</a></li>
+                <li><a href="../pages/opensource.html">开源项目</a></li>
+                <li><a href="../pages/links.html">链接</a></li>
+                <li><a href="../pages/Reference material.html">参考资料</a></li>
+                <li><a href="../pages/todo list.html">Todo List</a></li>
+                <li><a href="../pages/tools.html">工具集</a></li>
+                <li class="active"><a href="../pages/aboutme.html">关于我</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+<div class="row">
+    <div class="eleven columns">
+        <ol id="post-list">
+            <li>
+            <article class="hentry">
+                <header>
+                    <h2 class="entry-title">
+                        <a href="../2013/07/01/sort/" rel="bookmark" title="Permalink to 快速排序">快速排序</a>
+                    </h2>
+                </header>
+                <footer class="post-info">
+                    <abbr class="published" title="2013-07-01T00:00:00+08:00"> 一 01 七月 2013 </abbr>
+<address class="vcard author">By <a class="url fn" href="../author/penglee.html">penglee</a></address>                </footer><!-- /.post-info -->
+                <div class="entry-content"> </head><body><h4 id="kuai-su-pai-xu">快速排序</h4>
+<p>对于一个给定的数组，从中选择一个元素，以该元素为界将其余元素划分为两个子集，
+一个子集的所有元素都小于该元素，另一个子集的元素都大于或等于该元素，
+对两个子集递归执行这一过程，当某个子集中的元素小于二时，
+这个子集就不需要再次排序，终止递归。</p>
+<h4 id="dai-ma-shi-xian-ji-ce-shi">代码实现及测试</h4>
+<div class="highlight"><pre><span></span>    <span class="kt">void</span> <span class="nf">qsort</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span><span class="p">[],</span><span class="kt">int</span> <span class="n">left</span><span class="p">,</span><span class="kt">int</span> <span class="n">right</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">i</span><span class="p">,</span><span class="n">last</span><span class="p">;</span>
+        <span class="kt">void</span> <span class="n">swap</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span><span class="p">[],</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span><span class="kt">int</span> <span class="n">j</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">left</span><span class="o">&gt;=</span><span class="n">right</span><span class="p">)</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="n">swap</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">left</span><span class="p">,(</span><span class="n">left</span><span class="o">+</span><span class="n">right</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span> <span class="c1">//将中点的元素作为比较元素，放到整个数组的最左边</span>
+        <span class="n">last</span> <span class="o">=</span> <span class="n">left</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="n">left</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">right ...</span></pre></div></body> </div><!-- /.entry-content -->
+                <div class="medium primary btn"><a href="../2013/07/01/sort/" rel="bookmark" title="Permalink to 快速排序">Read more <i class="icon-arrow-right"></i></a></div>
+                <div class="row tag-row">
+                    <span>Tagged as : </span>
+                    <a class="danger label" href="../tag/suan-fa.html">算法</a>
+                </div>
+            </article>
+            </li>
+            <li>
+            <article class="hentry">
+                <header>
+                    <h2 class="entry-title">
+                        <a href="../2009/10/01/排序/" rel="bookmark" title="Permalink to 排序-希尔排序法">排序-希尔排序法</a>
+                    </h2>
+                </header>
+                <footer class="post-info">
+                    <abbr class="published" title="2009-10-01T00:00:00+08:00"> 四 01 十月 2009 </abbr>
+<address class="vcard author">By <a class="url fn" href="../author/penglee.html">penglee</a></address>                </footer><!-- /.post-info -->
+                <div class="entry-content"> </head><body><p>原始的算法实现在最坏的情况下需要进行O(n2)的比较和交换。V. Pratt的书[1] 对算法进行了少量修改，可以使得性能提升至O(n log2 n)。这比最好的比较算法的O(n log n)要差一些。</p>
+<p>希尔排序通过将比较的全部元素分为几个区域来提升插入排序的性能。这样可以让一个元素可以一次性地朝最终位置前进一大步。然后算法再取越来越小的步长进行排序，算法的最后一步就是普通的插入排序，但是到了这步，需排序的数据几乎是已排好的了（此时插入排序较快）。</p>
+<p>假设有一个很小的数据在一个已按升序排好序的数组的末端。如果用复杂度为O(n2)的排序（冒泡排序或插入排序），可能会进行n次的比较和交换才能将该数据移至正确位置。而希尔排序会用较大的步长移动数据，所以小数据只需进行少数比较和交换即可到正确位置。</p>
+<p>一个更好理解的希尔排序实现：将数组列在一个表中并对列排序（用插入排序）。重复这过程，不过每次用更长的列来进行。最后整个表就只有一列了。将数组转换至表是为了更好地理解这算法，算法本身仅仅对原数组进行排序（通过增加索引的步长，例如是用i += step_size而不是i++）。</p>
+<p>例如，假设有这样一组数[ 13 14 94 33 82 25 ...</p></body> </div><!-- /.entry-content -->
+                <div class="medium primary btn"><a href="../2009/10/01/排序/" rel="bookmark" title="Permalink to 排序-希尔排序法">Read more <i class="icon-arrow-right"></i></a></div>
+                <div class="row tag-row">
+                    <span>Tagged as : </span>
+                    <a class="danger label" href="../tag/suan-fa.html">算法</a>
+                </div>
+            </article>
+            </li>
+        </ol><!-- /#posts-list -->
+    </div><!-- /.eleven.columns -->
+<div class="three columns">
+
+<!--
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="../pages/tech-share.html">归档</a></li>
+      <li><a href="../pages/opensource.html">开源项目</a></li>
+      <li><a href="../pages/links.html">链接</a></li>
+      <li><a href="../pages/Reference material.html">参考资料</a></li>
+      <li><a href="../pages/todo list.html">Todo List</a></li>
+      <li><a href="../pages/tools.html">工具集</a></li>
+      <li class="active"><a href="../pages/aboutme.html">关于我</a></li>
+  </ul>
+-->
+<!--
+<h4>分类</h4>
+<ul>
+		<li><a href="../category/misc.html">misc</a></li>
+		<li><a href="../category/autotestzhuan-ti.html">Autotest专题</a></li>
+		<li><a href="../category/suan-fa.html">算法</a></li>
+		<li><a href="../category/dockerzhuan-ti.html">Docker专题</a></li>
+		<li><a href="../category/linux.html">Linux</a></li>
+		<li><a href="../category/linux-benchmark.html">linux-benchmark</a></li>
+		<li><a href="../category/linux-zi-dong-hua-ce-shi.html">linux-自动化测试</a></li>
+		<li><a href="../category/unixhuan-jing-bian-cheng.html">unix环境编程</a></li>
+		<li><a href="../category/xing-neng-ce-shi.html">性能测试</a></li>
+</ul>
+-->
+
+<h4>标签</h4>
+	<ul>
+	    <li class="tag-4"><a href="../tag/pyunit.html">PyUnit</a></li>
+	    <li class="tag-4"><a href="../tag/linux.html">Linux</a></li>
+	    <li class="tag-4"><a href="../tag/qi-ta.html">其他</a></li>
+	    <li class="tag-4"><a href="../tag/unixbian-cheng.html">unix编程</a></li>
+	    <li class="tag-1"><a href="../tag/zi-dong-hua-ce-shi.html">自动化测试</a></li>
+	    <li class="tag-3"><a href="../tag/docker.html">Docker</a></li>
+	    <li class="tag-3"><a href="../tag/shell.html">shell</a></li>
+	    <li class="tag-3"><a href="../tag/suan-fa.html">算法</a></li>
+	    <li class="tag-1"><a href="../tag/selenium.html">Selenium</a></li>
+	    <li class="tag-2"><a href="../tag/ltp.html">LTP</a></li>
+	    <li class="tag-3"><a href="../tag/xing-neng-ce-shi.html">性能测试</a></li>
+	    <li class="tag-3"><a href="../tag/python.html">Python</a></li>
+	    <li class="tag-4"><a href="../tag/benchmark.html">benchmark</a></li>
+</ul>
+
+<!--
+-->
+</div> </div><!-- /.row -->
+<p class="paginator">
+    Page 1 / 1
+</p>
+</section><!-- /#content -->
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="http://github.com/king32783784" target="_blank">Github</a></div></li>
+
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'xiayfblackwhite';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="../theme/js/libs/gumby.min.js"></script>
+  <script src="../theme/js/plugins.js"></script>
+  <script src="../theme/js/main.js"></script>
+  <link rel="stylesheet" type="text/css" href="../theme/emoji/css/basic/emojify.min.css" />
+  <script src="../theme/emoji/js/emojify.min.js"></script>
+  <script>
+    emojify.setConfig({
+        img_dir : '../theme/emoji/images/basic'
+    });
+    emojify.run();
+</script>
+</body>
+</html>

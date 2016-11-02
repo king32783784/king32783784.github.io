@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="link">
+<head>
+
+        <title>Autotest-others</title>
+        <meta charset="utf-8" />
+        <link href="http://king32783784.github.io/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Hi | World Full Atom Feed" />
+        <link href="http://king32783784.github.io/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Hi | World Full RSS Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="../../../../theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="../../../../theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="../../../../theme/pygment.css" />
+        <link rel="stylesheet" type="text/css" href="../../../../theme/SentyZHAO/SentyZHAO.css" />
+
+        <script src="../../../../theme/js/libs/jquery-1.9.1.min.js"></script>
+        <script src="../../../../theme/js/libs/modernizr-2.6.2.min.js"></script>
+</head>
+
+<body id="index" class="home">
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1 style='font-family: "SentyZHAO";'><a href="../../../..">Hi | World <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+
+              <ul class="columns" style='font-family: "SentyZHAO";'>
+                <li><a href="../../../..">主 页</a></li>
+
+                <li><a href="../../../../pages/tech-share.html">归档</a></li>
+                <li><a href="../../../../pages/opensource.html">开源项目</a></li>
+                <li><a href="../../../../pages/links.html">链接</a></li>
+                <li><a href="../../../../pages/Reference material.html">参考资料</a></li>
+                <li><a href="../../../../pages/todo list.html">Todo List</a></li>
+                <li><a href="../../../../pages/tools.html">工具集</a></li>
+                <li class="active"><a href="../../../../pages/aboutme.html">关于我</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+   <div class="row">
+        <div class="columns">
+            <header>
+              <h2 class="entry-title">
+                <a href="../../../../2015/08/19/autotest/" rel="bookmark" title="Permalink to Autotest-others">Autotest-others</a></h2>
+           Translations: 
+<a href="../../../../2015/08/18/autotest/">link</a>
+<a href="../../../../2015/08/14/autotest/">link</a>
+<a href="../../../../2015/08/15/autotest/">link</a>
+<a href="../../../../2015/08/21/autotest/">link</a>
+<a href="../../../../2015/08/16/autotest/">link</a>
+<a href="../../../../2015/08/22/autotest/">link</a>
+<a href="../../../../2015/11/01/autotest/">link</a>
+<a href="../../../../2015/08/17/autotest/">link</a>
+<a href="../../../../2015/08/20/autotest/">link</a>
+
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2015-08-19T00:00:00+08:00">
+                三 19 八月 2015
+              </abbr>
+              <address class="vcard author">
+                By <a class="url fn" href="../../../../author/penglee.html">penglee</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              </head><body><p><img alt="" src="https://king32783784.github.io/lipeng/tmpfile/autotestlogo.png"/></p>
+<h2 id="zhi-xing-wai-bu-ce-shi">执行外部测试</h2>
+<p>autotest可以像执行自身测试一样执行外部测试．</p>
+<h3 id="zhi-xing-ce-shi">执行测试</h3>
+<p>一个下载的测试并触发，标准方式是通过run_test方法执行，需要指定tar包地址．
+　　
+    job.run_test('http://www.example.com/~someone/somewhere/test.tar.bz2')</p>
+<p>这样就会执行下载，安装，解压测试．</p>
+<h3 id="gou-jian-wai-bu-xia-zai-ce-shi">构建外部下载测试</h3>
+<p>外部下载的测试包含bz2包和测试目录．
+<em> 1．包名　my_test.tar.bz2
+</em> 2. 测试脚本　my_test.py
+* 3.　测试脚本中的以本身命名的类　class my_test(test.test):</p>
+<p>例如：</p>
+<div class="highlight"><pre><span></span>    <span class="kn">from</span> <span class="nn">autotest_lib.client.bin</span> <span class="kn">import</span> <span class="n">test</span>
+
+    <span class="k">class</span> <span class="nc">my_test</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">test</span><span class="p">):</span>
+        <span class="n">version</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="k">print</span> <span class="s2">"INIT"</span>
+
+        <span class="k">def</span> <span class="nf">run_once</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="k">print</span> <span class="s2">"RUN"</span>
+</pre></div>
+<div class="highlight"><pre><span></span>$ tar -C example_test -jcvf my_test.tar.bz2 .
+</pre></div>
+<h2 id="autotest-de-keyvalwen-jian_1">Autotest 的keyval文件</h2>
+<p>在ａｕｔｏｔｅｓｔ的结果目录中有一些keyval文件，例如</p>
+<div class="highlight"><pre><span></span>key1=value1
+key2=value2
+</pre></div>
+<h2 id="ce-shi-jie-guo-zhong-cuo-wu-xin-xi">测试结果中错误信息</h2>
+<h3 id="debug">debug</h3>
+<div class="highlight"><pre><span></span>debug/
+
+├── build_log.gz
+├── client.DEBUG
+├── client.ERROR
+├── client.INFO
+└── client.WARNING
+</pre></div>
+<p>autotest local 还有一些小的细节问题，不再一一介绍．</p>
+<p>下篇将开始介绍Remote (Former Server)．</p>
+<p>Top<a href="">^</a></p>
+<p>上一篇<a href="https://king32783784.github.io/lipeng/2015/08/18/autotest/">Autotest：Autotest-add test&gt;&gt;</a>
+下一篇<a href="https://king32783784.github.io/lipeng/2015/08/20/autotest/">Autotest:Autotest-Autotest Remote (Autoserv)&gt;&gt;&gt;</a></p>
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "2015/08/19/autotest/";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://xiayfblackwhite.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+        </div><!-- /.twelve.columns -->
+ </div><!-- /.row -->
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="http://github.com/king32783784" target="_blank">Github</a></div></li>
+
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'xiayfblackwhite';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="../../../../theme/js/libs/gumby.min.js"></script>
+  <script src="../../../../theme/js/plugins.js"></script>
+  <script src="../../../../theme/js/main.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../../../theme/emoji/css/basic/emojify.min.css" />
+  <script src="../../../../theme/emoji/js/emojify.min.js"></script>
+  <script>
+    emojify.setConfig({
+        img_dir : '../../../../theme/emoji/images/basic'
+    });
+    emojify.run();
+</script>
+</body>
+</html>

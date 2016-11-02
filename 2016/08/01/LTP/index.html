@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+<html lang="link">
+<head>
+
+        <title>LTP－kernel-syscalls</title>
+        <meta charset="utf-8" />
+        <link href="http://king32783784.github.io/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Hi | World Full Atom Feed" />
+        <link href="http://king32783784.github.io/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Hi | World Full RSS Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="../../../../theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="../../../../theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="../../../../theme/pygment.css" />
+        <link rel="stylesheet" type="text/css" href="../../../../theme/SentyZHAO/SentyZHAO.css" />
+
+        <script src="../../../../theme/js/libs/jquery-1.9.1.min.js"></script>
+        <script src="../../../../theme/js/libs/modernizr-2.6.2.min.js"></script>
+</head>
+
+<body id="index" class="home">
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1 style='font-family: "SentyZHAO";'><a href="../../../..">Hi | World <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+
+              <ul class="columns" style='font-family: "SentyZHAO";'>
+                <li><a href="../../../..">主 页</a></li>
+
+                <li><a href="../../../../pages/tech-share.html">归档</a></li>
+                <li><a href="../../../../pages/opensource.html">开源项目</a></li>
+                <li><a href="../../../../pages/links.html">链接</a></li>
+                <li><a href="../../../../pages/Reference material.html">参考资料</a></li>
+                <li><a href="../../../../pages/todo list.html">Todo List</a></li>
+                <li><a href="../../../../pages/tools.html">工具集</a></li>
+                <li class="active"><a href="../../../../pages/aboutme.html">关于我</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+   <div class="row">
+        <div class="columns">
+            <header>
+              <h2 class="entry-title">
+                <a href="../../../../2016/08/01/LTP/" rel="bookmark" title="Permalink to LTP－kernel-syscalls">LTP－kernel-syscalls</a></h2>
+           Translations: 
+<a href="../../../../2016/06/03/LTP/">link</a>
+<a href="../../../../2016/06/01/LTP/">link</a>
+<a href="../../../../2016/08/02/LTP/">link</a>
+<a href="../../../../2016/06/02/LTP/">link</a>
+
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2016-08-01T00:00:00+08:00">
+                一 01 八月 2016
+              </abbr>
+              <address class="vcard author">
+                By <a class="url fn" href="../../../../author/penglee.html">peng.lee</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              </head><body><h4 id="syscalls">syscalls</h4>
+<p>ltp中kernel测试比重很大，尤其是syscalls，包括一下用例：
+注：测试内容分析时补充。</p>
+<table>
+<thead>
+<tr>
+<th>用例名称</th>
+<th>测试内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>abort</td>
+<td></td>
+</tr>
+<tr>
+<td>accept</td>
+<td></td>
+</tr>
+<tr>
+<td>accept4</td>
+<td></td>
+</tr>
+<tr>
+<td>access</td>
+<td></td>
+</tr>
+<tr>
+<td>acct</td>
+<td></td>
+</tr>
+<tr>
+<td>add_key</td>
+<td></td>
+</tr>
+<tr>
+<td>adjtimex</td>
+<td></td>
+</tr>
+<tr>
+<td>alarm</td>
+<td></td>
+</tr>
+<tr>
+<td>asyncio</td>
+<td></td>
+</tr>
+<tr>
+<td>bdflush</td>
+<td></td>
+</tr>
+<tr>
+<td>bind</td>
+<td></td>
+</tr>
+<tr>
+<td>brk</td>
+<td></td>
+</tr>
+<tr>
+<td>cacheflush</td>
+<td></td>
+</tr>
+<tr>
+<td>capget</td>
+<td></td>
+</tr>
+<tr>
+<td>capset</td>
+<td></td>
+</tr>
+<tr>
+<td>chdir</td>
+<td></td>
+</tr>
+<tr>
+<td>chmod</td>
+<td></td>
+</tr>
+<tr>
+<td>chown</td>
+<td></td>
+</tr>
+<tr>
+<td>chroot</td>
+<td></td>
+</tr>
+<tr>
+<td>clock_getres</td>
+<td></td>
+</tr>
+<tr>
+<td>clock_nanosleep</td>
+<td></td>
+</tr>
+<tr>
+<td>clock_nanosleep2</td>
+<td></td>
+</tr>
+<tr>
+<td>clone</td>
+<td></td>
+</tr>
+<tr>
+<td>close</td>
+<td></td>
+</tr>
+<tr>
+<td>cma</td>
+<td></td>
+</tr>
+<tr>
+<td>confstr</td>
+<td></td>
+</tr>
+<tr>
+<td>connect</td>
+<td></td>
+</tr>
+<tr>
+<td>creat</td>
+<td></td>
+</tr>
+<tr>
+<td>dup</td>
+<td></td>
+</tr>
+<tr>
+<td>dup2</td>
+<td></td>
+</tr>
+<tr>
+<td>dup3</td>
+<td></td>
+</tr>
+<tr>
+<td>epoll</td>
+<td></td>
+</tr>
+<tr>
+<td>epoll2</td>
+<td></td>
+</tr>
+<tr>
+<td>epoll_create1</td>
+<td></td>
+</tr>
+<tr>
+<td>epoll_ctl</td>
+<td></td>
+</tr>
+<tr>
+<td>epoll_pwait</td>
+<td></td>
+</tr>
+<tr>
+<td>epoll_wait</td>
+<td></td>
+</tr>
+<tr>
+<td>eventfd</td>
+<td></td>
+</tr>
+<tr>
+<td>eventfd2</td>
+<td></td>
+</tr>
+<tr>
+<td>execl</td>
+<td></td>
+</tr>
+<tr>
+<td>execle</td>
+<td></td>
+</tr>
+<tr>
+<td>execlp</td>
+<td></td>
+</tr>
+<tr>
+<td>execv</td>
+<td></td>
+</tr>
+<tr>
+<td>execve</td>
+<td></td>
+</tr>
+<tr>
+<td>execvp</td>
+<td></td>
+</tr>
+<tr>
+<td>exit</td>
+<td></td>
+</tr>
+<tr>
+<td>exit_group</td>
+<td></td>
+</tr>
+<tr>
+<td>faccessat</td>
+<td></td>
+</tr>
+<tr>
+<td>fadvise</td>
+<td></td>
+</tr>
+<tr>
+<td>fallocate</td>
+<td></td>
+</tr>
+<tr>
+<td>fanotify</td>
+<td></td>
+</tr>
+<tr>
+<td>fchdir</td>
+<td></td>
+</tr>
+<tr>
+<td>fchmod</td>
+<td></td>
+</tr>
+<tr>
+<td>fchmodat</td>
+<td></td>
+</tr>
+<tr>
+<td>fchown</td>
+<td></td>
+</tr>
+<tr>
+<td>fchownat</td>
+<td></td>
+</tr>
+<tr>
+<td>fcntl</td>
+<td></td>
+</tr>
+<tr>
+<td>fdatasync</td>
+<td></td>
+</tr>
+<tr>
+<td>flock</td>
+<td></td>
+</tr>
+<tr>
+<td>fmtmsg</td>
+<td></td>
+</tr>
+<tr>
+<td>fork</td>
+<td></td>
+</tr>
+<tr>
+<td>fpathconf</td>
+<td></td>
+</tr>
+<tr>
+<td>fstat</td>
+<td></td>
+</tr>
+<tr>
+<td>fstatat</td>
+<td></td>
+</tr>
+<tr>
+<td>fstatfs</td>
+<td></td>
+</tr>
+<tr>
+<td>fsync</td>
+<td></td>
+</tr>
+<tr>
+<td>ftruncate</td>
+<td></td>
+</tr>
+<tr>
+<td>futex</td>
+<td></td>
+</tr>
+<tr>
+<td>futimesat</td>
+<td></td>
+</tr>
+<tr>
+<td>getcontext</td>
+<td></td>
+</tr>
+<tr>
+<td>getcpu</td>
+<td></td>
+</tr>
+<tr>
+<td>getcwd</td>
+<td></td>
+</tr>
+<tr>
+<td>getdents</td>
+<td></td>
+</tr>
+<tr>
+<td>getdomainname</td>
+<td></td>
+</tr>
+<tr>
+<td>getdtablesize</td>
+<td></td>
+</tr>
+<tr>
+<td>getegid</td>
+<td></td>
+</tr>
+<tr>
+<td>geteuid</td>
+<td></td>
+</tr>
+<tr>
+<td>getgid</td>
+<td></td>
+</tr>
+<tr>
+<td>getgroups</td>
+<td></td>
+</tr>
+<tr>
+<td>gethostbyname_r</td>
+<td></td>
+</tr>
+<tr>
+<td>gethostid</td>
+<td></td>
+</tr>
+<tr>
+<td>gethostname</td>
+<td></td>
+</tr>
+<tr>
+<td>getitimer</td>
+<td></td>
+</tr>
+<tr>
+<td>get_mempolicy</td>
+<td></td>
+</tr>
+<tr>
+<td>getpagesize</td>
+<td></td>
+</tr>
+<tr>
+<td>getpeername</td>
+<td></td>
+</tr>
+<tr>
+<td>getpgid</td>
+<td></td>
+</tr>
+<tr>
+<td>getpgrp</td>
+<td></td>
+</tr>
+<tr>
+<td>getpid</td>
+<td></td>
+</tr>
+<tr>
+<td>getppid</td>
+<td></td>
+</tr>
+<tr>
+<td>getpriority</td>
+<td></td>
+</tr>
+<tr>
+<td>getrandom</td>
+<td></td>
+</tr>
+<tr>
+<td>getresgid</td>
+<td></td>
+</tr>
+<tr>
+<td>getresuid</td>
+<td></td>
+</tr>
+<tr>
+<td>getrlimit</td>
+<td></td>
+</tr>
+<tr>
+<td>get_robust_list</td>
+<td></td>
+</tr>
+<tr>
+<td>getrusage</td>
+<td></td>
+</tr>
+<tr>
+<td>getsid</td>
+<td></td>
+</tr>
+<tr>
+<td>getsockname</td>
+<td></td>
+</tr>
+<tr>
+<td>getsockopt</td>
+<td></td>
+</tr>
+<tr>
+<td>gettid</td>
+<td></td>
+</tr>
+<tr>
+<td>gettimeofday</td>
+<td></td>
+</tr>
+<tr>
+<td>getuid</td>
+<td></td>
+</tr>
+<tr>
+<td>getxattr</td>
+<td></td>
+</tr>
+<tr>
+<td>inotify</td>
+<td></td>
+</tr>
+<tr>
+<td>inotify_init</td>
+<td></td>
+</tr>
+<tr>
+<td>io_cancel</td>
+<td></td>
+</tr>
+<tr>
+<td>ioctl</td>
+<td></td>
+</tr>
+<tr>
+<td>io_destroy</td>
+<td></td>
+</tr>
+<tr>
+<td>io_getevents</td>
+<td></td>
+</tr>
+<tr>
+<td>ioperm</td>
+<td></td>
+</tr>
+<tr>
+<td>iopl</td>
+<td></td>
+</tr>
+<tr>
+<td>io_setup</td>
+<td></td>
+</tr>
+<tr>
+<td>io_submit</td>
+<td></td>
+</tr>
+<tr>
+<td>ipc</td>
+<td></td>
+</tr>
+<tr>
+<td>kcmp</td>
+<td></td>
+</tr>
+<tr>
+<td>keyctl</td>
+<td></td>
+</tr>
+<tr>
+<td>kill</td>
+<td></td>
+</tr>
+<tr>
+<td>lchown</td>
+<td></td>
+</tr>
+<tr>
+<td>lgetxattr</td>
+<td></td>
+</tr>
+<tr>
+<td>link</td>
+<td></td>
+</tr>
+<tr>
+<td>linkat</td>
+<td></td>
+</tr>
+<tr>
+<td>listen</td>
+<td></td>
+</tr>
+<tr>
+<td>llistxattr</td>
+<td></td>
+</tr>
+<tr>
+<td>llseek</td>
+<td></td>
+</tr>
+<tr>
+<td>lseek</td>
+<td></td>
+</tr>
+<tr>
+<td>lstat</td>
+<td></td>
+</tr>
+<tr>
+<td>madvise</td>
+<td></td>
+</tr>
+<tr>
+<td>Makefile</td>
+<td></td>
+</tr>
+<tr>
+<td>mallopt</td>
+<td></td>
+</tr>
+<tr>
+<td>mbind</td>
+<td></td>
+</tr>
+<tr>
+<td>memcmp</td>
+<td></td>
+</tr>
+<tr>
+<td>memcpy</td>
+<td></td>
+</tr>
+<tr>
+<td>memmap</td>
+<td></td>
+</tr>
+<tr>
+<td>memset</td>
+<td></td>
+</tr>
+<tr>
+<td>migrate_pages</td>
+<td></td>
+</tr>
+<tr>
+<td>mincore</td>
+<td></td>
+</tr>
+<tr>
+<td>mkdir</td>
+<td></td>
+</tr>
+<tr>
+<td>mkdirat</td>
+<td></td>
+</tr>
+<tr>
+<td>mknod</td>
+<td></td>
+</tr>
+<tr>
+<td>mknodat</td>
+<td></td>
+</tr>
+<tr>
+<td>mlock</td>
+<td></td>
+</tr>
+<tr>
+<td>mlockall</td>
+<td></td>
+</tr>
+<tr>
+<td>mmap</td>
+<td></td>
+</tr>
+<tr>
+<td>modify_ldt</td>
+<td></td>
+</tr>
+<tr>
+<td>mount</td>
+<td></td>
+</tr>
+<tr>
+<td>move_pages</td>
+<td></td>
+</tr>
+<tr>
+<td>mprotect</td>
+<td></td>
+</tr>
+<tr>
+<td>mq_notify</td>
+<td></td>
+</tr>
+<tr>
+<td>mq_open</td>
+<td></td>
+</tr>
+<tr>
+<td>mq_timedreceive</td>
+<td></td>
+</tr>
+<tr>
+<td>mq_timedsend</td>
+<td></td>
+</tr>
+<tr>
+<td>mq_unlink</td>
+<td></td>
+</tr>
+<tr>
+<td>mremap</td>
+<td></td>
+</tr>
+<tr>
+<td>msync</td>
+<td></td>
+</tr>
+<tr>
+<td>munlock</td>
+<td></td>
+</tr>
+<tr>
+<td>munlockall</td>
+<td></td>
+</tr>
+<tr>
+<td>munmap</td>
+<td></td>
+</tr>
+<tr>
+<td>nanosleep</td>
+<td></td>
+</tr>
+<tr>
+<td>newuname</td>
+<td></td>
+</tr>
+<tr>
+<td>nftw</td>
+<td></td>
+</tr>
+<tr>
+<td>nice</td>
+<td></td>
+</tr>
+<tr>
+<td>open</td>
+<td></td>
+</tr>
+<tr>
+<td>openat</td>
+<td></td>
+</tr>
+<tr>
+<td>paging</td>
+<td></td>
+</tr>
+<tr>
+<td>pathconf</td>
+<td></td>
+</tr>
+<tr>
+<td>pause</td>
+<td></td>
+</tr>
+<tr>
+<td>perf_event_open</td>
+<td></td>
+</tr>
+<tr>
+<td>personality</td>
+<td></td>
+</tr>
+<tr>
+<td>pipe</td>
+<td></td>
+</tr>
+<tr>
+<td>pipe2</td>
+<td></td>
+</tr>
+<tr>
+<td>poll</td>
+<td></td>
+</tr>
+<tr>
+<td>ppoll</td>
+<td></td>
+</tr>
+<tr>
+<td>prctl</td>
+<td></td>
+</tr>
+<tr>
+<td>pread</td>
+<td></td>
+</tr>
+<tr>
+<td>preadv</td>
+<td></td>
+</tr>
+<tr>
+<td>profil</td>
+<td></td>
+</tr>
+<tr>
+<td>pselect</td>
+<td></td>
+</tr>
+<tr>
+<td>ptrace</td>
+<td></td>
+</tr>
+<tr>
+<td>pwrite</td>
+<td></td>
+</tr>
+<tr>
+<td>pwritev</td>
+<td></td>
+</tr>
+<tr>
+<td>quotactl</td>
+<td></td>
+</tr>
+<tr>
+<td>read</td>
+<td></td>
+</tr>
+<tr>
+<td>readahead</td>
+<td></td>
+</tr>
+<tr>
+<td>readdir</td>
+<td></td>
+</tr>
+<tr>
+<td>readlink</td>
+<td></td>
+</tr>
+<tr>
+<td>readlinkat</td>
+<td></td>
+</tr>
+<tr>
+<td>readv</td>
+<td></td>
+</tr>
+<tr>
+<td>reboot</td>
+<td></td>
+</tr>
+<tr>
+<td>recv</td>
+<td></td>
+</tr>
+<tr>
+<td>recvfrom</td>
+<td></td>
+</tr>
+<tr>
+<td>recvmsg</td>
+<td></td>
+</tr>
+<tr>
+<td>remap_file_pages</td>
+<td></td>
+</tr>
+<tr>
+<td>removexattr</td>
+<td></td>
+</tr>
+<tr>
+<td>rename</td>
+<td></td>
+</tr>
+<tr>
+<td>renameat</td>
+<td></td>
+</tr>
+<tr>
+<td>renameat2</td>
+<td></td>
+</tr>
+<tr>
+<td>request_key</td>
+<td></td>
+</tr>
+<tr>
+<td>rmdir</td>
+<td></td>
+</tr>
+<tr>
+<td>rt_sigaction</td>
+<td></td>
+</tr>
+<tr>
+<td>rt_sigprocmask</td>
+<td></td>
+</tr>
+<tr>
+<td>rt_sigqueueinfo</td>
+<td></td>
+</tr>
+<tr>
+<td>rt_sigsuspend</td>
+<td></td>
+</tr>
+<tr>
+<td>rt_sigtimedwait</td>
+<td></td>
+</tr>
+<tr>
+<td>sbrk</td>
+<td></td>
+</tr>
+<tr>
+<td>sched_getaffinity</td>
+<td></td>
+</tr>
+<tr>
+<td>sched_getattr</td>
+<td></td>
+</tr>
+<tr>
+<td>sched_getparam</td>
+<td></td>
+</tr>
+<tr>
+<td>sched_get_priority_max</td>
+<td></td>
+</tr>
+<tr>
+<td>sched_get_priority_min</td>
+<td></td>
+</tr>
+<tr>
+<td>sched_getscheduler</td>
+<td></td>
+</tr>
+<tr>
+<td>sched_rr_get_interval</td>
+<td></td>
+</tr>
+<tr>
+<td>sched_setaffinity</td>
+<td></td>
+</tr>
+<tr>
+<td>sched_setattr</td>
+<td></td>
+</tr>
+<tr>
+<td>sched_setparam</td>
+<td></td>
+</tr>
+<tr>
+<td>sched_setscheduler</td>
+<td></td>
+</tr>
+<tr>
+<td>sched_yield</td>
+<td></td>
+</tr>
+<tr>
+<td>select</td>
+<td></td>
+</tr>
+<tr>
+<td>send</td>
+<td></td>
+</tr>
+<tr>
+<td>sendfile</td>
+<td></td>
+</tr>
+<tr>
+<td>sendmsg</td>
+<td></td>
+</tr>
+<tr>
+<td>sendto</td>
+<td></td>
+</tr>
+<tr>
+<td>setdomainname</td>
+<td></td>
+</tr>
+<tr>
+<td>setegid</td>
+<td></td>
+</tr>
+<tr>
+<td>setfsgid</td>
+<td></td>
+</tr>
+<tr>
+<td>setfsuid</td>
+<td></td>
+</tr>
+<tr>
+<td>setgid</td>
+<td></td>
+</tr>
+<tr>
+<td>setgroups</td>
+<td></td>
+</tr>
+<tr>
+<td>sethostname</td>
+<td></td>
+</tr>
+<tr>
+<td>setitimer</td>
+<td></td>
+</tr>
+<tr>
+<td>setns</td>
+<td></td>
+</tr>
+<tr>
+<td>setpgid</td>
+<td></td>
+</tr>
+<tr>
+<td>setpgrp</td>
+<td></td>
+</tr>
+<tr>
+<td>setpriority</td>
+<td></td>
+</tr>
+<tr>
+<td>setregid</td>
+<td></td>
+</tr>
+<tr>
+<td>setresgid</td>
+<td></td>
+</tr>
+<tr>
+<td>setresuid</td>
+<td></td>
+</tr>
+<tr>
+<td>setreuid</td>
+<td></td>
+</tr>
+<tr>
+<td>setrlimit</td>
+<td></td>
+</tr>
+<tr>
+<td>set_robust_list</td>
+<td></td>
+</tr>
+<tr>
+<td>setsid</td>
+<td></td>
+</tr>
+<tr>
+<td>setsockopt</td>
+<td></td>
+</tr>
+<tr>
+<td>set_thread_area</td>
+<td></td>
+</tr>
+<tr>
+<td>set_tid_address</td>
+<td></td>
+</tr>
+<tr>
+<td>settimeofday</td>
+<td></td>
+</tr>
+<tr>
+<td>setuid</td>
+<td></td>
+</tr>
+<tr>
+<td>setxattr</td>
+<td></td>
+</tr>
+<tr>
+<td>sgetmask</td>
+<td></td>
+</tr>
+<tr>
+<td>sigaction</td>
+<td></td>
+</tr>
+<tr>
+<td>sigaltstack</td>
+<td></td>
+</tr>
+<tr>
+<td>sighold</td>
+<td></td>
+</tr>
+<tr>
+<td>signal</td>
+<td></td>
+</tr>
+<tr>
+<td>signalfd</td>
+<td></td>
+</tr>
+<tr>
+<td>signalfd4</td>
+<td></td>
+</tr>
+<tr>
+<td>sigpending</td>
+<td></td>
+</tr>
+<tr>
+<td>sigprocmask</td>
+<td></td>
+</tr>
+<tr>
+<td>sigrelse</td>
+<td></td>
+</tr>
+<tr>
+<td>sigsuspend</td>
+<td></td>
+</tr>
+<tr>
+<td>sigtimedwait</td>
+<td></td>
+</tr>
+<tr>
+<td>sigwait</td>
+<td></td>
+</tr>
+<tr>
+<td>sigwaitinfo</td>
+<td></td>
+</tr>
+<tr>
+<td>socket</td>
+<td></td>
+</tr>
+<tr>
+<td>socketcall</td>
+<td></td>
+</tr>
+<tr>
+<td>socketpair</td>
+<td></td>
+</tr>
+<tr>
+<td>sockioctl</td>
+<td></td>
+</tr>
+<tr>
+<td>splice</td>
+<td></td>
+</tr>
+<tr>
+<td>ssetmask</td>
+<td></td>
+</tr>
+<tr>
+<td>stat</td>
+<td></td>
+</tr>
+<tr>
+<td>statfs</td>
+<td></td>
+</tr>
+<tr>
+<td>statvfs</td>
+<td></td>
+</tr>
+<tr>
+<td>stime</td>
+<td></td>
+</tr>
+<tr>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>swapoff</td>
+<td></td>
+</tr>
+<tr>
+<td>swapon</td>
+<td></td>
+</tr>
+<tr>
+<td>switch</td>
+<td></td>
+</tr>
+<tr>
+<td>symlink</td>
+<td></td>
+</tr>
+<tr>
+<td>symlinkat</td>
+<td></td>
+</tr>
+<tr>
+<td>sync</td>
+<td></td>
+</tr>
+<tr>
+<td>sync_file_range</td>
+<td></td>
+</tr>
+<tr>
+<td>syscall</td>
+<td></td>
+</tr>
+<tr>
+<td>sysconf</td>
+<td></td>
+</tr>
+<tr>
+<td>sysctl</td>
+<td></td>
+</tr>
+<tr>
+<td>sysfs</td>
+<td></td>
+</tr>
+<tr>
+<td>sysinfo</td>
+<td></td>
+</tr>
+<tr>
+<td>syslog</td>
+<td></td>
+</tr>
+<tr>
+<td>tee</td>
+<td></td>
+</tr>
+<tr>
+<td>time</td>
+<td></td>
+</tr>
+<tr>
+<td>timerfd</td>
+<td></td>
+</tr>
+<tr>
+<td>timer_getoverrun</td>
+<td></td>
+</tr>
+<tr>
+<td>timer_gettime</td>
+<td></td>
+</tr>
+<tr>
+<td>times</td>
+<td></td>
+</tr>
+<tr>
+<td>tkill</td>
+<td></td>
+</tr>
+<tr>
+<td>truncate</td>
+<td></td>
+</tr>
+<tr>
+<td>ulimit</td>
+<td></td>
+</tr>
+<tr>
+<td>umask</td>
+<td></td>
+</tr>
+<tr>
+<td>umount</td>
+<td></td>
+</tr>
+<tr>
+<td>umount2</td>
+<td></td>
+</tr>
+<tr>
+<td>uname</td>
+<td></td>
+</tr>
+<tr>
+<td>unlink</td>
+<td></td>
+</tr>
+<tr>
+<td>unlinkat</td>
+<td></td>
+</tr>
+<tr>
+<td>unshare</td>
+<td></td>
+</tr>
+<tr>
+<td>ustat</td>
+<td></td>
+</tr>
+<tr>
+<td>utils</td>
+<td></td>
+</tr>
+<tr>
+<td>utime</td>
+<td></td>
+</tr>
+<tr>
+<td>utimensat</td>
+<td></td>
+</tr>
+<tr>
+<td>utimes</td>
+<td></td>
+</tr>
+<tr>
+<td>vfork</td>
+<td></td>
+</tr>
+<tr>
+<td>vhangup</td>
+<td></td>
+</tr>
+<tr>
+<td>vmsplice</td>
+<td></td>
+</tr>
+<tr>
+<td>wait</td>
+<td></td>
+</tr>
+<tr>
+<td>wait4</td>
+<td></td>
+</tr>
+<tr>
+<td>waitid</td>
+<td></td>
+</tr>
+<tr>
+<td>waitpid</td>
+<td></td>
+</tr>
+<tr>
+<td>write</td>
+<td></td>
+</tr>
+<tr>
+<td>writev</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>接下来按照顺序分析系统调用的每一个case,并将每个case的测试内容补充到本文。</p>
+<p><img height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/LK0U4TNURZ.jpg" width="420"/></p>
+<p>附linux系统主要系统调用列表</p>
+<p><strong>一、进程控制</strong></p>
+<p>fork    创建一个新进程</p>
+<p>clone   按指定条件创建子进程</p>
+<p>execve  运行可执行文件</p>
+<p>exit    中止进程</p>
+<p>_exit   立即中止当前进程</p>
+<p>getdtablesize   进程所能打开的最大文件数</p>
+<p>getpgid 获取指定进程组标识号</p>
+<p>setpgid 设置指定进程组标志号</p>
+<p>getpgrp 获取当前进程组标识号</p>
+<p>setpgrp 设置当前进程组标志号</p>
+<p>getpid  获取进程标识号</p>
+<p>getppid 获取父进程标识号</p>
+<p>getpriority 获取调度优先级</p>
+<p>setpriority 设置调度优先级</p>
+<p>modify_ldt  读写进程的本地描述表</p>
+<p>nanosleep   使进程睡眠指定的时间</p>
+<p>nice    改变分时进程的优先级</p>
+<p>pause   挂起进程，等待信号</p>
+<p>personality 设置进程运行域</p>
+<p>prctl   对进程进行特定操作</p>
+<p>ptrace  进程跟踪</p>
+<p>sched_get_priority_max  取得静态优先级的上限</p>
+<p>sched_get_priority_min  取得静态优先级的下限</p>
+<p>sched_getparam  取得进程的调度参数</p>
+<p>sched_getscheduler  取得指定进程的调度策略</p>
+<p>sched_rr_get_interval   取得按RR算法调度的实时进程的时间片长度</p>
+<p>sched_setparam  设置进程的调度参数</p>
+<p>sched_setscheduler  设置指定进程的调度策略和参数</p>
+<p>sched_yield 进程主动让出处理器,并将自己等候调度队列队尾</p>
+<p>vfork   创建一个子进程，以供执行新程序，常与execve等同时使用</p>
+<p>wait    等待子进程终止</p>
+<p>wait3   参见wait</p>
+<p>waitpid 等待指定子进程终止</p>
+<p>wait4   参见waitpid</p>
+<p>capget  获取进程权限</p>
+<p>capset  设置进程权限</p>
+<p>getsid  获取会晤标识号</p>
+<p>setsid  设置会晤标识号</p>
+<p><strong>二、文件系统控制</strong></p>
+<p><strong>1、文件读写操作</strong></p>
+<p>fcntl   文件控制</p>
+<p>open    打开文件</p>
+<p>creat   创建新文件</p>
+<p>close   关闭文件描述字</p>
+<p>read    读文件</p>
+<p>write   写文件</p>
+<p>readv   从文件读入数据到缓冲数组中</p>
+<p>writev  将缓冲数组里的数据写入文件</p>
+<p>pread   对文件随机读</p>
+<p>pwrite  对文件随机写</p>
+<p>lseek   移动文件指针</p>
+<p>_llseek 在64位地址空间里移动文件指针</p>
+<p>dup 复制已打开的文件描述字</p>
+<p>dup2    按指定条件复制文件描述字</p>
+<p>flock   文件加/解锁</p>
+<p>poll    I/O多路转换</p>
+<p>truncate    截断文件</p>
+<p>ftruncate   参见truncate</p>
+<p>umask   设置文件权限掩码</p>
+<p>fsync   把文件在内存中的部分写回磁盘</p>
+<p><strong>2、文件系统操作</strong></p>
+<p>access  确定文件的可存取性</p>
+<p>chdir   改变当前工作目录</p>
+<p>fchdir  参见chdir</p>
+<p>chmod   改变文件方式</p>
+<p>fchmod  参见chmod</p>
+<p>chown   改变文件的属主或用户组</p>
+<p>fchown  参见chown</p>
+<p>lchown  参见chown</p>
+<p>chroot  改变根目录</p>
+<p>stat    取文件状态信息</p>
+<p>lstat   参见stat</p>
+<p>fstat   参见stat</p>
+<p>statfs  取文件系统信息</p>
+<p>fstatfs 参见statfs</p>
+<p>readdir 读取目录项</p>
+<p>getdents    读取目录项</p>
+<p>mkdir   创建目录</p>
+<p>mknod   创建索引节点</p>
+<p>rmdir   删除目录</p>
+<p>rename  文件改名</p>
+<p>link    创建链接</p>
+<p>symlink 创建符号链接</p>
+<p>unlink  删除链接</p>
+<p>readlink    读符号链接的值</p>
+<p>mount   安装文件系统</p>
+<p>umount  卸下文件系统</p>
+<p>ustat   取文件系统信息</p>
+<p>utime   改变文件的访问修改时间</p>
+<p>utimes  参见utime</p>
+<p>quotactl    控制磁盘配额</p>
+<p><strong>三、系统控制</strong></p>
+<p>ioctl   I/O总控制函数</p>
+<p>_sysctl 读/写系统参数</p>
+<p>acct    启用或禁止进程记账</p>
+<p>getrlimit   获取系统资源上限</p>
+<p>setrlimit   设置系统资源上限</p>
+<p>getrusage   获取系统资源使用情况</p>
+<p>uselib  选择要使用的二进制函数库</p>
+<p>ioperm  设置端口I/O权限</p>
+<p>iopl    改变进程I/O权限级别</p>
+<p>outb    低级端口操作</p>
+<p>reboot  重新启动</p>
+<p>swapon  打开交换文件和设备</p>
+<p>swapoff 关闭交换文件和设备</p>
+<p>bdflush 控制bdflush守护进程</p>
+<p>sysfs   取核心支持的文件系统类型</p>
+<p>sysinfo 取得系统信息</p>
+<p>adjtimex    调整系统时钟</p>
+<p>alarm   设置进程的闹钟</p>
+<p>getitimer   获取计时器值</p>
+<p>setitimer   设置计时器值</p>
+<p>gettimeofday    取时间和时区</p>
+<p>settimeofday    设置时间和时区</p>
+<p>stime   设置系统日期和时间</p>
+<p>time    取得系统时间</p>
+<p>times   取进程运行时间</p>
+<p>uname   获取当前UNIX系统的名称、版本和主机等信息</p>
+<p>vhangup 挂起当前终端</p>
+<p>nfsservctl  对NFS守护进程进行控制</p>
+<p>vm86    进入模拟8086模式</p>
+<p>create_module   创建可装载的模块项</p>
+<p>delete_module   删除可装载的模块项</p>
+<p>init_module 初始化模块</p>
+<p>query_module    查询模块信息</p>
+<p>*get_kernel_syms    取得核心符号,已被query_module代替</p>
+<p><strong>四、内存管理</strong></p>
+<p>brk 改变数据段空间的分配</p>
+<p>sbrk    参见brk</p>
+<p>mlock   内存页面加锁</p>
+<p>munlock 内存页面解锁</p>
+<p>mlockall    调用进程所有内存页面加锁</p>
+<p>munlockall  调用进程所有内存页面解锁</p>
+<p>mmap    映射虚拟内存页</p>
+<p>munmap  去除内存页映射</p>
+<p>mremap  重新映射虚拟内存地址</p>
+<p>msync   将映射内存中的数据写回磁盘</p>
+<p>mprotect    设置内存映像保护</p>
+<p>getpagesize 获取页面大小</p>
+<p>sync    将内存缓冲区数据写回硬盘</p>
+<p>cacheflush  将指定缓冲区中的内容写回磁盘</p>
+<p><strong>五、网络管理</strong></p>
+<p>getdomainname   取域名</p>
+<p>setdomainname   设置域名</p>
+<p>gethostid   获取主机标识号</p>
+<p>sethostid   设置主机标识号</p>
+<p>gethostname 获取本主机名称</p>
+<p>sethostname 设置主机名称</p>
+<p><strong>六、socket控制</strong></p>
+<p>socketcall  socket系统调用</p>
+<p>socket  建立socket</p>
+<p>bind    绑定socket到端口</p>
+<p>connect 连接远程主机</p>
+<p>accept  响应socket连接请求</p>
+<p>send    通过socket发送信息</p>
+<p>sendto  发送UDP信息</p>
+<p>sendmsg 参见send</p>
+<p>recv    通过socket接收信息</p>
+<p>recvfrom    接收UDP信息</p>
+<p>recvmsg 参见recv</p>
+<p>listen  监听socket端口</p>
+<p>select  对多路同步I/O进行轮询</p>
+<p>shutdown    关闭socket上的连接</p>
+<p>getsockname 取得本地socket名字</p>
+<p>getpeername 获取通信对方的socket名字</p>
+<p>getsockopt  取端口设置</p>
+<p>setsockopt  设置端口参数</p>
+<p>sendfile    在文件或端口间传输数据</p>
+<p>socketpair  创建一对已联接的无名socket</p>
+<p><strong>七、用户管理</strong></p>
+<p>getuid  获取用户标识号</p>
+<p>setuid  设置用户标志号</p>
+<p>getgid  获取组标识号</p>
+<p>setgid  设置组标志号</p>
+<p>getegid 获取有效组标识号</p>
+<p>setegid 设置有效组标识号</p>
+<p>geteuid 获取有效用户标识号</p>
+<p>seteuid 设置有效用户标识号</p>
+<p>setregid    分别设置真实和有效的的组标识号</p>
+<p>setreuid    分别设置真实和有效的用户标识号</p>
+<p>getresgid   分别获取真实的,有效的和保存过的组标识号</p>
+<p>setresgid   分别设置真实的,有效的和保存过的组标识号</p>
+<p>getresuid   分别获取真实的,有效的和保存过的用户标识号</p>
+<p>setresuid   分别设置真实的,有效的和保存过的用户标识号</p>
+<p>setfsgid    设置文件系统检查时使用的组标识号</p>
+<p>setfsuid    设置文件系统检查时使用的用户标识号</p>
+<p>getgroups   获取后补组标志清单</p>
+<p>setgroups   设置后补组标志清单</p>
+<p><strong>八、进程间通信</strong></p>
+<p>ipc 进程间通信总控制调用</p>
+<p><strong>1、信号</strong></p>
+<p>sigaction   设置对指定信号的处理方法</p>
+<p>sigprocmask 根据参数对信号集中的信号执行阻塞/解除阻塞等操作</p>
+<p>sigpending  为指定的被阻塞信号设置队列</p>
+<p>sigsuspend  挂起进程等待特定信号</p>
+<p>signal  参见signal</p>
+<p>kill    向进程或进程组发信号</p>
+<p>*sigblock   向被阻塞信号掩码中添加信号,已被sigprocmask代替</p>
+<p>*siggetmask 取得现有阻塞信号掩码,已被sigprocmask代替</p>
+<p>*sigsetmask 用给定信号掩码替换现有阻塞信号掩码,已被sigprocmask代替</p>
+<p>*sigmask    将给定的信号转化为掩码,已被sigprocmask代替</p>
+<p>*sigpause   作用同sigsuspend,已被sigsuspend代替</p>
+<p>sigvec  为兼容BSD而设的信号处理函数,作用类似sigaction</p>
+<p>ssetmask    ANSI C的信号处理函数,作用类似sigaction</p>
+<p><strong>2、消息</strong></p>
+<p>msgctl  消息控制操作</p>
+<p>msgget  获取消息队列</p>
+<p>msgsnd  发消息</p>
+<p>msgrcv  取消息</p>
+<p><strong>3、管道</strong></p>
+<p>pipe    创建管道</p>
+<p><strong>4、信号量</strong></p>
+<p>semctl  信号量控制</p>
+<p>semget  获取一组信号量</p>
+<p>semop   信号量操作</p>
+<p><strong>5、共享内存</strong></p>
+<p>shmctl  控制共享内存</p>
+<p>shmget  获取共享内存</p>
+<p>shmat   连接共享内存</p>
+<p>shmdt   拆卸共享内存</p>
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "2016/08/01/LTP/";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://xiayfblackwhite.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+        </div><!-- /.twelve.columns -->
+ </div><!-- /.row -->
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="http://github.com/king32783784" target="_blank">Github</a></div></li>
+
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'xiayfblackwhite';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="../../../../theme/js/libs/gumby.min.js"></script>
+  <script src="../../../../theme/js/plugins.js"></script>
+  <script src="../../../../theme/js/main.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../../../theme/emoji/css/basic/emojify.min.css" />
+  <script src="../../../../theme/emoji/js/emojify.min.js"></script>
+  <script>
+    emojify.setConfig({
+        img_dir : '../../../../theme/emoji/images/basic'
+    });
+    emojify.run();
+</script>
+</body>
+</html>

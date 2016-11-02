@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="link">
+<head>
+
+        <title>selenium-专题7</title>
+        <meta charset="utf-8" />
+        <link href="http://king32783784.github.io/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Hi | World Full Atom Feed" />
+        <link href="http://king32783784.github.io/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Hi | World Full RSS Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="../../../../theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="../../../../theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="../../../../theme/pygment.css" />
+        <link rel="stylesheet" type="text/css" href="../../../../theme/SentyZHAO/SentyZHAO.css" />
+
+        <script src="../../../../theme/js/libs/jquery-1.9.1.min.js"></script>
+        <script src="../../../../theme/js/libs/modernizr-2.6.2.min.js"></script>
+</head>
+
+<body id="index" class="home">
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1 style='font-family: "SentyZHAO";'><a href="../../../..">Hi | World <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+
+              <ul class="columns" style='font-family: "SentyZHAO";'>
+                <li><a href="../../../..">主 页</a></li>
+
+                <li><a href="../../../../pages/tech-share.html">归档</a></li>
+                <li><a href="../../../../pages/opensource.html">开源项目</a></li>
+                <li><a href="../../../../pages/links.html">链接</a></li>
+                <li><a href="../../../../pages/Reference material.html">参考资料</a></li>
+                <li><a href="../../../../pages/todo list.html">Todo List</a></li>
+                <li><a href="../../../../pages/tools.html">工具集</a></li>
+                <li class="active"><a href="../../../../pages/aboutme.html">关于我</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+   <div class="row">
+        <div class="columns">
+            <header>
+              <h2 class="entry-title">
+                <a href="../../../../2015/01/19/自动化测试/" rel="bookmark" title="Permalink to selenium-专题7">selenium-专题7</a></h2>
+           Translations: 
+<a href="../../../../2015/01/21/自动化测试/">link</a>
+<a href="../../../../2015/01/12/自动化测试/">link</a>
+<a href="../../../../2015/01/20/自动化测试/">link</a>
+<a href="../../../../2015/01/14/自动化测试/">link</a>
+<a href="../../../../2015/01/16/自动化测试/">link</a>
+<a href="../../../../2015/01/18/自动化测试/">link</a>
+<a href="../../../../2015/01/15/自动化测试/">link</a>
+<a href="../../../../2015/01/17/自动化测试/">link</a>
+<a href="../../../../2015/01/22/自动化测试/">link</a>
+<a href="../../../../2015/01/13/自动化测试/">link</a>
+
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2015-01-19T00:00:00+08:00">
+                一 19 一月 2015
+              </abbr>
+              <address class="vcard author">
+                By <a class="url fn" href="../../../../author/penglee.html">peng.lee</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              </head><body><h3 id="webdriver-api">WebDriver API</h3>
+<p>注：这不是官方API文档，官方在这：<a href="https://seleniumhq.github.io/selenium/docs/api/py/api.html">Selenium Documentation</a></p>
+<p>本篇覆盖了Selenium Webdriver的所有接口。</p>
+<p><strong>推荐导入样式</strong>
+本节API展示了类的绝对位置。推荐的导入风格如下：</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+</pre></div>
+<p>然后，可以访问的类如下：</p>
+<div class="highlight"><pre><span></span>webdriver.Firefox
+webdriver.FirefoxProfile
+webdriver.Chrome
+webdriver.ChromeOptions
+webdriver.Ie
+webdriver.Opera
+webdriver.PhantomJS
+webdriver.Remote
+webdriver.DesiredCapabilities
+webdriver.ActionChains
+webdriver.TouchActions
+webdriver.Proxy
+</pre></div>
+<p>特殊键类（keys)可以这样导入：</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium.webdriver.common.keys</span> <span class="kn">import</span> <span class="n">Keys</span>
+</pre></div>
+<p>异常类可以这样导入（以实际的类名替换TheNameOfTheExceptionClass):</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium.common.exceptions</span> <span class="kn">import</span> <span class="p">[</span><span class="n">TheNameOfTheExceptionClass</span><span class="p">]</span>
+</pre></div>
+<p><strong>API使用约定</strong></p>
+<p>一些属性（如方法）是可调用的，一些属性（如properties)是不可调用的，所有可调用的属性均以圆括号结尾。</p>
+<p>属性的例子：</p>
+<ul>
+<li>current_url
+当前加载页面的URL
+Usage:
+    driver.current_url</li>
+</ul>
+<p>方法的例子：
+* close()
+选择关闭的窗口
+Usage:
+    driver.close()</p>
+<h4 id="yi-chang">异常</h4>
+<p>所有的webdriver代码都可能会触发异常</p>
+<p>exception Selenium.common.exceptions.ElementNotSelectableException(msg=None, screen=None, stacktrace=None)</p>
+<div class="highlight"><pre><span></span><span class="n">Bases</span><span class="o">:</span> <span class="n">selenium</span><span class="o">.</span><span class="na">common</span><span class="o">.</span><span class="na">exceptions</span><span class="o">.</span><span class="na">InvalidElementStateException</span>
+<span class="err">试图选择一个不能选择的元素时抛出</span>
+<span class="err">例如，选择“</span><span class="n">script</span><span class="err">"元素</span>
+</pre></div>
+<p>exception selenium.common.exceptions.ElementNotVisibleException(msg=None,screen=None,stacktrace=None)</p>
+<div class="highlight"><pre><span></span> Bases:selenium.common.exceptions.InvalidElementStateException
+ 当一个元素存在于DOM中，但是不可访问的，如果试图与之互动，则会触发该异常。
+ 大多数情况是试图点击或读取试图中隐藏的元素的文本
+</pre></div>
+<p>exception selenium.common.exceptions.ErrorInResponseException(response, msg)</p>
+<div class="highlight"><pre><span></span><span class="n">Bases</span><span class="o">:</span> <span class="n">selenium</span><span class="o">.</span><span class="na">common</span><span class="o">.</span><span class="na">exceptions</span><span class="o">.</span><span class="na">WebDriverException</span>
+<span class="err">服务端发生错误时抛出</span>
+<span class="err">当和</span><span class="n">firefox</span><span class="err">插件或</span><span class="n">remote</span> <span class="n">driver</span> <span class="n">server</span><span class="err">通信时可能会触发</span>
+</pre></div>
+<p>exception selenium.common.exceptions.ImeActivationFailedException(msg=None, screen=None, stacktrace=None)</p>
+<div class="highlight"><pre><span></span><span class="n">Bases</span><span class="o">:</span> <span class="n">selenium</span><span class="o">.</span><span class="na">common</span><span class="o">.</span><span class="na">exceptions</span><span class="o">.</span><span class="na">WebDriverException</span>
+<span class="err">当激活输入法引擎失败时触发</span>
+</pre></div>
+<p>exception selenium.common.exceptions.ImeNotAvailableException(msg=None, screen=None, stacktrace=None)</p>
+<div class="highlight"><pre><span></span><span class="n">Bases</span><span class="o">:</span> <span class="n">selenium</span><span class="o">.</span><span class="na">common</span><span class="o">.</span><span class="na">exceptions</span><span class="o">.</span><span class="na">WebDriverException</span>
+<span class="n">IME</span><span class="err">支持不可用时。当平台上任何依赖</span><span class="n">IME</span><span class="err">的方法，调用</span><span class="n">IME</span><span class="err">不可用时，均会触发。</span>
+</pre></div>
+<p>exception selenium.common.exceptions.InvalidCookieDomainException(msg=None, srceen=None, stacktrace=None)</p>
+<div class="highlight"><pre><span></span><span class="n">Bases</span><span class="o">:</span> <span class="n">selenium</span><span class="o">.</span><span class="na">common</span><span class="o">.</span><span class="na">exceptions</span><span class="o">.</span><span class="na">WebDriverException</span>
+<span class="err">试图在超出当前</span><span class="n">URL</span><span class="err">的不同域添加一个</span><span class="n">cookie</span><span class="err">时触发</span>
+</pre></div>
+<p>exceptin selenium.common.exceptions.InvalidElementStateException(msg=None, screen=None, stacktrace=None)</p>
+<div class="highlight"><pre><span></span><span class="n">Bases</span><span class="o">:</span> <span class="n">selenium</span><span class="o">.</span><span class="na">common</span><span class="o">.</span><span class="na">exceptions</span><span class="o">.</span><span class="na">WebDriverException</span>
+</pre></div>
+<p>exception selenium.common.exceptions.InvalidSelectorException(msg=None, screen=None, stacktrace=None)</p>
+<div class="highlight"><pre><span></span><span class="n">Bases</span><span class="o">:</span><span class="n">selenium</span><span class="o">.</span><span class="na">common</span><span class="o">.</span><span class="na">exceptions</span><span class="o">.</span><span class="na">NoSuchElementException</span>
+<span class="err">当</span><span class="n">selector</span><span class="err">被用来查找返回一个不是</span><span class="n">WebElement</span><span class="err">时触发。</span>
+<span class="err">目前只用在当</span><span class="n">selector</span><span class="err">查找一个无效的</span> <span class="n">xpath</span><span class="err">或</span> <span class="n">xpath</span><span class="err">指向的不是一个</span><span class="n">WebElements</span><span class="o">.</span>
+</pre></div>
+<p>exception selenium.common.exceptions.InvalidSwitchToTargetException(msg=None, screen=None,stacktrace=None)</p>
+<div class="highlight"><pre><span></span><span class="n">Bases</span><span class="o">:</span> <span class="n">selenium</span><span class="o">.</span><span class="na">common</span><span class="o">.</span><span class="na">exceptions</span><span class="o">.</span><span class="na">WebDriverException</span>
+<span class="err">当切换到的</span><span class="n">frame</span><span class="err">或窗口目标不存在时触发</span>
+</pre></div>
+<p>exeption selenium.common.exceptions.MoveTargetOutOfBoundsException(msg=None, screen=None, stacktrace=None)</p>
+<div class="highlight"><pre><span></span> Bases:selenium.common.exceptions.WebDriverException
+ 当供给ActionsChains move() 方法的目标无效时触发，如超出文本
+</pre></div>
+<p>exception selenium.common.exceptions.NoAlertPresentException(msg=None, screen=None,
+stacktrace=None)</p>
+<div class="highlight"><pre><span></span><span class="n">Bases</span><span class="o">:</span><span class="n">selenium</span><span class="o">.</span><span class="na">common</span><span class="o">.</span><span class="na">exceptions</span><span class="o">.</span><span class="na">WebDriverException</span>
+<span class="err">当切换到没有弹出警告时触发。</span>
+<span class="err">当通过调用</span><span class="n">Alert</span><span class="o">()</span><span class="err">类的操作后，屏幕中未弹出警告窗口时触发。</span>
+</pre></div>
+<p>exception selenium.common.exceptions.NoSuchAttributeException(msg=None,screen=None,stacktrace=None)</p>
+<div class="highlight"><pre><span></span><span class="n">Bases</span><span class="o">:</span> <span class="n">selenium</span><span class="o">.</span><span class="na">common</span><span class="o">.</span><span class="na">exceptions</span><span class="o">.</span><span class="na">WebDriverException</span>
+<span class="err">当元素的属性找不到时抛出</span>
+<span class="err">可能会检查测试时浏览器中属性。在不同浏览器中，相同的属性可能会有不同的名称。</span>
+</pre></div>
+<p>exception selenium.common.exceptionsNoSuchElemention(msg=None, screen=None,stacktrace)</p>
+<div class="highlight"><pre><span></span><span class="n">Bases</span><span class="o">:</span> <span class="n">selenium</span><span class="o">.</span><span class="na">common</span><span class="o">.</span><span class="na">exceptions</span><span class="o">.</span><span class="na">WebDriverException</span>
+<span class="err">当元素找不到时抛出该异常。</span>
+<span class="err">如果遇到此异常，可能要检查以下内容：</span>
+    <span class="o">*</span> <span class="err">检查</span><span class="n">find_by</span><span class="o">...</span><span class="err">使用的</span><span class="n">selector</span>
+    <span class="o">*</span> <span class="err">元素在查找时没有在页面上</span>
+    <span class="err">页面可能仍在加载中，需要使用</span><span class="n">wait</span><span class="err">方法去等待</span>
+</pre></div>
+<p>exception selenium.common.exceptions.NoSuchFrameException(msg=None, screen=None, stacktrace=None)</p>
+<div class="highlight"><pre><span></span><span class="n">Bases</span><span class="o">:</span> <span class="n">selenium</span><span class="o">.</span><span class="na">common</span><span class="o">.</span><span class="na">exceptions</span><span class="o">.</span><span class="na">InvalidSwitchToTargetException</span>
+<span class="err">当切换的</span><span class="n">Frame</span><span class="err">不存在时触发</span>
+</pre></div>
+<p>exception selenium.common.exceptions.NoSuchWindowException(msg=None, screen=None, stacktrace=None)</p>
+<div class="highlight"><pre><span></span><span class="n">Bases</span><span class="o">:</span> <span class="n">selenium</span><span class="o">.</span><span class="na">common</span><span class="o">.</span><span class="na">exceptions</span><span class="o">.</span><span class="na">InvalidSwitchToTargetException</span>
+<span class="err">当切换的窗口不存在时触发</span>
+<span class="err">要想获取当前活动窗口的句柄，可以通过下面的方法获取活动窗口的句柄列表：</span>
+    <span class="n">print</span> <span class="n">driver</span><span class="o">.</span><span class="na">windown_handles</span>
+</pre></div>
+<p>exception selenium.common.exceptions.RemoteDriverServerException(msg=None, screen=None,stacktrace=None)</p>
+<div class="highlight"><pre><span></span><span class="n">Bases</span><span class="o">:</span> <span class="n">selenium</span><span class="o">.</span><span class="na">common</span><span class="o">.</span><span class="na">exceptions</span><span class="o">.</span><span class="na">WebDriverException</span>
+</pre></div>
+<p>exception selenium.common.exceptions.StaleElementReferenceException(msg=None. screen=None, stacktrace=None)</p>
+<div class="highlight"><pre><span></span><span class="n">Bases</span><span class="o">:</span><span class="n">selenium</span><span class="o">.</span><span class="na">common</span><span class="o">.</span><span class="na">exceptions</span><span class="o">.</span><span class="na">WebDriverException</span>
+<span class="err">当引用一个过期的元素时触发该异常</span>
+<span class="err">过期的意思是不再在页面的ＤＯＭ中出现。</span>
+<span class="err">触发</span><span class="n">StaleElementReferenceException</span><span class="err">的原因包括，但不限于：</span>
+    <span class="o">*</span> <span class="err">很长时间没有操作页面，当定位元素时，页面已经更新。</span>
+    <span class="o">*</span> <span class="err">元素出现后，该元素可能被删除后重新添加到屏幕的。这可能发生在</span><span class="n">javascript</span><span class="err">框架更新和节点重建时。</span>
+    <span class="o">*</span> <span class="err">元素可能在</span><span class="n">iframe</span><span class="err">中，或文本内容已更新</span>
+</pre></div>
+<p>exception selenium.common.exceptions.TimeoutException(msg=Noe, scren=None, stacktrace=None)</p>
+<div class="highlight"><pre><span></span><span class="n">Bases</span><span class="o">:</span><span class="n">selenium</span><span class="o">.</span><span class="na">common</span><span class="o">.</span><span class="na">exceptions</span><span class="o">.</span><span class="na">WebDriverException</span>
+<span class="err">当已命令没有在规定时间内完成时会触发该异常</span>
+</pre></div>
+<p>exception selenium.common.exceptions.UnableToSetCookieException(msg=None, screen=None, stacktrace=None)</p>
+<div class="highlight"><pre><span></span><span class="n">Bases</span><span class="o">:</span> <span class="n">selenium</span><span class="o">.</span><span class="na">common</span><span class="o">.</span><span class="na">exeptions</span><span class="o">.</span><span class="na">WebDriverException</span>
+<span class="err">当</span><span class="n">driver</span><span class="err">设置</span><span class="n">cookie</span><span class="err">失败时抛出</span>
+</pre></div>
+<p>exception selenium.common.exceptions.UnexpectdAlertPresentException(msg=None, screen=None, stacktrace=None, alert_text=None)</p>
+<div class="highlight"><pre><span></span><span class="n">Bases</span><span class="o">:</span><span class="n">selenium</span><span class="o">.</span><span class="na">common</span><span class="o">.</span><span class="na">exceptions</span><span class="o">.</span><span class="na">WebDriverException</span>
+<span class="err">当未知的警告窗口弹出时抛出</span>
+<span class="err">通常阻止执行许多预期命令的</span><span class="n">webdriver</span><span class="err">时抛出</span>
+</pre></div>
+<p>exception selenium.common.exceptions.UnexpectedTagNameException(msg=None, scren=None,stacktrace=None)</p>
+<div class="highlight"><pre><span></span><span class="n">Bases</span><span class="o">:</span><span class="n">selenium</span><span class="o">.</span><span class="na">common</span><span class="o">.</span><span class="na">exceptions</span><span class="o">.</span><span class="na">WebDriverException</span>
+<span class="err">当支持的类没有得到预期的</span><span class="n">web</span><span class="err">元素时抛出</span>
+</pre></div>
+<p>exception selenium.common.exceptions.WebDriverException(msg=None, screen=None, stacktrace=None)</p>
+<div class="highlight"><pre><span></span><span class="n">Bases</span><span class="o">:</span> <span class="n">exceptions</span><span class="o">.</span><span class="na">Exception</span>
+<span class="n">Webdriver</span><span class="err">　基本异常</span>
+</pre></div>
+<h3 id="dong-zuo-lian_1">动作链</h3>
+<p>该动作链实施，</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">selenium</span>.<span class="n">webdriver</span>.<span class="n">common</span>.<span class="n">action_chains</span>.<span class="n">ActionChains</span>(<span class="n">driver</span>)
+    <span class="n">Base:object</span>
+    <span class="n">ActionChains是底层自动化交互</span>，<span class="n">比如鼠标移动</span>，<span class="n">鼠标按键操作</span>，<span class="n">按键和上下文交互菜单</span>。<span class="n">可以用来做一些负责的动作比如悬停和拖放等</span>。
+    <span class="n">生成用户操作</span>
+    <span class="n">当你调用ActionChains</span> <span class="n">类的一些方法实现动作</span>，<span class="n">这些动作可以存储到ActionChains类中</span>。<span class="n">当你调用perform</span>(),<span class="n">这些事件会顺序发射执行</span>。
+    <span class="n">action_chains可以在链模式中使用</span>：
+
+        <span class="n">menu</span> = <span class="n">driver</span>.<span class="n">find_element_by_css_selector</span>(<span class="s">".nav"</span>)
+        <span class="n">hidden_submenu</span> = <span class="n">driver</span>.<span class="n">find_element_by_css_selector</span>(<span class="s">".new #submen1"</span>)
+    　　　　
+        <span class="n">action_chains</span>(<span class="n">driver</span>).<span class="n">move_to_element</span>(<span class="n">menu</span>).<span class="n">click</span>(<span class="n">hidden_submenu</span>).<span class="n">perform</span>()
+    　　　　
+    <span class="n">或动作一个接一个顺序执行</span>：
+    　　<span class="n">menu</span> = <span class="n">driver</span>.<span class="n">find_element_by_css_selector</span>(<span class="s">".nav"</span>)
+    　　<span class="n">hidden_submenu</span> = <span class="n">driver</span>.<span class="n">find_element_by_css_selector</span>(<span class="s">".nav #submenu1"</span>)
+    　　
+    　　<span class="n">actions</span> = <span class="n">ActionChains</span>(<span class="n">driver</span>)
+    　　<span class="n">actions</span>.<span class="n">move_to_elment</span>(<span class="n">menu</span>)
+    　　<span class="n">actions</span>.<span class="n">click</span>(<span class="n">hidden_submenu</span>)
+    　　<span class="n">actions</span>.<span class="n">perform</span>()
+    　　
+    <span class="n">无论哪种方式</span>，<span class="n">这些动作都会顺序调用执行</span>。
+
+    <span class="n">click</span>(<span class="n">on_element</span>=<span class="n">None</span>)
+        <span class="n">点击一个元素</span>
+
+        <span class="n">Args:</span> * <span class="n">on_element:</span> <span class="n">鼠标点击元素</span>，<span class="n">如果没有</span>，<span class="n">点击当前鼠标的位置</span>。
+
+    <span class="n">click_and_hold</span>(<span class="n">on_elememt</span>=<span class="n">None</span>)
+        <span class="n">按住在元素上按住鼠标左键</span>
+        <span class="n">Args:</span> * <span class="n">on_element:</span> <span class="n">鼠标点击元素</span>，<span class="n">没有</span>，<span class="n">点击当前鼠标的位置</span>
+
+    <span class="n">context_click</span>(<span class="n">on_element</span>=<span class="n">None</span>)
+
+        <span class="n">在元素上右击</span>
+        <span class="n">Args:</span> * <span class="n">on_element:</span> <span class="n">上下文点击该元素</span>，<span class="n">如果没有</span>，<span class="n">点击鼠标当前的位置</span>
+
+    <span class="n">double_click</span>(<span class="n">on_element</span>=<span class="n">None</span>)
+
+        <span class="n">双击元素</span>
+        <span class="n">Args:</span> * <span class="n">on_element:</span> <span class="n">双击该元素</span>，<span class="n">如果</span>，<span class="n">双击鼠标当前的位置</span>
+
+    <span class="n">drag_and_drop</span>(<span class="n">source</span>, <span class="n">target</span>)
+        <span class="n">在source</span>　<span class="n">element</span>　<span class="n">左击并保持</span>
+        <span class="n">然后移动到目标元素并且是否鼠标</span>
+
+        <span class="n">Args:</span> * <span class="n">source:</span> <span class="n">鼠标按下的元素</span>
+            　* <span class="n">target:</span>　<span class="n">鼠标移动到元素</span>
+            　
+    <span class="n">drag_and_drop_by_offset</span>(<span class="n">source</span>, <span class="n">xoffset</span>, <span class="n">yoffset</span>)
+        <span class="n">左击点击source</span> <span class="n">element</span>,
+        <span class="n">然后</span>，<span class="n">移动到目标偏移地址</span>，<span class="n">并释放鼠标</span>
+
+        <span class="n">Args:</span> * <span class="n">source:</span> <span class="n">鼠标点击的元素</span>
+              * <span class="n">xoffset:</span> <span class="n">元素移动的X偏移量</span>
+              * <span class="n">yoffset:</span> <span class="n">元素移动的Ｙ偏移量</span>
+
+    <span class="n">key_down</span>(<span class="nb">value</span>, <span class="n">element</span>=<span class="n">None</span>)
+        <span class="n">仅发送一个按键</span>，<span class="n">不释放</span>(<span class="n">多用于组合键</span>）
+        <span class="n">需要和修饰键一起使用</span>（<span class="n">控制</span>，<span class="n">alt和shift</span>)
+        <span class="n">Aargs:</span>
+            * <span class="n">value:</span> <span class="n">被发送的修饰键</span>，<span class="n">在Keys类中定义</span>
+            * <span class="n">element:</span> <span class="n">发送键作用的元素</span>。<span class="n">如果为空</span>，<span class="n">则向作用于当前焦点元素</span>
+
+        <span class="n">例如</span>，<span class="n">按下ctrl</span><span class="o">+</span><span class="n">c:</span>
+            <span class="n">ActionChains</span>(<span class="n">driver</span>).<span class="n">key_down</span>(<span class="n">Keys</span>.<span class="k">CONTROL</span>).<span class="n">send_keys</span>(<span class="s">'c'</span>).<span class="n">key_up</span>(<span class="n">Keys</span>.<span class="k">CONTROL</span>).<span class="n">perform</span>()
+
+    <span class="n">key_up</span>(<span class="nb">value</span>, <span class="n">element</span>=<span class="n">None</span>)
+        <span class="n">释放修饰键</span>
+        <span class="n">Aargs:</span> 
+            * <span class="n">value:</span> <span class="n">发送的修饰键盘</span>，<span class="n">在Keys类中定义</span>。
+            * <span class="n">element:</span> <span class="n">作用于的元素</span>，<span class="n">如果为空</span>，<span class="n">默认作用于当前焦点元素</span>
+        <span class="n">例如</span>，<span class="n">按下ctrl</span><span class="o">+</span><span class="n">c:</span>
+            <span class="n">ActionChains</span>(<span class="n">driver</span>).<span class="n">key_down</span>(<span class="n">Keys</span>.<span class="k">CONTROL</span>).<span class="n">send_keys</span>(<span class="s">'c'</span>).<span class="n">key_up</span>(<span class="n">Keys</span>.<span class="k">CONTROL</span>).<span class="n">perform</span>()
+
+    <span class="n">move_by_offset</span>(<span class="n">xoffset</span>, <span class="n">yoffset</span>)
+        <span class="n">从当前鼠标位置</span>，<span class="n">移动一定的偏移位置</span>
+        <span class="n">Aargs:</span>
+            * <span class="n">xoffset:</span> <span class="n">X偏移量</span>，<span class="n">可以为正或负的整数</span>
+            * <span class="n">yoffset:</span> <span class="n">y偏移量</span>，<span class="n">可以为正或负的整数</span>
+
+    <span class="n">move_to_element</span>(<span class="n">to_element</span>)
+        <span class="n">移动鼠标到元素的中间</span>
+        <span class="n">Args:</span> * <span class="n">to_element:</span> <span class="n">移动的目标WebElement</span>
+
+    <span class="n">move_to_element_with_offset</span>(<span class="n">to_element</span>, <span class="n">xoffset</span>, <span class="n">yoffset</span>)
+        <span class="n">指定元素偏移一定量</span>
+            <span class="n">偏移量相对于元素的左上角</span>
+        <span class="n">Args:</span> * <span class="n">to_elemnt:</span> <span class="n">被移动的WebElement</span>
+              * <span class="n">xoffset:</span> <span class="n">x偏移量</span>
+              * <span class="n">yoffset:</span> <span class="n">y偏移量</span>
+
+    <span class="n">perform</span>()
+        <span class="n">执行所有存储的操作</span>
+
+    <span class="n">release</span>(<span class="n">on_element</span>=<span class="n">None</span>)
+        <span class="n">释放作用于元素的按键</span>
+        <span class="n">Args:</span> * <span class="n">on_element:</span> <span class="n">指定作用的元素</span>，<span class="n">如果为空</span>，<span class="n">释放当前鼠标作用的位置</span>
+
+    <span class="n">send_keys</span>(*<span class="n">keys_to_send</span>)
+        <span class="n">发送按键到当前焦点元素</span>
+        <span class="n">Args:</span> * <span class="n">keys_to_send:</span> <span class="n">发送的按键</span>。<span class="n">修饰键常量可以在</span>‘<span class="n">Keys'类中找到</span>
+
+    <span class="n">send_keys_to_element</span>(<span class="n">element</span>, *<span class="n">keys_to_send</span>)
+        <span class="n">发送按键到一个元素</span>
+        <span class="n">Args:</span> * <span class="n">element:</span> <span class="n">发送按键作用的元素</span>
+              * <span class="n">keys_to_send:</span> <span class="n">发送的按键类型</span>，<span class="n">修饰键常量可以在</span>“<span class="n">Keys'类中找到</span>。
+</pre></div>
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "2015/01/19/自动化测试/";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://xiayfblackwhite.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+        </div><!-- /.twelve.columns -->
+ </div><!-- /.row -->
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="http://github.com/king32783784" target="_blank">Github</a></div></li>
+
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'xiayfblackwhite';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="../../../../theme/js/libs/gumby.min.js"></script>
+  <script src="../../../../theme/js/plugins.js"></script>
+  <script src="../../../../theme/js/main.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../../../theme/emoji/css/basic/emojify.min.css" />
+  <script src="../../../../theme/emoji/js/emojify.min.js"></script>
+  <script>
+    emojify.setConfig({
+        img_dir : '../../../../theme/emoji/images/basic'
+    });
+    emojify.run();
+</script>
+</body>
+</html>

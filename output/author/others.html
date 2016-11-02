@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="link">
+<head>
+
+        <title>Hi | World - Articles by others</title>
+        <meta charset="utf-8" />
+        <link href="http://king32783784.github.io/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Hi | World Full Atom Feed" />
+        <link href="http://king32783784.github.io/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Hi | World Full RSS Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="../theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="../theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="../theme/pygment.css" />
+        <link rel="stylesheet" type="text/css" href="../theme/SentyZHAO/SentyZHAO.css" />
+
+        <script src="../theme/js/libs/jquery-1.9.1.min.js"></script>
+        <script src="../theme/js/libs/modernizr-2.6.2.min.js"></script>
+</head>
+
+<body id="index" class="home">
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1 style='font-family: "SentyZHAO";'><a href="..">Hi | World <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+
+              <ul class="columns" style='font-family: "SentyZHAO";'>
+                <li><a href="..">主 页</a></li>
+
+                <li><a href="../pages/tech-share.html">归档</a></li>
+                <li><a href="../pages/opensource.html">开源项目</a></li>
+                <li><a href="../pages/links.html">链接</a></li>
+                <li><a href="../pages/Reference material.html">参考资料</a></li>
+                <li><a href="../pages/tools.html">工具集</a></li>
+                <li class="active"><a href="../pages/aboutme.html">关于我</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+<h2>Articles by others</h2>
+<div class="row">
+    <div class="eleven columns">
+        <ol id="post-list">
+            <li>
+            <article class="hentry">
+                <header>
+                    <h2 class="entry-title">
+                        <a href="../2016/08/12/Docker/" rel="bookmark" title="Permalink to Docker基础技术：Linux Namespace（下）">Docker基础技术：Linux Namespace（下）<转></a>
+                    </h2>
+                </header>
+                <footer class="post-info">
+                    <abbr class="published" title="2016-08-12T00:00:00+08:00"> 五 12 八月 2016 </abbr>
+<address class="vcard author">By <a class="url fn" href="../author/others.html">others</a></address>                </footer><!-- /.post-info -->
+                <div class="entry-content"> </head><body><p>在 <a href="https://king32783784.github.io/lipeng/2016/08/11/Docker/">Docker基础技术：Linux Namespace（上篇)</a>中我们了解了，UTD、IPC、PID、Mount 四个namespace，我们模仿Docker做了一个相当相当山寨的镜像。在这一篇中，主要想向大家介绍Linux的User和Network的Namespace。
+<img alt="" src="https://king32783784.github.io/lipeng/tmpfile/jail_cell.jpg"/></p>
+<p>好，下面我们就介绍一下还剩下的这两个Namespace。</p>
+<h4 id="user-namespace">User Namespace</h4>
+<p><strong>User Namespace</strong> 主要是用了CLONE_NEWUSER的参数。使用了这个参数后，内部看到的UID和GID已经与外部不同了，默认显示为65534。那是因为容器找不到其真正的UID所以，设置上了最大的UID（其设置定义在/proc/sys/kernel/overflowuid）。</p>
+<p>要把容器中的uid和真实系统的uid给映射在一起，需要修改 <strong>/proc/<pid>/uid_map</pid></strong>  和 <strong>/proc/<pid>/gid_map</pid></strong> 这两个文件。这两个文件的格式为：</p>
+<p>ID-inside-ns ID-outside-ns length</p>
+<p>其中：</p>
+<ul>
+<li>第一个字段ID-inside-ns表示在容器显示的UID或GID，</li>
+<li>第二个字段ID-outside-ns表示容器外映射的真实的UID或GID。</li>
+<li>第三个字段表示映射的范围，一般填1，表示一一对应。</li>
+</ul>
+<p>比如 ...</p></body> </div><!-- /.entry-content -->
+                <div class="medium primary btn"><a href="../2016/08/12/Docker/" rel="bookmark" title="Permalink to Docker基础技术：Linux Namespace（下）">Read more <i class="icon-arrow-right"></i></a></div>
+                <div class="row tag-row">
+                    <span>Tagged as : </span>
+                    <a class="danger label" href="../tag/docker.html">Docker</a>
+                </div>
+            </article>
+            </li>
+            <li>
+            <article class="hentry">
+                <header>
+                    <h2 class="entry-title">
+                        <a href="../2016/08/12/other/" rel="bookmark" title="Permalink to 北京折叠－郝景芳">北京折叠－郝景芳</a>
+                    </h2>
+                </header>
+                <footer class="post-info">
+                    <abbr class="published" title="2016-08-12T00:00:00+08:00"> 五 12 八月 2016 </abbr>
+<address class="vcard author">By <a class="url fn" href="../author/others.html">others</a></address>                </footer><!-- /.post-info -->
+                <div class="entry-content"> </head><body><h2 id="di-yi-mu">第一幕</h2>
+<p>清晨4:50，老刀穿过熙熙攘攘的步行街，去找彭蠡。</p>
+<p>从垃圾站下班之后，老刀回家洗了个澡，换了衣服。白色衬衫和褐色裤子，这是他唯一一套体面衣服，衬衫袖口磨了边，他把袖子卷到胳膊肘。老刀四十八岁，没结婚，已经过了注意外表的年龄，又没人照顾起居，这一套衣服留着穿了很多年，每次穿一天，回家就脱了叠上。他在垃圾站上班，没必要穿得体面，偶尔参加谁家小孩的婚礼，才拿出来穿在身上。这一次他不想脏兮兮地见陌生人。他在垃圾站连续工作了五小时，很担心身上会有味道。</p>
+<p>步行街上挤满了刚刚下班的人。拥挤的男人女人围着小摊子挑土特产，大声讨价还价。食客围着塑料桌子，埋头在酸辣粉的热气腾腾中，饿虎扑食一般，白色蒸汽遮住了脸。油炸的香味弥漫。货摊上的酸枣和核桃堆成山，腊肉在头顶摇摆。这个点是全天最热闹的时间，基本都收工了，忙碌了几个小时的人们都赶过来吃一顿饱饭，人声鼎沸。</p>
+<p>老刀艰难地穿过人群。端盘子的伙计一边喊着让让一边推开挡道的人，开出一条路来，老刀跟在后面。</p>
+<p>彭蠡家在小街深处。老刀上楼，彭蠡不在家。问邻居，邻居说他每天快到关门才回来，具体几点不清楚 ...</p></body> </div><!-- /.entry-content -->
+                <div class="medium primary btn"><a href="../2016/08/12/other/" rel="bookmark" title="Permalink to 北京折叠－郝景芳">Read more <i class="icon-arrow-right"></i></a></div>
+                <div class="row tag-row">
+                    <span>Tagged as : </span>
+                    <a class="danger label" href="../tag/qi-ta.html">其他</a>
+                </div>
+            </article>
+            </li>
+            <li>
+            <article class="hentry">
+                <header>
+                    <h2 class="entry-title">
+                        <a href="../2016/08/11/Docker/" rel="bookmark" title="Permalink to Docker基础技术：Linux Namespace（上）">Docker基础技术：Linux Namespace（上）<转></a>
+                    </h2>
+                </header>
+                <footer class="post-info">
+                    <abbr class="published" title="2016-08-11T00:00:00+08:00"> 四 11 八月 2016 </abbr>
+<address class="vcard author">By <a class="url fn" href="../author/others.html">others</a></address>                </footer><!-- /.post-info -->
+                <div class="entry-content"> </head><body><p>时下最热的技术莫过于Docker了，很多人都觉得Docker是个新技术，其实不然，Docker除了其编程语言用go比较新外，其实它还真不是个新东西，也就是个新瓶装旧酒的东西，所谓的The New “Old Stuff”。Docker和Docker衍生的东西用到了很多很酷的技术，我会用几篇 文章来把这些技术给大家做个介绍，希望通过这些文章大家可以自己打造一个山寨版的docker。
+<img alt="" src="https://king32783784.github.io/lipeng/tmpfile/isolation.jpg"/></p>
+<p>当然，文章的风格一定会尊重时下的“流行”——我们再也没有整块整块的时间去看书去专研，而我们只有看微博微信那样的碎片时间（那怕我们有整块的时间，也被那些在手机上的APP碎片化了）。所以，这些文章的风格必然坚持“马桶风格”（希望简单到占用你拉一泡屎就时间，而且你还不用动脑子，并能学到些东西）</p>
+<p>废话少说，我们开始。先从Linux Namespace开始。</p>
+<h4 id="jian-jie">简介</h4>
+<p>Linux Namespace是Linux提供的一种内核级别环境隔离的方法。不知道你是否还记得很早以前的Unix有一个叫chroot的系统调用（通过修改根目录把用户jail到一个特定目录下），chroot提供了一种简单的隔离模式：chroot内部的文件系统无法访问外部的内容。Linux Namespace在此基础上，提供了对UTS、IPC、mount、PID、network、User等的隔离机制。</p>
+<p>举个例子，我们都知道，Linux下的超级父亲进程的PID是1，所以 ...</p></body> </div><!-- /.entry-content -->
+                <div class="medium primary btn"><a href="../2016/08/11/Docker/" rel="bookmark" title="Permalink to Docker基础技术：Linux Namespace（上）">Read more <i class="icon-arrow-right"></i></a></div>
+                <div class="row tag-row">
+                    <span>Tagged as : </span>
+                    <a class="danger label" href="../tag/docker.html">Docker</a>
+                </div>
+            </article>
+            </li>
+            <li>
+            <article class="hentry">
+                <header>
+                    <h2 class="entry-title">
+                        <a href="../2016/08/11/Performance/" rel="bookmark" title="Permalink to 如何做性能测试">如何做性能测试<转></a>
+                    </h2>
+                </header>
+                <footer class="post-info">
+                    <abbr class="published" title="2016-08-11T00:00:00+08:00"> 四 11 八月 2016 </abbr>
+<address class="vcard author">By <a class="url fn" href="../author/others.html">others</a></address>                </footer><!-- /.post-info -->
+                <div class="entry-content"> </head><body><p>偶然间看到了阿里中间件Dubbo的性能测试报告，我觉得这份性能测试报告让人觉得做这性能测试的人根本不懂性能测试，我觉得这份报告会把大众带沟里去，所以，想写下这篇文章，做一点科普。</p>
+<p>首先，这份测试报告里的主要问题如下：</p>
+<ul>
+<li>
+<p>用的全是平均值。老实说，平均值是非常不靠谱的。</p>
+</li>
+<li>
+<p>响应时间没有和吞吐量TPS/QPS挂钩。而只是测试了低速率的情况，这是完全错误的。</p>
+</li>
+<li>
+<p>响应时间和吞吐量没有和成功率挂钩。</p>
+</li>
+</ul>
+<h4 id="wei-shi-yao-ping-jun-zhi-bu-kao-pu">为什么平均值不靠谱</h4>
+<p>关于平均值为什么不靠谱，我相信大家读新闻的时候经常可以看到，<strong>平均工资</strong>，<strong>平均房价</strong>，<strong>平均支出</strong>，等等这样的字眼，你就知道为什么平均值不靠谱了。（这些都是数学游戏，对于理工科的同学来说，天生应该有免疫力）</p>
+<p>软件的性能测试也一样，平均数也是不靠谱的，这里可以参看这篇详细的文章《Why Averages Suck and Percentiles are Great》，我在这里简单说一下。</p>
+<p>我们知道，性能测试时，测试得到的结果数据不总是一样的，而是有高有低的，如果算平均值就会出现这样的情况，假如，<strong>测试了10次，有9次是1ms，而有1次是1s，那么平均数据就是100ms，很明显，这完全不能反应性能测试的情况 ...</strong></p></body> </div><!-- /.entry-content -->
+                <div class="medium primary btn"><a href="../2016/08/11/Performance/" rel="bookmark" title="Permalink to 如何做性能测试">Read more <i class="icon-arrow-right"></i></a></div>
+                <div class="row tag-row">
+                    <span>Tagged as : </span>
+                    <a class="danger label" href="../tag/xing-neng-ce-shi.html">性能测试</a>
+                </div>
+            </article>
+            </li>
+            <li>
+            <article class="hentry">
+                <header>
+                    <h2 class="entry-title">
+                        <a href="../2013/08/01/Makefile/" rel="bookmark" title="Permalink to Makefile中文手册">Makefile中文手册</a>
+                    </h2>
+                </header>
+                <footer class="post-info">
+                    <abbr class="published" title="2013-08-01T00:00:00+08:00"> 四 01 八月 2013 </abbr>
+<address class="vcard author">By <a class="url fn" href="../author/others.html">others</a></address>                </footer><!-- /.post-info -->
+                <div class="entry-content"> </head><body><h4 id="gai-shu">概述</h4>
+<p>什么是makefile？或许很多Winodws的程序员都不知道这个东西，因为那些Windows的IDE都为你做了这个工作，但我觉得要作一个好的和 professional的程序员，makefile还是要懂。这就好像现在有这么多的HTML的编辑器，但如果你想成为一个专业人士，你还是要了解HTML的标识的含义。特别在Unix下的软件编译，你就不能不自己写makefile了，会不会写makefile，从一个侧面说明了一个人是否具备完成大型工程的能力。</p>
+<p>因为，makefile关系到了整个工程的编译规则。一个工程中的源文件不计数，其按类型、功能、模块分别放在若干个目录中，makefile定义了一系列的规则来指定，哪些文件需要先编译，哪些文件需要后编译，哪些文件需要重新编译，甚至于进行更复杂的功能操作，因为 makefile就像一个Shell脚本一样，其中也可以执行操作系统的命令。</p>
+<p>makefile带来的好处就是——“自动化编译”，一旦写好，只需要一个make命令，整个工程完全自动编译，极大的提高了软件开发的效率。make是一个命令工具，是一个解释makefile中指令的命令工具，一般来说，大多数的IDE都有这个命令，比如：Delphi的make，Visual C++的nmake，Linux下GNU的make。可见，makefile都成为了一种在工程方面的编译方法。</p>
+<p>现在讲述如何写 makefile的文章比较少，这是我想写这篇文章的原因。当然 ...</p></body> </div><!-- /.entry-content -->
+                <div class="medium primary btn"><a href="../2013/08/01/Makefile/" rel="bookmark" title="Permalink to Makefile中文手册">Read more <i class="icon-arrow-right"></i></a></div>
+                <div class="row tag-row">
+                    <span>Tagged as : </span>
+                    <a class="danger label" href="../tag/linux.html">Linux</a>
+                </div>
+            </article>
+            </li>
+        </ol><!-- /#posts-list -->
+    </div><!-- /.eleven.columns -->
+<div class="three columns">
+
+<!--
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="../pages/tech-share.html">归档</a></li>
+      <li><a href="../pages/opensource.html">开源项目</a></li>
+      <li><a href="../pages/links.html">链接</a></li>
+      <li><a href="../pages/Reference material.html">参考资料</a></li>
+      <li><a href="../pages/tools.html">工具集</a></li>
+      <li class="active"><a href="../pages/aboutme.html">关于我</a></li>
+  </ul>
+-->
+<!--
+<h4>分类</h4>
+<ul>
+		<li><a href="../category/autotestzhuan-ti.html">Autotest专题</a></li>
+		<li><a href="../category/misc.html">misc</a></li>
+		<li><a href="../category/suan-fa.html">算法</a></li>
+		<li><a href="../category/dockerzhuan-ti.html">Docker专题</a></li>
+		<li><a href="../category/linux.html">Linux</a></li>
+		<li><a href="../category/linux-benchmark.html">linux-benchmark</a></li>
+		<li><a href="../category/linux-zi-dong-hua-ce-shi.html">linux-自动化测试</a></li>
+		<li><a href="../category/unixhuan-jing-bian-cheng.html">unix环境编程</a></li>
+		<li><a href="../category/xing-neng-ce-shi.html">性能测试</a></li>
+</ul>
+-->
+
+<h4>标签</h4>
+	<ul>
+	    <li class="tag-3"><a href="../tag/docker.html">Docker</a></li>
+	    <li class="tag-4"><a href="../tag/qi-ta.html">其他</a></li>
+	    <li class="tag-4"><a href="../tag/xing-neng-ce-shi.html">性能测试</a></li>
+	    <li class="tag-4"><a href="../tag/shell.html">shell</a></li>
+	    <li class="tag-3"><a href="../tag/suan-fa.html">算法</a></li>
+	    <li class="tag-4"><a href="../tag/benchmark.html">benchmark</a></li>
+	    <li class="tag-4"><a href="../tag/linux.html">Linux</a></li>
+	    <li class="tag-1"><a href="../tag/zi-dong-hua-ce-shi.html">自动化测试</a></li>
+	    <li class="tag-4"><a href="../tag/unixbian-cheng.html">unix编程</a></li>
+</ul>
+
+<!--
+-->
+</div> </div><!-- /.row -->
+<p class="paginator">
+    Page 1 / 1
+</p>
+</section><!-- /#content -->
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="http://github.com/king32783784" target="_blank">Github</a></div></li>
+
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'xiayfblackwhite';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="../theme/js/libs/gumby.min.js"></script>
+  <script src="../theme/js/plugins.js"></script>
+  <script src="../theme/js/main.js"></script>
+  <link rel="stylesheet" type="text/css" href="../theme/emoji/css/basic/emojify.min.css" />
+  <script src="../theme/emoji/js/emojify.min.js"></script>
+  <script>
+    emojify.setConfig({
+        img_dir : '../theme/emoji/images/basic'
+    });
+    emojify.run();
+</script>
+</body>
+</html>

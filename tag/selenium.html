@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="link">
+<head>
+
+        <title>Hi | World - Selenium</title>
+        <meta charset="utf-8" />
+        <link href="http://king32783784.github.io/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Hi | World Full Atom Feed" />
+        <link href="http://king32783784.github.io/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Hi | World Full RSS Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="../theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="../theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="../theme/pygment.css" />
+        <link rel="stylesheet" type="text/css" href="../theme/SentyZHAO/SentyZHAO.css" />
+
+        <script src="../theme/js/libs/jquery-1.9.1.min.js"></script>
+        <script src="../theme/js/libs/modernizr-2.6.2.min.js"></script>
+</head>
+
+<body id="index" class="home">
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1 style='font-family: "SentyZHAO";'><a href="..">Hi | World <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+
+              <ul class="columns" style='font-family: "SentyZHAO";'>
+                <li><a href="..">主 页</a></li>
+
+                <li><a href="../pages/tech-share.html">归档</a></li>
+                <li><a href="../pages/opensource.html">开源项目</a></li>
+                <li><a href="../pages/links.html">链接</a></li>
+                <li><a href="../pages/Reference material.html">参考资料</a></li>
+                <li><a href="../pages/todo list.html">Todo List</a></li>
+                <li><a href="../pages/tools.html">工具集</a></li>
+                <li class="active"><a href="../pages/aboutme.html">关于我</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+<div class="row">
+    <div class="eleven columns">
+        <ol id="post-list">
+            <li>
+            <article class="hentry">
+                <header>
+                    <h2 class="entry-title">
+                        <a href="../2015/01/25/selenium/" rel="bookmark" title="Permalink to selenium-Sample(三）">selenium-Sample(三）</a>
+                    </h2>
+                </header>
+                <footer class="post-info">
+                    <abbr class="published" title="2015-01-25T00:00:00+08:00"> 日 25 一月 2015 </abbr>
+<address class="vcard author">By <a class="url fn" href="../author/penglee.html">peng.lee</a></address>                </footer><!-- /.post-info -->
+                <div class="entry-content"> </head><body><h4 id="shi-li-5-tuo-fang-draghe-drop">示例５　拖放drag和drop</h4>
+<p>代码：</p>
+<div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.action_chains</span> <span class="kn">import</span> <span class="n">ActionChains</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.support.ui</span> <span class="kn">import</span> <span class="n">Select</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.keys</span> <span class="kn">import</span> <span class="n">Keys</span>
+
+<span class="c1"># bugzilla address</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"http://192.168.32.3/"</span>
+
+<span class="k">class</span> <span class="nc">Testdrog_drop</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver ...</span></pre></div></body> </div><!-- /.entry-content -->
+                <div class="medium primary btn"><a href="../2015/01/25/selenium/" rel="bookmark" title="Permalink to selenium-Sample(三）">Read more <i class="icon-arrow-right"></i></a></div>
+                <div class="row tag-row">
+                    <span>Tagged as : </span>
+                    <a class="danger label" href="../tag/selenium.html">Selenium</a>
+                </div>
+            </article>
+            </li>
+            <li>
+            <article class="hentry">
+                <header>
+                    <h2 class="entry-title">
+                        <a href="../2015/01/24/selenium/" rel="bookmark" title="Permalink to selenium-Sample(二）">selenium-Sample(二）</a>
+                    </h2>
+                </header>
+                <footer class="post-info">
+                    <abbr class="published" title="2015-01-24T00:00:00+08:00"> 六 24 一月 2015 </abbr>
+<address class="vcard author">By <a class="url fn" href="../author/penglee.html">peng.lee</a></address>                </footer><!-- /.post-info -->
+                <div class="entry-content"> </head><body><h3 id="chang-jian-ying-yong-de-shi-li">常见应用的示例</h3>
+<p><strong>Sample List</strong></p>
+<p><strong>填写表单示例1-自动设置bugzilla Simple Search</strong></p>
+<p><strong>填写表单示例2-自动设置bugzilla Advanced Search</strong></p>
+<p><strong>拖放drag和drop示例-待定</strong></p>
+<p><strong>窗口和框架之间移动示例-待定</strong></p>
+<p><strong>弹出对话框示例-待定</strong></p>
+<p><strong>历史记录和位置示例-待定</strong></p>
+<p><strong>Cookies示例-待定</strong></p>
+<p><strong>元素定位不同方式示例-待定</strong></p>
+<div class="highlight"><pre><span></span>ID定位
+名称定位
+Xpath定位
+链接文本定位超链接
+Tag Name定位
+class name定位
+css选择器定位
+</pre></div>
+<p><strong>等待-不同条件显示等待示例-待定</strong></p>
+<div class="highlight"><pre><span></span>title_is
+title_contains
+presence_of_element_locate
+visibility_of_element_located
+visibility_of
+presence_of_all_elements_located
+text_to_be_present_in_element_value
+text_to_be_present_in_element
+frame_to_be_available_and_switch_to_it
+invisibility_of_element_located
+elements_to_be_clickable-it is Displayed and Enabled
+staleness_of
+element_to_be_selected
+element_located_to_be_selected
+element_selection_state_to_be
+element_located_selection_state_to_be
+arelt_is_present
+</pre></div>
+<p><strong>等待-等待示例-隐式等待</strong></p>
+<p><strong>页面对象设计模式示例</strong></p>
+<p>... ...</p>
+<p><img height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/RGBIHR91YT.jpg" width="420"/></p>
+<p><strong>示例3. 填写表单示例1-自动设置bugzilla ...</strong></p></body> </div><!-- /.entry-content -->
+                <div class="medium primary btn"><a href="../2015/01/24/selenium/" rel="bookmark" title="Permalink to selenium-Sample(二）">Read more <i class="icon-arrow-right"></i></a></div>
+                <div class="row tag-row">
+                    <span>Tagged as : </span>
+                    <a class="danger label" href="../tag/selenium.html">Selenium</a>
+                </div>
+            </article>
+            </li>
+            <li>
+            <article class="hentry">
+                <header>
+                    <h2 class="entry-title">
+                        <a href="../2015/01/23/selenium/" rel="bookmark" title="Permalink to selenium-Sample(一）">selenium-Sample(一）</a>
+                    </h2>
+                </header>
+                <footer class="post-info">
+                    <abbr class="published" title="2015-01-23T00:00:00+08:00"> 五 23 一月 2015 </abbr>
+<address class="vcard author">By <a class="url fn" href="../author/penglee.html">peng.lee</a></address>                </footer><!-- /.post-info -->
+                <div class="entry-content"> </head><body><h3 id="ying-yong-shi-li">应用示例</h3>
+<p><strong>1.通过selenium爬取"https://stocksnap.io/"上的图片。</strong></p>
+<p>简要说明，通过selenium打开firefox浏览器，导航到指定网址；然后定位到图片源地址，并保存；然后调用urllib模块，下载图片到指定位置。</p>
+<p>代码如下：</p>
+<div class="highlight"><pre><span></span>    <span class="c1">#!/bin/bash/env python</span>
+    <span class="c1"># -*- coding: utf-8 -*-</span>
+    <span class="kn">import</span> <span class="nn">time</span>
+    <span class="kn">import</span> <span class="nn">urllib</span>
+    <span class="kn">import</span> <span class="nn">urllib2</span>
+    <span class="kn">import</span> <span class="nn">re</span>
+    <span class="kn">import</span> <span class="nn">os</span>
+    <span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+
+    <span class="c1"># 爬取页面地址  </span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">"https://stocksnap.io/"</span>
+
+    <span class="k">class</span> <span class="nc">GetpicHtml</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+        <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">driver</span> <span class="o">=</span>  <span class="n">webdriver</span><span class="o">.</span><span class="n">Firefox ...</span></pre></div></body> </div><!-- /.entry-content -->
+                <div class="medium primary btn"><a href="../2015/01/23/selenium/" rel="bookmark" title="Permalink to selenium-Sample(一）">Read more <i class="icon-arrow-right"></i></a></div>
+                <div class="row tag-row">
+                    <span>Tagged as : </span>
+                    <a class="danger label" href="../tag/selenium.html">Selenium</a>
+                </div>
+            </article>
+            </li>
+            <li>
+            <article class="hentry">
+                <header>
+                    <h2 class="entry-title">
+                        <a href="../2015/01/22/selenium/" rel="bookmark" title="Permalink to selenium-专题10">selenium-专题10</a>
+                    </h2>
+                </header>
+                <footer class="post-info">
+                    <abbr class="published" title="2015-01-22T00:00:00+08:00"> 四 22 一月 2015 </abbr>
+<address class="vcard author">By <a class="url fn" href="../author/penglee.html">peng.lee</a></address>                </footer><!-- /.post-info -->
+                <div class="entry-content"> </head><body><h3 id="1chang-jian-wen-ti">1.常见问题</h3>
+<h4 id="11-ru-he-shi-yong-chromedriver">1.1 如何使用ChromeDriver?</h4>
+<p>下载最新的chromedriver<a href="https://sites.google.com/a/chromium.org/chromedriver/downloads">chromedriver from download page</a>,解压文件：</p>
+<div class="highlight"><pre><span></span>unzip chromedriver_linux32_x.x.x.x.zip
+</pre></div>
+<p>解压后，会看到chromedriver的二进制文件。然后可以像这样创建Chrome WebDriver实例：
+　
+    driver = webdriver.Chrome(executable_path="/path/to/chromedriver")</p>
+<h4 id="12-selenium-2shi-fou-zhi-chi-xpath20">1.2　Selenium 2是否支持XPath2.0?</h4>
+<p>参考<a href="http://www.seleniumhq.org/docs/03_webdriver.jsp#how-xpath-works-in-webdriver"> http://seleniumhq.org/docs/03_webdriver.html#how-xpath-works-in-webdriver</a>
+Selenium 将XPath查询委派给浏览器自己的XPath引擎查询，所以Selenium支持的XPath取决于浏览器的支持。如果浏览器没有XPath引擎（如IE6,7,8)，则Selenium就支持XPath1.0 ...</p></body> </div><!-- /.entry-content -->
+                <div class="medium primary btn"><a href="../2015/01/22/selenium/" rel="bookmark" title="Permalink to selenium-专题10">Read more <i class="icon-arrow-right"></i></a></div>
+                <div class="row tag-row">
+                    <span>Tagged as : </span>
+                    <a class="danger label" href="../tag/selenium.html">Selenium</a>
+                </div>
+            </article>
+            </li>
+            <li>
+            <article class="hentry">
+                <header>
+                    <h2 class="entry-title">
+                        <a href="../2015/01/21/selenium/" rel="bookmark" title="Permalink to selenium-专题9">selenium-专题9</a>
+                    </h2>
+                </header>
+                <footer class="post-info">
+                    <abbr class="published" title="2015-01-21T00:00:00+08:00"> 三 21 一月 2015 </abbr>
+<address class="vcard author">By <a class="url fn" href="../author/penglee.html">peng.lee</a></address>                </footer><!-- /.post-info -->
+                <div class="entry-content"> </head><body><h3 id="remote-webdriver">Remote WebDriver</h3>
+<p>WebDriver实现。</p>
+<p>class selenium.webdriver.remote.webdriver.WebDriver(command_executor='http://127.0.0.1:4444/wd/hub', desired_capabilities=None, browser_profile=None, proxy=None, keep_alive=False, file_detector=None)</p>
+<p>Bases: object
+控制浏览器向remote server发送命令。Remote server 运行的协议定义为<a href="https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol">https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol</a>.
+属性：
+    * session_id- webdriver用于打开和控制浏览器窗口的ＩＤ字符串
+    * capabilities- Dictionaty of effective capabilities ...</p></body> </div><!-- /.entry-content -->
+                <div class="medium primary btn"><a href="../2015/01/21/selenium/" rel="bookmark" title="Permalink to selenium-专题9">Read more <i class="icon-arrow-right"></i></a></div>
+                <div class="row tag-row">
+                    <span>Tagged as : </span>
+                    <a class="danger label" href="../tag/selenium.html">Selenium</a>
+                </div>
+            </article>
+            </li>
+            <li>
+            <article class="hentry">
+                <header>
+                    <h2 class="entry-title">
+                        <a href="../2015/01/20/selenium/" rel="bookmark" title="Permalink to selenium-专题8">selenium-专题8</a>
+                    </h2>
+                </header>
+                <footer class="post-info">
+                    <abbr class="published" title="2015-01-20T00:00:00+08:00"> 二 20 一月 2015 </abbr>
+<address class="vcard author">By <a class="url fn" href="../author/penglee.html">peng.lee</a></address>                </footer><!-- /.post-info -->
+                <div class="entry-content"> </head><body><h3 id="alert">Alert</h3>
+<p>警告相关的实现</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">selenium</span>.<span class="n">webdriver</span>.<span class="n">common</span>.<span class="n">alert</span>.<span class="n">Alert</span>(<span class="n">driver</span>)
+    <span class="n">Bases:</span> <span class="n">object</span>
+    <span class="n">允许使用alerts</span>.
+    <span class="n">使用这个类作为与alert互动的接口</span>。<span class="n">它包括dismissing</span>(<span class="n">忽略</span>），<span class="n">accepting</span>(<span class="n">接受</span>），<span class="n">inputting</span>（<span class="n">输入</span>）<span class="n">和获取警告提示的文本信息的方法</span>。
+    <span class="n">接受</span>／<span class="n">忽略警报信息</span>：
+        <span class="n">Alert</span>(<span class="n">driver</span>).<span class="n">accpet</span>()
+        <span class="n">Alert</span>(<span class="n">driver</span>).<span class="n">dismiss</span>()
+
+    <span class="n">往警报信息中输入</span>：
+        <span class="n">name_prompt</span> = <span class="n">Alert</span>(<span class="n">driver</span>)<span class="n">name_prompt</span>.<span class="n">send_keys</span>(<span class="s">"Willian Shakesphere"</span>)
+        <span class="n">name_prompt</span>.<span class="n">accept</span>()
+
+    <span class="n">读取警报信息作为验证</span>：
+        <span class="n">alert_text</span> = <span class="n">Alert</span>(<span class="n">driver</span>).<span class="n">text</span> <span class="k">self</span>.<span class="n">assertEqual</span>(<span class="s">"Do you wish to quit ...</span></pre></div></body> </div><!-- /.entry-content -->
+                <div class="medium primary btn"><a href="../2015/01/20/selenium/" rel="bookmark" title="Permalink to selenium-专题8">Read more <i class="icon-arrow-right"></i></a></div>
+                <div class="row tag-row">
+                    <span>Tagged as : </span>
+                    <a class="danger label" href="../tag/selenium.html">Selenium</a>
+                </div>
+            </article>
+            </li>
+            <li>
+            <article class="hentry">
+                <header>
+                    <h2 class="entry-title">
+                        <a href="../2015/01/19/selenium/" rel="bookmark" title="Permalink to selenium-专题7">selenium-专题7</a>
+                    </h2>
+                </header>
+                <footer class="post-info">
+                    <abbr class="published" title="2015-01-19T00:00:00+08:00"> 一 19 一月 2015 </abbr>
+<address class="vcard author">By <a class="url fn" href="../author/penglee.html">peng.lee</a></address>                </footer><!-- /.post-info -->
+                <div class="entry-content"> </head><body><h3 id="webdriver-api">WebDriver API</h3>
+<p>注：这不是官方API文档，官方在这：<a href="https://seleniumhq.github.io/selenium/docs/api/py/api.html">Selenium Documentation</a></p>
+<p>本篇覆盖了Selenium Webdriver的所有接口。</p>
+<p><strong>推荐导入样式</strong>
+本节API展示了类的绝对位置。推荐的导入风格如下：</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+</pre></div>
+<p>然后，可以访问的类如下：</p>
+<div class="highlight"><pre><span></span>webdriver.Firefox
+webdriver.FirefoxProfile
+webdriver.Chrome
+webdriver.ChromeOptions
+webdriver.Ie
+webdriver.Opera
+webdriver.PhantomJS
+webdriver.Remote
+webdriver.DesiredCapabilities
+webdriver.ActionChains
+webdriver.TouchActions
+webdriver.Proxy
+</pre></div>
+<p>特殊键类（keys)可以这样导入：</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium.webdriver.common.keys ...</span></pre></div></body> </div><!-- /.entry-content -->
+                <div class="medium primary btn"><a href="../2015/01/19/selenium/" rel="bookmark" title="Permalink to selenium-专题7">Read more <i class="icon-arrow-right"></i></a></div>
+                <div class="row tag-row">
+                    <span>Tagged as : </span>
+                    <a class="danger label" href="../tag/selenium.html">Selenium</a>
+                </div>
+            </article>
+            </li>
+            <li>
+            <article class="hentry">
+                <header>
+                    <h2 class="entry-title">
+                        <a href="../2015/01/18/selenium/" rel="bookmark" title="Permalink to selenium-专题6">selenium-专题6</a>
+                    </h2>
+                </header>
+                <footer class="post-info">
+                    <abbr class="published" title="2015-01-18T00:00:00+08:00"> 日 18 一月 2015 </abbr>
+<address class="vcard author">By <a class="url fn" href="../author/penglee.html">peng.lee</a></address>                </footer><!-- /.post-info -->
+                <div class="entry-content"> </head><body><h3 id="ye-mian-dui-xiang">页面对象</h3>
+<p>该篇是介绍页面对象设计模式的方法。页面对象是Web应用程序用户界面的区域，测试时主要在此区域。</p>
+<p>使用页面对象模式的好处：</p>
+<ul>
+<li>创建多测试用例共用的可重复代码</li>
+<li>减少重复的代码</li>
+<li>如果用户界面发生改变，只需修改一次对应部分</li>
+</ul>
+<h4 id="ce-shi-yong-li">测试用例</h4>
+<p>以下是一个测试python.org搜索字符串的用例，并且确保可以查到一些结果。</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">unittest</span>
+<span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+<span class="kn">import</span> <span class="nn">page</span>
+
+<span class="k">class</span> <span class="nc">PythonOrgSearch</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="sd">'''A sample teest class to show how page object works'''</span>
+
+    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Firefox</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"http://www.python.org"</span><span class="p">)</span>
+
+    <span class="k">def ...</span></pre></div></body> </div><!-- /.entry-content -->
+                <div class="medium primary btn"><a href="../2015/01/18/selenium/" rel="bookmark" title="Permalink to selenium-专题6">Read more <i class="icon-arrow-right"></i></a></div>
+                <div class="row tag-row">
+                    <span>Tagged as : </span>
+                    <a class="danger label" href="../tag/selenium.html">Selenium</a>
+                </div>
+            </article>
+            </li>
+        </ol><!-- /#posts-list -->
+    </div><!-- /.eleven.columns -->
+<div class="three columns">
+
+<!--
+<h4>Pages</h4>
+
+ <ul>
+      <li><a href="../pages/tech-share.html">归档</a></li>
+      <li><a href="../pages/opensource.html">开源项目</a></li>
+      <li><a href="../pages/links.html">链接</a></li>
+      <li><a href="../pages/Reference material.html">参考资料</a></li>
+      <li><a href="../pages/todo list.html">Todo List</a></li>
+      <li><a href="../pages/tools.html">工具集</a></li>
+      <li class="active"><a href="../pages/aboutme.html">关于我</a></li>
+  </ul>
+-->
+<!--
+<h4>分类</h4>
+<ul>
+		<li><a href="../category/misc.html">misc</a></li>
+		<li><a href="../category/autotestzhuan-ti.html">Autotest专题</a></li>
+		<li><a href="../category/suan-fa.html">算法</a></li>
+		<li><a href="../category/dockerzhuan-ti.html">Docker专题</a></li>
+		<li><a href="../category/linux.html">Linux</a></li>
+		<li><a href="../category/linux-benchmark.html">linux-benchmark</a></li>
+		<li><a href="../category/linux-zi-dong-hua-ce-shi.html">linux-自动化测试</a></li>
+		<li><a href="../category/unixhuan-jing-bian-cheng.html">unix环境编程</a></li>
+		<li><a href="../category/xing-neng-ce-shi.html">性能测试</a></li>
+</ul>
+-->
+
+<h4>标签</h4>
+	<ul>
+	    <li class="tag-4"><a href="../tag/pyunit.html">PyUnit</a></li>
+	    <li class="tag-4"><a href="../tag/linux.html">Linux</a></li>
+	    <li class="tag-4"><a href="../tag/qi-ta.html">其他</a></li>
+	    <li class="tag-4"><a href="../tag/unixbian-cheng.html">unix编程</a></li>
+	    <li class="tag-1"><a href="../tag/zi-dong-hua-ce-shi.html">自动化测试</a></li>
+	    <li class="tag-3"><a href="../tag/docker.html">Docker</a></li>
+	    <li class="tag-3"><a href="../tag/shell.html">shell</a></li>
+	    <li class="tag-3"><a href="../tag/suan-fa.html">算法</a></li>
+	    <li class="tag-1"><a href="../tag/selenium.html">Selenium</a></li>
+	    <li class="tag-2"><a href="../tag/ltp.html">LTP</a></li>
+	    <li class="tag-3"><a href="../tag/xing-neng-ce-shi.html">性能测试</a></li>
+	    <li class="tag-3"><a href="../tag/python.html">Python</a></li>
+	    <li class="tag-4"><a href="../tag/benchmark.html">benchmark</a></li>
+</ul>
+
+<!--
+-->
+</div> </div><!-- /.row -->
+<p class="paginator">
+    Page 1 / 2
+        <a href="../tag/selenium2.html"><i class="icon-arrow-right"></i></a>
+</p>
+</section><!-- /#content -->
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="http://github.com/king32783784" target="_blank">Github</a></div></li>
+
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'xiayfblackwhite';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="../theme/js/libs/gumby.min.js"></script>
+  <script src="../theme/js/plugins.js"></script>
+  <script src="../theme/js/main.js"></script>
+  <link rel="stylesheet" type="text/css" href="../theme/emoji/css/basic/emojify.min.css" />
+  <script src="../theme/emoji/js/emojify.min.js"></script>
+  <script>
+    emojify.setConfig({
+        img_dir : '../theme/emoji/images/basic'
+    });
+    emojify.run();
+</script>
+</body>
+</html>

@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="link">
+<head>
+
+        <title>LTP－Case list</title>
+        <meta charset="utf-8" />
+        <link href="http://king32783784.github.io/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Hi | World Full Atom Feed" />
+        <link href="http://king32783784.github.io/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Hi | World Full RSS Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="../../../../theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="../../../../theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="../../../../theme/pygment.css" />
+        <link rel="stylesheet" type="text/css" href="../../../../theme/SentyZHAO/SentyZHAO.css" />
+
+        <script src="../../../../theme/js/libs/jquery-1.9.1.min.js"></script>
+        <script src="../../../../theme/js/libs/modernizr-2.6.2.min.js"></script>
+</head>
+
+<body id="index" class="home">
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1 style='font-family: "SentyZHAO";'><a href="../../../..">Hi | World <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+
+              <ul class="columns" style='font-family: "SentyZHAO";'>
+                <li><a href="../../../..">主 页</a></li>
+
+                <li><a href="../../../../pages/tech-share.html">归档</a></li>
+                <li><a href="../../../../pages/opensource.html">开源项目</a></li>
+                <li><a href="../../../../pages/links.html">链接</a></li>
+                <li><a href="../../../../pages/Reference material.html">参考资料</a></li>
+                <li><a href="../../../../pages/todo list.html">Todo List</a></li>
+                <li><a href="../../../../pages/tools.html">工具集</a></li>
+                <li class="active"><a href="../../../../pages/aboutme.html">关于我</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+   <div class="row">
+        <div class="columns">
+            <header>
+              <h2 class="entry-title">
+                <a href="../../../../2016/06/01/LTP/" rel="bookmark" title="Permalink to LTP－Case list">LTP－Case list</a></h2>
+           Translations: 
+<a href="../../../../2016/06/03/LTP/">link</a>
+<a href="../../../../2016/08/02/LTP/">link</a>
+<a href="../../../../2016/06/02/LTP/">link</a>
+<a href="../../../../2016/08/01/LTP/">link</a>
+
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2016-06-01T00:00:00+08:00">
+                三 01 六月 2016
+              </abbr>
+              <address class="vcard author">
+                By <a class="url fn" href="../../../../author/penglee.html">peng.lee</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              </head><body><p>该topic将深入分析ltp的测试内容，着重于具体每个case的测试内容及测试方法。通过对ltp case的分析，加强linux系统的理解和用例设计。本节主要整理ltp的包括测试case的类型和case列表。</p>
+<h3 id="zheng-ti-qing-kuang">整体情况</h3>
+<p>case主要分为”commands"、“kdump"、"kernel"、"misc"、"network"、"open_posix_testsuite"、"realtime"、"lib"等部分，主要内容如下：</p>
+<table>
+<thead>
+<tr>
+<th>分类</th>
+<th>包含内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>commands</td>
+<td>ade cpio df eject gzip logrotate mail mkfs sshd tar unzip which at cron du fileutils insmod lsmod mkswap su tmp-tools wc</td>
+</tr>
+<tr>
+<td>kernel</td>
+<td>connectors controllers firmware hotplug input ipc logging mce-test module power_management sched syscalls tracing containers device-drivers fs include io lib mem numa pty security times</td>
+</tr>
+<tr>
+<td>misc</td>
+<td>crash f00f math</td>
+</tr>
+<tr>
+<td>network</td>
+<td>busy_poll dctcp iptables netstress nfsv4 rpc stress tcp_fstopen virt can dhcp iproute lib6 multicast nfs sockets tcp_cmds traceroute xinetd</td>
+</tr>
+<tr>
+<td>open_posix_testsuite</td>
+<td>functional tools bin conformance stress</td>
+</tr>
+<tr>
+<td>realtime</td>
+<td>perf profiles stress</td>
+</tr>
+<tr>
+<td>lib</td>
+<td></td>
+</tr>
+<tr>
+<td>kdump</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="commands">commands</h4>
+<p>主要case包括：</p>
+<table>
+<thead>
+<tr>
+<th>case</th>
+<th>包含子case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ade</td>
+<td>ar file ld ldd nm objdump size</td>
+</tr>
+<tr>
+<td>at</td>
+<td>at</td>
+</tr>
+<tr>
+<td>cpio</td>
+<td>cpio</td>
+</tr>
+<tr>
+<td>cron</td>
+<td>cron</td>
+</tr>
+<tr>
+<td>df</td>
+<td>df</td>
+</tr>
+<tr>
+<td>du</td>
+<td>du</td>
+</tr>
+<tr>
+<td>eject</td>
+<td>eject</td>
+</tr>
+<tr>
+<td>fileutils</td>
+<td>cp ln mkdir mv</td>
+</tr>
+<tr>
+<td>gzip</td>
+<td>gzip</td>
+</tr>
+<tr>
+<td>insmod</td>
+<td>insmod</td>
+</tr>
+<tr>
+<td>logrotate</td>
+<td>logrotate</td>
+</tr>
+<tr>
+<td>lsmod</td>
+<td>lsmod</td>
+</tr>
+<tr>
+<td>mail</td>
+<td>mail</td>
+</tr>
+<tr>
+<td>mkfs</td>
+<td>mkfs</td>
+</tr>
+<tr>
+<td>mkswap</td>
+<td>mkswap</td>
+</tr>
+<tr>
+<td>sssd</td>
+<td>sssd</td>
+</tr>
+<tr>
+<td>su</td>
+<td>su</td>
+</tr>
+<tr>
+<td>tar</td>
+<td>tar</td>
+</tr>
+<tr>
+<td>tpm-tools</td>
+<td>tmp tpmtoken</td>
+</tr>
+<tr>
+<td>unzip</td>
+<td>unzip</td>
+</tr>
+<tr>
+<td>wc</td>
+<td>wc</td>
+</tr>
+<tr>
+<td>which</td>
+<td>which</td>
+</tr>
+</tbody>
+</table>
+<h4 id="kernel">kernel</h4>
+<p>主要case包括:</p>
+<table>
+<thead>
+<tr>
+<th>case</th>
+<th>包含子case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>connectors</td>
+<td>connector pec</td>
+</tr>
+<tr>
+<td>containers</td>
+<td>libclone mountns mqns netns pidns share sysvipc userns utsname</td>
+</tr>
+<tr>
+<td>controllers</td>
+<td>cgroup cgroup_xattr cpuctl cpuset io-throttle memcg pids cgroup_fg cpuacct cpuctl_fj freezer libcontrollers memctl</td>
+</tr>
+<tr>
+<td>device-drivers</td>
+<td>acpi base cpufreq drm locking misc_modules pci tbio usb zram agp block dev_sim_framework nls rcu rtc uaccess v4l</td>
+</tr>
+<tr>
+<td>firmware</td>
+<td>fw_load_kernel fw_load_user</td>
+</tr>
+<tr>
+<td>fs</td>
+<td>acl dmapi ext4-new-features fs_blnd fs_inod fs_perms fsstress ftest iso9660 linktest mongo proc racer stram acls doio fs-bench fs_di fs_main fs_readonly fsx-linux inode lftest openfile quota_remount scsi</td>
+</tr>
+<tr>
+<td>hotplug</td>
+<td>cpu_hotplug memory_hotplug</td>
+</tr>
+<tr>
+<td>input</td>
+<td>input</td>
+</tr>
+<tr>
+<td>io</td>
+<td>aio direct_io disktest ltp-aiodio stress_cd stress_floppy writetest</td>
+</tr>
+<tr>
+<td>ipc</td>
+<td>pipeio semaphore</td>
+</tr>
+<tr>
+<td>logging</td>
+<td>kmsg</td>
+</tr>
+<tr>
+<td>mem</td>
+<td>cpuset mem mtest01 mtest06 oom shmt thp vma hugetlb ksm mmapstress mtest05 mtest07 page swapping tunable vmtests</td>
+</tr>
+<tr>
+<td>moudle</td>
+<td>create_module delete_module query_module</td>
+</tr>
+<tr>
+<td>numa</td>
+<td>numa</td>
+</tr>
+<tr>
+<td>power_management</td>
+<td>pm_ilb_test runpwtests01-06 runpwtests_exelusive01-06 pm_cpu_consolidation pm_include pm_sched_domain</td>
+</tr>
+<tr>
+<td>pty</td>
+<td>hangup ptem pty</td>
+</tr>
+<tr>
+<td>sched</td>
+<td>cfs-scheduler clisrv hypertherading nptl process_stress pthreads sched_stress tool</td>
+</tr>
+<tr>
+<td>security</td>
+<td>cap_bound filecaps integrity mmc_security prot_hsymlinks securbits smack tomoyo</td>
+</tr>
+<tr>
+<td>syscalls</td>
+<td>abort accept accept4 access acct add_key adjtimex alarm asyncio bdflush bind brk cacheflush capget capset chdir chmod chown chroot clock_getres clock_nanosleep clock_nanosleep2 clone close cma confstr connect creat dup dup2 dup3 epoll epoll2 epoll_create1 epoll_ctl epoll_pwait epoll_wait eventfd eventfd2 execl execle execlp execv execve execvp exit exit_group faccessat fadvise fallocate fanotify fchdir fchmod fchmodat fchown fchownat fcntl fdatasync flock fmtmsg fork fpathconf fstat fstatat fstatfs fsync ftruncate futex futimesat getcontext getcpu getcwd getdents getdomainname getdtablesize getegid geteuid getgid getgroups gethostbyname_r gethostid gethostname getitimer get_mempolicy getpagesize getpeername getpgid getpgrp getpid getppid getpriority getrandom getresgid getresuid getrlimit get_robust_list getrusage getsid getsockname getsockopt gettid gettimeofday getuid getxattr inotify inotify_init io_cancel ioctl io_destroy io_getevents ioperm iopl io_setup io_submit ipc kcmp keyctl kill lchown lgetxattr link linkat listen llistxattr llseek lseek lstat madvise Makefile mallopt mbind memcmp memcpy memmap memset migrate_pages mincore mkdir mkdirat mknod mknodat mlock mlockall mmap modify_ldt mount move_pages mprotect mq_notify mq_open mq_timedreceive mq_timedsend mq_unlink mremap msync munlock munlockall munmap nanosleep newuname nftw nice open openat paging pathconf pause perf_event_open personality pipe pipe2 poll ppoll prctl pread preadv profil pselect ptrace pwrite pwritev quotactl read readahead readdir readlink readlinkat readv reboot recv recvfrom recvmsg remap_file_pages removexattr rename renameat renameat2 request_key rmdir rt_sigaction rt_sigprocmask rt_sigqueueinfo rt_sigsuspend rt_sigtimedwait sbrk sched_getaffinity sched_getattr sched_getparam sched_get_priority_max sched_get_priority_min sched_getscheduler sched_rr_get_interval sched_setaffinity sched_setattr sched_setparam sched_setscheduler sched_yield select send sendfile sendmsg sendto setdomainname setegid setfsgid setfsuid setgid setgroups sethostname setitimer setns setpgid setpgrp setpriority setregid setresgid setresuid setreuid setrlimit set_robust_list setsid setsockopt set_thread_area set_tid_address settimeofday setuid setxattr sgetmask sigaction sigaltstack sighold signal signalfd signalfd4 sigpending sigprocmask sigrelse sigsuspend sigtimedwait sigwait sigwaitinfo socket socketcall socketpair sockioctl splice ssetmask stat statfs statvfs stime string swapoff swapon switch symlink symlinkat sync sync_file_range syscall sysconf sysctl sysfs sysinfo syslog tee time timerfd timer_getoverrun timer_gettime times tkill truncate ulimit umask umount umount2 uname unlink unlinkat unshare ustat utils utime utimensat utimes vfork vhangup vmsplice wait wait4 waitid waitpid write writev</td>
+</tr>
+<tr>
+<td>timers</td>
+<td>clock_gettime clock_settime leapsec timer_create timer_delete timer_settime</td>
+</tr>
+<tr>
+<td>tracing</td>
+<td>ftrace</td>
+</tr>
+</tbody>
+</table>
+<h4 id="misc">misc</h4>
+<table>
+<thead>
+<tr>
+<th>case</th>
+<th>包含子case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>crash</td>
+<td>crash</td>
+</tr>
+<tr>
+<td>f00f</td>
+<td>foof</td>
+</tr>
+<tr>
+<td>math</td>
+<td>abs atof float fptests nextafter</td>
+</tr>
+</tbody>
+</table>
+<h4 id="network">network</h4>
+<table>
+<thead>
+<tr>
+<th>case</th>
+<th>包含子case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>can</td>
+<td>filter-test</td>
+</tr>
+<tr>
+<td>dctcp</td>
+<td>dctcp</td>
+</tr>
+<tr>
+<td>dhcp</td>
+<td>dhcp_tests dhcp_lib  dnsmasq_tests</td>
+</tr>
+<tr>
+<td>iproute</td>
+<td>ip_tests</td>
+</tr>
+<tr>
+<td>iptables</td>
+<td>iptables_tests</td>
+</tr>
+<tr>
+<td>lib6</td>
+<td>asapi getaddrinfo in6</td>
+</tr>
+<tr>
+<td>multicast</td>
+<td>mc_cmds mc_commo mc_gethost mc_member mc_opts</td>
+</tr>
+<tr>
+<td>netstress</td>
+<td>netstress</td>
+</tr>
+<tr>
+<td>nfs</td>
+<td>fsx-linux nfslock01 nfsstat01 nfs_stress</td>
+</tr>
+<tr>
+<td>nfsv4</td>
+<td>acl locks</td>
+</tr>
+<tr>
+<td>rpc</td>
+<td>basic_tests rpc-tirpc</td>
+</tr>
+<tr>
+<td>sockets</td>
+<td>socket</td>
+</tr>
+<tr>
+<td>stress</td>
+<td>broken_ip dns ftp http icmp interface  ipsec multicast ns-tools route ssh tcp udp</td>
+</tr>
+<tr>
+<td>tcp_cmds</td>
+<td>arping echo ftp netstat rcp rsh sendfile tcpdump trackpath clockdiff finger host ipneigh ping rdist rlogin rwho ssh telnet</td>
+</tr>
+<tr>
+<td>tcp_fastopen</td>
+<td>tcp_fastopen</td>
+</tr>
+<tr>
+<td>traceroute</td>
+<td>traceroute</td>
+</tr>
+<tr>
+<td>virt</td>
+<td>gre01 ipvlan macvlan macvtap vlan vxlan</td>
+</tr>
+<tr>
+<td>xinted</td>
+<td>xinted</td>
+</tr>
+</tbody>
+</table>
+<h4 id="open_posix_testsuite">open_posix_testsuite</h4>
+<table>
+<thead>
+<tr>
+<th>case</th>
+<th>包含子case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bin</td>
+<td>run-all-posix-option-group-tests</td>
+</tr>
+<tr>
+<td>conformance</td>
+<td>behavior definitions interfaces</td>
+</tr>
+<tr>
+<td>functional</td>
+<td>mqueues semaphores threads timers</td>
+</tr>
+<tr>
+<td>stress</td>
+<td>mqueues semaphores signals threads timers</td>
+</tr>
+</tbody>
+</table>
+<h4 id="realtime">realtime</h4>
+<table>
+<thead>
+<tr>
+<th>case</th>
+<th>包含子case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>func</td>
+<td>async_handler hrtimer-prio matrix_mult periodic_cpu_load pi-tests prio-wake rt-migrate sched_jitter thrad_clock gtod_latency measurement pi_perf prio-preempt pthread_kill_latency sched_football sched_letency</td>
+</tr>
+<tr>
+<td>m4</td>
+<td>m4</td>
+</tr>
+<tr>
+<td>perf</td>
+<td>latency</td>
+</tr>
+<tr>
+<td>stress</td>
+<td>pi-tests</td>
+</tr>
+</tbody>
+</table>
+<p>接下来会深入分析每个case的具体测试目的及内容。ltp测试用例主要采用shell和Ｃ编写。</p>
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "2016/06/01/LTP/";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://xiayfblackwhite.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+        </div><!-- /.twelve.columns -->
+ </div><!-- /.row -->
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="http://github.com/king32783784" target="_blank">Github</a></div></li>
+
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'xiayfblackwhite';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="../../../../theme/js/libs/gumby.min.js"></script>
+  <script src="../../../../theme/js/plugins.js"></script>
+  <script src="../../../../theme/js/main.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../../../theme/emoji/css/basic/emojify.min.css" />
+  <script src="../../../../theme/emoji/js/emojify.min.js"></script>
+  <script>
+    emojify.setConfig({
+        img_dir : '../../../../theme/emoji/images/basic'
+    });
+    emojify.run();
+</script>
+</body>
+</html>

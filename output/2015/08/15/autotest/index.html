@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="link">
+<head>
+
+        <title>Autotest-Control file specification</title>
+        <meta charset="utf-8" />
+        <link href="http://king32783784.github.io/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Hi | World Full Atom Feed" />
+        <link href="http://king32783784.github.io/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Hi | World Full RSS Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="../../../../theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="../../../../theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="../../../../theme/pygment.css" />
+        <link rel="stylesheet" type="text/css" href="../../../../theme/SentyZHAO/SentyZHAO.css" />
+
+        <script src="../../../../theme/js/libs/jquery-1.9.1.min.js"></script>
+        <script src="../../../../theme/js/libs/modernizr-2.6.2.min.js"></script>
+</head>
+
+<body id="index" class="home">
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1 style='font-family: "SentyZHAO";'><a href="../../../..">Hi | World <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+
+              <ul class="columns" style='font-family: "SentyZHAO";'>
+                <li><a href="../../../..">主 页</a></li>
+
+                <li><a href="../../../../pages/tech-share.html">归档</a></li>
+                <li><a href="../../../../pages/opensource.html">开源项目</a></li>
+                <li><a href="../../../../pages/links.html">链接</a></li>
+                <li><a href="../../../../pages/Reference material.html">参考资料</a></li>
+                <li><a href="../../../../pages/tools.html">工具集</a></li>
+                <li class="active"><a href="../../../../pages/aboutme.html">关于我</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+   <div class="row">
+        <div class="columns">
+            <header>
+              <h2 class="entry-title">
+                <a href="../../../../2015/08/15/autotest/" rel="bookmark" title="Permalink to Autotest-Control file specification">Autotest-Control file specification</a></h2>
+           Translations: 
+<a href="../../../../2015/08/18/autotest/">link</a>
+<a href="../../../../2015/08/14/autotest/">link</a>
+<a href="../../../../2015/08/19/autotest/">link</a>
+<a href="../../../../2015/08/21/autotest/">link</a>
+<a href="../../../../2015/08/16/autotest/">link</a>
+<a href="../../../../2015/08/22/autotest/">link</a>
+<a href="../../../../2015/11/01/autotest/">link</a>
+<a href="../../../../2015/08/17/autotest/">link</a>
+<a href="../../../../2015/08/20/autotest/">link</a>
+
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2015-08-15T00:00:00+08:00">
+                六 15 八月 2015
+              </abbr>
+              <address class="vcard author">
+                By <a class="url fn" href="../../../../author/penglee.html">penglee</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              </head><body><p><img alt="" src="https://king32783784.github.io/lipeng/tmpfile/autotestlogo.png"/></p>
+<h2 id="control-file-specification">Control file specification</h2>
+<p>该篇主要介绍control文件的标准.该标准主要为了使自定义的control文件能够提供前端或测试所需要的信息,并且能够通过前端修改.
+主要内容:</p>
+<ul>
+<li>命名control文件</li>
+<li>常用变量</li>
+<li>示例</li>
+</ul>
+<h3 id="controlwen-jian-ming-ming">control文件命名</h3>
+<p>control文件命名必须是control.xxxx,xxxx是你定义或则代码评审定义．　例如，５００次硬重启测试，一个正规的定义就是　control.hard500</p>
+<h3 id="chang-yong-bian-liang">常用变量</h3>
+<p>下面是一个常用变量的列表</p>
+<table>
+<thead>
+<tr>
+<th>变量名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*AUTHOR</td>
+<td>测试编写的个人或公司信息</td>
+</tr>
+<tr>
+<td>ＤEPENENCIES</td>
+<td>测试依赖信息，比如"CONSOLE"</td>
+</tr>
+<tr>
+<td>*DOC</td>
+<td>描述测试包括哪些参数的说明</td>
+</tr>
+<tr>
+<td>EXPERIMENTAL</td>
+<td>如果定义为True,测试忽略</td>
+</tr>
+<tr>
+<td>*NAME</td>
+<td>前端识别测试的名称</td>
+</tr>
+<tr>
+<td>RUN_VERIFY</td>
+<td>定义scheduler是否执行验证，默认为True</td>
+</tr>
+<tr>
+<td>SYNC_COUNT</td>
+<td>次数，接受大于等于１的参数，默认为１</td>
+</tr>
+<tr>
+<td>*TIME</td>
+<td>说明测试时长，　ＳＨＯＲＴ&lt;15m, MEDIUM &lt; 4H ,LONG &gt;4H</td>
+</tr>
+<tr>
+<td>TEST_CLASS</td>
+<td>描述类属于类型，如内核．硬件</td>
+</tr>
+<tr>
+<td>TEST_CATEGORY</td>
+<td>描述测试的类型，如压力，功能</td>
+</tr>
+<tr>
+<td>*TEST_TYPE</td>
+<td>测试类型：client server</td>
+</tr>
+</tbody>
+</table>
+<p>标*是每个control文件的必填．并且提供一个脚本用于检查utils/check_control_file_vars.py</p>
+<p><strong>AUTHOR(必填)</strong></p>
+<p>设计者的信息是必填，用来后续追踪测试和修改bug,邮箱地址是必须的．</p>
+<p><strong>DEPENDENCIES（可选，默认：none)</strong></p>
+<p>相关性是描述你需要运行测试什么类型硬件的一种方式。 依赖是说,比如你需要测试蓝牙：</p>
+<div class="highlight"><pre><span></span>DEPENDENCY =“bluetooth”
+</pre></div>
+<p>其中， Bluetooth是在自动测试创建并已添加到一台机器,自动测试或者通过CLI或Django管理界面的确切标签。 </p>
+<p><strong>DOC(必需)</strong></p>
+<p>文档需要说明测试项测试时需要的条件，确认测试正常运行．以及如果进行调整和修改．同时def execute()调用的参数代表什么含义．</p>
+<p><strong>EXPERIMENTAL(可选默认：False)</strong></p>
+<p>如果设置，前端会忽略这些测试生产自动测试服务器测试导入过程。 </p>
+<p><strong>NAME(必需)</strong>
+指定的名字，前端会用来显示，这对于不同测试文件为了同一测试的不同验证需求非常有用．</p>
+<p><strong>RUN_VERIFY(可选，默认TRUE)</strong></p>
+<p>用来定义scheduler是否进行验证</p>
+<p><strong>SYNC_COUNT(可选默认１)</strong>
+　１代表的是可以异步执行，大于１代表需同步执行
+如果一个测试需要两台机器，SYNC_COUNT=2.autotest就会判断是否满足条件
+例如，发布向２３台机器发布任务，单只有２２个可以执行，单独的那个会失败．</p>
+<p><strong>TIME(Required)</strong></p>
+<p>测试需要的时间，不包括设置时间．</p>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SHORT</td>
+<td>小于１５分钟</td>
+</tr>
+<tr>
+<td>MEDIUM</td>
+<td>少于４Ｈ</td>
+</tr>
+<tr>
+<td>LONG</td>
+<td>大于４Ｈ</td>
+</tr>
+</tbody>
+</table>
+<p><strong>TEST_CATEGORY(必需)</strong></p>
+<p>定义测试属于哪一类
+例如　功能性或压力</p>
+<p><strong>TEST_CLASS(必需)</strong>
+　xxxx描述类类型的测试。 如果你有不同类型的要过滤的测试，这是非常有用的。
+如果一个测试中加入一个TEST_CLASS，前端如果不存在这个类，就要补充这个类。
+示例测试类
+<em>内核
+</em>硬件 </p>
+<p><strong>TEST_TYPE</strong></p>
+<p>这个要告诉前端什么类型的测试．有效值是server或client.</p>
+<h3 id="shi-li">示例</h3>
+<div class="highlight"><pre><span></span>TIME ='MEDIUM'
+AUTHOR = 'Scott Zawalski ( scott@xxx.com )'
+TEST_CLASS = 'Hardware'
+TEST_CATEGORY = 'Functional'
+NAME = 'Hard Reboot'
+SYNC_COUNT = 1
+TEST_TYPE = 'server'
+TEST_CLASS = 'Hardware'
+DEPENDCIES = 'POWER, CONSOLE'
+
+DOC = """
+Tests the reliability of platforms when rebooted. This test allows
+you to do a hard reboot or a software reboot.
+
+Args:
+type: can be "soft" or "hard", default is "hard"
+e.g. job.run_test('reboot', machine, type="soft")
+This control file does a HARD reboot
+"""
+
+def run(machine):
+job.run_test('reboot', machine, type="hard")
+parallel_simple(run, machines)
+</pre></div>
+<p>Top<a href="">^</a></p>
+<p>上一篇<a href="https://king32783784.github.io/lipeng/2015/08/14/autotest/">Autotest:Autotest-client control&gt;&gt;&gt;</a>
+下一篇<a href="https://king32783784.github.io/lipeng/2015/08/16/autotest/">Autotest:Autotest-add test&gt;&gt;&gt;</a></p>
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "2015/08/15/autotest/";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://xiayfblackwhite.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+        </div><!-- /.twelve.columns -->
+ </div><!-- /.row -->
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="http://github.com/king32783784" target="_blank">Github</a></div></li>
+
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'xiayfblackwhite';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="../../../../theme/js/libs/gumby.min.js"></script>
+  <script src="../../../../theme/js/plugins.js"></script>
+  <script src="../../../../theme/js/main.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../../../theme/emoji/css/basic/emojify.min.css" />
+  <script src="../../../../theme/emoji/js/emojify.min.js"></script>
+  <script>
+    emojify.setConfig({
+        img_dir : '../../../../theme/emoji/images/basic'
+    });
+    emojify.run();
+</script>
+</body>
+</html>

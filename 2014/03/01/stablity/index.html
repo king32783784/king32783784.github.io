@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="link">
+<head>
+
+        <title>Reboot test脚本</title>
+        <meta charset="utf-8" />
+        <link href="http://king32783784.github.io/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Hi | World Full Atom Feed" />
+        <link href="http://king32783784.github.io/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Hi | World Full RSS Feed" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="../../../../theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="../../../../theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="../../../../theme/pygment.css" />
+        <link rel="stylesheet" type="text/css" href="../../../../theme/SentyZHAO/SentyZHAO.css" />
+
+        <script src="../../../../theme/js/libs/jquery-1.9.1.min.js"></script>
+        <script src="../../../../theme/js/libs/modernizr-2.6.2.min.js"></script>
+</head>
+
+<body id="index" class="home">
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1 style='font-family: "SentyZHAO";'><a href="../../../..">Hi | World <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+
+              <ul class="columns" style='font-family: "SentyZHAO";'>
+                <li><a href="../../../..">主 页</a></li>
+
+                <li><a href="../../../../pages/tech-share.html">归档</a></li>
+                <li><a href="../../../../pages/opensource.html">开源项目</a></li>
+                <li><a href="../../../../pages/links.html">链接</a></li>
+                <li><a href="../../../../pages/Reference material.html">参考资料</a></li>
+                <li><a href="../../../../pages/todo list.html">Todo List</a></li>
+                <li><a href="../../../../pages/tools.html">工具集</a></li>
+                <li class="active"><a href="../../../../pages/aboutme.html">关于我</a></li>
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+   <div class="row">
+        <div class="columns">
+            <header>
+              <h2 class="entry-title">
+                <a href="../../../../2014/03/01/stablity/" rel="bookmark" title="Permalink to Reboot test脚本">Reboot test脚本</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2014-03-01T00:00:00+08:00">
+                六 01 三月 2014
+              </abbr>
+              <address class="vcard author">
+                By <a class="url fn" href="../../../../author/penglee.html">peng.lee</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              </head><body><p>为了验证操作系统启动的稳定性，需要进行500次启动测试，便写了脚本实现。</p>
+<p>脚本如下：</p>
+<div class="highlight"><pre><span></span><span class="x">HOME=`pwd`</span>
+<span class="x">sleep 15</span>
+<span class="x">desktop_x86_4x()</span><span class="err">{</span><span class="x"></span>
+<span class="x">if [ ! -f /etc/reboot.sh ];then</span>
+<span class="x">    cp -rf </span><span class="p">$</span><span class="nv">HOME</span><span class="x">/reboot.sh /etc/</span>
+<span class="x">fi</span>
+<span class="x">if grep "reboot.sh" /etc/profile &gt; /dev/null;</span>
+<span class="x">then</span>
+<span class="x">   break;</span>
+<span class="x">else</span>
+<span class="x">   echo "/bin/sh /etc/reboot.sh &amp;" &gt;&gt; /etc/profile</span>
+<span class="x">fi</span>
+<span class="x">if id rebootuser &gt; /dev/null 2&gt;&amp;1; then</span>
+<span class="x">break</span>
+<span class="x">else</span>
+<span class="x">useradd rebootuser</span>
+<span class="x">passwd rebootuser &lt;&lt; TEST</span>
+<span class="x">abc123</span>
+<span class="x">abc123</span>
+<span class="x">TEST</span>
+<span class="x">echo "[Autologin]" &gt;&gt; /etc/sddm.conf</span>
+<span class="x">echo "Session=plasma.desktop" &gt;&gt; /etc/sddm.conf</span>
+<span class="x">echo "User=rebootuser" &gt;&gt; /etc/sddm.conf</span>
+<span class="x">fi</span>
+<span class="x">}</span>
+
+<span class="x">if id rebootuser &gt; /dev/null 2&gt;&amp;1; then</span>
+<span class="x">    break</span>
+<span class="x">else</span>
+<span class="x">    desktop_x86_4x</span>
+<span class="x">fi</span>
+
+<span class="x">if [ ! -f /etc/tmpbash ];then</span>
+<span class="x">    echo </span><span class="p">$</span><span class="x">1 &gt;&gt; /etc/tmpbash</span>
+<span class="x">fi</span>
+
+<span class="x">if [ ! -f /home/rebootuser/reboot.log ]; then</span>
+<span class="x">    echo "Total=</span><span class="p">$</span><span class="x">1 , Times=0 , start at `date`" &gt;&gt; /home/rebootuser/reboot.log</span>
+<span class="x">    chmod 777 /home/rebootuser/reboot.log</span>
+<span class="x">fi</span>
+
+<span class="x">times=`cat /etc/tmpbash`</span>
+
+<span class="x">n=`cat /home/rebootuser/reboot.log | awk -F, '</span><span class="err">{</span><span class="x">print </span><span class="p">$</span><span class="x">2}' | awk -F= '</span><span class="err">{</span><span class="x">print </span><span class="p">$</span><span class="x">2}' | tail -1`</span>
+<span class="x">if (( </span><span class="p">$</span><span class="nv">n</span><span class="x"> &lt; </span><span class="p">$</span><span class="nv">times</span><span class="x"> ));then</span>
+<span class="x">    N=</span><span class="p">$(($</span><span class="nv">n</span> <span class="err">+</span> <span class="m">1</span><span class="p">))</span><span class="x"></span>
+<span class="x">    echo " Total=</span><span class="p">$</span><span class="nv">times</span><span class="x"> , Times=</span><span class="p">$</span><span class="nv">N</span><span class="x"> , reboot at `date`" &gt;&gt; /home/rebootuser/reboot.log</span>
+<span class="x">    sleep 60</span>
+<span class="x">    reboot</span>
+<span class="x">else</span>
+<span class="x">    rm /etc/reboot.sh</span>
+<span class="x">    sed -i '</span><span class="p">$</span><span class="nv">d</span><span class="x">' /etc/profile</span>
+<span class="x">fi</span>
+</pre></div>
+            </div><!-- /.entry-content -->
+            <div class="comments">
+              <h3>Comments</h3>
+              <div id="disqus_thread"></div>
+              <script type="text/javascript">
+                var disqus_identifier = "2014/03/01/stablity/";
+                (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://xiayfblackwhite.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+              </script>
+            </div>
+        </div><!-- /.twelve.columns -->
+ </div><!-- /.row -->
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+                <li><div class="btn primary"><a href="http://github.com/king32783784" target="_blank">Github</a></div></li>
+
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+<script type="text/javascript">
+    var disqus_shortname = 'xiayfblackwhite';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+  <script src="../../../../theme/js/libs/gumby.min.js"></script>
+  <script src="../../../../theme/js/plugins.js"></script>
+  <script src="../../../../theme/js/main.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../../../theme/emoji/css/basic/emojify.min.css" />
+  <script src="../../../../theme/emoji/js/emojify.min.js"></script>
+  <script>
+    emojify.setConfig({
+        img_dir : '../../../../theme/emoji/images/basic'
+    });
+    emojify.run();
+</script>
+</body>
+</html>
