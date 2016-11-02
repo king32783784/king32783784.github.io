@@ -85,7 +85,7 @@
                     <abbr class="published" title="2016-08-12T00:00:00+08:00"> 五 12 八月 2016 </abbr>
 <address class="vcard author">By <a class="url fn" href="./author/others.html">others</a></address>                </footer><!-- /.post-info -->
                 <div class="entry-content"> </head><body><p>在 <a href="https://king32783784.github.io/lipeng/2016/08/11/Docker/">Docker基础技术：Linux Namespace（上篇)</a>中我们了解了，UTD、IPC、PID、Mount 四个namespace，我们模仿Docker做了一个相当相当山寨的镜像。在这一篇中，主要想向大家介绍Linux的User和Network的Namespace。
-<a href="https://raw.githubusercontent.com/king32783784/king32783784.github.io/master/tmpfile/Autotest1.png"></a></p>
+<img height="280" src="https://raw.githubusercontent.com/king32783784/king32783784.github.io/master/tmpfile/Autotest1.png" width="420"/></p>
 <p>好，下面我们就介绍一下还剩下的这两个Namespace。</p>
 <h4 id="user-namespace">User Namespace</h4>
 <p><strong>User Namespace</strong> 主要是用了CLONE_NEWUSER的参数。使用了这个参数后，内部看到的UID和GID已经与外部不同了，默认显示为65534。那是因为容器找不到其真正的UID所以，设置上了最大的UID（其设置定义在/proc/sys/kernel/overflowuid）。</p>
@@ -557,19 +557,19 @@ Determine type of FILEs.
 
 <h4>标签</h4>
 	<ul>
-	    <li class="tag-2"><a href="./tag/ltp.html">LTP</a></li>
-	    <li class="tag-4"><a href="./tag/unixbian-cheng.html">unix编程</a></li>
-	    <li class="tag-1"><a href="./tag/zi-dong-hua-ce-shi.html">自动化测试</a></li>
-	    <li class="tag-4"><a href="./tag/linux.html">Linux</a></li>
+	    <li class="tag-3"><a href="./tag/docker.html">Docker</a></li>
+	    <li class="tag-4"><a href="./tag/benchmark.html">benchmark</a></li>
+	    <li class="tag-3"><a href="./tag/shell.html">shell</a></li>
+	    <li class="tag-3"><a href="./tag/suan-fa.html">算法</a></li>
+	    <li class="tag-3"><a href="./tag/python.html">Python</a></li>
+	    <li class="tag-3"><a href="./tag/xing-neng-ce-shi.html">性能测试</a></li>
 	    <li class="tag-1"><a href="./tag/selenium.html">Selenium</a></li>
 	    <li class="tag-4"><a href="./tag/qi-ta.html">其他</a></li>
-	    <li class="tag-4"><a href="./tag/benchmark.html">benchmark</a></li>
-	    <li class="tag-3"><a href="./tag/xing-neng-ce-shi.html">性能测试</a></li>
-	    <li class="tag-3"><a href="./tag/docker.html">Docker</a></li>
-	    <li class="tag-3"><a href="./tag/shell.html">shell</a></li>
-	    <li class="tag-3"><a href="./tag/python.html">Python</a></li>
-	    <li class="tag-3"><a href="./tag/suan-fa.html">算法</a></li>
 	    <li class="tag-4"><a href="./tag/pyunit.html">PyUnit</a></li>
+	    <li class="tag-4"><a href="./tag/unixbian-cheng.html">unix编程</a></li>
+	    <li class="tag-2"><a href="./tag/ltp.html">LTP</a></li>
+	    <li class="tag-1"><a href="./tag/zi-dong-hua-ce-shi.html">自动化测试</a></li>
+	    <li class="tag-4"><a href="./tag/linux.html">Linux</a></li>
 </ul>
 
 <!--

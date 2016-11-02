@@ -269,7 +269,7 @@
 &lt;p&gt;摇篮里，糖糖刚刚睡醒，正迷糊着揉眼睛。他看着糖糖的脸，疲倦了一天的心软下来。他想起最初在垃圾站门口抱起糖糖时，她那张脏兮兮的哭累了的小脸。他从没后悔将她抱来。她笑了，吧唧了一下小嘴。他觉得自己还是幸运的。尽管伤了腿，但毕竟没被抓住，还带了钱回来。他不知道糖糖什么时候才能学会唱歌跳舞，成为一个淑女。&lt;/p&gt;
 &lt;p&gt;他看看时间，该去上班了。&lt;/p&gt;
 &lt;p&gt;（全文完）&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">others</dc:creator><pubDate>Thu, 01 Sep 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-09-01:2016/09/01/other/</guid><category>其他</category></item><item><title>Docker基础技术：Linux Namespace（下）</title><link>http://king32783784.github.io/2016/08/12/Docker/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;在 &lt;a href="https://king32783784.github.io/lipeng/2016/08/11/Docker/"&gt;Docker基础技术：Linux Namespace（上篇)&lt;/a&gt;中我们了解了，UTD、IPC、PID、Mount 四个namespace，我们模仿Docker做了一个相当相当山寨的镜像。在这一篇中，主要想向大家介绍Linux的User和Network的Namespace。
-&lt;a href="https://raw.githubusercontent.com/king32783784/king32783784.github.io/master/tmpfile/Autotest1.png"&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;img height="280" src="https://raw.githubusercontent.com/king32783784/king32783784.github.io/master/tmpfile/Autotest1.png" width="420"/&gt;&lt;/p&gt;
 &lt;p&gt;好，下面我们就介绍一下还剩下的这两个Namespace。&lt;/p&gt;
 &lt;h4 id="user-namespace"&gt;User Namespace&lt;/h4&gt;
 &lt;p&gt;&lt;strong&gt;User Namespace&lt;/strong&gt; 主要是用了CLONE_NEWUSER的参数。使用了这个参数后，内部看到的UID和GID已经与外部不同了，默认显示为65534。那是因为容器找不到其真正的UID所以，设置上了最大的UID（其设置定义在/proc/sys/kernel/overflowuid）。&lt;/p&gt;

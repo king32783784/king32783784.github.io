@@ -62,7 +62,7 @@
                     <abbr class="published" title="2016-08-12T00:00:00+08:00"> 五 12 八月 2016 </abbr>
 <address class="vcard author">By <a class="url fn" href="../author/others.html">others</a></address>                </footer><!-- /.post-info -->
                 <div class="entry-content"> </head><body><p>在 <a href="https://king32783784.github.io/lipeng/2016/08/11/Docker/">Docker基础技术：Linux Namespace（上篇)</a>中我们了解了，UTD、IPC、PID、Mount 四个namespace，我们模仿Docker做了一个相当相当山寨的镜像。在这一篇中，主要想向大家介绍Linux的User和Network的Namespace。
-<a href="https://raw.githubusercontent.com/king32783784/king32783784.github.io/master/tmpfile/Autotest1.png"></a></p>
+<img height="280" src="https://raw.githubusercontent.com/king32783784/king32783784.github.io/master/tmpfile/Autotest1.png" width="420"/></p>
 <p>好，下面我们就介绍一下还剩下的这两个Namespace。</p>
 <h4 id="user-namespace">User Namespace</h4>
 <p><strong>User Namespace</strong> 主要是用了CLONE_NEWUSER的参数。使用了这个参数后，内部看到的UID和GID已经与外部不同了，默认显示为65534。那是因为容器找不到其真正的UID所以，设置上了最大的UID（其设置定义在/proc/sys/kernel/overflowuid）。</p>
@@ -92,7 +92,7 @@
                 <footer class="post-info">
                     <abbr class="published" title="2015-11-01T00:00:00+08:00"> 日 01 十一月 2015 </abbr>
 <address class="vcard author">By <a class="url fn" href="../author/penglee.html">penglee</a></address>                </footer><!-- /.post-info -->
-                <div class="entry-content"> </head><body><p><img alt="" src="https://king32783784.github.io/lipeng/tmpfile/autotestlogo.png"/></p>
+                <div class="entry-content"> </head><body><p><img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
 <h3 id="autotest_local-mo-kuai">autotest_local 模块</h3>
 <p>class autotest.client.autotest_local.AutotestLocalAPP</p>
 <p>本地自动测试，指定一个control文件启动测试</p>
@@ -122,7 +122,7 @@
                 <footer class="post-info">
                     <abbr class="published" title="2015-08-22T00:00:00+08:00"> 六 22 八月 2015 </abbr>
 <address class="vcard author">By <a class="url fn" href="../author/penglee.html">penglee</a></address>                </footer><!-- /.post-info -->
-                <div class="entry-content"> </head><body><p><img alt="" src="https://king32783784.github.io/lipeng/tmpfile/autotestlogo.png"/></p>
+                <div class="entry-content"> </head><body><p><img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
 <h3 id="running-autotest-in-a-guest">Running Autotest In a Guest</h3>
 <p>接下来看一下虚拟机guest执行一次测试的列子。control文件有点特别的是需要在host中运行OProfile收集运行时的信息。使用oprofile前，需要在guest安装。
 给KVm指定一个IP，就会有一个虚拟机生成。试图运行虚拟机里面的oprofile，但没有成功。最后，选项"opcontrol --setup"应根据host中vmlinux位置调整。</p>
@@ -148,7 +148,7 @@ addresses= [{"mac":"02:00:00:00:00:01", "ip":"10.0.0.1 ...</pre></div></body> </
                 <footer class="post-info">
                     <abbr class="published" title="2015-08-21T00:00:00+08:00"> 五 21 八月 2015 </abbr>
 <address class="vcard author">By <a class="url fn" href="../author/penglee.html">penglee</a></address>                </footer><!-- /.post-info -->
-                <div class="entry-content"> </head><body><p><img alt="" src="https://king32783784.github.io/lipeng/tmpfile/autotestlogo.png"/></p>
+                <div class="entry-content"> </head><body><p><img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
 <h3 id="kvmzhi-chi">KVM支持</h3>
 <p>如前所述，Autoserv 支持控制虚拟机。这个对象设计的可以支持虚拟机管理/hypervisors。一开始，只支持kvm,为了支持KVM，你需要做：
     1.创建虚拟机，运行在虚拟层的机器
@@ -177,7 +177,7 @@ kvm_on_remote_host ...</pre></div></body> </div><!-- /.entry-content -->
                 <footer class="post-info">
                     <abbr class="published" title="2015-08-20T00:00:00+08:00"> 四 20 八月 2015 </abbr>
 <address class="vcard author">By <a class="url fn" href="../author/penglee.html">penglee</a></address>                </footer><!-- /.post-info -->
-                <div class="entry-content"> </head><body><p><img alt="" src="https://king32783784.github.io/lipeng/tmpfile/autotestlogo.png"/></p>
+                <div class="entry-content"> </head><body><p><img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
 <p>Autoserv 是“自动化机器控制“的框架
 Autoserv 目的是控制机器，它可以：</p>
 <ul>
@@ -216,7 +216,7 @@ print remote_host.run ...</pre></div></body> </div><!-- /.entry-content -->
                 <footer class="post-info">
                     <abbr class="published" title="2015-08-19T00:00:00+08:00"> 三 19 八月 2015 </abbr>
 <address class="vcard author">By <a class="url fn" href="../author/penglee.html">penglee</a></address>                </footer><!-- /.post-info -->
-                <div class="entry-content"> </head><body><p><img alt="" src="https://king32783784.github.io/lipeng/tmpfile/autotestlogo.png"/></p>
+                <div class="entry-content"> </head><body><p><img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
 <h2 id="zhi-xing-wai-bu-ce-shi">执行外部测试</h2>
 <p>autotest可以像执行自身测试一样执行外部测试．</p>
 <h3 id="zhi-xing-ce-shi">执行测试</h3>
@@ -251,7 +251,7 @@ print remote_host.run ...</pre></div></body> </div><!-- /.entry-content -->
                 <footer class="post-info">
                     <abbr class="published" title="2015-08-18T00:00:00+08:00"> 二 18 八月 2015 </abbr>
 <address class="vcard author">By <a class="url fn" href="../author/penglee.html">penglee</a></address>                </footer><!-- /.post-info -->
-                <div class="entry-content"> </head><body><p><img alt="" src="https://king32783784.github.io/lipeng/tmpfile/autotestlogo.png"/></p>
+                <div class="entry-content"> </head><body><p><img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
 <h2 id="linuxfa-xing-ban-jian-ce">linux发行版检测</h2>
 <p>Autotest有个功能,就是让测试清晰了解到它运行在什么样的发行版上.
 这个功能是由probe类群的实现和注册实现的.
@@ -294,7 +294,7 @@ redhat
                 <footer class="post-info">
                     <abbr class="published" title="2015-08-17T00:00:00+08:00"> 一 17 八月 2015 </abbr>
 <address class="vcard author">By <a class="url fn" href="../author/penglee.html">penglee</a></address>                </footer><!-- /.post-info -->
-                <div class="entry-content"> </head><body><p><img alt="" src="https://king32783784.github.io/lipeng/tmpfile/autotestlogo.png"/></p>
+                <div class="entry-content"> </head><body><p><img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
 <h2 id="shi-yong-he-tian-jia-ce-shi-fen-xi-qi">使用和添加测试分析器</h2>
 <p>添加一个分析器和添加一个测试项目类似.每个分析器都有自己的子目录(client/profilers或你可以查看profilers/),一个标准例子:</p>
 <ul>
@@ -351,19 +351,19 @@ job.profilers.delete('readprofile')
 
 <h4>标签</h4>
 	<ul>
-	    <li class="tag-2"><a href="../tag/ltp.html">LTP</a></li>
-	    <li class="tag-4"><a href="../tag/unixbian-cheng.html">unix编程</a></li>
-	    <li class="tag-1"><a href="../tag/zi-dong-hua-ce-shi.html">自动化测试</a></li>
-	    <li class="tag-4"><a href="../tag/linux.html">Linux</a></li>
+	    <li class="tag-3"><a href="../tag/docker.html">Docker</a></li>
+	    <li class="tag-4"><a href="../tag/benchmark.html">benchmark</a></li>
+	    <li class="tag-3"><a href="../tag/shell.html">shell</a></li>
+	    <li class="tag-3"><a href="../tag/suan-fa.html">算法</a></li>
+	    <li class="tag-3"><a href="../tag/python.html">Python</a></li>
+	    <li class="tag-3"><a href="../tag/xing-neng-ce-shi.html">性能测试</a></li>
 	    <li class="tag-1"><a href="../tag/selenium.html">Selenium</a></li>
 	    <li class="tag-4"><a href="../tag/qi-ta.html">其他</a></li>
-	    <li class="tag-4"><a href="../tag/benchmark.html">benchmark</a></li>
-	    <li class="tag-3"><a href="../tag/xing-neng-ce-shi.html">性能测试</a></li>
-	    <li class="tag-3"><a href="../tag/docker.html">Docker</a></li>
-	    <li class="tag-3"><a href="../tag/shell.html">shell</a></li>
-	    <li class="tag-3"><a href="../tag/python.html">Python</a></li>
-	    <li class="tag-3"><a href="../tag/suan-fa.html">算法</a></li>
 	    <li class="tag-4"><a href="../tag/pyunit.html">PyUnit</a></li>
+	    <li class="tag-4"><a href="../tag/unixbian-cheng.html">unix编程</a></li>
+	    <li class="tag-2"><a href="../tag/ltp.html">LTP</a></li>
+	    <li class="tag-1"><a href="../tag/zi-dong-hua-ce-shi.html">自动化测试</a></li>
+	    <li class="tag-4"><a href="../tag/linux.html">Linux</a></li>
 </ul>
 
 <!--

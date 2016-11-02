@@ -3393,7 +3393,7 @@ test_shuffle (__main__.TestSequenceFunctions) ... ok
         &lt;span class="n"&gt;unittest&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;测试用例通过继承unittest.TestCase创建。测试用例中3个独立的测试函数以"test"为开头命名。通过使用这种命名方式，执行器可以知道哪些方法是测试方法。&lt;/p&gt;
-&lt;p&gt;3个测试方法同样调用assertEqual()函数来检查预期结果；调用assertTrue()函数来判断条件；调用assertRaises()函数来验证是否触发了预期的异常。这3个方法作为断言语句判断用例执行正确性，以便于执行器收集测试结果并产生测试报告。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">peng.lee</dc:creator><pubDate>Fri, 01 Jan 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-01-01:2016/01/01/python/</guid><category>PyUnit</category></item><item><title>Autotest-client Package(1)</title><link>http://king32783784.github.io/2015/11/01/autotest/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;img alt="" src="https://king32783784.github.io/lipeng/tmpfile/autotestlogo.png"/&gt;&lt;/p&gt;
+&lt;p&gt;3个测试方法同样调用assertEqual()函数来检查预期结果；调用assertTrue()函数来判断条件；调用assertRaises()函数来验证是否触发了预期的异常。这3个方法作为断言语句判断用例执行正确性，以便于执行器收集测试结果并产生测试报告。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">peng.lee</dc:creator><pubDate>Fri, 01 Jan 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-01-01:2016/01/01/python/</guid><category>PyUnit</category></item><item><title>Autotest-client Package(1)</title><link>http://king32783784.github.io/2015/11/01/autotest/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
 &lt;h3 id="autotest_local-mo-kuai"&gt;autotest_local 模块&lt;/h3&gt;
 &lt;p&gt;class autotest.client.autotest_local.AutotestLocalAPP&lt;/p&gt;
 &lt;p&gt;本地自动测试，指定一个control文件启动测试&lt;/p&gt;
@@ -3477,8 +3477,8 @@ test_shuffle (__main__.TestSequenceFunctions) ... ok
         &lt;span class="c1"&gt;# JOB: run the specifed job control file&lt;/span&gt;
         &lt;span class="n"&gt;job&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;runjob&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;realpath&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;drop_caches&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;options&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;上一篇
-下一篇&lt;a href=""&gt;Autotest:&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">penglee</dc:creator><pubDate>Sun, 01 Nov 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-11-01:2015/11/01/autotest/</guid><category>自动化测试</category></item><item><title>Autotest-Autotest Remote (Autoserv)(三）</title><link>http://king32783784.github.io/2015/08/22/autotest/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;img alt="" src="https://king32783784.github.io/lipeng/tmpfile/autotestlogo.png"/&gt;&lt;/p&gt;
+&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/20/autotest/"&gt;Autotest： Autotest-Autotest Remote (Autoserv)(三）&amp;gt;&amp;gt;&lt;/a&gt;
+下一篇&lt;a href=""&gt;Autotest:&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">penglee</dc:creator><pubDate>Sun, 01 Nov 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-11-01:2015/11/01/autotest/</guid><category>自动化测试</category></item><item><title>Autotest-Autotest Remote (Autoserv)(三）</title><link>http://king32783784.github.io/2015/08/22/autotest/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
 &lt;h3 id="running-autotest-in-a-guest"&gt;Running Autotest In a Guest&lt;/h3&gt;
 &lt;p&gt;接下来看一下虚拟机guest执行一次测试的列子。control文件有点特别的是需要在host中运行OProfile收集运行时的信息。使用oprofile前，需要在guest安装。
 给KVm指定一个IP，就会有一个虚拟机生成。试图运行虚拟机里面的oprofile，但没有成功。最后，选项"opcontrol --setup"应根据host中vmlinux位置调整。&lt;/p&gt;
@@ -3612,8 +3612,8 @@ def install_kvm(kvm_on_host_var_name, host, source, addresses):
 
     parallel([server_command, client_command])
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;上一篇
-下一篇&lt;a href=""&gt;Autotest:&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">penglee</dc:creator><pubDate>Sat, 22 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-08-22:2015/08/22/autotest/</guid><category>自动化测试</category></item><item><title>Autotest-Autotest Remote (Autoserv)(二）</title><link>http://king32783784.github.io/2015/08/21/autotest/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;img alt="" src="https://king32783784.github.io/lipeng/tmpfile/autotestlogo.png"/&gt;&lt;/p&gt;
+&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/20/autotest/"&gt;Autotest： Autotest-Autotest Remote (Autoserv)(二）&amp;gt;&amp;gt;&lt;/a&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/08/22/autotest/"&gt;Autotest:Autotest-client Package(1)&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">penglee</dc:creator><pubDate>Sat, 22 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-08-22:2015/08/22/autotest/</guid><category>自动化测试</category></item><item><title>Autotest-Autotest Remote (Autoserv)(二）</title><link>http://king32783784.github.io/2015/08/21/autotest/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
 &lt;h3 id="kvmzhi-chi"&gt;KVM支持&lt;/h3&gt;
 &lt;p&gt;如前所述，Autoserv 支持控制虚拟机。这个对象设计的可以支持虚拟机管理/hypervisors。一开始，只支持kvm,为了支持KVM，你需要做：
     1.创建虚拟机，运行在虚拟层的机器
@@ -3789,8 +3789,8 @@ iface vhost2 inet static
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/lipeng/2015/08/20/autotest/"&gt;Autotest： Autotest-Autotest Remote (Autoserv)(一）&amp;gt;&amp;gt;&lt;/a&gt;
-下一篇&lt;a href=""&gt;Autotest:&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">penglee</dc:creator><pubDate>Fri, 21 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-08-21:2015/08/21/autotest/</guid><category>自动化测试</category></item><item><title>Autotest-Autotest Remote (Autoserv)（一）</title><link>http://king32783784.github.io/2015/08/20/autotest/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;img alt="" src="https://king32783784.github.io/lipeng/tmpfile/autotestlogo.png"/&gt;&lt;/p&gt;
+&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/20/autotest/"&gt;Autotest： Autotest-Autotest Remote (Autoserv)(一）&amp;gt;&amp;gt;&lt;/a&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/08/22/autotest/"&gt;Autotest:Autotest-Autotest Remote (Autoserv)(三）&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">penglee</dc:creator><pubDate>Fri, 21 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-08-21:2015/08/21/autotest/</guid><category>自动化测试</category></item><item><title>Autotest-Autotest Remote (Autoserv)（一）</title><link>http://king32783784.github.io/2015/08/20/autotest/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
 &lt;p&gt;Autoserv 是“自动化机器控制“的框架
 Autoserv 目的是控制机器，它可以：&lt;/p&gt;
 &lt;ul&gt;
@@ -3951,8 +3951,8 @@ print "Done"
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;未完待续&lt;/p&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/lipeng/2015/08/19/autotest/"&gt;Autotest：Autotest-others&amp;gt;&amp;gt;&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/lipeng/2015/08/21/autotest/"&gt;Autotest:Autotest-Autotest Remote (Autoserv)(二）&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">penglee</dc:creator><pubDate>Thu, 20 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-08-20:2015/08/20/autotest/</guid><category>自动化测试</category></item><item><title>Autotest-others</title><link>http://king32783784.github.io/2015/08/19/autotest/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;img alt="" src="https://king32783784.github.io/lipeng/tmpfile/autotestlogo.png"/&gt;&lt;/p&gt;
+&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/19/autotest/"&gt;Autotest：Autotest-others&amp;gt;&amp;gt;&lt;/a&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/08/20/autotest/"&gt;Autotest:Autotest-Autotest Remote (Autoserv)(二）&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">penglee</dc:creator><pubDate>Thu, 20 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-08-20:2015/08/20/autotest/</guid><category>自动化测试</category></item><item><title>Autotest-others</title><link>http://king32783784.github.io/2015/08/19/autotest/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
 &lt;h2 id="zhi-xing-wai-bu-ce-shi"&gt;执行外部测试&lt;/h2&gt;
 &lt;p&gt;autotest可以像执行自身测试一样执行外部测试．&lt;/p&gt;
 &lt;h3 id="zhi-xing-ce-shi"&gt;执行测试&lt;/h3&gt;
@@ -3997,8 +3997,8 @@ key2=value2
 &lt;p&gt;autotest local 还有一些小的细节问题，不再一一介绍．&lt;/p&gt;
 &lt;p&gt;下篇将开始介绍Remote (Former Server)．&lt;/p&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/lipeng/2015/08/18/autotest/"&gt;Autotest：Autotest-add test&amp;gt;&amp;gt;&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/lipeng/2015/08/20/autotest/"&gt;Autotest:Autotest-Autotest Remote (Autoserv)&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">penglee</dc:creator><pubDate>Wed, 19 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-08-19:2015/08/19/autotest/</guid><category>自动化测试</category></item><item><title>Autotest-Linux distribution detection</title><link>http://king32783784.github.io/2015/08/18/autotest/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;img alt="" src="https://king32783784.github.io/lipeng/tmpfile/autotestlogo.png"/&gt;&lt;/p&gt;
+&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/18/autotest/"&gt;Autotest：Autotest-add test&amp;gt;&amp;gt;&lt;/a&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/08/20/autotest/"&gt;Autotest:Autotest-Autotest Remote (Autoserv)&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">penglee</dc:creator><pubDate>Wed, 19 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-08-19:2015/08/19/autotest/</guid><category>自动化测试</category></item><item><title>Autotest-Linux distribution detection</title><link>http://king32783784.github.io/2015/08/18/autotest/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
 &lt;h2 id="linuxfa-xing-ban-jian-ce"&gt;linux发行版检测&lt;/h2&gt;
 &lt;p&gt;Autotest有个功能,就是让测试清晰了解到它运行在什么样的发行版上.
 这个功能是由probe类群的实现和注册实现的.
@@ -4442,8 +4442,8 @@ redhat
             &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;arch&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;arch&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/lipeng/2015/08/17/autotest/"&gt;Autotest：Autotest-Using and developing job profilers&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/lipeng/2015/08/19/autotest/"&gt;Autotest:Autotest-others&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">penglee</dc:creator><pubDate>Tue, 18 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-08-18:2015/08/18/autotest/</guid><category>自动化测试</category></item><item><title>Autotest-Using and developing job profilers</title><link>http://king32783784.github.io/2015/08/17/autotest/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;img alt="" src="https://king32783784.github.io/lipeng/tmpfile/autotestlogo.png"/&gt;&lt;/p&gt;
+&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/17/autotest/"&gt;Autotest：Autotest-Using and developing job profilers&lt;/a&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/08/19/autotest/"&gt;Autotest:Autotest-others&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">penglee</dc:creator><pubDate>Tue, 18 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-08-18:2015/08/18/autotest/</guid><category>自动化测试</category></item><item><title>Autotest-Using and developing job profilers</title><link>http://king32783784.github.io/2015/08/17/autotest/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
 &lt;h2 id="shi-yong-he-tian-jia-ce-shi-fen-xi-qi"&gt;使用和添加测试分析器&lt;/h2&gt;
 &lt;p&gt;添加一个分析器和添加一个测试项目类似.每个分析器都有自己的子目录(client/profilers或你可以查看profilers/),一个标准例子:&lt;/p&gt;
 &lt;ul&gt;
@@ -4521,8 +4521,8 @@ self.cmd = self.srcdir + '/sys-utils/readprofile'
 &lt;h3 id="tian-jia-zi-ji-de-profiler"&gt;添加自己的profiler&lt;/h3&gt;
 &lt;p&gt;只需要在profilers下创建一个新目录,然后添加自己的控制文件,源码和控制脚本.最简单的方式是直接复制已有的readprofile.py为mytest.py,并且修改顶部的类名.&lt;/p&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/lipeng/2015/08/16/autotest/"&gt;Autotest：Autotest-add test&amp;gt;&amp;gt;&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/lipeng/2015/08/18/autotest/"&gt;Autotest:Autotest-Linux distribution detection&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">penglee</dc:creator><pubDate>Mon, 17 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-08-17:2015/08/17/autotest/</guid><category>自动化测试</category></item><item><title>Autotest-add test</title><link>http://king32783784.github.io/2015/08/16/autotest/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;img alt="" src="https://king32783784.github.io/lipeng/tmpfile/autotestlogo.png"/&gt;&lt;/p&gt;
+&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/16/autotest/"&gt;Autotest：Autotest-add test&amp;gt;&amp;gt;&lt;/a&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/08/18/autotest/"&gt;Autotest:Autotest-Linux distribution detection&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">penglee</dc:creator><pubDate>Mon, 17 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-08-17:2015/08/17/autotest/</guid><category>自动化测试</category></item><item><title>Autotest-add test</title><link>http://king32783784.github.io/2015/08/16/autotest/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
 &lt;h2 id="ce-shi-mo-kuai-kai-fa"&gt;测试模块开发&lt;/h2&gt;
 &lt;p&gt;测试模块必需是独立的单元，包含测试需要的所有内容（除了调用测试框架的）&lt;/p&gt;
 &lt;p&gt;测试模块需要：&lt;/p&gt;
@@ -4597,8 +4597,8 @@ nprocs = 4
 &lt;p&gt;&lt;strong&gt;添加自己的测试&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;只需创建测试下一个新的子目录，并添加自己的控制文件，源代码和包装。 比较简单的做法是,复制dbench.py ​​为mytest.py ,然后对它进行编辑.&lt;/p&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/lipeng/2015/08/15/autotest/"&gt;Autotest：Autotest-Control file specification&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;
-下一篇&lt;a href=""&gt;Autotest:&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">penglee</dc:creator><pubDate>Sun, 16 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-08-16:2015/08/16/autotest/</guid><category>自动化测试</category></item><item><title>Autotest-Control file specification</title><link>http://king32783784.github.io/2015/08/15/autotest/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;img alt="" src="https://king32783784.github.io/lipeng/tmpfile/autotestlogo.png"/&gt;&lt;/p&gt;
+&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/15/autotest/"&gt;Autotest：Autotest-Control file specification&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/08/17/autotest/"&gt;Autotest:Using and developing job profilers&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">penglee</dc:creator><pubDate>Sun, 16 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-08-16:2015/08/16/autotest/</guid><category>自动化测试</category></item><item><title>Autotest-Control file specification</title><link>http://king32783784.github.io/2015/08/15/autotest/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
 &lt;h2 id="control-file-specification"&gt;Control file specification&lt;/h2&gt;
 &lt;p&gt;该篇主要介绍control文件的标准.该标准主要为了使自定义的control文件能够提供前端或测试所需要的信息,并且能够通过前端修改.
 主要内容:&lt;/p&gt;
@@ -4746,8 +4746,8 @@ job.run_test('reboot', machine, type="hard")
 parallel_simple(run, machines)
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/lipeng/2015/08/14/autotest/"&gt;Autotest:Autotest-client control&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/lipeng/2015/08/16/autotest/"&gt;Autotest:Autotest-add test&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">penglee</dc:creator><pubDate>Sat, 15 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-08-15:2015/08/15/autotest/</guid><category>自动化测试</category></item><item><title>Autotest-client control</title><link>http://king32783784.github.io/2015/08/14/autotest/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;img alt="" src="https://king32783784.github.io/lipeng/tmpfile/autotestlogo.png"/&gt;&lt;/p&gt;
+&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/14/autotest/"&gt;Autotest:Autotest-client control&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/08/16/autotest/"&gt;Autotest:Autotest-add test&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">penglee</dc:creator><pubDate>Sat, 15 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-08-15:2015/08/15/autotest/</guid><category>自动化测试</category></item><item><title>Autotest-client control</title><link>http://king32783784.github.io/2015/08/14/autotest/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
 &lt;h2 id="client-control-files"&gt;Client Control files&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;主要内容&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -4908,8 +4908,8 @@ job.parallel([first_task], [second_task])
 &lt;p&gt;如果你想这样更复杂的东西在你的任务中,而不是要求单一的功能，那么你就必须定义自己的函数来做到这一点，如在第一个例子。&lt;/p&gt;
 &lt;p&gt;并行任务执行在自己的地址空间,你不比担心.但是毕竟是运行在同一台物理机中.仍然需要主要避免访问同一资源,如相同的文件.&lt;/p&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/lipeng/2015/08/13/autotest/"&gt;Autotest：Autotest-Local&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/lipeng/2015/08/15/autotest/"&gt;Autotest：Autotest-Control file specification&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">penglee</dc:creator><pubDate>Fri, 14 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-08-14:2015/08/14/autotest/</guid><category>自动化测试</category></item><item><title>Autotest-Local</title><link>http://king32783784.github.io/2015/08/13/autotest02/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;img alt="" src="https://king32783784.github.io/lipeng/tmpfile/autotestlogo.png"/&gt;&lt;/p&gt;
+&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/13/autotest02/"&gt;Autotest：Autotest-Local&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/08/15/autotest/"&gt;Autotest：Autotest-Control file specification&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">penglee</dc:creator><pubDate>Fri, 14 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-08-14:2015/08/14/autotest/</guid><category>自动化测试</category></item><item><title>Autotest-Local</title><link>http://king32783784.github.io/2015/08/13/autotest02/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
 &lt;h2 id="local-former-client"&gt;Local (Former Client)&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;主要内容&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -4949,8 +4949,8 @@ sudo rm -rf client/results
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;注意,尽量在一个测试机或虚拟机执行,不然会丢失之前系统的启动设置.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/lipeng/2015/08/12/Autotest/"&gt;Autotest：Autotest-summary&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/lipeng/2015/08/14/autotest/"&gt;Autotest：Autotest-client control&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">penglee</dc:creator><pubDate>Thu, 13 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-08-13:2015/08/13/autotest02/</guid><category>自动化测试</category></item><item><title>Autotest-summary</title><link>http://king32783784.github.io/2015/08/12/Autotest01/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;img alt="" src="https://king32783784.github.io/lipeng/tmpfile/autotestlogo.png"/&gt;&lt;/p&gt;
+&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/12/Autotest01/"&gt;Autotest：Autotest-summary&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/08/14/autotest/"&gt;Autotest：Autotest-client control&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">penglee</dc:creator><pubDate>Thu, 13 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-08-13:2015/08/13/autotest02/</guid><category>自动化测试</category></item><item><title>Autotest-summary</title><link>http://king32783784.github.io/2015/08/12/Autotest01/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
 &lt;p&gt;Autotest是一个开源的自动化测试框架.设计目的是为了测试Linux内核,同样可以用来检查新的硬件,虚拟化测试以及linux平台用户空间程序.它遵循GPL协议,并有大量的开发组织成员,其中包括像谷歌,IBM,红帽等.
 Avocado,是Autotest开发组,开发的下一代的自动化测试框架.详细信息参考&lt;a href="http://avocado-framework.github.io/"&gt;Avocado&lt;/a&gt;,后续有时间会再对Avocado进行介绍.
 本专题主要介绍以下内容:&lt;/p&gt;
@@ -4969,7 +4969,7 @@ Avocado,是Autotest开发组,开发的下一代的自动化测试框架.详细�
 &lt;p&gt;Github: &lt;a href="https://github.com/autotest/autotest"&gt;Github&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id="autotestzhu-yao-jie-gou"&gt;Autotest主要结构&lt;/h2&gt;
 &lt;p&gt;下图是Autotest框架简化图:
-&lt;img alt="" src="https://king32783784.github.io/lipeng/tmpfile/Autotest1.png"/&gt;&lt;/p&gt;
+&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/Autotest1.png?raw=true" width="480"/&gt;&lt;/p&gt;
 &lt;h3 id="webjie-kou-he-ming-ling-xing-jie-kou"&gt;Web接口和命令行接口&lt;/h3&gt;
 &lt;p&gt;Web接口和命令行接口是相辅相成的方式去连接Autotest并创建job.这两则具有相同的功能,意在方便用户.你可以用这些接口做以下事情:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;* 管理jobs,如创建,监控,中止等
@@ -5002,14 +5002,14 @@ Avocado,是Autotest开发组,开发的下一代的自动化测试框架.详细�
 通过服务端调用
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;一个典型的工作流程如下:
-&lt;img alt="" src="https://king32783784.github.io/lipeng/tmpfile/Autotest2.png"/&gt;&lt;/p&gt;
+&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/Autotest2.png?raw=true" width="480"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;简要说明&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;用户创建job(可以通过web端或命令行)或自动事件触发;将job信息记录插入前端数据库;调度器(monitor_db)将job匹配到空闲机器;调度器创建autoserv进程启动job;Autoserv确认客户端或修复;Autoserv在测试机器上安装或更新autotest客户端;Autoserv监控客户端状态,监视问题;
 客户机器触发autotest客户端执行测试(已开发测试项目)-运行control文件-log模块记录测试信息-setup-执行测试-测试结果文件由autoserv回收;分析机器新的job;log结果信息处理;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;结果目录&lt;/strong&gt;:按照一定格式结果目录&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;结果数据库&lt;/strong&gt;:一个简单的数据库保存每个测试的job信息 测试结果 性能指标等&lt;/p&gt;
 &lt;p&gt;随着前面的介绍,下图是更容易理解的基本框架图:
-&lt;img alt="" src="https://king32783784.github.io/lipeng/tmpfile/Autotest3.png"/&gt;&lt;/p&gt;
+&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/Autotest3.png?raw=true" width="480"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;简要说明:&lt;/strong&gt;
 Autotest通过 Web 前端或者命令行工具提交测试任务， Autotest Server 通过调度器将任务分发到不同的 Client（测试机）， Client 端任务执行完之后，再将结果返回到结果分析后端，Web 前端与命令行接口即可查看测试结果
 .
@@ -5021,7 +5021,7 @@ Autotest通过 Web 前端或者命令行工具提交测试任务， Autotest Ser
 &lt;li&gt;Frontends：允许用户运行作业并且方便地使测试结果可视化。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://king32783784.github.io/lipeng/2015/08/13/autotest/"&gt;Autotest：Autotest-Local&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">peng.lee</dc:creator><pubDate>Wed, 12 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-08-12:2015/08/12/Autotest01/</guid><category>自动化测试</category></item><item><title>selenium-Sample(三）</title><link>http://king32783784.github.io/2015/01/25/selenium/</link><description>&lt;/head&gt;&lt;body&gt;&lt;h4 id="shi-li-5-tuo-fang-draghe-drop"&gt;示例５　拖放drag和drop&lt;/h4&gt;
+&lt;p&gt;&lt;a href="https://king32783784.github.io/2015/08/13/autotest02/"&gt;Autotest：Autotest-Local&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">peng.lee</dc:creator><pubDate>Wed, 12 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-08-12:2015/08/12/Autotest01/</guid><category>自动化测试</category></item><item><title>selenium-Sample(三）</title><link>http://king32783784.github.io/2015/01/25/selenium/</link><description>&lt;/head&gt;&lt;body&gt;&lt;h4 id="shi-li-5-tuo-fang-draghe-drop"&gt;示例５　拖放drag和drop&lt;/h4&gt;
 &lt;p&gt;代码：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
 
@@ -5184,7 +5184,9 @@ action_chains.drag_and_drop(element, target).perform()　#执行拖放
     &lt;span class="n"&gt;testcookie&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;addcookie&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;说明：  cookie格式为字典包括"name"和“value"两个键值对。add_cookie方法将cookie添加到cookies中。&lt;/p&gt;
-&lt;p&gt;&lt;img height="380" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/WBB0EXYSWE.jpg" width="420"/&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">peng.lee</dc:creator><pubDate>Sun, 25 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-25:2015/01/25/selenium/</guid><category>Selenium</category></item><item><title>selenium-Sample(二）</title><link>http://king32783784.github.io/2015/01/24/selenium/</link><description>&lt;/head&gt;&lt;body&gt;&lt;h3 id="chang-jian-ying-yong-de-shi-li"&gt;常见应用的示例&lt;/h3&gt;
+&lt;p&gt;&lt;img height="380" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/WBB0EXYSWE.jpg" width="420"/&gt;&lt;/p&gt;
+&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/24/selenium/"&gt;selenium-Sample(二)&lt;/a&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/01/26/selenium/"&gt;selenium-Sample(四)&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">peng.lee</dc:creator><pubDate>Sun, 25 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-25:2015/01/25/selenium/</guid><category>Selenium</category></item><item><title>selenium-Sample(二）</title><link>http://king32783784.github.io/2015/01/24/selenium/</link><description>&lt;/head&gt;&lt;body&gt;&lt;h3 id="chang-jian-ying-yong-de-shi-li"&gt;常见应用的示例&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;Sample List&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;填写表单示例1-自动设置bugzilla Simple Search&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;填写表单示例2-自动设置bugzilla Advanced Search&lt;/strong&gt;&lt;/p&gt;
@@ -5460,7 +5462,9 @@ doclick方法实现对选定元素的点击。&lt;/p&gt;
             selectlist.select_by_value(value)
     return driver
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;通过一个字典将选择框的name属性和要选择的项目列表传入。通过遍历，将两个项目复选。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">peng.lee</dc:creator><pubDate>Sat, 24 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-24:2015/01/24/selenium/</guid><category>Selenium</category></item><item><title>selenium-Sample(一）</title><link>http://king32783784.github.io/2015/01/23/selenium/</link><description>&lt;/head&gt;&lt;body&gt;&lt;h3 id="ying-yong-shi-li"&gt;应用示例&lt;/h3&gt;
+&lt;p&gt;通过一个字典将选择框的name属性和要选择的项目列表传入。通过遍历，将两个项目复选。&lt;/p&gt;
+&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/23/selenium/"&gt;selenium-Sample(一)&lt;/a&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/01/25/selenium/"&gt;selenium-Sample(二)&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">peng.lee</dc:creator><pubDate>Sat, 24 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-24:2015/01/24/selenium/</guid><category>Selenium</category></item><item><title>selenium-Sample(一）</title><link>http://king32783784.github.io/2015/01/23/selenium/</link><description>&lt;/head&gt;&lt;body&gt;&lt;h3 id="ying-yong-shi-li"&gt;应用示例&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;1.通过selenium爬取"https://stocksnap.io/"上的图片。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;简要说明，通过selenium打开firefox浏览器，导航到指定网址；然后定位到图片源地址，并保存；然后调用urllib模块，下载图片到指定位置。&lt;/p&gt;
 &lt;p&gt;代码如下：&lt;/p&gt;
@@ -5676,7 +5680,9 @@ actions.move_to_element(signin)
 actions.click(signin)
 actions.perform()
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;未完待续&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">peng.lee</dc:creator><pubDate>Fri, 23 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-23:2015/01/23/selenium/</guid><category>Selenium</category></item><item><title>selenium-专题10</title><link>http://king32783784.github.io/2015/01/22/selenium/</link><description>&lt;/head&gt;&lt;body&gt;&lt;h3 id="1chang-jian-wen-ti"&gt;1.常见问题&lt;/h3&gt;
+&lt;p&gt;未完待续&lt;/p&gt;
+&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/22/selenium/"&gt;Selenium主题10&lt;/a&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/01/24/selenium/"&gt;selenium-Sample(二)&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">peng.lee</dc:creator><pubDate>Fri, 23 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-23:2015/01/23/selenium/</guid><category>Selenium</category></item><item><title>selenium-专题10</title><link>http://king32783784.github.io/2015/01/22/selenium/</link><description>&lt;/head&gt;&lt;body&gt;&lt;h3 id="1chang-jian-wen-ti"&gt;1.常见问题&lt;/h3&gt;
 &lt;h4 id="11-ru-he-shi-yong-chromedriver"&gt;1.1 如何使用ChromeDriver?&lt;/h4&gt;
 &lt;p&gt;下载最新的chromedriver&lt;a href="https://sites.google.com/a/chromium.org/chromedriver/downloads"&gt;chromedriver from download page&lt;/a&gt;,解压文件：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;unzip chromedriver_linux32_x.x.x.x.zip
@@ -5747,7 +5753,8 @@ Selenium 将XPath查询委派给浏览器自己的XPath引擎查询，所以Sele
 &lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;quit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/lipeng/2015/01/21/selenium/"&gt;Selenium主题9&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">peng.lee</dc:creator><pubDate>Thu, 22 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-22:2015/01/22/selenium/</guid><category>Selenium</category></item><item><title>selenium-专题9</title><link>http://king32783784.github.io/2015/01/21/selenium/</link><description>&lt;/head&gt;&lt;body&gt;&lt;h3 id="remote-webdriver"&gt;Remote WebDriver&lt;/h3&gt;
+&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/21/selenium/"&gt;Selenium主题9&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;下一篇&lt;a href="https://king32783784.github.io/2015/01/23/selenium/"&gt;selenium-Sample(一)&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">peng.lee</dc:creator><pubDate>Thu, 22 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-22:2015/01/22/selenium/</guid><category>Selenium</category></item><item><title>selenium-专题9</title><link>http://king32783784.github.io/2015/01/21/selenium/</link><description>&lt;/head&gt;&lt;body&gt;&lt;h3 id="remote-webdriver"&gt;Remote WebDriver&lt;/h3&gt;
 &lt;p&gt;WebDriver实现。&lt;/p&gt;
 &lt;p&gt;class selenium.webdriver.remote.webdriver.WebDriver(command_executor='http://127.0.0.1:4444/wd/hub', desired_capabilities=None, browser_profile=None, proxy=None, keep_alive=False, file_detector=None)&lt;/p&gt;
 &lt;p&gt;Bases: object
@@ -6288,8 +6295,8 @@ until_not(method, message='')
 &lt;span class="n"&gt;An&lt;/span&gt; &lt;span class="n"&gt;expectation&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;checking&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;an&lt;/span&gt; &lt;span class="n"&gt;element&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="n"&gt;present&lt;/span&gt; &lt;span class="n"&gt;on&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;DOM&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;page&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;visible&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="n"&gt;Visibility&lt;/span&gt; &lt;span class="n"&gt;means&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;element&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="n"&gt;not&lt;/span&gt; &lt;span class="n"&gt;only&lt;/span&gt; &lt;span class="n"&gt;displayed&lt;/span&gt; &lt;span class="n"&gt;but&lt;/span&gt; &lt;span class="n"&gt;also&lt;/span&gt; &lt;span class="n"&gt;has&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;height&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;width&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="n"&gt;greater&lt;/span&gt; &lt;span class="n"&gt;than&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="n"&gt;locator&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;used&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;find&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;element&lt;/span&gt; &lt;span class="n"&gt;returns&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;WebElement&lt;/span&gt; &lt;span class="n"&gt;once&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="n"&gt;located&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;visible&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/lipeng/2015/01/20/selenium/"&gt;Selenium主题8&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/lipeng/2015/01/22/selenium/"&gt;Selenium主题10&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">peng.lee</dc:creator><pubDate>Wed, 21 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-21:2015/01/21/selenium/</guid><category>Selenium</category></item><item><title>selenium-专题8</title><link>http://king32783784.github.io/2015/01/20/selenium/</link><description>&lt;/head&gt;&lt;body&gt;&lt;h3 id="alert"&gt;Alert&lt;/h3&gt;
+&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/20/selenium/"&gt;Selenium主题8&lt;/a&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/01/22/selenium/"&gt;Selenium主题10&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">peng.lee</dc:creator><pubDate>Wed, 21 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-21:2015/01/21/selenium/</guid><category>Selenium</category></item><item><title>selenium-专题8</title><link>http://king32783784.github.io/2015/01/20/selenium/</link><description>&lt;/head&gt;&lt;body&gt;&lt;h3 id="alert"&gt;Alert&lt;/h3&gt;
 &lt;p&gt;警告相关的实现&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;selenium&lt;/span&gt;.&lt;span class="n"&gt;webdriver&lt;/span&gt;.&lt;span class="n"&gt;common&lt;/span&gt;.&lt;span class="n"&gt;alert&lt;/span&gt;.&lt;span class="n"&gt;Alert&lt;/span&gt;(&lt;span class="n"&gt;driver&lt;/span&gt;)
     &lt;span class="n"&gt;Bases:&lt;/span&gt; &lt;span class="n"&gt;object&lt;/span&gt;
@@ -6538,8 +6545,8 @@ selenium.webdriver.common.utils.join_host_port(host, port)
        &lt;span class="n"&gt;关闭浏览器和关闭启动ChromeDriver时启动的ChromeDriver&lt;/span&gt;.
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/lipeng/2015/01/19/selenium/"&gt;Selenium主题7&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/lipeng/2015/01/21/selenium/"&gt;Selenium主题9&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">peng.lee</dc:creator><pubDate>Tue, 20 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-20:2015/01/20/selenium/</guid><category>Selenium</category></item><item><title>selenium-专题7</title><link>http://king32783784.github.io/2015/01/19/selenium/</link><description>&lt;/head&gt;&lt;body&gt;&lt;h3 id="webdriver-api"&gt;WebDriver API&lt;/h3&gt;
+&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/19/selenium/"&gt;Selenium主题7&lt;/a&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/01/21/selenium/"&gt;Selenium主题9&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">peng.lee</dc:creator><pubDate>Tue, 20 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-20:2015/01/20/selenium/</guid><category>Selenium</category></item><item><title>selenium-专题7</title><link>http://king32783784.github.io/2015/01/19/selenium/</link><description>&lt;/head&gt;&lt;body&gt;&lt;h3 id="webdriver-api"&gt;WebDriver API&lt;/h3&gt;
 &lt;p&gt;注：这不是官方API文档，官方在这：&lt;a href="https://seleniumhq.github.io/selenium/docs/api/py/api.html"&gt;Selenium Documentation&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;本篇覆盖了Selenium Webdriver的所有接口。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;推荐导入样式&lt;/strong&gt;
@@ -6798,8 +6805,8 @@ stacktrace=None)&lt;/p&gt;
               * &lt;span class="n"&gt;keys_to_send:&lt;/span&gt; &lt;span class="n"&gt;发送的按键类型&lt;/span&gt;，&lt;span class="n"&gt;修饰键常量可以在&lt;/span&gt;“&lt;span class="n"&gt;Keys'类中找到&lt;/span&gt;。
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/lipeng/2015/01/18/selenium/"&gt;Selenium主题6&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/lipeng/2015/01/20/selenium/"&gt;Selenium主题8&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">peng.lee</dc:creator><pubDate>Mon, 19 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-19:2015/01/19/selenium/</guid><category>Selenium</category></item><item><title>selenium-专题6</title><link>http://king32783784.github.io/2015/01/18/selenium/</link><description>&lt;/head&gt;&lt;body&gt;&lt;h3 id="ye-mian-dui-xiang"&gt;页面对象&lt;/h3&gt;
+&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/18/selenium/"&gt;Selenium主题6&lt;/a&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/01/20/selenium/"&gt;Selenium主题8&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">peng.lee</dc:creator><pubDate>Mon, 19 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-19:2015/01/19/selenium/</guid><category>Selenium</category></item><item><title>selenium-专题6</title><link>http://king32783784.github.io/2015/01/18/selenium/</link><description>&lt;/head&gt;&lt;body&gt;&lt;h3 id="ye-mian-dui-xiang"&gt;页面对象&lt;/h3&gt;
 &lt;p&gt;该篇是介绍页面对象设计模式的方法。页面对象是Web应用程序用户界面的区域，测试时主要在此区域。&lt;/p&gt;
 &lt;p&gt;使用页面对象模式的好处：&lt;/p&gt;
 &lt;ul&gt;
@@ -6921,8 +6928,8 @@ locators.py：&lt;/p&gt;
         &lt;span class="k"&gt;pass&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/lipeng/2015/01/17/selenium/"&gt;Selenium主题5&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/lipeng/2015/01/19/selenium/"&gt;Selenium主题7&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">peng.lee</dc:creator><pubDate>Sun, 18 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-18:2015/01/18/selenium/</guid><category>Selenium</category></item><item><title>selenium-专题5</title><link>http://king32783784.github.io/2015/01/17/selenium/</link><description>&lt;/head&gt;&lt;body&gt;&lt;h3 id="deng-dai"&gt;等待&lt;/h3&gt;
+&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/17/selenium/"&gt;Selenium主题5&lt;/a&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/01/19/selenium/"&gt;Selenium主题7&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">peng.lee</dc:creator><pubDate>Sun, 18 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-18:2015/01/18/selenium/</guid><category>Selenium</category></item><item><title>selenium-专题5</title><link>http://king32783784.github.io/2015/01/17/selenium/</link><description>&lt;/head&gt;&lt;body&gt;&lt;h3 id="deng-dai"&gt;等待&lt;/h3&gt;
 &lt;p&gt;目前大多数网络应用都在使用AJAX技术。当浏览器加载一个页面，页面上的元素可能分多次进行加载。这会导致元素定位困难，如果元素没有在DOM中出现，则会触发ElementNotVisibleException异常。通过等待，我们可以解决这个问题。等待提供了设置操作间的时间间隔－元素定位直接或其他元素操作。&lt;/p&gt;
 &lt;p&gt;Selenium Webdriver 提供了等待的两种类型，implicit和explicit。显式等待是使webdriver在操作之间有确定的时间等待。隐式等待是使WebDriver 去间隔的轮询DOM，尝试定位到元素。&lt;/p&gt;
 &lt;h4 id="xian-shi-deng-dai"&gt;显式等待&lt;/h4&gt;
@@ -6980,8 +6987,8 @@ element = wait.until(EC.element_to_be_clickable(By.ID, 'someid')))&lt;/p&gt;
 &lt;span class="n"&gt;myDynamicElement&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find_element_by_id&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"myDynamicElement"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/lipeng/2015/01/16/selenium/"&gt;Selenium主题4&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/lipeng/2015/01/18/selenium/"&gt;Selenium主题6&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">peng.lee</dc:creator><pubDate>Sat, 17 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-17:2015/01/17/selenium/</guid><category>Selenium</category></item><item><title>selenium-专题4</title><link>http://king32783784.github.io/2015/01/16/selenium/</link><description>&lt;/head&gt;&lt;body&gt;&lt;h3 id="yuan-su-ding-wei"&gt;元素定位&lt;/h3&gt;
+&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/16/selenium/"&gt;Selenium主题4&lt;/a&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/01/18/selenium/"&gt;Selenium主题6&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">peng.lee</dc:creator><pubDate>Sat, 17 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-17:2015/01/17/selenium/</guid><category>Selenium</category></item><item><title>selenium-专题4</title><link>http://king32783784.github.io/2015/01/16/selenium/</link><description>&lt;/head&gt;&lt;body&gt;&lt;h3 id="yuan-su-ding-wei"&gt;元素定位&lt;/h3&gt;
 &lt;p&gt;提供很多种方式去定位页面的元素。可以从中选择一个适合的用于测试。Selenium 提供了以下方法用于定位页面元素：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;*find_element_by_id
 *find_element_by_name
@@ -7162,8 +7169,8 @@ clear_button = driver.find_element_by_xpath("//form[@id='loginForm']/input[4]")
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;content = driver.find_element_by_css_selector('p.content')
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/lipeng/2015/01/15/selenium/"&gt;Selenium主题3&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/lipeng/2015/01/17/selenium/"&gt;Selenium主题5&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">peng.lee</dc:creator><pubDate>Fri, 16 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-16:2015/01/16/selenium/</guid><category>Selenium</category></item><item><title>selenium-专题3</title><link>http://king32783784.github.io/2015/01/15/selenium/</link><description>&lt;/head&gt;&lt;body&gt;&lt;h3 id="dao-hang"&gt;导航&lt;/h3&gt;
+&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/15/selenium/"&gt;Selenium主题3&lt;/a&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/01/17/selenium/"&gt;Selenium主题5&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">peng.lee</dc:creator><pubDate>Fri, 16 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-16:2015/01/16/selenium/</guid><category>Selenium</category></item><item><title>selenium-专题3</title><link>http://king32783784.github.io/2015/01/15/selenium/</link><description>&lt;/head&gt;&lt;body&gt;&lt;h3 id="dao-hang"&gt;导航&lt;/h3&gt;
 &lt;p&gt;使用WebDriver第一件想做的事情就是导航到指定链接。通常可以调用get方法去实现：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;driver.get("http://www.google.com")
 &lt;/pre&gt;&lt;/div&gt;
@@ -7280,8 +7287,8 @@ driver.add_cookie(cookie)
 driver.get_cookies()
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/lipeng/2015/01/14/selenium/"&gt;Selenium主题2&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/lipeng/2015/01/16/selenium/"&gt;Selenium主题4&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">peng.lee</dc:creator><pubDate>Thu, 15 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-15:2015/01/15/selenium/</guid><category>Selenium</category></item><item><title>selenium-专题2</title><link>http://king32783784.github.io/2015/01/14/selenium/</link><description>&lt;/head&gt;&lt;body&gt;&lt;h3 id="ru-men"&gt;入门&lt;/h3&gt;
+&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/14/selenium/"&gt;Selenium主题2&lt;/a&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/01/15/selenium/"&gt;Selenium主题4&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">peng.lee</dc:creator><pubDate>Thu, 15 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-15:2015/01/15/selenium/</guid><category>Selenium</category></item><item><title>selenium-专题2</title><link>http://king32783784.github.io/2015/01/14/selenium/</link><description>&lt;/head&gt;&lt;body&gt;&lt;h3 id="ru-men"&gt;入门&lt;/h3&gt;
 &lt;h4 id="jian-dan-yong-fa"&gt;简单用法&lt;/h4&gt;
 &lt;p&gt;如果已经具备了Selenium＆Python，可以这样开始使用：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;selenium&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;webdriver&lt;/span&gt;
@@ -7544,8 +7551,8 @@ code:&lt;/p&gt;
                           'javascriptEnabled': True})
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/lipeng/2015/01/13/selenium/"&gt;Selenium主题1&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/lipeng/2015/01/15/selenium/"&gt;Selenium主题3&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">peng.lee</dc:creator><pubDate>Wed, 14 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-14:2015/01/14/selenium/</guid><category>Selenium</category></item><item><title>selenium-专题1</title><link>http://king32783784.github.io/2015/01/13/selenium/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;该topic将开始学习selenium的使用。主要内容如下&lt;/p&gt;
+&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/13/selenium/"&gt;Selenium主题1&lt;/a&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/01/15/selenium/"&gt;Selenium主题3&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">peng.lee</dc:creator><pubDate>Wed, 14 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-14:2015/01/14/selenium/</guid><category>Selenium</category></item><item><title>selenium-专题1</title><link>http://king32783784.github.io/2015/01/13/selenium/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;该topic将开始学习selenium的使用。主要内容如下&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;1.安装&lt;/li&gt;
 &lt;li&gt;2.入门&lt;/li&gt;
@@ -7582,7 +7589,7 @@ Selenium&amp;amp;python提供了直观的ＡＰＩ访问Selenium WebDrivers如fi
 如果java支持，可以通过下面命令来启动Selenium server:
     java -jar selenium-server-standalone-2.x.x.jar&lt;/p&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;下一篇&lt;a href="https://king32783784.github.io/lipeng/2015/01/14/selenium/"&gt;selenium-专题２&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">peng.lee</dc:creator><pubDate>Tue, 13 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-13:2015/01/13/selenium/</guid><category>Selenium</category></item><item><title>selenium-浏览器性能测试</title><link>http://king32783784.github.io/2015/01/12/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;浏览器是系统下比较常用的软件，在linux系统比较常用的是firefox、chrome.如何评估浏览器的基础性能？有很多评测网站进行了这边的测试。
+&lt;p&gt;下一篇&lt;a href="https://king32783784.github.io/2015/01/14/selenium/"&gt;selenium-专题２&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">peng.lee</dc:creator><pubDate>Tue, 13 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-13:2015/01/13/selenium/</guid><category>Selenium</category></item><item><title>selenium-浏览器性能测试</title><link>http://king32783784.github.io/2015/01/12/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;浏览器是系统下比较常用的软件，在linux系统比较常用的是firefox、chrome.如何评估浏览器的基础性能？有很多评测网站进行了这边的测试。
 如
 &lt;em&gt; &lt;a href="http://css4-selectors.com/browser-selector-test/"&gt;CSS&lt;/a&gt;
 &lt;/em&gt; &lt;a href="http://acid3.acidtests.org/"&gt;acid3&lt;/a&gt;
