@@ -3612,8 +3612,8 @@ def install_kvm(kvm_on_host_var_name, host, source, addresses):
 
     parallel([server_command, client_command])
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/20/autotest/"&gt;Autotest： Autotest-Autotest Remote (Autoserv)(二）&amp;gt;&amp;gt;&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/08/22/autotest/"&gt;Autotest:Autotest-client Package(1)&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</summary><category term="自动化测试"></category></entry><entry><title>Autotest-Autotest Remote (Autoserv)(二）</title><link href="http://king32783784.github.io/2015/08/21/autotest/" rel="alternate"></link><published>2015-08-21T00:00:00+08:00</published><author><name>penglee</name></author><id>tag:king32783784.github.io,2015-08-21:2015/08/21/autotest/</id><summary type="html">&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
+&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/21/autotest/"&gt;Autotest： Autotest-Autotest Remote (Autoserv)(二）&amp;gt;&amp;gt;&lt;/a&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/08/23/autotest/"&gt;Autotest:Autotest-client Package(1)&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</summary><category term="自动化测试"></category></entry><entry><title>Autotest-Autotest Remote (Autoserv)(二）</title><link href="http://king32783784.github.io/2015/08/21/autotest/" rel="alternate"></link><published>2015-08-21T00:00:00+08:00</published><author><name>penglee</name></author><id>tag:king32783784.github.io,2015-08-21:2015/08/21/autotest/</id><summary type="html">&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
 &lt;h3 id="kvmzhi-chi"&gt;KVM支持&lt;/h3&gt;
 &lt;p&gt;如前所述，Autoserv 支持控制虚拟机。这个对象设计的可以支持虚拟机管理/hypervisors。一开始，只支持kvm,为了支持KVM，你需要做：
     1.创建虚拟机，运行在虚拟层的机器
@@ -3952,7 +3952,7 @@ print "Done"
 &lt;p&gt;未完待续&lt;/p&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/19/autotest/"&gt;Autotest：Autotest-others&amp;gt;&amp;gt;&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/08/20/autotest/"&gt;Autotest:Autotest-Autotest Remote (Autoserv)(二）&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</summary><category term="自动化测试"></category></entry><entry><title>Autotest-others</title><link href="http://king32783784.github.io/2015/08/19/autotest/" rel="alternate"></link><published>2015-08-19T00:00:00+08:00</published><author><name>penglee</name></author><id>tag:king32783784.github.io,2015-08-19:2015/08/19/autotest/</id><summary type="html">&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/08/21/autotest/"&gt;Autotest:Autotest-Autotest Remote (Autoserv)(二）&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</summary><category term="自动化测试"></category></entry><entry><title>Autotest-others</title><link href="http://king32783784.github.io/2015/08/19/autotest/" rel="alternate"></link><published>2015-08-19T00:00:00+08:00</published><author><name>penglee</name></author><id>tag:king32783784.github.io,2015-08-19:2015/08/19/autotest/</id><summary type="html">&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
 &lt;h2 id="zhi-xing-wai-bu-ce-shi"&gt;执行外部测试&lt;/h2&gt;
 &lt;p&gt;autotest可以像执行自身测试一样执行外部测试．&lt;/p&gt;
 &lt;h3 id="zhi-xing-ce-shi"&gt;执行测试&lt;/h3&gt;
@@ -4968,8 +4968,8 @@ Avocado,是Autotest开发组,开发的下一代的自动化测试框架.详细�
 &lt;p&gt;Autotest项目主页:&lt;a href="http://autotest.github.io/"&gt;Autotest&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Github: &lt;a href="https://github.com/autotest/autotest"&gt;Github&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id="autotestzhu-yao-jie-gou"&gt;Autotest主要结构&lt;/h2&gt;
-&lt;p&gt;下图是Autotest框架简化图:
-&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/Autotest1.png?raw=true" width="480"/&gt;&lt;/p&gt;
+&lt;p&gt;下图是Autotest框架简化图:&lt;/p&gt;
+&lt;p&gt;&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/Autotest1.png?raw=true" width="480"/&gt;&lt;/p&gt;
 &lt;h3 id="webjie-kou-he-ming-ling-xing-jie-kou"&gt;Web接口和命令行接口&lt;/h3&gt;
 &lt;p&gt;Web接口和命令行接口是相辅相成的方式去连接Autotest并创建job.这两则具有相同的功能,意在方便用户.你可以用这些接口做以下事情:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;* 管理jobs,如创建,监控,中止等
@@ -5001,15 +5001,15 @@ Avocado,是Autotest开发组,开发的下一代的自动化测试框架.详细�
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;手动执行:通过client/autotest-local &amp;lt;control_file_name&amp;gt;命令启动
 通过服务端调用
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;一个典型的工作流程如下:
-&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/Autotest2.png?raw=true" width="480"/&gt;&lt;/p&gt;
+&lt;p&gt;一个典型的工作流程如下:&lt;/p&gt;
+&lt;p&gt;&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/Autotest2.png?raw=true" width="480"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;简要说明&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;用户创建job(可以通过web端或命令行)或自动事件触发;将job信息记录插入前端数据库;调度器(monitor_db)将job匹配到空闲机器;调度器创建autoserv进程启动job;Autoserv确认客户端或修复;Autoserv在测试机器上安装或更新autotest客户端;Autoserv监控客户端状态,监视问题;
 客户机器触发autotest客户端执行测试(已开发测试项目)-运行control文件-log模块记录测试信息-setup-执行测试-测试结果文件由autoserv回收;分析机器新的job;log结果信息处理;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;结果目录&lt;/strong&gt;:按照一定格式结果目录&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;结果数据库&lt;/strong&gt;:一个简单的数据库保存每个测试的job信息 测试结果 性能指标等&lt;/p&gt;
-&lt;p&gt;随着前面的介绍,下图是更容易理解的基本框架图:
-&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/Autotest3.png?raw=true" width="480"/&gt;&lt;/p&gt;
+&lt;p&gt;随着前面的介绍,下图是更容易理解的基本框架图:&lt;/p&gt;
+&lt;p&gt;&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/Autotest3.png?raw=true" width="480"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;简要说明:&lt;/strong&gt;
 Autotest通过 Web 前端或者命令行工具提交测试任务， Autotest Server 通过调度器将任务分发到不同的 Client（测试机）， Client 端任务执行完之后，再将结果返回到结果分析后端，Web 前端与命令行接口即可查看测试结果
 .
@@ -5021,7 +5021,7 @@ Autotest通过 Web 前端或者命令行工具提交测试任务， Autotest Ser
 &lt;li&gt;Frontends：允许用户运行作业并且方便地使测试结果可视化。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://king32783784.github.io/2015/08/13/autotest02/"&gt;Autotest：Autotest-Local&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</summary><category term="自动化测试"></category></entry><entry><title>selenium-Sample(三）</title><link href="http://king32783784.github.io/2015/01/25/selenium/" rel="alternate"></link><published>2015-01-25T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2015-01-25:2015/01/25/selenium/</id><summary type="html">&lt;/head&gt;&lt;body&gt;&lt;h4 id="shi-li-5-tuo-fang-draghe-drop"&gt;示例５　拖放drag和drop&lt;/h4&gt;
+&lt;p&gt;下一篇&lt;a href="https://king32783784.github.io/2015/08/13/autotest02/"&gt;Autotest：Autotest-Local&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</summary><category term="自动化测试"></category></entry><entry><title>selenium-Sample(三）</title><link href="http://king32783784.github.io/2015/01/25/selenium/" rel="alternate"></link><published>2015-01-25T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2015-01-25:2015/01/25/selenium/</id><summary type="html">&lt;/head&gt;&lt;body&gt;&lt;h4 id="shi-li-5-tuo-fang-draghe-drop"&gt;示例５　拖放drag和drop&lt;/h4&gt;
 &lt;p&gt;代码：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
 

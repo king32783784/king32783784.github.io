@@ -81,8 +81,8 @@ Avocado,是Autotest开发组,开发的下一代的自动化测试框架.详细�
 <p>Autotest项目主页:<a href="http://autotest.github.io/">Autotest</a></p>
 <p>Github: <a href="https://github.com/autotest/autotest">Github</a></p>
 <h2 id="autotestzhu-yao-jie-gou">Autotest主要结构</h2>
-<p>下图是Autotest框架简化图:
-<img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/Autotest1.png?raw=true" width="480"/></p>
+<p>下图是Autotest框架简化图:</p>
+<p><img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/Autotest1.png?raw=true" width="480"/></p>
 <h3 id="webjie-kou-he-ming-ling-xing-jie-kou">Web接口和命令行接口</h3>
 <p>Web接口和命令行接口是相辅相成的方式去连接Autotest并创建job.这两则具有相同的功能,意在方便用户.你可以用这些接口做以下事情:</p>
 <div class="highlight"><pre><span></span>* 管理jobs,如创建,监控,中止等
@@ -114,15 +114,15 @@ Avocado,是Autotest开发组,开发的下一代的自动化测试框架.详细�
 <div class="highlight"><pre><span></span>手动执行:通过client/autotest-local &lt;control_file_name&gt;命令启动
 通过服务端调用
 </pre></div>
-<p>一个典型的工作流程如下:
-<img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/Autotest2.png?raw=true" width="480"/></p>
+<p>一个典型的工作流程如下:</p>
+<p><img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/Autotest2.png?raw=true" width="480"/></p>
 <p><strong>简要说明</strong></p>
 <p>用户创建job(可以通过web端或命令行)或自动事件触发;将job信息记录插入前端数据库;调度器(monitor_db)将job匹配到空闲机器;调度器创建autoserv进程启动job;Autoserv确认客户端或修复;Autoserv在测试机器上安装或更新autotest客户端;Autoserv监控客户端状态,监视问题;
 客户机器触发autotest客户端执行测试(已开发测试项目)-运行control文件-log模块记录测试信息-setup-执行测试-测试结果文件由autoserv回收;分析机器新的job;log结果信息处理;</p>
 <p><strong>结果目录</strong>:按照一定格式结果目录</p>
 <p><strong>结果数据库</strong>:一个简单的数据库保存每个测试的job信息 测试结果 性能指标等</p>
-<p>随着前面的介绍,下图是更容易理解的基本框架图:
-<img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/Autotest3.png?raw=true" width="480"/></p>
+<p>随着前面的介绍,下图是更容易理解的基本框架图:</p>
+<p><img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/Autotest3.png?raw=true" width="480"/></p>
 <p><strong>简要说明:</strong>
 Autotest通过 Web 前端或者命令行工具提交测试任务， Autotest Server 通过调度器将任务分发到不同的 Client（测试机）， Client 端任务执行完之后，再将结果返回到结果分析后端，Web 前端与命令行接口即可查看测试结果
 .
@@ -134,7 +134,7 @@ Autotest通过 Web 前端或者命令行工具提交测试任务， Autotest Ser
 <li>Frontends：允许用户运行作业并且方便地使测试结果可视化。</li>
 </ul>
 <p>Top<a href="">^</a></p>
-<p><a href="https://king32783784.github.io/2015/08/13/autotest02/">Autotest：Autotest-Local&gt;&gt;&gt;</a></p>
+<p>下一篇<a href="https://king32783784.github.io/2015/08/13/autotest02/">Autotest：Autotest-Local&gt;&gt;&gt;</a></p>
             </div><!-- /.entry-content -->
             <div class="comments">
               <h3>Comments</h3>
