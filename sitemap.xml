@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://king32783784.github.io/</loc>
-<lastmod>2016-11-02T08:46:59-00:00</lastmod>
+<lastmod>2016-11-02T09:10:26-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://king32783784.github.io/archives.html</loc>
-<lastmod>2016-11-02T08:46:59-00:00</lastmod>
+<lastmod>2016-11-02T09:10:26-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://king32783784.github.io/tags.html</loc>
-<lastmod>2016-11-02T08:46:59-00:00</lastmod>
+<lastmod>2016-11-02T09:10:26-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://king32783784.github.io/categories.html</loc>
-<lastmod>2016-11-02T08:46:59-00:00</lastmod>
+<lastmod>2016-11-02T09:10:26-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -81,14 +81,14 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://king32783784.github.io/2016/08/12/Docker/</loc>
-<lastmod>2016-08-12T00:00:00+08:00</lastmod>
+<loc>http://king32783784.github.io/2016/09/01/other/</loc>
+<lastmod>2016-09-01T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://king32783784.github.io/2016/08/12/other/</loc>
+<loc>http://king32783784.github.io/2016/08/12/Docker/</loc>
 <lastmod>2016-08-12T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
@@ -411,7 +411,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://king32783784.github.io/category/misc.html</loc>
-<lastmod>2016-08-12T00:00:00+08:06</lastmod>
+<lastmod>2016-09-01T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -537,7 +537,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://king32783784.github.io/tag/qi-ta.html</loc>
-<lastmod>2016-08-12T00:00:00+08:06</lastmod>
+<lastmod>2016-09-01T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -565,7 +565,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://king32783784.github.io/author/others.html</loc>
-<lastmod>2016-08-12T00:00:00+08:06</lastmod>
+<lastmod>2016-09-01T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
