@@ -202,7 +202,8 @@ address { font-size:14px; margin-bottom:10px;}
 --------------------------------------------------------- */
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-    color: #3498DB;
+//    color: #3498DB;
+      color: #001eff
 }
 
 a, a:hover { color: #3498DB; }
