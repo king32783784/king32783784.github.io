@@ -1,67 +1,2073 @@
-<!DOCTYPE html>
-<html lang="link">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : Brown Stone  
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20100928
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-
-        <title>Hi | World - Articles by peng.lee</title>
-        <meta charset="utf-8" />
-        <link href="http://king32783784.github.io/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Hi | World Full Atom Feed" />
-        <link href="http://king32783784.github.io/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Hi | World Full RSS Feed" />
-
-
-        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
-        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
-
-        <link rel="stylesheet" type="text/css" href="../theme/gumby.css" />
-        <link rel="stylesheet" type="text/css" href="../theme/style.css" />
-        <link rel="stylesheet" type="text/css" href="../theme/pygment.css" />
-        <link rel="stylesheet" type="text/css" href="../theme/SentyZHAO/SentyZHAO.css" />
-
-        <script src="../theme/js/libs/jquery-1.9.1.min.js"></script>
-        <script src="../theme/js/libs/modernizr-2.6.2.min.js"></script>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Hi | World - Articles by peng.lee</title>
+<link href="../theme/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="../" type="application/atom+xml" rel="alternate" title="Hi | World ATOM Feed" />
 </head>
+<body>
+<div id="wrapper">
+	<div id="page">
+		<div id="page-bgtop">
+			<div id="page-bgbtm">
+ 
+        
+				<div id="content">
+					<div class="post">
+						<h2 class="title"><a href="../2016/08/02/LTP/">LTP－kernel-syscalls-abort</a></h2>
+						<p class="meta"><span class="date">日期  </span><span class="posted">By <a href="#">peng.lee</a></span><span>&nbsp; | 分类 : <a href="../category/misc.html">misc</a></span></p>
+					<p class="meta">Tags : <span><a href="../tag/ltp.html">LTP</a> / </span>
+</p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p>从本文开始，开始分析kernel部分的测试用例，该部分测试用例大部分为Ｃ语言编写，因此会穿插加入一定的Ｃ语言或unix环境编程的知识。</p>
+<p><img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/I0T0E4Y826.jpg" width="420"/></p>
+<h4 id="abort">abort</h4>
+<p>设计说明</p>
+<p><strong>测试策略</strong></p>
+<p>Fork child. Child出现abort,检查返回状态</p>
+<p><strong>限制</strong></p>
+<p>Core file大小的限制必须大于０</p>
+<p><strong>abort</strong></p>
+<p>函数名: abort</p>
+<p>功 能: 异常终止一个进程</p>
+<p>用 法: void abort(void);</p>
+<p>abort()是使异常程序终止，同时发送SIGABRT信号给调用进程。</p>
+<div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="kt">void</span> <span class="nf">abort</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<span class="err">该函数不返回</span>
+</pre></div>
+<p>此函数将SIGABRT信号发送给调用进程（进程不应忽略此信号).ISO C规定，调用abort将向主机环境递送一个未成功终止的通知，其方法是调用raise(SIGABRT)函数。
+ISO C要求若捕捉此信号而且相应信号处理程序返回，abort仍不会返回其调用者。如果捕捉到此信号，则信号处理程序不能返回的唯一方法是它调用exit、_exit、_Exit、longjmp或sigloogjmp.POSIX.1也说明
+abort并不理会进程对此信号的阻塞和忽略。</p>
+<p>让进程捕捉SIGABRT的意图是：在进程终止之前由其执行所需的清理操作。如果进程并不在信号处理程序中终止自己，POSIX.1声明当信号处理程序返回时，abort终止该进程。</p>
+<p>ISO C针对此函数的规范将下列问题留由实现决定：　是否要冲洗输出流以及是否删除临时文件。POSIX.1的要求更进一步，要求如果abort调用终止进程，则它对所有打开标准I/O流的效果应当与进程终止前对每个流调用fclose相同。</p>
+<div class="highlight"><pre><span></span>系统V早期的版本中，abort函数产生SIGIOT信号。更进一步，进程忽略此信号，或者捕捉它并从信号处理程序返回都是可能的，在返回情况下，abort返回到它的调用者。
+4.3BSD产生SIGILL信号。在此之前，该函数解除对此信号的阻塞，将其配置恢复为SIG_DFL (终止并构造core文件)。这阻止一个进程忽略或捕捉此信号。
+SVR4在产生此信号之前关闭所有I/O流。在另一方面，4.3+BSD则不做此操作。对于保护性的程序设计，如果希望刷新标准I/O流，则在调用abort之前要做这种操作。在err_dump函数中实现了这一点
+因为大多数UNIX tmpfile(临时文件)的实现在创建该文件之后立即调用unlink，所以ANSI C关于临时文件的警告通常与我们无关。
+</pre></div>
+<p>abort的POSIX.1实现</p>
+<div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;signal.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
 
-<body id="index" class="home">
-    <div class="container">
+<span class="kt">void</span>
+<span class="nf">abort</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>    <span class="cm">/*POSIX.1风格的abort()实现*/</span>
+<span class="p">{</span>
+    <span class="kt">sigset_t</span>    <span class="n">mask</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">sigaction</span>   <span class="n">action</span><span class="p">;</span>
+    <span class="cm">/*</span>
+<span class="cm">     * Caller can't igore SIGABRT, if so reset to default.</span>
+<span class="cm">     */</span>
+    <span class="n">sigaction</span><span class="p">(</span><span class="n">SIGABRT</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">action</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">action</span><span class="p">.</span><span class="n">sa_handler</span> <span class="o">==</span> <span class="n">SIG_IGN</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">action</span><span class="p">.</span><span class="n">sa_handler</span> <span class="o">==</span> <span class="n">SIG_DFL</span><span class="p">;</span>
+        <span class="n">sigaction</span><span class="p">(</span><span class="n">SIGABRT</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">action</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">action</span><span class="p">.</span><span class="n">sa_handler</span> <span class="o">==</span> <span class="n">SIG_DFL</span><span class="p">)</span>
+       <span class="n">fflush</span><span class="p">(</span><span class="nb">NULL</span><span class="p">)</span>   <span class="cm">/* flush all open stdio stream */</span>
 
-        <div class="row">
+    <span class="cm">/*</span>
+<span class="cm">     * Caller can't block SIGABRT; make sure it's unblocked.</span>
+<span class="cm">     */</span>
+     <span class="n">sigfillset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mask</span><span class="p">)</span>
+     <span class="n">sigdelset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mask</span><span class="p">,</span> <span class="n">SIGABRT</span><span class="p">);</span> <span class="cm">/* mask has only SIGABRT turned off */</span>
+     <span class="n">sigprocmask</span><span class="p">(</span><span class="n">SIG_SETMASK</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">mask</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+     <span class="n">kill</span><span class="p">(</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">SIGABRT</span><span class="p">);</span> <span class="cm">/* send the signal */</span>
 
-          <header id="banner" class="body">
-                  <h1 style='font-family: "SentyZHAO";'><a href="..">Hi | World <strong></strong></a></h1>
-          </header><!-- /#banner -->
+     <span class="cm">/*</span>
+<span class="cm">      * if we're here, process caught SIGABRT and returned.</span>
+<span class="cm">      */</span>
 
-            <div id="navigation" class="navbar row">
-              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+     <span class="n">fflush</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span> <span class="cm">/*flush all open stdio streams*/</span>
+     <span class="n">action</span><span class="p">.</span><span class="n">sa_handler</span> <span class="o">=</span> <span class="n">SIG_DFL</span><span class="p">;</span>
+     <span class="n">sigaction</span><span class="p">(</span><span class="n">SIGABRT</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">action</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span> <span class="cm">/* reset to default */</span>
+     <span class="n">sigprocmask</span><span class="p">(</span><span class="n">SIG_SETMASK</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">mask</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span> <span class="cm">/* just in case ...*/</span>
+     <span class="n">kill</span><span class="p">(</span><span class="n">getpid</span><span class="p">(),</span> <span class="n">SIGABRT</span><span class="p">);</span> <span class="cm">/* and one more time*/</span>
+     <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span> <span class="cm">/*this should never be executed...*/</span>
+</pre></div>
+<p>说明：首先查看是否将执行默认动作，若是则冲洗所有标准I/O流。这并不等价于对所有打开的流调用fclose(因为只冲洗，并不关闭它们），但是当进程终止时，系统会关闭所有打开的文件。如果进程捕捉此信号并返回，
+那么因为进程产生了更多的输出，所以再一次冲洗所有的流。不进行冲洗处理的唯一条件是如果进程捕捉此信号，然后调用_exit或_Exit.这种情况下，内存中任何未冲洗的标准I/O缓冲区都被丢弃。我们假定捕捉此信号，而且_exit或_Exit的调用者并不想要冲洗缓冲区。</p>
+<p>应用例子：</p>
+<div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
 
-              <ul class="columns" style='font-family: "SentyZHAO";'>
-                <li><a href="..">主 页</a></li>
+<span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">FILE</span> <span class="o">*</span><span class="n">stream</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">((</span><span class="n">stream</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="s">"NOSUCHF.ILE"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">))</span> <span class="o">==</span> <span class="nb">NULL</span> <span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">perror</span><span class="p">(</span><span class="s">"Couldn't open file"</span><span class="p">);</span>
+        <span class="n">abort</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">else</span>
+    <span class="nf">fclose</span><span class="p">(</span><span class="n">stream</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+<p>编译运行一下，看一下执行情况片段：</p>
+<div class="highlight"><pre><span></span>execve("./test.o", ["./test.o"], [/* 97 vars */]) = 0
 
-                <li><a href="../pages/tech-share.html">归档</a></li>
-                <li><a href="../pages/opensource.html">开源项目</a></li>
-                <li><a href="../pages/links.html">链接</a></li>
-                <li><a href="../pages/Reference material.html">参考资料</a></li>
-                <li><a href="../pages/todo list.html">Todo List</a></li>
-                <li><a href="../pages/tools.html">工具集</a></li>
-                <li class="active"><a href="../pages/aboutme.html">关于我</a></li>
+open("NOSUCHF.ILE", O_RDONLY)           = -1 ENOENT (No such file or directory)
 
-              </ul>
-            </div>
+dup(2)                                  = 3
 
-<section id="content" class="body">
-<h2>Articles by peng.lee</h2>
-<div class="row">
-    <div class="eleven columns">
-        <ol id="post-list">
-            <li>
-            <article class="hentry">
-                <header>
-                    <h2 class="entry-title">
-                        <a href="../2009/10/10/UNIX/" rel="bookmark" title="Permalink to 原子操作">原子操作</a>
-                    </h2>
-                </header>
-                <footer class="post-info">
-                    <abbr class="published" title="2009-10-10T00:00:00+08:00"> 六 10 十月 2009 </abbr>
-<address class="vcard author">By <a class="url fn" href="../author/penglee.html">penglee</a></address>                </footer><!-- /.post-info -->
-                <div class="entry-content"> </head><body><h4 id="zhui-jia-zhi-yi-ge-wen-jian">追加至一个文件</h4>
+fcntl(3, F_GETFL)                       = 0x8402 (flags O_RDWR|O_APPEND|O_LARGEFILE)
+
+fstat(3, {st_mode=S_IFCHR|0600, st_rdev=makedev(136, 3), ...}) = 0
+
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fd18aa86000
+
+write(3, "Couldn't open file: No such file"..., 46Couldn't open file: No such file or directory
+
+) = 46
+
+close(3)                                = 0
+
+munmap(0x7fd18aa86000, 4096)            = 0
+
+rt_sigprocmask(SIG_UNBLOCK, [ABRT], NULL, 8) = 0
+
+gettid()                                = 18489
+
+tgkill(18489, 18489, SIGABRT)           = 0
+
+SIGABRT {si_signo=SIGABRT, si_code=SI_TKILL, si_pid=18489, si_uid=0} ---
+
++++ killed by SIGABRT +++
+
+已放弃
+</pre></div>
+<p><strong>abort测试代码说明</strong></p>
+<p>代码大体结构</p>
+<div class="highlight"><pre><span></span>|-   macro                                                                                                           
+||     NUM                                                                                                     
+||     MIN_RLIMIT_CORE                                                                                                                           
+|                                                                                                                         
+|-   variable                                                                                                                            
+||     TCID                                                                                                           
+||     TST_TOTAL                                                                                                                 
+|                                                                                                      
+|-   function                                                                                                    
+||     main                                                                                         
+||     setup                                                              
+||     cleanup                                                                 
+||     do_child                                                                                    
+||     instress
+</pre></div>
+<p>先看一下头文件：</p>
+<div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;sys/types.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;sys/wait.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;errno.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;signal.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;sys/resource.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">"test.h"</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">"safe_macros.h"</span><span class="cp"></span>
+</pre></div>
+<p><strong>什么是头文件呢？</strong></p>
+<p>在C语言家族程序中，头文件被大量使用。一般而言，每个C++/C程序通常由头文件(header files)和定义文件(definition files)组成。头文件作为一种包含功能函数、数据接口声明的载体文件，主要用于保存程序的声明(declaration)，而定义文件用于保存程序的实现 (implementation)</p>
+<p _="
+" printf_hello="printf(&ldquo;Hello" world_="world!&rdquo;);
+">让我们来看，经典程序 &ldquo;Hello world!&rdquo;　
+定义文件名&ldquo;First.c&rdquo;
+    main()</p>
+<div class="highlight"><pre><span></span>&lt;sample-1&gt;
+</pre></div>
+<p>看看上面的程序，没有.h文件,因为程序太简单，没有需要保存的声明。</p>
+<p>文件名 First.c　变形</p>
+<div class="highlight"><pre><span></span>printStr()
+{
+    printf(&ldquo;Hello world!&rdquo;);
+}
+main()
+{
+printStr()
+}
+
+&lt;sample-2&gt;
+</pre></div>
+<p>还是没有, 那就让我们把这个程序再稍微改动一下.</p>
+<p>文件名 First.c</p>
+<div class="highlight"><pre><span></span>main()
+{
+    printStr()
+}
+
+printStr()
+{
+    printf(&ldquo;Hello world!&rdquo;);
+}
+
+&lt;sample-3&gt;
+</pre></div>
+<p>sample3和sample2是不同的，pritStr()函数定义的顺序不同。sample3是编译不通过的。这里面涉及作用域的问题。在这里只讲述与.h文件相关的顶层作用域。 顶层作用域就是从声明点延伸到源程序文本结束, 就printStr()这个函数来说，他没有单独的声明,只有定义,那么就从他定义的行开始,到first.c文件结束。sample2中，printStr的定义在main函数前面，所以作用域覆盖main函数，而sample3则没有。
+这种情况怎么办呢? 有两种方法 ,一个pritStr函数定义到main函数之前，那就让我们来看另一个例子,让我们看看这个方法是不是在任何时候都会起作用.
+文件名 First.c</p>
+<div class="highlight"><pre><span></span>play2()
+{
+  &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.
+  play1()
+  &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..
+}
+play1()
+{
+    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..
+    play2()
+    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;
+}
+main()
+{
+    play1()
+}
+
+&lt;sample-4&gt;
+</pre></div>
+<p>函数嵌套, 那么play1和play2这两个函数哪个放到前面呢?</p>
+<p>这时就需要我们来使用第二种方法,使用声明.</p>
+<p>文件名 First.c</p>
+<div class="highlight"><pre><span></span>play1();
+play2();
+play2()
+{
+    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.
+    play1()
+    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..
+}
+play1()
+{
+    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..
+    play2()
+    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;
+);
+}
+main()
+{
+    play1()
+}
+
+&lt;sample-5&gt;
+</pre></div>
+<p>一个大型的软件项目,可能有几千个,上万个play, 而不只是play1,play2这么简单, 这样就可能有N个类似 play1(); play2(); 这样的声明, 这个时候就需要我们想办法把这样的play1(); play2(); 也另行管理, 而不是把他放在.c文件中, 于是.h文件出现了.</p>
+<p>文件名 First.h</p>
+<div class="highlight"><pre><span></span>play1();
+play2();
+</pre></div>
+<p>文件名 First.C</p>
+<div class="highlight"><pre><span></span>#include &ldquo;first.h&rdquo;
+play2()
+{
+    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.
+    play1()
+    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..
+}
+play1()
+{
+    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..
+    play2()
+    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;
+);
+}
+main()
+{
+play1()
+}
+
+&lt;sample-6&gt;
+</pre></div>
+<p>如在second.c中还有一个函数需要调用first.c文件中的play1函数, 如何实现呢?</p>
+<p>Sencond.h 文件</p>
+<div class="highlight"><pre><span></span>play1();
+</pre></div>
+<p>sencond.c文件</p>
+<div class="highlight"><pre><span></span>***()
+{
+    &hellip;&hellip;&hellip;&hellip;&hellip;.
+    Play();
+    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.
+}
+
+&lt;sample-7&gt;
+</pre></div>
+<p>在sencond.h文件内声明play1函数，怎么能调用到first.c文件中的哪个play1函数中呢? 是不是搞错了，没有搞错, 这里涉及到c语言的另一个特性:存储类说明符.
+C语言的存储类说明符有以下几个, 我来列表说明一下</p>
+<table class="table table-hover table-striped">
+<thead>
+<tr>
+<th>说明符</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Auto</td>
+<td>只在块内变量声明中被允许, 表示变量具有本地生存期.</td>
+</tr>
+<tr>
+<td>Extern</td>
+<td>出现在顶层或块的外部变量函数与变量声明中，表示声明的对象具有静态生存期, 连接程序知道其名字.</td>
+</tr>
+<tr>
+<td>Static</td>
+<td>可以放在函数与变量声明中. 在函数定义时, 其只用于指定函数名,而不将函数导出到连接程序. 在函数声明中,表示其后面会有定义声明的函数, 存储类为static. 在数据声明中, 总是表示定义的声明不导出到连接程序.</td>
+</tr>
+</tbody>
+</table>
+<p>无疑, 在sample7中的second.h和first.h中,需要我们用extern标志符来修饰play1函数的声明,这样,play1()函数就可以被导出到连接程序, 也就是实现了无论在first.c文件中调用,还是在second.c文件中调用,连接程序都会很聪明的按照我们的意愿,把他连接到first.c文件中的play1函数的定义上去, 而不必我们在second.c文件中也要再写一个一样的play1函数.</p>
+<p>但随之有一个小问题, 在sample7中,我们并没有用extern标志符来修饰play1啊, 这里涉及到另一个问题, C语言中有默认的存储类标志符. C99中规定, 所有顶层的默认存储类标志符都是extern .</p>
+<p>那么我们如何来区分哪个头文件中的声明在其对应的.c文件中有定义,而哪个又没有呢? 这也许不是必须的，因为无论在哪个文件中定义，聪明的连接程序都会义无返顾的帮我们找到，并导出到连接程序, 但我觉得他确实必要的. </p>
+<p>因为我们需要知道这个函数的具体内容是什么,有什么功能, 有了新需求后我也许要修改他， 我需要在短时间内能找到这个函数的定义, 那么我来介绍一下在C语言中一个人为的规范:</p>
+<p>在.h文件中声明的函数,如果在其对应的.c文件中有定义,那么我们在声明这个函数时,不使用extern修饰符, 如果反之,则必须显示使用extern修饰符.</p>
+<p>这样,在C语言的.h文件中,我们会看到两种类型的函数声明. 带extern的,还不带extern的, 简单明了,一个是引用外部函数，一个是自己声明并定义的函数.
+最终如下:
+Sencond.h 文件</p>
+<p>Extern play1();</p>
+<p>那么多都是针对函数的，而实际上.h文件却不是为函数所专用的，还有全局变量. </p>
+<p>在大型项目中，对全局变量的使用不可避免, 比如,在first.c中需要使用一个全局变量G_test, 那么我们可以在first.h中,定义 TPYE G_test. 与对函数的使用类似, 在second.c中我们的开发人员发现他也需要使用这个全局变量, 而且要与first.c中一样的那个, 如何处理? 对,我们可以仿照函数中的处理方法, 在second.h中再次声明TPYE G_test, 根据extern的用法,以及c语言中默认的存储类型, 在两个头文件中声明的TPYE G_test,其实其存储类型都是extern, 也就是说不必我们操心, 连接程序会帮助我们处理一切. 但我们又如何区分全局变量哪个是定义声明,哪个是引用声明呢?这个比函数要复杂一些, 一般在C语言中有如下几种模型来区分:</p>
+<p><strong>1、 初始化语句模型</strong></p>
+<p>顶层声明中，存在初始化语句是，表示这个声明是定义声明，其他声明是引用声明。C语言的所有文件之中，只能有一个定义声明。
+按照这个模型，我们可以在first.h中定义如下TPYE G_test=1；那么就确定在first中的是定义声明，在其他的所有声明都是引用声明。</p>
+<p><strong>2、 省略存储类型说明</strong></p>
+<p>在这个模型中，所有引用声明要显示的包括存储类extern， 而每个外部变量的唯一定义声明中省略存储类说明符。
+这个与我们对函数的处理方法类似，不再举例说明。</p>
+<p>这里还有一个需要说明，数组全局变量。</p>
+<p>在声明定义时，定义数组如下：
+int G_glob[100];</p>
+<p>在另一个文件中引用声明如下：
+int * G_glob;</p>
+<p>在vc中，是可以编译通过的， 这种情况大家都比较模糊并且需要注意，数组与指针类似，但并不等于说对数组的声明起变量就是指针。 上面所说的的程序在运行时发现了问题，在引用声明的那个文件中，使用这个指针时总是提示内存访问错误，原来我们的连接程序并不把指针与数组等同，连接时，也不把他们当做同一个定义，而是认为是不相关的两个定义，当然会出现错误。正确的使用方法是在引用声明中声明如下：</p>
+<p>int G_glob[10];</p>
+<p>并且最好再加上一个extern，更加明了。</p>
+<p>extern int G_glob[10];</p>
+<p>另外需要说明的是，在引用声明中由于不需要涉及到内存分配，可以简化如下，这样在需要对全局变量的长度进行修改时，不用把所有的引用声明也全部修改了。</p>
+<p>extern int G_glob[];</p>
+<p>接下来，看一下linux环境编程头文件常用的有哪些？</p>
+<p><strong>linux常用头文件</strong></p>
+<p><strong>POSIX标准定义的头文件</strong></p>
+<div class="highlight"><pre><span></span>|　文件名　| 内容　|
+| ------- | --------
+| dirent.h |       目录项
+| fcntl.h  |       文件控制
+| fnmatch.h |   文件名匹配类型
+| glob.h   |  路径名模式匹配类型
+| grp.h    |     组文件
+| &lt;netdb.h&gt;  |   网络数据库操作
+| &lt;pwd.h&gt;    |     口令文件
+| &lt;regex.h&gt;   |  正则表达式
+| &lt;tar.h&gt;    |     TAR归档值
+| &lt;termios.h&gt; |    终端I/O
+| &lt;unistd.h&gt;  |   符号常量
+| &lt;utime.h&gt;   |  文件时间
+| &lt;wordexp.h&gt;  |   字符扩展类型
+| &lt;arpa/inet.h&gt;  |   INTERNET定义
+| &lt;net/if.h&gt;  |   套接字本地接口
+| &lt;netinet/in.h&gt;   |  INTERNET地址族
+| &lt;netinet/tcp.h&gt;  |   传输控制协议定义
+| &lt;sys/mman.h&gt;  |   内存管理声明
+| &lt;sys/select.h&gt;   |  Select函数
+| &lt;sys/socket.h&gt; |    套接字借口
+| &lt;sys/stat.h&gt;    | 文件状态
+| &lt;sys/times.h&gt; |    进程时间
+| &lt;sys/types.h&gt;   |  基本系统数据类型
+| &lt;sys/un.h&gt; |    UNIX域套接字定义
+| &lt;sys/utsname.h&gt;   |  系统名
+| &lt;sys/wait.h&gt;   |  进程控制
+</pre></div>
+<hr/>
+<p><strong>POSIX定义的XSI扩展头文件</strong></p>
+<div class="highlight"><pre><span></span>|　文件名　| 内容　|
+| ------- | --------
+| &lt;cpio.h&gt; |    cpio归档值 
+| &lt;dlfcn.h&gt; |   动态链接
+| &lt;fmtmsg.h&gt; |   消息显示结构
+| &lt;ftw.h&gt;  |      文件树漫游
+| &lt;iconv.h&gt; |   代码集转换使用程序
+| &lt;langinfo.h&gt; |   语言信息常量
+| &lt;libgen.h&gt; |   模式匹配函数定义
+| &lt;monetary.h&gt;  |  货币类型
+| &lt;ndbm.h&gt;  |  数据库操作
+| &lt;nl_types.h&gt; |   消息类别
+| &lt;poll.h&gt; |   轮询函数
+| &lt;search.h&gt;|     搜索表
+| &lt;strings.h&gt; |    字符串操作
+| &lt;syslog.h&gt; |    系统出错日志记录
+| &lt;ucontext.h&gt;  |   用户上下文
+| &lt;ulimit.h&gt; |    用户限制
+| &lt;utmpx.h&gt;   |  用户帐户数据库
+
+| &lt;sys/ipc.h&gt; |    IPC(命名管道)
+| &lt;sys/msg.h&gt;  |   消息队列
+| &lt;sys/resource.h&gt;| 资源操作
+| &lt;sys/sem.h&gt;  |   信号量
+| &lt;sys/shm.h&gt;   |  共享存储
+| &lt;sys/statvfs.h&gt;   |  文件系统信息
+| &lt;sys/time.h&gt;   |  时间类型
+| &lt;sys/timeb.h&gt;  |   附加的日期和时间定义
+| &lt;sys/uio.h&gt;    | 矢量I/O操作
+</pre></div>
+<hr/>
+<p><strong>POSIX定义的可选头文件</strong></p>
+<div class="highlight"><pre><span></span>|　文件名　| 内容　|
+| ------- | --------
+| &lt;aio.h&gt;    |     异步I/O
+| &lt;mqueue.h&gt;  |   消息队列
+| &lt;pthread.h&gt;   |  线程
+| &lt;sched.h&gt;   |  执行调度
+| &lt;semaphore.h&gt;  |   信号量
+| &lt;spawn.h&gt;    |  实时spawn接口
+| &lt;stropts.h&gt;  |   XSI STREAMS接口
+| &lt;trace.h&gt;   |   事件跟踪
+</pre></div>
+<p><strong>C/C++头文件一览</strong></p>
+<p><strong>C语言</strong></p>
+<div class="highlight"><pre><span></span>|　文件名　| 内容　|
+| ------- | --------
+| &lt;assert.h&gt;|　设定插入点
+| &lt;ctype.h&gt;　　| 字符处理
+| &lt;errno.h&gt;　　| 定义错误码
+| &lt;float.h&gt;　　| 浮点数处理
+| &lt;iso646.h&gt;   | 对应各种运算符的宏
+| &lt;limits.h&gt;　　| 定义各种数据类型最值的常量
+| &lt;locale.h&gt;　　| 定义本地化C函数
+| &lt;math.h&gt;　　　| 定义数学函数
+| &lt;setjmp.h&gt; | 异常处理支持
+|  &lt;signal.h&gt;   | 信号机制支持
+|  &lt;stdarg.h&gt;   | 不定参数列表支持
+|  &lt;stddef.h&gt;    | 常用常量
+| &lt;stdio.h&gt;　　| 定义输入／输出函数
+|  &lt;stdlib.h&gt;| 定义杂项函数及内存分配函数
+|  &lt;string.h&gt;　　| 字符串处理
+| &lt;time.h&gt;　　　　| 定义关于时间的函数
+| &lt;wchar.h&gt;　　　| 宽字符处理及输入／输出
+| &lt;wctype.h&gt;　　| 宽字符分类
+</pre></div>
+<p><strong>传统C++</strong></p>
+<div class="highlight"><pre><span></span>|　文件名　| 内容　|
+| ------- | --------
+|  &lt;fstream.h&gt;　| 改用&lt;fstream&gt;
+| &lt;iomanip.h&gt;　| 改用&lt;iomainip&gt;
+|  &lt;iostream.h&gt;　| 改用&lt;iostream&gt;
+| &lt;strstrea.h&gt;　　| 该类不再支持，改用&lt;sstream&gt;中的stringstream
+</pre></div>
+<p><strong>标准C++</strong></p>
+<div class="highlight"><pre><span></span>|　文件名　| 内容　|
+| ------- | --------
+|  &lt;algorithm&gt;　　　 | 通用算法
+| &lt;bitset&gt;　　　　| 位集容器
+| &lt;cctype&gt;         | 字符处理
+|  &lt;cerrno&gt; 　　　　| 定义错误码
+|  &lt;cfloat&gt;　　　| 浮点数处理
+| &lt;ciso646&gt;        | 对应各种运算符的宏
+|  &lt;climits&gt; 　　　| 定义各种数据类型最值的常量
+|  &lt;clocale&gt; 　　　| 定义本地化函数
+| &lt;cmath&gt; 　　　　| 定义数学函数
+| &lt;complex&gt;　　　　| 复数类
+| &lt;csignal&gt;       | 信号机制支持
+|  &lt;csetjmp&gt;       | 异常处理支持
+|  &lt;cstdarg&gt;       | 不定参数列表支持
+|  &lt;cstddef&gt;       | 常用常量
+| &lt;cstdio&gt; 　　| 定义输入／输出函数
+|  &lt;cstdlib&gt; 　　| 定义杂项函数及内存分配函数
+|  &lt;cstring&gt; 　| 字符串处理
+| &lt;ctime&gt; 　　| 定义关于时间的函数
+|  &lt;cwchar&gt; 　| 宽字符处理及输入／输出
+|  &lt;cwctype&gt; 　　| 宽字符分类
+|  &lt;deque&gt;　　　　　| STL 双端队列容器
+|  &lt;exception&gt;　　　| 异常处理类
+| &lt;fstream&gt; 　　　 | 文件输入／输出
+|  &lt;al&gt;　　| STL 定义运算函数（代替运算符）
+|  &lt;limits&gt; 　　　　| 定义各种数据类型最值常量
+|  &lt;list&gt;　　　　　　| STL 线性列表容器
+|  &lt;locale&gt;        | 本地化特定信息
+|  &lt;map&gt;　　　　　　| STL 映射容器
+|  &lt;memory&gt;        | STL通过分配器进行的内存分配
+|  &lt;new&gt;           | 动态内存分配
+|  &lt;numeric&gt;      | STL常用的数字操作
+|  &lt;iomanip&gt; 　　| 参数化输入／输出
+|  &lt;iOS&gt;　　　　　　 | 基本输入／输出支持
+|  &lt;iosfwd&gt;　　　　| 输入／输出系统使用的前置声明
+|  &lt;iostream&gt; 　　| 数据流输入／输出
+|  &lt;istream&gt;　　　　| 基本输入流
+|  &lt;iterator&gt;       | STL迭代器
+| &lt;ostream&gt;　　　　 | 基本输出流
+| &lt;queue&gt;　　　　　 | STL 队列容器
+|  &lt;set&gt;　　　　　| STL 集合容器
+| &lt;sstream&gt;　　　　 | 基于字符串的流
+|  &lt;stack&gt;　　　　　| STL 堆栈容器
+|  &lt;stdexcept&gt;　　　| 标准异常类
+|  &lt;streambuf&gt;　　　 | /底层输入／输出支持
+|  &lt;string&gt;　　　　| 字符串类
+|  &lt;typeinfo&gt;      | 运行期间类型信息
+|  &lt;utility&gt;　　　　| STL 通用模板类
+|  &lt;valarray&gt;       | 对包含值的数组的操作
+|  &lt;vector&gt;　　　　　| STL 动态数组容器
+</pre></div>
+<p><strong>C99增加的部分</strong></p>
+<div class="highlight"><pre><span></span>|　文件名　| 内容　|
+| ------- | --------
+|  &lt;complex.h&gt;　| 复数处理
+|  &lt;fenv.h&gt;　　　　| 浮点环境
+|  &lt;inttypes.h&gt;　　| 整数格式转换
+|  &lt;stdbool.h&gt;　　 | 布尔环境
+|  &lt;stdint.h&gt;　　　| 整型环境
+|  &lt;tgmath.h&gt;　　　| 通用类型数学宏
+</pre></div>
+<p>回到abort01的测试上来。先看一下执行情况：</p>
+<div class="highlight"><pre><span></span>abort01     0  TINFO  :  Adjusting RLIMIT_CORE to 1048576                                                                                            
+abort01     1  TPASS  :  abort dumped core                                                                                                           
+abort01     2  TPASS  :  abort raised SIGIOT                                                                                                         
+abort01     3  TPASS  :  abort dumped core                                                                                                           
+abort01     4  TPASS  :  abort raised SIGIOT                                                                                                         
+abort01     5  TPASS  :  abort dumped core                                                                                                           
+abort01     6  TPASS  :  abort raised SIGIOT
+</pre></div>
+<p>程序后台执行片段</p>
+<div class="highlight"><pre><span></span>chdir("/tmp/aboeHLyFk")                 = 0
+clone(child_stack=0, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7fb05157a9d0) = 19587
+wait4(-1, [{WIFSIGNALED(s) &amp;&amp; WTERMSIG(s) == SIGABRT &amp;&amp; WCOREDUMP(s)}], 0, NULL) = 19587
+SIGCHLD {si_signo=SIGCHLD, si_code=CLD_DUMPED, si_pid=19587, si_uid=0, si_status=SIGABRT, si_utime=0, si_stime=0} ---
+wait4(-1, 0x7ffd43788f30, 0, NULL)      = -1 ECHILD (No child processes)
+write(1, "abort01     1  TPASS  :  abort d"..., 43abort01     1  TPASS  :  abort dumped core
+) = 43
+write(1, "abort01     2  TPASS  :  abort r"..., 45abort01     2  TPASS  :  abort raised SIGIOT
+) = 45
+clone(child_stack=0, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7fb05157a9d0) = 19588
+wait4(-1, [{WIFSIGNALED(s) &amp;&amp; WTERMSIG(s) == SIGABRT &amp;&amp; WCOREDUMP(s)}], 0, NULL) = 19588
+SIGCHLD {si_signo=SIGCHLD, si_code=CLD_DUMPED, si_pid=19588, si_uid=0, si_status=SIGABRT, si_utime=0, si_stime=0} ---
+wait4(-1, 0x7ffd43788f30, 0, NULL)      = -1 ECHILD (No child processes)  
+write(1, "abort01     3  TPASS  :  abort d"..., 43abort01     3  TPASS  :  abort dumped core
+) = 43
+write(1, "abort01     4  TPASS  :  abort r"..., 45abort01     4  TPASS  :  abort raised SIGIOT
+) = 45
+clone(child_stack=0, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7fb05157a9d0) = 19589
+wait4(-1, [{WIFSIGNALED(s) &amp;&amp; WTERMSIG(s) == SIGABRT &amp;&amp; WCOREDUMP(s)}], 0, NULL) = 19589
+SIGCHLD {si_signo=SIGCHLD, si_code=CLD_DUMPED, si_pid=19589, si_uid=0, si_status=SIGABRT, si_utime=0, si_stime=0} ---
+wait4(-1, 0x7ffd43788f30, 0, NULL)      = -1 ECHILD (No child processes)
+write(1, "abort01     5  TPASS  :  abort d"..., 43abort01     5  TPASS  :  abort dumped core
+) = 43
+write(1, "abort01     6  TPASS  :  abort r"..., 45abort01     6  TPASS  :  abort raised SIGIOT
+) = 45
+unlink("core")
+</pre></div>
+<p>从测试log来看，abort01主要进行abort"dumped core"、和"raised SIGIOT"两种测试，并且测试了３遍。０为setup打印信息。</p>
+<div class="highlight"><pre><span></span>#define NUM 3 /*定义fork进程的数量*/
+char *TCID;         /* tescase的名字*/
+int TST_TOTAL;          /* testcases数量 */
+</pre></div>
+<p>主要函数</p>
+<div class="highlight"><pre><span></span>static void setup(void);
+static void cleanup(void);                                                                                            
+static void do_child();                                                                                               
+static int instress();
+int main(int argc, char *argv[])
+</pre></div>
+<p>分别分析这几个函数</p>
+<p><strong>setup</strong></p>
+<div class="highlight"><pre><span></span>#define MIN_RLIMIT_CORE (1024 * 1024)
+static void setup(void)
+{
+    struct rlimit rlim;
+    SAFE_GETRLIMIT(NULL, RLIMIT_CORE, &amp;rlim);
+
+    if (rlim.rlim_cur &lt; MIN_RLIMIT_CORE) {
+        test_resm(TINFO, "Adjusting RLIMIT_CORE to %i", MIN_RLIMIT_CORE);
+        rlim.rlim_cur = MIN_RLIMIT_CORE;
+        SAFE_GETRLIMIT(NULL, RLIMIT_CORE, &amp;rlim);
+    }
+    tst_tmpdir()
+}
+</pre></div>
+<p>setup函数的目的是为了调整RLIMIT_CORE的大小。在Linux系统中，Resouce limit指在一个进程的执行过程中，它所能得到的资源的限制，比如进程的core file的最大值，虚拟内存的最大值等。Resouce limit的大小可以直接影响进程的执行状况。其有两个最重要的概念：soft limit 和 hard limit。</p>
+<div class="highlight"><pre><span></span>struct rlimit {
+rlim_t rlim_cur;
+rlim_t rlim_max;
+};
+</pre></div>
+<p>是指内核所能支持的资源上限。比如对于RLIMIT_NOFILE(一个进程能打开的最大文件 数，内核默认是1024)，soft limit最大也只能达到1024。对于RLIMIT_CORE(core文件的大小，内核不做限制)，soft limit最大能是unlimited。hard limit在资源中只是作为soft limit的上限。当你设置hard limit后，你以后设置的soft limit只能小于hard limit。要说明的是，hard limit只针对非特权进程，也就是进程的有效用户ID(effective user ID)不是0的进程。具有特权级别的进程(具有属性CAP_SYS_RESOURCE)，soft limit则只有内核上限。</p>
+<p>tst_tmpdir函数说明一下，该函数用来为ltp测试程序创建临时目录，目录名case名称＋随机字母。</p>
+<p><strong>cleanup函数</strong></p>
+<div class="highlight"><pre><span></span>static void cleanup(void)
+{
+    unlink("core")
+    tst_rmdir();
+}
+</pre></div>
+<p>该函数比较简单，用来清理产生的临时文件和软连接。可以做下试验，将main函数中的该函数注释掉，会在tmp下看到产生的core文件。</p>
+<p><strong>do_child函数</strong></p>
+<div class="highlight"><pre><span></span>static void do_child(void)
+{
+    abort()
+    fprintf(stderr, "\tchild - abort failed.\n");
+    exit(1);
+}
+</pre></div>
+<p>abort的调用，进程退出。</p>
+<p><strong>instress函数</strong></p>
+<div class="highlight"><pre><span></span>static int instress(void)
+{
+    test_resm(TINFO,
+        "System resources may be too low; fork(), select() etc are likely to fail.");
+    return 1;
+}
+</pre></div>
+<p>系统资源比较低的情况，　出现fork()等调用失败时的处理。也是为兼容UCLINUK测试（如嵌入式系统）。</p>
+<p><strong>main函数</strong>
+控制测试流程和主要的测试代码，以下将重点介绍一些代码片段。</p>
+<div class="highlight"><pre><span></span><span class="cp">#ifdef WCOREDUMP</span>
+    <span class="kt">int</span> <span class="n">core</span><span class="p">;</span>
+    <span class="n">core</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="cp">#endif</span>
+</pre></div>
+<p>WCOREDUMP(status)
+如果孩子进程产生核心转储文件则返回真。这个宏只应该在 WIFSIGNALED 返回真时调用。这个没有在 POSIX.1-2001 里指定并且在一些 UNIX 实现(如 AIX、SunOS)里也没有提供。只在 #ifdef WCOREDUMP ... #endif 内部使用。</p>
+<div class="highlight"><pre><span></span><span class="cp">#ifdef UCLINUX</span>
+    <span class="n">maybe_run_child</span><span class="p">(</span><span class="o">&amp;</span><span class="n">do_child</span><span class="p">,</span> <span class="s">""</span><span class="p">);</span>  <span class="cm">/* UCLINUX的情况　*/</span>
+<span class="cp">#endif</span>
+
+    <span class="n">setup</span><span class="p">();</span> <span class="cm">/*调用setup函数*/</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">NUM</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>   <span class="cm">/*连续创建３个进程调用do_child函数*/</span>
+        <span class="n">kidpid</span> <span class="o">=</span> <span class="n">FORK_OR_VFORK</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">kidpid</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+<span class="cp">#ifdef UCLINUX</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">self_exec</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s">""</span><span class="p">))</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">instress</span><span class="p">())</span> <span class="p">{</span>
+                    <span class="n">perror</span><span class="p">(</span><span class="s">"fork failed"</span><span class="p">);</span>
+                    <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+<span class="cp">#else</span>
+            <span class="n">do_child</span><span class="p">();</span><span class="err">　　</span><span class="c1">//调用do_child()函数</span>
+
+<span class="cp">#endif</span>
+        <span class="p">}</span>  
+                <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">kidpid</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">instress</span><span class="p">())</span>
+            <span class="n">tst_brkm</span><span class="p">(</span><span class="n">TBROK</span> <span class="o">|</span> <span class="n">TERRNO</span><span class="p">,</span> <span class="n">cleanup</span><span class="p">,</span>
+                 <span class="s">"fork failed"</span><span class="p">);</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">((</span><span class="n">child</span> <span class="o">=</span> <span class="n">wait</span><span class="p">(</span><span class="o">&amp;</span><span class="n">status</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">count</span><span class="o">++</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">count</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">tst_brkm</span><span class="p">(</span><span class="n">TBROK</span><span class="p">,</span> <span class="n">cleanup</span><span class="p">,</span>
+             <span class="s">"wrong # children waited on; got %d, expected 1"</span><span class="p">,</span>
+             <span class="n">count</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="cp">#ifdef WCOREDUMP</span>
+        <span class="n">core</span> <span class="o">=</span> <span class="n">WCOREDUMP</span><span class="p">(</span><span class="n">status</span><span class="p">);</span><span class="c1">//WCOFEDUMP情况</span>
+<span class="cp">#endif</span>
+        <span class="n">sig</span> <span class="o">=</span> <span class="n">WTERMSIG</span><span class="p">(</span><span class="n">status</span><span class="p">);</span>
+
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">WIFEXITED</span><span class="p">(</span><span class="n">status</span><span class="p">))</span>
+        <span class="n">ex</span> <span class="o">=</span> <span class="n">WEXITSTATUS</span><span class="p">(</span><span class="n">status</span><span class="p">);</span>
+
+<span class="cp">#ifdef WCOREDUMP</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">core</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">tst_brkm</span><span class="p">(</span><span class="n">TFAIL</span><span class="p">,</span> <span class="n">cleanup</span><span class="p">,</span>
+             <span class="s">"Child did not dump core; exit code = %d, "</span>
+             <span class="s">"signal = %d"</span><span class="p">,</span> <span class="n">ex</span><span class="p">,</span> <span class="n">sig</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">core</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">tst_resm</span><span class="p">(</span><span class="n">TPASS</span><span class="p">,</span> <span class="s">"abort dumped core"</span><span class="p">);</span><span class="err">　</span><span class="c1">//core值等于０，则没有正常产生core文件，如果core不等于０且不等于-1，说明正常产生了core文件</span>
+    <span class="p">}</span>
+<span class="cp">#endif</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">sig</span> <span class="o">==</span> <span class="n">SIGIOT</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">tst_resm</span><span class="p">(</span><span class="n">TPASS</span><span class="p">,</span> <span class="s">"abort raised SIGIOT"</span><span class="p">);</span><span class="err">　　</span><span class="c1">//发出的信号如果为SIGIOT说明信号触发正常</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">tst_brkm</span><span class="p">(</span><span class="n">TFAIL</span><span class="p">,</span> <span class="n">cleanup</span><span class="p">,</span>
+             <span class="s">"Child did not raise SIGIOT (%d); exit code = %d, "</span>
+             <span class="s">"signal = %d"</span><span class="p">,</span> <span class="n">SIGIOT</span><span class="p">,</span> <span class="n">ex</span><span class="p">,</span> <span class="n">sig</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+<p>abort测试分析结束。</p></body>	
+						</div>
+					</div>
+	
+			                <div class="post">
+			                        <h2 class="title">Autres articles</h2>
+			                </div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2016/08/01/LTP/">LTP－kernel-syscalls</a></h2>
+						<p class="meta"><span class="date">日期 一 01 八月 2016</span><span class="posted">By <a href="#">peng.lee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><h4 id="syscalls">syscalls</h4>
+<p>ltp中kernel测试比重很大，尤其是syscalls，包括一下用例：
+注：测试内容分析时补充。</p>
+<table class="table table-hover table-striped">
+<thead>
+<tr>
+<th>用例名称</th>
+<th>测试内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>abort</td>
+<td></td>
+</tr>
+<tr>
+<td>accept</td>
+<td></td>
+</tr>
+<tr>
+<td>accept4</td>
+<td></td>
+</tr>
+<tr>
+<td>access</td>
+<td></td>
+</tr>
+<tr>
+<td>acct</td>
+<td></td>
+</tr>
+<tr>
+<td>add_key</td>
+<td></td>
+</tr>
+<tr>
+<td>adjtimex</td>
+<td></td>
+</tr>
+<tr>
+<td>alarm</td>
+<td></td>
+</tr>
+<tr>
+<td>asyncio</td>
+<td></td>
+</tr>
+<tr>
+<td>bdflush</td>
+<td></td>
+</tr>
+<tr>
+<td>bind</td>
+<td></td>
+</tr>
+<tr>
+<td>brk</td>
+<td></td>
+</tr>
+<tr>
+<td>cacheflush</td>
+<td></td>
+</tr>
+<tr>
+<td>capget</td>
+<td></td>
+</tr>
+<tr>
+<td>capset</td>
+<td></td>
+</tr>
+<tr>
+<td>chdir</td>
+<td></td>
+</tr>
+<tr>
+<td>chmod</td>
+<td></td>
+</tr>
+<tr>
+<td>chown</td>
+<td></td>
+</tr>
+<tr>
+<td>chroot</td>
+<td></td>
+</tr>
+<tr>
+<td>clock_getres</td>
+<td></td>
+</tr>
+<tr>
+<td>clock_nanosleep</td>
+<td></td>
+</tr>
+<tr>
+<td>clock_nanosleep2</td>
+<td></td>
+</tr>
+<tr>
+<td>clone</td>
+<td></td>
+</tr>
+<tr>
+<td>close</td>
+<td></td>
+</tr>
+<tr>
+<td>cma</td>
+<td></td>
+</tr>
+<tr>
+<td>confstr</td>
+<td></td>
+</tr>
+<tr>
+<td>connect</td>
+<td></td>
+</tr>
+<tr>
+<td>creat</td>
+<td></td>
+</tr>
+<tr>
+<td>dup</td>
+<td></td>
+</tr>
+<tr>
+<td>dup2</td>
+<td></td>
+</tr>
+<tr>
+<td>dup3</td>
+<td></td>
+</tr>
+<tr>
+<td>epoll</td>
+<td></td>
+</tr>
+<tr>
+<td>epoll2</td>
+<td></td>
+</tr>
+<tr>
+<td>epoll_create1</td>
+<td></td>
+</tr>
+<tr>
+<td>epoll_ctl</td>
+<td></td>
+</tr>
+<tr>
+<td>epoll_pwait</td>
+<td></td>
+</tr>
+<tr>
+<td>epoll_wait</td>
+<td></td>
+</tr>
+<tr>
+<td>eventfd</td>
+<td></td>
+</tr>
+<tr>
+<td>eventfd2</td>
+<td></td>
+</tr>
+<tr>
+<td>execl</td>
+<td></td>
+</tr>
+<tr>
+<td>execle</td>
+<td></td>
+</tr>
+<tr>
+<td>execlp ...</td></tr></tbody></table></body>	
+						 <a class="readmore" href="../2016/08/01/LTP/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2016/06/03/LTP/">LTP－Command-file</a></h2>
+						<p class="meta"><span class="date">日期 五 03 六月 2016</span><span class="posted">By <a href="#">peng.lee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><h4 id="file">file</h4>
+<p>file　用例主要用于测试file命令。</p>
+<h5 id="fileming-ling-jie-shao">file命令介绍</h5>
+<p>file命令可以通过查看文件内容来找出特定类型的文件，在UNIX/ Linux系统中，文件类型并不是由文件扩展名来决定的(windows中却正是这么做的),file命令的目的是从多个文件中收集文件类型统计信息。</p>
+<div class="highlight"><pre><span></span>file --help
+
+Usage: file [OPTION...] [FILE...]
+Determine type of FILEs.
+
+  --help                 display this help and exit
+-v, --version              output version information and exit
+-m, --magic-file LIST      use LIST as a colon-separated list of magic
+                           number files
+-z, --uncompress           try to ...</pre></div></body>	
+						 <a class="readmore" href="../2016/06/03/LTP/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2016/06/02/LTP/">LTP－Command</a></h2>
+						<p class="meta"><span class="date">日期 四 02 六月 2016</span><span class="posted">By <a href="#">peng.lee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p>本节将重点分析commands部分的用例。</p>
+<h4 id="commandzhu-yao-yong-li">Command主要用例</h4>
+<p>主要case包括：</p>
+<table class="table table-hover table-striped">
+<thead>
+<tr>
+<th>case</th>
+<th>包含子case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ade</td>
+<td>ar file ld ldd nm objdump size</td>
+</tr>
+<tr>
+<td>at</td>
+<td>at</td>
+</tr>
+<tr>
+<td>cpio</td>
+<td>cpio</td>
+</tr>
+<tr>
+<td>cron</td>
+<td>cron</td>
+</tr>
+<tr>
+<td>df</td>
+<td>df</td>
+</tr>
+<tr>
+<td>du</td>
+<td>du</td>
+</tr>
+<tr>
+<td>eject</td>
+<td>eject</td>
+</tr>
+<tr>
+<td>fileutils</td>
+<td>cp ln mkdir mv</td>
+</tr>
+<tr>
+<td>gzip</td>
+<td>gzip</td>
+</tr>
+<tr>
+<td>insmod</td>
+<td>insmod</td>
+</tr>
+<tr>
+<td>logrotate</td>
+<td>logrotate</td>
+</tr>
+<tr>
+<td>lsmod</td>
+<td>lsmod</td>
+</tr>
+<tr>
+<td>mail</td>
+<td>mail</td>
+</tr>
+<tr>
+<td>mkfs</td>
+<td>mkfs</td>
+</tr>
+<tr>
+<td>mkswap</td>
+<td>mkswap</td>
+</tr>
+<tr>
+<td>sssd</td>
+<td>sssd</td>
+</tr>
+<tr>
+<td>su</td>
+<td>su</td>
+</tr>
+<tr>
+<td>tar</td>
+<td>tar ...</td></tr></tbody></table></body>	
+						 <a class="readmore" href="../2016/06/02/LTP/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2016/06/01/LTP/">LTP－Case list</a></h2>
+						<p class="meta"><span class="date">日期 三 01 六月 2016</span><span class="posted">By <a href="#">peng.lee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p>该topic将深入分析ltp的测试内容，着重于具体每个case的测试内容及测试方法。通过对ltp case的分析，加强linux系统的理解和用例设计。本节主要整理ltp的包括测试case的类型和case列表。</p>
+<h3 id="zheng-ti-qing-kuang">整体情况</h3>
+<p>case主要分为&rdquo;commands"、&ldquo;kdump"、"kernel"、"misc"、"network"、"open_posix_testsuite"、"realtime"、"lib"等部分，主要内容如下：</p>
+<table class="table table-hover table-striped">
+<thead>
+<tr>
+<th>分类</th>
+<th>包含内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>commands</td>
+<td>ade cpio df eject gzip logrotate mail mkfs sshd tar unzip which at cron du fileutils insmod lsmod mkswap su tmp-tools wc</td>
+</tr>
+<tr>
+<td>kernel</td>
+<td>connectors controllers firmware hotplug input ipc ...</td></tr></tbody></table></body>	
+						 <a class="readmore" href="../2016/06/01/LTP/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2016/03/11/python/">Python-HOWTOS(一）</a></h2>
+						<p class="meta"><span class="date">日期 五 11 三月 2016</span><span class="posted">By <a href="#">peng.lee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p>Python HOWTOS 是一些单一的、特定的主题并试图覆盖python大部分内容，参考linux howto形成的集合，部分内容比python库包含更多的内容。
+目前，包括这些topic.</p>
+<ul>
+<li>将python2代码移植到python3</li>
+<li>移植扩展模块到python3</li>
+<li>Curses编程</li>
+<li>Descriptor 使用方法</li>
+<li>函数式编程方法</li>
+<li>Logging使用方法</li>
+<li>Logging Cookbook</li>
+<li>正则表达式使用方法</li>
+<li>Socket编程方法</li>
+<li>排序使用方法</li>
+<li>Unicode使用方法</li>
+<li>如何通过urllib包获取网络资源</li>
+<li>Argparse教程</li>
+<li>IP地址模块介绍</li>
+<li>参数解析方法</li>
+<li>CPython中DTrace和SystemTap使用</li>
+</ul>
+<h3 id="jiang-python2dai-ma-yi-zhi-dao-python3">将python2代码移植到python3</h3>
+<p>Python3是python的未来，与此同时，Python2仍然在使用，使用这两个主流版本的python开发项目是件好事。本指南将帮助我们如何更好的使用python2&amp;3.如果想查看扩展模块级的信息，可以查看移植扩展模块到python3[].如果想了解python3的出现原因，可以查看Nick Coghlan's<a href="https://ncoghlan-devs-python-notes.readthedocs.io/en/latest/python3/questions_and_answers.html">Python 3 Q&amp;A</a>.</p>
+<h4 id="jian-yao-shuo-ming">简要说明</h4>
+<p>为了使你的项目兼容python2/3，基本步骤是：</p>
+<ul>
+<li>1.只担心支持python2 ...</li></ul></body>	
+						 <a class="readmore" href="../2016/03/11/python/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2016/01/01/effective-python/">Python-tips01</a></h2>
+						<p class="meta"><span class="date">日期 五 01 一月 2016</span><span class="posted">By <a href="#">peng.lee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><h3 id="que-ren-pythonban-ben">确认python版本</h3>
+<ul>
+<li>目前两个版本活跃状态，python2和python3</li>
+<li>python有很多流行的运行环境，如cpython jython ironpython以及  pypy</li>
+<li>运行Python时，确保python是想用的版本</li>
+<li>以后项目尽量使用python3</li>
+</ul>
+<h3 id="pep8feng-ge">PEP8风格</h3>
+<ul>
+<li>编写python代码时，应该遵循PEP8风格指南</li>
+<li>采用通用的代码风格，便于多人协作</li>
+<li>一致的代码风格易于维护</li>
+</ul>
+<h3 id="bytes-stryu-unicodede-qu-bie">bytes、str与Unicode的区别</h3>
+<ul>
+<li>Python3中，bytes是一种包含8位值的序列，str是一种包含Unicode字符的序列。开发时不能以&gt;或+等操作符来混同操作bytes和str实例。</li>
+<li>Python2中，str是一种包含8位值的序列，Unicode是一种包含Unicode字符的序列。如果 str只包含7位ASCII字符，可以通过想过操作符同时操作str和Unicode。</li>
+<li>对于输入的数据进行操作之前，使用辅助函数来保证字符序列的类型与开发者的期望相符。</li>
+<li>从文件中读取二进制数据或向其中写入二进制数据时，总应该以'rb'或'wb'等二进制模式来开启文件。</li>
+</ul>
+<p>编写Python程序的时候，一定要把编码和解码操作放在解码最外围做。程序的核心部分分别使用Unicode字符类型（Python3中str，Python2中的unicode),而且不要对字符编码做任何假设。
+由于字符类型有别，所以Python代码经常会出现两种常见的使用情景：
+<em> 开发者需要原始8位值，这些8位值表示UTF-8格式来编码字符
+</em> 开发者需要操作没有特定编码形式的Unicode字符 ...</p></body>	
+						 <a class="readmore" href="../2016/01/01/effective-python/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2016/01/01/python/">PyUnit(一）</a></h2>
+						<p class="meta"><span class="date">日期 五 01 一月 2016</span><span class="posted">By <a href="#">peng.lee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><h3 id="pyunitjian-jie">PyUnit简介</h3>
+<p>PyUnit是Python 2.1版本新增功能。</p>
+<p>Python单元测试框架，又叫PyUnit。是JUnit的Python实现，是由Kent Beck和Erich Gamma共同开发的。同样，JUnit是Kent的Smalltalk测试框架的Java实现。PyUnit和JUnit都是各自怨言的标准测试框架。</p>
+<p>PyUnit模块支持自动化测试，通用的setup和shutdown的代码，测试用例整合为测试集，还有独立的测试报告框架。PyUnit提供的类能够很容易的使以上特性应用于测试。PyUnit是借由以下概念支持单元测试的：</p>
+<p><strong>测试fixture</strong></p>
+<p>测试fixture是指运行测试前的准备工作和运行测试后的清理工作。例如，创建临时或代理数据库、目录，或者启动服务进程。</p>
+<p><strong>测试用例</strong></p>
+<p>测试用例是最小的测试单元，检查特定的输入会产生预期的结果。PyUnit提供一个测试用例几类TestCase，继承基类可以创建新的测试用例。</p>
+<p><strong>测试集</strong></p>
+<p>测试集是测试用例的集合，同时也可以是其他测试集的结合，或者是测试用例和测试集的混合集合。用于批量执行测试用例。</p>
+<p><strong>执行器</strong></p>
+<p>执行器用来执行测试用例，并且把测试结果呈现给用户。执行器可以使用图形界面，文本界面，甚至特殊值来显示测试结果。</p>
+<p>测试用例和测试fixture通过TestCase和FunctionTestCase两个类来实现的。TestCase用来创建新的测试用例，而FunctionTestCase是用来把已有测试用例整合为PyUnit结构用例的（译者注：项目原来已经有测试用例了，后来想改用PyUnit测试框架，这时候就要用到FunctionTestCase了）。使用TestCase类创建新测试用例，需要覆盖setUp ...</p></body>	
+						 <a class="readmore" href="../2016/01/01/python/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/11/01/autotest/">Autotest-client Package(1)</a></h2>
+						<p class="meta"><span class="date">日期 日 01 十一月 2015</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+<h3 id="autotest_local-mo-kuai">autotest_local 模块</h3>
+<p>class autotest.client.autotest_local.AutotestLocalAPP</p>
+<p>本地自动测试，指定一个control文件启动测试</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">autotest.common</span> <span class="kn">as</span> <span class="nn">common</span> <span class="c1"># pylint: disable=W0611</span>
+    <span class="n">rootdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">common</span><span class="o">.</span><span class="n">__file__</span><span class="p">))</span>
+    <span class="n">autodir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rootdir</span><span class="p">,</span> <span class="s1">'client'</span><span class="p">)</span>
+    <span class="n">autodirbin</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rootdir</span><span class="p">,</span> <span class="s1">'client'</span><span class="p">,</span> <span class="s1">'bin'</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">common</span> <span class="c1"># pylint: disable ...</span></pre></div></body>	
+						 <a class="readmore" href="../2015/11/01/autotest/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/08/22/autotest/">Autotest-Autotest Remote (Autoserv)(三）</a></h2>
+						<p class="meta"><span class="date">日期 六 22 八月 2015</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+<h3 id="running-autotest-in-a-guest">Running Autotest In a Guest</h3>
+<p>接下来看一下虚拟机guest执行一次测试的列子。control文件有点特别的是需要在host中运行OProfile收集运行时的信息。使用oprofile前，需要在guest安装。
+给KVm指定一个IP，就会有一个虚拟机生成。试图运行虚拟机里面的oprofile，但没有成功。最后，选项"opcontrol --setup"应根据host中vmlinux位置调整。</p>
+<div class="highlight"><pre><span></span>remote_host=hosts.SSHHost("192.168.1.1")
+kvm_on_remote_host= kvm.KVM(remote_host)
+
+kvm_on_remote_host.get("/var/local/src/kvm-compiled.tar.gz")
+addresses= [{"mac":"02:00:00:00:00:01", "ip":"10.0.0.1 ...</pre></div></body>	
+						 <a class="readmore" href="../2015/08/22/autotest/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/08/21/autotest/">Autotest-Autotest Remote (Autoserv)(二）</a></h2>
+						<p class="meta"><span class="date">日期 五 21 八月 2015</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+<h3 id="kvmzhi-chi">KVM支持</h3>
+<p>如前所述，Autoserv 支持控制虚拟机。这个对象设计的可以支持虚拟机管理/hypervisors。一开始，只支持kvm,为了支持KVM，你需要做：
+    1.创建虚拟机，运行在虚拟层的机器
+    2.创建KVM对象，通过get()指定源，KVM InstallableObject安装到指定的虚拟机。
+    3.创建KVMGuest对象，需要指定做其他事情，KVM对象在上面已创建。
+    4.使用KVMGuest对象运行一些其他类型的虚拟机命令，如改变内核，运行autotest</p>
+<p>可以通过查看server/kvm.py 和server/hosts/kvm_guest.py查看其他信息，尤其是KVM.install()的前面的函数和KVMGuest的函数构造。
+下面给出一个Autoserv 控制文件的例子，第5行包括解析获取addresslist 列表，这个控制文件是由python实现。</p>
+<div class="highlight"><pre><span></span>remote_host = hosts.SSHHost("192.168.1.1")
+
+kvm_on_remote_host ...</pre></div></body>	
+						 <a class="readmore" href="../2015/08/21/autotest/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/08/20/autotest/">Autotest-Autotest Remote (Autoserv)（一）</a></h2>
+						<p class="meta"><span class="date">日期 四 20 八月 2015</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+<p>Autoserv 是&ldquo;自动化机器控制&ldquo;的框架
+Autoserv 目的是控制机器，它可以：</p>
+<ul>
+<li>电源管理</li>
+<li>安装内核</li>
+<li>修改bootloader
+*　运行任意命令</li>
+<li>运行Autotest Local(客户端）测试</li>
+<li>传输文件</li>
+</ul>
+<p>被控制的机器可以是：</p>
+<ul>
+<li>本机</li>
+<li>远程机器（通过ssh 和　conmux)</li>
+<li>虚拟机(通过ＫＶＭ）</li>
+</ul>
+<h2 id="kong-zhi-wen-jian">控制文件</h2>
+<p>类似于autotest,Autoserv同样使用控制文件。这些控制文件和autotest使用不同的命令，但是像autotest一样包含一些内部的可以调研python解释器的功能。</p>
+<p>这里有一个控制文件的例子，用来控制远程host安装.dep内核。若文件存在server/目录并且命名为example.control,可以在server/目录通过./autotest-remote example.control调用：</p>
+<div class="highlight"><pre><span></span>remote_host = host.SSHHost("192.168.1.1")
+print remote_host.run ...</pre></div></body>	
+						 <a class="readmore" href="../2015/08/20/autotest/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/08/19/autotest/">Autotest-others</a></h2>
+						<p class="meta"><span class="date">日期 三 19 八月 2015</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+<h2 id="zhi-xing-wai-bu-ce-shi">执行外部测试</h2>
+<p>autotest可以像执行自身测试一样执行外部测试．</p>
+<h3 id="zhi-xing-ce-shi">执行测试</h3>
+<p>一个下载的测试并触发，标准方式是通过run_test方法执行，需要指定tar包地址．
+　　
+    job.run_test('http://www.example.com/~someone/somewhere/test.tar.bz2')</p>
+<p>这样就会执行下载，安装，解压测试．</p>
+<h3 id="gou-jian-wai-bu-xia-zai-ce-shi">构建外部下载测试</h3>
+<p>外部下载的测试包含bz2包和测试目录．
+<em> 1．包名　my_test.tar.bz2
+</em> 2. 测试脚本　my_test.py
+* 3.　测试脚本中的以本身命名的类　class my_test(test.test):</p>
+<p>例如：</p>
+<div class="highlight"><pre><span></span>    <span class="kn">from</span> <span class="nn">autotest_lib.client.bin</span> <span class="kn">import</span> <span class="n">test</span>
+
+    <span class="k">class</span> <span class="nc">my_test</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">test</span><span class="p">):</span>
+        <span class="n">version</span> <span class="o">=</span> <span class="mi">1 ...</span></pre></div></body>	
+						 <a class="readmore" href="../2015/08/19/autotest/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/08/18/autotest/">Autotest-Linux distribution detection</a></h2>
+						<p class="meta"><span class="date">日期 二 18 八月 2015</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+<h2 id="linuxfa-xing-ban-jian-ce">linux发行版检测</h2>
+<p>Autotest有个功能,就是让测试清晰了解到它运行在什么样的发行版上.
+这个功能是由probe类群的实现和注册实现的.
+这些probe类可以检查运行的系统的信息,比如发行版的release文件,二进制信息(如包管理)等.</p>
+<h3 id="kuai-su-jian-cha-fa-xing-ban">快速检查发行版</h3>
+<p>autotest.client.shared.distro 模块提供一些APIS,最简单的就是使用detect().
+它的用法简单命了:</p>
+<div class="highlight"><pre><span></span>    <span class="kn">from</span> <span class="nn">autotest.client.shared</span> <span class="kn">import</span> <span class="n">distro</span>
+    <span class="n">detected_distro</span> <span class="o">=</span> <span class="n">distro</span><span class="o">.</span><span class="n">detect</span><span class="p">()</span>
+</pre></div>
+<p>这样就可以返回发行版检测的结果,但是不太适用于<strong>UNKNOWN_DISIRO</strong>.</p>
+<ul>
+<li>name</li>
+<li>version</li>
+<li>release</li>
+<li>arch</li>
+</ul>
+<p>例如:</p>
+<div class="highlight"><pre><span></span>&gt;&gt;&gt;detected_distro = distro.detect()
+&gt;&gt;&gt;print detected_distro.name
+redhat
+</pre></div>
+<h3 id="wei-zhi-fa-xing-ban">未知发行版</h3>
+<p>当检测机制不能检测到发行版,仍会返回一个LinuxDistro实例,但是它的name,version等信息比较特殊.</p>
+<div class="highlight"><pre><span></span> autotest.clientshared.distro.UNKNOWN_DISIRO ...</pre></div></body>	
+						 <a class="readmore" href="../2015/08/18/autotest/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/08/17/autotest/">Autotest-Using and developing job profilers</a></h2>
+						<p class="meta"><span class="date">日期 一 17 八月 2015</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+<h2 id="shi-yong-he-tian-jia-ce-shi-fen-xi-qi">使用和添加测试分析器</h2>
+<p>添加一个分析器和添加一个测试项目类似.每个分析器都有自己的子目录(client/profilers或你可以查看profilers/),一个标准例子:</p>
+<ul>
+<li>一个控制文件. profilers/myprofiler/control</li>
+<li>分析器控制脚本. profilers/myprofiler.py</li>
+<li>分析器的源码(如果不仅仅是控制脚本)</li>
+</ul>
+<p>我们来看一下已有的分析器. autotest提供readprofile,尽管这不是个最简单的方式,但是能够看到你想了解的全部信息.readprofile支持编译近内核.</p>
+<p>控制文件非常简单,像这样:</p>
+<div class="highlight"><pre><span></span>job.profilers.add('readprofile')
+job.run_test('sleeptest', 1)
+job.profilers.delete('readprofile')
+</pre></div>
+<p>只是说明"请再以下测试中使用readprofile".一次测试,如果想添加多个分析器,可以多次调用profilers.add.</p>
+<p>还有源码包"util-linux-2.12r.tar.bz2",将会解压到src/.python控制脚本将定义,分析器要做的大部分事情.通过查看readprofile ...</p></body>	
+						 <a class="readmore" href="../2015/08/17/autotest/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/08/16/autotest/">Autotest-add test</a></h2>
+						<p class="meta"><span class="date">日期 日 16 八月 2015</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+<h2 id="ce-shi-mo-kuai-kai-fa">测试模块开发</h2>
+<p>测试模块必需是独立的单元，包含测试需要的所有内容（除了调用测试框架的）</p>
+<p>测试模块需要：</p>
+<ul>
+<li>可以跨多硬件架构</li>
+<li>可以支持不同的发行版</li>
+<li>至少一个维护者</li>
+<li>提供一个默认的简单例子</li>
+<li>对自己目录外的东西不做修改</li>
+</ul>
+<h2 id="tian-jia-ce-shi-xiang">添加测试项</h2>
+<p>增加一个测试项，可能是最容易的开发工作了．</p>
+<p>每一个测试项都有一个自己的子目录（client 端的是client/tests,server端的是server/tests),一个标准的目录包括
+<em> 一个control 文件（tests/mytest/control)
+</em> 一个测试包装脚本（tests/mytest/mytest.py)
+* 如果不仅仅是python脚本中实现的，还需要补充测试源码</p>
+<p>可以查看已有的测试，比如tests/dbench.首先包括测试目录tests/dbench,测试控制脚本dbench.py,  包括其中命名为dbench的类．这些这新开发的测试中
+也必须要有．</p>
+<p>control文件至少是：</p>
+<div class="highlight"><pre><span></span>job.run_test('dbench')
+</pre></div>
+<p>这个例子只包含了基本的参数，通过这个去了解一些新测试项的基本的设置，随后可以自己扩展其他的东西．</p>
+<p>目录下同样有个测试工具源码包dbench-3 ...</p></body>	
+						 <a class="readmore" href="../2015/08/16/autotest/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/08/15/autotest/">Autotest-Control file specification</a></h2>
+						<p class="meta"><span class="date">日期 六 15 八月 2015</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+<h2 id="control-file-specification">Control file specification</h2>
+<p>该篇主要介绍control文件的标准.该标准主要为了使自定义的control文件能够提供前端或测试所需要的信息,并且能够通过前端修改.
+主要内容:</p>
+<ul>
+<li>命名control文件</li>
+<li>常用变量</li>
+<li>示例</li>
+</ul>
+<h3 id="controlwen-jian-ming-ming">control文件命名</h3>
+<p>control文件命名必须是control.xxxx,xxxx是你定义或则代码评审定义．　例如，５００次硬重启测试，一个正规的定义就是　control.hard500</p>
+<h3 id="chang-yong-bian-liang">常用变量</h3>
+<p>下面是一个常用变量的列表</p>
+<table class="table table-hover table-striped">
+<thead>
+<tr>
+<th>变量名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*AUTHOR</td>
+<td>测试编写的个人或公司信息</td>
+</tr>
+<tr>
+<td>ＤEPENENCIES</td>
+<td>测试依赖信息，比如"CONSOLE"</td>
+</tr>
+<tr>
+<td>*DOC</td>
+<td>描述测试包括哪些参数的说明</td>
+</tr>
+<tr>
+<td>EXPERIMENTAL</td>
+<td>如果定义为True,测试忽略</td>
+</tr>
+<tr>
+<td>*NAME</td>
+<td>前端识别测试的名称</td>
+</tr>
+<tr>
+<td>RUN_VERIFY</td>
+<td>定义scheduler是否执行验证，默认为True</td>
+</tr>
+<tr>
+<td>SYNC_COUNT</td>
+<td>次数，接受大于等于１的参数，默认为１</td>
+</tr>
+<tr>
+<td>*TIME</td>
+<td>说明测试时长，　ＳＨＯＲＴ&lt;15m, MEDIUM &lt; 4H ,LONG ...</td></tr></tbody></table></body>	
+						 <a class="readmore" href="../2015/08/15/autotest/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/08/14/autotest/">Autotest-client control</a></h2>
+						<p class="meta"><span class="date">日期 五 14 八月 2015</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+<h2 id="client-control-files">Client Control files</h2>
+<p><strong>主要内容</strong></p>
+<ul>
+<li>jobs 例子</li>
+<li>扩展测试</li>
+<li>流程控制</li>
+<li>系统信息抓取</li>
+<li>分析器</li>
+<li>创建文件系统</li>
+<li>job执行期间重启</li>
+<li>并行运行多个测试</li>
+</ul>
+<p>control file定义了一次test job 关键信息,它定义了一次测试的方方面面.control文件是一个python脚本,它驱动这个测试.</p>
+<h2 id="jobli-zi">job例子</h2>
+<p>可以添加一个job对象用来驱动测试和一些服务支持.一个job例子可以是这样:</p>
+<div class="highlight"><pre><span></span>job.run_test('kernbench')
+</pre></div>
+<p>参数只有测试的名字(kernbench).autotest有很多测试用例,每个测试都有一个简单的control文件(tests/<testname>/control
+在autotestclient端的顶层目录下,你可以执行测试:</testname></p>
+<div class="highlight"><pre><span></span>$ client/autotest-local &lt;control_file_name&gt;
+</pre></div>
+<p>在control文件中同样可以指定测试参数</p>
+<div class="highlight"><pre><span></span>job.run_test('kernbench', iterations=2, threads=5)
+</pre></div>
+<ul>
+<li>第一个参数是测试名称;</li>
+<li>第二个参数是执行次数和线程数,大多数你可以执行它的默认参数.</li>
+</ul>
+<p>还可以指定一个tag参数,用来给测试结果目录命名 ...</p></body>	
+						 <a class="readmore" href="../2015/08/14/autotest/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/08/13/autotest02/">Autotest-Local</a></h2>
+						<p class="meta"><span class="date">日期 四 13 八月 2015</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+<h2 id="local-former-client">Local (Former Client)</h2>
+<p><strong>主要内容</strong></p>
+<ul>
+<li>快速入门</li>
+<li>client端控制文件</li>
+<li>测试模块开发</li>
+<li>如何添加测试到autotest</li>
+<li>使用和开发job profilers</li>
+<li>linux发行版检测</li>
+<li>API 参考</li>
+<li>其他</li>
+</ul>
+<h3 id="kuai-su-ru-men">快速入门</h3>
+<p>Autotest 客户端需要很少的依赖,需要安装python2.4或以上版本.推荐使用虚拟机或测试机验证,避免出现异常.</p>
+<p><strong>下载client端</strong></p>
+<div class="highlight"><pre><span></span>git clone --recursive git://github.com/autotest/autotest.git
+cd autotest
+</pre></div>
+<p><strong>测试例子</strong>
+比如autotest中的sleeptest,sleeptest是一个简单的sleep几秒测试.可以从autotest目录启动(/usr/local/autotest/client):</p>
+<div class="highlight"><pre><span></span>client/autotest-local --verbose run sleeptest
+</pre></div>
+<p>可以通过以下方式,进行任何独立测试:</p>
+<div class="highlight"><pre><span></span>client/autotest-local ...</pre></div></body>	
+						 <a class="readmore" href="../2015/08/13/autotest02/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/08/12/Autotest01/">Autotest-summary</a></h2>
+						<p class="meta"><span class="date">日期 三 12 八月 2015</span><span class="posted">By <a href="#">peng.lee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+<p>Autotest是一个开源的自动化测试框架.设计目的是为了测试Linux内核,同样可以用来检查新的硬件,虚拟化测试以及linux平台用户空间程序.它遵循GPL协议,并有大量的开发组织成员,其中包括像谷歌,IBM,红帽等.
+Avocado,是Autotest开发组,开发的下一代的自动化测试框架.详细信息参考<a href="http://avocado-framework.github.io/">Avocado</a>,后续有时间会再对Avocado进行介绍.
+本专题主要介绍以下内容:</p>
+<div class="highlight"><pre><span></span>* 基本信息
+* 客户端介绍
+* 服务端介绍
+* 前端介绍
+* 系统管理
+* 调度模块
+* 如何开发
+</pre></div>
+<p>本文主要介绍关于Autotest的一些基本信息.主要内容:</p>
+<div class="highlight"><pre><span></span>* Autotest主要结构
+</pre></div>
+<p>Autotest项目主页:<a href="http://autotest.github.io/">Autotest</a></p>
+<p>Github: <a href="https://github.com/autotest/autotest">Github</a></p>
+<h2 id="autotestzhu-yao-jie-gou">Autotest主要结构</h2>
+<p>下图是Autotest框架简化图:</p>
+<p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/Autotest1.png?raw=true" width="480"/></p>
+<h3 id="webjie-kou-he-ming-ling-xing-jie-kou">Web接口和命令行接口</h3>
+<p>Web接口和命令行接口是相辅相成的方式去连接Autotest并创建job.这两则具有相同的功能,意在方便用户.你可以用这些接口做以下事情:</p>
+<div class="highlight"><pre><span></span>* 管理jobs,如创建,监控,中止等
+* 管理客户端
+* 查看测试结果
+</pre></div>
+<p>前端会通过向mysql数据库中创建记录的方式将jobs插入服务端.</p>
+<h3 id="fu-wu-duan">服务端</h3>
+<p>服务端主要包括3个部分:</p>
+<ul>
+<li>一个Mysql数据库,该数据库保存了所有的job,客户端(测试物理机 ...</li></ul></body>	
+						 <a class="readmore" href="../2015/08/12/Autotest01/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/01/25/selenium/">selenium-Sample(三）</a></h2>
+						<p class="meta"><span class="date">日期 日 25 一月 2015</span><span class="posted">By <a href="#">peng.lee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><h4 id="shi-li-5-tuo-fang-draghe-drop">示例５　拖放drag和drop</h4>
+<p>代码：</p>
+<div class="highlight"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.action_chains</span> <span class="kn">import</span> <span class="n">ActionChains</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.support.ui</span> <span class="kn">import</span> <span class="n">Select</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.keys</span> <span class="kn">import</span> <span class="n">Keys</span>
+
+<span class="c1"># bugzilla address</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"http://192.168.32.3/"</span>
+
+<span class="k">class</span> <span class="nc">Testdrog_drop</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver ...</span></pre></div></body>	
+						 <a class="readmore" href="../2015/01/25/selenium/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/01/24/selenium/">selenium-Sample(二）</a></h2>
+						<p class="meta"><span class="date">日期 六 24 一月 2015</span><span class="posted">By <a href="#">peng.lee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><h3 id="chang-jian-ying-yong-de-shi-li">常见应用的示例</h3>
+<p><strong>Sample List</strong></p>
+<p><strong>填写表单示例1-自动设置bugzilla Simple Search</strong></p>
+<p><strong>填写表单示例2-自动设置bugzilla Advanced Search</strong></p>
+<p><strong>拖放drag和drop示例-待定</strong></p>
+<p><strong>窗口和框架之间移动示例-待定</strong></p>
+<p><strong>弹出对话框示例-待定</strong></p>
+<p><strong>历史记录和位置示例-待定</strong></p>
+<p><strong>Cookies示例-待定</strong></p>
+<p><strong>元素定位不同方式示例-待定</strong></p>
+<div class="highlight"><pre><span></span>ID定位
+名称定位
+Xpath定位
+链接文本定位超链接
+Tag Name定位
+class name定位
+css选择器定位
+</pre></div>
+<p><strong>等待-不同条件显示等待示例-待定</strong></p>
+<div class="highlight"><pre><span></span>title_is
+title_contains
+presence_of_element_locate
+visibility_of_element_located
+visibility_of
+presence_of_all_elements_located
+text_to_be_present_in_element_value
+text_to_be_present_in_element
+frame_to_be_available_and_switch_to_it
+invisibility_of_element_located
+elements_to_be_clickable-it is Displayed and Enabled
+staleness_of
+element_to_be_selected
+element_located_to_be_selected
+element_selection_state_to_be
+element_located_selection_state_to_be
+arelt_is_present
+</pre></div>
+<p><strong>等待-等待示例-隐式等待</strong></p>
+<p><strong>页面对象设计模式示例</strong></p>
+<p>... ...</p>
+<p><img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/RGBIHR91YT.jpg" width="420"/></p>
+<p><strong>示例3. 填写表单示例1-自动设置bugzilla ...</strong></p></body>	
+						 <a class="readmore" href="../2015/01/24/selenium/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/01/23/selenium/">selenium-Sample(一）</a></h2>
+						<p class="meta"><span class="date">日期 五 23 一月 2015</span><span class="posted">By <a href="#">peng.lee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><h3 id="ying-yong-shi-li">应用示例</h3>
+<p><strong>1.通过selenium爬取"https://stocksnap.io/"上的图片。</strong></p>
+<p>简要说明，通过selenium打开firefox浏览器，导航到指定网址；然后定位到图片源地址，并保存；然后调用urllib模块，下载图片到指定位置。</p>
+<p>代码如下：</p>
+<div class="highlight"><pre><span></span>    <span class="c1">#!/bin/bash/env python</span>
+    <span class="c1"># -*- coding: utf-8 -*-</span>
+    <span class="kn">import</span> <span class="nn">time</span>
+    <span class="kn">import</span> <span class="nn">urllib</span>
+    <span class="kn">import</span> <span class="nn">urllib2</span>
+    <span class="kn">import</span> <span class="nn">re</span>
+    <span class="kn">import</span> <span class="nn">os</span>
+    <span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+
+    <span class="c1"># 爬取页面地址  </span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">"https://stocksnap.io/"</span>
+
+    <span class="k">class</span> <span class="nc">GetpicHtml</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+        <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">driver</span> <span class="o">=</span>  <span class="n">webdriver</span><span class="o">.</span><span class="n">Firefox ...</span></pre></div></body>	
+						 <a class="readmore" href="../2015/01/23/selenium/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/01/22/selenium/">selenium-专题10</a></h2>
+						<p class="meta"><span class="date">日期 四 22 一月 2015</span><span class="posted">By <a href="#">peng.lee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><h3 id="1chang-jian-wen-ti">1.常见问题</h3>
+<h4 id="11-ru-he-shi-yong-chromedriver">1.1 如何使用ChromeDriver?</h4>
+<p>下载最新的chromedriver<a href="https://sites.google.com/a/chromium.org/chromedriver/downloads">chromedriver from download page</a>,解压文件：</p>
+<div class="highlight"><pre><span></span>unzip chromedriver_linux32_x.x.x.x.zip
+</pre></div>
+<p>解压后，会看到chromedriver的二进制文件。然后可以像这样创建Chrome WebDriver实例：
+　
+    driver = webdriver.Chrome(executable_path="/path/to/chromedriver")</p>
+<h4 id="12-selenium-2shi-fou-zhi-chi-xpath20">1.2　Selenium 2是否支持XPath2.0?</h4>
+<p>参考<a href="http://www.seleniumhq.org/docs/03_webdriver.jsp#how-xpath-works-in-webdriver"> http://seleniumhq.org/docs/03_webdriver.html#how-xpath-works-in-webdriver</a>
+Selenium 将XPath查询委派给浏览器自己的XPath引擎查询，所以Selenium支持的XPath取决于浏览器的支持。如果浏览器没有XPath引擎（如IE6,7,8)，则Selenium就支持XPath1.0 ...</p></body>	
+						 <a class="readmore" href="../2015/01/22/selenium/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/01/21/selenium/">selenium-专题9</a></h2>
+						<p class="meta"><span class="date">日期 三 21 一月 2015</span><span class="posted">By <a href="#">peng.lee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><h3 id="remote-webdriver">Remote WebDriver</h3>
+<p>WebDriver实现。</p>
+<p>class selenium.webdriver.remote.webdriver.WebDriver(command_executor='http://127.0.0.1:4444/wd/hub', desired_capabilities=None, browser_profile=None, proxy=None, keep_alive=False, file_detector=None)</p>
+<p>Bases: object
+控制浏览器向remote server发送命令。Remote server 运行的协议定义为<a href="https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol">https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol</a>.
+属性：
+    * session_id- webdriver用于打开和控制浏览器窗口的ＩＤ字符串
+    * capabilities- Dictionaty of effective capabilities ...</p></body>	
+						 <a class="readmore" href="../2015/01/21/selenium/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/01/20/selenium/">selenium-专题8</a></h2>
+						<p class="meta"><span class="date">日期 二 20 一月 2015</span><span class="posted">By <a href="#">peng.lee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><h3 id="alert">Alert</h3>
+<p>警告相关的实现</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">selenium</span>.<span class="n">webdriver</span>.<span class="n">common</span>.<span class="n">alert</span>.<span class="n">Alert</span>(<span class="n">driver</span>)
+    <span class="n">Bases:</span> <span class="n">object</span>
+    <span class="n">允许使用alerts</span>.
+    <span class="n">使用这个类作为与alert互动的接口</span>。<span class="n">它包括dismissing</span>(<span class="n">忽略</span>），<span class="n">accepting</span>(<span class="n">接受</span>），<span class="n">inputting</span>（<span class="n">输入</span>）<span class="n">和获取警告提示的文本信息的方法</span>。
+    <span class="n">接受</span>／<span class="n">忽略警报信息</span>：
+        <span class="n">Alert</span>(<span class="n">driver</span>).<span class="n">accpet</span>()
+        <span class="n">Alert</span>(<span class="n">driver</span>).<span class="n">dismiss</span>()
+
+    <span class="n">往警报信息中输入</span>：
+        <span class="n">name_prompt</span> = <span class="n">Alert</span>(<span class="n">driver</span>)<span class="n">name_prompt</span>.<span class="n">send_keys</span>(<span class="s">"Willian Shakesphere"</span>)
+        <span class="n">name_prompt</span>.<span class="n">accept</span>()
+
+    <span class="n">读取警报信息作为验证</span>：
+        <span class="n">alert_text</span> = <span class="n">Alert</span>(<span class="n">driver</span>).<span class="n">text</span> <span class="k">self</span>.<span class="n">assertEqual</span>(<span class="s">"Do you wish to quit ...</span></pre></div></body>	
+						 <a class="readmore" href="../2015/01/20/selenium/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/01/19/selenium/">selenium-专题7</a></h2>
+						<p class="meta"><span class="date">日期 一 19 一月 2015</span><span class="posted">By <a href="#">peng.lee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><h3 id="webdriver-api">WebDriver API</h3>
+<p>注：这不是官方API文档，官方在这：<a href="https://seleniumhq.github.io/selenium/docs/api/py/api.html">Selenium Documentation</a></p>
+<p>本篇覆盖了Selenium Webdriver的所有接口。</p>
+<p><strong>推荐导入样式</strong>
+本节API展示了类的绝对位置。推荐的导入风格如下：</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+</pre></div>
+<p>然后，可以访问的类如下：</p>
+<div class="highlight"><pre><span></span>webdriver.Firefox
+webdriver.FirefoxProfile
+webdriver.Chrome
+webdriver.ChromeOptions
+webdriver.Ie
+webdriver.Opera
+webdriver.PhantomJS
+webdriver.Remote
+webdriver.DesiredCapabilities
+webdriver.ActionChains
+webdriver.TouchActions
+webdriver.Proxy
+</pre></div>
+<p>特殊键类（keys)可以这样导入：</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium.webdriver.common.keys ...</span></pre></div></body>	
+						 <a class="readmore" href="../2015/01/19/selenium/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/01/18/selenium/">selenium-专题6</a></h2>
+						<p class="meta"><span class="date">日期 日 18 一月 2015</span><span class="posted">By <a href="#">peng.lee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><h3 id="ye-mian-dui-xiang">页面对象</h3>
+<p>该篇是介绍页面对象设计模式的方法。页面对象是Web应用程序用户界面的区域，测试时主要在此区域。</p>
+<p>使用页面对象模式的好处：</p>
+<ul>
+<li>创建多测试用例共用的可重复代码</li>
+<li>减少重复的代码</li>
+<li>如果用户界面发生改变，只需修改一次对应部分</li>
+</ul>
+<h4 id="ce-shi-yong-li">测试用例</h4>
+<p>以下是一个测试python.org搜索字符串的用例，并且确保可以查到一些结果。</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">unittest</span>
+<span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+<span class="kn">import</span> <span class="nn">page</span>
+
+<span class="k">class</span> <span class="nc">PythonOrgSearch</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="sd">'''A sample teest class to show how page object works'''</span>
+
+    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Firefox</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"http://www.python.org"</span><span class="p">)</span>
+
+    <span class="k">def ...</span></pre></div></body>	
+						 <a class="readmore" href="../2015/01/18/selenium/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/01/17/selenium/">selenium-专题5</a></h2>
+						<p class="meta"><span class="date">日期 六 17 一月 2015</span><span class="posted">By <a href="#">peng.lee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><h3 id="deng-dai">等待</h3>
+<p>目前大多数网络应用都在使用AJAX技术。当浏览器加载一个页面，页面上的元素可能分多次进行加载。这会导致元素定位困难，如果元素没有在DOM中出现，则会触发ElementNotVisibleException异常。通过等待，我们可以解决这个问题。等待提供了设置操作间的时间间隔－元素定位直接或其他元素操作。</p>
+<p>Selenium Webdriver 提供了等待的两种类型，implicit和explicit。显式等待是使webdriver在操作之间有确定的时间等待。隐式等待是使WebDriver 去间隔的轮询DOM，尝试定位到元素。</p>
+<h4 id="xian-shi-deng-dai">显式等待</h4>
+<p>显式等待是代码中定义一定的条件，等待条件达成，继续执行。最差的方式是time.sleep(),通过设置等待时间间隔实现。有一些便利方法，会帮助设置等待时间。WebDriverWait与ExpectedCondition组合就是其中一种实现方式。</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.by</span> <span class="kn">import</span> <span class="n">By</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.support.ui</span> <span class="kn">import</span> <span class="n">WebDriverWait</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver ...</span></pre></div></body>	
+						 <a class="readmore" href="../2015/01/17/selenium/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/01/16/selenium/">selenium-专题4</a></h2>
+						<p class="meta"><span class="date">日期 五 16 一月 2015</span><span class="posted">By <a href="#">peng.lee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><h3 id="yuan-su-ding-wei">元素定位</h3>
+<p>提供很多种方式去定位页面的元素。可以从中选择一个适合的用于测试。Selenium 提供了以下方法用于定位页面元素：</p>
+<div class="highlight"><pre><span></span>*find_element_by_id
+*find_element_by_name
+*find_element_by_xpath
+*find_element_by_link_text
+*find_element_by_partial_link_text
+*find_element_by_tag_name
+*find_element_by_class_name
+*find_element_By_css_selector
+</pre></div>
+<p>要找到多个元素（这些方法将返回一个列表）：</p>
+<div class="highlight"><pre><span></span>*find_elements_by_name
+*find_elements_by_xpath
+*find_elements_by_link_text
+*find_elements_by_partial_link_text
+*find_elements_by_tag_name
+*find_elements_by_class_name
+*find_elements_by_css_selector
+</pre></div>
+<p>除了上面列出的公共方法外，还有两个用于页面对象定位器的私有方法。这两个私有方法是：find_element 和　find_elements.
+用法例子：</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium.webdriver.common.by</span> <span class="kn">import</span> <span class="n">By</span>
+
+<span class="n">driver</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s1">'//button[test()="Some text"]'</span><span class="p">)</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s1">'//button'</span><span class="p">)</span>
+</pre></div>
+<p>这些都是类可用的属性 ...</p></body>	
+						 <a class="readmore" href="../2015/01/16/selenium/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/01/15/selenium/">selenium-专题3</a></h2>
+						<p class="meta"><span class="date">日期 四 15 一月 2015</span><span class="posted">By <a href="#">peng.lee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><h3 id="dao-hang">导航</h3>
+<p>使用WebDriver第一件想做的事情就是导航到指定链接。通常可以调用get方法去实现：</p>
+<div class="highlight"><pre><span></span>driver.get("http://www.google.com")
+</pre></div>
+<p>driver.get方法会导航到url指定的页面。webdriver会等待页面完全加载后，把控制权还给test脚本。需要注意的是，如果页面中使用了大量的AJAX负载过大，webdriver可能不知道什么时间加载完成。如果你想确保页面加载完全可以使用wait.</p>
+<h4 id="ye-mian-jiao-hu">页面交互</h4>
+<p>只是导航到指定链接并不是很有用。我们想做的页面上的交互，准确的说是页面的元素操作。首先，我们要先找到它。webdriver提供了很多方法去找到元素，例如，元素定义如下：</p>
+<div class="highlight"><pre><span></span>&lt;input type="text" name="passwd" id="passwd-id" /&gt;
+</pre></div>
+<p>你可以使用下面方法找到该元素：</p>
+<div class="highlight"><pre><span></span>element = driver.find_element_by_id("passwd-id")
+element = driver.find_element_by_name("passwd")
+element = driver.find_element_by_xpath("//input[@id='passwd-id']")
+</pre></div>
+<p>还可以通过文本去找到链接，但要小心 ...</p></body>	
+						 <a class="readmore" href="../2015/01/15/selenium/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/01/14/selenium/">selenium-专题2</a></h2>
+						<p class="meta"><span class="date">日期 三 14 一月 2015</span><span class="posted">By <a href="#">peng.lee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><h3 id="ru-men">入门</h3>
+<h4 id="jian-dan-yong-fa">简单用法</h4>
+<p>如果已经具备了Selenium＆Python，可以这样开始使用：</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+<span class="kn">from</span> <span class="nn">selenium.webdriver.common.keys</span> <span class="kn">import</span> <span class="n">Keys</span>
+
+<span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Firefox</span><span class="p">()</span>
+<span class="n">driver</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"http://www.python.org"</span><span class="p">)</span>
+<span class="k">assert</span> <span class="s2">"Python"</span> <span class="ow">in</span> <span class="n">driver</span><span class="o">.</span><span class="n">title</span>
+<span class="n">elem</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">find_element_by_name</span><span class="p">(</span><span class="s2">"q"</span><span class="p">)</span>
+<span class="n">elem</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="n">elem</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="s2">"pycon"</span><span class="p">)</span>
+<span class="n">elem</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">Keys</span><span class="o">.</span><span class="n">RETURN</span><span class="p">)</span>
+<span class="k">assert</span> <span class="s2">"No results found."</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">driver ...</span></pre></div></body>	
+						 <a class="readmore" href="../2015/01/14/selenium/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/01/13/selenium/">selenium-专题1</a></h2>
+						<p class="meta"><span class="date">日期 二 13 一月 2015</span><span class="posted">By <a href="#">peng.lee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p>该topic将开始学习selenium的使用。主要内容如下</p>
+<ul>
+<li>1.安装</li>
+<li>2.入门</li>
+<li>3.导航</li>
+<li>4.元素定位</li>
+<li>5.等待</li>
+<li>6.页面对象</li>
+<li>7.WebDriver API</li>
+<li>8.常见问题</li>
+</ul>
+<h3 id="an-zhuang">安装</h3>
+<h4 id="jian-jie">简介</h4>
+<p>Selenium＆python提供了使用Selenium WebDriver编写功能／通过性测试的ＡＰＩ。通过Selenium Python API可以直观的使用Selenium的功能。
+Selenium&amp;python提供了直观的ＡＰＩ访问Selenium WebDrivers如firefox、ie、chrome、Remote等。目前支撑的python版本为2.7\3.2及以上。
+本文只涉及Selenium 2 WebDriver.Selenium1没有覆盖。</p>
+<h4 id="xia-zai-selenium-pythonzhi-chi-bao">下载Selenium python支持包</h4>
+<p>可以在<a href="https://pypi.python.org/pypi/selenium">PyPI page for selenium package ...</a></p></body>	
+						 <a class="readmore" href="../2015/01/13/selenium/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/01/12/自动化测试/">selenium-浏览器性能测试</a></h2>
+						<p class="meta"><span class="date">日期 一 12 一月 2015</span><span class="posted">By <a href="#">peng.lee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p>浏览器是系统下比较常用的软件，在linux系统比较常用的是firefox、chrome.如何评估浏览器的基础性能？有很多评测网站进行了这边的测试。
+如
+<em> <a href="http://css4-selectors.com/browser-selector-test/">CSS</a>
+</em> <a href="http://acid3.acidtests.org/">acid3</a>
+<em> <a href="http://chrome.360.cn/test/v8/run.html">v8test</a>
+</em> <a href="http://chrome.2345.com/labs/test/octanebenchmark.html">octane</a>
+<em> <a href="http://html5test.com/">html5</a>
+</em> <a href="http://dromaeo.com/">dromaeo</a>等</p>
+<p>考虑到每次测试都需要点击这些网站和取测试结果，决定采用selenium去实现自动测试。
+测试代码如下：
+browser-run.py:</p>
+<p>```python</p>
+<div class="highlight"><pre><span></span><span class="c1">#encoding = utf-8</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">runtest</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">sys</span>  
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">call</span>
+<span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
+<span class="nb">reload</span><span class="p">(</span><span class="n">sys</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">setdefaultencoding</span><span class="p">(</span><span class="s1">'utf8'</span><span class="p">)</span>
+
+<span class="c1"># create logger with 'spam_application'</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">'browser-test ...</span></pre></div></body>	
+						 <a class="readmore" href="../2015/01/12/自动化测试/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2014/10/10/linux/">Spec2006使用说明</a></h2>
+						<p class="meta"><span class="date">日期 五 10 十月 2014</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><h2 id="gong-ju-jie-shao">工具介绍</h2>
+<p>SPEC CPU 2006 benchmark是SPEC新一代的行业标准化的CPU测试基准套件。重点测试系统的处理器，内存子系统和编译器。这个基准测试套件包括的SPECint基准和SPECfp基准。 其中SPECint2006基准包含12个不同的基准测试和SPECfp2006年基准包含19个不同的基准测试。SPEC设计了这个套件提供了一个比较标准的计算密集型，高性能的跨硬件的CPU测试工具。在SPEC CPU 2006基准有几种不同的方法来衡量计算机性能。 一种方式是测量计算机完成单一任务的速度; 另一种方式吞吐量，容量或速率的测量。
+说明：由于spec2006支持多种类型操作系统。以下安装、测试、移植等介绍均基于Unix 和其他的 Unix-like system如linux。Windows系统不在此范围内。</p>
+<h3 id="spec2006yu-spec2000de-dui-bi-jian-yao-shuo-ming">spec2006与spec2000的对比简要说明</h3>
+<p>2006年8月24日，标准性能评估公司（SPEC）宣布CPU2006将取代CPU2000。
+Spec cpu基准测试被广泛的应用于工业界和学术界。新套件比cpu2000要大很多，而且将涵盖到CPU、存储器系统、编译器特别是C++编译器。Cpu2000只有1个关于C++的基准测试，CPU2006则含有7个相关套件，这其中包括了50W行c++代码，Fortran和C语言和之前一样有很好的覆盖。</p>
+<h3 id="spec2000he-spec20006ju-ti-de-tao-jian-xin-xi-ru-xia">Spec2000和spec20006具体的套件信息如下：</h3>
+<h4 id="spec-int2000-12ge-zheng-dian-ce-shi-xiang-mu">Spec int2000  12个整点测试项目</h4>
+<p>164.gzip ...</p></body>	
+						 <a class="readmore" href="../2014/10/10/linux/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2014/09/12/ltp/">Linux Test Project(一)</a></h2>
+						<p class="meta"><span class="date">日期 五 12 九月 2014</span><span class="posted">By <a href="#">peng.lee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><h1 id="testing-linux-one-syscall-at-a-time">Testing Linux, one syscall at a time.</h1>
+<p>LTP是从SGI开始的,后由IBM 思科 富士通 SUSE Redhat等组织开发的.该工具的目标是建立一个测试套件用来验证linux的可靠性,健壮性及稳定性.LTP测试套件包含了linux内核及相关功能的工具.</p>
+<p>本文主要介绍关于ltp的一些基本信息.</p>
+<p>LTP项目主页:<a href="https://linux-test-project.github.io/#">ltp</a></p>
+<p>Github链接:<a href="https://github.com/linux-test-project/ltp">ltp</a></p>
+<p>LTP是一个验证ltp内核功能和稳定性的测试集.用来支持linux开发过程中,通过更多的单元测试,减少bug的引入,降低bug对用户的影响.LTP并不是用来做benchmarking测试的,而是更专注与功能,问题回归及稳定性测试.LTP同样不是一个标准测试,标准测试有<a href="http://www.linuxbase.org/">LSB</a>.</p>
+<h2 id="yi-ji-ben-jie-gou">一 基本结构</h2>
+<p>LTP测试套件是由包含一个基本动作和一个确认基本动作工作是否正常的测试用例组成.这个测试用例通常的测试结果是PASS/FAIL.一个测试程序是包含一个或多个测试用例的可执行程序.测试程序包括相应的测试参数,这些参数包括内存测试容量,临时文件位置,网络测试类型等等.Test tags 是用于匹配测试程序和一组命令行参数.Test tags是测试集的基础.</p>
+<h3 id="bian-xie-ce-shi">编写测试</h3>
+<p>编写一个测试用例比大多数想象的更容易.任何一个你编写用于验证内核功能的代码都可以用来形成一个用例 ...</p></body>	
+						 <a class="readmore" href="../2014/09/12/ltp/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2014/03/01/stablity/">Reboot test脚本</a></h2>
+						<p class="meta"><span class="date">日期 六 01 三月 2014</span><span class="posted">By <a href="#">peng.lee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p>为了验证操作系统启动的稳定性，需要进行500次启动测试，便写了脚本实现。</p>
+<p>脚本如下：</p>
+<div class="highlight"><pre><span></span><span class="x">HOME=`pwd`</span>
+<span class="x">sleep 15</span>
+<span class="x">desktop_x86_4x()</span><span class="err">{</span><span class="x"></span>
+<span class="x">if [ ! -f /etc/reboot.sh ];then</span>
+<span class="x">    cp -rf </span><span class="p">$</span><span class="nv">HOME</span><span class="x">/reboot.sh /etc/</span>
+<span class="x">fi</span>
+<span class="x">if grep "reboot.sh" /etc/profile &gt; /dev/null;</span>
+<span class="x">then</span>
+<span class="x">   break;</span>
+<span class="x">else</span>
+<span class="x">   echo "/bin/sh /etc/reboot.sh &amp;" &gt;&gt; /etc/profile</span>
+<span class="x">fi</span>
+<span class="x">if id rebootuser &gt; /dev/null 2&gt;&amp;1; then ...</span></pre></div></body>	
+						 <a class="readmore" href="../2014/03/01/stablity/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2013/07/01/sort/">快速排序</a></h2>
+						<p class="meta"><span class="date">日期 一 01 七月 2013</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><h4 id="kuai-su-pai-xu">快速排序</h4>
+<p>对于一个给定的数组，从中选择一个元素，以该元素为界将其余元素划分为两个子集，
+一个子集的所有元素都小于该元素，另一个子集的元素都大于或等于该元素，
+对两个子集递归执行这一过程，当某个子集中的元素小于二时，
+这个子集就不需要再次排序，终止递归。</p>
+<h4 id="dai-ma-shi-xian-ji-ce-shi">代码实现及测试</h4>
+<div class="highlight"><pre><span></span>    <span class="kt">void</span> <span class="nf">qsort</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span><span class="p">[],</span><span class="kt">int</span> <span class="n">left</span><span class="p">,</span><span class="kt">int</span> <span class="n">right</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">i</span><span class="p">,</span><span class="n">last</span><span class="p">;</span>
+        <span class="kt">void</span> <span class="n">swap</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span><span class="p">[],</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span><span class="kt">int</span> <span class="n">j</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">left</span><span class="o">&gt;=</span><span class="n">right</span><span class="p">)</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="n">swap</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">left</span><span class="p">,(</span><span class="n">left</span><span class="o">+</span><span class="n">right</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span> <span class="c1">//将中点的元素作为比较元素，放到整个数组的最左边</span>
+        <span class="n">last</span> <span class="o">=</span> <span class="n">left</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="n">left</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">right ...</span></pre></div></body>	
+						 <a class="readmore" href="../2013/07/01/sort/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2013/06/12/linpack/">高性能计算机系统浮点性能测试</a></h2>
+						<p class="meta"><span class="date">日期 三 12 六月 2013</span><span class="posted">By <a href="#">peng.lee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/P5LS1TUY3V.jpg" width="420"/></p>
+<h3 id="yi-gong-ju-jie-shao">一　工具介绍</h3>
+<p>Linpack现在在国际上已经成为最流行的用于测试高性能计算机系统浮点性能的benchmark。通过利用高性能计算机，用高斯消元法求解N元一次稠密线性代数方程组的测试，评价高性能计算机的浮点性能。HPL是针对现代并行计算机提出的测试方式。用户在不修改任意测试程序的基础上，可以调节问题规模大小N(矩阵大小)、使用到的CPU数目、使用各种优化方法等来执行该测试程序，以获取最佳的性能。HPL采用高斯消元法求解线性方程组。当求解问题规模为N时，浮点运算次数为(2/3 * N^3－2<em>N^2)。因此，只要给出问题规模N，测得系统计算时间T，峰值=计算量(2/3 * N^3－2</em>N^2)/计算时间T，测试结果以浮点运算每秒（Flops）给出。
+实测浮点峰值是指Linpack测试值，也就是说在这台机器上运行Linpack测试程序，通过各种调优方法得到的最优的测试结果。实际上在实际程序运行过程中，几乎不可能达到实测浮点峰值，更不用说达到理论浮点峰值了。这两个值只是作为衡量机器性能的一个指标，用来表明机器处理能力的一个标尺和潜能的度量。</p>
+<p>HPL作为一个基准测试程序在HPC领域取得了巨大的成功。它对趋势进行了准确的预测，积累的优化技巧对于提高实际应用的性能发挥了重要的作用 ...</p></body>	
+						 <a class="readmore" href="../2013/06/12/linpack/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2011/01/01/cmds/">常用shell命令</a></h2>
+						<p class="meta"><span class="date">日期 六 01 一月 2011</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><strong>1.查找大于100M的文件</strong></p>
+<div class="highlight"><pre><span></span>find / -type f -size +100M
+</pre></div>
+<p><strong>2.换行符替换为空格</strong></p>
+<p>sed ':label;N;s/\n/ /;t label'</p>
+<p><strong>3.在文本指定行首加空格</strong></p>
+<p>:10,20 s/^/    /g 在第10行知第20行每行前面加四个空格，用于缩进。</p>
+<p>Top<a href="">^</a></p></body>	
+						 <a class="readmore" href="../2011/01/01/cmds/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2009/10/10/UNIX/">原子操作</a></h2>
+						<p class="meta"><span class="date">日期 六 10 十月 2009</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><h4 id="zhui-jia-zhi-yi-ge-wen-jian">追加至一个文件</h4>
 <p>一个进程，将数据添加到一个文件尾端。早期不支持open的O_APPEND选项。所有程序被编写成下列形式</p>
 <div class="highlight"><pre><span></span>if (lseek(fd, 0L, 2 ) &lt; 0) /* position to EOF*/
 
@@ -77,151 +2083,93 @@ if (write(fd, buf, 100) != 100) /* and write */
 <p>原型如下：</p>
 <div class="highlight"><pre><span></span>#include　＜unistd.h&gt;
 
-ssize_t pread (int filedes, void *buf, size_t ...</pre></div></body> </div><!-- /.entry-content -->
-                <div class="medium primary btn"><a href="../2009/10/10/UNIX/" rel="bookmark" title="Permalink to 原子操作">Read more <i class="icon-arrow-right"></i></a></div>
-                <div class="row tag-row">
-                    <span>Tagged as : </span>
-                    <a class="danger label" href="../tag/unixbian-cheng.html">unix编程</a>
-                </div>
-            </article>
-            </li>
-            <li>
-            <article class="hentry">
-                <header>
-                    <h2 class="entry-title">
-                        <a href="../2009/10/01/排序/" rel="bookmark" title="Permalink to 排序-希尔排序法">排序-希尔排序法</a>
-                    </h2>
-                </header>
-                <footer class="post-info">
-                    <abbr class="published" title="2009-10-01T00:00:00+08:00"> 四 01 十月 2009 </abbr>
-<address class="vcard author">By <a class="url fn" href="../author/penglee.html">penglee</a></address>                </footer><!-- /.post-info -->
-                <div class="entry-content"> </head><body><p>原始的算法实现在最坏的情况下需要进行O(n2)的比较和交换。V. Pratt的书[1] 对算法进行了少量修改，可以使得性能提升至O(n log2 n)。这比最好的比较算法的O(n log n)要差一些。</p>
+ssize_t pread (int filedes, void *buf, size_t ...</pre></div></body>	
+						 <a class="readmore" href="../2009/10/10/UNIX/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2009/10/01/排序/">排序-希尔排序法</a></h2>
+						<p class="meta"><span class="date">日期 四 01 十月 2009</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p>原始的算法实现在最坏的情况下需要进行O(n2)的比较和交换。V. Pratt的书[1] 对算法进行了少量修改，可以使得性能提升至O(n log2 n)。这比最好的比较算法的O(n log n)要差一些。</p>
 <p>希尔排序通过将比较的全部元素分为几个区域来提升插入排序的性能。这样可以让一个元素可以一次性地朝最终位置前进一大步。然后算法再取越来越小的步长进行排序，算法的最后一步就是普通的插入排序，但是到了这步，需排序的数据几乎是已排好的了（此时插入排序较快）。</p>
 <p>假设有一个很小的数据在一个已按升序排好序的数组的末端。如果用复杂度为O(n2)的排序（冒泡排序或插入排序），可能会进行n次的比较和交换才能将该数据移至正确位置。而希尔排序会用较大的步长移动数据，所以小数据只需进行少数比较和交换即可到正确位置。</p>
 <p>一个更好理解的希尔排序实现：将数组列在一个表中并对列排序（用插入排序）。重复这过程，不过每次用更长的列来进行。最后整个表就只有一列了。将数组转换至表是为了更好地理解这算法，算法本身仅仅对原数组进行排序（通过增加索引的步长，例如是用i += step_size而不是i++）。</p>
-<p>例如，假设有这样一组数[ 13 14 94 33 82 25 ...</p></body> </div><!-- /.entry-content -->
-                <div class="medium primary btn"><a href="../2009/10/01/排序/" rel="bookmark" title="Permalink to 排序-希尔排序法">Read more <i class="icon-arrow-right"></i></a></div>
-                <div class="row tag-row">
-                    <span>Tagged as : </span>
-                    <a class="danger label" href="../tag/suan-fa.html">算法</a>
-                </div>
-            </article>
-            </li>
-        </ol><!-- /#posts-list -->
-    </div><!-- /.eleven.columns -->
-<div class="three columns">
+<p>例如，假设有这样一组数[ 13 14 94 33 82 25 ...</p></body>	
+						 <a class="readmore" href="../2009/10/01/排序/">Lire la suite …</a>
+						</div>
+					</div>
+					<div style="clear: both;">&nbsp;</div>
+				</div>
+				<div id="sidebar">
+					<div id="logo">
+						<h1><a href="..">Hi | World</a></h1>
+					</div>
+					<div id="menu">
+						<ul>
+							<li ><a href="..">首页</a></li>
+							<li ><a href="../archives.html">归档</a></li>
+                                                            <li ><a href="../pages/tech-share.html">归档</a></li>
+                                                            <li ><a href="../pages/opensource.html">开源项目</a></li>
+                                                            <li ><a href="../pages/links.html">链接</a></li>
+                                                            <li ><a href="../pages/Reference material.html">参考资料</a></li>
+                                                            <li ><a href="../pages/todo list.html">Todo List</a></li>
+                                                            <li ><a href="../pages/tools.html">工具集</a></li>
+                                                            <li ><a href="../pages/aboutme.html">关于我</a></li>
+						</ul>
+					</div>
+					<ul>
+						<li>
+							<h2>分类列表</h2>
+							<ul>
+								 <li ><a href="../category/misc.html">misc</a></li>
+								 <li ><a href="../category/autotestzhuan-ti.html">Autotest专题</a></li>
+								 <li ><a href="../category/suan-fa.html">算法</a></li>
+								 <li ><a href="../category/dockerzhuan-ti.html">Docker专题</a></li>
+								 <li ><a href="../category/linux.html">Linux</a></li>
+								 <li ><a href="../category/linux-benchmark.html">linux-benchmark</a></li>
+								 <li ><a href="../category/linux-zi-dong-hua-ce-shi.html">linux-自动化测试</a></li>
+								 <li ><a href="../category/unixhuan-jing-bian-cheng.html">unix环境编程</a></li>
+								 <li ><a href="../category/xing-neng-ce-shi.html">性能测试</a></li>
+							</ul>
+						</li>
+						<li>
+						        <h2>Tags</h2>
+						        <ul>
+                                                                <li><a href="../tag/selenium.html">Selenium</a></li>
+                                                                <li><a href="../tag/zi-dong-hua-ce-shi.html">自动化测试</a></li>
+                                                                <li><a href="../tag/ltp.html">LTP</a></li>
+                                                                <li><a href="../tag/shell.html">shell</a></li>
+                                                                <li><a href="../tag/suan-fa.html">算法</a></li>
+                                                                <li><a href="../tag/xing-neng-ce-shi.html">性能测试</a></li>
+                                                                <li><a href="../tag/python.html">Python</a></li>
+                                                                <li><a href="../tag/docker.html">Docker</a></li>
+                                                                <li><a href="../tag/benchmark.html">benchmark</a></li>
+                                                                <li><a href="../tag/qi-ta.html">其他</a></li>
+                                                                <li><a href="../tag/unixbian-cheng.html">unix编程</a></li>
+                                                                <li><a href="../tag/linux.html">Linux</a></li>
+                                                                <li><a href="../tag/pyunit.html">PyUnit</a></li>
+						        </ul>
+						</li>
+						
+						
+					</ul>
+				</div>
+				<!-- end #sidebar -->
+				<div style="clear: both;">&nbsp;</div>
+			</div>
+		</div>
+	</div>
+	<!-- end #page -->
 
-<!--
-<h4>Pages</h4>
-
- <ul>
-      <li><a href="../pages/tech-share.html">归档</a></li>
-      <li><a href="../pages/opensource.html">开源项目</a></li>
-      <li><a href="../pages/links.html">链接</a></li>
-      <li><a href="../pages/Reference material.html">参考资料</a></li>
-      <li><a href="../pages/todo list.html">Todo List</a></li>
-      <li><a href="../pages/tools.html">工具集</a></li>
-      <li class="active"><a href="../pages/aboutme.html">关于我</a></li>
-  </ul>
--->
-<!--
-<h4>分类</h4>
-<ul>
-		<li><a href="../category/misc.html">misc</a></li>
-		<li><a href="../category/autotestzhuan-ti.html">Autotest专题</a></li>
-		<li><a href="../category/suan-fa.html">算法</a></li>
-		<li><a href="../category/dockerzhuan-ti.html">Docker专题</a></li>
-		<li><a href="../category/linux.html">Linux</a></li>
-		<li><a href="../category/linux-benchmark.html">linux-benchmark</a></li>
-		<li><a href="../category/linux-zi-dong-hua-ce-shi.html">linux-自动化测试</a></li>
-		<li><a href="../category/unixhuan-jing-bian-cheng.html">unix环境编程</a></li>
-		<li><a href="../category/xing-neng-ce-shi.html">性能测试</a></li>
-</ul>
--->
-
-<h4>标签</h4>
-	<ul>
-	    <li class="tag-4"><a href="../tag/qi-ta.html">其他</a></li>
-	    <li class="tag-3"><a href="../tag/python.html">Python</a></li>
-	    <li class="tag-3"><a href="../tag/xing-neng-ce-shi.html">性能测试</a></li>
-	    <li class="tag-3"><a href="../tag/docker.html">Docker</a></li>
-	    <li class="tag-4"><a href="../tag/unixbian-cheng.html">unix编程</a></li>
-	    <li class="tag-1"><a href="../tag/zi-dong-hua-ce-shi.html">自动化测试</a></li>
-	    <li class="tag-1"><a href="../tag/selenium.html">Selenium</a></li>
-	    <li class="tag-3"><a href="../tag/suan-fa.html">算法</a></li>
-	    <li class="tag-3"><a href="../tag/shell.html">shell</a></li>
-	    <li class="tag-2"><a href="../tag/ltp.html">LTP</a></li>
-	    <li class="tag-4"><a href="../tag/linux.html">Linux</a></li>
-	    <li class="tag-4"><a href="../tag/benchmark.html">benchmark</a></li>
-	    <li class="tag-4"><a href="../tag/pyunit.html">PyUnit</a></li>
-</ul>
-
-<!--
--->
-</div> </div><!-- /.row -->
-<p class="paginator">
-            <a href="../author/penglee5.html"><i class="icon-arrow-left"></i></a>
-    Page 6 / 6
+<div id="footer">
+	<p>Copyright (c) 2008 Sitename.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a>.</p>
+	<p>Proudly powered by <a href="http://alexis.notmyidea.org/pelican/">pelican</a>, which takes great advantages of <a href="http://python.org">python</a>.
 </p>
-</section><!-- /#content -->
-
-       </div><!-- /.row -->
-    </div><!-- /.container -->
-
-
-       <div class="container.nopad bg">
-
-
-        <footer id="credits" class="row">
-          <div class="seven columns left-center">
-
-                   <address id="about" class="vcard body">
-                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
-                    which takes great advantage of <a href="http://python.org">Python</a>.
-                    <br />
-                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
-                    </address>
-          </div>
-
-
-          <div class="seven columns">
-            <div class="row">
-              <ul class="socbtns">
-
-                <li><div class="btn primary"><a href="http://github.com/king32783784" target="_blank">Github</a></div></li>
-
-
-
-
-
-
-              </ul>
-            </div>
-          </div>
-        </footer>
-
-    </div>
-
-
-<script type="text/javascript">
-    var disqus_shortname = 'xiayfblackwhite';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-  <script src="../theme/js/libs/gumby.min.js"></script>
-  <script src="../theme/js/plugins.js"></script>
-  <script src="../theme/js/main.js"></script>
-  <link rel="stylesheet" type="text/css" href="../theme/emoji/css/basic/emojify.min.css" />
-  <script src="../theme/emoji/js/emojify.min.js"></script>
-  <script>
-    emojify.setConfig({
-        img_dir : '../theme/emoji/images/basic'
-    });
-    emojify.run();
-</script>
+</div>
+<!-- end #footer -->
 </body>
 </html>

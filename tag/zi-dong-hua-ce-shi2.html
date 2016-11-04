@@ -1,66 +1,336 @@
-<!DOCTYPE html>
-<html lang="link">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : Brown Stone  
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20100928
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-
-        <title>Hi | World - 自动化测试</title>
-        <meta charset="utf-8" />
-        <link href="http://king32783784.github.io/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Hi | World Full Atom Feed" />
-        <link href="http://king32783784.github.io/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Hi | World Full RSS Feed" />
-
-
-        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
-        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
-
-        <link rel="stylesheet" type="text/css" href="../theme/gumby.css" />
-        <link rel="stylesheet" type="text/css" href="../theme/style.css" />
-        <link rel="stylesheet" type="text/css" href="../theme/pygment.css" />
-        <link rel="stylesheet" type="text/css" href="../theme/SentyZHAO/SentyZHAO.css" />
-
-        <script src="../theme/js/libs/jquery-1.9.1.min.js"></script>
-        <script src="../theme/js/libs/modernizr-2.6.2.min.js"></script>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Hi | World - 自动化测试</title>
+<link href="../theme/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="../" type="application/atom+xml" rel="alternate" title="Hi | World ATOM Feed" />
 </head>
+<body>
+<div id="wrapper">
+	<div id="page">
+		<div id="page-bgtop">
+			<div id="page-bgbtm">
+ 
+        
+				<div id="content">
+					<div class="post">
+						<h2 class="title"><a href="../2015/11/01/autotest/">Autotest-client Package(1)</a></h2>
+						<p class="meta"><span class="date">日期  </span><span class="posted">By <a href="#">penglee</a></span><span>&nbsp; | 分类 : <a href="../category/autotestzhuan-ti.html">Autotest专题</a></span></p>
+					<p class="meta">Tags : <span><a href="../tag/zi-dong-hua-ce-shi.html">自动化测试</a> / </span>
+</p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+<h3 id="autotest_local-mo-kuai">autotest_local 模块</h3>
+<p>class autotest.client.autotest_local.AutotestLocalAPP</p>
+<p>本地自动测试，指定一个control文件启动测试</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">autotest.common</span> <span class="kn">as</span> <span class="nn">common</span> <span class="c1"># pylint: disable=W0611</span>
+    <span class="n">rootdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">common</span><span class="o">.</span><span class="n">__file__</span><span class="p">))</span>
+    <span class="n">autodir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rootdir</span><span class="p">,</span> <span class="s1">'client'</span><span class="p">)</span>
+    <span class="n">autodirbin</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rootdir</span><span class="p">,</span> <span class="s1">'client'</span><span class="p">,</span> <span class="s1">'bin'</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">common</span> <span class="c1"># pylint: disable=W0611</span>
+    <span class="n">autodirbin</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">autodir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">autodirbin</span><span class="p">)</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">autidirbin</span><span class="p">)</span>
 
-<body id="index" class="home">
-    <div class="container">
 
-        <div class="row">
+<span class="n">autodirtest</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">autodir</span><span class="p">,</span> <span class="s2">"tests"</span><span class="p">)</span>
 
-          <header id="banner" class="body">
-                  <h1 style='font-family: "SentyZHAO";'><a href="..">Hi | World <strong></strong></a></h1>
-          </header><!-- /#banner -->
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">'AUTODIR'</span><span class="p">]</span> <span class="o">=</span> <span class="n">autodir</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">'AUTODIRBIN'</span><span class="p">]</span> <span class="o">=</span> <span class="n">autidirbin</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">'AUTODIRTEST'</span><span class="p">]</span> <span class="o">=</span> <span class="n">autodirtest</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">'PYTHONPATH'</span><span class="p">]</span> <span class="o">=</span> <span class="n">autodirbin</span>
 
-            <div id="navigation" class="navbar row">
-              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+<span class="kn">from</span> <span class="nn">autotest.client</span> <span class="kn">import</span> <span class="n">job</span>
+<span class="kn">from</span> <span class="nn">autotest.client.shared.settings</span> <span class="kn">import</span> <span class="n">settings</span>
+<span class="kn">from</span> <span class="nn">autotest.client</span> <span class="kn">import</span> <span class="n">cmdparser</span><span class="p">,</span> <span class="n">optparser</span>
 
-              <ul class="columns" style='font-family: "SentyZHAO";'>
-                <li><a href="..">主 页</a></li>
+<span class="k">class</span> <span class="nc">AutotestLocalAPP</span><span class="p">:</span>
 
-                <li><a href="../pages/tech-share.html">归档</a></li>
-                <li><a href="../pages/opensource.html">开源项目</a></li>
-                <li><a href="../pages/links.html">链接</a></li>
-                <li><a href="../pages/Reference material.html">参考资料</a></li>
-                <li><a href="../pages/todo list.html">Todo List</a></li>
-                <li><a href="../pages/tools.html">工具集</a></li>
-                <li class="active"><a href="../pages/aboutme.html">关于我</a></li>
+    <span class="sd">'''</span>
+<span class="sd">    Autotest local app runs tests locally</span>
 
-              </ul>
-            </div>
+<span class="sd">    Point it to a control file and let it rock</span>
+<span class="sd">    '''</span>
 
-<section id="content" class="body">
-<div class="row">
-    <div class="eleven columns">
-        <ol id="post-list">
-            <li>
-            <article class="hentry">
-                <header>
-                    <h2 class="entry-title">
-                        <a href="../2015/08/15/autotest/" rel="bookmark" title="Permalink to Autotest-Control file specification">Autotest-Control file specification</a>
-                    </h2>
-                </header>
-                <footer class="post-info">
-                    <abbr class="published" title="2015-08-15T00:00:00+08:00"> 六 15 八月 2015 </abbr>
-<address class="vcard author">By <a class="url fn" href="../author/penglee.html">penglee</a></address>                </footer><!-- /.post-info -->
-                <div class="entry-content"> </head><body><p><img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_parsers</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_set_parsers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">opt_parser</span> <span class="o">=</span> <span class="n">optparser</span><span class="o">.</span><span class="n">AutotestLocalOptionParser</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cmd_parser</span> <span class="o">=</span> <span class="n">cmdparser</span><span class="o">.</span><span class="n">CommandParser</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">usage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">opt_parser</span><span class="o">.</span><span class="n">print_help</span><span class="p">()</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">parse_cmdline</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">optios</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt_parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">test_directory</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">test_directory</span><span class="p">):</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">'CUSTOM_DIR'</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">test_directory</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">print</span> <span class="s2">"The custom directory specifed does not exist, ignoring it ..."</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cmd_parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
+
+        <span class="c1"># Check for a control file if not in prebuild mode</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">client_test_setup</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s2">"Missing </span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">usage</span><span class="p">()</span>
+
+
+    <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parse_cmdline</span><span class="p">()</span>
+
+        <span class="n">drop_caches</span> <span class="o">=</span> <span class="n">settings</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s1">'CLIENT'</span><span class="p">,</span> <span class="s1">'drop_caches'</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">bool</span><span class="p">,</span>
+                                         <span class="n">default</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">client_test_setup</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">autotest.client</span> <span class="kn">import</span> <span class="n">setup_job</span>
+            <span class="n">exit_code</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">setup_job</span><span class="o">.</span><span class="n">setup_test</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="n">exit_code</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">exit_code</span><span class="p">)</span>
+
+        <span class="c1"># JOB: run the specifed job control file</span>
+        <span class="n">job</span><span class="o">.</span><span class="n">runjob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">drop_caches</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
+</pre></div>
+<p>上一篇<a href="https://king32783784.github.io/2015/08/20/autotest/">Autotest： Autotest-Autotest Remote (Autoserv)(三）&gt;&gt;</a>
+下一篇<a href="">Autotest:&gt;&gt;&gt;</a></p></body>	
+						</div>
+					</div>
+	
+			                <div class="post">
+			                        <h2 class="title">Autres articles</h2>
+			                </div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/08/22/autotest/">Autotest-Autotest Remote (Autoserv)(三）</a></h2>
+						<p class="meta"><span class="date">日期 六 22 八月 2015</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+<h3 id="running-autotest-in-a-guest">Running Autotest In a Guest</h3>
+<p>接下来看一下虚拟机guest执行一次测试的列子。control文件有点特别的是需要在host中运行OProfile收集运行时的信息。使用oprofile前，需要在guest安装。
+给KVm指定一个IP，就会有一个虚拟机生成。试图运行虚拟机里面的oprofile，但没有成功。最后，选项"opcontrol --setup"应根据host中vmlinux位置调整。</p>
+<div class="highlight"><pre><span></span>remote_host=hosts.SSHHost("192.168.1.1")
+kvm_on_remote_host= kvm.KVM(remote_host)
+
+kvm_on_remote_host.get("/var/local/src/kvm-compiled.tar.gz")
+addresses= [{"mac":"02:00:00:00:00:01", "ip":"10.0.0.1 ...</pre></div></body>	
+						 <a class="readmore" href="../2015/08/22/autotest/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/08/21/autotest/">Autotest-Autotest Remote (Autoserv)(二）</a></h2>
+						<p class="meta"><span class="date">日期 五 21 八月 2015</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+<h3 id="kvmzhi-chi">KVM支持</h3>
+<p>如前所述，Autoserv 支持控制虚拟机。这个对象设计的可以支持虚拟机管理/hypervisors。一开始，只支持kvm,为了支持KVM，你需要做：
+    1.创建虚拟机，运行在虚拟层的机器
+    2.创建KVM对象，通过get()指定源，KVM InstallableObject安装到指定的虚拟机。
+    3.创建KVMGuest对象，需要指定做其他事情，KVM对象在上面已创建。
+    4.使用KVMGuest对象运行一些其他类型的虚拟机命令，如改变内核，运行autotest</p>
+<p>可以通过查看server/kvm.py 和server/hosts/kvm_guest.py查看其他信息，尤其是KVM.install()的前面的函数和KVMGuest的函数构造。
+下面给出一个Autoserv 控制文件的例子，第5行包括解析获取addresslist 列表，这个控制文件是由python实现。</p>
+<div class="highlight"><pre><span></span>remote_host = hosts.SSHHost("192.168.1.1")
+
+kvm_on_remote_host ...</pre></div></body>	
+						 <a class="readmore" href="../2015/08/21/autotest/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/08/20/autotest/">Autotest-Autotest Remote (Autoserv)（一）</a></h2>
+						<p class="meta"><span class="date">日期 四 20 八月 2015</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+<p>Autoserv 是&ldquo;自动化机器控制&ldquo;的框架
+Autoserv 目的是控制机器，它可以：</p>
+<ul>
+<li>电源管理</li>
+<li>安装内核</li>
+<li>修改bootloader
+*　运行任意命令</li>
+<li>运行Autotest Local(客户端）测试</li>
+<li>传输文件</li>
+</ul>
+<p>被控制的机器可以是：</p>
+<ul>
+<li>本机</li>
+<li>远程机器（通过ssh 和　conmux)</li>
+<li>虚拟机(通过ＫＶＭ）</li>
+</ul>
+<h2 id="kong-zhi-wen-jian">控制文件</h2>
+<p>类似于autotest,Autoserv同样使用控制文件。这些控制文件和autotest使用不同的命令，但是像autotest一样包含一些内部的可以调研python解释器的功能。</p>
+<p>这里有一个控制文件的例子，用来控制远程host安装.dep内核。若文件存在server/目录并且命名为example.control,可以在server/目录通过./autotest-remote example.control调用：</p>
+<div class="highlight"><pre><span></span>remote_host = host.SSHHost("192.168.1.1")
+print remote_host.run ...</pre></div></body>	
+						 <a class="readmore" href="../2015/08/20/autotest/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/08/19/autotest/">Autotest-others</a></h2>
+						<p class="meta"><span class="date">日期 三 19 八月 2015</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+<h2 id="zhi-xing-wai-bu-ce-shi">执行外部测试</h2>
+<p>autotest可以像执行自身测试一样执行外部测试．</p>
+<h3 id="zhi-xing-ce-shi">执行测试</h3>
+<p>一个下载的测试并触发，标准方式是通过run_test方法执行，需要指定tar包地址．
+　　
+    job.run_test('http://www.example.com/~someone/somewhere/test.tar.bz2')</p>
+<p>这样就会执行下载，安装，解压测试．</p>
+<h3 id="gou-jian-wai-bu-xia-zai-ce-shi">构建外部下载测试</h3>
+<p>外部下载的测试包含bz2包和测试目录．
+<em> 1．包名　my_test.tar.bz2
+</em> 2. 测试脚本　my_test.py
+* 3.　测试脚本中的以本身命名的类　class my_test(test.test):</p>
+<p>例如：</p>
+<div class="highlight"><pre><span></span>    <span class="kn">from</span> <span class="nn">autotest_lib.client.bin</span> <span class="kn">import</span> <span class="n">test</span>
+
+    <span class="k">class</span> <span class="nc">my_test</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">test</span><span class="p">):</span>
+        <span class="n">version</span> <span class="o">=</span> <span class="mi">1 ...</span></pre></div></body>	
+						 <a class="readmore" href="../2015/08/19/autotest/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/08/18/autotest/">Autotest-Linux distribution detection</a></h2>
+						<p class="meta"><span class="date">日期 二 18 八月 2015</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+<h2 id="linuxfa-xing-ban-jian-ce">linux发行版检测</h2>
+<p>Autotest有个功能,就是让测试清晰了解到它运行在什么样的发行版上.
+这个功能是由probe类群的实现和注册实现的.
+这些probe类可以检查运行的系统的信息,比如发行版的release文件,二进制信息(如包管理)等.</p>
+<h3 id="kuai-su-jian-cha-fa-xing-ban">快速检查发行版</h3>
+<p>autotest.client.shared.distro 模块提供一些APIS,最简单的就是使用detect().
+它的用法简单命了:</p>
+<div class="highlight"><pre><span></span>    <span class="kn">from</span> <span class="nn">autotest.client.shared</span> <span class="kn">import</span> <span class="n">distro</span>
+    <span class="n">detected_distro</span> <span class="o">=</span> <span class="n">distro</span><span class="o">.</span><span class="n">detect</span><span class="p">()</span>
+</pre></div>
+<p>这样就可以返回发行版检测的结果,但是不太适用于<strong>UNKNOWN_DISIRO</strong>.</p>
+<ul>
+<li>name</li>
+<li>version</li>
+<li>release</li>
+<li>arch</li>
+</ul>
+<p>例如:</p>
+<div class="highlight"><pre><span></span>&gt;&gt;&gt;detected_distro = distro.detect()
+&gt;&gt;&gt;print detected_distro.name
+redhat
+</pre></div>
+<h3 id="wei-zhi-fa-xing-ban">未知发行版</h3>
+<p>当检测机制不能检测到发行版,仍会返回一个LinuxDistro实例,但是它的name,version等信息比较特殊.</p>
+<div class="highlight"><pre><span></span> autotest.clientshared.distro.UNKNOWN_DISIRO ...</pre></div></body>	
+						 <a class="readmore" href="../2015/08/18/autotest/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/08/17/autotest/">Autotest-Using and developing job profilers</a></h2>
+						<p class="meta"><span class="date">日期 一 17 八月 2015</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+<h2 id="shi-yong-he-tian-jia-ce-shi-fen-xi-qi">使用和添加测试分析器</h2>
+<p>添加一个分析器和添加一个测试项目类似.每个分析器都有自己的子目录(client/profilers或你可以查看profilers/),一个标准例子:</p>
+<ul>
+<li>一个控制文件. profilers/myprofiler/control</li>
+<li>分析器控制脚本. profilers/myprofiler.py</li>
+<li>分析器的源码(如果不仅仅是控制脚本)</li>
+</ul>
+<p>我们来看一下已有的分析器. autotest提供readprofile,尽管这不是个最简单的方式,但是能够看到你想了解的全部信息.readprofile支持编译近内核.</p>
+<p>控制文件非常简单,像这样:</p>
+<div class="highlight"><pre><span></span>job.profilers.add('readprofile')
+job.run_test('sleeptest', 1)
+job.profilers.delete('readprofile')
+</pre></div>
+<p>只是说明"请再以下测试中使用readprofile".一次测试,如果想添加多个分析器,可以多次调用profilers.add.</p>
+<p>还有源码包"util-linux-2.12r.tar.bz2",将会解压到src/.python控制脚本将定义,分析器要做的大部分事情.通过查看readprofile ...</p></body>	
+						 <a class="readmore" href="../2015/08/17/autotest/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/08/16/autotest/">Autotest-add test</a></h2>
+						<p class="meta"><span class="date">日期 日 16 八月 2015</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+<h2 id="ce-shi-mo-kuai-kai-fa">测试模块开发</h2>
+<p>测试模块必需是独立的单元，包含测试需要的所有内容（除了调用测试框架的）</p>
+<p>测试模块需要：</p>
+<ul>
+<li>可以跨多硬件架构</li>
+<li>可以支持不同的发行版</li>
+<li>至少一个维护者</li>
+<li>提供一个默认的简单例子</li>
+<li>对自己目录外的东西不做修改</li>
+</ul>
+<h2 id="tian-jia-ce-shi-xiang">添加测试项</h2>
+<p>增加一个测试项，可能是最容易的开发工作了．</p>
+<p>每一个测试项都有一个自己的子目录（client 端的是client/tests,server端的是server/tests),一个标准的目录包括
+<em> 一个control 文件（tests/mytest/control)
+</em> 一个测试包装脚本（tests/mytest/mytest.py)
+* 如果不仅仅是python脚本中实现的，还需要补充测试源码</p>
+<p>可以查看已有的测试，比如tests/dbench.首先包括测试目录tests/dbench,测试控制脚本dbench.py,  包括其中命名为dbench的类．这些这新开发的测试中
+也必须要有．</p>
+<p>control文件至少是：</p>
+<div class="highlight"><pre><span></span>job.run_test('dbench')
+</pre></div>
+<p>这个例子只包含了基本的参数，通过这个去了解一些新测试项的基本的设置，随后可以自己扩展其他的东西．</p>
+<p>目录下同样有个测试工具源码包dbench-3 ...</p></body>	
+						 <a class="readmore" href="../2015/08/16/autotest/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/08/15/autotest/">Autotest-Control file specification</a></h2>
+						<p class="meta"><span class="date">日期 六 15 八月 2015</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
 <h2 id="control-file-specification">Control file specification</h2>
 <p>该篇主要介绍control文件的标准.该标准主要为了使自定义的control文件能够提供前端或测试所需要的信息,并且能够通过前端修改.
 主要内容:</p>
@@ -73,7 +343,7 @@
 <p>control文件命名必须是control.xxxx,xxxx是你定义或则代码评审定义．　例如，５００次硬重启测试，一个正规的定义就是　control.hard500</p>
 <h3 id="chang-yong-bian-liang">常用变量</h3>
 <p>下面是一个常用变量的列表</p>
-<table>
+<table class="table table-hover table-striped">
 <thead>
 <tr>
 <th>变量名</th>
@@ -111,25 +381,18 @@
 </tr>
 <tr>
 <td>*TIME</td>
-<td>说明测试时长，　ＳＨＯＲＴ&lt;15m, MEDIUM &lt; 4H ,LONG ...</td></tr></tbody></table></body> </div><!-- /.entry-content -->
-                <div class="medium primary btn"><a href="../2015/08/15/autotest/" rel="bookmark" title="Permalink to Autotest-Control file specification">Read more <i class="icon-arrow-right"></i></a></div>
-                <div class="row tag-row">
-                    <span>Tagged as : </span>
-                    <a class="danger label" href="../tag/zi-dong-hua-ce-shi.html">自动化测试</a>
-                </div>
-            </article>
-            </li>
-            <li>
-            <article class="hentry">
-                <header>
-                    <h2 class="entry-title">
-                        <a href="../2015/08/14/autotest/" rel="bookmark" title="Permalink to Autotest-client control">Autotest-client control</a>
-                    </h2>
-                </header>
-                <footer class="post-info">
-                    <abbr class="published" title="2015-08-14T00:00:00+08:00"> 五 14 八月 2015 </abbr>
-<address class="vcard author">By <a class="url fn" href="../author/penglee.html">penglee</a></address>                </footer><!-- /.post-info -->
-                <div class="entry-content"> </head><body><p><img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+<td>说明测试时长，　ＳＨＯＲＴ&lt;15m, MEDIUM &lt; 4H ,LONG ...</td></tr></tbody></table></body>	
+						 <a class="readmore" href="../2015/08/15/autotest/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/08/14/autotest/">Autotest-client control</a></h2>
+						<p class="meta"><span class="date">日期 五 14 八月 2015</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
 <h2 id="client-control-files">Client Control files</h2>
 <p><strong>主要内容</strong></p>
 <ul>
@@ -158,25 +421,18 @@
 <li>第一个参数是测试名称;</li>
 <li>第二个参数是执行次数和线程数,大多数你可以执行它的默认参数.</li>
 </ul>
-<p>还可以指定一个tag参数,用来给测试结果目录命名 ...</p></body> </div><!-- /.entry-content -->
-                <div class="medium primary btn"><a href="../2015/08/14/autotest/" rel="bookmark" title="Permalink to Autotest-client control">Read more <i class="icon-arrow-right"></i></a></div>
-                <div class="row tag-row">
-                    <span>Tagged as : </span>
-                    <a class="danger label" href="../tag/zi-dong-hua-ce-shi.html">自动化测试</a>
-                </div>
-            </article>
-            </li>
-            <li>
-            <article class="hentry">
-                <header>
-                    <h2 class="entry-title">
-                        <a href="../2015/08/13/autotest02/" rel="bookmark" title="Permalink to Autotest-Local">Autotest-Local</a>
-                    </h2>
-                </header>
-                <footer class="post-info">
-                    <abbr class="published" title="2015-08-13T00:00:00+08:00"> 四 13 八月 2015 </abbr>
-<address class="vcard author">By <a class="url fn" href="../author/penglee.html">penglee</a></address>                </footer><!-- /.post-info -->
-                <div class="entry-content"> </head><body><p><img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+<p>还可以指定一个tag参数,用来给测试结果目录命名 ...</p></body>	
+						 <a class="readmore" href="../2015/08/14/autotest/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/08/13/autotest02/">Autotest-Local</a></h2>
+						<p class="meta"><span class="date">日期 四 13 八月 2015</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
 <h2 id="local-former-client">Local (Former Client)</h2>
 <p><strong>主要内容</strong></p>
 <ul>
@@ -200,25 +456,18 @@ cd autotest
 <div class="highlight"><pre><span></span>client/autotest-local --verbose run sleeptest
 </pre></div>
 <p>可以通过以下方式,进行任何独立测试:</p>
-<div class="highlight"><pre><span></span>client/autotest-local ...</pre></div></body> </div><!-- /.entry-content -->
-                <div class="medium primary btn"><a href="../2015/08/13/autotest02/" rel="bookmark" title="Permalink to Autotest-Local">Read more <i class="icon-arrow-right"></i></a></div>
-                <div class="row tag-row">
-                    <span>Tagged as : </span>
-                    <a class="danger label" href="../tag/zi-dong-hua-ce-shi.html">自动化测试</a>
-                </div>
-            </article>
-            </li>
-            <li>
-            <article class="hentry">
-                <header>
-                    <h2 class="entry-title">
-                        <a href="../2015/08/12/Autotest01/" rel="bookmark" title="Permalink to Autotest-summary">Autotest-summary</a>
-                    </h2>
-                </header>
-                <footer class="post-info">
-                    <abbr class="published" title="2015-08-12T00:00:00+08:00"> 三 12 八月 2015 </abbr>
-<address class="vcard author">By <a class="url fn" href="../author/penglee.html">peng.lee</a></address>                </footer><!-- /.post-info -->
-                <div class="entry-content"> </head><body><p><img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+<div class="highlight"><pre><span></span>client/autotest-local ...</pre></div></body>	
+						 <a class="readmore" href="../2015/08/13/autotest02/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/08/12/Autotest01/">Autotest-summary</a></h2>
+						<p class="meta"><span class="date">日期 三 12 八月 2015</span><span class="posted">By <a href="#">peng.lee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
 <p>Autotest是一个开源的自动化测试框架.设计目的是为了测试Linux内核,同样可以用来检查新的硬件,虚拟化测试以及linux平台用户空间程序.它遵循GPL协议,并有大量的开发组织成员,其中包括像谷歌,IBM,红帽等.
 Avocado,是Autotest开发组,开发的下一代的自动化测试框架.详细信息参考<a href="http://avocado-framework.github.io/">Avocado</a>,后续有时间会再对Avocado进行介绍.
 本专题主要介绍以下内容:</p>
@@ -237,7 +486,7 @@ Avocado,是Autotest开发组,开发的下一代的自动化测试框架.详细�
 <p>Github: <a href="https://github.com/autotest/autotest">Github</a></p>
 <h2 id="autotestzhu-yao-jie-gou">Autotest主要结构</h2>
 <p>下图是Autotest框架简化图:</p>
-<p><img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/Autotest1.png?raw=true" width="480"/></p>
+<p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/Autotest1.png?raw=true" width="480"/></p>
 <h3 id="webjie-kou-he-ming-ling-xing-jie-kou">Web接口和命令行接口</h3>
 <p>Web接口和命令行接口是相辅相成的方式去连接Autotest并创建job.这两则具有相同的功能,意在方便用户.你可以用这些接口做以下事情:</p>
 <div class="highlight"><pre><span></span>* 管理jobs,如创建,监控,中止等
@@ -248,25 +497,18 @@ Avocado,是Autotest开发组,开发的下一代的自动化测试框架.详细�
 <h3 id="fu-wu-duan">服务端</h3>
 <p>服务端主要包括3个部分:</p>
 <ul>
-<li>一个Mysql数据库,该数据库保存了所有的job,客户端(测试物理机 ...</li></ul></body> </div><!-- /.entry-content -->
-                <div class="medium primary btn"><a href="../2015/08/12/Autotest01/" rel="bookmark" title="Permalink to Autotest-summary">Read more <i class="icon-arrow-right"></i></a></div>
-                <div class="row tag-row">
-                    <span>Tagged as : </span>
-                    <a class="danger label" href="../tag/zi-dong-hua-ce-shi.html">自动化测试</a>
-                </div>
-            </article>
-            </li>
-            <li>
-            <article class="hentry">
-                <header>
-                    <h2 class="entry-title">
-                        <a href="../2014/09/12/ltp/" rel="bookmark" title="Permalink to Linux Test Project(一)">Linux Test Project(一)</a>
-                    </h2>
-                </header>
-                <footer class="post-info">
-                    <abbr class="published" title="2014-09-12T00:00:00+08:00"> 五 12 九月 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="../author/penglee.html">peng.lee</a></address>                </footer><!-- /.post-info -->
-                <div class="entry-content"> </head><body><h1 id="testing-linux-one-syscall-at-a-time">Testing Linux, one syscall at a time.</h1>
+<li>一个Mysql数据库,该数据库保存了所有的job,客户端(测试物理机 ...</li></ul></body>	
+						 <a class="readmore" href="../2015/08/12/Autotest01/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2014/09/12/ltp/">Linux Test Project(一)</a></h2>
+						<p class="meta"><span class="date">日期 五 12 九月 2014</span><span class="posted">By <a href="#">peng.lee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><h1 id="testing-linux-one-syscall-at-a-time">Testing Linux, one syscall at a time.</h1>
 <p>LTP是从SGI开始的,后由IBM 思科 富士通 SUSE Redhat等组织开发的.该工具的目标是建立一个测试套件用来验证linux的可靠性,健壮性及稳定性.LTP测试套件包含了linux内核及相关功能的工具.</p>
 <p>本文主要介绍关于ltp的一些基本信息.</p>
 <p>LTP项目主页:<a href="https://linux-test-project.github.io/#">ltp</a></p>
@@ -275,129 +517,78 @@ Avocado,是Autotest开发组,开发的下一代的自动化测试框架.详细�
 <h2 id="yi-ji-ben-jie-gou">一 基本结构</h2>
 <p>LTP测试套件是由包含一个基本动作和一个确认基本动作工作是否正常的测试用例组成.这个测试用例通常的测试结果是PASS/FAIL.一个测试程序是包含一个或多个测试用例的可执行程序.测试程序包括相应的测试参数,这些参数包括内存测试容量,临时文件位置,网络测试类型等等.Test tags 是用于匹配测试程序和一组命令行参数.Test tags是测试集的基础.</p>
 <h3 id="bian-xie-ce-shi">编写测试</h3>
-<p>编写一个测试用例比大多数想象的更容易.任何一个你编写用于验证内核功能的代码都可以用来形成一个用例 ...</p></body> </div><!-- /.entry-content -->
-                <div class="medium primary btn"><a href="../2014/09/12/ltp/" rel="bookmark" title="Permalink to Linux Test Project(一)">Read more <i class="icon-arrow-right"></i></a></div>
-                <div class="row tag-row">
-                    <span>Tagged as : </span>
-                    <a class="danger label" href="../tag/zi-dong-hua-ce-shi.html">自动化测试</a>
-                </div>
-            </article>
-            </li>
-        </ol><!-- /#posts-list -->
-    </div><!-- /.eleven.columns -->
-<div class="three columns">
+<p>编写一个测试用例比大多数想象的更容易.任何一个你编写用于验证内核功能的代码都可以用来形成一个用例 ...</p></body>	
+						 <a class="readmore" href="../2014/09/12/ltp/">Lire la suite …</a>
+						</div>
+					</div>
+					<div style="clear: both;">&nbsp;</div>
+				</div>
+				<div id="sidebar">
+					<div id="logo">
+						<h1><a href="..">Hi | World</a></h1>
+					</div>
+					<div id="menu">
+						<ul>
+							<li ><a href="..">首页</a></li>
+							<li ><a href="../archives.html">归档</a></li>
+                                                            <li ><a href="../pages/tech-share.html">归档</a></li>
+                                                            <li ><a href="../pages/opensource.html">开源项目</a></li>
+                                                            <li ><a href="../pages/links.html">链接</a></li>
+                                                            <li ><a href="../pages/Reference material.html">参考资料</a></li>
+                                                            <li ><a href="../pages/todo list.html">Todo List</a></li>
+                                                            <li ><a href="../pages/tools.html">工具集</a></li>
+                                                            <li ><a href="../pages/aboutme.html">关于我</a></li>
+						</ul>
+					</div>
+					<ul>
+						<li>
+							<h2>分类列表</h2>
+							<ul>
+								 <li ><a href="../category/misc.html">misc</a></li>
+								 <li ><a href="../category/autotestzhuan-ti.html">Autotest专题</a></li>
+								 <li ><a href="../category/suan-fa.html">算法</a></li>
+								 <li ><a href="../category/dockerzhuan-ti.html">Docker专题</a></li>
+								 <li ><a href="../category/linux.html">Linux</a></li>
+								 <li ><a href="../category/linux-benchmark.html">linux-benchmark</a></li>
+								 <li ><a href="../category/linux-zi-dong-hua-ce-shi.html">linux-自动化测试</a></li>
+								 <li ><a href="../category/unixhuan-jing-bian-cheng.html">unix环境编程</a></li>
+								 <li ><a href="../category/xing-neng-ce-shi.html">性能测试</a></li>
+							</ul>
+						</li>
+						<li>
+						        <h2>Tags</h2>
+						        <ul>
+                                                                <li><a href="../tag/selenium.html">Selenium</a></li>
+                                                                <li><a href="../tag/zi-dong-hua-ce-shi.html">自动化测试</a></li>
+                                                                <li><a href="../tag/ltp.html">LTP</a></li>
+                                                                <li><a href="../tag/shell.html">shell</a></li>
+                                                                <li><a href="../tag/suan-fa.html">算法</a></li>
+                                                                <li><a href="../tag/xing-neng-ce-shi.html">性能测试</a></li>
+                                                                <li><a href="../tag/python.html">Python</a></li>
+                                                                <li><a href="../tag/docker.html">Docker</a></li>
+                                                                <li><a href="../tag/benchmark.html">benchmark</a></li>
+                                                                <li><a href="../tag/qi-ta.html">其他</a></li>
+                                                                <li><a href="../tag/unixbian-cheng.html">unix编程</a></li>
+                                                                <li><a href="../tag/linux.html">Linux</a></li>
+                                                                <li><a href="../tag/pyunit.html">PyUnit</a></li>
+						        </ul>
+						</li>
+						
+						
+					</ul>
+				</div>
+				<!-- end #sidebar -->
+				<div style="clear: both;">&nbsp;</div>
+			</div>
+		</div>
+	</div>
+	<!-- end #page -->
 
-<!--
-<h4>Pages</h4>
-
- <ul>
-      <li><a href="../pages/tech-share.html">归档</a></li>
-      <li><a href="../pages/opensource.html">开源项目</a></li>
-      <li><a href="../pages/links.html">链接</a></li>
-      <li><a href="../pages/Reference material.html">参考资料</a></li>
-      <li><a href="../pages/todo list.html">Todo List</a></li>
-      <li><a href="../pages/tools.html">工具集</a></li>
-      <li class="active"><a href="../pages/aboutme.html">关于我</a></li>
-  </ul>
--->
-<!--
-<h4>分类</h4>
-<ul>
-		<li><a href="../category/misc.html">misc</a></li>
-		<li><a href="../category/autotestzhuan-ti.html">Autotest专题</a></li>
-		<li><a href="../category/suan-fa.html">算法</a></li>
-		<li><a href="../category/dockerzhuan-ti.html">Docker专题</a></li>
-		<li><a href="../category/linux.html">Linux</a></li>
-		<li><a href="../category/linux-benchmark.html">linux-benchmark</a></li>
-		<li><a href="../category/linux-zi-dong-hua-ce-shi.html">linux-自动化测试</a></li>
-		<li><a href="../category/unixhuan-jing-bian-cheng.html">unix环境编程</a></li>
-		<li><a href="../category/xing-neng-ce-shi.html">性能测试</a></li>
-</ul>
--->
-
-<h4>标签</h4>
-	<ul>
-	    <li class="tag-4"><a href="../tag/qi-ta.html">其他</a></li>
-	    <li class="tag-3"><a href="../tag/python.html">Python</a></li>
-	    <li class="tag-3"><a href="../tag/xing-neng-ce-shi.html">性能测试</a></li>
-	    <li class="tag-3"><a href="../tag/docker.html">Docker</a></li>
-	    <li class="tag-4"><a href="../tag/unixbian-cheng.html">unix编程</a></li>
-	    <li class="tag-1"><a href="../tag/zi-dong-hua-ce-shi.html">自动化测试</a></li>
-	    <li class="tag-1"><a href="../tag/selenium.html">Selenium</a></li>
-	    <li class="tag-3"><a href="../tag/suan-fa.html">算法</a></li>
-	    <li class="tag-3"><a href="../tag/shell.html">shell</a></li>
-	    <li class="tag-2"><a href="../tag/ltp.html">LTP</a></li>
-	    <li class="tag-4"><a href="../tag/linux.html">Linux</a></li>
-	    <li class="tag-4"><a href="../tag/benchmark.html">benchmark</a></li>
-	    <li class="tag-4"><a href="../tag/pyunit.html">PyUnit</a></li>
-</ul>
-
-<!--
--->
-</div> </div><!-- /.row -->
-<p class="paginator">
-            <a href="../tag/zi-dong-hua-ce-shi.html"><i class="icon-arrow-left"></i></a>
-    Page 2 / 2
+<div id="footer">
+	<p>Copyright (c) 2008 Sitename.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a>.</p>
+	<p>Proudly powered by <a href="http://alexis.notmyidea.org/pelican/">pelican</a>, which takes great advantages of <a href="http://python.org">python</a>.
 </p>
-</section><!-- /#content -->
-
-       </div><!-- /.row -->
-    </div><!-- /.container -->
-
-
-       <div class="container.nopad bg">
-
-
-        <footer id="credits" class="row">
-          <div class="seven columns left-center">
-
-                   <address id="about" class="vcard body">
-                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
-                    which takes great advantage of <a href="http://python.org">Python</a>.
-                    <br />
-                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
-                    </address>
-          </div>
-
-
-          <div class="seven columns">
-            <div class="row">
-              <ul class="socbtns">
-
-                <li><div class="btn primary"><a href="http://github.com/king32783784" target="_blank">Github</a></div></li>
-
-
-
-
-
-
-              </ul>
-            </div>
-          </div>
-        </footer>
-
-    </div>
-
-
-<script type="text/javascript">
-    var disqus_shortname = 'xiayfblackwhite';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-  <script src="../theme/js/libs/gumby.min.js"></script>
-  <script src="../theme/js/plugins.js"></script>
-  <script src="../theme/js/main.js"></script>
-  <link rel="stylesheet" type="text/css" href="../theme/emoji/css/basic/emojify.min.css" />
-  <script src="../theme/emoji/js/emojify.min.js"></script>
-  <script>
-    emojify.setConfig({
-        img_dir : '../theme/emoji/images/basic'
-    });
-    emojify.run();
-</script>
+</div>
+<!-- end #footer -->
 </body>
 </html>

@@ -1,67 +1,568 @@
-<!DOCTYPE html>
-<html lang="link">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : Brown Stone  
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20100928
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-
-        <title>Hi | World</title>
-        <meta charset="utf-8" />
-        <link href="http://king32783784.github.io/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Hi | World Full Atom Feed" />
-        <link href="http://king32783784.github.io/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Hi | World Full RSS Feed" />
-
-
-        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
-        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
-
-        <link rel="stylesheet" type="text/css" href="../theme/gumby.css" />
-        <link rel="stylesheet" type="text/css" href="../theme/style.css" />
-        <link rel="stylesheet" type="text/css" href="../theme/pygment.css" />
-        <link rel="stylesheet" type="text/css" href="../theme/SentyZHAO/SentyZHAO.css" />
-
-        <script src="../theme/js/libs/jquery-1.9.1.min.js"></script>
-        <script src="../theme/js/libs/modernizr-2.6.2.min.js"></script>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Hi | World - Autotest专题</title>
+<link href="../theme/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="../" type="application/atom+xml" rel="alternate" title="Hi | World ATOM Feed" />
 </head>
+<body>
+<div id="wrapper">
+	<div id="page">
+		<div id="page-bgtop">
+			<div id="page-bgbtm">
+ 
+        
+				<div id="content">
+					<div class="post">
+						<h2 class="title"><a href="../2016/08/12/Docker/">Docker基础技术：Linux Namespace（下）<转></a></h2>
+						<p class="meta"><span class="date">日期  </span><span class="posted">By <a href="#">others</a></span><span>&nbsp; | 分类 : <a href="../category/autotestzhuan-ti.html">Autotest专题</a></span></p>
+					<p class="meta">Tags : <span><a href="../tag/docker.html">Docker</a> / </span>
+</p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p>在 <a href="https://king32783784.github.io/lipeng/2016/08/11/Docker/">Docker基础技术：Linux Namespace（上篇)</a>中我们了解了，UTD、IPC、PID、Mount 四个namespace，我们模仿Docker做了一个相当相当山寨的镜像。在这一篇中，主要想向大家介绍Linux的User和Network的Namespace。
+<img class="img-responsive" height="280" src="https://raw.githubusercontent.com/king32783784/king32783784.github.io/master/tmpfile/Autotest1.png" width="420"/></p>
+<p>好，下面我们就介绍一下还剩下的这两个Namespace。</p>
+<h4 id="user-namespace">User Namespace</h4>
+<p><strong>User Namespace</strong> 主要是用了CLONE_NEWUSER的参数。使用了这个参数后，内部看到的UID和GID已经与外部不同了，默认显示为65534。那是因为容器找不到其真正的UID所以，设置上了最大的UID（其设置定义在/proc/sys/kernel/overflowuid）。</p>
+<p>要把容器中的uid和真实系统的uid给映射在一起，需要修改 <strong>/proc/<pid>/uid_map</pid></strong>  和 <strong>/proc/<pid>/gid_map</pid></strong> 这两个文件。这两个文件的格式为：</p>
+<p>ID-inside-ns ID-outside-ns length</p>
+<p>其中：</p>
+<ul>
+<li>第一个字段ID-inside-ns表示在容器显示的UID或GID，</li>
+<li>第二个字段ID-outside-ns表示容器外映射的真实的UID或GID。</li>
+<li>第三个字段表示映射的范围，一般填1，表示一一对应。</li>
+</ul>
+<p>比如，把真实的uid=1000映射成容器内的uid=0</p>
+<div class="highlight"><pre><span></span>$ cat /proc/2465/uid_map
+     <span class="m">0</span>       <span class="m">1000</span>          1
+</pre></div>
+<p>再比如下面的示例：表示把namespace内部从0开始的uid映射到外部从0开始的uid，其最大范围是无符号32位整形</p>
+<div class="highlight"><pre><span></span>$ cat /proc/<span class="nv">$$</span>/uid_map
+     <span class="m">0</span>          <span class="m">0</span>          4294967295
+</pre></div>
+<p>另外，需要注意的是：</p>
+<ul>
+<li>写这两个文件的进程需要这个namespace中的CAP_SETUID (CAP_SETGID)权限（可参看Capabilities）</li>
+<li>写入的进程必须是此user namespace的父或子的user namespace进程。</li>
+<li>另外需要满如下条件之一：1）父进程将effective uid/gid映射到子进程的user namespace中，2）父进程如果有CAP_SETUID/CAP_SETGID权限，那么它将可以映射到父进程中的任一uid/gid。</li>
+<li>这些规则看着都烦，我们来看程序吧（下面的程序有点长，但是非常简单，如果你读过《Unix网络编程》上卷，你应该可以看懂):</li>
+</ul>
+<p>code:</p>
+<div class="highlight"><pre><span></span><span class="cp">#define _GNU_SOURCE</span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;sys/types.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;sys/wait.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;sys/mount.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;sys/capability.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;sched.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;signal.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
 
-<body id="index" class="home">
-    <div class="container">
+<span class="cp">#define STACK_SIZE (1024 * 1024)</span>
 
-        <div class="row">
+<span class="k">static</span> <span class="kt">char</span> <span class="n">container_stack</span><span class="p">[</span><span class="n">STACK_SIZE</span><span class="p">];</span>
+<span class="kt">char</span><span class="o">*</span> <span class="k">const</span> <span class="n">container_args</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"/bin/bash"</span><span class="p">,</span>
+    <span class="nb">NULL</span>
+<span class="p">};</span>
 
-          <header id="banner" class="body">
-                  <h1 style='font-family: "SentyZHAO";'><a href="..">Hi | World <strong></strong></a></h1>
-          </header><!-- /#banner -->
+<span class="kt">int</span> <span class="n">pipefd</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
 
-            <div id="navigation" class="navbar row">
-              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+<span class="kt">void</span> <span class="nf">set_map</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">file</span><span class="p">,</span> <span class="kt">int</span> <span class="n">inside_id</span><span class="p">,</span> <span class="kt">int</span> <span class="n">outside_id</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">FILE</span><span class="o">*</span> <span class="n">mapfd</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s">"w"</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">NULL</span> <span class="o">==</span> <span class="n">mapfd</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">perror</span><span class="p">(</span><span class="s">"open file error"</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">fprintf</span><span class="p">(</span><span class="n">mapfd</span><span class="p">,</span> <span class="s">"%d %d %d"</span><span class="p">,</span> <span class="n">inside_id</span><span class="p">,</span> <span class="n">outside_id</span><span class="p">,</span> <span class="n">len</span><span class="p">);</span>
+    <span class="n">fclose</span><span class="p">(</span><span class="n">mapfd</span><span class="p">);</span>
+<span class="p">}</span>
 
-              <ul class="columns" style='font-family: "SentyZHAO";'>
-                <li><a href="..">主 页</a></li>
+<span class="kt">void</span> <span class="nf">set_uid_map</span><span class="p">(</span><span class="kt">pid_t</span> <span class="n">pid</span><span class="p">,</span> <span class="kt">int</span> <span class="n">inside_id</span><span class="p">,</span> <span class="kt">int</span> <span class="n">outside_id</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="n">file</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span>
+    <span class="n">sprintf</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s">"/proc/%d/uid_map"</span><span class="p">,</span> <span class="n">pid</span><span class="p">);</span>
+    <span class="n">set_map</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">inside_id</span><span class="p">,</span> <span class="n">outside_id</span><span class="p">,</span> <span class="n">len</span><span class="p">);</span>
+<span class="p">}</span>
 
-                <li><a href="../pages/tech-share.html">归档</a></li>
-                <li><a href="../pages/opensource.html">开源项目</a></li>
-                <li><a href="../pages/links.html">链接</a></li>
-                <li><a href="../pages/Reference material.html">参考资料</a></li>
-                <li><a href="../pages/todo list.html">Todo List</a></li>
-                <li><a href="../pages/tools.html">工具集</a></li>
-                <li class="active"><a href="../pages/aboutme.html">关于我</a></li>
+<span class="kt">void</span> <span class="nf">set_gid_map</span><span class="p">(</span><span class="kt">pid_t</span> <span class="n">pid</span><span class="p">,</span> <span class="kt">int</span> <span class="n">inside_id</span><span class="p">,</span> <span class="kt">int</span> <span class="n">outside_id</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="n">file</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span>
+    <span class="n">sprintf</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s">"/proc/%d/gid_map"</span><span class="p">,</span> <span class="n">pid</span><span class="p">);</span>
+    <span class="n">set_map</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">inside_id</span><span class="p">,</span> <span class="n">outside_id</span><span class="p">,</span> <span class="n">len</span><span class="p">);</span>
+<span class="p">}</span>
 
-              </ul>
-            </div>
+<span class="kt">int</span> <span class="nf">container_main</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">arg</span><span class="p">)</span>
+<span class="p">{</span>
 
-<section id="content" class="body">
-<h2>Articles in the Autotest专题 category</h2>
-<div class="row">
-    <div class="eleven columns">
-        <ol id="post-list">
-            <li>
-            <article class="hentry">
-                <header>
-                    <h2 class="entry-title">
-                        <a href="../2015/08/16/autotest/" rel="bookmark" title="Permalink to Autotest-add test">Autotest-add test</a>
-                    </h2>
-                </header>
-                <footer class="post-info">
-                    <abbr class="published" title="2015-08-16T00:00:00+08:00"> 日 16 八月 2015 </abbr>
-<address class="vcard author">By <a class="url fn" href="../author/penglee.html">penglee</a></address>                </footer><!-- /.post-info -->
-                <div class="entry-content"> </head><body><p><img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Container [%5d] - inside the container!</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">getpid</span><span class="p">());</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Container: eUID = %ld;  eGID = %ld, UID=%ld, GID=%ld</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span>
+            <span class="p">(</span><span class="kt">long</span><span class="p">)</span> <span class="n">geteuid</span><span class="p">(),</span> <span class="p">(</span><span class="kt">long</span><span class="p">)</span> <span class="n">getegid</span><span class="p">(),</span> <span class="p">(</span><span class="kt">long</span><span class="p">)</span> <span class="n">getuid</span><span class="p">(),</span> <span class="p">(</span><span class="kt">long</span><span class="p">)</span> <span class="n">getgid</span><span class="p">());</span>
+
+    <span class="cm">/* 等待父进程通知后再往下执行（进程间的同步） */</span>
+    <span class="kt">char</span> <span class="n">ch</span><span class="p">;</span>
+    <span class="n">close</span><span class="p">(</span><span class="n">pipefd</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+    <span class="n">read</span><span class="p">(</span><span class="n">pipefd</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">ch</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Container [%5d] - setup hostname!</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">getpid</span><span class="p">());</span>
+    <span class="c1">//set hostname</span>
+    <span class="n">sethostname</span><span class="p">(</span><span class="s">"container"</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span>
+
+    <span class="c1">//remount "/proc" to make sure the "top" and "ps" show container's information</span>
+    <span class="n">mount</span><span class="p">(</span><span class="s">"proc"</span><span class="p">,</span> <span class="s">"/proc"</span><span class="p">,</span> <span class="s">"proc"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+
+    <span class="n">execv</span><span class="p">(</span><span class="n">container_args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">container_args</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Something's wrong!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">gid</span><span class="o">=</span><span class="n">getgid</span><span class="p">(),</span> <span class="n">uid</span><span class="o">=</span><span class="n">getuid</span><span class="p">();</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Parent: eUID = %ld;  eGID = %ld, UID=%ld, GID=%ld</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span>
+            <span class="p">(</span><span class="kt">long</span><span class="p">)</span> <span class="n">geteuid</span><span class="p">(),</span> <span class="p">(</span><span class="kt">long</span><span class="p">)</span> <span class="n">getegid</span><span class="p">(),</span> <span class="p">(</span><span class="kt">long</span><span class="p">)</span> <span class="n">getuid</span><span class="p">(),</span> <span class="p">(</span><span class="kt">long</span><span class="p">)</span> <span class="n">getgid</span><span class="p">());</span>
+
+    <span class="n">pipe</span><span class="p">(</span><span class="n">pipefd</span><span class="p">);</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Parent [%5d] - start a container!</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">getpid</span><span class="p">());</span>
+
+    <span class="kt">int</span> <span class="n">container_pid</span> <span class="o">=</span> <span class="n">clone</span><span class="p">(</span><span class="n">container_main</span><span class="p">,</span> <span class="n">container_stack</span><span class="o">+</span><span class="n">STACK_SIZE</span><span class="p">,</span>
+            <span class="n">CLONE_NEWUTS</span> <span class="o">|</span> <span class="n">CLONE_NEWPID</span> <span class="o">|</span> <span class="n">CLONE_NEWNS</span> <span class="o">|</span> <span class="n">CLONE_NEWUSER</span> <span class="o">|</span> <span class="n">SIGCHLD</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Parent [%5d] - Container [%5d]!</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">getpid</span><span class="p">(),</span> <span class="n">container_pid</span><span class="p">);</span>
+
+    <span class="c1">//To map the uid/gid,</span>
+   <span class="c1">//   we need edit the /proc/PID/uid_map (or /proc/PID/gid_map) in parent</span>
+    <span class="c1">//The file format is</span>
+    <span class="c1">//   ID-inside-ns   ID-outside-ns   length</span>
+    <span class="c1">//if no mapping,</span>
+    <span class="c1">//   the uid will be taken from /proc/sys/kernel/overflowuid</span>
+    <span class="c1">//   the gid will be taken from /proc/sys/kernel/overflowgid</span>
+    <span class="n">set_uid_map</span><span class="p">(</span><span class="n">container_pid</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">uid</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="n">set_gid_map</span><span class="p">(</span><span class="n">container_pid</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">gid</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Parent [%5d] - user/group mapping done!</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">getpid</span><span class="p">());</span>
+
+    <span class="cm">/* 通知子进程 */</span>
+    <span class="n">close</span><span class="p">(</span><span class="n">pipefd</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+
+    <span class="n">waitpid</span><span class="p">(</span><span class="n">container_pid</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Parent - container stopped!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+<p>上面的程序，我们用了一个pipe来对父子进程进行同步，为什么要这样做？因为子进程中有一个execv的系统调用，这个系统调用会把当前子进程的进程空间给全部覆盖掉，我们希望在execv之前就做好user namespace的uid/gid的映射，这样，execv运行的/bin/bash就会因为我们设置了uid为0的inside-uid而变成#号的提示符。</p>
+<p>整个程序的运行效果如下：
+    hchen@ubuntu:~<span class="math">\( id
+    uid=1000(hchen) gid=1000(hchen) groups=1000(hchen)
+    hchen@ubuntu:~\)</span> ./user #&lt;--以hchen用户运行
+    Parent: eUID = 1000;  eGID = 1000, UID=1000, GID=1000
+    Parent [ 3262] - start a container!
+    Parent [ 3262] - Container [ 3263]!
+    Parent [ 3262] - user/group mapping done!
+    Container [    1] - inside the container!
+    Container: eUID = 0;  eGID = 0, UID=0, GID=0 #&lt;---Container里的UID/GID都为0了
+    Container [    1] - setup hostname!</p>
+<div class="highlight"><pre><span></span>root@container:~# id #&lt;----我们可以看到容器里的用户和命令行提示符是root用户了
+uid=0(root) gid=0(root) groups=0(root),65534(nogroup)
+</pre></div>
+<p>虽然容器里是root，但其实这个容器的/bin/bash进程是以一个普通用户hchen来运行的。这样一来，我们容器的安全性会得到提高。</p>
+<p>我们注意到，User Namespace是以普通用户运行，但是别的Namespace需要root权限，那么，如果我要同时使用多个Namespace，该怎么办呢？一般来说，我们先用一般用户创建User Namespace，然后把这个一般用户映射成root，在容器内用root来创建其它的Namesapce。</p>
+<h4 id="network-namespace">Network Namespace</h4>
+<p>Network的Namespace比较啰嗦。在Linux下，我们一般用ip命令创建Network Namespace（Docker的源码中，它没有用ip命令，而是自己实现了ip命令内的一些功能&mdash;&mdash;是用了Raw Socket发些&ldquo;奇怪&rdquo;的数据，呵呵）。这里，我还是用ip命令讲解一下。</p>
+<p>首先，我们先看个图，下面这个图基本上就是Docker在宿主机上的网络示意图（其中的物理网卡并不准确，因为docker可能会运行在一个VM中，所以，这里所谓的&ldquo;物理网卡&rdquo;其实也就是一个有可以路由的IP的网卡）</p>
+<p><img alt="" class="img-responsive" src="https://king32783784.github.io/lipeng/tmpfile/network.namespace.jpg"/></p>
+<p>上图中，Docker使用了一个私有网段，172.40.1.0，docker还可能会使用10.0.0.0和192.168.0.0这两个私有网段，关键看你的路由表中是否配置了，如果没有配置，就会使用，如果你的路由表配置了所有私有网段，那么docker启动时就会出错了。</p>
+<p>当你启动一个Docker容器后，你可以使用ip link show或ip addr show来查看当前宿主机的网络情况（我们可以看到有一个docker0，还有一个veth22a38e6的虚拟网卡&mdash;&mdash;给容器用的）：</p>
+<div class="highlight"><pre><span></span>hchen@ubuntu:~$ ip link show
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state ...
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc ...
+    link/ether 00:0c:29:b7:67:7d brd ff:ff:ff:ff:ff:ff
+3: docker0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 ...
+    link/ether 56:84:7a:fe:97:99 brd ff:ff:ff:ff:ff:ff
+5: veth22a38e6: &lt;BROADCAST,UP,LOWER_UP&gt; mtu 1500 qdisc ...
+    link/ether 8e:30:2a:ac:8c:d1 brd ff:ff:ff:ff:ff:ff
+</pre></div>
+<p>那么，要做成这个样子应该怎么办呢？我们来看一组命令：</p>
+<div class="highlight"><pre><span></span>## 首先，我们先增加一个网桥lxcbr0，模仿docker0
+brctl addbr lxcbr0
+brctl stp lxcbr0 off
+ifconfig lxcbr0 192.168.10.1/24 up #为网桥设置IP地址
+
+## 接下来，我们要创建一个network namespace - ns1
+
+# 增加一个namesapce 命令为 ns1 （使用ip netns add命令）
+ip netns add ns1
+
+# 激活namespace中的loopback，即127.0.0.1（使用ip netns exec ns1来操作ns1中的命令）
+ip netns exec ns1   ip link set dev lo up
+
+## 然后，我们需要增加一对虚拟网卡
+
+# 增加一个pair虚拟网卡，注意其中的veth类型，其中一个网卡要按进容器中
+ip link add veth-ns1 type veth peer name lxcbr0.1
+
+# 把 veth-ns1 按到namespace ns1中，这样容器中就会有一个新的网卡了
+ip link set veth-ns1 netns ns1
+
+# 把容器里的 veth-ns1改名为 eth0 （容器外会冲突，容器内就不会了）
+ip netns exec ns1  ip link set dev veth-ns1 name eth0
+
+# 为容器中的网卡分配一个IP地址，并激活它
+ip netns exec ns1 ifconfig eth0 192.168.10.11/24 up
+
+
+# 上面我们把veth-ns1这个网卡按到了容器中，然后我们要把lxcbr0.1添加上网桥上
+brctl addif lxcbr0 lxcbr0.1
+
+# 为容器增加一个路由规则，让容器可以访问外面的网络
+ip netns exec ns1     ip route add default via 192.168.10.1
+
+# 在/etc/netns下创建network namespce名称为ns1的目录，
+# 然后为这个namespace设置resolv.conf，这样，容器内就可以访问域名了
+mkdir -p /etc/netns/ns1
+echo "nameserver 8.8.8.8" &gt; /etc/netns/ns1/resolv.conf
+</pre></div>
+<p>上面基本上就是docker网络的原理了，只不过，</p>
+<p>Docker的resolv.conf没有用这样的方式，而是用了上篇中的Mount Namesapce的那种方式
+另外，docker是用进程的PID来做Network Namespace的名称的。
+了解了这些后，你甚至可以为正在运行的docker容器增加一个新的网卡：</p>
+<div class="highlight"><pre><span></span>ip link add peerA type veth peer name peerB
+brctl addif docker0 peerA
+ip link set peerA up
+ip link set peerB netns <span class="cp">${</span><span class="n">container</span><span class="o">-</span><span class="n">pid</span><span class="cp">}</span>
+ip netns exec <span class="cp">${</span><span class="n">container</span><span class="o">-</span><span class="n">pid</span><span class="cp">}</span> ip link set dev peerB name eth1
+ip netns exec <span class="cp">${</span><span class="n">container</span><span class="o">-</span><span class="n">pid</span><span class="cp">}</span> ip link set eth1 up ;
+ip netns exec <span class="cp">${</span><span class="n">container</span><span class="o">-</span><span class="n">pid</span><span class="cp">}</span> ip addr add <span class="cp">${</span><span class="n">ROUTEABLE_IP</span><span class="cp">}</span> dev eth1 ;
+</pre></div>
+<p>上面的示例是我们为正在运行的docker容器，增加一个eth1的网卡，并给了一个静态的可被外部访问到的IP地址。</p>
+<p>这个需要把外部的&ldquo;物理网卡&rdquo;配置成混杂模式，这样这个eth1网卡就会向外通过ARP协议发送自己的Mac地址，然后外部的交换机就会把到这个IP地址的包转到&ldquo;物理网卡&rdquo;上，因为是混杂模式，所以eth1就能收到相关的数据，一看，是自己的，那么就收到。这样，Docker容器的网络就和外部通了。</p>
+<p>当然，无论是Docker的NAT方式，还是混杂模式都会有性能上的问题，NAT不用说了，存在一个转发的开销，混杂模式呢，网卡上收到的负载都会完全交给所有的虚拟网卡上，于是就算一个网卡上没有数据，但也会被其它网卡上的数据所影响。</p>
+<p>这两种方式都不够完美，我们知道，真正解决这种网络问题需要使用VLAN技术，于是Google的同学们为Linux内核实现了一个IPVLAN的驱动，这基本上就是为Docker量身定制的。</p>
+<h4 id="namespacewen-jian">Namespace文件</h4>
+<p>上面就是目前Linux Namespace的玩法。 现在，我来看一下其它的相关东西。</p>
+<p>让我们运行一下上篇中的那个pid.mnt的程序（也就是PID Namespace中那个mount proc的程序），然后不要退出。</p>
+<div class="highlight"><pre><span></span>$ sudo ./pid.mnt
+<span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for</span> hchen:
+Parent <span class="o">[</span> 4599<span class="o">]</span> - start a container!
+Container <span class="o">[</span>    1<span class="o">]</span> - inside the container!
+</pre></div>
+<p>我们到另一个shell中查看一下父子进程的PID：</p>
+<div class="highlight"><pre><span></span>hchen@ubuntu:~$ pstree -p 4599
+pid.mnt(4599)───bash(4600)
+</pre></div>
+<p>我们可以到proc下（/proc//ns）查看进程的各个namespace的id（内核版本需要3.8以上）。</p>
+<p>下面是父进程的：</p>
+<div class="highlight"><pre><span></span>hchen@ubuntu:~$ sudo ls -l /proc/4599/ns
+total 0
+lrwxrwxrwx 1 root root 0  4月  7 22:01 ipc -&gt; ipc:[4026531839]
+lrwxrwxrwx 1 root root 0  4月  7 22:01 mnt -&gt; mnt:[4026531840]
+lrwxrwxrwx 1 root root 0  4月  7 22:01 net -&gt; net:[4026531956]
+lrwxrwxrwx 1 root root 0  4月  7 22:01 pid -&gt; pid:[4026531836]
+lrwxrwxrwx 1 root root 0  4月  7 22:01 user -&gt; user:[4026531837]
+lrwxrwxrwx 1 root root 0  4月  7 22:01 uts -&gt; uts:[4026531838]
+</pre></div>
+<p>下面是子进程的：</p>
+<div class="highlight"><pre><span></span>hchen@ubuntu:~$ sudo ls -l /proc/4600/ns
+total 0
+lrwxrwxrwx 1 root root 0  4月  7 22:01 ipc -&gt; ipc:[4026531839]
+lrwxrwxrwx 1 root root 0  4月  7 22:01 mnt -&gt; mnt:[4026532520]
+lrwxrwxrwx 1 root root 0  4月  7 22:01 net -&gt; net:[4026531956]
+lrwxrwxrwx 1 root root 0  4月  7 22:01 pid -&gt; pid:[4026532522]
+lrwxrwxrwx 1 root root 0  4月  7 22:01 user -&gt; user:[4026531837]
+lrwxrwxrwx 1 root root 0  4月  7 22:01 uts -&gt; uts:[4026532521]
+</pre></div>
+<p>我们可以看到，其中的ipc，net，user是同一个ID，而mnt,pid,uts都是不一样的。如果两个进程指向的namespace编号相同，就说明他们在同一个namespace下，否则则在不同namespace里面。</p>
+<p>这些文件还有另一个作用，那就是，一旦这些文件被打开，只要其fd被占用着，那么就算PID所属的所有进程都已经结束，创建的namespace也会一直存在。比如：我们可以通过：mount &ndash;bind /proc/4600/ns/uts ~/uts 来hold这个namespace。</p>
+<p>另外，我们在上篇中讲过一个setns的系统调用，其函数声明如下：</p>
+<div class="highlight"><pre><span></span>int setns(int fd, int nstype);
+</pre></div>
+<p>其中第一个参数就是一个fd，也就是一个open()系统调用打开了上述文件后返回的fd，比如：</p>
+<div class="highlight"><pre><span></span>fd = open("/proc/4600/ns/nts", O_RDONLY);  // 获取namespace文件描述符
+setns(fd, 0); // 加入新的namespace
+</pre></div>
+<p>参考文档</p>
+<p><a href="http://lwn.net/Articles/531114/">Namespaces in operation</a></p>
+<p><a href="http://man7.org/linux/man-pages/man7/namespaces.7.html">Linux Namespace Man Page</a></p>
+<p><a href="http://crosbymichael.com/creating-containers-part-1.html">Creat Containers &ndash; Part 1</a></p>
+<p><a href="https://blog.yadutaf.fr/2013/12/22/introduction-to-linux-namespaces-part-1-uts/">Introduction to Linux namespaces</a></p>
+<p>（全文完）</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script></body>	
+						</div>
+					</div>
+	
+			                <div class="post">
+			                        <h2 class="title">Autres articles</h2>
+			                </div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/11/01/autotest/">Autotest-client Package(1)</a></h2>
+						<p class="meta"><span class="date">日期 日 01 十一月 2015</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+<h3 id="autotest_local-mo-kuai">autotest_local 模块</h3>
+<p>class autotest.client.autotest_local.AutotestLocalAPP</p>
+<p>本地自动测试，指定一个control文件启动测试</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">autotest.common</span> <span class="kn">as</span> <span class="nn">common</span> <span class="c1"># pylint: disable=W0611</span>
+    <span class="n">rootdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">common</span><span class="o">.</span><span class="n">__file__</span><span class="p">))</span>
+    <span class="n">autodir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rootdir</span><span class="p">,</span> <span class="s1">'client'</span><span class="p">)</span>
+    <span class="n">autodirbin</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">rootdir</span><span class="p">,</span> <span class="s1">'client'</span><span class="p">,</span> <span class="s1">'bin'</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">common</span> <span class="c1"># pylint: disable ...</span></pre></div></body>	
+						 <a class="readmore" href="../2015/11/01/autotest/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/08/22/autotest/">Autotest-Autotest Remote (Autoserv)(三）</a></h2>
+						<p class="meta"><span class="date">日期 六 22 八月 2015</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+<h3 id="running-autotest-in-a-guest">Running Autotest In a Guest</h3>
+<p>接下来看一下虚拟机guest执行一次测试的列子。control文件有点特别的是需要在host中运行OProfile收集运行时的信息。使用oprofile前，需要在guest安装。
+给KVm指定一个IP，就会有一个虚拟机生成。试图运行虚拟机里面的oprofile，但没有成功。最后，选项"opcontrol --setup"应根据host中vmlinux位置调整。</p>
+<div class="highlight"><pre><span></span>remote_host=hosts.SSHHost("192.168.1.1")
+kvm_on_remote_host= kvm.KVM(remote_host)
+
+kvm_on_remote_host.get("/var/local/src/kvm-compiled.tar.gz")
+addresses= [{"mac":"02:00:00:00:00:01", "ip":"10.0.0.1 ...</pre></div></body>	
+						 <a class="readmore" href="../2015/08/22/autotest/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/08/21/autotest/">Autotest-Autotest Remote (Autoserv)(二）</a></h2>
+						<p class="meta"><span class="date">日期 五 21 八月 2015</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+<h3 id="kvmzhi-chi">KVM支持</h3>
+<p>如前所述，Autoserv 支持控制虚拟机。这个对象设计的可以支持虚拟机管理/hypervisors。一开始，只支持kvm,为了支持KVM，你需要做：
+    1.创建虚拟机，运行在虚拟层的机器
+    2.创建KVM对象，通过get()指定源，KVM InstallableObject安装到指定的虚拟机。
+    3.创建KVMGuest对象，需要指定做其他事情，KVM对象在上面已创建。
+    4.使用KVMGuest对象运行一些其他类型的虚拟机命令，如改变内核，运行autotest</p>
+<p>可以通过查看server/kvm.py 和server/hosts/kvm_guest.py查看其他信息，尤其是KVM.install()的前面的函数和KVMGuest的函数构造。
+下面给出一个Autoserv 控制文件的例子，第5行包括解析获取addresslist 列表，这个控制文件是由python实现。</p>
+<div class="highlight"><pre><span></span>remote_host = hosts.SSHHost("192.168.1.1")
+
+kvm_on_remote_host ...</pre></div></body>	
+						 <a class="readmore" href="../2015/08/21/autotest/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/08/20/autotest/">Autotest-Autotest Remote (Autoserv)（一）</a></h2>
+						<p class="meta"><span class="date">日期 四 20 八月 2015</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+<p>Autoserv 是&ldquo;自动化机器控制&ldquo;的框架
+Autoserv 目的是控制机器，它可以：</p>
+<ul>
+<li>电源管理</li>
+<li>安装内核</li>
+<li>修改bootloader
+*　运行任意命令</li>
+<li>运行Autotest Local(客户端）测试</li>
+<li>传输文件</li>
+</ul>
+<p>被控制的机器可以是：</p>
+<ul>
+<li>本机</li>
+<li>远程机器（通过ssh 和　conmux)</li>
+<li>虚拟机(通过ＫＶＭ）</li>
+</ul>
+<h2 id="kong-zhi-wen-jian">控制文件</h2>
+<p>类似于autotest,Autoserv同样使用控制文件。这些控制文件和autotest使用不同的命令，但是像autotest一样包含一些内部的可以调研python解释器的功能。</p>
+<p>这里有一个控制文件的例子，用来控制远程host安装.dep内核。若文件存在server/目录并且命名为example.control,可以在server/目录通过./autotest-remote example.control调用：</p>
+<div class="highlight"><pre><span></span>remote_host = host.SSHHost("192.168.1.1")
+print remote_host.run ...</pre></div></body>	
+						 <a class="readmore" href="../2015/08/20/autotest/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/08/19/autotest/">Autotest-others</a></h2>
+						<p class="meta"><span class="date">日期 三 19 八月 2015</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+<h2 id="zhi-xing-wai-bu-ce-shi">执行外部测试</h2>
+<p>autotest可以像执行自身测试一样执行外部测试．</p>
+<h3 id="zhi-xing-ce-shi">执行测试</h3>
+<p>一个下载的测试并触发，标准方式是通过run_test方法执行，需要指定tar包地址．
+　　
+    job.run_test('http://www.example.com/~someone/somewhere/test.tar.bz2')</p>
+<p>这样就会执行下载，安装，解压测试．</p>
+<h3 id="gou-jian-wai-bu-xia-zai-ce-shi">构建外部下载测试</h3>
+<p>外部下载的测试包含bz2包和测试目录．
+<em> 1．包名　my_test.tar.bz2
+</em> 2. 测试脚本　my_test.py
+* 3.　测试脚本中的以本身命名的类　class my_test(test.test):</p>
+<p>例如：</p>
+<div class="highlight"><pre><span></span>    <span class="kn">from</span> <span class="nn">autotest_lib.client.bin</span> <span class="kn">import</span> <span class="n">test</span>
+
+    <span class="k">class</span> <span class="nc">my_test</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">test</span><span class="p">):</span>
+        <span class="n">version</span> <span class="o">=</span> <span class="mi">1 ...</span></pre></div></body>	
+						 <a class="readmore" href="../2015/08/19/autotest/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/08/18/autotest/">Autotest-Linux distribution detection</a></h2>
+						<p class="meta"><span class="date">日期 二 18 八月 2015</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+<h2 id="linuxfa-xing-ban-jian-ce">linux发行版检测</h2>
+<p>Autotest有个功能,就是让测试清晰了解到它运行在什么样的发行版上.
+这个功能是由probe类群的实现和注册实现的.
+这些probe类可以检查运行的系统的信息,比如发行版的release文件,二进制信息(如包管理)等.</p>
+<h3 id="kuai-su-jian-cha-fa-xing-ban">快速检查发行版</h3>
+<p>autotest.client.shared.distro 模块提供一些APIS,最简单的就是使用detect().
+它的用法简单命了:</p>
+<div class="highlight"><pre><span></span>    <span class="kn">from</span> <span class="nn">autotest.client.shared</span> <span class="kn">import</span> <span class="n">distro</span>
+    <span class="n">detected_distro</span> <span class="o">=</span> <span class="n">distro</span><span class="o">.</span><span class="n">detect</span><span class="p">()</span>
+</pre></div>
+<p>这样就可以返回发行版检测的结果,但是不太适用于<strong>UNKNOWN_DISIRO</strong>.</p>
+<ul>
+<li>name</li>
+<li>version</li>
+<li>release</li>
+<li>arch</li>
+</ul>
+<p>例如:</p>
+<div class="highlight"><pre><span></span>&gt;&gt;&gt;detected_distro = distro.detect()
+&gt;&gt;&gt;print detected_distro.name
+redhat
+</pre></div>
+<h3 id="wei-zhi-fa-xing-ban">未知发行版</h3>
+<p>当检测机制不能检测到发行版,仍会返回一个LinuxDistro实例,但是它的name,version等信息比较特殊.</p>
+<div class="highlight"><pre><span></span> autotest.clientshared.distro.UNKNOWN_DISIRO ...</pre></div></body>	
+						 <a class="readmore" href="../2015/08/18/autotest/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/08/17/autotest/">Autotest-Using and developing job profilers</a></h2>
+						<p class="meta"><span class="date">日期 一 17 八月 2015</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+<h2 id="shi-yong-he-tian-jia-ce-shi-fen-xi-qi">使用和添加测试分析器</h2>
+<p>添加一个分析器和添加一个测试项目类似.每个分析器都有自己的子目录(client/profilers或你可以查看profilers/),一个标准例子:</p>
+<ul>
+<li>一个控制文件. profilers/myprofiler/control</li>
+<li>分析器控制脚本. profilers/myprofiler.py</li>
+<li>分析器的源码(如果不仅仅是控制脚本)</li>
+</ul>
+<p>我们来看一下已有的分析器. autotest提供readprofile,尽管这不是个最简单的方式,但是能够看到你想了解的全部信息.readprofile支持编译近内核.</p>
+<p>控制文件非常简单,像这样:</p>
+<div class="highlight"><pre><span></span>job.profilers.add('readprofile')
+job.run_test('sleeptest', 1)
+job.profilers.delete('readprofile')
+</pre></div>
+<p>只是说明"请再以下测试中使用readprofile".一次测试,如果想添加多个分析器,可以多次调用profilers.add.</p>
+<p>还有源码包"util-linux-2.12r.tar.bz2",将会解压到src/.python控制脚本将定义,分析器要做的大部分事情.通过查看readprofile ...</p></body>	
+						 <a class="readmore" href="../2015/08/17/autotest/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/08/16/autotest/">Autotest-add test</a></h2>
+						<p class="meta"><span class="date">日期 日 16 八月 2015</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
 <h2 id="ce-shi-mo-kuai-kai-fa">测试模块开发</h2>
 <p>测试模块必需是独立的单元，包含测试需要的所有内容（除了调用测试框架的）</p>
 <p>测试模块需要：</p>
@@ -84,25 +585,18 @@
 <div class="highlight"><pre><span></span>job.run_test('dbench')
 </pre></div>
 <p>这个例子只包含了基本的参数，通过这个去了解一些新测试项的基本的设置，随后可以自己扩展其他的东西．</p>
-<p>目录下同样有个测试工具源码包dbench-3 ...</p></body> </div><!-- /.entry-content -->
-                <div class="medium primary btn"><a href="../2015/08/16/autotest/" rel="bookmark" title="Permalink to Autotest-add test">Read more <i class="icon-arrow-right"></i></a></div>
-                <div class="row tag-row">
-                    <span>Tagged as : </span>
-                    <a class="danger label" href="../tag/zi-dong-hua-ce-shi.html">自动化测试</a>
-                </div>
-            </article>
-            </li>
-            <li>
-            <article class="hentry">
-                <header>
-                    <h2 class="entry-title">
-                        <a href="../2015/08/15/autotest/" rel="bookmark" title="Permalink to Autotest-Control file specification">Autotest-Control file specification</a>
-                    </h2>
-                </header>
-                <footer class="post-info">
-                    <abbr class="published" title="2015-08-15T00:00:00+08:00"> 六 15 八月 2015 </abbr>
-<address class="vcard author">By <a class="url fn" href="../author/penglee.html">penglee</a></address>                </footer><!-- /.post-info -->
-                <div class="entry-content"> </head><body><p><img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+<p>目录下同样有个测试工具源码包dbench-3 ...</p></body>	
+						 <a class="readmore" href="../2015/08/16/autotest/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/08/15/autotest/">Autotest-Control file specification</a></h2>
+						<p class="meta"><span class="date">日期 六 15 八月 2015</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
 <h2 id="control-file-specification">Control file specification</h2>
 <p>该篇主要介绍control文件的标准.该标准主要为了使自定义的control文件能够提供前端或测试所需要的信息,并且能够通过前端修改.
 主要内容:</p>
@@ -115,7 +609,7 @@
 <p>control文件命名必须是control.xxxx,xxxx是你定义或则代码评审定义．　例如，５００次硬重启测试，一个正规的定义就是　control.hard500</p>
 <h3 id="chang-yong-bian-liang">常用变量</h3>
 <p>下面是一个常用变量的列表</p>
-<table>
+<table class="table table-hover table-striped">
 <thead>
 <tr>
 <th>变量名</th>
@@ -153,25 +647,18 @@
 </tr>
 <tr>
 <td>*TIME</td>
-<td>说明测试时长，　ＳＨＯＲＴ&lt;15m, MEDIUM &lt; 4H ,LONG ...</td></tr></tbody></table></body> </div><!-- /.entry-content -->
-                <div class="medium primary btn"><a href="../2015/08/15/autotest/" rel="bookmark" title="Permalink to Autotest-Control file specification">Read more <i class="icon-arrow-right"></i></a></div>
-                <div class="row tag-row">
-                    <span>Tagged as : </span>
-                    <a class="danger label" href="../tag/zi-dong-hua-ce-shi.html">自动化测试</a>
-                </div>
-            </article>
-            </li>
-            <li>
-            <article class="hentry">
-                <header>
-                    <h2 class="entry-title">
-                        <a href="../2015/08/14/autotest/" rel="bookmark" title="Permalink to Autotest-client control">Autotest-client control</a>
-                    </h2>
-                </header>
-                <footer class="post-info">
-                    <abbr class="published" title="2015-08-14T00:00:00+08:00"> 五 14 八月 2015 </abbr>
-<address class="vcard author">By <a class="url fn" href="../author/penglee.html">penglee</a></address>                </footer><!-- /.post-info -->
-                <div class="entry-content"> </head><body><p><img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+<td>说明测试时长，　ＳＨＯＲＴ&lt;15m, MEDIUM &lt; 4H ,LONG ...</td></tr></tbody></table></body>	
+						 <a class="readmore" href="../2015/08/15/autotest/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/08/14/autotest/">Autotest-client control</a></h2>
+						<p class="meta"><span class="date">日期 五 14 八月 2015</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
 <h2 id="client-control-files">Client Control files</h2>
 <p><strong>主要内容</strong></p>
 <ul>
@@ -200,25 +687,18 @@
 <li>第一个参数是测试名称;</li>
 <li>第二个参数是执行次数和线程数,大多数你可以执行它的默认参数.</li>
 </ul>
-<p>还可以指定一个tag参数,用来给测试结果目录命名 ...</p></body> </div><!-- /.entry-content -->
-                <div class="medium primary btn"><a href="../2015/08/14/autotest/" rel="bookmark" title="Permalink to Autotest-client control">Read more <i class="icon-arrow-right"></i></a></div>
-                <div class="row tag-row">
-                    <span>Tagged as : </span>
-                    <a class="danger label" href="../tag/zi-dong-hua-ce-shi.html">自动化测试</a>
-                </div>
-            </article>
-            </li>
-            <li>
-            <article class="hentry">
-                <header>
-                    <h2 class="entry-title">
-                        <a href="../2015/08/13/autotest02/" rel="bookmark" title="Permalink to Autotest-Local">Autotest-Local</a>
-                    </h2>
-                </header>
-                <footer class="post-info">
-                    <abbr class="published" title="2015-08-13T00:00:00+08:00"> 四 13 八月 2015 </abbr>
-<address class="vcard author">By <a class="url fn" href="../author/penglee.html">penglee</a></address>                </footer><!-- /.post-info -->
-                <div class="entry-content"> </head><body><p><img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+<p>还可以指定一个tag参数,用来给测试结果目录命名 ...</p></body>	
+						 <a class="readmore" href="../2015/08/14/autotest/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/08/13/autotest02/">Autotest-Local</a></h2>
+						<p class="meta"><span class="date">日期 四 13 八月 2015</span><span class="posted">By <a href="#">penglee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
 <h2 id="local-former-client">Local (Former Client)</h2>
 <p><strong>主要内容</strong></p>
 <ul>
@@ -242,25 +722,18 @@ cd autotest
 <div class="highlight"><pre><span></span>client/autotest-local --verbose run sleeptest
 </pre></div>
 <p>可以通过以下方式,进行任何独立测试:</p>
-<div class="highlight"><pre><span></span>client/autotest-local ...</pre></div></body> </div><!-- /.entry-content -->
-                <div class="medium primary btn"><a href="../2015/08/13/autotest02/" rel="bookmark" title="Permalink to Autotest-Local">Read more <i class="icon-arrow-right"></i></a></div>
-                <div class="row tag-row">
-                    <span>Tagged as : </span>
-                    <a class="danger label" href="../tag/zi-dong-hua-ce-shi.html">自动化测试</a>
-                </div>
-            </article>
-            </li>
-            <li>
-            <article class="hentry">
-                <header>
-                    <h2 class="entry-title">
-                        <a href="../2015/08/12/Autotest01/" rel="bookmark" title="Permalink to Autotest-summary">Autotest-summary</a>
-                    </h2>
-                </header>
-                <footer class="post-info">
-                    <abbr class="published" title="2015-08-12T00:00:00+08:00"> 三 12 八月 2015 </abbr>
-<address class="vcard author">By <a class="url fn" href="../author/penglee.html">peng.lee</a></address>                </footer><!-- /.post-info -->
-                <div class="entry-content"> </head><body><p><img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+<div class="highlight"><pre><span></span>client/autotest-local ...</pre></div></body>	
+						 <a class="readmore" href="../2015/08/13/autotest02/">Lire la suite …</a>
+						</div>
+					</div>
+        
+ 
+			                <div class="post summary">
+						<h2 class="title"><a href="../2015/08/12/Autotest01/">Autotest-summary</a></h2>
+						<p class="meta"><span class="date">日期 三 12 八月 2015</span><span class="posted">By <a href="#">peng.lee</a></span></p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
 <p>Autotest是一个开源的自动化测试框架.设计目的是为了测试Linux内核,同样可以用来检查新的硬件,虚拟化测试以及linux平台用户空间程序.它遵循GPL协议,并有大量的开发组织成员,其中包括像谷歌,IBM,红帽等.
 Avocado,是Autotest开发组,开发的下一代的自动化测试框架.详细信息参考<a href="http://avocado-framework.github.io/">Avocado</a>,后续有时间会再对Avocado进行介绍.
 本专题主要介绍以下内容:</p>
@@ -279,7 +752,7 @@ Avocado,是Autotest开发组,开发的下一代的自动化测试框架.详细�
 <p>Github: <a href="https://github.com/autotest/autotest">Github</a></p>
 <h2 id="autotestzhu-yao-jie-gou">Autotest主要结构</h2>
 <p>下图是Autotest框架简化图:</p>
-<p><img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/Autotest1.png?raw=true" width="480"/></p>
+<p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/Autotest1.png?raw=true" width="480"/></p>
 <h3 id="webjie-kou-he-ming-ling-xing-jie-kou">Web接口和命令行接口</h3>
 <p>Web接口和命令行接口是相辅相成的方式去连接Autotest并创建job.这两则具有相同的功能,意在方便用户.你可以用这些接口做以下事情:</p>
 <div class="highlight"><pre><span></span>* 管理jobs,如创建,监控,中止等
@@ -290,129 +763,78 @@ Avocado,是Autotest开发组,开发的下一代的自动化测试框架.详细�
 <h3 id="fu-wu-duan">服务端</h3>
 <p>服务端主要包括3个部分:</p>
 <ul>
-<li>一个Mysql数据库,该数据库保存了所有的job,客户端(测试物理机 ...</li></ul></body> </div><!-- /.entry-content -->
-                <div class="medium primary btn"><a href="../2015/08/12/Autotest01/" rel="bookmark" title="Permalink to Autotest-summary">Read more <i class="icon-arrow-right"></i></a></div>
-                <div class="row tag-row">
-                    <span>Tagged as : </span>
-                    <a class="danger label" href="../tag/zi-dong-hua-ce-shi.html">自动化测试</a>
-                </div>
-            </article>
-            </li>
-        </ol><!-- /#posts-list -->
-    </div><!-- /.eleven.columns -->
-<div class="three columns">
+<li>一个Mysql数据库,该数据库保存了所有的job,客户端(测试物理机 ...</li></ul></body>	
+						 <a class="readmore" href="../2015/08/12/Autotest01/">Lire la suite …</a>
+						</div>
+					</div>
+					<div style="clear: both;">&nbsp;</div>
+				</div>
+				<div id="sidebar">
+					<div id="logo">
+						<h1><a href="..">Hi | World</a></h1>
+					</div>
+					<div id="menu">
+						<ul>
+							<li ><a href="..">首页</a></li>
+							<li ><a href="../archives.html">归档</a></li>
+                                                            <li ><a href="../pages/tech-share.html">归档</a></li>
+                                                            <li ><a href="../pages/opensource.html">开源项目</a></li>
+                                                            <li ><a href="../pages/links.html">链接</a></li>
+                                                            <li ><a href="../pages/Reference material.html">参考资料</a></li>
+                                                            <li ><a href="../pages/todo list.html">Todo List</a></li>
+                                                            <li ><a href="../pages/tools.html">工具集</a></li>
+                                                            <li ><a href="../pages/aboutme.html">关于我</a></li>
+						</ul>
+					</div>
+					<ul>
+						<li>
+							<h2>分类列表</h2>
+							<ul>
+								 <li ><a href="../category/misc.html">misc</a></li>
+								 <li class="active"><a href="../category/autotestzhuan-ti.html">Autotest专题</a></li>
+								 <li ><a href="../category/suan-fa.html">算法</a></li>
+								 <li ><a href="../category/dockerzhuan-ti.html">Docker专题</a></li>
+								 <li ><a href="../category/linux.html">Linux</a></li>
+								 <li ><a href="../category/linux-benchmark.html">linux-benchmark</a></li>
+								 <li ><a href="../category/linux-zi-dong-hua-ce-shi.html">linux-自动化测试</a></li>
+								 <li ><a href="../category/unixhuan-jing-bian-cheng.html">unix环境编程</a></li>
+								 <li ><a href="../category/xing-neng-ce-shi.html">性能测试</a></li>
+							</ul>
+						</li>
+						<li>
+						        <h2>Tags</h2>
+						        <ul>
+                                                                <li><a href="../tag/selenium.html">Selenium</a></li>
+                                                                <li><a href="../tag/zi-dong-hua-ce-shi.html">自动化测试</a></li>
+                                                                <li><a href="../tag/ltp.html">LTP</a></li>
+                                                                <li><a href="../tag/shell.html">shell</a></li>
+                                                                <li><a href="../tag/suan-fa.html">算法</a></li>
+                                                                <li><a href="../tag/xing-neng-ce-shi.html">性能测试</a></li>
+                                                                <li><a href="../tag/python.html">Python</a></li>
+                                                                <li><a href="../tag/docker.html">Docker</a></li>
+                                                                <li><a href="../tag/benchmark.html">benchmark</a></li>
+                                                                <li><a href="../tag/qi-ta.html">其他</a></li>
+                                                                <li><a href="../tag/unixbian-cheng.html">unix编程</a></li>
+                                                                <li><a href="../tag/linux.html">Linux</a></li>
+                                                                <li><a href="../tag/pyunit.html">PyUnit</a></li>
+						        </ul>
+						</li>
+						
+						
+					</ul>
+				</div>
+				<!-- end #sidebar -->
+				<div style="clear: both;">&nbsp;</div>
+			</div>
+		</div>
+	</div>
+	<!-- end #page -->
 
-<!--
-<h4>Pages</h4>
-
- <ul>
-      <li><a href="../pages/tech-share.html">归档</a></li>
-      <li><a href="../pages/opensource.html">开源项目</a></li>
-      <li><a href="../pages/links.html">链接</a></li>
-      <li><a href="../pages/Reference material.html">参考资料</a></li>
-      <li><a href="../pages/todo list.html">Todo List</a></li>
-      <li><a href="../pages/tools.html">工具集</a></li>
-      <li class="active"><a href="../pages/aboutme.html">关于我</a></li>
-  </ul>
--->
-<!--
-<h4>分类</h4>
-<ul>
-		<li><a href="../category/misc.html">misc</a></li>
-		<li><a href="../category/autotestzhuan-ti.html">Autotest专题</a></li>
-		<li><a href="../category/suan-fa.html">算法</a></li>
-		<li><a href="../category/dockerzhuan-ti.html">Docker专题</a></li>
-		<li><a href="../category/linux.html">Linux</a></li>
-		<li><a href="../category/linux-benchmark.html">linux-benchmark</a></li>
-		<li><a href="../category/linux-zi-dong-hua-ce-shi.html">linux-自动化测试</a></li>
-		<li><a href="../category/unixhuan-jing-bian-cheng.html">unix环境编程</a></li>
-		<li><a href="../category/xing-neng-ce-shi.html">性能测试</a></li>
-</ul>
--->
-
-<h4>标签</h4>
-	<ul>
-	    <li class="tag-4"><a href="../tag/qi-ta.html">其他</a></li>
-	    <li class="tag-3"><a href="../tag/python.html">Python</a></li>
-	    <li class="tag-3"><a href="../tag/xing-neng-ce-shi.html">性能测试</a></li>
-	    <li class="tag-3"><a href="../tag/docker.html">Docker</a></li>
-	    <li class="tag-4"><a href="../tag/unixbian-cheng.html">unix编程</a></li>
-	    <li class="tag-1"><a href="../tag/zi-dong-hua-ce-shi.html">自动化测试</a></li>
-	    <li class="tag-1"><a href="../tag/selenium.html">Selenium</a></li>
-	    <li class="tag-3"><a href="../tag/suan-fa.html">算法</a></li>
-	    <li class="tag-3"><a href="../tag/shell.html">shell</a></li>
-	    <li class="tag-2"><a href="../tag/ltp.html">LTP</a></li>
-	    <li class="tag-4"><a href="../tag/linux.html">Linux</a></li>
-	    <li class="tag-4"><a href="../tag/benchmark.html">benchmark</a></li>
-	    <li class="tag-4"><a href="../tag/pyunit.html">PyUnit</a></li>
-</ul>
-
-<!--
--->
-</div> </div><!-- /.row -->
-<p class="paginator">
-            <a href="../category/autotestzhuan-ti.html"><i class="icon-arrow-left"></i></a>
-    Page 2 / 2
+<div id="footer">
+	<p>Copyright (c) 2008 Sitename.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a>.</p>
+	<p>Proudly powered by <a href="http://alexis.notmyidea.org/pelican/">pelican</a>, which takes great advantages of <a href="http://python.org">python</a>.
 </p>
-</section><!-- /#content -->
-
-       </div><!-- /.row -->
-    </div><!-- /.container -->
-
-
-       <div class="container.nopad bg">
-
-
-        <footer id="credits" class="row">
-          <div class="seven columns left-center">
-
-                   <address id="about" class="vcard body">
-                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
-                    which takes great advantage of <a href="http://python.org">Python</a>.
-                    <br />
-                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
-                    </address>
-          </div>
-
-
-          <div class="seven columns">
-            <div class="row">
-              <ul class="socbtns">
-
-                <li><div class="btn primary"><a href="http://github.com/king32783784" target="_blank">Github</a></div></li>
-
-
-
-
-
-
-              </ul>
-            </div>
-          </div>
-        </footer>
-
-    </div>
-
-
-<script type="text/javascript">
-    var disqus_shortname = 'xiayfblackwhite';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-  <script src="../theme/js/libs/gumby.min.js"></script>
-  <script src="../theme/js/plugins.js"></script>
-  <script src="../theme/js/main.js"></script>
-  <link rel="stylesheet" type="text/css" href="../theme/emoji/css/basic/emojify.min.css" />
-  <script src="../theme/emoji/js/emojify.min.js"></script>
-  <script>
-    emojify.setConfig({
-        img_dir : '../theme/emoji/images/basic'
-    });
-    emojify.run();
-</script>
+</div>
+<!-- end #footer -->
 </body>
 </html>

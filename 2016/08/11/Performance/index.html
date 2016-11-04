@@ -1,69 +1,39 @@
-<!DOCTYPE html>
-<html lang="link">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : Brown Stone  
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20100928
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-
-        <title>如何做性能测试</title>
-        <meta charset="utf-8" />
-        <link href="http://king32783784.github.io/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Hi | World Full Atom Feed" />
-        <link href="http://king32783784.github.io/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Hi | World Full RSS Feed" />
-
-
-        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
-        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
-
-        <link rel="stylesheet" type="text/css" href="../../../../theme/gumby.css" />
-        <link rel="stylesheet" type="text/css" href="../../../../theme/style.css" />
-        <link rel="stylesheet" type="text/css" href="../../../../theme/pygment.css" />
-        <link rel="stylesheet" type="text/css" href="../../../../theme/SentyZHAO/SentyZHAO.css" />
-
-        <script src="../../../../theme/js/libs/jquery-1.9.1.min.js"></script>
-        <script src="../../../../theme/js/libs/modernizr-2.6.2.min.js"></script>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>如何做性能测试<转></title>
+<link href="../../../../theme/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="../../../../" type="application/atom+xml" rel="alternate" title="Hi | World ATOM Feed" />
 </head>
-
-<body id="index" class="home">
-    <div class="container">
-
-        <div class="row">
-
-          <header id="banner" class="body">
-                  <h1 style='font-family: "SentyZHAO";'><a href="../../../..">Hi | World <strong></strong></a></h1>
-          </header><!-- /#banner -->
-
-            <div id="navigation" class="navbar row">
-              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
-
-              <ul class="columns" style='font-family: "SentyZHAO";'>
-                <li><a href="../../../..">主 页</a></li>
-
-                <li><a href="../../../../pages/tech-share.html">归档</a></li>
-                <li><a href="../../../../pages/opensource.html">开源项目</a></li>
-                <li><a href="../../../../pages/links.html">链接</a></li>
-                <li><a href="../../../../pages/Reference material.html">参考资料</a></li>
-                <li><a href="../../../../pages/todo list.html">Todo List</a></li>
-                <li><a href="../../../../pages/tools.html">工具集</a></li>
-                <li class="active"><a href="../../../../pages/aboutme.html">关于我</a></li>
-
-              </ul>
-            </div>
-
-<section id="content" class="body">
-   <div class="row">
-        <div class="columns">
-            <header>
-              <h2 class="entry-title">
-                <a href="../../../../2016/08/11/Performance/" rel="bookmark" title="Permalink to 如何做性能测试">如何做性能测试<转></a></h2>
-           
-            </header>
-            <footer class="post-info">
-              <abbr class="published" title="2016-08-11T00:00:00+08:00">
-                四 11 八月 2016
-              </abbr>
-              <address class="vcard author">
-                By <a class="url fn" href="../../../../author/others.html">others</a>
-              </address>
-            </footer><!-- /.post-info -->
-            <div class="entry-content">
-              </head><body><p>偶然间看到了阿里中间件Dubbo的性能测试报告，我觉得这份性能测试报告让人觉得做这性能测试的人根本不懂性能测试，我觉得这份报告会把大众带沟里去，所以，想写下这篇文章，做一点科普。</p>
+<body>
+<div id="wrapper">
+	<div id="page">
+		<div id="page-bgtop">
+			<div id="page-bgbtm">
+    
+                        	<div id="content">
+					<div class="post">
+						<h2 class="title"><a href="2016/08/11/Performance/">如何做性能测试<转></a></h2>
+						<p class="meta"><span class="date">日期 四 11 八月 2016 </span><span class="posted">By <a href="#">others</a></span><span>&nbsp; | 分类 : <a href="../../../../category/xing-neng-ce-shi.html">性能测试</a></span></p>
+					<p class="meta">Tags : <span><a href="../../../../tag/xing-neng-ce-shi.html">性能测试</a> / </span>
+</p>	
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p>偶然间看到了阿里中间件Dubbo的性能测试报告，我觉得这份性能测试报告让人觉得做这性能测试的人根本不懂性能测试，我觉得这份报告会把大众带沟里去，所以，想写下这篇文章，做一点科普。</p>
 <p>首先，这份测试报告里的主要问题如下：</p>
 <ul>
 <li>
@@ -81,13 +51,13 @@
 <p>软件的性能测试也一样，平均数也是不靠谱的，这里可以参看这篇详细的文章《Why Averages Suck and Percentiles are Great》，我在这里简单说一下。</p>
 <p>我们知道，性能测试时，测试得到的结果数据不总是一样的，而是有高有低的，如果算平均值就会出现这样的情况，假如，<strong>测试了10次，有9次是1ms，而有1次是1s，那么平均数据就是100ms，很明显，这完全不能反应性能测试的情况，也许那1s的请求就是一个不正常的值，是个噪点，应该去掉。</strong> 所以，我们会在一些评委打分中看到要去掉一个最高分一个最低分，然后再算平均值。</p>
 <p>另外，中位数（Mean）可能会比平均数要稍微靠谱一些，所谓中位数的意就是把将一组数据按大小顺序排列，处在最中间位置的一个数叫做这组数据的中位数 ，这意味着至少有50%的数据低于或高于这个中位数。</p>
-<p>当然，最为正确的统计做法是用百分比分布统计。也就是英文中的<strong>TP – Top Percentile</strong> ，TP50的意思在，50%的请求都小于某个值，TP90表示90%的请求小于某个时间。</p>
+<p>当然，最为正确的统计做法是用百分比分布统计。也就是英文中的<strong>TP &ndash; Top Percentile</strong> ，TP50的意思在，50%的请求都小于某个值，TP90表示90%的请求小于某个时间。</p>
 <p>比如：我们有一组数据：[ 10ms,  1s, 200ms, 100ms]，我们把其从小到大排个序：[10ms, 100ms, 200ms, 1s]，于是我们知道，TP50，就是50%的请求ceil(4<em>0.5)=2时间是小于100ms的，TP90就是90%的请求ceil(4</em>0.9)=4时间小于1s。于是：TP50就是100ms，TP90就是1s。</p>
 <p>我以前在路透做的金融系统响应时间的性能测试的要求是这样的，<strong>99.9%的请求必须小于1ms，所有的平均时间必须小于1ms。两个条件的限制。</strong></p>
 <h4 id="wei-shi-yao-xiang-ying-shi-jian-latencyyao-he-tun-tu-liang-thoughputgua-gou">为什么响应时间（latency）要和吞吐量（Thoughput）挂钩</h4>
 <p>系统的性能如果只看吞吐量，不看响应时间是没有意义的。我的系统可以顶10万请求，但是响应时间已经到了5秒钟，这样的系统已经不可用了，这样的吞吐量也是没有意义的。</p>
 <p>我们知道，当并发量（吞吐量）上涨的时候，系统会变得越来越不稳定，响应时间的波动也会越来越大，响应时间也会变得越来越慢，而吞吐率也越来越上不去（如下图所示），包括CPU的使用率情况也会如此。所以，当系统变得不稳定的时候，吞吐量已经没有意义了。吞吐量有意义的时候仅当系统稳定的时候。
-<img alt="" src="https://king32783784.github.io/lipeng/tmpfile/BenchmarkOptimalRate.png"/></p>
+<img alt="" class="img-responsive" src="https://king32783784.github.io/lipeng/tmpfile/BenchmarkOptimalRate.png"/></p>
 <h4 id="benchmarkoptimalrate">BenchmarkOptimalRate</h4>
 <p>所以，吞吐量的值必需有响应时间来卡。比如：TP99小于100ms的时候，系统可以承载的最大并发数是1000qps。这意味着，我们要不断的在不同的并发数上测试，以找到软件的最稳定时的最大吞吐量。</p>
 <h4 id="wei-shi-yao-xiang-ying-shi-jian-tun-tu-liang-he-cheng-gong-lu-yao-gua-gou">为什么响应时间吞吐量和成功率要挂钩</h4>
@@ -95,7 +65,7 @@
 <p>40%，那么，这10万的并发完全就是一个笑话了。</p>
 <p>性能测试的失败率的容忍应该是非常低的。对于一些关键系统，成功请求数必须在100%，一点都不能含糊。</p>
 <h4 id="ru-he-yan-jin-di-zuo-xing-neng-ce-shi">如何严谨地做性能测试</h4>
-<p>一般来说，性能测试要统一考虑这么几个因素：<strong>Thoughput吞吐量，Latency响应时间，资源利用</strong>（CPU/MEM/IO/Bandwidth…），<strong>成功率，系统稳定性</strong>。</p>
+<p>一般来说，性能测试要统一考虑这么几个因素：<strong>Thoughput吞吐量，Latency响应时间，资源利用</strong>（CPU/MEM/IO/Bandwidth&hellip;），<strong>成功率，系统稳定性</strong>。</p>
 <p>下面的这些性能测试的方式基本上来源自我的老老东家汤森路透，一家做real-time的金融数据系统的公司。</p>
 <p><strong>一，你得定义一个系统的响应时间latency，建议是TP99，以及成功率。</strong>
 比如路透的定义：99.9%的响应时间必需在1ms之内，平均响应时间在1ms以内，100%的请求成功。</p>
@@ -112,81 +82,91 @@
 <p><strong>是不是很繁锁？是的，只因为，这是工程，工程是一门科学，科学是严谨的。</strong></p>
 <p>欢迎大家也分享一下你们性能测试的经验和方法。</p>
 <p>（全文完）</p>
-<p><em>（本文来源于酷 壳 – CoolShell.cn ，请勿用于任何商业用途）</em></p>
-            </div><!-- /.entry-content -->
-            <div class="comments">
-              <h3>Comments</h3>
-              <div id="disqus_thread"></div>
-              <script type="text/javascript">
-                var disqus_identifier = "2016/08/11/Performance/";
-                (function() {
-                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                dsq.src = 'http://xiayfblackwhite.disqus.com/embed.js';
-                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                })();
-              </script>
-            </div>
-        </div><!-- /.twelve.columns -->
- </div><!-- /.row -->
-</section>
+<p><em>（本文来源于酷 壳 &ndash; CoolShell.cn ，请勿用于任何商业用途）</em></p></body>	
+						</div>
+					</div>
+			      
+					<div style="clear: both;">&nbsp;</div>
+                                        <div class="post">
+                                        <h2 class="title">Commentaires !</h2>
+                                            <div id="disqus_thread"></div>
+                                            <script type="text/javascript">
+                                               var disqus_identifier = "2016/08/11/Performance/";
+                                               (function() {
+                                               var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                                               dsq.src = 'https://xiayfblackwhite.disqus.com/embed.js';
+                                               (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                                              })();
+                                            </script>
+                                        </div>
+				</div>
+				<!-- end #content -->
+				<div id="sidebar">
+					<div id="logo">
+						<h1><a href="../../../..">Hi | World</a></h1>
+					</div>
+					<div id="menu">
+						<ul>
+							<li ><a href="../../../..">首页</a></li>
+							<li ><a href="../../../../archives.html">归档</a></li>
+                                                            <li class="current_page_item"><a href="../../../../pages/tech-share.html">归档</a></li>
+                                                            <li class="current_page_item"><a href="../../../../pages/opensource.html">开源项目</a></li>
+                                                            <li class="current_page_item"><a href="../../../../pages/links.html">链接</a></li>
+                                                            <li class="current_page_item"><a href="../../../../pages/Reference material.html">参考资料</a></li>
+                                                            <li class="current_page_item"><a href="../../../../pages/todo list.html">Todo List</a></li>
+                                                            <li class="current_page_item"><a href="../../../../pages/tools.html">工具集</a></li>
+                                                            <li class="current_page_item"><a href="../../../../pages/aboutme.html">关于我</a></li>
+						</ul>
+					</div>
+					<ul>
+						<li>
+							<h2>分类列表</h2>
+							<ul>
+								 <li ><a href="../../../../category/misc.html">misc</a></li>
+								 <li ><a href="../../../../category/autotestzhuan-ti.html">Autotest专题</a></li>
+								 <li ><a href="../../../../category/suan-fa.html">算法</a></li>
+								 <li ><a href="../../../../category/dockerzhuan-ti.html">Docker专题</a></li>
+								 <li ><a href="../../../../category/linux.html">Linux</a></li>
+								 <li ><a href="../../../../category/linux-benchmark.html">linux-benchmark</a></li>
+								 <li ><a href="../../../../category/linux-zi-dong-hua-ce-shi.html">linux-自动化测试</a></li>
+								 <li ><a href="../../../../category/unixhuan-jing-bian-cheng.html">unix环境编程</a></li>
+								 <li class="active"><a href="../../../../category/xing-neng-ce-shi.html">性能测试</a></li>
+							</ul>
+						</li>
+						<li>
+						        <h2>Tags</h2>
+						        <ul>
+                                                                <li><a href="../../../../tag/selenium.html">Selenium</a></li>
+                                                                <li><a href="../../../../tag/zi-dong-hua-ce-shi.html">自动化测试</a></li>
+                                                                <li><a href="../../../../tag/ltp.html">LTP</a></li>
+                                                                <li><a href="../../../../tag/shell.html">shell</a></li>
+                                                                <li><a href="../../../../tag/suan-fa.html">算法</a></li>
+                                                                <li><a href="../../../../tag/xing-neng-ce-shi.html">性能测试</a></li>
+                                                                <li><a href="../../../../tag/python.html">Python</a></li>
+                                                                <li><a href="../../../../tag/docker.html">Docker</a></li>
+                                                                <li><a href="../../../../tag/benchmark.html">benchmark</a></li>
+                                                                <li><a href="../../../../tag/qi-ta.html">其他</a></li>
+                                                                <li><a href="../../../../tag/unixbian-cheng.html">unix编程</a></li>
+                                                                <li><a href="../../../../tag/linux.html">Linux</a></li>
+                                                                <li><a href="../../../../tag/pyunit.html">PyUnit</a></li>
+						        </ul>
+						</li>
+						
+						
+					</ul>
+				</div>
+				<!-- end #sidebar -->
+				<div style="clear: both;">&nbsp;</div>
+			</div>
+		</div>
+	</div>
+	<!-- end #page -->
 
-       </div><!-- /.row -->
-    </div><!-- /.container -->
-
-
-       <div class="container.nopad bg">
-
-
-        <footer id="credits" class="row">
-          <div class="seven columns left-center">
-
-                   <address id="about" class="vcard body">
-                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
-                    which takes great advantage of <a href="http://python.org">Python</a>.
-                    <br />
-                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
-                    </address>
-          </div>
-
-
-          <div class="seven columns">
-            <div class="row">
-              <ul class="socbtns">
-
-                <li><div class="btn primary"><a href="http://github.com/king32783784" target="_blank">Github</a></div></li>
-
-
-
-
-
-
-              </ul>
-            </div>
-          </div>
-        </footer>
-
-    </div>
-
-
-<script type="text/javascript">
-    var disqus_shortname = 'xiayfblackwhite';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-  <script src="../../../../theme/js/libs/gumby.min.js"></script>
-  <script src="../../../../theme/js/plugins.js"></script>
-  <script src="../../../../theme/js/main.js"></script>
-  <link rel="stylesheet" type="text/css" href="../../../../theme/emoji/css/basic/emojify.min.css" />
-  <script src="../../../../theme/emoji/js/emojify.min.js"></script>
-  <script>
-    emojify.setConfig({
-        img_dir : '../../../../theme/emoji/images/basic'
-    });
-    emojify.run();
-</script>
+<div id="footer">
+	<p>Copyright (c) 2008 Sitename.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a>.</p>
+	<p>Proudly powered by <a href="http://alexis.notmyidea.org/pelican/">pelican</a>, which takes great advantages of <a href="http://python.org">python</a>.
+</p>
+</div>
+<!-- end #footer -->
 </body>
 </html>

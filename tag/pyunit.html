@@ -1,66 +1,40 @@
-<!DOCTYPE html>
-<html lang="link">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : Brown Stone  
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20100928
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-
-        <title>Hi | World - PyUnit</title>
-        <meta charset="utf-8" />
-        <link href="http://king32783784.github.io/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Hi | World Full Atom Feed" />
-        <link href="http://king32783784.github.io/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Hi | World Full RSS Feed" />
-
-
-        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
-        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
-
-        <link rel="stylesheet" type="text/css" href="../theme/gumby.css" />
-        <link rel="stylesheet" type="text/css" href="../theme/style.css" />
-        <link rel="stylesheet" type="text/css" href="../theme/pygment.css" />
-        <link rel="stylesheet" type="text/css" href="../theme/SentyZHAO/SentyZHAO.css" />
-
-        <script src="../theme/js/libs/jquery-1.9.1.min.js"></script>
-        <script src="../theme/js/libs/modernizr-2.6.2.min.js"></script>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Hi | World - PyUnit</title>
+<link href="../theme/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="../" type="application/atom+xml" rel="alternate" title="Hi | World ATOM Feed" />
 </head>
-
-<body id="index" class="home">
-    <div class="container">
-
-        <div class="row">
-
-          <header id="banner" class="body">
-                  <h1 style='font-family: "SentyZHAO";'><a href="..">Hi | World <strong></strong></a></h1>
-          </header><!-- /#banner -->
-
-            <div id="navigation" class="navbar row">
-              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
-
-              <ul class="columns" style='font-family: "SentyZHAO";'>
-                <li><a href="..">主 页</a></li>
-
-                <li><a href="../pages/tech-share.html">归档</a></li>
-                <li><a href="../pages/opensource.html">开源项目</a></li>
-                <li><a href="../pages/links.html">链接</a></li>
-                <li><a href="../pages/Reference material.html">参考资料</a></li>
-                <li><a href="../pages/todo list.html">Todo List</a></li>
-                <li><a href="../pages/tools.html">工具集</a></li>
-                <li class="active"><a href="../pages/aboutme.html">关于我</a></li>
-
-              </ul>
-            </div>
-
-<section id="content" class="body">
-<div class="row">
-    <div class="eleven columns">
-        <ol id="post-list">
-            <li>
-            <article class="hentry">
-                <header>
-                    <h2 class="entry-title">
-                        <a href="../2016/01/01/python/" rel="bookmark" title="Permalink to PyUnit(一）">PyUnit(一）</a>
-                    </h2>
-                </header>
-                <footer class="post-info">
-                    <abbr class="published" title="2016-01-01T00:00:00+08:00"> 五 01 一月 2016 </abbr>
-<address class="vcard author">By <a class="url fn" href="../author/penglee.html">peng.lee</a></address>                </footer><!-- /.post-info -->
-                <div class="entry-content"> </head><body><h3 id="pyunitjian-jie">PyUnit简介</h3>
+<body>
+<div id="wrapper">
+	<div id="page">
+		<div id="page-bgtop">
+			<div id="page-bgbtm">
+ 
+        
+				<div id="content">
+					<div class="post">
+						<h2 class="title"><a href="../2016/01/01/python/">PyUnit(一）</a></h2>
+						<p class="meta"><span class="date">日期  </span><span class="posted">By <a href="#">peng.lee</a></span><span>&nbsp; | 分类 : <a href="../category/misc.html">misc</a></span></p>
+					<p class="meta">Tags : <span><a href="../tag/pyunit.html">PyUnit</a> / </span>
+</p>
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><h3 id="pyunitjian-jie">PyUnit简介</h3>
 <p>PyUnit是Python 2.1版本新增功能。</p>
 <p>Python单元测试框架，又叫PyUnit。是JUnit的Python实现，是由Kent Beck和Erich Gamma共同开发的。同样，JUnit是Kent的Smalltalk测试框架的Java实现。PyUnit和JUnit都是各自怨言的标准测试框架。</p>
 <p>PyUnit模块支持自动化测试，通用的setup和shutdown的代码，测试用例整合为测试集，还有独立的测试报告框架。PyUnit提供的类能够很容易的使以上特性应用于测试。PyUnit是借由以下概念支持单元测试的：</p>
@@ -72,128 +46,169 @@
 <p>测试集是测试用例的集合，同时也可以是其他测试集的结合，或者是测试用例和测试集的混合集合。用于批量执行测试用例。</p>
 <p><strong>执行器</strong></p>
 <p>执行器用来执行测试用例，并且把测试结果呈现给用户。执行器可以使用图形界面，文本界面，甚至特殊值来显示测试结果。</p>
-<p>测试用例和测试fixture通过TestCase和FunctionTestCase两个类来实现的。TestCase用来创建新的测试用例，而FunctionTestCase是用来把已有测试用例整合为PyUnit结构用例的（译者注：项目原来已经有测试用例了，后来想改用PyUnit测试框架，这时候就要用到FunctionTestCase了）。使用TestCase类创建新测试用例，需要覆盖setUp ...</p></body> </div><!-- /.entry-content -->
-                <div class="medium primary btn"><a href="../2016/01/01/python/" rel="bookmark" title="Permalink to PyUnit(一）">Read more <i class="icon-arrow-right"></i></a></div>
-                <div class="row tag-row">
-                    <span>Tagged as : </span>
-                    <a class="danger label" href="../tag/pyunit.html">PyUnit</a>
-                </div>
-            </article>
-            </li>
-        </ol><!-- /#posts-list -->
-    </div><!-- /.eleven.columns -->
-<div class="three columns">
+<p>测试用例和测试fixture通过TestCase和FunctionTestCase两个类来实现的。TestCase用来创建新的测试用例，而FunctionTestCase是用来把已有测试用例整合为PyUnit结构用例的（译者注：项目原来已经有测试用例了，后来想改用PyUnit测试框架，这时候就要用到FunctionTestCase了）。使用TestCase类创建新测试用例，需要覆盖setUp()和tearDown()方法，他们分别用来初始化fixture和清理fixture。而要使用FunctionTestCase类为已有函数创建测试用例，需要符合以下条件：我们不关心已有函数的测试结果，只关心正确的测试流程fixture初始化-&gt;执行测试步骤-&gt;测试固件清理。每个TestCase只能执行一个测试方法，所以最好每个测试用例有单独的测试fixture。</p>
+<p>TestSuite类实现测试套件功能，可以整合单独的测试用例或者其他测试套件。执行测试套件，测试套件中所有的测试用例和子测试套件都会被执行。</p>
+<p>执行器提供一个方法run()，该方法接受TestCase或者TestSuite对象最为参数，并且返回TestResult结果对象。PyUnit提供一个使用TextTestRunner执行器的例子，该例子汇报默认的标准错误流测试结果。想要更改其他环境的执行器（例如图形界面环境）并不需要派生自特定的类。</p>
+<p>另请参阅：</p>
+<p>Module doctest</p>
+<p>Another test-support module with a very different flavor.</p>
+<p>unittest2: <a href="https://pypi.python.org/pypi/unittest2">A backport of new unittest features for Python 2.4-2.6</a></p>
+<p>Many new features were added to unittest in Python 2.7, including test discovery. unittest2 allows you to use these features with earlier versions of Python.</p>
+<p><a href="https://web.archive.org/web/20150315073817/http://www.xprogramming.com/testfram.htm">Simple Smalltalk Testing: With Patterns</a></p>
+<p>Kent Beck&rsquo;s original paper on testing frameworks using the pattern shared by unittest.</p>
+<p><a href="https://nose.readthedocs.io/en/latest/">Nose</a> and <a href="http://docs.pytest.org/en/latest/">py.test</a></p>
+<p>Third-party unittest frameworks with a lighter-weight syntax for writing tests. For example, assert func(10) == 42.</p>
+<p><a href="https://wiki.python.org/moin/PythonTestingToolsTaxonomy">The Python Testing Tools Taxonomy</a></p>
+<p>An extensive list of Python testing tools including functional testing frameworks and mock object libraries.</p>
+<p><a href="http://lists.idyll.org/listinfo/testing-in-python">Testing in Python Mailing List</a></p>
+<p>A special-interest-group for discussion of testing, and testing tools, in Python.</p>
+<h3 id="jian-dan-li-zi">简单例子</h3>
+<p>PyUnit模块提供了大量的工具来构造和运行测试，本部分的例子可以满足大部分用户的需求。</p>
+<p>以下脚本是测试random模块的3个函数的例子：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">unittest</span>
 
-<!--
-<h4>Pages</h4>
+<span class="k">class</span> <span class="nc">TestSequenceFunctions</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
 
- <ul>
-      <li><a href="../pages/tech-share.html">归档</a></li>
-      <li><a href="../pages/opensource.html">开源项目</a></li>
-      <li><a href="../pages/links.html">链接</a></li>
-      <li><a href="../pages/Reference material.html">参考资料</a></li>
-      <li><a href="../pages/todo list.html">Todo List</a></li>
-      <li><a href="../pages/tools.html">工具集</a></li>
-      <li class="active"><a href="../pages/aboutme.html">关于我</a></li>
-  </ul>
--->
-<!--
-<h4>分类</h4>
-<ul>
-		<li><a href="../category/misc.html">misc</a></li>
-		<li><a href="../category/autotestzhuan-ti.html">Autotest专题</a></li>
-		<li><a href="../category/suan-fa.html">算法</a></li>
-		<li><a href="../category/dockerzhuan-ti.html">Docker专题</a></li>
-		<li><a href="../category/linux.html">Linux</a></li>
-		<li><a href="../category/linux-benchmark.html">linux-benchmark</a></li>
-		<li><a href="../category/linux-zi-dong-hua-ce-shi.html">linux-自动化测试</a></li>
-		<li><a href="../category/unixhuan-jing-bian-cheng.html">unix环境编程</a></li>
-		<li><a href="../category/xing-neng-ce-shi.html">性能测试</a></li>
-</ul>
--->
+    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">seq</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 
-<h4>标签</h4>
-	<ul>
-	    <li class="tag-4"><a href="../tag/qi-ta.html">其他</a></li>
-	    <li class="tag-3"><a href="../tag/python.html">Python</a></li>
-	    <li class="tag-3"><a href="../tag/xing-neng-ce-shi.html">性能测试</a></li>
-	    <li class="tag-3"><a href="../tag/docker.html">Docker</a></li>
-	    <li class="tag-4"><a href="../tag/unixbian-cheng.html">unix编程</a></li>
-	    <li class="tag-1"><a href="../tag/zi-dong-hua-ce-shi.html">自动化测试</a></li>
-	    <li class="tag-1"><a href="../tag/selenium.html">Selenium</a></li>
-	    <li class="tag-3"><a href="../tag/suan-fa.html">算法</a></li>
-	    <li class="tag-3"><a href="../tag/shell.html">shell</a></li>
-	    <li class="tag-2"><a href="../tag/ltp.html">LTP</a></li>
-	    <li class="tag-4"><a href="../tag/linux.html">Linux</a></li>
-	    <li class="tag-4"><a href="../tag/benchmark.html">benchmark</a></li>
-	    <li class="tag-4"><a href="../tag/pyunit.html">PyUnit</a></li>
-</ul>
+    <span class="k">def</span> <span class="nf">test_shuffle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># make sure the shuffied sequence does not lose any elements</span>
+        <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">seq</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">seq</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">seq</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
 
-<!--
--->
-</div> </div><!-- /.row -->
-<p class="paginator">
-    Page 1 / 1
+        <span class="c1"># should raise an exception for an immutable sequence</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertRaise</span><span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">test_choice</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">element</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">seq</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="n">element</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">seq</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_sample</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaise</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">):</span>
+            <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">seq</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">seq</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertTrue</span><span class="p">(</span><span class="n">element</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">seq</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">__name__</span><span class="o">==</span><span class="s1">'__main__'</span><span class="p">:</span>
+        <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</pre></div>
+<p>通过继承unittest.TestCase类来创建测试用例，测试用例中３个独立的测试函数以&ldquo;test"为开头命令。通过这种命名方式，执行器可以知道哪些方法是测试方法。
+需要注意的是３个测试方法分别调用assertEqual()函数来检查预期结果；调用assertTure()函数来判断条件；调用assertRaises()函数来验证是否触发了预期的异常。这３个方法作为断言语句判断用例执行的正确性，以便执行器手机测试结果并产生测试报告。</p>
+<p>如果定义setUp()方法，每个测试用例执行前都会执行setUp();同样的，如果定义的tearDown()方法，每个测试用例执行完后都会执行tearDown()方法。上面的例子，setup()方法用来为每个用例创建一个新序列。</p>
+<p>例子的最后一段介绍了一种简单调用测试用例的方法－unittest.main().它为用例提供了命令行界面运行，脚本运行会输出以下内容：</p>
+<div class="highlight"><pre><span></span>...
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK
+</pre></div>
+<p>连续３个点"..."表示３个测试用例都运行通过，如果运行失败显示&ldquo;Ｆ&rdquo;，例如&ldquo;.FF"表示后２个用例运行失败。</p>
+<p>有很多更易管理，输出信息更简洁，并且不在命令行运行的方法来替代unittest.main()方法运行测试用例。例如以下方法，替换例子的最后一行unittest.main():</p>
+<div class="highlight"><pre><span></span>suite = unittest.TestLoader().loadTestsFormTestCase(TestSequenceFunctions)
+unittest.TestTestRunner(verbosity=2).run(suite)
+</pre></div>
+<p>修改后的脚本如下：</p>
+<div class="highlight"><pre><span></span>test_choice (__main__.TestSequenceFunctions) ... ok
+test_sample (__main__.TestSequenceFunctions) ... ok
+test_shuffle (__main__.TestSequenceFunctions) ... ok
+</pre></div>
+<p>下面是一个简短的例子用于测试3个字符方法：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">unittest</span>
+
+<span class="k">class</span> <span class="nc">TestStringMethods</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">test_upper</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="s1">'foo'</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span> <span class="s1">'FOO'</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_isupper</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertTure</span><span class="p">(</span><span class="s1">'FOO'</span><span class="o">.</span><span class="n">isupper</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertFalse</span><span class="p">(</span><span class="s1">'Foo'</span><span class="o">.</span><span class="n">isupper</span><span class="p">())</span>
+
+    <span class="k">def</span> <span class="nf">test_split</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="s1">'hello world'</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(),</span> <span class="p">[</span><span class="s1">'hello'</span><span class="p">,</span> <span class="s1">'world'</span><span class="p">])</span>
+        <span class="c1"># check that s.split fails when the separator is not a TestStringMethods</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">assertRaise</span><span class="p">(</span><span class="ne">TypeError</span><span class="p">):</span>
+            <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+        <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
+</pre></div>
+<p>测试用例通过继承unittest.TestCase创建。测试用例中3个独立的测试函数以"test"为开头命名。通过使用这种命名方式，执行器可以知道哪些方法是测试方法。</p>
+<p>3个测试方法同样调用assertEqual()函数来检查预期结果；调用assertTrue()函数来判断条件；调用assertRaises()函数来验证是否触发了预期的异常。这3个方法作为断言语句判断用例执行正确性，以便于执行器收集测试结果并产生测试报告。</p></body>	
+						</div>
+					</div>
+					<div style="clear: both;">&nbsp;</div>
+				</div>
+				<div id="sidebar">
+					<div id="logo">
+						<h1><a href="..">Hi | World</a></h1>
+					</div>
+					<div id="menu">
+						<ul>
+							<li ><a href="..">首页</a></li>
+							<li ><a href="../archives.html">归档</a></li>
+                                                            <li ><a href="../pages/tech-share.html">归档</a></li>
+                                                            <li ><a href="../pages/opensource.html">开源项目</a></li>
+                                                            <li ><a href="../pages/links.html">链接</a></li>
+                                                            <li ><a href="../pages/Reference material.html">参考资料</a></li>
+                                                            <li ><a href="../pages/todo list.html">Todo List</a></li>
+                                                            <li ><a href="../pages/tools.html">工具集</a></li>
+                                                            <li ><a href="../pages/aboutme.html">关于我</a></li>
+						</ul>
+					</div>
+					<ul>
+						<li>
+							<h2>分类列表</h2>
+							<ul>
+								 <li ><a href="../category/misc.html">misc</a></li>
+								 <li ><a href="../category/autotestzhuan-ti.html">Autotest专题</a></li>
+								 <li ><a href="../category/suan-fa.html">算法</a></li>
+								 <li ><a href="../category/dockerzhuan-ti.html">Docker专题</a></li>
+								 <li ><a href="../category/linux.html">Linux</a></li>
+								 <li ><a href="../category/linux-benchmark.html">linux-benchmark</a></li>
+								 <li ><a href="../category/linux-zi-dong-hua-ce-shi.html">linux-自动化测试</a></li>
+								 <li ><a href="../category/unixhuan-jing-bian-cheng.html">unix环境编程</a></li>
+								 <li ><a href="../category/xing-neng-ce-shi.html">性能测试</a></li>
+							</ul>
+						</li>
+						<li>
+						        <h2>Tags</h2>
+						        <ul>
+                                                                <li><a href="../tag/selenium.html">Selenium</a></li>
+                                                                <li><a href="../tag/zi-dong-hua-ce-shi.html">自动化测试</a></li>
+                                                                <li><a href="../tag/ltp.html">LTP</a></li>
+                                                                <li><a href="../tag/shell.html">shell</a></li>
+                                                                <li><a href="../tag/suan-fa.html">算法</a></li>
+                                                                <li><a href="../tag/xing-neng-ce-shi.html">性能测试</a></li>
+                                                                <li><a href="../tag/python.html">Python</a></li>
+                                                                <li><a href="../tag/docker.html">Docker</a></li>
+                                                                <li><a href="../tag/benchmark.html">benchmark</a></li>
+                                                                <li><a href="../tag/qi-ta.html">其他</a></li>
+                                                                <li><a href="../tag/unixbian-cheng.html">unix编程</a></li>
+                                                                <li><a href="../tag/linux.html">Linux</a></li>
+                                                                <li><a href="../tag/pyunit.html">PyUnit</a></li>
+						        </ul>
+						</li>
+						
+						
+					</ul>
+				</div>
+				<!-- end #sidebar -->
+				<div style="clear: both;">&nbsp;</div>
+			</div>
+		</div>
+	</div>
+	<!-- end #page -->
+
+<div id="footer">
+	<p>Copyright (c) 2008 Sitename.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a>.</p>
+	<p>Proudly powered by <a href="http://alexis.notmyidea.org/pelican/">pelican</a>, which takes great advantages of <a href="http://python.org">python</a>.
 </p>
-</section><!-- /#content -->
-
-       </div><!-- /.row -->
-    </div><!-- /.container -->
-
-
-       <div class="container.nopad bg">
-
-
-        <footer id="credits" class="row">
-          <div class="seven columns left-center">
-
-                   <address id="about" class="vcard body">
-                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
-                    which takes great advantage of <a href="http://python.org">Python</a>.
-                    <br />
-                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
-                    </address>
-          </div>
-
-
-          <div class="seven columns">
-            <div class="row">
-              <ul class="socbtns">
-
-                <li><div class="btn primary"><a href="http://github.com/king32783784" target="_blank">Github</a></div></li>
-
-
-
-
-
-
-              </ul>
-            </div>
-          </div>
-        </footer>
-
-    </div>
-
-
-<script type="text/javascript">
-    var disqus_shortname = 'xiayfblackwhite';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-  <script src="../theme/js/libs/gumby.min.js"></script>
-  <script src="../theme/js/plugins.js"></script>
-  <script src="../theme/js/main.js"></script>
-  <link rel="stylesheet" type="text/css" href="../theme/emoji/css/basic/emojify.min.css" />
-  <script src="../theme/emoji/js/emojify.min.js"></script>
-  <script>
-    emojify.setConfig({
-        img_dir : '../theme/emoji/images/basic'
-    });
-    emojify.run();
-</script>
+</div>
+<!-- end #footer -->
 </body>
 </html>

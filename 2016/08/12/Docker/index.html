@@ -1,72 +1,40 @@
-<!DOCTYPE html>
-<html lang="link">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : Brown Stone  
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20100928
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-
-        <title>Docker基础技术：Linux Namespace（下）</title>
-        <meta charset="utf-8" />
-        <link href="http://king32783784.github.io/feeds/atom.xml" type="application/atom+xml" rel="alternate" title="Hi | World Full Atom Feed" />
-        <link href="http://king32783784.github.io/feeds/rss.xml" type="application/rss+xml" rel="alternate" title="Hi | World Full RSS Feed" />
-
-
-        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
-        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
-
-        <link rel="stylesheet" type="text/css" href="../../../../theme/gumby.css" />
-        <link rel="stylesheet" type="text/css" href="../../../../theme/style.css" />
-        <link rel="stylesheet" type="text/css" href="../../../../theme/pygment.css" />
-        <link rel="stylesheet" type="text/css" href="../../../../theme/SentyZHAO/SentyZHAO.css" />
-
-        <script src="../../../../theme/js/libs/jquery-1.9.1.min.js"></script>
-        <script src="../../../../theme/js/libs/modernizr-2.6.2.min.js"></script>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Docker基础技术：Linux Namespace（下）<转></title>
+<link href="../../../../theme/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="../../../../" type="application/atom+xml" rel="alternate" title="Hi | World ATOM Feed" />
 </head>
-
-<body id="index" class="home">
-    <div class="container">
-
-        <div class="row">
-
-          <header id="banner" class="body">
-                  <h1 style='font-family: "SentyZHAO";'><a href="../../../..">Hi | World <strong></strong></a></h1>
-          </header><!-- /#banner -->
-
-            <div id="navigation" class="navbar row">
-              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
-
-              <ul class="columns" style='font-family: "SentyZHAO";'>
-                <li><a href="../../../..">主 页</a></li>
-
-                <li><a href="../../../../pages/tech-share.html">归档</a></li>
-                <li><a href="../../../../pages/opensource.html">开源项目</a></li>
-                <li><a href="../../../../pages/links.html">链接</a></li>
-                <li><a href="../../../../pages/Reference material.html">参考资料</a></li>
-                <li><a href="../../../../pages/todo list.html">Todo List</a></li>
-                <li><a href="../../../../pages/tools.html">工具集</a></li>
-                <li class="active"><a href="../../../../pages/aboutme.html">关于我</a></li>
-
-              </ul>
-            </div>
-
-<section id="content" class="body">
-   <div class="row">
-        <div class="columns">
-            <header>
-              <h2 class="entry-title">
-                <a href="../../../../2016/08/12/Docker/" rel="bookmark" title="Permalink to Docker基础技术：Linux Namespace（下）">Docker基础技术：Linux Namespace（下）<转></a></h2>
-           Translations: 
-<a href="../../../../2016/08/11/Docker/">link</a>
-
-            </header>
-            <footer class="post-info">
-              <abbr class="published" title="2016-08-12T00:00:00+08:00">
-                五 12 八月 2016
-              </abbr>
-              <address class="vcard author">
-                By <a class="url fn" href="../../../../author/others.html">others</a>
-              </address>
-            </footer><!-- /.post-info -->
-            <div class="entry-content">
-              </head><body><p>在 <a href="https://king32783784.github.io/lipeng/2016/08/11/Docker/">Docker基础技术：Linux Namespace（上篇)</a>中我们了解了，UTD、IPC、PID、Mount 四个namespace，我们模仿Docker做了一个相当相当山寨的镜像。在这一篇中，主要想向大家介绍Linux的User和Network的Namespace。
-<img height="280" src="https://raw.githubusercontent.com/king32783784/king32783784.github.io/master/tmpfile/Autotest1.png" width="420"/></p>
+<body>
+<div id="wrapper">
+	<div id="page">
+		<div id="page-bgtop">
+			<div id="page-bgbtm">
+    
+                        	<div id="content">
+					<div class="post">
+						<h2 class="title"><a href="2016/08/12/Docker/">Docker基础技术：Linux Namespace（下）<转></a></h2>
+						<p class="meta"><span class="date">日期 五 12 八月 2016 </span><span class="posted">By <a href="#">others</a></span><span>&nbsp; | 分类 : <a href="../../../../category/autotestzhuan-ti.html">Autotest专题</a></span></p>
+					<p class="meta">Tags : <span><a href="../../../../tag/docker.html">Docker</a> / </span>
+</p>	
+						<div style="clear: both;">&nbsp;</div>
+						<div class="entry">
+						 <body><p>在 <a href="https://king32783784.github.io/lipeng/2016/08/11/Docker/">Docker基础技术：Linux Namespace（上篇)</a>中我们了解了，UTD、IPC、PID、Mount 四个namespace，我们模仿Docker做了一个相当相当山寨的镜像。在这一篇中，主要想向大家介绍Linux的User和Network的Namespace。
+<img class="img-responsive" height="280" src="https://raw.githubusercontent.com/king32783784/king32783784.github.io/master/tmpfile/Autotest1.png" width="420"/></p>
 <p>好，下面我们就介绍一下还剩下的这两个Namespace。</p>
 <h4 id="user-namespace">User Namespace</h4>
 <p><strong>User Namespace</strong> 主要是用了CLONE_NEWUSER的参数。使用了这个参数后，内部看到的UID和GID已经与外部不同了，默认显示为65534。那是因为容器找不到其真正的UID所以，设置上了最大的UID（其设置定义在/proc/sys/kernel/overflowuid）。</p>
@@ -218,11 +186,11 @@ uid=0(root) gid=0(root) groups=0(root),65534(nogroup)
 <p>虽然容器里是root，但其实这个容器的/bin/bash进程是以一个普通用户hchen来运行的。这样一来，我们容器的安全性会得到提高。</p>
 <p>我们注意到，User Namespace是以普通用户运行，但是别的Namespace需要root权限，那么，如果我要同时使用多个Namespace，该怎么办呢？一般来说，我们先用一般用户创建User Namespace，然后把这个一般用户映射成root，在容器内用root来创建其它的Namesapce。</p>
 <h4 id="network-namespace">Network Namespace</h4>
-<p>Network的Namespace比较啰嗦。在Linux下，我们一般用ip命令创建Network Namespace（Docker的源码中，它没有用ip命令，而是自己实现了ip命令内的一些功能——是用了Raw Socket发些“奇怪”的数据，呵呵）。这里，我还是用ip命令讲解一下。</p>
-<p>首先，我们先看个图，下面这个图基本上就是Docker在宿主机上的网络示意图（其中的物理网卡并不准确，因为docker可能会运行在一个VM中，所以，这里所谓的“物理网卡”其实也就是一个有可以路由的IP的网卡）</p>
-<p><img alt="" src="https://king32783784.github.io/lipeng/tmpfile/network.namespace.jpg"/></p>
+<p>Network的Namespace比较啰嗦。在Linux下，我们一般用ip命令创建Network Namespace（Docker的源码中，它没有用ip命令，而是自己实现了ip命令内的一些功能&mdash;&mdash;是用了Raw Socket发些&ldquo;奇怪&rdquo;的数据，呵呵）。这里，我还是用ip命令讲解一下。</p>
+<p>首先，我们先看个图，下面这个图基本上就是Docker在宿主机上的网络示意图（其中的物理网卡并不准确，因为docker可能会运行在一个VM中，所以，这里所谓的&ldquo;物理网卡&rdquo;其实也就是一个有可以路由的IP的网卡）</p>
+<p><img alt="" class="img-responsive" src="https://king32783784.github.io/lipeng/tmpfile/network.namespace.jpg"/></p>
 <p>上图中，Docker使用了一个私有网段，172.40.1.0，docker还可能会使用10.0.0.0和192.168.0.0这两个私有网段，关键看你的路由表中是否配置了，如果没有配置，就会使用，如果你的路由表配置了所有私有网段，那么docker启动时就会出错了。</p>
-<p>当你启动一个Docker容器后，你可以使用ip link show或ip addr show来查看当前宿主机的网络情况（我们可以看到有一个docker0，还有一个veth22a38e6的虚拟网卡——给容器用的）：</p>
+<p>当你启动一个Docker容器后，你可以使用ip link show或ip addr show来查看当前宿主机的网络情况（我们可以看到有一个docker0，还有一个veth22a38e6的虚拟网卡&mdash;&mdash;给容器用的）：</p>
 <div class="highlight"><pre><span></span>hchen@ubuntu:~$ ip link show
 1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state ...
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -286,7 +254,7 @@ ip netns exec <span class="cp">${</span><span class="n">container</span><span cl
 ip netns exec <span class="cp">${</span><span class="n">container</span><span class="o">-</span><span class="n">pid</span><span class="cp">}</span> ip addr add <span class="cp">${</span><span class="n">ROUTEABLE_IP</span><span class="cp">}</span> dev eth1 ;
 </pre></div>
 <p>上面的示例是我们为正在运行的docker容器，增加一个eth1的网卡，并给了一个静态的可被外部访问到的IP地址。</p>
-<p>这个需要把外部的“物理网卡”配置成混杂模式，这样这个eth1网卡就会向外通过ARP协议发送自己的Mac地址，然后外部的交换机就会把到这个IP地址的包转到“物理网卡”上，因为是混杂模式，所以eth1就能收到相关的数据，一看，是自己的，那么就收到。这样，Docker容器的网络就和外部通了。</p>
+<p>这个需要把外部的&ldquo;物理网卡&rdquo;配置成混杂模式，这样这个eth1网卡就会向外通过ARP协议发送自己的Mac地址，然后外部的交换机就会把到这个IP地址的包转到&ldquo;物理网卡&rdquo;上，因为是混杂模式，所以eth1就能收到相关的数据，一看，是自己的，那么就收到。这样，Docker容器的网络就和外部通了。</p>
 <p>当然，无论是Docker的NAT方式，还是混杂模式都会有性能上的问题，NAT不用说了，存在一个转发的开销，混杂模式呢，网卡上收到的负载都会完全交给所有的虚拟网卡上，于是就算一个网卡上没有数据，但也会被其它网卡上的数据所影响。</p>
 <p>这两种方式都不够完美，我们知道，真正解决这种网络问题需要使用VLAN技术，于是Google的同学们为Linux内核实现了一个IPVLAN的驱动，这基本上就是为Docker量身定制的。</p>
 <h4 id="namespacewen-jian">Namespace文件</h4>
@@ -323,7 +291,7 @@ lrwxrwxrwx 1 root root 0  4月  7 22:01 user -&gt; user:[4026531837]
 lrwxrwxrwx 1 root root 0  4月  7 22:01 uts -&gt; uts:[4026532521]
 </pre></div>
 <p>我们可以看到，其中的ipc，net，user是同一个ID，而mnt,pid,uts都是不一样的。如果两个进程指向的namespace编号相同，就说明他们在同一个namespace下，否则则在不同namespace里面。</p>
-<p>这些文件还有另一个作用，那就是，一旦这些文件被打开，只要其fd被占用着，那么就算PID所属的所有进程都已经结束，创建的namespace也会一直存在。比如：我们可以通过：mount –bind /proc/4600/ns/uts ~/uts 来hold这个namespace。</p>
+<p>这些文件还有另一个作用，那就是，一旦这些文件被打开，只要其fd被占用着，那么就算PID所属的所有进程都已经结束，创建的namespace也会一直存在。比如：我们可以通过：mount &ndash;bind /proc/4600/ns/uts ~/uts 来hold这个namespace。</p>
 <p>另外，我们在上篇中讲过一个setns的系统调用，其函数声明如下：</p>
 <div class="highlight"><pre><span></span>int setns(int fd, int nstype);
 </pre></div>
@@ -334,7 +302,7 @@ setns(fd, 0); // 加入新的namespace
 <p>参考文档</p>
 <p><a href="http://lwn.net/Articles/531114/">Namespaces in operation</a></p>
 <p><a href="http://man7.org/linux/man-pages/man7/namespaces.7.html">Linux Namespace Man Page</a></p>
-<p><a href="http://crosbymichael.com/creating-containers-part-1.html">Creat Containers – Part 1</a></p>
+<p><a href="http://crosbymichael.com/creating-containers-part-1.html">Creat Containers &ndash; Part 1</a></p>
 <p><a href="https://blog.yadutaf.fr/2013/12/22/introduction-to-linux-namespaces-part-1-uts/">Introduction to Linux namespaces</a></p>
 <p>（全文完）</p>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
@@ -393,81 +361,91 @@ setns(fd, 0); // 加入新的namespace
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-</script>
-            </div><!-- /.entry-content -->
-            <div class="comments">
-              <h3>Comments</h3>
-              <div id="disqus_thread"></div>
-              <script type="text/javascript">
-                var disqus_identifier = "2016/08/12/Docker/";
-                (function() {
-                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                dsq.src = 'http://xiayfblackwhite.disqus.com/embed.js';
-                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                })();
-              </script>
-            </div>
-        </div><!-- /.twelve.columns -->
- </div><!-- /.row -->
-</section>
+</script></body>	
+						</div>
+					</div>
+			      
+					<div style="clear: both;">&nbsp;</div>
+                                        <div class="post">
+                                        <h2 class="title">Commentaires !</h2>
+                                            <div id="disqus_thread"></div>
+                                            <script type="text/javascript">
+                                               var disqus_identifier = "2016/08/12/Docker/";
+                                               (function() {
+                                               var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                                               dsq.src = 'https://xiayfblackwhite.disqus.com/embed.js';
+                                               (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                                              })();
+                                            </script>
+                                        </div>
+				</div>
+				<!-- end #content -->
+				<div id="sidebar">
+					<div id="logo">
+						<h1><a href="../../../..">Hi | World</a></h1>
+					</div>
+					<div id="menu">
+						<ul>
+							<li ><a href="../../../..">首页</a></li>
+							<li ><a href="../../../../archives.html">归档</a></li>
+                                                            <li class="current_page_item"><a href="../../../../pages/tech-share.html">归档</a></li>
+                                                            <li class="current_page_item"><a href="../../../../pages/opensource.html">开源项目</a></li>
+                                                            <li class="current_page_item"><a href="../../../../pages/links.html">链接</a></li>
+                                                            <li class="current_page_item"><a href="../../../../pages/Reference material.html">参考资料</a></li>
+                                                            <li class="current_page_item"><a href="../../../../pages/todo list.html">Todo List</a></li>
+                                                            <li class="current_page_item"><a href="../../../../pages/tools.html">工具集</a></li>
+                                                            <li class="current_page_item"><a href="../../../../pages/aboutme.html">关于我</a></li>
+						</ul>
+					</div>
+					<ul>
+						<li>
+							<h2>分类列表</h2>
+							<ul>
+								 <li ><a href="../../../../category/misc.html">misc</a></li>
+								 <li class="active"><a href="../../../../category/autotestzhuan-ti.html">Autotest专题</a></li>
+								 <li ><a href="../../../../category/suan-fa.html">算法</a></li>
+								 <li ><a href="../../../../category/dockerzhuan-ti.html">Docker专题</a></li>
+								 <li ><a href="../../../../category/linux.html">Linux</a></li>
+								 <li ><a href="../../../../category/linux-benchmark.html">linux-benchmark</a></li>
+								 <li ><a href="../../../../category/linux-zi-dong-hua-ce-shi.html">linux-自动化测试</a></li>
+								 <li ><a href="../../../../category/unixhuan-jing-bian-cheng.html">unix环境编程</a></li>
+								 <li ><a href="../../../../category/xing-neng-ce-shi.html">性能测试</a></li>
+							</ul>
+						</li>
+						<li>
+						        <h2>Tags</h2>
+						        <ul>
+                                                                <li><a href="../../../../tag/selenium.html">Selenium</a></li>
+                                                                <li><a href="../../../../tag/zi-dong-hua-ce-shi.html">自动化测试</a></li>
+                                                                <li><a href="../../../../tag/ltp.html">LTP</a></li>
+                                                                <li><a href="../../../../tag/shell.html">shell</a></li>
+                                                                <li><a href="../../../../tag/suan-fa.html">算法</a></li>
+                                                                <li><a href="../../../../tag/xing-neng-ce-shi.html">性能测试</a></li>
+                                                                <li><a href="../../../../tag/python.html">Python</a></li>
+                                                                <li><a href="../../../../tag/docker.html">Docker</a></li>
+                                                                <li><a href="../../../../tag/benchmark.html">benchmark</a></li>
+                                                                <li><a href="../../../../tag/qi-ta.html">其他</a></li>
+                                                                <li><a href="../../../../tag/unixbian-cheng.html">unix编程</a></li>
+                                                                <li><a href="../../../../tag/linux.html">Linux</a></li>
+                                                                <li><a href="../../../../tag/pyunit.html">PyUnit</a></li>
+						        </ul>
+						</li>
+						
+						
+					</ul>
+				</div>
+				<!-- end #sidebar -->
+				<div style="clear: both;">&nbsp;</div>
+			</div>
+		</div>
+	</div>
+	<!-- end #page -->
 
-       </div><!-- /.row -->
-    </div><!-- /.container -->
-
-
-       <div class="container.nopad bg">
-
-
-        <footer id="credits" class="row">
-          <div class="seven columns left-center">
-
-                   <address id="about" class="vcard body">
-                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
-                    which takes great advantage of <a href="http://python.org">Python</a>.
-                    <br />
-                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
-                    </address>
-          </div>
-
-
-          <div class="seven columns">
-            <div class="row">
-              <ul class="socbtns">
-
-                <li><div class="btn primary"><a href="http://github.com/king32783784" target="_blank">Github</a></div></li>
-
-
-
-
-
-
-              </ul>
-            </div>
-          </div>
-        </footer>
-
-    </div>
-
-
-<script type="text/javascript">
-    var disqus_shortname = 'xiayfblackwhite';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-  <script src="../../../../theme/js/libs/gumby.min.js"></script>
-  <script src="../../../../theme/js/plugins.js"></script>
-  <script src="../../../../theme/js/main.js"></script>
-  <link rel="stylesheet" type="text/css" href="../../../../theme/emoji/css/basic/emojify.min.css" />
-  <script src="../../../../theme/emoji/js/emojify.min.js"></script>
-  <script>
-    emojify.setConfig({
-        img_dir : '../../../../theme/emoji/images/basic'
-    });
-    emojify.run();
-</script>
+<div id="footer">
+	<p>Copyright (c) 2008 Sitename.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a>.</p>
+	<p>Proudly powered by <a href="http://alexis.notmyidea.org/pelican/">pelican</a>, which takes great advantages of <a href="http://python.org">python</a>.
+</p>
+</div>
+<!-- end #footer -->
 </body>
 </html>
