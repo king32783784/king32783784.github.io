@@ -55,7 +55,7 @@ C语言编写，国际象棋游戏程序。这是一个在64位机上设计的�
 <p>197.parser:
 C语言编写，字处理程序。连接语法分析器(Link Grammar Parser)是一个基于连接语法的英语句法分析器。连接语法时英语语法的较早理论。给定一个句子，系统能给它赋予一个词法结构，这个结构是两个词之间被标记的连接。该分析器有大约60000个词表的字典。</p>
 <p>252.eon：
-C++语言编写，计算机可视化。eon是一个基于概率的射线跟踪程序，基于Kajiya 1986 ACM SIGGRAPH会议的论文。它将一定数量的3D射线发射到一个3D多面体中，计算射线和多边形的交点，并通过计算入射光和交点生成新射线。最终的计算结果时一个能在照相机内看到的图片。程序中的计算需求和基本计算机图形学中介绍的传统确定性射线跟踪程序很相似，但是它有较少的存储一致性需求，因为很多在同一个位置生成的随机射线横切3D空间中完全不同的区域.输入：eon渲染一个150×150像素的一把椅子在房间前脚的图片。</p>
+C++语言编写，计算机可视化。eon是一个基于概率的射线跟踪程序，基于Kajiya 1986 ACM SIGGRAPH会议的论文。它将一定数量的3D射线发射到一个3D多面体中，计算射线和多边形的交点，并通过计算入射光和交点生成新射线。最终的计算结果时一个能在照相机内看到的图片。程序中的计算需求和基本计算机图形学中介绍的传统确定性射线跟踪程序很相似，但是它有较少的存储一致性需求，因为很多在同一个位置生成的随机射线横切3D空间中完全不同的区域.输入：eon渲染一个150&times;150像素的一把椅子在房间前脚的图片。</p>
 <p>253.perlbmk:
 C语言编写,Perl语言解释器。这是一个Perl v5.005_03版本的删减版，删除了很多操作系统相关的特性，并增加了一些第三方的模块，包括MD5 v1.7, MHonArc v2.3.3, IO-stringy v1.205,MailTools v1.11,TimeData v1.08。输入：由四个perl脚本组成，一个email-to-HTML 转换器，占用时间最长；一个spec CPU2000用来对比较输出的diff脚本，一个通过迭代算法寻找合格数字的脚本，一个用于测试伪随机数按照预定顺序生成的脚本。输出分别对应各个输入。</p>
 <p>254.gap:
@@ -67,7 +67,7 @@ C语言编写，压缩程序。基于Julian Seward的bzip2 v0.1，唯一的不�
 <p>300.twolf：
 C语言实现，定位和路由模拟。twolf来自TimberWolfSC定位和全局路由，它被用于创建微处理器产品印刷电路布局的流程中，确定晶体管的位置和组内的全局连接。定位问题是一个排列，穷举法耗时太长，TimberWolfSC程序则使用模拟退火作为启发来找到较优解。</p>
 <h4 id="spec-int2006-12ge-zheng-dian-ce-shi-xiang-mu">Spec int2006  12个整点测试项目</h4>
-<p>400.perlbench：C语言编写，同spec2000的253.perlbmk类似，是Perl V5.8.7版本的删减版，同样删除了一下操作系统特性有关的东西，增加了第三方的模块，如：SpamAssassin V2.61,Digest-MD5 v2.33,HTML-Parser v3.35,MHonArc V2.6.8,IO-stringy V1.205,MailTools V1.60，TimeDate V1.16。400.perlbench采用3个脚本进行增加负载或工作。1.主要的负载在于打开 垃圾邮件过滤软件SpamAssassin。采取的过滤方式是采用记分制，也就是说会根据我们所设定的标准来给予分数超过标准值的时候即判定为 SPAM（垃圾邮件），其余为非垃圾邮件。但对SpamAssassin软件做了很大程度的修改，避免一些I/0操作，并且没有使用贝叶斯过滤。2.是比较流行的email到HTML的转换器MHonArc 3.使用了spec2006的工具套件specdiff。</p>
+<p>400.perlbench：C语言编写，同spec2000的253.perlbmk类似，是Perl V5.8.7版本的删减版，同样删除了一下操作系统特性有关的东西，增加了第三方的模块，如：SpamAssassin V2.61,Digest-MD5 v2.33,HTML-Parser v3.35,MHonArc V2.6.8,IO-stringy V1.205,MailTools V1.60，TimeDate V1.16。400.perlbench采用3个脚本进行增加负载或工作。1.主要的负载在于打开&nbsp;垃圾邮件过滤软件SpamAssassin。采取的过滤方式是采用记分制，也就是说会根据我们所设定的标准来给予分数超过标准值的时候即判定为 SPAM（垃圾邮件），其余为非垃圾邮件。但对SpamAssassin软件做了很大程度的修改，避免一些I/0操作，并且没有使用贝叶斯过滤。2.是比较流行的email到HTML的转换器MHonArc 3.使用了spec2006的工具套件specdiff。</p>
 <p>401.bzip2: C语言实现，同spec2000的256.bzip2类似,基于Julian Seward的bzip2 v1.03.唯一的不同是SPEC中的bzip2除了输入外，无文件I/O。所有的压缩和解压都在内存中进行。输入，输出都和gzip的相似。负载包括六个部分：两个小的JPEG图片、一个程序、一个tar包起的几个源程序文件、一个HTML文件、混合文件，包括压缩起来的高可压缩文件及不怎么可压缩的文件。测试分别使用了三个不同的压缩等级进行压缩和解压缩</p>
 <p>403.gcc:C语言实现，同spec2000的176.gcc类似。该测试是基于gcc V3.2,为AMDCPU生成机器码。相比spec2000的176.gcc，该测试有更多的输入文件，因此测试压力会更大，负载来源于对9组C代码进行编译。</p>
 <p>429.mcf:C语言实现，同时需要libm库支持，同spec2000的181.mcf类似，MCF是一个用于大型公共交通中的单站车辆调度的程序。但对输入文件做了一定的修改，由32位变成64位，用以兼容64位系统。并且增加了cache命中和程序的性能。相比spec2000的181.mcf来说，占用的内存由之前的100M-190M变为860M-1700M。</p>
@@ -142,7 +142,7 @@ yes
 <p>注意：输入时，圆点与shrc之间至少一个空格，该命令开始导入SPEC CPU2006程序。
 修改测试文件绝对路径：</p>
 <div class="highlight"><pre><span></span><span class="p">$</span><span class="nv">bin</span><span class="x">/relocate</span>
-<span class="x">显示“Top of SPEC benchmark tree is '/cpu2006v99'”</span>
+<span class="x">显示&ldquo;Top of SPEC benchmark tree is '/cpu2006v99'&rdquo;</span>
 </pre></div>
 <h4 id="yun-xing-ce-shi">运行测试</h4>
 <p>根据需求，进行参数选择，开始运行测试脚本：
@@ -153,7 +153,7 @@ yes
 -n：每个测试项目运行的次数，如果需要SPEC CPU2006自动计算测试分值，需要指定运行次数等于或大于3，即n&gt;=3；
 all：SPEC CPU2006将运行基准测试程序中的所有测试项目。
 </pre></div>
-<p>出现以下信息，表明测试已经启动“</p>
+<p>出现以下信息，表明测试已经启动&ldquo;</p>
 <div class="highlight"><pre><span></span>runspec v4283 - Copyright 1999-2006 Standard Performance Evaluation Corporation
 Using 'mipsel-linux' tools
 Reading MANIFEST... 17899 files
@@ -167,9 +167,9 @@ Compiling Binaries
  Up to date 401.bzip2 ref base linux-mipsel-gcc default
  Up to date 403.gcc ref base linux-mipsel-gcc default
  Up to date 429.mcf ref base linux-mipsel-gcc default
-……
+&hellip;&hellip;
 </pre></div>
-<p>这组测试配置基本和spec2000类似，不同的是，spec2006在测试前，会把每个测试组件重新编译建立一次。所以在测试前，应确保此时的系统中包含以下编译器：g++、gcc、gfortran编译器。如果进行连续测试，则不必进行再次编译，可以加参数”—nobuild”.
+<p>这组测试配置基本和spec2000类似，不同的是，spec2006在测试前，会把每个测试组件重新编译建立一次。所以在测试前，应确保此时的系统中包含以下编译器：g++、gcc、gfortran编译器。如果进行连续测试，则不必进行再次编译，可以加参数&rdquo;&mdash;nobuild&rdquo;.
 附config文件大体说明：斜体部分为文本内容 //为解释说明</p>
 <div class="highlight"><pre><span></span>#####################################################################
 ignore_errors = yes
@@ -330,13 +330,13 @@ Benchmarks      Ref.   Run Time     Ratio       Ref.   Run Time     Ratio
 基于最小测试数据集快速执行所有的测试，测试过程中如果某个用例发生错误，则跳过错误用例，继续执行其他用例。
 2．runspec -c test.cfg -i ref -n 3 -I all
 基于最大测试数据集全面执行所有的测试，用于测试单核CPU，测试过程中如果某个用例发生错误，则跳过错误用例，继续执行其他用例。
-3．runspec -c test.cfg –r ref –n 3 fp
+3．runspec -c test.cfg &ndash;r ref &ndash;n 3 fp
 基于最大测试数据集，只运行fp测试
-4．runspec -c test.cfg –r ref –n 3 int
+4．runspec -c test.cfg &ndash;r ref &ndash;n 3 int
 基于最大测试数据集，只运行int测试
 5.runspec -c test.cfg -i ref 473.astar
 基于最大测试数据集只执行473.astar单个测试。
-6 runspec –c test.cfg –i ref --rate 4 int
+6 runspec &ndash;c test.cfg &ndash;i ref --rate 4 int
 基于最大数据测试集进行rate测试，运行4线程测试的分值</p>
 <h4 id="qi-ta-ming-ling-bu-chong">其他命令补充</h4>
 <div class="highlight"><pre><span></span>--action build 创建测试项目
@@ -346,11 +346,11 @@ Benchmarks      Ref.   Run Time     Ratio       Ref.   Run Time     Ratio
 </pre></div>
 <p>模式很多，不再一一介绍。</p>
 <div class="highlight"><pre><span></span>--check_version 检查版本更新
---copies –c number 默认1 用来进行SPECrate run
+--copies &ndash;c number 默认1 用来进行SPECrate run
 --help  显示帮助文档
 --ignore_errors 忽略错误
-ations number —n 测试次数，一次reportable测试，必须是3次
---iter—loose 未设置reportable测试
+ations number &mdash;n 测试次数，一次reportable测试，必须是3次
+--iter&mdash;loose 未设置reportable测试
 --output_format  输出文件格式 默认为html text 可以选择 all cfg  test csv  html mail pdf  ps  printer  raw screen   text 等多种方式。
 --rate  -r  进行SPECspeed测试可以指定copies数量运行。
 --rebuild 重新编译测试文件 
@@ -428,7 +428,7 @@ ulimit -s 128000; CFLAGS="-c99 -D_FILE_OFFSET_BITS=64" MD5CFLAGS="-O2" PERLFLAGS
 <span class="x">或specmake -v</span>
 <span class="x">specxz -h</span>
 <span class="x">specperl -v</span>
-<span class="x">specdiff –h</span>
+<span class="x">specdiff &ndash;h</span>
 <span class="x">runspec -h</span>
 <span class="x">specinvoke -h</span>
 </pre></div>
