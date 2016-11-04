@@ -187,9 +187,9 @@ SIGABRT {si_signo=SIGABRT, si_code=SI_TKILL, si_pid=18489, si_uid=0} ---
 <p><strong>什么是头文件呢？</strong></p>
 <p>在C语言家族程序中，头文件被大量使用。一般而言，每个C++/C程序通常由头文件(header files)和定义文件(definition files)组成。头文件作为一种包含功能函数、数据接口声明的载体文件，主要用于保存程序的声明(declaration)，而定义文件用于保存程序的实现 (implementation)</p>
 <p _="
-" printf_hello="printf(&ldquo;Hello" world_="world!&rdquo;);
-">让我们来看，经典程序 &ldquo;Hello world!&rdquo;　
-定义文件名&ldquo;First.c&rdquo;
+" printf_hello="printf(“Hello" world_="world!”);
+">让我们来看，经典程序 “Hello world!”　
+定义文件名“First.c”
     main()</p>
 <div class="highlight"><pre><span></span>&lt;sample-1&gt;
 </pre></div>
@@ -197,7 +197,7 @@ SIGABRT {si_signo=SIGABRT, si_code=SI_TKILL, si_pid=18489, si_uid=0} ---
 <p>文件名 First.c　变形</p>
 <div class="highlight"><pre><span></span>printStr()
 {
-    printf(&ldquo;Hello world!&rdquo;);
+    printf(“Hello world!”);
 }
 main()
 {
@@ -215,7 +215,7 @@ printStr()
 
 printStr()
 {
-    printf(&ldquo;Hello world!&rdquo;);
+    printf(“Hello world!”);
 }
 
 &lt;sample-3&gt;
@@ -225,15 +225,15 @@ printStr()
 文件名 First.c</p>
 <div class="highlight"><pre><span></span>play2()
 {
-  &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.
+  ……………….
   play1()
-  &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..
+  ………………..
 }
 play1()
 {
-    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..
+    ……………………..
     play2()
-    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;
+    ……………………
 }
 main()
 {
@@ -249,15 +249,15 @@ main()
 play2();
 play2()
 {
-    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.
+    ……………….
     play1()
-    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..
+    ………………..
 }
 play1()
 {
-    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..
+    ……………………..
     play2()
-    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;
+    ……………………
 );
 }
 main()
@@ -273,18 +273,18 @@ main()
 play2();
 </pre></div>
 <p>文件名 First.C</p>
-<div class="highlight"><pre><span></span>#include &ldquo;first.h&rdquo;
+<div class="highlight"><pre><span></span>#include “first.h”
 play2()
 {
-    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.
+    ……………….
     play1()
-    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..
+    ………………..
 }
 play1()
 {
-    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..
+    ……………………..
     play2()
-    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;
+    ……………………
 );
 }
 main()
@@ -301,9 +301,9 @@ play1()
 <p>sencond.c文件</p>
 <div class="highlight"><pre><span></span>***()
 {
-    &hellip;&hellip;&hellip;&hellip;&hellip;.
+    …………….
     Play();
-    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.
+    ……………….
 }
 
 &lt;sample-7&gt;
@@ -1020,7 +1020,7 @@ Determine type of FILEs.
 						<div class="entry">
 						 <body><p>该topic将深入分析ltp的测试内容，着重于具体每个case的测试内容及测试方法。通过对ltp case的分析，加强linux系统的理解和用例设计。本节主要整理ltp的包括测试case的类型和case列表。</p>
 <h3 id="zheng-ti-qing-kuang">整体情况</h3>
-<p>case主要分为&rdquo;commands"、&ldquo;kdump"、"kernel"、"misc"、"network"、"open_posix_testsuite"、"realtime"、"lib"等部分，主要内容如下：</p>
+<p>case主要分为”commands"、“kdump"、"kernel"、"misc"、"network"、"open_posix_testsuite"、"realtime"、"lib"等部分，主要内容如下：</p>
 <table class="table table-hover table-striped">
 <thead>
 <tr>
@@ -1049,7 +1049,6 @@ Determine type of FILEs.
 						<ul>
 							<li ><a href="..">首页</a></li>
 							<li ><a href="../archives.html">归档</a></li>
-                                                            <li ><a href="../pages/tech-share.html">归档</a></li>
                                                             <li ><a href="../pages/opensource.html">开源项目</a></li>
                                                             <li ><a href="../pages/links.html">链接</a></li>
                                                             <li ><a href="../pages/Reference material.html">参考资料</a></li>

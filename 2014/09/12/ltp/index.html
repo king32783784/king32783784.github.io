@@ -123,7 +123,7 @@ $ cat ltp.zoo
 $
 </pre></div>
 <p>如何实现的:
-这个例子展示ltp-pan两个参数,一个活动文件,一个test tag. "sleep 4"测试程序及ltp-pan要执行的参数.这个测试会得到标记&ldquo;cmdln&rdquo;。 LTP-run将随机运行一个测试，最终被cmdln，因为指定了唯一测试.
+这个例子展示ltp-pan两个参数,一个活动文件,一个test tag. "sleep 4"测试程序及ltp-pan要执行的参数.这个测试会得到标记“cmdln”。 LTP-run将随机运行一个测试，最终被cmdln，因为指定了唯一测试.
 在活动文件,ltp.zoo,ltp-pan写入pid,testlog,运行测试部分命令行.当test tag运行完成,ltp-pan会标记一个"#",代表它可以执行.这时,你能看到cmdln和tutor,如果测试机挡住,你可以读这些文件查找哪个测试导致的.</p>
 <p>同时运行一个测试多次.</p>
 <div class="highlight"><pre><span></span>$ ltp-pan -a ltp.zoo -n tutor -x <span class="m">3</span> -s <span class="m">3</span> -O /tmp sleep 1
@@ -234,7 +234,7 @@ Ltp-scanner 是一个测试结果分析工具,它可以理解rts风格的输出.
     mtest01    mtest01 -m 20
     fork01     fork01</p>
 <h2 id="san-ltpce-shi-fang-fa">三.LTP测试方法</h2>
-<p>测试方法有两个的阶段：一个是&ldquo;初始测试&rdquo;，一个是&ldquo;压力测试&rdquo;。
+<p>测试方法有两个的阶段：一个是“初始测试”，一个是“压力测试”。
 初始测试是开始测试的必要条件。初始测试包括 LTP 测试套件在硬件和操作系统上成功运转，这些硬件和操作系统将用于可靠性运转。LTP 测试套件包附带的驱动程序脚本 runalltest.sh 用于验证内核。这个脚本串行地运行一组成包的测试，并报告全部结果。也可以选择同时并行地运行几个实例。默认地，这个脚本执行：</p>
 <div class="highlight"><pre><span></span>* 文件系统压力测试。
 * 硬盘 I/O 测试。
@@ -293,7 +293,7 @@ stress.part3中关于swap交换分区的去掉</p>
 针对sar生成的sar.data使用方法：
     sar -u sar.data  //查看cpu使用情况
     sar -r sar.data  //看看memory,swap使用情况
-     &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;
+     ……………………
 Top:</p>
 <p>跟sar差不多的功能，这里我们就用sar 了。</p>
 <h2 id="qi-ta">其他</h2>
@@ -331,7 +331,6 @@ Top:</p>
 						<ul>
 							<li ><a href="../../../..">首页</a></li>
 							<li ><a href="../../../../archives.html">归档</a></li>
-                                                            <li class="current_page_item"><a href="../../../../pages/tech-share.html">归档</a></li>
                                                             <li class="current_page_item"><a href="../../../../pages/opensource.html">开源项目</a></li>
                                                             <li class="current_page_item"><a href="../../../../pages/links.html">链接</a></li>
                                                             <li class="current_page_item"><a href="../../../../pages/Reference material.html">参考资料</a></li>
