@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Hi | World</title><link>http://king32783784.github.io/</link><description>李鹏的技术分享  &lt;a href="pages/about.html"&gt;更多...&lt;/a&gt;</description><lastBuildDate>Tue, 02 Aug 2016 00:00:00 +0800</lastBuildDate><item><title>LTP－kernel-syscalls-abort</title><link>http://king32783784.github.io/2016/08/02/LTP/</link><description>&lt;body&gt;&lt;p&gt;从本文开始，开始分析kernel部分的测试用例，该部分测试用例大部分为Ｃ语言编写，因此会穿插加入一定的Ｃ语言或unix环境编程的知识。&lt;/p&gt;
+<rss version="2.0"><channel><title>Hi | World</title><link>http://king32783784.github.io/</link><description>李鹏的技术分享  &lt;a href="pages/aboutme.html"&gt;更多...&lt;/a&gt;</description><lastBuildDate>Tue, 02 Aug 2016 00:00:00 +0800</lastBuildDate><item><title>LTP－kernel-syscalls-abort</title><link>http://king32783784.github.io/2016/08/02/LTP/</link><description>&lt;body&gt;&lt;p&gt;从本文开始，开始分析kernel部分的测试用例，该部分测试用例大部分为Ｃ语言编写，因此会穿插加入一定的Ｃ语言或unix环境编程的知识。&lt;/p&gt;
 &lt;p&gt;&lt;img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/I0T0E4Y826.jpg" width="420"/&gt;&lt;/p&gt;
 &lt;h4 id="abort"&gt;abort&lt;/h4&gt;
 &lt;p&gt;设计说明&lt;/p&gt;
