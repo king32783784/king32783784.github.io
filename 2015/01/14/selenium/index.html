@@ -20,7 +20,7 @@
         <meta property="article:tag" content="Selenium" />
         <meta property="article:author" content="peng.lee" />
         <meta property="og:image"
-              content="../../../../https://king32783784.github.io/favicon.png"/>
+              content="../../../../favicon.png"/>
 
     <title>selenium-专题2 - Hi | World</title>
 
@@ -418,7 +418,7 @@ Keys类提供键盘操作比如RETURN, F1,ALT等。
 <p>webdriver 提供一些如find_element_by_*的方法用于定位元素。例如，输入文本元素可以通过find_element_by_name方法使用名称属性来定位。定位方法会在后续进行详细解释。</p>
 <div class="highlight"><pre><span></span>elem = driver.find_element_by_name("q")
 </pre></div>
-<p>接下来，是发送关键信息，比较像从键盘输入。特殊关键信息可以通过selenium.webdriver.common.keys中的Keys 类实现。安全考虑，首先要确认输入区没有其他信息（如&ldquo;搜索框&rdquo;），以免影响搜索结果：</p>
+<p>接下来，是发送关键信息，比较像从键盘输入。特殊关键信息可以通过selenium.webdriver.common.keys中的Keys 类实现。安全考虑，首先要确认输入区没有其他信息（如“搜索框”），以免影响搜索结果：</p>
 <div class="highlight"><pre><span></span>elem.clear()
 elem.send_keys("pycon")
 elem.send_keys(Keys.RETURN)
@@ -431,7 +431,7 @@ elem.send_keys(Keys.RETURN)
 </pre></div>
 <p>sample1:
 测试百度首页的查询功能：
-百度搜索框&ldquo;<input autocomplete="off" class="s_ipt" id="kw" maxlength="100" name="wd" type="text"/>&rdquo;
+百度搜索框“<input autocomplete="off" class="s_ipt" id="kw" maxlength="100" name="wd" type="text"/>”
 code:</p>
 <table class="table highlighttable table-striped table-hover"><tbody><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -536,7 +536,7 @@ code:</p>
 <p>webdriver 提供一些如find_element_by_*的方法用于定位元素。例如，输入文本元素可以通过find_element_by_name方法使用名称属性来定位。定位方法会在后续进行详细解释。</p>
 <div class="highlight"><pre><span></span>elem = driver.find_element_by_name("q")
 </pre></div>
-<p>接下来，是发送关键信息，比较像从键盘输入。特殊关键信息可以通过selenium.webdriver.common.keys中的Keys 类实现。安全考虑，首先要确认输入区没有其他信息（如&ldquo;搜索框&rdquo;），以免影响搜索结果：</p>
+<p>接下来，是发送关键信息，比较像从键盘输入。特殊关键信息可以通过selenium.webdriver.common.keys中的Keys 类实现。安全考虑，首先要确认输入区没有其他信息（如“搜索框”），以免影响搜索结果：</p>
 <div class="highlight"><pre><span></span>elem.clear()
 elem.send_keys("pycon")
 elem.send_keys(Keys.RETURN)
@@ -673,10 +673,7 @@ code:</p>
         <div class="col-lg-9 text-center">
             <p><small>
                 Built by <a href="http://docs.getpelican.com/en/latest">Pelican</a> / <a href="https://github.com/ingwinlu/pelican-twitchy">pelican-twitchy</a>
-                &middot;                      <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>
-    &quot;<span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Hi | World</span>&quot; by <a xmlns:cc="http://creativecommons.org/ns#" href="../../../.." property="cc:attributionName" rel="cc:attributionURL">peng.lee</a> is
-  licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution 4.0 International License</a>, except where indicated otherwise.
-
+                &middot;                    &copy; 2016 peng.lee
             </small></p>
         </div>
     </div>
