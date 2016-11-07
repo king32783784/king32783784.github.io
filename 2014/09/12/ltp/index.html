@@ -16,7 +16,7 @@
     <meta property="og:url" content="../../../../2014/09/12/ltp/"/>
     <meta property="og:description" content="Testing Linux, one syscall at a time. LTP是从SGI开始的,后由IBM 思科 富士通 SUSE Redhat等组织开发的.该工具的目标是建立一个测试套件用来验证linux的可靠性,健壮性及稳定性.LTP测试套件包含了linux内核及相关功能的工具. 本文主要介绍关于ltp的一些基本信息. LTP项目主页:ltp Github链接:ltp LTP是一个验证ltp内核功能和稳定性的测试集.用来支持linux开发过程中,通过更多的单元测试,减少bug的引入,降低bug对用户的影响.LTP并不是用来做benchmarking测试的,而是更专注与功能,问题回归及稳定性测试.LTP同样不是一个标准测试,标准测试有LSB. 一 基本结构 LTP测试套件是由包含一个基本动作和一个确认基本动作工作是否正常的测试用例组成.这个测试用例通常的测试结果是PASS/FAIL.一个测试程序是包含一个或多个测试用例的可执行程序.测试程序包括相应的测试参数,这些参数包括内存测试容量,临时文件位置,网络测试类型等等.Test tags 是用于匹配测试程序和一组命令行参数.Test tags是测试集的基础. 编写测试 编写一个测试用例比大多数想象的更容易.任何一个你编写用于验证内核功能的代码都可以用来形成一个用例 ..."/>
     <meta property="article:published_time" content="2014-09-12" />
-    <meta property="article:section" content="自动化测试" />
+    <meta property="article:section" content="自动化测试-LTP" />
         <meta property="article:tag" content="LTP" />
         <meta property="article:author" content="peng.lee" />
         <meta property="og:image"
@@ -283,11 +283,11 @@
                             <span class="badge pull-right categorybadge">12</span>
                         </a>
                     </li>
-                    <li >
+                    <li class="active">
                         <a href="../../../../category/zi-dong-hua-ce-shi-ltp.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             自动化测试-LTP
-                            <span class="badge pull-right categorybadge">5</span>
+                            <span class="badge pull-right categorybadge">6</span>
                         </a>
                     </li>
                     <li >
@@ -339,13 +339,6 @@
                             <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
-                    <li class="active">
-                        <a href="../../../../category/zi-dong-hua-ce-shi.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试
-                            <span class="badge pull-right categorybadge">1</span>
-                        </a>
-                    </li>
                 </ul></li>
                 
             </ul>
@@ -380,7 +373,7 @@
                 <i class="fa fa-calendar padding-small"></i><time datetime="2014-09-12T00:00:00+08:00"> 2014-09-12 五</time>
             </span>
             <span class="category">
-                <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/zi-dong-hua-ce-shi.html">自动化测试</a>
+                <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/zi-dong-hua-ce-shi-ltp.html">自动化测试-LTP</a>
             </span>
             <span class="tags">
                 <i class="fa fa-tags padding-small"></i>
@@ -485,7 +478,7 @@ $ cat ltp.zoo
 $
 </pre></div>
 <p>如何实现的:
-这个例子展示ltp-pan两个参数,一个活动文件,一个test tag. "sleep 4"测试程序及ltp-pan要执行的参数.这个测试会得到标记“cmdln”。 LTP-run将随机运行一个测试，最终被cmdln，因为指定了唯一测试.
+这个例子展示ltp-pan两个参数,一个活动文件,一个test tag. "sleep 4"测试程序及ltp-pan要执行的参数.这个测试会得到标记&ldquo;cmdln&rdquo;。 LTP-run将随机运行一个测试，最终被cmdln，因为指定了唯一测试.
 在活动文件,ltp.zoo,ltp-pan写入pid,testlog,运行测试部分命令行.当test tag运行完成,ltp-pan会标记一个"#",代表它可以执行.这时,你能看到cmdln和tutor,如果测试机挡住,你可以读这些文件查找哪个测试导致的.</p>
 <p>同时运行一个测试多次.</p>
 <div class="highlight"><pre><span></span>$ ltp-pan -a ltp.zoo -n tutor -x <span class="m">3</span> -s <span class="m">3</span> -O /tmp sleep 1
@@ -596,7 +589,7 @@ Ltp-scanner 是一个测试结果分析工具,它可以理解rts风格的输出.
     mtest01    mtest01 -m 20
     fork01     fork01</p>
 <h2 id="san-ltpce-shi-fang-fa">三.LTP测试方法</h2>
-<p>测试方法有两个的阶段：一个是“初始测试”，一个是“压力测试”。
+<p>测试方法有两个的阶段：一个是&ldquo;初始测试&rdquo;，一个是&ldquo;压力测试&rdquo;。
 初始测试是开始测试的必要条件。初始测试包括 LTP 测试套件在硬件和操作系统上成功运转，这些硬件和操作系统将用于可靠性运转。LTP 测试套件包附带的驱动程序脚本 runalltest.sh 用于验证内核。这个脚本串行地运行一组成包的测试，并报告全部结果。也可以选择同时并行地运行几个实例。默认地，这个脚本执行：</p>
 <div class="highlight"><pre><span></span>* 文件系统压力测试。
 * 硬盘 I/O 测试。
@@ -655,7 +648,7 @@ stress.part3中关于swap交换分区的去掉</p>
 针对sar生成的sar.data使用方法：
     sar -u sar.data  //查看cpu使用情况
     sar -r sar.data  //看看memory,swap使用情况
-     ……………………
+     &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;
 Top:</p>
 <p>跟sar差不多的功能，这里我们就用sar 了。</p>
 <h2 id="qi-ta">其他</h2>

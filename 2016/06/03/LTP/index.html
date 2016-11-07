@@ -287,7 +287,7 @@
                         <a href="../../../../category/zi-dong-hua-ce-shi-ltp.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             自动化测试-LTP
-                            <span class="badge pull-right categorybadge">5</span>
+                            <span class="badge pull-right categorybadge">6</span>
                         </a>
                     </li>
                     <li >
@@ -336,13 +336,6 @@
                         <a href="../../../../category/unixhuan-jing-bian-cheng.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             unix环境编程
-                            <span class="badge pull-right categorybadge">1</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试
                             <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
@@ -472,7 +465,7 @@ Determine type of FILEs.
 <div class="highlight"><pre><span></span>1）将文本写入已知文件
 2）使用'file'命令获取已知文件的类型
 例如：文件xyz.txt
-3）grep为关键字“ASCII文本”的输出
+3）grep为关键字&ldquo;ASCII文本&rdquo;的输出
 'file'命令
 4）如果上述步骤成功，则将测试声明为PASS,否则为fail
 </pre></div>
@@ -480,7 +473,7 @@ Determine type of FILEs.
 <div class="highlight"><pre><span></span>1）将一个小shell脚本写入一个已知文件
 2）使用'file'命令获取已知文件的类型
 例如：文件xyz.sh
-3）从'file'命令的输出中Grep关键字“Bourne-Again shell脚本”
+3）从'file'命令的输出中Grep关键字&ldquo;Bourne-Again shell脚本&rdquo;
 
 4）如果上述步骤成功，则将测试声明为PASS,否则为fail
 </pre></div>
@@ -493,31 +486,31 @@ Determine type of FILEs.
 <p>Test05：测试文件命令是否可以识别C程序文本
      使用test2类似方法测试c程序文本</p>
 <p>Test06：测试文件命令是否可以识别ELF二进制可执行文件</p>
-<div class="highlight"><pre><span></span><span class="x">1）使用readelf确定主机是大端还是小端,并分别为字符串“MSB”或“LSB”分配TEST_ARCH</span>
-<span class="x">2）将小C程序写入已知的“.c”文件</span>
-<span class="x">3）使用“cc” Ex：cc xyz xyz.c</span>
+<div class="highlight"><pre><span></span><span class="x">1）使用readelf确定主机是大端还是小端,并分别为字符串&ldquo;MSB&rdquo;或&ldquo;LSB&rdquo;分配TEST_ARCH</span>
+<span class="x">2）将小C程序写入已知的&ldquo;.c&rdquo;文件</span>
+<span class="x">3）使用&ldquo;cc&rdquo; Ex：cc xyz xyz.c</span>
 <span class="x">4）使用file命令获取对象文件的类型</span>
 <span class="x">5）在file输出中，grep ELF .*-bit </span><span class="p">$</span><span class="nv">TEST_ARCH</span><span class="x"> executable, .* 字符。</span>
 <span class="x">6）如果上述命令成功，则将测试声明为PASS</span>
 </pre></div>
 <p>Test07：测试文件命令是否可以识别tar文件</p>
 <div class="highlight"><pre><span></span>1）将文本写入三个不同的文件
- 2）使用“tar”命令存档文件
+ 2）使用&ldquo;tar&rdquo;命令存档文件
 例如：tar -cf ...
-3）使用“file”命令获取归档文件的类型
+3）使用&ldquo;file&rdquo;命令获取归档文件的类型
 例如：文件xyz.tar
-4）grep从上面的'file'命令的输出的中匹配字符串“tar”
+4）grep从上面的'file'命令的输出的中匹配字符串&ldquo;tar&rdquo;
 5）声明测试为PASS，如果上面的步骤成功，否则声明测试为FAIL
 </pre></div>
 <p>Test08：测试文件命令是否可以tar zip文件</p>
 <div class="highlight"><pre><span></span>1）将文本写入三个不同的文件
-2）使用“tar”命令存档文件
+2）使用&ldquo;tar&rdquo;命令存档文件
   例如：tar -cf ...
 3）使用'gzip'命令来压缩tar文件
  例如：gzip -f xyz.tar
-4）使用“file”命令获取归档文件的类型
+4）使用&ldquo;file&rdquo;命令获取归档文件的类型
    例如：文件xyz.tar.gz
-5）grep从上面的文件commnand字符串“gzip压缩数据，。*”
+5）grep从上面的文件commnand字符串&ldquo;gzip压缩数据，。*&rdquo;
 6）声明测试为PASS，如果上面的步骤成功，否则声明测试为FAIL
 </pre></div>
 <h5 id="dai-ma-pian-duan">代码片段</h5>
