@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="penglee" />
         <meta name="keywords" content="算法" />
-        <meta name="description" content="快速排序 对于一个给定的数组，从中选择一个元素，以该元素为界将其余元素划分为两个子集， 一个子集的所有元素都小于该元素，另一个子集的元素都大于或等于该元素， 对两个子集递归执行这一过程，当某个子集中的元素小于二时， 这个子集就不需要再次排序，终止递归。 代码实现及测试 void qsort(int v[],int left,int right) { int i,last; void swap(int v[],int i,int j); if(left&gt;=right) return; swap(v,left,(left+right)/2); //将中点的元素作为比较元素，放到整个数组的最左边 last = left; for(i=left+1;i&lt;=right ..." />
+        <meta name="description" content="1.快速排序 对于一个给定的数组，从中选择一个元素，以该元素为界将其余元素划分为两个子集， 一个子集的所有元素都小于该元素，另一个子集的元素都大于或等于该元素， 对两个子集递归执行这一过程，当某个子集中的元素小于二时， 这个子集就不需要再次排序，终止递归。 2.代码实现及测试 void qsort(int v[],int left,int right) { int i,last; void swap(int v[],int i,int j); if(left&gt;=right) return; swap(v,left,(left+right)/2); //将中点的元素作为比较元素，放到整个数组的最左边 last = left; for(i=left+1 ..." />
 
 <!-- Open Graph tags -->
 <meta property="og:site_name" content="Hi | World"/>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="快速排序"/>
     <meta property="og:url" content="../../../../2013/07/01/sort/"/>
-    <meta property="og:description" content="快速排序 对于一个给定的数组，从中选择一个元素，以该元素为界将其余元素划分为两个子集， 一个子集的所有元素都小于该元素，另一个子集的元素都大于或等于该元素， 对两个子集递归执行这一过程，当某个子集中的元素小于二时， 这个子集就不需要再次排序，终止递归。 代码实现及测试 void qsort(int v[],int left,int right) { int i,last; void swap(int v[],int i,int j); if(left&gt;=right) return; swap(v,left,(left+right)/2); //将中点的元素作为比较元素，放到整个数组的最左边 last = left; for(i=left+1;i&lt;=right ..."/>
+    <meta property="og:description" content="1.快速排序 对于一个给定的数组，从中选择一个元素，以该元素为界将其余元素划分为两个子集， 一个子集的所有元素都小于该元素，另一个子集的元素都大于或等于该元素， 对两个子集递归执行这一过程，当某个子集中的元素小于二时， 这个子集就不需要再次排序，终止递归。 2.代码实现及测试 void qsort(int v[],int left,int right) { int i,last; void swap(int v[],int i,int j); if(left&gt;=right) return; swap(v,left,(left+right)/2); //将中点的元素作为比较元素，放到整个数组的最左边 last = left; for(i=left+1 ..."/>
     <meta property="article:published_time" content="2013-07-01" />
     <meta property="article:section" content="算法" />
         <meta property="article:tag" content="算法" />
@@ -388,12 +388,12 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    <body><h4 id="kuai-su-pai-xu">快速排序</h4>
+                    <body><h4 id="1kuai-su-pai-xu">1.快速排序</h4>
 <p>对于一个给定的数组，从中选择一个元素，以该元素为界将其余元素划分为两个子集，
 一个子集的所有元素都小于该元素，另一个子集的元素都大于或等于该元素，
 对两个子集递归执行这一过程，当某个子集中的元素小于二时，
 这个子集就不需要再次排序，终止递归。</p>
-<h4 id="dai-ma-shi-xian-ji-ce-shi">代码实现及测试</h4>
+<h4 id="2dai-ma-shi-xian-ji-ce-shi">2.代码实现及测试</h4>
 <div class="highlight"><pre><span></span>    <span class="kt">void</span> <span class="nf">qsort</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span><span class="p">[],</span><span class="kt">int</span> <span class="n">left</span><span class="p">,</span><span class="kt">int</span> <span class="n">right</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="kt">int</span> <span class="n">i</span><span class="p">,</span><span class="n">last</span><span class="p">;</span>
@@ -443,7 +443,7 @@
             </div>
     <div id="scrollspy">
         <div class="col-lg-3 nav nav-stacked hidden-xs hidden-sm" data-spy="affix" data-offset-top="135">
-            <div id="toc"><ul><li><a class="toc-href" href="#" title="快速排序">快速排序</a><ul><li><a class="toc-href" href="#kuai-su-pai-xu" title="快速排序">快速排序</a></li><li><a class="toc-href" href="#dai-ma-shi-xian-ji-ce-shi" title="代码实现及测试">代码实现及测试</a></li></ul></li></ul></div>
+            <div id="toc"><ul><li><a class="toc-href" href="#" title="快速排序">快速排序</a><ul><li><a class="toc-href" href="#1kuai-su-pai-xu" title="1.快速排序">1.快速排序</a></li><li><a class="toc-href" href="#2dai-ma-shi-xian-ji-ce-shi" title="2.代码实现及测试">2.代码实现及测试</a></li></ul></li></ul></div>
         </div>
     </div>
         </div>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Hi | World</title><link href="http://king32783784.github.io/" rel="alternate"></link><link href="http://king32783784.github.io/feeds/penglee.atom.xml" rel="self"></link><id>http://king32783784.github.io/</id><updated>2016-08-02T00:00:00+08:00</updated><entry><title>LTP－kernel-syscalls-abort</title><link href="http://king32783784.github.io/2016/08/02/LTP/" rel="alternate"></link><published>2016-08-02T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2016-08-02:2016/08/02/LTP/</id><summary type="html">&lt;body&gt;&lt;p&gt;从本文开始，开始分析kernel部分的测试用例，该部分测试用例大部分为Ｃ语言编写，因此会穿插加入一定的Ｃ语言或unix环境编程的知识。&lt;/p&gt;
-&lt;p&gt;&lt;img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/I0T0E4Y826.jpg" width="420"/&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Hi | World</title><link href="http://king32783784.github.io/" rel="alternate"></link><link href="http://king32783784.github.io/feeds/penglee.atom.xml" rel="self"></link><id>http://king32783784.github.io/</id><updated>2016-08-02T00:00:00+08:00</updated><entry><title>LTP－kernel-syscalls-abort</title><link href="http://king32783784.github.io/2016/08/02/LTP/" rel="alternate"></link><published>2016-08-02T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2016-08-02:2016/08/02/LTP/</id><summary type="html">&lt;p&gt;从本文开始，开始分析kernel部分的测试用例，该部分测试用例大部分为Ｃ语言编写，因此会穿插加入一定的Ｃ语言或unix环境编程的知识。&lt;/p&gt;
+&lt;p&gt;&lt;img height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/I0T0E4Y826.jpg" width="420"/&gt;&lt;/p&gt;
 &lt;h4 id="abort"&gt;abort&lt;/h4&gt;
 &lt;p&gt;设计说明&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;测试策略&lt;/strong&gt;&lt;/p&gt;
@@ -275,7 +275,7 @@ play1()
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;在sencond.h文件内声明play1函数，怎么能调用到first.c文件中的哪个play1函数中呢? 是不是搞错了，没有搞错, 这里涉及到c语言的另一个特性:存储类说明符.
 C语言的存储类说明符有以下几个, 我来列表说明一下&lt;/p&gt;
-&lt;table class="table table-hover table-striped"&gt;
+&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;说明符&lt;/th&gt;
@@ -666,10 +666,10 @@ rlim_t rlim_max;
 
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;abort测试分析结束。&lt;/p&gt;&lt;/body&gt;</summary><category term="LTP"></category></entry><entry><title>LTP－kernel-syscalls</title><link href="http://king32783784.github.io/2016/08/01/LTP/" rel="alternate"></link><published>2016-08-01T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2016-08-01:2016/08/01/LTP/</id><summary type="html">&lt;body&gt;&lt;h4 id="syscalls"&gt;syscalls&lt;/h4&gt;
+&lt;p&gt;abort测试分析结束。&lt;/p&gt;</summary><category term="LTP"></category></entry><entry><title>LTP－kernel-syscalls</title><link href="http://king32783784.github.io/2016/08/01/LTP/" rel="alternate"></link><published>2016-08-01T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2016-08-01:2016/08/01/LTP/</id><summary type="html">&lt;h4 id="syscalls"&gt;syscalls&lt;/h4&gt;
 &lt;p&gt;ltp中kernel测试比重很大，尤其是syscalls，包括一下用例：
 注：测试内容分析时补充。&lt;/p&gt;
-&lt;table class="table table-hover table-striped"&gt;
+&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;用例名称&lt;/th&gt;
@@ -1940,7 +1940,7 @@ rlim_t rlim_max;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;接下来按照顺序分析系统调用的每一个case,并将每个case的测试内容补充到本文。&lt;/p&gt;
-&lt;p&gt;&lt;img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/LK0U4TNURZ.jpg" width="420"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/LK0U4TNURZ.jpg" width="420"/&gt;&lt;/p&gt;
 &lt;p&gt;附linux系统主要系统调用列表&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;一、进程控制&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;fork    创建一个新进程&lt;/p&gt;
@@ -2162,7 +2162,7 @@ rlim_t rlim_max;
 &lt;p&gt;shmctl  控制共享内存&lt;/p&gt;
 &lt;p&gt;shmget  获取共享内存&lt;/p&gt;
 &lt;p&gt;shmat   连接共享内存&lt;/p&gt;
-&lt;p&gt;shmdt   拆卸共享内存&lt;/p&gt;&lt;/body&gt;</summary><category term="LTP"></category></entry><entry><title>LTP－Command-file</title><link href="http://king32783784.github.io/2016/06/03/LTP/" rel="alternate"></link><published>2016-06-03T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2016-06-03:2016/06/03/LTP/</id><summary type="html">&lt;body&gt;&lt;h4 id="file"&gt;file&lt;/h4&gt;
+&lt;p&gt;shmdt   拆卸共享内存&lt;/p&gt;</summary><category term="LTP"></category></entry><entry><title>LTP－Command-file</title><link href="http://king32783784.github.io/2016/06/03/LTP/" rel="alternate"></link><published>2016-06-03T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2016-06-03:2016/06/03/LTP/</id><summary type="html">&lt;h4 id="file"&gt;file&lt;/h4&gt;
 &lt;p&gt;file　用例主要用于测试file命令。&lt;/p&gt;
 &lt;h5 id="fileming-ling-jie-shao"&gt;file命令介绍&lt;/h5&gt;
 &lt;p&gt;file命令可以通过查看文件内容来找出特定类型的文件，在UNIX/ Linux系统中，文件类型并不是由文件扩展名来决定的(windows中却正是这么做的),file命令的目的是从多个文件中收集文件类型统计信息。&lt;/p&gt;
@@ -2355,10 +2355,10 @@ Determine type of FILEs.
 &lt;span class="x"&gt;    TFAILCNT=&lt;/span&gt;&lt;span class="p"&gt;$((&lt;/span&gt; &lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;TFAILCNT&lt;/span&gt;&lt;span class="err"&gt;+&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
 &lt;span class="x"&gt;fi&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;其他测试代码同上面类似，不再一一分析。&lt;/p&gt;&lt;/body&gt;</summary><category term="LTP"></category></entry><entry><title>LTP－Command</title><link href="http://king32783784.github.io/2016/06/02/LTP/" rel="alternate"></link><published>2016-06-02T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2016-06-02:2016/06/02/LTP/</id><summary type="html">&lt;body&gt;&lt;p&gt;本节将重点分析commands部分的用例。&lt;/p&gt;
+&lt;p&gt;其他测试代码同上面类似，不再一一分析。&lt;/p&gt;</summary><category term="LTP"></category></entry><entry><title>LTP－Command</title><link href="http://king32783784.github.io/2016/06/02/LTP/" rel="alternate"></link><published>2016-06-02T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2016-06-02:2016/06/02/LTP/</id><summary type="html">&lt;p&gt;本节将重点分析commands部分的用例。&lt;/p&gt;
 &lt;h4 id="commandzhu-yao-yong-li"&gt;Command主要用例&lt;/h4&gt;
 &lt;p&gt;主要case包括：&lt;/p&gt;
-&lt;table class="table table-hover table-striped"&gt;
+&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;case&lt;/th&gt;
@@ -2742,10 +2742,10 @@ LD_LIBRARY_PATH=. ./main
 &lt;p&gt;(28) Signal SIGQUIT&lt;/p&gt;
 &lt;p&gt;(29) Signal SIGHUP; ar should not remove archive that existed before invocation.&lt;/p&gt;
 &lt;p&gt;(30) Signal SIGINIT; ar should not remove archive that existed before invocation.&lt;/p&gt;
-&lt;p&gt;(31) Signal SIGQUIT; ar should not remove archive that existed before invocation.&lt;/p&gt;&lt;/body&gt;</summary><category term="LTP"></category></entry><entry><title>LTP－Case list</title><link href="http://king32783784.github.io/2016/06/01/LTP/" rel="alternate"></link><published>2016-06-01T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2016-06-01:2016/06/01/LTP/</id><summary type="html">&lt;body&gt;&lt;p&gt;该topic将深入分析ltp的测试内容，着重于具体每个case的测试内容及测试方法。通过对ltp case的分析，加强linux系统的理解和用例设计。本节主要整理ltp的包括测试case的类型和case列表。&lt;/p&gt;
+&lt;p&gt;(31) Signal SIGQUIT; ar should not remove archive that existed before invocation.&lt;/p&gt;</summary><category term="LTP"></category></entry><entry><title>LTP－Case list</title><link href="http://king32783784.github.io/2016/06/01/LTP/" rel="alternate"></link><published>2016-06-01T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2016-06-01:2016/06/01/LTP/</id><summary type="html">&lt;p&gt;该topic将深入分析ltp的测试内容，着重于具体每个case的测试内容及测试方法。通过对ltp case的分析，加强linux系统的理解和用例设计。本节主要整理ltp的包括测试case的类型和case列表。&lt;/p&gt;
 &lt;h3 id="zheng-ti-qing-kuang"&gt;整体情况&lt;/h3&gt;
 &lt;p&gt;case主要分为&amp;rdquo;commands"、&amp;ldquo;kdump"、"kernel"、"misc"、"network"、"open_posix_testsuite"、"realtime"、"lib"等部分，主要内容如下：&lt;/p&gt;
-&lt;table class="table table-hover table-striped"&gt;
+&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;分类&lt;/th&gt;
@@ -2789,7 +2789,7 @@ LD_LIBRARY_PATH=. ./main
 &lt;/table&gt;
 &lt;h4 id="commands"&gt;commands&lt;/h4&gt;
 &lt;p&gt;主要case包括：&lt;/p&gt;
-&lt;table class="table table-hover table-striped"&gt;
+&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;case&lt;/th&gt;
@@ -2889,7 +2889,7 @@ LD_LIBRARY_PATH=. ./main
 &lt;/table&gt;
 &lt;h4 id="kernel"&gt;kernel&lt;/h4&gt;
 &lt;p&gt;主要case包括:&lt;/p&gt;
-&lt;table class="table table-hover table-striped"&gt;
+&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;case&lt;/th&gt;
@@ -2984,7 +2984,7 @@ LD_LIBRARY_PATH=. ./main
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h4 id="misc"&gt;misc&lt;/h4&gt;
-&lt;table class="table table-hover table-striped"&gt;
+&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;case&lt;/th&gt;
@@ -3007,7 +3007,7 @@ LD_LIBRARY_PATH=. ./main
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h4 id="network"&gt;network&lt;/h4&gt;
-&lt;table class="table table-hover table-striped"&gt;
+&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;case&lt;/th&gt;
@@ -3090,7 +3090,7 @@ LD_LIBRARY_PATH=. ./main
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h4 id="open_posix_testsuite"&gt;open_posix_testsuite&lt;/h4&gt;
-&lt;table class="table table-hover table-striped"&gt;
+&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;case&lt;/th&gt;
@@ -3117,7 +3117,7 @@ LD_LIBRARY_PATH=. ./main
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h4 id="realtime"&gt;realtime&lt;/h4&gt;
-&lt;table class="table table-hover table-striped"&gt;
+&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;case&lt;/th&gt;
@@ -3143,7 +3143,7 @@ LD_LIBRARY_PATH=. ./main
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;接下来会深入分析每个case的具体测试目的及内容。ltp测试用例主要采用shell和Ｃ编写。&lt;/p&gt;&lt;/body&gt;</summary><category term="LTP"></category></entry><entry><title>Python-HOWTOS(一）</title><link href="http://king32783784.github.io/2016/03/11/python-howtosyi/" rel="alternate"></link><published>2016-03-11T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2016-03-11:2016/03/11/python-howtosyi/</id><summary type="html">&lt;body&gt;&lt;p&gt;Python HOWTOS 是一些单一的、特定的主题并试图覆盖python大部分内容，参考linux howto形成的集合，部分内容比python库包含更多的内容。
+&lt;p&gt;接下来会深入分析每个case的具体测试目的及内容。ltp测试用例主要采用shell和Ｃ编写。&lt;/p&gt;</summary><category term="LTP"></category></entry><entry><title>Python-HOWTOS(一）</title><link href="http://king32783784.github.io/2016/03/11/python-howtosyi/" rel="alternate"></link><published>2016-03-11T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2016-03-11:2016/03/11/python-howtosyi/</id><summary type="html">&lt;p&gt;Python HOWTOS 是一些单一的、特定的主题并试图覆盖python大部分内容，参考linux howto形成的集合，部分内容比python库包含更多的内容。
 目前，包括这些topic.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;将python2代码移植到python3&lt;/li&gt;
@@ -3211,7 +3211,7 @@ LD_LIBRARY_PATH=. ./main
 &lt;h5 id="use-continuous-integration-to-stay-compatible_idioms"&gt;Use continuous integration to stay compatible_idioms&lt;/h5&gt;
 &lt;p&gt;待补&lt;/p&gt;
 &lt;h4 id="dropping-python2-support-completely_1"&gt;Dropping Python2 support completely&lt;/h4&gt;
-&lt;p&gt;待补&lt;/p&gt;&lt;/body&gt;</summary><category term="python-howtos"></category></entry><entry><title>Python-tips01</title><link href="http://king32783784.github.io/2016/01/01/effective-python/" rel="alternate"></link><published>2016-01-01T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2016-01-01:2016/01/01/effective-python/</id><summary type="html">&lt;body&gt;&lt;h3 id="que-ren-pythonban-ben"&gt;确认python版本&lt;/h3&gt;
+&lt;p&gt;待补&lt;/p&gt;</summary><category term="python-howtos"></category></entry><entry><title>Python-tips01</title><link href="http://king32783784.github.io/2016/01/01/effective-python/" rel="alternate"></link><published>2016-01-01T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2016-01-01:2016/01/01/effective-python/</id><summary type="html">&lt;h3 id="que-ren-pythonban-ben"&gt;确认python版本&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;目前两个版本活跃状态，python2和python3&lt;/li&gt;
 &lt;li&gt;python有很多流行的运行环境，如cpython jython ironpython以及  pypy&lt;/li&gt;
@@ -3289,7 +3289,7 @@ python2中，如果str只包含7位ASCII，Unicode和str实例成了同一种类
 为了解决这个问题，我们必须用二进制写入模式（'wb')来开启操作的文件。以下方式同时适用Python2和Python3:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;with open('/tmp/random.bin', 'wb') as f:
     f.write(os.urandom(10))
-&lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;</summary><category term="python"></category></entry><entry><title>PyUnit(一）</title><link href="http://king32783784.github.io/2016/01/01/python/" rel="alternate"></link><published>2016-01-01T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2016-01-01:2016/01/01/python/</id><summary type="html">&lt;body&gt;&lt;h3 id="pyunitjian-jie"&gt;PyUnit简介&lt;/h3&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="python"></category></entry><entry><title>PyUnit(一）</title><link href="http://king32783784.github.io/2016/01/01/python/" rel="alternate"></link><published>2016-01-01T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2016-01-01:2016/01/01/python/</id><summary type="html">&lt;h3 id="pyunitjian-jie"&gt;PyUnit简介&lt;/h3&gt;
 &lt;p&gt;PyUnit是Python 2.1版本新增功能。&lt;/p&gt;
 &lt;p&gt;Python单元测试框架，又叫PyUnit。是JUnit的Python实现，是由Kent Beck和Erich Gamma共同开发的。同样，JUnit是Kent的Smalltalk测试框架的Java实现。PyUnit和JUnit都是各自怨言的标准测试框架。&lt;/p&gt;
 &lt;p&gt;PyUnit模块支持自动化测试，通用的setup和shutdown的代码，测试用例整合为测试集，还有独立的测试报告框架。PyUnit提供的类能够很容易的使以上特性应用于测试。PyUnit是借由以下概念支持单元测试的：&lt;/p&gt;
@@ -3393,7 +3393,7 @@ test_shuffle (__main__.TestSequenceFunctions) ... ok
         &lt;span class="n"&gt;unittest&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;测试用例通过继承unittest.TestCase创建。测试用例中3个独立的测试函数以"test"为开头命名。通过使用这种命名方式，执行器可以知道哪些方法是测试方法。&lt;/p&gt;
-&lt;p&gt;3个测试方法同样调用assertEqual()函数来检查预期结果；调用assertTrue()函数来判断条件；调用assertRaises()函数来验证是否触发了预期的异常。这3个方法作为断言语句判断用例执行正确性，以便于执行器收集测试结果并产生测试报告。&lt;/p&gt;&lt;/body&gt;</summary><category term="Pyunit"></category></entry><entry><title>Autotest-client Package(1)</title><link href="http://king32783784.github.io/2015/11/01/autotest/" rel="alternate"></link><published>2015-11-01T00:00:00+08:00</published><author><name>penglee</name></author><id>tag:king32783784.github.io,2015-11-01:2015/11/01/autotest/</id><summary type="html">&lt;body&gt;&lt;p&gt;&lt;img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
+&lt;p&gt;3个测试方法同样调用assertEqual()函数来检查预期结果；调用assertTrue()函数来判断条件；调用assertRaises()函数来验证是否触发了预期的异常。这3个方法作为断言语句判断用例执行正确性，以便于执行器收集测试结果并产生测试报告。&lt;/p&gt;</summary><category term="Pyunit"></category></entry><entry><title>Autotest-client Package(1)</title><link href="http://king32783784.github.io/2015/11/01/autotest/" rel="alternate"></link><published>2015-11-01T00:00:00+08:00</published><author><name>penglee</name></author><id>tag:king32783784.github.io,2015-11-01:2015/11/01/autotest/</id><summary type="html">&lt;p&gt;&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
 &lt;h3 id="autotest_local-mo-kuai"&gt;autotest_local 模块&lt;/h3&gt;
 &lt;p&gt;class autotest.client.autotest_local.AutotestLocalAPP&lt;/p&gt;
 &lt;p&gt;本地自动测试，指定一个control文件启动测试&lt;/p&gt;
@@ -3478,7 +3478,7 @@ test_shuffle (__main__.TestSequenceFunctions) ... ok
         &lt;span class="n"&gt;job&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;runjob&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;realpath&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;drop_caches&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;options&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/20/autotest/"&gt;Autotest： Autotest-Autotest Remote (Autoserv)(三）&amp;gt;&amp;gt;&lt;/a&gt;
-下一篇&lt;a href=""&gt;Autotest:&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;</summary><category term="autotest"></category></entry><entry><title>Autotest-Autotest Remote (Autoserv)(三）</title><link href="http://king32783784.github.io/2015/08/22/autotest/" rel="alternate"></link><published>2015-08-22T00:00:00+08:00</published><author><name>penglee</name></author><id>tag:king32783784.github.io,2015-08-22:2015/08/22/autotest/</id><summary type="html">&lt;body&gt;&lt;p&gt;&lt;img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
+下一篇&lt;a href=""&gt;Autotest:&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</summary><category term="autotest"></category></entry><entry><title>Autotest-Autotest Remote (Autoserv)(三）</title><link href="http://king32783784.github.io/2015/08/22/autotest/" rel="alternate"></link><published>2015-08-22T00:00:00+08:00</published><author><name>penglee</name></author><id>tag:king32783784.github.io,2015-08-22:2015/08/22/autotest/</id><summary type="html">&lt;p&gt;&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
 &lt;h3 id="running-autotest-in-a-guest"&gt;Running Autotest In a Guest&lt;/h3&gt;
 &lt;p&gt;接下来看一下虚拟机guest执行一次测试的列子。control文件有点特别的是需要在host中运行OProfile收集运行时的信息。使用oprofile前，需要在guest安装。
 给KVm指定一个IP，就会有一个虚拟机生成。试图运行虚拟机里面的oprofile，但没有成功。最后，选项"opcontrol --setup"应根据host中vmlinux位置调整。&lt;/p&gt;
@@ -3613,7 +3613,7 @@ def install_kvm(kvm_on_host_var_name, host, source, addresses):
     parallel([server_command, client_command])
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/21/autotest/"&gt;Autotest： Autotest-Autotest Remote (Autoserv)(二）&amp;gt;&amp;gt;&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/08/23/autotest/"&gt;Autotest:Autotest-client Package(1)&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;</summary><category term="autotest"></category></entry><entry><title>Autotest-Autotest Remote (Autoserv)(二）</title><link href="http://king32783784.github.io/2015/08/21/autotest/" rel="alternate"></link><published>2015-08-21T00:00:00+08:00</published><author><name>penglee</name></author><id>tag:king32783784.github.io,2015-08-21:2015/08/21/autotest/</id><summary type="html">&lt;body&gt;&lt;p&gt;&lt;img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/08/23/autotest/"&gt;Autotest:Autotest-client Package(1)&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</summary><category term="autotest"></category></entry><entry><title>Autotest-Autotest Remote (Autoserv)(二）</title><link href="http://king32783784.github.io/2015/08/21/autotest/" rel="alternate"></link><published>2015-08-21T00:00:00+08:00</published><author><name>penglee</name></author><id>tag:king32783784.github.io,2015-08-21:2015/08/21/autotest/</id><summary type="html">&lt;p&gt;&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
 &lt;h3 id="kvmzhi-chi"&gt;KVM支持&lt;/h3&gt;
 &lt;p&gt;如前所述，Autoserv 支持控制虚拟机。这个对象设计的可以支持虚拟机管理/hypervisors。一开始，只支持kvm,为了支持KVM，你需要做：
     1.创建虚拟机，运行在虚拟层的机器
@@ -3670,7 +3670,7 @@ iface vhost2 inet static
     geteway 10.0.0.1
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;/usr/local/bin/get-mac-address.sh :&lt;/p&gt;
-&lt;table class="table highlighttable table-striped table-hover"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
  2
  3
  4
@@ -3702,9 +3702,9 @@ iface vhost2 inet static
 &lt;span class="s2"&gt;if ["&lt;/span&gt;&lt;span class="nv"&gt;$which&lt;/span&gt;&lt;span class="s2"&gt;"]; then echo &lt;/span&gt;&lt;span class="nv"&gt;$which&lt;/span&gt;&lt;span class="s2"&gt;; exit 0; fi&lt;/span&gt;
 &lt;span class="s2"&gt;exit 1&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;/etc/network/interfaces文件需要重复编写，替换，可以通过python脚本实现，调整map_entry, host_entry, first_value和 last_value:&lt;/p&gt;
-&lt;table class="table highlighttable table-striped table-hover"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
  2
  3
  4
@@ -3770,7 +3770,7 @@ iface vhost2 inet static
 &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;first_value&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;last_value&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;host_entry&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;h4 id="ssh-authentication"&gt;SSH Authentication&lt;/h4&gt;
 &lt;p&gt;类似于SSHHost，也需要设置免密码登陆。&lt;/p&gt;
 &lt;h4 id="serial-console"&gt;Serial Console&lt;/h4&gt;
@@ -3790,7 +3790,7 @@ iface vhost2 inet static
 &lt;/ul&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/20/autotest/"&gt;Autotest： Autotest-Autotest Remote (Autoserv)(一）&amp;gt;&amp;gt;&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/08/22/autotest/"&gt;Autotest:Autotest-Autotest Remote (Autoserv)(三）&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;</summary><category term="autotest"></category></entry><entry><title>Autotest-Autotest Remote (Autoserv)（一）</title><link href="http://king32783784.github.io/2015/08/20/autotest/" rel="alternate"></link><published>2015-08-20T00:00:00+08:00</published><author><name>penglee</name></author><id>tag:king32783784.github.io,2015-08-20:2015/08/20/autotest/</id><summary type="html">&lt;body&gt;&lt;p&gt;&lt;img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/08/22/autotest/"&gt;Autotest:Autotest-Autotest Remote (Autoserv)(三）&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</summary><category term="autotest"></category></entry><entry><title>Autotest-Autotest Remote (Autoserv)（一）</title><link href="http://king32783784.github.io/2015/08/20/autotest/" rel="alternate"></link><published>2015-08-20T00:00:00+08:00</published><author><name>penglee</name></author><id>tag:king32783784.github.io,2015-08-20:2015/08/20/autotest/</id><summary type="html">&lt;p&gt;&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
 &lt;p&gt;Autoserv 是&amp;ldquo;自动化机器控制&amp;ldquo;的框架
 Autoserv 目的是控制机器，它可以：&lt;/p&gt;
 &lt;ul&gt;
@@ -3952,7 +3952,7 @@ print "Done"
 &lt;p&gt;未完待续&lt;/p&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/19/autotest/"&gt;Autotest：Autotest-others&amp;gt;&amp;gt;&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/08/21/autotest/"&gt;Autotest:Autotest-Autotest Remote (Autoserv)(二）&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;</summary><category term="autotest"></category></entry><entry><title>Autotest-others</title><link href="http://king32783784.github.io/2015/08/19/autotest/" rel="alternate"></link><published>2015-08-19T00:00:00+08:00</published><author><name>penglee</name></author><id>tag:king32783784.github.io,2015-08-19:2015/08/19/autotest/</id><summary type="html">&lt;body&gt;&lt;p&gt;&lt;img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/08/21/autotest/"&gt;Autotest:Autotest-Autotest Remote (Autoserv)(二）&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</summary><category term="autotest"></category></entry><entry><title>Autotest-others</title><link href="http://king32783784.github.io/2015/08/19/autotest/" rel="alternate"></link><published>2015-08-19T00:00:00+08:00</published><author><name>penglee</name></author><id>tag:king32783784.github.io,2015-08-19:2015/08/19/autotest/</id><summary type="html">&lt;p&gt;&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
 &lt;h2 id="zhi-xing-wai-bu-ce-shi"&gt;执行外部测试&lt;/h2&gt;
 &lt;p&gt;autotest可以像执行自身测试一样执行外部测试．&lt;/p&gt;
 &lt;h3 id="zhi-xing-ce-shi"&gt;执行测试&lt;/h3&gt;
@@ -3998,7 +3998,7 @@ key2=value2
 &lt;p&gt;下篇将开始介绍Remote (Former Server)．&lt;/p&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/18/autotest/"&gt;Autotest：Autotest-add test&amp;gt;&amp;gt;&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/08/20/autotest/"&gt;Autotest:Autotest-Autotest Remote (Autoserv)&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;</summary><category term="autotest"></category></entry><entry><title>Autotest-Linux distribution detection</title><link href="http://king32783784.github.io/2015/08/18/autotest/" rel="alternate"></link><published>2015-08-18T00:00:00+08:00</published><author><name>penglee</name></author><id>tag:king32783784.github.io,2015-08-18:2015/08/18/autotest/</id><summary type="html">&lt;body&gt;&lt;p&gt;&lt;img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/08/20/autotest/"&gt;Autotest:Autotest-Autotest Remote (Autoserv)&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</summary><category term="autotest"></category></entry><entry><title>Autotest-Linux distribution detection</title><link href="http://king32783784.github.io/2015/08/18/autotest/" rel="alternate"></link><published>2015-08-18T00:00:00+08:00</published><author><name>penglee</name></author><id>tag:king32783784.github.io,2015-08-18:2015/08/18/autotest/</id><summary type="html">&lt;p&gt;&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
 &lt;h2 id="linuxfa-xing-ban-jian-ce"&gt;linux发行版检测&lt;/h2&gt;
 &lt;p&gt;Autotest有个功能,就是让测试清晰了解到它运行在什么样的发行版上.
 这个功能是由probe类群的实现和注册实现的.
@@ -4443,7 +4443,7 @@ redhat
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/17/autotest/"&gt;Autotest：Autotest-Using and developing job profilers&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/08/19/autotest/"&gt;Autotest:Autotest-others&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;</summary><category term="autotest"></category></entry><entry><title>Autotest-Using and developing job profilers</title><link href="http://king32783784.github.io/2015/08/17/autotest/" rel="alternate"></link><published>2015-08-17T00:00:00+08:00</published><author><name>penglee</name></author><id>tag:king32783784.github.io,2015-08-17:2015/08/17/autotest/</id><summary type="html">&lt;body&gt;&lt;p&gt;&lt;img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/08/19/autotest/"&gt;Autotest:Autotest-others&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</summary><category term="autotest"></category></entry><entry><title>Autotest-Using and developing job profilers</title><link href="http://king32783784.github.io/2015/08/17/autotest/" rel="alternate"></link><published>2015-08-17T00:00:00+08:00</published><author><name>penglee</name></author><id>tag:king32783784.github.io,2015-08-17:2015/08/17/autotest/</id><summary type="html">&lt;p&gt;&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
 &lt;h2 id="shi-yong-he-tian-jia-ce-shi-fen-xi-qi"&gt;使用和添加测试分析器&lt;/h2&gt;
 &lt;p&gt;添加一个分析器和添加一个测试项目类似.每个分析器都有自己的子目录(client/profilers或你可以查看profilers/),一个标准例子:&lt;/p&gt;
 &lt;ul&gt;
@@ -4522,7 +4522,7 @@ self.cmd = self.srcdir + '/sys-utils/readprofile'
 &lt;p&gt;只需要在profilers下创建一个新目录,然后添加自己的控制文件,源码和控制脚本.最简单的方式是直接复制已有的readprofile.py为mytest.py,并且修改顶部的类名.&lt;/p&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/16/autotest/"&gt;Autotest：Autotest-add test&amp;gt;&amp;gt;&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/08/18/autotest/"&gt;Autotest:Autotest-Linux distribution detection&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;</summary><category term="autotest"></category></entry><entry><title>Autotest-add test</title><link href="http://king32783784.github.io/2015/08/16/autotest/" rel="alternate"></link><published>2015-08-16T00:00:00+08:00</published><author><name>penglee</name></author><id>tag:king32783784.github.io,2015-08-16:2015/08/16/autotest/</id><summary type="html">&lt;body&gt;&lt;p&gt;&lt;img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/08/18/autotest/"&gt;Autotest:Autotest-Linux distribution detection&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</summary><category term="autotest"></category></entry><entry><title>Autotest-add test</title><link href="http://king32783784.github.io/2015/08/16/autotest/" rel="alternate"></link><published>2015-08-16T00:00:00+08:00</published><author><name>penglee</name></author><id>tag:king32783784.github.io,2015-08-16:2015/08/16/autotest/</id><summary type="html">&lt;p&gt;&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
 &lt;h2 id="ce-shi-mo-kuai-kai-fa"&gt;测试模块开发&lt;/h2&gt;
 &lt;p&gt;测试模块必需是独立的单元，包含测试需要的所有内容（除了调用测试框架的）&lt;/p&gt;
 &lt;p&gt;测试模块需要：&lt;/p&gt;
@@ -4598,7 +4598,7 @@ nprocs = 4
 &lt;p&gt;只需创建测试下一个新的子目录，并添加自己的控制文件，源代码和包装。 比较简单的做法是,复制dbench.py ​​为mytest.py ,然后对它进行编辑.&lt;/p&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/15/autotest/"&gt;Autotest：Autotest-Control file specification&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/08/17/autotest/"&gt;Autotest:Using and developing job profilers&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;</summary><category term="autotest"></category></entry><entry><title>Autotest-Control file specification</title><link href="http://king32783784.github.io/2015/08/15/autotest/" rel="alternate"></link><published>2015-08-15T00:00:00+08:00</published><author><name>penglee</name></author><id>tag:king32783784.github.io,2015-08-15:2015/08/15/autotest/</id><summary type="html">&lt;body&gt;&lt;p&gt;&lt;img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/08/17/autotest/"&gt;Autotest:Using and developing job profilers&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</summary><category term="autotest"></category></entry><entry><title>Autotest-Control file specification</title><link href="http://king32783784.github.io/2015/08/15/autotest/" rel="alternate"></link><published>2015-08-15T00:00:00+08:00</published><author><name>penglee</name></author><id>tag:king32783784.github.io,2015-08-15:2015/08/15/autotest/</id><summary type="html">&lt;p&gt;&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
 &lt;h2 id="control-file-specification"&gt;Control file specification&lt;/h2&gt;
 &lt;p&gt;该篇主要介绍control文件的标准.该标准主要为了使自定义的control文件能够提供前端或测试所需要的信息,并且能够通过前端修改.
 主要内容:&lt;/p&gt;
@@ -4611,7 +4611,7 @@ nprocs = 4
 &lt;p&gt;control文件命名必须是control.xxxx,xxxx是你定义或则代码评审定义．　例如，５００次硬重启测试，一个正规的定义就是　control.hard500&lt;/p&gt;
 &lt;h3 id="chang-yong-bian-liang"&gt;常用变量&lt;/h3&gt;
 &lt;p&gt;下面是一个常用变量的列表&lt;/p&gt;
-&lt;table class="table table-hover table-striped"&gt;
+&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;变量名&lt;/th&gt;
@@ -4687,7 +4687,7 @@ nprocs = 4
 例如，发布向２３台机器发布任务，单只有２２个可以执行，单独的那个会失败．&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;TIME(Required)&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;测试需要的时间，不包括设置时间．&lt;/p&gt;
-&lt;table class="table table-hover table-striped"&gt;
+&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;Time&lt;/th&gt;
@@ -4747,7 +4747,7 @@ parallel_simple(run, machines)
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/14/autotest/"&gt;Autotest:Autotest-client control&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/08/16/autotest/"&gt;Autotest:Autotest-add test&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;</summary><category term="autotest"></category></entry><entry><title>Autotest-client control</title><link href="http://king32783784.github.io/2015/08/14/autotest/" rel="alternate"></link><published>2015-08-14T00:00:00+08:00</published><author><name>penglee</name></author><id>tag:king32783784.github.io,2015-08-14:2015/08/14/autotest/</id><summary type="html">&lt;body&gt;&lt;p&gt;&lt;img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/08/16/autotest/"&gt;Autotest:Autotest-add test&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</summary><category term="autotest"></category></entry><entry><title>Autotest-client control</title><link href="http://king32783784.github.io/2015/08/14/autotest/" rel="alternate"></link><published>2015-08-14T00:00:00+08:00</published><author><name>penglee</name></author><id>tag:king32783784.github.io,2015-08-14:2015/08/14/autotest/</id><summary type="html">&lt;p&gt;&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
 &lt;h2 id="client-control-files"&gt;Client Control files&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;主要内容&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -4909,7 +4909,7 @@ job.parallel([first_task], [second_task])
 &lt;p&gt;并行任务执行在自己的地址空间,你不比担心.但是毕竟是运行在同一台物理机中.仍然需要主要避免访问同一资源,如相同的文件.&lt;/p&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/13/autotest02/"&gt;Autotest：Autotest-Local&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/08/15/autotest/"&gt;Autotest：Autotest-Control file specification&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;</summary><category term="autotest"></category></entry><entry><title>Autotest-Local</title><link href="http://king32783784.github.io/2015/08/13/autotest02/" rel="alternate"></link><published>2015-08-13T00:00:00+08:00</published><author><name>penglee</name></author><id>tag:king32783784.github.io,2015-08-13:2015/08/13/autotest02/</id><summary type="html">&lt;body&gt;&lt;p&gt;&lt;img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/08/15/autotest/"&gt;Autotest：Autotest-Control file specification&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</summary><category term="autotest"></category></entry><entry><title>Autotest-Local</title><link href="http://king32783784.github.io/2015/08/13/autotest02/" rel="alternate"></link><published>2015-08-13T00:00:00+08:00</published><author><name>penglee</name></author><id>tag:king32783784.github.io,2015-08-13:2015/08/13/autotest02/</id><summary type="html">&lt;p&gt;&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
 &lt;h2 id="local-former-client"&gt;Local (Former Client)&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;主要内容&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -4950,7 +4950,7 @@ sudo rm -rf client/results
 &lt;p&gt;&lt;strong&gt;注意,尽量在一个测试机或虚拟机执行,不然会丢失之前系统的启动设置.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/12/Autotest01/"&gt;Autotest：Autotest-summary&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/08/14/autotest/"&gt;Autotest：Autotest-client control&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;</summary><category term="autotest"></category></entry><entry><title>Autotest-summary</title><link href="http://king32783784.github.io/2015/08/12/Autotest01/" rel="alternate"></link><published>2015-08-12T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2015-08-12:2015/08/12/Autotest01/</id><summary type="html">&lt;body&gt;&lt;p&gt;&lt;img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/08/14/autotest/"&gt;Autotest：Autotest-client control&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</summary><category term="autotest"></category></entry><entry><title>Autotest-summary</title><link href="http://king32783784.github.io/2015/08/12/Autotest01/" rel="alternate"></link><published>2015-08-12T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2015-08-12:2015/08/12/Autotest01/</id><summary type="html">&lt;p&gt;&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/&gt;&lt;/p&gt;
 &lt;p&gt;Autotest是一个开源的自动化测试框架.设计目的是为了测试Linux内核,同样可以用来检查新的硬件,虚拟化测试以及linux平台用户空间程序.它遵循GPL协议,并有大量的开发组织成员,其中包括像谷歌,IBM,红帽等.
 Avocado,是Autotest开发组,开发的下一代的自动化测试框架.详细信息参考&lt;a href="http://avocado-framework.github.io/"&gt;Avocado&lt;/a&gt;,后续有时间会再对Avocado进行介绍.
 本专题主要介绍以下内容:&lt;/p&gt;
@@ -4969,7 +4969,7 @@ Avocado,是Autotest开发组,开发的下一代的自动化测试框架.详细�
 &lt;p&gt;Github: &lt;a href="https://github.com/autotest/autotest"&gt;Github&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id="autotestzhu-yao-jie-gou"&gt;Autotest主要结构&lt;/h2&gt;
 &lt;p&gt;下图是Autotest框架简化图:&lt;/p&gt;
-&lt;p&gt;&lt;img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/Autotest1.png?raw=true" width="480"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/Autotest1.png?raw=true" width="480"/&gt;&lt;/p&gt;
 &lt;h3 id="webjie-kou-he-ming-ling-xing-jie-kou"&gt;Web接口和命令行接口&lt;/h3&gt;
 &lt;p&gt;Web接口和命令行接口是相辅相成的方式去连接Autotest并创建job.这两则具有相同的功能,意在方便用户.你可以用这些接口做以下事情:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;* 管理jobs,如创建,监控,中止等
@@ -5002,14 +5002,14 @@ Avocado,是Autotest开发组,开发的下一代的自动化测试框架.详细�
 通过服务端调用
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;一个典型的工作流程如下:&lt;/p&gt;
-&lt;p&gt;&lt;img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/Autotest2.png?raw=true" width="480"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/Autotest2.png?raw=true" width="480"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;简要说明&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;用户创建job(可以通过web端或命令行)或自动事件触发;将job信息记录插入前端数据库;调度器(monitor_db)将job匹配到空闲机器;调度器创建autoserv进程启动job;Autoserv确认客户端或修复;Autoserv在测试机器上安装或更新autotest客户端;Autoserv监控客户端状态,监视问题;
 客户机器触发autotest客户端执行测试(已开发测试项目)-运行control文件-log模块记录测试信息-setup-执行测试-测试结果文件由autoserv回收;分析机器新的job;log结果信息处理;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;结果目录&lt;/strong&gt;:按照一定格式结果目录&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;结果数据库&lt;/strong&gt;:一个简单的数据库保存每个测试的job信息 测试结果 性能指标等&lt;/p&gt;
 &lt;p&gt;随着前面的介绍,下图是更容易理解的基本框架图:&lt;/p&gt;
-&lt;p&gt;&lt;img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/Autotest3.png?raw=true" width="480"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/Autotest3.png?raw=true" width="480"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;简要说明:&lt;/strong&gt;
 Autotest通过 Web 前端或者命令行工具提交测试任务， Autotest Server 通过调度器将任务分发到不同的 Client（测试机）， Client 端任务执行完之后，再将结果返回到结果分析后端，Web 前端与命令行接口即可查看测试结果
 .
@@ -5021,7 +5021,7 @@ Autotest通过 Web 前端或者命令行工具提交测试任务， Autotest Ser
 &lt;li&gt;Frontends：允许用户运行作业并且方便地使测试结果可视化。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;下一篇&lt;a href="https://king32783784.github.io/2015/08/13/autotest02/"&gt;Autotest：Autotest-Local&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;</summary><category term="autotest"></category></entry><entry><title>selenium-Sample(三）</title><link href="http://king32783784.github.io/2015/01/25/selenium/" rel="alternate"></link><published>2015-01-25T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2015-01-25:2015/01/25/selenium/</id><summary type="html">&lt;body&gt;&lt;h4 id="shi-li-5-tuo-fang-draghe-drop"&gt;示例５　拖放drag和drop&lt;/h4&gt;
+&lt;p&gt;下一篇&lt;a href="https://king32783784.github.io/2015/08/13/autotest02/"&gt;Autotest：Autotest-Local&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</summary><category term="autotest"></category></entry><entry><title>selenium-Sample(三）</title><link href="http://king32783784.github.io/2015/01/25/selenium/" rel="alternate"></link><published>2015-01-25T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2015-01-25:2015/01/25/selenium/</id><summary type="html">&lt;h4 id="shi-li-5-tuo-fang-draghe-drop"&gt;示例５　拖放drag和drop&lt;/h4&gt;
 &lt;p&gt;代码：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
 
@@ -5064,7 +5064,7 @@ action_chains.drag_and_drop(element, target).perform()　#执行拖放
 &lt;/pre&gt;&lt;/div&gt;
 &lt;h4 id="shi-li-6-dan-chu-dui-hua-kuang-shi-li"&gt;示例6 弹出对话框示例&lt;/h4&gt;
 &lt;p&gt;代码：&lt;/p&gt;
-&lt;table class="table highlighttable table-striped table-hover"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
  2
  3
  4
@@ -5118,7 +5118,7 @@ action_chains.drag_and_drop(element, target).perform()　#执行拖放
     &lt;span class="n"&gt;testdrop&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Testdrog_drop&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
     &lt;span class="n"&gt;testdrop&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getpage&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;h4 id="shi-li-7-li-shi-ji-lu-he-wei-zhi-shi-li"&gt;示例７　历史记录和位置示例&lt;/h4&gt;
 &lt;p&gt;代码
     #!/bin/bash/env python
@@ -5184,9 +5184,9 @@ action_chains.drag_and_drop(element, target).perform()　#执行拖放
     &lt;span class="n"&gt;testcookie&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;addcookie&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;说明：  cookie格式为字典包括"name"和&amp;ldquo;value"两个键值对。add_cookie方法将cookie添加到cookies中。&lt;/p&gt;
-&lt;p&gt;&lt;img class="img-responsive" height="380" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/WBB0EXYSWE.jpg" width="420"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img height="380" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/WBB0EXYSWE.jpg" width="420"/&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/24/selenium/"&gt;selenium-Sample(二)&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/01/26/selenium/"&gt;selenium-Sample(四)&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;</summary><category term="Selenium"></category></entry><entry><title>selenium-Sample(二）</title><link href="http://king32783784.github.io/2015/01/24/selenium/" rel="alternate"></link><published>2015-01-24T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2015-01-24:2015/01/24/selenium/</id><summary type="html">&lt;body&gt;&lt;h3 id="chang-jian-ying-yong-de-shi-li"&gt;常见应用的示例&lt;/h3&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/01/26/selenium/"&gt;selenium-Sample(四)&lt;/a&gt;&lt;/p&gt;</summary><category term="Selenium"></category></entry><entry><title>selenium-Sample(二）</title><link href="http://king32783784.github.io/2015/01/24/selenium/" rel="alternate"></link><published>2015-01-24T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2015-01-24:2015/01/24/selenium/</id><summary type="html">&lt;h3 id="chang-jian-ying-yong-de-shi-li"&gt;常见应用的示例&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;Sample List&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;填写表单示例1-自动设置bugzilla Simple Search&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;填写表单示例2-自动设置bugzilla Advanced Search&lt;/strong&gt;&lt;/p&gt;
@@ -5226,10 +5226,10 @@ arelt_is_present
 &lt;p&gt;&lt;strong&gt;等待-等待示例-隐式等待&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;页面对象设计模式示例&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;... ...&lt;/p&gt;
-&lt;p&gt;&lt;img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/RGBIHR91YT.jpg" width="420"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/RGBIHR91YT.jpg" width="420"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;示例3. 填写表单示例1-自动设置bugzilla Simple Search&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;code:&lt;/p&gt;
-&lt;table class="table highlighttable table-striped table-hover"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
  2
  3
  4
@@ -5333,7 +5333,7 @@ arelt_is_present
     &lt;span class="n"&gt;autologin&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;SampleSearch&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
     &lt;span class="n"&gt;autologin&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dosearch&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;分析：
 doclick方法实现对选定元素的点击。&lt;/p&gt;
 &lt;p&gt;getSearchpage 方法获取简单搜索页面&lt;/p&gt;
@@ -5348,7 +5348,7 @@ doclick方法实现对选定元素的点击。&lt;/p&gt;
 &lt;p&gt;实现对下拉框的定位和下拉框值的设定。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;示例4. 填写表单示例2-自动设置bugzilla Advanced Search&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;code:&lt;/p&gt;
-&lt;table class="table highlighttable table-striped table-hover"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
  2
  3
  4
@@ -5452,7 +5452,7 @@ doclick方法实现对选定元素的点击。&lt;/p&gt;
     &lt;span class="n"&gt;autosearch&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;AdvanceSearch&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
     &lt;span class="n"&gt;autosearch&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dosearch&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;分析：
 　　大部分和上一个例子代码类似。其中setseclect方法不同&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;def setseclect(self, driver, selects):
@@ -5464,7 +5464,7 @@ doclick方法实现对选定元素的点击。&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;通过一个字典将选择框的name属性和要选择的项目列表传入。通过遍历，将两个项目复选。&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/23/selenium/"&gt;selenium-Sample(一)&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/01/25/selenium/"&gt;selenium-Sample(二)&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;</summary><category term="Selenium"></category></entry><entry><title>selenium-Sample(一）</title><link href="http://king32783784.github.io/2015/01/23/selenium/" rel="alternate"></link><published>2015-01-23T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2015-01-23:2015/01/23/selenium/</id><summary type="html">&lt;body&gt;&lt;h3 id="ying-yong-shi-li"&gt;应用示例&lt;/h3&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/01/25/selenium/"&gt;selenium-Sample(二)&lt;/a&gt;&lt;/p&gt;</summary><category term="Selenium"></category></entry><entry><title>selenium-Sample(一）</title><link href="http://king32783784.github.io/2015/01/23/selenium/" rel="alternate"></link><published>2015-01-23T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2015-01-23:2015/01/23/selenium/</id><summary type="html">&lt;h3 id="ying-yong-shi-li"&gt;应用示例&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;1.通过selenium爬取"https://stocksnap.io/"上的图片。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;简要说明，通过selenium打开firefox浏览器，导航到指定网址；然后定位到图片源地址，并保存；然后调用urllib模块，下载图片到指定位置。&lt;/p&gt;
 &lt;p&gt;代码如下：&lt;/p&gt;
@@ -5543,7 +5543,7 @@ doclick方法实现对选定元素的点击。&lt;/p&gt;
 &lt;p&gt;元素内容&amp;rdquo;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;"&amp;lt;img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/9XCA8GIDBS.jpg" height="280" width="420"&amp;gt;"；
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/9XCA8GIDBS.jpg" width="420"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/9XCA8GIDBS.jpg" width="420"/&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;img_url = elem.get_attribute('src')
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;获取图片源地址；&lt;/p&gt;
@@ -5557,7 +5557,7 @@ urllib.urlretrieve(url, localname)
 &lt;p&gt;&lt;strong&gt;２．自动登陆https://github.com/&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;简要说明，通过selenium打开firefox浏览器，导航到指定网站，点击Sign in,自动输入账号密码，实现自动登陆。&lt;/p&gt;
 &lt;p&gt;代码如下：&lt;/p&gt;
-&lt;table class="table highlighttable table-striped table-hover"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
  2
  3
  4
@@ -5671,7 +5671,7 @@ urllib.urlretrieve(url, localname)
     &lt;span class="n"&gt;autologin&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;AutoLoginGithub&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
     &lt;span class="n"&gt;autologin&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;autologin&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;p&gt;代码说明：&lt;/p&gt;
 &lt;p&gt;以下代码，实现按钮的点击&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;actions = ActionChains(self.driver)
@@ -5682,7 +5682,7 @@ actions.perform()
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;未完待续&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/22/selenium/"&gt;Selenium主题10&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/01/24/selenium/"&gt;selenium-Sample(二)&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;</summary><category term="Selenium"></category></entry><entry><title>selenium-专题10</title><link href="http://king32783784.github.io/2015/01/22/selenium/" rel="alternate"></link><published>2015-01-22T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2015-01-22:2015/01/22/selenium/</id><summary type="html">&lt;body&gt;&lt;h3 id="1chang-jian-wen-ti"&gt;1.常见问题&lt;/h3&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/01/24/selenium/"&gt;selenium-Sample(二)&lt;/a&gt;&lt;/p&gt;</summary><category term="Selenium"></category></entry><entry><title>selenium-专题10</title><link href="http://king32783784.github.io/2015/01/22/selenium/" rel="alternate"></link><published>2015-01-22T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2015-01-22:2015/01/22/selenium/</id><summary type="html">&lt;h3 id="1chang-jian-wen-ti"&gt;1.常见问题&lt;/h3&gt;
 &lt;h4 id="11-ru-he-shi-yong-chromedriver"&gt;1.1 如何使用ChromeDriver?&lt;/h4&gt;
 &lt;p&gt;下载最新的chromedriver&lt;a href="https://sites.google.com/a/chromium.org/chromedriver/downloads"&gt;chromedriver from download page&lt;/a&gt;,解压文件：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;unzip chromedriver_linux32_x.x.x.x.zip
@@ -5734,7 +5734,7 @@ Selenium 将XPath查询委派给浏览器自己的XPath引擎查询，所以Sele
 &lt;span class="n"&gt;browser&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;download&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dir&lt;/span&gt; &lt;span class="err"&gt;选项指定需要下载文件的目录。&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;h4 id="15-ru-he-shang-chuan-wen-jian-dao-wen-jian-shu-ru"&gt;1.5 如何上传文件到文件输入？&lt;/h4&gt;
-&lt;p&gt;选择&lt;input typ="file"/&gt;元素并调用send_keys()方法传递路径，相对test scipt的相对路径，或绝对路径。注意Windows和unix系统直接路径的差异性。&lt;/p&gt;
+&lt;p&gt;选择&lt;input typ="file"&gt;元素并调用send_keys()方法传递路径，相对test scipt的相对路径，或绝对路径。注意Windows和unix系统直接路径的差异性。&lt;/input&gt;&lt;/p&gt;
 &lt;h4 id="16-ru-he-shi-yong-firefoxzhong-de-firebug"&gt;1.6 如何使用Firefox中的firebug？&lt;/h4&gt;
 &lt;p&gt;首先下载Firebug XPI文件，然后调用add_extension方法进行firefox profile:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;selenium&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;webdriver&lt;/span&gt;
@@ -5754,7 +5754,7 @@ Selenium 将XPath查询委派给浏览器自己的XPath引擎查询，所以Sele
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/21/selenium/"&gt;Selenium主题9&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;下一篇&lt;a href="https://king32783784.github.io/2015/01/23/selenium/"&gt;selenium-Sample(一)&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;</summary><category term="Selenium"></category></entry><entry><title>selenium-专题9</title><link href="http://king32783784.github.io/2015/01/21/selenium/" rel="alternate"></link><published>2015-01-21T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2015-01-21:2015/01/21/selenium/</id><summary type="html">&lt;body&gt;&lt;h3 id="remote-webdriver"&gt;Remote WebDriver&lt;/h3&gt;
+&lt;p&gt;下一篇&lt;a href="https://king32783784.github.io/2015/01/23/selenium/"&gt;selenium-Sample(一)&lt;/a&gt;&lt;/p&gt;</summary><category term="Selenium"></category></entry><entry><title>selenium-专题9</title><link href="http://king32783784.github.io/2015/01/21/selenium/" rel="alternate"></link><published>2015-01-21T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2015-01-21:2015/01/21/selenium/</id><summary type="html">&lt;h3 id="remote-webdriver"&gt;Remote WebDriver&lt;/h3&gt;
 &lt;p&gt;WebDriver实现。&lt;/p&gt;
 &lt;p&gt;class selenium.webdriver.remote.webdriver.WebDriver(command_executor='http://127.0.0.1:4444/wd/hub', desired_capabilities=None, browser_profile=None, proxy=None, keep_alive=False, file_detector=None)&lt;/p&gt;
 &lt;p&gt;Bases: object
@@ -6296,7 +6296,7 @@ until_not(method, message='')
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/20/selenium/"&gt;Selenium主题8&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/01/22/selenium/"&gt;Selenium主题10&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;</summary><category term="Selenium"></category></entry><entry><title>selenium-专题8</title><link href="http://king32783784.github.io/2015/01/20/selenium/" rel="alternate"></link><published>2015-01-20T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2015-01-20:2015/01/20/selenium/</id><summary type="html">&lt;body&gt;&lt;h3 id="alert"&gt;Alert&lt;/h3&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/01/22/selenium/"&gt;Selenium主题10&lt;/a&gt;&lt;/p&gt;</summary><category term="Selenium"></category></entry><entry><title>selenium-专题8</title><link href="http://king32783784.github.io/2015/01/20/selenium/" rel="alternate"></link><published>2015-01-20T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2015-01-20:2015/01/20/selenium/</id><summary type="html">&lt;h3 id="alert"&gt;Alert&lt;/h3&gt;
 &lt;p&gt;警告相关的实现&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;selenium&lt;/span&gt;.&lt;span class="n"&gt;webdriver&lt;/span&gt;.&lt;span class="n"&gt;common&lt;/span&gt;.&lt;span class="n"&gt;alert&lt;/span&gt;.&lt;span class="n"&gt;Alert&lt;/span&gt;(&lt;span class="n"&gt;driver&lt;/span&gt;)
     &lt;span class="n"&gt;Bases:&lt;/span&gt; &lt;span class="n"&gt;object&lt;/span&gt;
@@ -6546,7 +6546,7 @@ selenium.webdriver.common.utils.join_host_port(host, port)
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/19/selenium/"&gt;Selenium主题7&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/01/21/selenium/"&gt;Selenium主题9&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;</summary><category term="Selenium"></category></entry><entry><title>selenium-专题7</title><link href="http://king32783784.github.io/2015/01/19/selenium/" rel="alternate"></link><published>2015-01-19T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2015-01-19:2015/01/19/selenium/</id><summary type="html">&lt;body&gt;&lt;h3 id="webdriver-api"&gt;WebDriver API&lt;/h3&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/01/21/selenium/"&gt;Selenium主题9&lt;/a&gt;&lt;/p&gt;</summary><category term="Selenium"></category></entry><entry><title>selenium-专题7</title><link href="http://king32783784.github.io/2015/01/19/selenium/" rel="alternate"></link><published>2015-01-19T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2015-01-19:2015/01/19/selenium/</id><summary type="html">&lt;h3 id="webdriver-api"&gt;WebDriver API&lt;/h3&gt;
 &lt;p&gt;注：这不是官方API文档，官方在这：&lt;a href="https://seleniumhq.github.io/selenium/docs/api/py/api.html"&gt;Selenium Documentation&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;本篇覆盖了Selenium Webdriver的所有接口。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;推荐导入样式&lt;/strong&gt;
@@ -6806,7 +6806,7 @@ stacktrace=None)&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/18/selenium/"&gt;Selenium主题6&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/01/20/selenium/"&gt;Selenium主题8&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;</summary><category term="Selenium"></category></entry><entry><title>selenium-专题6</title><link href="http://king32783784.github.io/2015/01/18/selenium/" rel="alternate"></link><published>2015-01-18T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2015-01-18:2015/01/18/selenium/</id><summary type="html">&lt;body&gt;&lt;h3 id="ye-mian-dui-xiang"&gt;页面对象&lt;/h3&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/01/20/selenium/"&gt;Selenium主题8&lt;/a&gt;&lt;/p&gt;</summary><category term="Selenium"></category></entry><entry><title>selenium-专题6</title><link href="http://king32783784.github.io/2015/01/18/selenium/" rel="alternate"></link><published>2015-01-18T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2015-01-18:2015/01/18/selenium/</id><summary type="html">&lt;h3 id="yi-ye-mian-dui-xiang"&gt;一、页面对象&lt;/h3&gt;
 &lt;p&gt;该篇是介绍页面对象设计模式的方法。页面对象是Web应用程序用户界面的区域，测试时主要在此区域。&lt;/p&gt;
 &lt;p&gt;使用页面对象模式的好处：&lt;/p&gt;
 &lt;ul&gt;
@@ -6814,7 +6814,7 @@ stacktrace=None)&lt;/p&gt;
 &lt;li&gt;减少重复的代码&lt;/li&gt;
 &lt;li&gt;如果用户界面发生改变，只需修改一次对应部分&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id="ce-shi-yong-li"&gt;测试用例&lt;/h4&gt;
+&lt;h4 id="1ce-shi-yong-li"&gt;1.测试用例&lt;/h4&gt;
 &lt;p&gt;以下是一个测试python.org搜索字符串的用例，并且确保可以查到一些结果。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;unittest&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;selenium&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;webdriver&lt;/span&gt;
@@ -6851,7 +6851,7 @@ stacktrace=None)&lt;/p&gt;
     &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;"__main__"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="n"&gt;unittest&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id="page-dui-xiang-lei"&gt;Page　对象类&lt;/h4&gt;
+&lt;h4 id="2page-dui-xiang-lei"&gt;2.Page　对象类&lt;/h4&gt;
 &lt;p&gt;Page 对象模式是为每个页面创建一个对象。按照此方法，创建一个测试代码与技术实施之间的隔离层。
 page.py可以为：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;element&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;BasePageElement&lt;/span&gt;
@@ -6891,7 +6891,7 @@ page.py可以为：&lt;/p&gt;
         &lt;span class="c1"&gt;# element, but as for now it works fine&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s2"&gt;"No results found."&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;page_source&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id="page-elements"&gt;Page elements&lt;/h4&gt;
+&lt;h4 id="3page-elements"&gt;3.Page elements&lt;/h4&gt;
 &lt;p&gt;element.py 可以是这样：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;selenium.webdriver.support.ui&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;WebDriverWait&lt;/span&gt;
 
@@ -6906,7 +6906,7 @@ page.py可以为：&lt;/p&gt;
         &lt;span class="n"&gt;element&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find_element_by_name&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;locator&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;element&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_attribute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"value"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id="locators"&gt;Locators&lt;/h4&gt;
+&lt;h4 id="4locators"&gt;4.Locators&lt;/h4&gt;
 &lt;p&gt;一种方式为将locators字符串和使用的地方分离。下面的例子，同一页面的locators属于同一个类。
 locators.py：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;selenium.webdriver.common.by&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;By&lt;/span&gt;
@@ -6921,10 +6921,10 @@ locators.py：&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/17/selenium/"&gt;Selenium主题5&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/01/19/selenium/"&gt;Selenium主题7&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;</summary><category term="Selenium"></category></entry><entry><title>selenium-专题5</title><link href="http://king32783784.github.io/2015/01/17/selenium/" rel="alternate"></link><published>2015-01-17T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2015-01-17:2015/01/17/selenium/</id><summary type="html">&lt;body&gt;&lt;h3 id="deng-dai"&gt;等待&lt;/h3&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/01/19/selenium/"&gt;Selenium主题7&lt;/a&gt;&lt;/p&gt;</summary><category term="Selenium"></category></entry><entry><title>selenium-专题5</title><link href="http://king32783784.github.io/2015/01/17/selenium/" rel="alternate"></link><published>2015-01-17T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2015-01-17:2015/01/17/selenium/</id><summary type="html">&lt;h3 id="yi-deng-dai"&gt;一、等待&lt;/h3&gt;
 &lt;p&gt;目前大多数网络应用都在使用AJAX技术。当浏览器加载一个页面，页面上的元素可能分多次进行加载。这会导致元素定位困难，如果元素没有在DOM中出现，则会触发ElementNotVisibleException异常。通过等待，我们可以解决这个问题。等待提供了设置操作间的时间间隔－元素定位直接或其他元素操作。&lt;/p&gt;
 &lt;p&gt;Selenium Webdriver 提供了等待的两种类型，implicit和explicit。显式等待是使webdriver在操作之间有确定的时间等待。隐式等待是使WebDriver 去间隔的轮询DOM，尝试定位到元素。&lt;/p&gt;
-&lt;h4 id="xian-shi-deng-dai"&gt;显式等待&lt;/h4&gt;
+&lt;h4 id="1xian-shi-deng-dai"&gt;1.显式等待&lt;/h4&gt;
 &lt;p&gt;显式等待是代码中定义一定的条件，等待条件达成，继续执行。最差的方式是time.sleep(),通过设置等待时间间隔实现。有一些便利方法，会帮助设置等待时间。WebDriverWait与ExpectedCondition组合就是其中一种实现方式。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;selenium&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;webdriver&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;selenium.webdriver.common.by&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;By&lt;/span&gt;
@@ -6942,7 +6942,7 @@ locators.py：&lt;/p&gt;
     &lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;quit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;示例代码，默认等待１０s或则在１０s内找到元素，否则触发TimeoutException异常。默认情况下，WebDriverWait等待500ms就会触发异常，直到成功返回元素.ExpectedCondition成功的返回值是布尔值true或非空代表其他值的异常类型。&lt;/p&gt;
-&lt;h5 id="yu-qi-tiao-jian"&gt;预期条件&lt;/h5&gt;
+&lt;h5 id="2yu-qi-tiao-jian"&gt;2.预期条件&lt;/h5&gt;
 &lt;p&gt;以下列举了浏览器自动化测试常用的条件。Python＆selenium提供了一些便利方法，所以不必自己编写一个expected_condition类或为他们创建自己的工具包。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;title_is&lt;/li&gt;
@@ -6969,7 +6969,7 @@ element = wait.until(EC.element_to_be_clickable(By.ID, 'someid')))&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;该预期条件模块包含了通过WebDriverWait实现的预期条件。&lt;/p&gt;
-&lt;h4 id="yin-shi-deng-dai-shi-shi-webdriver_1"&gt;隐式等待是使WebDriver&lt;/h4&gt;
+&lt;h4 id="3yin-shi-deng-dai-shi-shi-webdriver_1"&gt;3.隐式等待是使WebDriver&lt;/h4&gt;
 &lt;p&gt;隐式等待让WebDriver试图找单个元素或多个元素失败后，在一定时间间隔下轮询DOM.默认设置为０。一旦设置，隐式等待会伴随WebDriver对象的整个生命周期。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;selenium&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;webdriver&lt;/span&gt;
 
@@ -6980,7 +6980,7 @@ element = wait.until(EC.element_to_be_clickable(By.ID, 'someid')))&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/16/selenium/"&gt;Selenium主题4&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/01/18/selenium/"&gt;Selenium主题6&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;</summary><category term="Selenium"></category></entry><entry><title>selenium-专题4</title><link href="http://king32783784.github.io/2015/01/16/selenium/" rel="alternate"></link><published>2015-01-16T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2015-01-16:2015/01/16/selenium/</id><summary type="html">&lt;body&gt;&lt;h3 id="yuan-su-ding-wei"&gt;元素定位&lt;/h3&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/01/18/selenium/"&gt;Selenium主题6&lt;/a&gt;&lt;/p&gt;</summary><category term="Selenium"></category></entry><entry><title>selenium-专题4</title><link href="http://king32783784.github.io/2015/01/16/selenium/" rel="alternate"></link><published>2015-01-16T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2015-01-16:2015/01/16/selenium/</id><summary type="html">&lt;h3 id="yuan-su-ding-wei"&gt;元素定位&lt;/h3&gt;
 &lt;p&gt;提供很多种方式去定位页面的元素。可以从中选择一个适合的用于测试。Selenium 提供了以下方法用于定位页面元素：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;*find_element_by_id
 *find_element_by_name
@@ -7017,7 +7017,7 @@ TAG_NAME = "tag name"
 CLASS_NAME = "class name"
 CSS_SELECTOR = "css selector"
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id="shi-yong-idding-wei"&gt;使用ID定位&lt;/h4&gt;
+&lt;h4 id="1shi-yong-idding-wei"&gt;1.使用ID定位&lt;/h4&gt;
 &lt;p&gt;当你知道元素的id属性时，可以用ＩＤ定位。这种方式，将返回第一个和ＩＤ属性匹配的元素。如果没有匹配的元素，将会触发NoSuchElementException异常.
 例如，参考这个页面的源代码：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
@@ -7033,7 +7033,7 @@ CSS_SELECTOR = "css selector"
 &lt;p&gt;可以通过下面方式定位form元素：
 　
     login_form = driver.find_element_by_id('loginForm')&lt;/p&gt;
-&lt;h4 id="shi-yong-ming-cheng-ding-wei"&gt;使用名称定位&lt;/h4&gt;
+&lt;h4 id="2shi-yong-ming-cheng-ding-wei"&gt;2.使用名称定位&lt;/h4&gt;
 &lt;p&gt;当知道元素的名称属性时，可以通过名称的方式定位。这种方式，将返回第一个和name属性匹配的元素。如果没有匹配的元素，将触发NoSuchElementException异常。
 例如，参考页源码：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
@@ -7054,7 +7054,7 @@ password = driver.find_element_by_name('password')
 &lt;p&gt;这样在&amp;ldquo;Clear"按钮之前，&amp;ldquo;login&amp;rdquo;按钮将先被获取：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;continue = driver.find_element_by_name('continue')
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id="shi-yong-xpathding-wei"&gt;使用Xpath定位&lt;/h4&gt;
+&lt;h4 id="3shi-yong-xpathding-wei"&gt;3.使用Xpath定位&lt;/h4&gt;
 &lt;p&gt;Xpath是ＸＭＬ文档中定于节点的语言。ＨTML可以看做是XML的一种实现，Selenium可以通过这一强大的语言去定位web应用的元素。XPath定位方法超过了id和name定位方法，它可以实现一些更多的定位可能，比如定位页面中第三个复选框。&lt;/p&gt;
 &lt;p&gt;使用Xpath定位一个很大原因是需要定位一个没有合适的is/name的元素。XPath可以定位相对路径的元素，还可以定位有id/name的元素。Xpath还可以用于指定通过id/name定位的元素。&lt;/p&gt;
 &lt;p&gt;XPaths可以获取所有root(html)中的元素的位置，虽然结果可能会失败，但对ＡＰＰ基本不会造成影响。可以借助通过id/name定位目标元素临近的元素的相对关系去定位目标元素。这种方式一般不太会改变，所有能增加测试的鲁棒性。&lt;/p&gt;
@@ -7108,7 +7108,7 @@ clear_button = driver.find_element_by_xpath("//form[@id='loginForm']/input[4]")
 &lt;em&gt; &lt;a href="https://addons.mozilla.org/en-US/firefox/addon/xpath-checker/?id=1095"&gt;XPath Checker&lt;/a&gt;
 &lt;/em&gt; &lt;a href="https://addons.mozilla.org/en-US/firefox/addon/firebug/"&gt;Firebug&lt;/a&gt;
 * &lt;a href="https://chrome.google.com/webstore/detail/xpath-helper/hgimnogjllphhhkhlmebbmlgjoejdpjl"&gt;XPath Helper&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id="tong-guo-lian-jie-wen-ben-ding-wei-chao-lian-jie"&gt;通过链接文本定位超链接&lt;/h4&gt;
+&lt;h4 id="4tong-guo-lian-jie-wen-ben-ding-wei-chao-lian-jie"&gt;4.通过链接文本定位超链接&lt;/h4&gt;
 &lt;p&gt;当你知道一个锚点的链接文本，可以通过下面方式定位。这种方式，会返回第一个匹配的位置。如果没有匹配的元素，将会触发NoSuchElementException异常。&lt;/p&gt;
 &lt;p&gt;参考一下页源码：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
@@ -7123,7 +7123,7 @@ clear_button = driver.find_element_by_xpath("//form[@id='loginForm']/input[4]")
 　
     continue_link = driver.find_element_by_link_text('Continue')
     continue_link = driver.find_element_by_partial_link_text('Conti')&lt;/p&gt;
-&lt;h4 id="tong-guo-tag-nameding-wei-yuan-su"&gt;通过Tag Name定位元素&lt;/h4&gt;
+&lt;h4 id="5tong-guo-tag-nameding-wei-yuan-su"&gt;5.通过Tag Name定位元素&lt;/h4&gt;
 &lt;p&gt;当知道tag name的情况下，可以通过tag name去定位元素。同样，这个方式只会返回第一个匹配tagname的元素。如果找不到，同样会触发NoSuchElementException异常。&lt;/p&gt;
 &lt;p&gt;页源码参考如下：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
@@ -7136,7 +7136,7 @@ clear_button = driver.find_element_by_xpath("//form[@id='loginForm']/input[4]")
 &lt;p&gt;h1元素可以这样定位：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;heading1 = driver.find_element_by_tag_name('h1')
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id="tong-guo-class-nameding-wei-yuan-su"&gt;通过class name定位元素&lt;/h4&gt;
+&lt;h4 id="6tong-guo-class-nameding-wei-yuan-su"&gt;6.通过class name定位元素&lt;/h4&gt;
 &lt;p&gt;下面的方式可以通过class name属性去定位元素。同样会返回第一个匹配的元素。如果找不到元素，就会触发NoSuchElementException异常。&lt;/p&gt;
 &lt;p&gt;页源码参考如下：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
@@ -7148,7 +7148,7 @@ clear_button = driver.find_element_by_xpath("//form[@id='loginForm']/input[4]")
 &lt;p&gt;元素&amp;ldquo;p"可以通过下面的方式定位：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;content = driver.find_element_by_class_name('content')
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id="tong-guo-cssxuan-ze-qi-ding-wei-yuan-su"&gt;通过CSS选择器定位元素&lt;/h4&gt;
+&lt;h4 id="7tong-guo-cssxuan-ze-qi-ding-wei-yuan-su"&gt;7.通过CSS选择器定位元素&lt;/h4&gt;
 &lt;p&gt;使用下面的方式，可以通过CSS选择器去定位元素。同样，该方式也是返回第一个匹配CSS选择器的元素。如果没有匹配的元素，则触发NoSuchElementException异常。
 页面源码参考如下：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
@@ -7162,12 +7162,12 @@ clear_button = driver.find_element_by_xpath("//form[@id='loginForm']/input[4]")
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/15/selenium/"&gt;Selenium主题3&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/01/17/selenium/"&gt;Selenium主题5&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;</summary><category term="Selenium"></category></entry><entry><title>selenium-专题3</title><link href="http://king32783784.github.io/2015/01/15/selenium/" rel="alternate"></link><published>2015-01-15T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2015-01-15:2015/01/15/selenium/</id><summary type="html">&lt;body&gt;&lt;h3 id="dao-hang"&gt;导航&lt;/h3&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/01/17/selenium/"&gt;Selenium主题5&lt;/a&gt;&lt;/p&gt;</summary><category term="Selenium"></category></entry><entry><title>selenium-专题3</title><link href="http://king32783784.github.io/2015/01/15/selenium/" rel="alternate"></link><published>2015-01-15T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2015-01-15:2015/01/15/selenium/</id><summary type="html">&lt;h3 id="yi-dao-hang"&gt;一 导航&lt;/h3&gt;
 &lt;p&gt;使用WebDriver第一件想做的事情就是导航到指定链接。通常可以调用get方法去实现：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;driver.get("http://www.google.com")
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;driver.get方法会导航到url指定的页面。webdriver会等待页面完全加载后，把控制权还给test脚本。需要注意的是，如果页面中使用了大量的AJAX负载过大，webdriver可能不知道什么时间加载完成。如果你想确保页面加载完全可以使用wait.&lt;/p&gt;
-&lt;h4 id="ye-mian-jiao-hu"&gt;页面交互&lt;/h4&gt;
+&lt;h4 id="1ye-mian-jiao-hu"&gt;1.页面交互&lt;/h4&gt;
 &lt;p&gt;只是导航到指定链接并不是很有用。我们想做的页面上的交互，准确的说是页面的元素操作。首先，我们要先找到它。webdriver提供了很多方法去找到元素，例如，元素定义如下：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;lt;input type="text" name="passwd" id="passwd-id" /&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -7187,7 +7187,7 @@ element = driver.find_element_by_xpath("//input[@id='passwd-id']")
 &lt;p&gt;send_keys可以将键盘快捷键应用到任何元素中，例如Gmail.但有一个副作用是输入的文本区的内容不能自动清除。相反，输入的内容会追加到输入区。可以clear方法容易的清除这些内容：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;element.clear()
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id="tian-xie-biao-dan"&gt;填写表单&lt;/h4&gt;
+&lt;h4 id="2tian-xie-biao-dan"&gt;2.填写表单&lt;/h4&gt;
 &lt;p&gt;前面已经说了如何在输入区输入文本，但其他元素呢？可以使用"toggle"下拉状态，使用&amp;ldquo;setSelected"进行选择框的设置。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;element = driver.find_element_by_xpath("//select[@name='name']"
 all_options = element.find_element_by_tag_name("option")
@@ -7222,7 +7222,7 @@ driver.find_element_by_id("submit").click()
 &lt;p&gt;另外，WebDriver有适用每个元素"submit"的简单方法。如果你在form中调用submit方法，webdriver会遍历DOM并调用submit，直到找到form的结束。如果元素不是一个form,就会触发NoSuchElementException异常：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;element.submit()
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id="tuo-fang"&gt;拖放&lt;/h4&gt;
+&lt;h4 id="3tuo-fang"&gt;3.拖放&lt;/h4&gt;
 &lt;p&gt;可用使用drag和drop，或移动元素，或移动到另一个元素：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;element&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find_element_by_name&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"source"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;target&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find_element_by_name&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"target"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -7231,7 +7231,7 @@ driver.find_element_by_id("submit").click()
 &lt;span class="n"&gt;action_chains&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ActionChains&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;action_chains&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;drag_and_drop&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;element&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;target&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;perform&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id="chuang-kou-he-kuang-jia-zhi-jian-yi-dong"&gt;窗口和框架之间移动&lt;/h4&gt;
+&lt;h4 id="4chuang-kou-he-kuang-jia-zhi-jian-yi-dong"&gt;4.窗口和框架之间移动&lt;/h4&gt;
 &lt;p&gt;现在的web应用很少只有一个窗口或没有框架的。WebDriver支持使用"switch_to_window"方法移动不同名称的窗口：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;driver.switch_to_window("windowName")
 &lt;/pre&gt;&lt;/div&gt;
@@ -7252,12 +7252,12 @@ driver.find_element_by_id("submit").click()
 &lt;p&gt;当我们操作框架时，有时我们需要从子框架返回到它的父框架：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;driver.switch_to_default_content()
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id="dan-chu-dui-hua-kuang"&gt;弹出对话框&lt;/h4&gt;
+&lt;h4 id="5dan-chu-dui-hua-kuang"&gt;5.弹出对话框&lt;/h4&gt;
 &lt;p&gt;Selenium WebDriver内置了对弹出对话框的支持。当触发动作弹出一个对话框后，可以通过　alert访问：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;alert = driver.switch_to_alert()
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;这会返回当前打开的alert对象。获取对象后，可以接受、忽略、读取内容或输入标志等操作。该接口同样适用于警报、确认、提示等对话框。可以参阅相关ＡＰＩ了解更多内容。&lt;/p&gt;
-&lt;h4 id="dao-hang-li-shi-ji-lu-he-wei-zhi"&gt;导航：历史记录和位置&lt;/h4&gt;
+&lt;h4 id="6dao-hang-li-shi-ji-lu-he-wei-zhi"&gt;6.导航：历史记录和位置&lt;/h4&gt;
 &lt;p&gt;前面，我们通过"get"命令导航到指定网页（driver.get("http://www.example.com").WebDriver有一些小的，任务聚焦的接口，并且导航也是有用的task,导航到具体网页，可以通过：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;driver.get("http://www.example.com")
 &lt;/pre&gt;&lt;/div&gt;
@@ -7266,7 +7266,7 @@ driver.find_element_by_id("submit").click()
 driver.back()
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;注意，这些功能依赖于底层驱动。当你调用这些方法的时候，不同的浏览器可能会有不同行为。&lt;/p&gt;
-&lt;h4 id="cookies"&gt;Cookies&lt;/h4&gt;
+&lt;h4 id="7cookies"&gt;7.Cookies&lt;/h4&gt;
 &lt;p&gt;当离开这些后续步骤后，可能感兴趣的是了解如何使用cookies.首先，我们要确定当前域名的cookie是有效的：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;#　Go to the correct domain
 driver.get("http://www.example.com")
@@ -7280,7 +7280,7 @@ driver.get_cookies()
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/14/selenium/"&gt;Selenium主题2&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/01/15/selenium/"&gt;Selenium主题4&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;</summary><category term="Selenium"></category></entry><entry><title>selenium-专题2</title><link href="http://king32783784.github.io/2015/01/14/selenium/" rel="alternate"></link><published>2015-01-14T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2015-01-14:2015/01/14/selenium/</id><summary type="html">&lt;body&gt;&lt;h3 id="ru-men"&gt;入门&lt;/h3&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/01/15/selenium/"&gt;Selenium主题4&lt;/a&gt;&lt;/p&gt;</summary><category term="Selenium"></category></entry><entry><title>selenium-专题2</title><link href="http://king32783784.github.io/2015/01/14/selenium/" rel="alternate"></link><published>2015-01-14T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2015-01-14:2015/01/14/selenium/</id><summary type="html">&lt;h3 id="ru-men"&gt;入门&lt;/h3&gt;
 &lt;h4 id="jian-dan-yong-fa"&gt;简单用法&lt;/h4&gt;
 &lt;p&gt;如果已经具备了Selenium＆Python，可以这样开始使用：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;selenium&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;webdriver&lt;/span&gt;
@@ -7330,9 +7330,9 @@ elem.send_keys(Keys.RETURN)
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;sample1:
 测试百度首页的查询功能：
-百度搜索框&amp;ldquo;&lt;input autocomplete="off" class="s_ipt" id="kw" maxlength="100" name="wd" type="text"/&gt;&amp;rdquo;
-code:&lt;/p&gt;
-&lt;table class="table highlighttable table-striped table-hover"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
+百度搜索框&amp;ldquo;&lt;input autocomplete="off" class="s_ipt" id="kw" maxlength="100" name="wd" type="text"&gt;&amp;rdquo;
+code:&lt;/input&gt;&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
  2
  3
  4
@@ -7376,7 +7376,7 @@ code:&lt;/p&gt;
 &lt;span class="n"&gt;time&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sleep&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;h4 id="shi-yong-seleniumbian-xie-ce-shi"&gt;使用Selenium编写测试&lt;/h4&gt;
 &lt;p&gt;Selenium 大部分情况下都是用来编写测试用例的。Selenium本身是不提供测试工具或框架的。可以通过Python的unittest　模块去编写case,另外还可以通过pt.test或ｎｏｓｅ框架。&lt;/p&gt;
 &lt;p&gt;下面是一个使用unittest框架的例子，测试的是python.org 的搜索功能：&lt;/p&gt;
@@ -7454,7 +7454,7 @@ elem.send_keys(Keys.RETURN)
 &lt;p&gt;sample 
 测试百度搜索
 code:&lt;/p&gt;
-&lt;table class="table highlighttable table-striped table-hover"&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
  2
  3
  4
@@ -7512,7 +7512,7 @@ code:&lt;/p&gt;
 &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;"__main__"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;unittest&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;h4 id="shi-yong-selenium-remote-webdriver"&gt;使用Selenium remote WebDriver&lt;/h4&gt;
 &lt;p&gt;使用remote　WebDriver之前需确保Selenium server在运行。启动该server命令：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;java -jar selenium-server-standalone-2.x.x.jar
@@ -7544,7 +7544,7 @@ code:&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/13/selenium/"&gt;Selenium主题1&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/01/15/selenium/"&gt;Selenium主题3&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;</summary><category term="Selenium"></category></entry><entry><title>selenium-专题1</title><link href="http://king32783784.github.io/2015/01/13/selenium/" rel="alternate"></link><published>2015-01-13T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2015-01-13:2015/01/13/selenium/</id><summary type="html">&lt;body&gt;&lt;p&gt;该topic将开始学习selenium的使用。主要内容如下&lt;/p&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/01/15/selenium/"&gt;Selenium主题3&lt;/a&gt;&lt;/p&gt;</summary><category term="Selenium"></category></entry><entry><title>selenium-专题1</title><link href="http://king32783784.github.io/2015/01/13/selenium/" rel="alternate"></link><published>2015-01-13T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2015-01-13:2015/01/13/selenium/</id><summary type="html">&lt;p&gt;该topic将开始学习selenium的使用。主要内容如下&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;1.安装&lt;/li&gt;
 &lt;li&gt;2.入门&lt;/li&gt;
@@ -7581,7 +7581,7 @@ Selenium&amp;amp;python提供了直观的ＡＰＩ访问Selenium WebDrivers如fi
 如果java支持，可以通过下面命令来启动Selenium server:
     java -jar selenium-server-standalone-2.x.x.jar&lt;/p&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;下一篇&lt;a href="https://king32783784.github.io/2015/01/14/selenium/"&gt;selenium-专题２&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;</summary><category term="Selenium"></category></entry><entry><title>selenium-浏览器性能测试</title><link href="http://king32783784.github.io/2015/01/12/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" rel="alternate"></link><published>2015-01-12T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2015-01-12:2015/01/12/自动化测试/</id><summary type="html">&lt;body&gt;&lt;p&gt;浏览器是系统下比较常用的软件，在linux系统比较常用的是firefox、chrome.如何评估浏览器的基础性能？有很多评测网站进行了这边的测试。
+&lt;p&gt;下一篇&lt;a href="https://king32783784.github.io/2015/01/14/selenium/"&gt;selenium-专题２&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</summary><category term="Selenium"></category></entry><entry><title>selenium-浏览器性能测试</title><link href="http://king32783784.github.io/2015/01/12/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" rel="alternate"></link><published>2015-01-12T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2015-01-12:2015/01/12/自动化测试/</id><summary type="html">&lt;p&gt;浏览器是系统下比较常用的软件，在linux系统比较常用的是firefox、chrome.如何评估浏览器的基础性能？有很多评测网站进行了这边的测试。
 如
 &lt;em&gt; &lt;a href="http://css4-selectors.com/browser-selector-test/"&gt;CSS&lt;/a&gt;
 &lt;/em&gt; &lt;a href="http://acid3.acidtests.org/"&gt;acid3&lt;/a&gt;
@@ -7802,14 +7802,14 @@ browser-run.py:&lt;/p&gt;
         &lt;span class="n"&gt;result&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find_element_by_xpath&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cmds&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'result'&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;
         &lt;span class="n"&gt;test&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;quit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;```                                                                                                     &lt;/p&gt;&lt;/body&gt;</summary><category term="Selenium"></category></entry><entry><title>Spec2006使用说明</title><link href="http://king32783784.github.io/2014/10/10/linux/" rel="alternate"></link><published>2014-10-10T00:00:00+08:00</published><author><name>penglee</name></author><id>tag:king32783784.github.io,2014-10-10:2014/10/10/linux/</id><summary type="html">&lt;body&gt;&lt;h2 id="gong-ju-jie-shao"&gt;工具介绍&lt;/h2&gt;
+&lt;p&gt;```                                                                                                     &lt;/p&gt;</summary><category term="Selenium"></category></entry><entry><title>Spec2006使用说明</title><link href="http://king32783784.github.io/2014/10/10/linux/" rel="alternate"></link><published>2014-10-10T00:00:00+08:00</published><author><name>penglee</name></author><id>tag:king32783784.github.io,2014-10-10:2014/10/10/linux/</id><summary type="html">&lt;h3 id="yi-gong-ju-jie-shao"&gt;一、工具介绍&lt;/h3&gt;
 &lt;p&gt;SPEC CPU 2006 benchmark是SPEC新一代的行业标准化的CPU测试基准套件。重点测试系统的处理器，内存子系统和编译器。这个基准测试套件包括的SPECint基准和SPECfp基准。 其中SPECint2006基准包含12个不同的基准测试和SPECfp2006年基准包含19个不同的基准测试。SPEC设计了这个套件提供了一个比较标准的计算密集型，高性能的跨硬件的CPU测试工具。在SPEC CPU 2006基准有几种不同的方法来衡量计算机性能。 一种方式是测量计算机完成单一任务的速度; 另一种方式吞吐量，容量或速率的测量。
 说明：由于spec2006支持多种类型操作系统。以下安装、测试、移植等介绍均基于Unix 和其他的 Unix-like system如linux。Windows系统不在此范围内。&lt;/p&gt;
-&lt;h3 id="spec2006yu-spec2000de-dui-bi-jian-yao-shuo-ming"&gt;spec2006与spec2000的对比简要说明&lt;/h3&gt;
+&lt;h4 id="1spec2006yu-spec2000de-dui-bi-jian-yao-shuo-ming"&gt;1.spec2006与spec2000的对比简要说明&lt;/h4&gt;
 &lt;p&gt;2006年8月24日，标准性能评估公司（SPEC）宣布CPU2006将取代CPU2000。
 Spec cpu基准测试被广泛的应用于工业界和学术界。新套件比cpu2000要大很多，而且将涵盖到CPU、存储器系统、编译器特别是C++编译器。Cpu2000只有1个关于C++的基准测试，CPU2006则含有7个相关套件，这其中包括了50W行c++代码，Fortran和C语言和之前一样有很好的覆盖。&lt;/p&gt;
-&lt;h3 id="spec2000he-spec20006ju-ti-de-tao-jian-xin-xi-ru-xia"&gt;Spec2000和spec20006具体的套件信息如下：&lt;/h3&gt;
-&lt;h4 id="spec-int2000-12ge-zheng-dian-ce-shi-xiang-mu"&gt;Spec int2000  12个整点测试项目&lt;/h4&gt;
+&lt;h4 id="2-spec2000he-spec20006ju-ti-de-tao-jian-xin-xi-ru-xia"&gt;2. Spec2000和spec20006具体的套件信息如下：&lt;/h4&gt;
+&lt;h5 id="21-spec-int2000-12ge-zheng-dian-ce-shi-xiang-mu"&gt;2.1 Spec int2000  12个整点测试项目&lt;/h5&gt;
 &lt;p&gt;164.gzip
 C语言编写，很流行的数据压缩程序。使用Lempel-Ziv coding(LZ77)作为压缩算法。SPEC中的gzip除了读入集外没有其他文件I/O操作，所有压缩和解压都在主存中进行，方便测试CPU和存储子系统。&lt;/p&gt;
 &lt;p&gt;175.vpr
@@ -7834,7 +7834,7 @@ C语言编写,单用户面向对象数据库中事务处理的benchmark。SPEC�
 C语言编写，压缩程序。基于Julian Seward的bzip2 v0.1，唯一的不同是SPEC中的bzip2除了输入外，无文件I/O。所有的压缩和解压都在内存中进行。输入，输出都和gzip的相似。&lt;/p&gt;
 &lt;p&gt;300.twolf：
 C语言实现，定位和路由模拟。twolf来自TimberWolfSC定位和全局路由，它被用于创建微处理器产品印刷电路布局的流程中，确定晶体管的位置和组内的全局连接。定位问题是一个排列，穷举法耗时太长，TimberWolfSC程序则使用模拟退火作为启发来找到较优解。&lt;/p&gt;
-&lt;h4 id="spec-int2006-12ge-zheng-dian-ce-shi-xiang-mu"&gt;Spec int2006  12个整点测试项目&lt;/h4&gt;
+&lt;h5 id="22-spec-int2000-12ge-zheng-dian-ce-shi-xiang-mu"&gt;2.2 Spec int2000  12个整点测试项目&lt;/h5&gt;
 &lt;p&gt;400.perlbench：C语言编写，同spec2000的253.perlbmk类似，是Perl V5.8.7版本的删减版，同样删除了一下操作系统特性有关的东西，增加了第三方的模块，如：SpamAssassin V2.61,Digest-MD5 v2.33,HTML-Parser v3.35,MHonArc V2.6.8,IO-stringy V1.205,MailTools V1.60，TimeDate V1.16。400.perlbench采用3个脚本进行增加负载或工作。1.主要的负载在于打开&amp;nbsp;垃圾邮件过滤软件SpamAssassin。采取的过滤方式是采用记分制，也就是说会根据我们所设定的标准来给予分数超过标准值的时候即判定为 SPAM（垃圾邮件），其余为非垃圾邮件。但对SpamAssassin软件做了很大程度的修改，避免一些I/0操作，并且没有使用贝叶斯过滤。2.是比较流行的email到HTML的转换器MHonArc 3.使用了spec2006的工具套件specdiff。&lt;/p&gt;
 &lt;p&gt;401.bzip2: C语言实现，同spec2000的256.bzip2类似,基于Julian Seward的bzip2 v1.03.唯一的不同是SPEC中的bzip2除了输入外，无文件I/O。所有的压缩和解压都在内存中进行。输入，输出都和gzip的相似。负载包括六个部分：两个小的JPEG图片、一个程序、一个tar包起的几个源程序文件、一个HTML文件、混合文件，包括压缩起来的高可压缩文件及不怎么可压缩的文件。测试分别使用了三个不同的压缩等级进行压缩和解压缩&lt;/p&gt;
 &lt;p&gt;403.gcc:C语言实现，同spec2000的176.gcc类似。该测试是基于gcc V3.2,为AMDCPU生成机器码。相比spec2000的176.gcc，该测试有更多的输入文件，因此测试压力会更大，负载来源于对9组C代码进行编译。&lt;/p&gt;
@@ -7849,7 +7849,7 @@ C语言实现，定位和路由模拟。twolf来自TimberWolfSC定位和全局�
 &lt;ol&gt;
 &lt;li&gt;xalancbmk：C++语言实现，包含Xalan-C++ v1.8 mod、Xerces-C++ v2.5.0，实现了XML文档/XSL表到HTML文档的转换。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h4 id="spec-fp2000-13ge-fu-dian-ce-shi-xiang-mu"&gt;Spec fp2000  13个浮点测试项目&lt;/h4&gt;
+&lt;h5 id="23-spec-fp2000-13ge-fu-dian-ce-shi-xiang-mu"&gt;2.3 Spec fp2000  13个浮点测试项目&lt;/h5&gt;
 &lt;p&gt;168 wupwise：Fortran 77语言实现，格点规范理论与威尔逊数值模拟对费米子格是夸克传播子的计算。输入文件wupwise.in包含几个创建该问题的参数，SEED:提供一个随机数 NITER：迭代次数KAPPA：参数表征矩阵M = I - KAPPA * D。输出文件wupwise.out,包含每次NITER迭代的校验值（EPS）和包含最终的EPSILON特征的结果。&lt;/p&gt;
 &lt;p&gt;171 swim：Fortran 77语言实现，气象学中的浅水模型。&lt;/p&gt;
 &lt;p&gt;172.mgrid ：Fortran 77语言实现，多重网格求解器：3D势场&lt;/p&gt;
@@ -7863,7 +7863,7 @@ C语言实现，定位和路由模拟。twolf来自TimberWolfSC定位和全局�
 &lt;p&gt;191.fma3d :Fortran 90语言实现，有限元模拟碰撞&lt;/p&gt;
 &lt;p&gt;200.sixtrack :Fortran 77语言实现，高能核物理加速器设计&lt;/p&gt;
 &lt;p&gt;301.apsi: Fortran 77语言实现，气象学中污染物分布&lt;/p&gt;
-&lt;h4 id="spec-fp2006-17ge-fu-dian-ce-shi-xiang-mu"&gt;Spec fp2006  17个浮点测试项目&lt;/h4&gt;
+&lt;h5 id="24-spec-fp2006-17ge-fu-dian-ce-shi-xiang-mu"&gt;2.4 Spec fp2006  17个浮点测试项目&lt;/h5&gt;
 &lt;p&gt;410.bwaves：Fortran 77语言实现，流体力学范畴。对三维瞬跨音速粘性流中冲击波的模拟计算&lt;/p&gt;
 &lt;p&gt;416.gamess：Fortran语言实现，量子化学范畴。采用GMAESS组件，包含　胞嘧啶分子、水和Cu2+离子、三唑离子等3种SCF自洽场计算。&lt;/p&gt;
 &lt;p&gt;433.milc：C语言实现，量子力学范畴，采用MILC组件，包含用来研究QCD量子色动力学、夸克及胶子的四维SU(3)格点规范理论的模。&lt;/p&gt;
@@ -7881,8 +7881,8 @@ C语言实现，定位和路由模拟。twolf来自TimberWolfSC定位和全局�
 &lt;p&gt;470.lbm ：ANSI C语言实现。    470.lbm使用LBM（格子波尔兹曼方法）模拟非压缩流体，它模拟了两种情况：类似活塞推动的剪切驱动流体和管道流体，测试包含了3000个步骤&lt;/p&gt;
 &lt;p&gt;481.wrf ：Fortran 90 &amp;amp; C语言实现。WRF v2.0.2  481.wrf基于WRF(Weather Research and Forecastin)模型，对NCAR的数据进行了计算，数据包括了UTC 2001.06.11到UTC 2001.06.12以三小时为间隔的数据&lt;/p&gt;
 &lt;p&gt;482.sphinx3：C语言实现。Sphinx-3一种语音识别软件。&lt;/p&gt;
-&lt;h3 id="gong-ju-an-zhuang_1"&gt;工具安装&lt;/h3&gt;
-&lt;h4 id="biao-zhun-an-zhuang-fang-shi"&gt;标准安装方式&lt;/h4&gt;
+&lt;h3 id="er-gong-ju-an-zhuang_2"&gt;二、工具安装&lt;/h3&gt;
+&lt;h4 id="1biao-zhun-an-zhuang-fang-shi"&gt;1.标准安装方式&lt;/h4&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;mount&lt;/span&gt;&lt;span class="x"&gt; -t iso9660 -o ro,exec /dev/cdrom /mnt&lt;/span&gt;
 &lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;cd&lt;/span&gt;&lt;span class="x"&gt; /mnt&lt;/span&gt;
 &lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="x"&gt;./install.sh&lt;/span&gt;
@@ -7896,7 +7896,7 @@ Installing TO /home/cpu2006
 Is this correct? (Please enter 'yes' or 'no')
 yes
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id="tong-guo-an-zhuang-wan-cheng-de-ruan-jian-jin-xing-ce-shi"&gt;通过安装完成的软件进行测试&lt;/h4&gt;
+&lt;h4 id="2tong-guo-an-zhuang-wan-cheng-de-ruan-jian-jin-xing-ce-shi"&gt;2.通过安装完成的软件进行测试&lt;/h4&gt;
 &lt;p&gt;先准备相关测试文件，如：cpu2006-20141030.tar。
 解压文件：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;tar&lt;/span&gt;&lt;span class="x"&gt; xf cpu2006-20141030.tar&lt;/span&gt;
@@ -7912,7 +7912,7 @@ yes
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;bin&lt;/span&gt;&lt;span class="x"&gt;/relocate&lt;/span&gt;
 &lt;span class="x"&gt;显示&amp;ldquo;Top of SPEC benchmark tree is '/cpu2006v99'&amp;rdquo;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id="yun-xing-ce-shi"&gt;运行测试&lt;/h4&gt;
+&lt;h4 id="3yun-xing-ce-shi"&gt;3.运行测试&lt;/h4&gt;
 &lt;p&gt;根据需求，进行参数选择，开始运行测试脚本：
 例如：runspec -c linux-mipsel-gcc -i ref -n 3  all
 命令参数说明：&lt;/p&gt;
@@ -8034,7 +8034,7 @@ CPORTABILITY= -DSPEC_CPU_LINUX_IA32 -fno-strict-aliasing
 其他具体组件的编译信息不再一一说明，基本可以保持默认即可。
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;更多测试类型与方法参见下文。&lt;/p&gt;
-&lt;h3 id="ce-shi-jie-guo-shou-ji-yu-fen-xi_1"&gt;测试结果收集与分析&lt;/h3&gt;
+&lt;h4 id="4ce-shi-jie-guo-shou-ji-yu-fen-xi"&gt;4.测试结果收集与分析&lt;/h4&gt;
 &lt;p&gt;测试结束后在result目录下，查看测试结果，测试结果一般以测试类型和测试次序进行区别，并且会按照整点和浮点进行划分。如果是按照正式reportable的模式进行测试的话，会出一份网页版的正式测试结果，参见下图：
 非正式结果可以去asc或txt文档查看，格式例如下文：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;                Base     Base       Base        Peak     Peak       Peak
@@ -8093,7 +8093,7 @@ Benchmarks      Ref.   Run Time     Ratio       Ref.   Run Time     Ratio
  SPECint2006                           39.1
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Base Ratio为测试分值，该测试一般运行3遍取中值。整体结果为所有结果的几何平均值。&lt;/p&gt;
-&lt;h4 id="ju-li-shuo-ming-spec-cpu2006chang-yong-ce-shi-ming-ling-zu-he"&gt;举例说明SPEC CPU2006常用测试命令组合&lt;/h4&gt;
+&lt;h4 id="5-ju-li-shuo-ming-spec-cpu2006chang-yong-ce-shi-ming-ling-zu-he"&gt;5. 举例说明SPEC CPU2006常用测试命令组合&lt;/h4&gt;
 &lt;p&gt;1．runspec -c test.cfg -i test -I all
 基于最小测试数据集快速执行所有的测试，测试过程中如果某个用例发生错误，则跳过错误用例，继续执行其他用例。
 2．runspec -c test.cfg -i ref -n 3 -I all
@@ -8106,7 +8106,7 @@ Benchmarks      Ref.   Run Time     Ratio       Ref.   Run Time     Ratio
 基于最大测试数据集只执行473.astar单个测试。
 6 runspec &amp;ndash;c test.cfg &amp;ndash;i ref --rate 4 int
 基于最大数据测试集进行rate测试，运行4线程测试的分值&lt;/p&gt;
-&lt;h4 id="qi-ta-ming-ling-bu-chong"&gt;其他命令补充&lt;/h4&gt;
+&lt;h4 id="6qi-ta-ming-ling-bu-chong"&gt;6.其他命令补充&lt;/h4&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;--action build 创建测试项目
 --action onlyrun 只是运行，不进行确认测试结果是否正确
 --action report 标准测试
@@ -8168,7 +8168,7 @@ ations number &amp;mdash;n 测试次数，一次reportable测试，必须是3次
 --ignoreerror   Same as --ignore_errors
 ......
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id="shou-dong-bian-yi-ji-kua-ping-tai-yi-zhi-fang-fa-jin-gong-can-kao"&gt;手动编译及跨平台移植方法（仅供参考）&lt;/h4&gt;
+&lt;h4 id="7shou-dong-bian-yi-ji-kua-ping-tai-yi-zhi-fang-fa-jin-gong-can-kao"&gt;7.手动编译及跨平台移植方法（仅供参考）&lt;/h4&gt;
 &lt;p&gt;Spec2006包含的测试套件基本上与平台无关，因此理论上是可以直接进行跨平台进行测试。
 Spec2006为了实现测试结果的准确及降低对平台的依赖，制作了自己的工具包。其中包括:
     specdiff（examines results to see if the correct answer was obtained）、specinvoke  (invokes benchmarks for CPU2006)、specmake（GNU make ，Calling it "specmake" avoids possible conflicts with versions of make that may already be on your system. SPEC requires that published results use the versions of the tools that it supplies, so that if SPEC applies patches or extensions from time to time, all users run with a consistent tool set. Similar considerations apply to other tools in this list.)、specxz     （The xz compression program）、specmd5sum（md5sum from GNU coreutils, with enhancements）、spectar（ GNU tar）、specperl（Perl）。Various Perl modules such as Algorithm::Diff, GD, HTML::Parser, PDF::API2, URI, XML::SAX, etc.。
@@ -8204,7 +8204,7 @@ ulimit -s 128000; CFLAGS="-c99 -D_FILE_OFFSET_BITS=64" MD5CFLAGS="-O2" PERLFLAGS
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;packagetools &amp;lt;archname&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;如果自动化编译出现问题，可以手动编译每个测试工具。编译方法为进入对应的工具包，手动编译。&lt;/p&gt;
-&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;</summary><category term="benchmark"></category></entry><entry><title>Linux Test Project(一)</title><link href="http://king32783784.github.io/2014/09/12/ltp/" rel="alternate"></link><published>2014-09-12T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2014-09-12:2014/09/12/ltp/</id><summary type="html">&lt;body&gt;&lt;h1 id="testing-linux-one-syscall-at-a-time"&gt;Testing Linux, one syscall at a time.&lt;/h1&gt;
+&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</summary><category term="benchmark"></category></entry><entry><title>Linux Test Project(一)</title><link href="http://king32783784.github.io/2014/09/12/ltp/" rel="alternate"></link><published>2014-09-12T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2014-09-12:2014/09/12/ltp/</id><summary type="html">&lt;h2 id="testing-linux-one-syscall-at-a-time"&gt;Testing Linux, one syscall at a time.&lt;/h2&gt;
 &lt;p&gt;LTP是从SGI开始的,后由IBM 思科 富士通 SUSE Redhat等组织开发的.该工具的目标是建立一个测试套件用来验证linux的可靠性,健壮性及稳定性.LTP测试套件包含了linux内核及相关功能的工具.&lt;/p&gt;
 &lt;p&gt;本文主要介绍关于ltp的一些基本信息.&lt;/p&gt;
 &lt;p&gt;LTP项目主页:&lt;a href="https://linux-test-project.github.io/#"&gt;ltp&lt;/a&gt;&lt;/p&gt;
@@ -8212,7 +8212,7 @@ ulimit -s 128000; CFLAGS="-c99 -D_FILE_OFFSET_BITS=64" MD5CFLAGS="-O2" PERLFLAGS
 &lt;p&gt;LTP是一个验证ltp内核功能和稳定性的测试集.用来支持linux开发过程中,通过更多的单元测试,减少bug的引入,降低bug对用户的影响.LTP并不是用来做benchmarking测试的,而是更专注与功能,问题回归及稳定性测试.LTP同样不是一个标准测试,标准测试有&lt;a href="http://www.linuxbase.org/"&gt;LSB&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id="yi-ji-ben-jie-gou"&gt;一 基本结构&lt;/h2&gt;
 &lt;p&gt;LTP测试套件是由包含一个基本动作和一个确认基本动作工作是否正常的测试用例组成.这个测试用例通常的测试结果是PASS/FAIL.一个测试程序是包含一个或多个测试用例的可执行程序.测试程序包括相应的测试参数,这些参数包括内存测试容量,临时文件位置,网络测试类型等等.Test tags 是用于匹配测试程序和一组命令行参数.Test tags是测试集的基础.&lt;/p&gt;
-&lt;h3 id="bian-xie-ce-shi"&gt;编写测试&lt;/h3&gt;
+&lt;h3 id="1bian-xie-ce-shi"&gt;1.编写测试&lt;/h3&gt;
 &lt;p&gt;编写一个测试用例比大多数想象的更容易.任何一个你编写用于验证内核功能的代码都可以用来形成一个用例.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;测试退出约定&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;通常一个简单的判断一个测试用例执行结果的方式就是程序的返回值.如果你的测试程序没有得到一个预期结果或错误结果,程序退出是需要返回一个非零值,如exit1,
@@ -8379,7 +8379,7 @@ $
 &lt;p&gt;&lt;strong&gt;Scanner&lt;/strong&gt;
 Ltp-scanner 是一个测试结果分析工具,它可以理解rts风格的输出.最终生成一个汇总结果显示哪个用例pass,哪个用例fail.&lt;/p&gt;
 &lt;p&gt;测试流程参见下图:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" class="img-responsive" src="https://king32783784.github.io/lipeng/tmpfile/ltp.gif"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="https://king32783784.github.io/lipeng/tmpfile/ltp.gif"/&gt;&lt;/p&gt;
 &lt;h2 id="er-ltpwen-jian-jie-gou_1"&gt;二.LTP文件结构&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;从 http://ltp.sourceforge.net/下载LTP测试源码包
 &lt;/pre&gt;&lt;/div&gt;
@@ -8467,7 +8467,7 @@ stress.part3中关于swap交换分区的去掉&lt;/p&gt;
      &amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;&amp;hellip;
 Top:&lt;/p&gt;
 &lt;p&gt;跟sar差不多的功能，这里我们就用sar 了。&lt;/p&gt;
-&lt;h2 id="qi-ta"&gt;其他&lt;/h2&gt;
+&lt;h2 id="liu-qi-ta"&gt;六、其他&lt;/h2&gt;
 &lt;p&gt;什么是稳定性和可靠性？&lt;/p&gt;
 &lt;p&gt;稳定性反映的是系统不会出现异常情况；可靠性反映的是系统能够保持正常运行而不受外界影响的能力。
 系统的稳定性和可靠性通常以连续运转时间和系统的可靠运行时间来度量。&lt;/p&gt;
@@ -8475,7 +8475,7 @@ Top:&lt;/p&gt;
 &lt;p&gt;压力测试是一种破坏性的测试，即系统在非正常的、超负荷的条件下的运行情况 。用来评估在超越最大负载的情况下系统将如何运行，是系统在正常的情况下对某种负载强度的承受能力的考验 。&lt;/p&gt;
 &lt;p&gt;为什么要进行压力测试？&lt;/p&gt;
 &lt;p&gt;通常我们用压力测试来判断系统的稳定性和可靠性。&lt;/p&gt;
-&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;</summary><category term="LTP"></category></entry><entry><title>Reboot test脚本</title><link href="http://king32783784.github.io/2014/03/01/stablity/" rel="alternate"></link><published>2014-03-01T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2014-03-01:2014/03/01/stablity/</id><summary type="html">&lt;body&gt;&lt;p&gt;为了验证操作系统启动的稳定性，需要进行500次启动测试，便写了脚本实现。&lt;/p&gt;
+&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</summary><category term="LTP"></category></entry><entry><title>Reboot test脚本</title><link href="http://king32783784.github.io/2014/03/01/stablity/" rel="alternate"></link><published>2014-03-01T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2014-03-01:2014/03/01/stablity/</id><summary type="html">&lt;p&gt;为了验证操作系统启动的稳定性，需要进行500次启动测试，便写了脚本实现。&lt;/p&gt;
 &lt;p&gt;脚本如下：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;HOME=`pwd`&lt;/span&gt;
 &lt;span class="x"&gt;sleep 15&lt;/span&gt;
@@ -8530,12 +8530,12 @@ Top:&lt;/p&gt;
 &lt;span class="x"&gt;    rm /etc/reboot.sh&lt;/span&gt;
 &lt;span class="x"&gt;    sed -i '&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;d&lt;/span&gt;&lt;span class="x"&gt;' /etc/profile&lt;/span&gt;
 &lt;span class="x"&gt;fi&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;</summary><category term="shell"></category></entry><entry><title>快速排序</title><link href="http://king32783784.github.io/2013/07/01/sort/" rel="alternate"></link><published>2013-07-01T00:00:00+08:00</published><author><name>penglee</name></author><id>tag:king32783784.github.io,2013-07-01:2013/07/01/sort/</id><summary type="html">&lt;body&gt;&lt;h4 id="kuai-su-pai-xu"&gt;快速排序&lt;/h4&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="shell"></category></entry><entry><title>快速排序</title><link href="http://king32783784.github.io/2013/07/01/sort/" rel="alternate"></link><published>2013-07-01T00:00:00+08:00</published><author><name>penglee</name></author><id>tag:king32783784.github.io,2013-07-01:2013/07/01/sort/</id><summary type="html">&lt;h4 id="1kuai-su-pai-xu"&gt;1.快速排序&lt;/h4&gt;
 &lt;p&gt;对于一个给定的数组，从中选择一个元素，以该元素为界将其余元素划分为两个子集，
 一个子集的所有元素都小于该元素，另一个子集的元素都大于或等于该元素，
 对两个子集递归执行这一过程，当某个子集中的元素小于二时，
 这个子集就不需要再次排序，终止递归。&lt;/p&gt;
-&lt;h4 id="dai-ma-shi-xian-ji-ce-shi"&gt;代码实现及测试&lt;/h4&gt;
+&lt;h4 id="2dai-ma-shi-xian-ji-ce-shi"&gt;2.代码实现及测试&lt;/h4&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;qsort&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;[],&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;left&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;right&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -8569,14 +8569,14 @@ Top:&lt;/p&gt;
         &lt;span class="p"&gt;}&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;</summary><category term="算法"></category></entry><entry><title>高性能计算机系统浮点性能测试</title><link href="http://king32783784.github.io/2013/06/12/linpack/" rel="alternate"></link><published>2013-06-12T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2013-06-12:2013/06/12/linpack/</id><summary type="html">&lt;body&gt;&lt;p&gt;&lt;img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/P5LS1TUY3V.jpg" width="420"/&gt;&lt;/p&gt;
+&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</summary><category term="算法"></category></entry><entry><title>高性能计算机系统浮点性能测试</title><link href="http://king32783784.github.io/2013/06/12/linpack/" rel="alternate"></link><published>2013-06-12T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2013-06-12:2013/06/12/linpack/</id><summary type="html">&lt;p&gt;&lt;img height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/P5LS1TUY3V.jpg" width="420"/&gt;&lt;/p&gt;
 &lt;h3 id="yi-gong-ju-jie-shao"&gt;一　工具介绍&lt;/h3&gt;
 &lt;p&gt;Linpack现在在国际上已经成为最流行的用于测试高性能计算机系统浮点性能的benchmark。通过利用高性能计算机，用高斯消元法求解N元一次稠密线性代数方程组的测试，评价高性能计算机的浮点性能。HPL是针对现代并行计算机提出的测试方式。用户在不修改任意测试程序的基础上，可以调节问题规模大小N(矩阵大小)、使用到的CPU数目、使用各种优化方法等来执行该测试程序，以获取最佳的性能。HPL采用高斯消元法求解线性方程组。当求解问题规模为N时，浮点运算次数为(2/3 * N^3－2&lt;em&gt;N^2)。因此，只要给出问题规模N，测得系统计算时间T，峰值=计算量(2/3 * N^3－2&lt;/em&gt;N^2)/计算时间T，测试结果以浮点运算每秒（Flops）给出。
 实测浮点峰值是指Linpack测试值，也就是说在这台机器上运行Linpack测试程序，通过各种调优方法得到的最优的测试结果。实际上在实际程序运行过程中，几乎不可能达到实测浮点峰值，更不用说达到理论浮点峰值了。这两个值只是作为衡量机器性能的一个指标，用来表明机器处理能力的一个标尺和潜能的度量。&lt;/p&gt;
 &lt;p&gt;HPL作为一个基准测试程序在HPC领域取得了巨大的成功。它对趋势进行了准确的预测，积累的优化技巧对于提高实际应用的性能发挥了重要的作用。但是，随着应用的发展，它与实际应用之间的相关性在逐渐降低，需要寻找替代者。但并不支持淘汰HPL。HPL提供给我们的历史经验数据相当的宝贵，并且HPL促进了HPC应用范围的扩大，这些重要作用都决定了HPL不会被淘汰。HPCG将会作为TOP500排名一个可供选择的基准测试，就像Green500排名一样，重新排名HPC系统。HPCG最诱人的地方就是它包含在实际应用中广泛使用的关键的通讯和计算模式，而且足够简单。HPCG不仅具有实际的数值意义，而且非常容易被大家理解和接受。我们将会在现有和即将出现的平台上，针对实际的应用程序，完成HPCG的验证和校验。验证和校验过程将会提高HPCG的质量，使之逐渐成为一个被大家广泛认可的基准测试程序。&lt;/p&gt;
 &lt;h3 id="er-bian-yi-an-zhuang"&gt;二　编译安装&lt;/h3&gt;
 &lt;h4 id="1mpich2gotoblas2hpl"&gt;１.mpich2+GotoBLAS2+hpl&lt;/h4&gt;
-&lt;h5 id="mpichan-zhuang"&gt;mpich安装&lt;/h5&gt;
+&lt;h5 id="11-mpichan-zhuang"&gt;1.1 mpich安装&lt;/h5&gt;
 &lt;p&gt;普华服务器版本iSoftServerOS3.0_x86-64_Build4&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;#wget http://www.mpich.org/static/downloads/1.0.8/mpich2-1.0.8.tar.gz
 #tar zxf mpich2-1.0.8.tar.gz
@@ -8600,7 +8600,7 @@ Top:&lt;/p&gt;
 # make
 # make install
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h5 id="gotoblas-2an-zhuang"&gt;GotoBlas 2安装&lt;/h5&gt;
+&lt;h5 id="12-gotoblas-2an-zhuang"&gt;1.2 GotoBlas 2安装&lt;/h5&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;#&lt;/span&gt;&lt;span class="nf"&gt;wget&lt;/span&gt;&lt;span class="x"&gt; https://www.tacc.utexas.edu/documents/1084364/1087496/GotoBLAS2-1.13.tar.gz/b58aeb8c-9d8d-4ec2-b5f1-5a5843b4d47b&lt;/span&gt;
 &lt;span class="cp"&gt;#&lt;/span&gt;&lt;span class="nf"&gt;make&lt;/span&gt;&lt;span class="x"&gt; TARGET=NEHALEM&lt;/span&gt;
 
@@ -8613,7 +8613,7 @@ Top:&lt;/p&gt;
 &lt;span class="x"&gt;安装过程中需要lapack-3.1.1.tgz，如果测试机没有外网，请手动下载后放到&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;HOME&lt;/span&gt;&lt;span class="x"&gt;目录&lt;/span&gt;
 &lt;span class="cp"&gt;#&lt;/span&gt;&lt;span class="nf"&gt;make&lt;/span&gt;&lt;span class="x"&gt; TARGET=POWER BINARY=64&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h5 id="hplan-zhuang"&gt;HPL安装&lt;/h5&gt;
+&lt;h5 id="13-hplan-zhuang"&gt;1.3 HPL安装&lt;/h5&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;#wget http://www.netlib.org/benchmark/hpl/hpl-2.1.tar.gz
 #tar -zxf hpl-2.1.tar.gz
 #cd cd hpl-2.1
@@ -8634,21 +8634,21 @@ Top:&lt;/p&gt;
 &lt;span class="c"&gt;#make arch=Goto&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;h4 id="2openmpiblashpl_1"&gt;2.openmpi+BLAS+hpl&lt;/h4&gt;
-&lt;h5 id="openmpian-zhuang"&gt;Openmpi安装&lt;/h5&gt;
+&lt;h5 id="21-openmpian-zhuang"&gt;2.1 Openmpi安装&lt;/h5&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;#wget http://www.open-mpi.org/software/ompi/v1.7/downloads/openmpi-1.7.2.tar.bz2
 #tar xf openmpi-1.7.2.tar.bz2
 # ./configure --prefix=/shared/openmpi/openmpi-1.7.2 --enable-orterun-prefix-by-default
 # make 
 #make install
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h5 id="blas"&gt;BLAS&lt;/h5&gt;
+&lt;h5 id="22-blas"&gt;2.2 BLAS&lt;/h5&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# wget http://www.netlib.org/lapack/lapack-3.4.2.tgz
 #tar zxf lapack-3.4.2.tgz
 #cd lapack-3.4.2
 #cp INSTALL/make.inc.gfortran ./make.inc
 #make blaslib
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h5 id="hpl"&gt;HPL&lt;/h5&gt;
+&lt;h5 id="23-hpl"&gt;2.3 HPL&lt;/h5&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;wget http://www.netlib.org/benchmark/hpl/hpl.tgz
 #tar zxf hpl.tgz
 #cd hpl-2.1
@@ -8690,9 +8690,8 @@ Top:&lt;/p&gt;
 
 2.如果Openmpi启动失败，可以采用mpich2+BLAS+hpl进行编译测试。
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id="san-ce-shi-zhi-xing_1"&gt;三.测试执行&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;1.测试调优参数
-&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="san-ce-shi-zhi-xing_2"&gt;三.测试执行&lt;/h3&gt;
+&lt;h4 id="1ce-shi-diao-you-can-shu"&gt;1.测试调优参数&lt;/h4&gt;
 &lt;p&gt;测试参数保存在HPL.out文件，修改参数时，直接修改HPL.out文件。HPL文件内容如下，注：斜体部分为文本内容，//号为解释部分&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;HPL.out      output file name (if any)  //输出文件名，同下一行一起设定
 
@@ -8948,7 +8947,7 @@ End of Tests.
 &lt;p&gt;为4核CPU。&lt;/p&gt;
 &lt;p&gt;INTELcore系列CPU每个时钟周期执行浮点运算的次数一般为8次，CPU的主频为3.1G。可以计算得出该CPU的理论浮点值为 3.1&lt;em&gt;4&lt;/em&gt;8=99.2G&lt;/p&gt;
 &lt;p&gt;所以该平台的系统的效率为45.41/99.2约45.8%。&lt;/p&gt;
-&lt;p&gt;附HPCG（高性能共轭梯度基准测试）&lt;/p&gt;
+&lt;h3 id="fu-1hpcggao-xing-neng-gong-e-ti-du-ji-zhun-ce-shi_1"&gt;附1HPCG（高性能共轭梯度基准测试）&lt;/h3&gt;
 &lt;p&gt;普通编译&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;#wget http://www.hpcg-benchmark.org/downloads/hpcg-2.4.tar.gz
 #tar zxf hpcg-2.4.tar.gz
@@ -8978,7 +8977,7 @@ End of Tests.
 &lt;p&gt;hpcg.dat 保持默认即可。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;#mpirun -np 2 ./xhpcg
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;附2. Intel MPI 和 已编译好的linpack测试&lt;/p&gt;
+&lt;h3 id="fu-2-intel-mpi-he-yi-bian-yi-hao-de-linpackce-shi"&gt;附2. Intel MPI 和 已编译好的linpack测试&lt;/h3&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;解压缩 tar &amp;ndash;zxvf l_mpi_p_3.2.011.tgz
 
 创建安装目录 mkdir /Clusterr/intelmpi ,拷贝license 到解压缩的目录中
@@ -8991,6 +8990,7 @@ root@mng l_mpi_p_3.1.038]# ./install.sh
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;tar &amp;ndash;zxvf l_lpk_p_10.0.2.010.tgz
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;测试方法同上面。&lt;/p&gt;
+&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
@@ -9047,14 +9047,15 @@ root@mng l_mpi_p_3.1.038]# ./install.sh
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;&lt;/body&gt;</summary><category term="benchmark"></category></entry><entry><title>常用shell命令</title><link href="http://king32783784.github.io/2011/01/01/cmds/" rel="alternate"></link><published>2011-01-01T00:00:00+08:00</published><author><name>penglee</name></author><id>tag:king32783784.github.io,2011-01-01:2011/01/01/cmds/</id><summary type="html">&lt;body&gt;&lt;p&gt;&lt;strong&gt;1.查找大于100M的文件&lt;/strong&gt;&lt;/p&gt;
+&lt;/script&gt;</summary><category term="benchmark"></category></entry><entry><title>常用shell命令</title><link href="http://king32783784.github.io/2011/01/01/cmds/" rel="alternate"></link><published>2011-01-01T00:00:00+08:00</published><author><name>penglee</name></author><id>tag:king32783784.github.io,2011-01-01:2011/01/01/cmds/</id><summary type="html">&lt;h4 id="linuxchang-yong-ming-ling-bei-wang"&gt;Linux常用命令备忘&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;1.查找大于100M的文件&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;find / -type f -size +100M
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;2.换行符替换为空格&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;sed ':label;N;s/\n/ /;t label'&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;3.在文本指定行首加空格&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;:10,20 s/^/    /g 在第10行知第20行每行前面加四个空格，用于缩进。&lt;/p&gt;
-&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;</summary><category term="shell"></category></entry><entry><title>原子操作</title><link href="http://king32783784.github.io/2009/10/10/UNIX/" rel="alternate"></link><published>2009-10-10T00:00:00+08:00</published><author><name>penglee</name></author><id>tag:king32783784.github.io,2009-10-10:2009/10/10/UNIX/</id><summary type="html">&lt;body&gt;&lt;h4 id="zhui-jia-zhi-yi-ge-wen-jian"&gt;追加至一个文件&lt;/h4&gt;
+&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</summary><category term="shell"></category></entry><entry><title>原子操作</title><link href="http://king32783784.github.io/2009/10/10/UNIX/" rel="alternate"></link><published>2009-10-10T00:00:00+08:00</published><author><name>penglee</name></author><id>tag:king32783784.github.io,2009-10-10:2009/10/10/UNIX/</id><summary type="html">&lt;h4 id="yi-zhui-jia-zhi-yi-ge-wen-jian"&gt;一、追加至一个文件&lt;/h4&gt;
 &lt;p&gt;一个进程，将数据添加到一个文件尾端。早期不支持open的O_APPEND选项。所有程序被编写成下列形式&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;if (lseek(fd, 0L, 2 ) &amp;lt; 0) /* position to EOF*/
 
@@ -9066,7 +9067,7 @@ if (write(fd, buf, 100) != 100) /* and write */
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;单个进程而言，可以正常工作，但若有多个进程同事使用这种方法将数据添加到同一文件，则会产生问题。&lt;/p&gt;
 &lt;p&gt;UNIX系统提供了一种方法使这种操作成为原子操作。该方法是在打开文件时设置O_APPEND标志。使内核每次对这种文件进行写之前，都将当前偏移量设置到该文件的尾端处，每次写之前就不在需要调用lseek。&lt;/p&gt;
-&lt;h4 id="preadhe-pwritehan-shu"&gt;pread和 pwrite函数&lt;/h4&gt;
+&lt;h4 id="er-preadhe-pwritehan-shu"&gt;二、pread和 pwrite函数&lt;/h4&gt;
 &lt;p&gt;原型如下：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;#include　＜unistd.h&amp;gt;
 
@@ -9081,7 +9082,7 @@ ssize_t pwrite(int filedes, const void *buf, size_t nbytes, off_t offset);
 调用pread时，无法中断其定位和读写作。
 不能更新文件指针
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id="chuang-jian-yi-ge-wen-jian"&gt;创建一个文件&lt;/h4&gt;
+&lt;h4 id="san-chuang-jian-yi-ge-wen-jian"&gt;三、创建一个文件&lt;/h4&gt;
 &lt;p&gt;当用open进行打开文件时，如果该文件已经存在，open将失败。检查文件是否存在和创建该文件这两个操作是作为一个原子操作执行的。如果没有这个原子操作，需要用下面程序段。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;if((fd = open(pathname, O_WRONLY)) &amp;lt; 0 ) {
 
@@ -9099,7 +9100,8 @@ ssize_t pwrite(int filedes, const void *buf, size_t nbytes, off_t offset);
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;如果在open和creat之间，另一个进程创建了该文件，那么就会引起问题。例如，若在这两个函数调用之间，另一个进程创建了该文件，并且写进了一些数据。然后，原先的进程执行这段程序的creat。刚由另一个进程写上去的数据就会被擦除。这样两则合并为一个原子操作，就不会发生该问题。&lt;/p&gt;
 &lt;p&gt;一般而言，原子操作，指的是由多步组成的操作，如果操作原子地执行，那么执行完所有步骤，要么不执行，不可能只执行一部分。&lt;/p&gt;
-&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;</summary><category term="unix编程"></category></entry><entry><title>排序-希尔排序法</title><link href="http://king32783784.github.io/2009/10/01/%E6%8E%92%E5%BA%8F/" rel="alternate"></link><published>2009-10-01T00:00:00+08:00</published><author><name>penglee</name></author><id>tag:king32783784.github.io,2009-10-01:2009/10/01/排序/</id><summary type="html">&lt;body&gt;&lt;p&gt;原始的算法实现在最坏的情况下需要进行O(n2)的比较和交换。V. Pratt的书[1] 对算法进行了少量修改，可以使得性能提升至O(n log2 n)。这比最好的比较算法的O(n log n)要差一些。&lt;/p&gt;
+&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</summary><category term="unix编程"></category></entry><entry><title>排序-希尔排序法</title><link href="http://king32783784.github.io/2009/10/01/%E6%8E%92%E5%BA%8F/" rel="alternate"></link><published>2009-10-01T00:00:00+08:00</published><author><name>penglee</name></author><id>tag:king32783784.github.io,2009-10-01:2009/10/01/排序/</id><summary type="html">&lt;h3 id="yi-suan-fa-jiang-jie"&gt;（一）算法讲解&lt;/h3&gt;
+&lt;p&gt;原始的算法实现在最坏的情况下需要进行O(n2)的比较和交换。V. Pratt的书[1] 对算法进行了少量修改，可以使得性能提升至O(n log2 n)。这比最好的比较算法的O(n log n)要差一些。&lt;/p&gt;
 &lt;p&gt;希尔排序通过将比较的全部元素分为几个区域来提升插入排序的性能。这样可以让一个元素可以一次性地朝最终位置前进一大步。然后算法再取越来越小的步长进行排序，算法的最后一步就是普通的插入排序，但是到了这步，需排序的数据几乎是已排好的了（此时插入排序较快）。&lt;/p&gt;
 &lt;p&gt;假设有一个很小的数据在一个已按升序排好序的数组的末端。如果用复杂度为O(n2)的排序（冒泡排序或插入排序），可能会进行n次的比较和交换才能将该数据移至正确位置。而希尔排序会用较大的步长移动数据，所以小数据只需进行少数比较和交换即可到正确位置。&lt;/p&gt;
 &lt;p&gt;一个更好理解的希尔排序实现：将数组列在一个表中并对列排序（用插入排序）。重复这过程，不过每次用更长的列来进行。最后整个表就只有一列了。将数组转换至表是为了更好地理解这算法，算法本身仅仅对原数组进行排序（通过增加索引的步长，例如是用i += step_size而不是i++）。&lt;/p&gt;
@@ -9128,7 +9130,8 @@ ssize_t pwrite(int filedes, const void *buf, size_t nbytes, off_t offset);
             &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="err"&gt;&amp;larr;&lt;/span&gt; &lt;span class="n"&gt;temp&lt;/span&gt;
     &lt;span class="n"&gt;inc&lt;/span&gt; &lt;span class="err"&gt;&amp;larr;&lt;/span&gt; &lt;span class="n"&gt;round&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="n"&gt;inc&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mf"&gt;2.2&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;C示例代码&lt;/p&gt;
+&lt;h3 id="er-dai-ma-shi-li"&gt;（二）代码示例&lt;/h3&gt;
+&lt;h4 id="1cshi-li-dai-ma"&gt;（1）C示例代码&lt;/h4&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
     &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
     &lt;span class="p"&gt;{&lt;/span&gt;
@@ -9156,7 +9159,7 @@ ssize_t pwrite(int filedes, const void *buf, size_t nbytes, off_t offset);
                  &lt;span class="n"&gt;gap&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;gap&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;C++示例代码&lt;/p&gt;
+&lt;h4 id="2cshi-li-dai-ma"&gt;（2）C++示例代码&lt;/h4&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;shellsort&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;size_t&lt;/span&gt; &lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;gap&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;size&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;gap&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;gap&lt;/span&gt; &lt;span class="o"&gt;/=&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -9173,7 +9176,7 @@ ssize_t pwrite(int filedes, const void *buf, size_t nbytes, off_t offset);
 
     &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Java中的示例代码&lt;/p&gt;
+&lt;h4 id="3javazhong-de-shi-li-dai-ma"&gt;（3）Java中的示例代码&lt;/h4&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;    &lt;span class="kd"&gt;static&lt;/span&gt; &lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;shellsort&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="o"&gt;[]&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
     &lt;span class="o"&gt;{&lt;/span&gt;
         &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;temp&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
@@ -9189,4 +9192,4 @@ ssize_t pwrite(int filedes, const void *buf, size_t nbytes, off_t offset);
         &lt;span class="o"&gt;}&lt;/span&gt;
      &lt;span class="o"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;</summary><category term="算法"></category></entry></feed>
+&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</summary><category term="算法"></category></entry></feed>

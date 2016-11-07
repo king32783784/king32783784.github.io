@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="peng.lee" />
         <meta name="keywords" content="Selenium" />
-        <meta name="description" content="等待 目前大多数网络应用都在使用AJAX技术。当浏览器加载一个页面，页面上的元素可能分多次进行加载。这会导致元素定位困难，如果元素没有在DOM中出现，则会触发ElementNotVisibleException异常。通过等待，我们可以解决这个问题。等待提供了设置操作间的时间间隔－元素定位直接或其他元素操作。 Selenium Webdriver 提供了等待的两种类型，implicit和explicit。显式等待是使webdriver在操作之间有确定的时间等待。隐式等待是使WebDriver 去间隔的轮询DOM，尝试定位到元素。 显式等待 显式等待是代码中定义一定的条件，等待条件达成，继续执行。最差的方式是time.sleep(),通过设置等待时间间隔实现。有一些便利方法，会帮助设置等待时间。WebDriverWait与ExpectedCondition组合就是其中一种实现方式。 from selenium import webdriver from selenium.webdriver.common.by import By from selenium.webdriver.support.ui import WebDriverWait from selenium.webdriver ..." />
+        <meta name="description" content="一、等待 目前大多数网络应用都在使用AJAX技术。当浏览器加载一个页面，页面上的元素可能分多次进行加载。这会导致元素定位困难，如果元素没有在DOM中出现，则会触发ElementNotVisibleException异常。通过等待，我们可以解决这个问题。等待提供了设置操作间的时间间隔－元素定位直接或其他元素操作。 Selenium Webdriver 提供了等待的两种类型，implicit和explicit。显式等待是使webdriver在操作之间有确定的时间等待。隐式等待是使WebDriver 去间隔的轮询DOM，尝试定位到元素。 1.显式等待 显式等待是代码中定义一定的条件，等待条件达成，继续执行。最差的方式是time.sleep(),通过设置等待时间间隔实现。有一些便利方法，会帮助设置等待时间。WebDriverWait与ExpectedCondition组合就是其中一种实现方式。 from selenium import webdriver from selenium.webdriver.common.by import By from selenium.webdriver.support.ui import WebDriverWait from ..." />
 
 <!-- Open Graph tags -->
 <meta property="og:site_name" content="Hi | World"/>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="selenium-专题5"/>
     <meta property="og:url" content="../../../../2015/01/17/selenium/"/>
-    <meta property="og:description" content="等待 目前大多数网络应用都在使用AJAX技术。当浏览器加载一个页面，页面上的元素可能分多次进行加载。这会导致元素定位困难，如果元素没有在DOM中出现，则会触发ElementNotVisibleException异常。通过等待，我们可以解决这个问题。等待提供了设置操作间的时间间隔－元素定位直接或其他元素操作。 Selenium Webdriver 提供了等待的两种类型，implicit和explicit。显式等待是使webdriver在操作之间有确定的时间等待。隐式等待是使WebDriver 去间隔的轮询DOM，尝试定位到元素。 显式等待 显式等待是代码中定义一定的条件，等待条件达成，继续执行。最差的方式是time.sleep(),通过设置等待时间间隔实现。有一些便利方法，会帮助设置等待时间。WebDriverWait与ExpectedCondition组合就是其中一种实现方式。 from selenium import webdriver from selenium.webdriver.common.by import By from selenium.webdriver.support.ui import WebDriverWait from selenium.webdriver ..."/>
+    <meta property="og:description" content="一、等待 目前大多数网络应用都在使用AJAX技术。当浏览器加载一个页面，页面上的元素可能分多次进行加载。这会导致元素定位困难，如果元素没有在DOM中出现，则会触发ElementNotVisibleException异常。通过等待，我们可以解决这个问题。等待提供了设置操作间的时间间隔－元素定位直接或其他元素操作。 Selenium Webdriver 提供了等待的两种类型，implicit和explicit。显式等待是使webdriver在操作之间有确定的时间等待。隐式等待是使WebDriver 去间隔的轮询DOM，尝试定位到元素。 1.显式等待 显式等待是代码中定义一定的条件，等待条件达成，继续执行。最差的方式是time.sleep(),通过设置等待时间间隔实现。有一些便利方法，会帮助设置等待时间。WebDriverWait与ExpectedCondition组合就是其中一种实现方式。 from selenium import webdriver from selenium.webdriver.common.by import By from selenium.webdriver.support.ui import WebDriverWait from ..."/>
     <meta property="article:published_time" content="2015-01-17" />
     <meta property="article:section" content="自动化测试-Selenium" />
         <meta property="article:tag" content="Selenium" />
@@ -388,10 +388,10 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    <body><h3 id="deng-dai">等待</h3>
+                    <body><h3 id="yi-deng-dai">一、等待</h3>
 <p>目前大多数网络应用都在使用AJAX技术。当浏览器加载一个页面，页面上的元素可能分多次进行加载。这会导致元素定位困难，如果元素没有在DOM中出现，则会触发ElementNotVisibleException异常。通过等待，我们可以解决这个问题。等待提供了设置操作间的时间间隔－元素定位直接或其他元素操作。</p>
 <p>Selenium Webdriver 提供了等待的两种类型，implicit和explicit。显式等待是使webdriver在操作之间有确定的时间等待。隐式等待是使WebDriver 去间隔的轮询DOM，尝试定位到元素。</p>
-<h4 id="xian-shi-deng-dai">显式等待</h4>
+<h4 id="1xian-shi-deng-dai">1.显式等待</h4>
 <p>显式等待是代码中定义一定的条件，等待条件达成，继续执行。最差的方式是time.sleep(),通过设置等待时间间隔实现。有一些便利方法，会帮助设置等待时间。WebDriverWait与ExpectedCondition组合就是其中一种实现方式。</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
 <span class="kn">from</span> <span class="nn">selenium.webdriver.common.by</span> <span class="kn">import</span> <span class="n">By</span>
@@ -409,7 +409,7 @@
     <span class="n">driver</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
 </pre></div>
 <p>示例代码，默认等待１０s或则在１０s内找到元素，否则触发TimeoutException异常。默认情况下，WebDriverWait等待500ms就会触发异常，直到成功返回元素.ExpectedCondition成功的返回值是布尔值true或非空代表其他值的异常类型。</p>
-<h5 id="yu-qi-tiao-jian">预期条件</h5>
+<h5 id="2yu-qi-tiao-jian">2.预期条件</h5>
 <p>以下列举了浏览器自动化测试常用的条件。Python＆selenium提供了一些便利方法，所以不必自己编写一个expected_condition类或为他们创建自己的工具包。</p>
 <ul>
 <li>title_is</li>
@@ -436,7 +436,7 @@ element = wait.until(EC.element_to_be_clickable(By.ID, 'someid')))</p>
 </li>
 </ul>
 <p>该预期条件模块包含了通过WebDriverWait实现的预期条件。</p>
-<h4 id="yin-shi-deng-dai-shi-shi-webdriver_1">隐式等待是使WebDriver</h4>
+<h4 id="3yin-shi-deng-dai-shi-shi-webdriver_1">3.隐式等待是使WebDriver</h4>
 <p>隐式等待让WebDriver试图找单个元素或多个元素失败后，在一定时间间隔下轮询DOM.默认设置为０。一旦设置，隐式等待会伴随WebDriver对象的整个生命周期。</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium</span> <span class="kn">import</span> <span class="n">webdriver</span>
 
@@ -463,7 +463,7 @@ element = wait.until(EC.element_to_be_clickable(By.ID, 'someid')))</p>
             </div>
     <div id="scrollspy">
         <div class="col-lg-3 nav nav-stacked hidden-xs hidden-sm" data-spy="affix" data-offset-top="135">
-            <div id="toc"><ul><li><a class="toc-href" href="#" title="selenium-专题5">selenium-专题5</a><ul><li><a class="toc-href" href="#deng-dai" title="等待">等待</a><ul><li><a class="toc-href" href="#xian-shi-deng-dai" title="显式等待">显式等待</a><ul><li><a class="toc-href" href="#yu-qi-tiao-jian" title="预期条件">预期条件</a></li></ul></li><li><a class="toc-href" href="#yin-shi-deng-dai-shi-shi-webdriver_1" title="隐式等待是使WebDriver">隐式等待是使WebDriver</a></li></ul></li></ul></li></ul></div>
+            <div id="toc"><ul><li><a class="toc-href" href="#" title="selenium-专题5">selenium-专题5</a><ul><li><a class="toc-href" href="#yi-deng-dai" title="一、等待">一、等待</a><ul><li><a class="toc-href" href="#1xian-shi-deng-dai" title="1.显式等待">1.显式等待</a><ul><li><a class="toc-href" href="#2yu-qi-tiao-jian" title="2.预期条件">2.预期条件</a></li></ul></li><li><a class="toc-href" href="#3yin-shi-deng-dai-shi-shi-webdriver_1" title="3.隐式等待是使WebDriver">3.隐式等待是使WebDriver</a></li></ul></li></ul></li></ul></div>
         </div>
     </div>
         </div>

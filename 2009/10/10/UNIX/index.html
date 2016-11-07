@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="penglee" />
         <meta name="keywords" content="unix编程" />
-        <meta name="description" content="追加至一个文件 一个进程，将数据添加到一个文件尾端。早期不支持open的O_APPEND选项。所有程序被编写成下列形式 if (lseek(fd, 0L, 2 ) &lt; 0) /* position to EOF*/ err_sys(&#34;lseek error&#34;); if (write(fd, buf, 100) != 100) /* and write */ err_sys(&#34;write error&#34;); 单个进程而言，可以正常工作，但若有多个进程同事使用这种方法将数据添加到同一文件，则会产生问题。 UNIX系统提供了一种方法使这种操作成为原子操作。该方法是在打开文件时设置O_APPEND标志。使内核每次对这种文件进行写之前，都将当前偏移量设置到该文件的尾端处，每次写之前就不在需要调用lseek。 pread和 pwrite函数 原型如下： #include ＜unistd.h&gt; ssize_t pread (int filedes, void *buf, size_t ..." />
+        <meta name="description" content="一、追加至一个文件 一个进程，将数据添加到一个文件尾端。早期不支持open的O_APPEND选项。所有程序被编写成下列形式 if (lseek(fd, 0L, 2 ) &lt; 0) /* position to EOF*/ err_sys(&#34;lseek error&#34;); if (write(fd, buf, 100) != 100) /* and write */ err_sys(&#34;write error&#34;); 单个进程而言，可以正常工作，但若有多个进程同事使用这种方法将数据添加到同一文件，则会产生问题。 UNIX系统提供了一种方法使这种操作成为原子操作。该方法是在打开文件时设置O_APPEND标志。使内核每次对这种文件进行写之前，都将当前偏移量设置到该文件的尾端处，每次写之前就不在需要调用lseek。 二、pread和 pwrite函数 原型如下： #include ＜unistd.h&gt; ssize_t pread (int filedes, void ..." />
 
 <!-- Open Graph tags -->
 <meta property="og:site_name" content="Hi | World"/>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="原子操作"/>
     <meta property="og:url" content="../../../../2009/10/10/UNIX/"/>
-    <meta property="og:description" content="追加至一个文件 一个进程，将数据添加到一个文件尾端。早期不支持open的O_APPEND选项。所有程序被编写成下列形式 if (lseek(fd, 0L, 2 ) &lt; 0) /* position to EOF*/ err_sys(&#34;lseek error&#34;); if (write(fd, buf, 100) != 100) /* and write */ err_sys(&#34;write error&#34;); 单个进程而言，可以正常工作，但若有多个进程同事使用这种方法将数据添加到同一文件，则会产生问题。 UNIX系统提供了一种方法使这种操作成为原子操作。该方法是在打开文件时设置O_APPEND标志。使内核每次对这种文件进行写之前，都将当前偏移量设置到该文件的尾端处，每次写之前就不在需要调用lseek。 pread和 pwrite函数 原型如下： #include ＜unistd.h&gt; ssize_t pread (int filedes, void *buf, size_t ..."/>
+    <meta property="og:description" content="一、追加至一个文件 一个进程，将数据添加到一个文件尾端。早期不支持open的O_APPEND选项。所有程序被编写成下列形式 if (lseek(fd, 0L, 2 ) &lt; 0) /* position to EOF*/ err_sys(&#34;lseek error&#34;); if (write(fd, buf, 100) != 100) /* and write */ err_sys(&#34;write error&#34;); 单个进程而言，可以正常工作，但若有多个进程同事使用这种方法将数据添加到同一文件，则会产生问题。 UNIX系统提供了一种方法使这种操作成为原子操作。该方法是在打开文件时设置O_APPEND标志。使内核每次对这种文件进行写之前，都将当前偏移量设置到该文件的尾端处，每次写之前就不在需要调用lseek。 二、pread和 pwrite函数 原型如下： #include ＜unistd.h&gt; ssize_t pread (int filedes, void ..."/>
     <meta property="article:published_time" content="2009-10-10" />
     <meta property="article:section" content="unix环境编程" />
         <meta property="article:tag" content="unix编程" />
@@ -388,7 +388,7 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    <body><h4 id="zhui-jia-zhi-yi-ge-wen-jian">追加至一个文件</h4>
+                    <body><h4 id="yi-zhui-jia-zhi-yi-ge-wen-jian">一、追加至一个文件</h4>
 <p>一个进程，将数据添加到一个文件尾端。早期不支持open的O_APPEND选项。所有程序被编写成下列形式</p>
 <div class="highlight"><pre><span></span>if (lseek(fd, 0L, 2 ) &lt; 0) /* position to EOF*/
 
@@ -400,7 +400,7 @@ if (write(fd, buf, 100) != 100) /* and write */
 </pre></div>
 <p>单个进程而言，可以正常工作，但若有多个进程同事使用这种方法将数据添加到同一文件，则会产生问题。</p>
 <p>UNIX系统提供了一种方法使这种操作成为原子操作。该方法是在打开文件时设置O_APPEND标志。使内核每次对这种文件进行写之前，都将当前偏移量设置到该文件的尾端处，每次写之前就不在需要调用lseek。</p>
-<h4 id="preadhe-pwritehan-shu">pread和 pwrite函数</h4>
+<h4 id="er-preadhe-pwritehan-shu">二、pread和 pwrite函数</h4>
 <p>原型如下：</p>
 <div class="highlight"><pre><span></span>#include　＜unistd.h&gt;
 
@@ -415,7 +415,7 @@ ssize_t pwrite(int filedes, const void *buf, size_t nbytes, off_t offset);
 调用pread时，无法中断其定位和读写作。
 不能更新文件指针
 </pre></div>
-<h4 id="chuang-jian-yi-ge-wen-jian">创建一个文件</h4>
+<h4 id="san-chuang-jian-yi-ge-wen-jian">三、创建一个文件</h4>
 <p>当用open进行打开文件时，如果该文件已经存在，open将失败。检查文件是否存在和创建该文件这两个操作是作为一个原子操作执行的。如果没有这个原子操作，需要用下面程序段。</p>
 <div class="highlight"><pre><span></span>if((fd = open(pathname, O_WRONLY)) &lt; 0 ) {
 
@@ -449,7 +449,7 @@ ssize_t pwrite(int filedes, const void *buf, size_t nbytes, off_t offset);
             </div>
     <div id="scrollspy">
         <div class="col-lg-3 nav nav-stacked hidden-xs hidden-sm" data-spy="affix" data-offset-top="135">
-            <div id="toc"><ul><li><a class="toc-href" href="#" title="原子操作">原子操作</a><ul><li><a class="toc-href" href="#zhui-jia-zhi-yi-ge-wen-jian" title="追加至一个文件">追加至一个文件</a></li><li><a class="toc-href" href="#preadhe-pwritehan-shu" title="pread和 pwrite函数">pread和 pwrite函数</a></li><li><a class="toc-href" href="#chuang-jian-yi-ge-wen-jian" title="创建一个文件">创建一个文件</a></li></ul></li></ul></div>
+            <div id="toc"><ul><li><a class="toc-href" href="#" title="原子操作">原子操作</a><ul><li><a class="toc-href" href="#yi-zhui-jia-zhi-yi-ge-wen-jian" title="一、追加至一个文件">一、追加至一个文件</a></li><li><a class="toc-href" href="#er-preadhe-pwritehan-shu" title="二、pread和 pwrite函数">二、pread和 pwrite函数</a></li><li><a class="toc-href" href="#san-chuang-jian-yi-ge-wen-jian" title="三、创建一个文件">三、创建一个文件</a></li></ul></li></ul></div>
         </div>
     </div>
         </div>
