@@ -20,7 +20,7 @@
         <meta property="article:tag" content="自动化测试" />
         <meta property="article:author" content="peng.lee" />
         <meta property="og:image"
-              content="../../../../favicon.png"/>
+              content="../../../../https://king32783784.github.io/favicon.png"/>
 
     <title>Linux Test Project(一) - Hi | World</title>
 
@@ -92,19 +92,13 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-social-small" class="collapse ">
                     <li>
-                        <a href="https://bitbucket.org/winlu" title="Bitbucket"><i class="fa fa-bitbucket-square fa-lg padding-small"></i></a>
+                        <a href="mailto:peng.li@isoft.com.cn" title="EMAIL"><i class="fa fa-envelope-square fa-lg padding-small"></i></a>
                     </li>
                     <li>
-                        <a href="mailto:derwinlu@gmail.com" title="EMAIL"><i class="fa fa-envelope-square fa-lg padding-small"></i></a>
+                        <a href="https://github.com/king32783784" title="GitHub"><i class="fa fa-github-square fa-lg padding-small"></i></a>
                     </li>
                     <li>
-                        <a href="https://github.com/ingwinlu" title="GitHub"><i class="fa fa-github-square fa-lg padding-small"></i></a>
-                    </li>
-                    <li>
-                        <a href="https://plus.google.com/115771807029208924055" title="Google+"><i class="fa fa-google-plus-square fa-lg padding-small"></i></a>
-                    </li>
-                    <li>
-                        <a href="https://twitter.com/derwinlu" title="Twitter"><i class="fa fa-twitter-square fa-lg padding-small"></i></a>
+                        <a href="http://king32783784.github.io/feeds/atom.xml" title="RSS"><i class="fa fa-rss-square fa-lg padding-small"></i></a>
                     </li>
                 </ul></li>
                 <li class="nav-divider"></li>
@@ -162,7 +156,7 @@
                     <li>
                         <a href="../../../../archives.html">
                             <i class="fa fa-arrow-right padding-small"></i>
-                            More
+                            更多
                         </a>
                     </li>
                     </ul></li>
@@ -170,7 +164,7 @@
                 <li id="share">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse-share" title="Share" class="collapsed">
                         <i class="fa fa-share-alt padding-small"></i>
-                        Share
+                        分享
                     </a>
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-share" class="sidebar_submenu collapse ">
@@ -202,33 +196,21 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-social" class="sidebar_submenu collapse ">
                     <li>
-                        <a href="https://bitbucket.org/winlu" title="Bitbucket">
-                            <i class="fa fa-bitbucket-square fa-lg padding-small"></i>
-                            Bitbucket
-                        </a>
-                    </li>
-                    <li>
-                        <a href="mailto:derwinlu@gmail.com" title="EMAIL">
+                        <a href="mailto:peng.li@isoft.com.cn" title="EMAIL">
                             <i class="fa fa-envelope-square fa-lg padding-small"></i>
                             EMAIL
                         </a>
                     </li>
                     <li>
-                        <a href="https://github.com/ingwinlu" title="GitHub">
+                        <a href="https://github.com/king32783784" title="GitHub">
                             <i class="fa fa-github-square fa-lg padding-small"></i>
                             GitHub
                         </a>
                     </li>
                     <li>
-                        <a href="https://plus.google.com/115771807029208924055" title="Google+">
-                            <i class="fa fa-google-plus-square fa-lg padding-small"></i>
-                            Google+
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://twitter.com/derwinlu" title="Twitter">
-                            <i class="fa fa-twitter-square fa-lg padding-small"></i>
-                            Twitter
+                        <a href="http://king32783784.github.io/feeds/atom.xml" title="RSS">
+                            <i class="fa fa-rss-square fa-lg padding-small"></i>
+                            RSS
                         </a>
                     </li>
                 </ul></li>
@@ -399,7 +381,7 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    </head><body><h1 id="testing-linux-one-syscall-at-a-time">Testing Linux, one syscall at a time.</h1>
+                    <body><h1 id="testing-linux-one-syscall-at-a-time">Testing Linux, one syscall at a time.</h1>
 <p>LTP是从SGI开始的,后由IBM 思科 富士通 SUSE Redhat等组织开发的.该工具的目标是建立一个测试套件用来验证linux的可靠性,健壮性及稳定性.LTP测试套件包含了linux内核及相关功能的工具.</p>
 <p>本文主要介绍关于ltp的一些基本信息.</p>
 <p>LTP项目主页:<a href="https://linux-test-project.github.io/#">ltp</a></p>
@@ -489,7 +471,7 @@ $ cat ltp.zoo
 $
 </pre></div>
 <p>如何实现的:
-这个例子展示ltp-pan两个参数,一个活动文件,一个test tag. "sleep 4"测试程序及ltp-pan要执行的参数.这个测试会得到标记“cmdln”。 LTP-run将随机运行一个测试，最终被cmdln，因为指定了唯一测试.
+这个例子展示ltp-pan两个参数,一个活动文件,一个test tag. "sleep 4"测试程序及ltp-pan要执行的参数.这个测试会得到标记&ldquo;cmdln&rdquo;。 LTP-run将随机运行一个测试，最终被cmdln，因为指定了唯一测试.
 在活动文件,ltp.zoo,ltp-pan写入pid,testlog,运行测试部分命令行.当test tag运行完成,ltp-pan会标记一个"#",代表它可以执行.这时,你能看到cmdln和tutor,如果测试机挡住,你可以读这些文件查找哪个测试导致的.</p>
 <p>同时运行一个测试多次.</p>
 <div class="highlight"><pre><span></span>$ ltp-pan -a ltp.zoo -n tutor -x <span class="m">3</span> -s <span class="m">3</span> -O /tmp sleep 1
@@ -600,7 +582,7 @@ Ltp-scanner 是一个测试结果分析工具,它可以理解rts风格的输出.
     mtest01    mtest01 -m 20
     fork01     fork01</p>
 <h2 id="san-ltpce-shi-fang-fa">三.LTP测试方法</h2>
-<p>测试方法有两个的阶段：一个是“初始测试”，一个是“压力测试”。
+<p>测试方法有两个的阶段：一个是&ldquo;初始测试&rdquo;，一个是&ldquo;压力测试&rdquo;。
 初始测试是开始测试的必要条件。初始测试包括 LTP 测试套件在硬件和操作系统上成功运转，这些硬件和操作系统将用于可靠性运转。LTP 测试套件包附带的驱动程序脚本 runalltest.sh 用于验证内核。这个脚本串行地运行一组成包的测试，并报告全部结果。也可以选择同时并行地运行几个实例。默认地，这个脚本执行：</p>
 <div class="highlight"><pre><span></span>* 文件系统压力测试。
 * 硬盘 I/O 测试。
@@ -659,7 +641,7 @@ stress.part3中关于swap交换分区的去掉</p>
 针对sar生成的sar.data使用方法：
     sar -u sar.data  //查看cpu使用情况
     sar -r sar.data  //看看memory,swap使用情况
-     ……………………
+     &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;
 Top:</p>
 <p>跟sar差不多的功能，这里我们就用sar 了。</p>
 <h2 id="qi-ta">其他</h2>
@@ -670,7 +652,7 @@ Top:</p>
 <p>压力测试是一种破坏性的测试，即系统在非正常的、超负荷的条件下的运行情况 。用来评估在超越最大负载的情况下系统将如何运行，是系统在正常的情况下对某种负载强度的承受能力的考验 。</p>
 <p>为什么要进行压力测试？</p>
 <p>通常我们用压力测试来判断系统的稳定性和可靠性。</p>
-<p>Top<a href="">^</a></p>
+<p>Top<a href="">^</a></p></body>
                 </div>
                 <footer class="text-right">
                     <p>- peng.lee</p>
