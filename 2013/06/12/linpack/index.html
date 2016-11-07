@@ -1,39 +1,405 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<!--
-Design by Free CSS Templates
-http://www.freecsstemplates.org
-Released for free under a Creative Commons Attribution 2.5 License
 
-Name       : Brown Stone  
-Description: A two-column, fixed-width design with dark color scheme.
-Version    : 1.0
-Released   : 20100928
-
--->
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="zh">
 <head>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>高性能计算机系统浮点性能测试</title>
-<link href="../../../../theme/css/style.css" rel="stylesheet" type="text/css" media="screen" />
-<link href="../../../../" type="application/atom+xml" rel="alternate" title="Hi | World ATOM Feed" />
-</head>
-<body>
-<div id="wrapper">
-	<div id="page">
-		<div id="page-bgtop">
-			<div id="page-bgbtm">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="peng.lee" />
+        <meta name="keywords" content="性能测试" />
+        <meta name="description" content="一 工具介绍 Linpack现在在国际上已经成为最流行的用于测试高性能计算机系统浮点性能的benchmark。通过利用高性能计算机，用高斯消元法求解N元一次稠密线性代数方程组的测试，评价高性能计算机的浮点性能。HPL是针对现代并行计算机提出的测试方式。用户在不修改任意测试程序的基础上，可以调节问题规模大小N(矩阵大小)、使用到的CPU数目、使用各种优化方法等来执行该测试程序，以获取最佳的性能。HPL采用高斯消元法求解线性方程组。当求解问题规模为N时，浮点运算次数为(2/3 * N^3－2N^2)。因此，只要给出问题规模N，测得系统计算时间T，峰值=计算量(2/3 * N^3－2N^2)/计算时间T，测试结果以浮点运算每秒（Flops）给出。 实测浮点峰值是指Linpack测试值，也就是说在这台机器上运行Linpack测试程序，通过各种调优方法得到的最优的测试结果。实际上在实际程序运行过程中，几乎不可能达到实测浮点峰值，更不用说达到理论浮点峰值了。这两个值只是作为衡量机器性能的一个指标，用来表明机器处理能力的一个标尺和潜能的度量。 HPL作为一个基准测试程序在HPC领域取得了巨大的成功。它对趋势进行了准确的预测，积累的优化技巧对于提高实际应用的性能发挥了重要的作用 ..." />
+
+<!-- Open Graph tags -->
+<meta property="og:site_name" content="Hi | World"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="高性能计算机系统浮点性能测试"/>
+    <meta property="og:url" content="../../../../2013/06/12/linpack/"/>
+    <meta property="og:description" content="一 工具介绍 Linpack现在在国际上已经成为最流行的用于测试高性能计算机系统浮点性能的benchmark。通过利用高性能计算机，用高斯消元法求解N元一次稠密线性代数方程组的测试，评价高性能计算机的浮点性能。HPL是针对现代并行计算机提出的测试方式。用户在不修改任意测试程序的基础上，可以调节问题规模大小N(矩阵大小)、使用到的CPU数目、使用各种优化方法等来执行该测试程序，以获取最佳的性能。HPL采用高斯消元法求解线性方程组。当求解问题规模为N时，浮点运算次数为(2/3 * N^3－2N^2)。因此，只要给出问题规模N，测得系统计算时间T，峰值=计算量(2/3 * N^3－2N^2)/计算时间T，测试结果以浮点运算每秒（Flops）给出。 实测浮点峰值是指Linpack测试值，也就是说在这台机器上运行Linpack测试程序，通过各种调优方法得到的最优的测试结果。实际上在实际程序运行过程中，几乎不可能达到实测浮点峰值，更不用说达到理论浮点峰值了。这两个值只是作为衡量机器性能的一个指标，用来表明机器处理能力的一个标尺和潜能的度量。 HPL作为一个基准测试程序在HPC领域取得了巨大的成功。它对趋势进行了准确的预测，积累的优化技巧对于提高实际应用的性能发挥了重要的作用 ..."/>
+    <meta property="article:published_time" content="2013-06-12" />
+    <meta property="article:section" content="misc" />
+        <meta property="article:tag" content="性能测试" />
+        <meta property="article:author" content="peng.lee" />
+        <meta property="og:image"
+              content="../../../../favicon.png"/>
+
+    <title>高性能计算机系统浮点性能测试 - Hi | World</title>
+
+        <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
+
+    <link href="../../../../theme/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../../../../theme/css/pygments/colorful.css" rel="stylesheet" />
     
-                        	<div id="content">
-					<div class="post">
-						<h2 class="title"><a href="2013/06/12/linpack/">高性能计算机系统浮点性能测试</a></h2>
-						<p class="meta"><span class="date">日期 三 12 六月 2013 </span><span class="posted">By <a href="#">peng.lee</a></span><span>&nbsp; | 分类 : <a href="../../../../category/misc.html">misc</a></span></p>
-					<p class="meta">Tags : <span><a href="../../../../tag/xing-neng-ce-shi.html">性能测试</a> / </span>
-</p>	
-						<div style="clear: both;">&nbsp;</div>
-						<div class="entry">
-						 <body><p><img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/P5LS1TUY3V.jpg" width="420"/></p>
+    <link href="../../../../theme/css/pelican-twitchy.min.css" rel="stylesheet" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <!-- Feeds -->
+        <link href="../../../../feeds/atom.xml" type="application/atom+xml" rel="alternate"
+              title="Hi | World ATOM Feed" />
+        <link href="../../../../feeds/rss.xml" type="application/rss+xml" rel="alternate"
+              title="Hi | World RSS Feed" />
+</head>
+<body data-spy="scroll" data-target="#scrollspy">
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper-small" class="twitchy-background">
+            <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
+                <li>
+        <a href="../../../.." title="Hi | World" class="collapsed">
+            <span class="glyphicon glyphicon-home"></span>
+        </a>
+    </li>
+                <li class="nav-divider"></li>
+                <li>
+        <a href="../../../../archives.html" title="最新文章" class="collapsed">
+            <span class="glyphicon glyphicon-th-list"></span>
+        </a>
+    </li>
+                
+                <li class="nav-divider"></li>
+                <li id="share-small">
+                    <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-share-small" title="分享" class="collapsed">
+                        <i class="fa fa-share-alt padding-small"></i>
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-share-small" class="collapse ">
+                    <li>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2013/06/12/linpack/" title="Share via Facebook" target="popup">
+                            <i class="fa fa-facebook-square padding-small"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/share?url=../../../../2013/06/12/linpack/" title="Share via Google+" target="popup">
+                            <i class="fa fa-google-plus padding-small"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" title="Share via Twitter" target="popup">
+                            <i class="fa fa-twitter-square padding-small"></i>
+                        </a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-social-small" title="Social" class="collapsed">
+                        <i class="fa fa-users padding-small"></i>
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-social-small" class="collapse ">
+                    <li>
+                        <a href="https://bitbucket.org/winlu" title="Bitbucket"><i class="fa fa-bitbucket-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="mailto:derwinlu@gmail.com" title="EMAIL"><i class="fa fa-envelope-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/ingwinlu" title="GitHub"><i class="fa fa-github-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/115771807029208924055" title="Google+"><i class="fa fa-google-plus-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/derwinlu" title="Twitter"><i class="fa fa-twitter-square fa-lg padding-small"></i></a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+        <a href="#" title="Back to top" class="collapsed">
+            <span class="fa fa-arrow-up"></span>
+        </a>
+    </li>
+            </ul>
+        </div>
+        <div id="sidebar-wrapper" class="twitchy-background">
+            <ul id="accordion" class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="../../../../">
+<img src="../../../../sitelogo.png" width="200" alt="Sitelogo"/>                     </a>
+                </li>
+                    <li class="nav-divider"></li>
+                    <li>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-latest">
+                            <span class="glyphicon glyphicon-th-list padding-small"></span>
+                            最新文章
+                        </a>
+                    </li>
+                    <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
+                        <li class="">
+                            <a class="hide-overflow" href="../../../../2016/09/01/other/" title="北京折叠－郝景芳">
+                                <i class="fa fa-file-text padding-small"></i>
+                                北京折叠－郝景芳
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="../../../../2016/08/12/Docker/" title="Docker基础技术：Linux Namespace（下）">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Docker基础技术：Linux Namespace（下）
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="../../../../2016/08/11/Docker/" title="Docker基础技术：Linux Namespace（上）">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Docker基础技术：Linux Namespace（上）
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="../../../../2016/08/11/Performance/" title="如何做性能测试">
+                                <i class="fa fa-file-text padding-small"></i>
+                                如何做性能测试
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="../../../../2016/08/02/LTP/" title="LTP－kernel-syscalls-abort">
+                                <i class="fa fa-file-text padding-small"></i>
+                                LTP－kernel-syscalls-abort
+                            </a>
+                        </li>
+                    <li>
+                        <a href="../../../../archives.html">
+                            <i class="fa fa-arrow-right padding-small"></i>
+                            More
+                        </a>
+                    </li>
+                    </ul></li>
+                <li class="nav-divider"></li>
+                <li id="share">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-share" title="Share" class="collapsed">
+                        <i class="fa fa-share-alt padding-small"></i>
+                        Share
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-share" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2013/06/12/linpack/" target="popup">
+                            <i class="fa fa-facebook-square padding-small"></i>
+                            Facebook
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/share?url=../../../../2013/06/12/linpack/" target="popup">
+                            <i class="fa fa-google-plus padding-small"></i>
+                            Google+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" target="popup">
+                            <i class="fa fa-twitter-square padding-small"></i>
+                            Twitter
+                        </a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-social">
+                        <i class="fa fa-users padding-small"></i>
+                        联系
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-social" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="https://bitbucket.org/winlu" title="Bitbucket">
+                            <i class="fa fa-bitbucket-square fa-lg padding-small"></i>
+                            Bitbucket
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mailto:derwinlu@gmail.com" title="EMAIL">
+                            <i class="fa fa-envelope-square fa-lg padding-small"></i>
+                            EMAIL
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/ingwinlu" title="GitHub">
+                            <i class="fa fa-github-square fa-lg padding-small"></i>
+                            GitHub
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/115771807029208924055" title="Google+">
+                            <i class="fa fa-google-plus-square fa-lg padding-small"></i>
+                            Google+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/derwinlu" title="Twitter">
+                            <i class="fa fa-twitter-square fa-lg padding-small"></i>
+                            Twitter
+                        </a>
+                    </li>
+                </ul></li>
+                
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-pages">
+                        <i class="fa fa-folder-open padding-small"></i>
+                       站内导航
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-pages" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="../../../../pages/opensource.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            开源项目
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../../pages/links.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            链接
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../../pages/Reference material.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            参考资料
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../../pages/todo list.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            Todo List
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../../pages/tools.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            工具集
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="../../../../pages/aboutme.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            关于我
+                        </a>
+                    </li>
+                </ul></li>
+                
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-categories">
+                        <i class="fa fa-folder-open padding-small"></i>
+                        文章分类
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-categories" class="sidebar_submenu collapse ">
+                    <li class="active">
+                        <a href="../../../../category/misc.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            misc
+                            <span class="badge pull-right categorybadge">26</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/autotestzhuan-ti.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Autotest专题
+                            <span class="badge pull-right categorybadge">13</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/suan-fa.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            算法
+                            <span class="badge pull-right categorybadge">2</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/dockerzhuan-ti.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Docker专题
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/linux.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Linux
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/linux-benchmark.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            linux-benchmark
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/linux-zi-dong-hua-ce-shi.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            linux-自动化测试
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/unixhuan-jing-bian-cheng.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            unix环境编程
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/xing-neng-ce-shi.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            性能测试
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                </ul></li>
+                
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <!-- open/close sidebar -->
+        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
+            <span id="right-arrow" class="glyphicon glyphicon-chevron-right"  title="expand sidebar"></span>
+            <span id="left-arrow" class="glyphicon glyphicon-chevron-left" title="minimize sidebar"></span>
+        </a>
+       <!-- /open/close sidebar -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+<section id="content">
+    <article>
+        <div class="row">
+            <div class="col-lg-9">
+                <header class="page-header">
+                    <h1>
+                        <a href="../../../../2013/06/12/linpack/"
+                           rel="bookmark"
+                           title="Permalink to 高性能计算机系统浮点性能测试">
+                            高性能计算机系统浮点性能测试
+                        </a>
+                        <small>
+<div class="post-info">
+    <div class="publish-info-block">
+        <small>
+            <span class="published">
+                <i class="fa fa-calendar padding-small"></i><time datetime="2013-06-12T00:00:00+08:00"> 2013-06-12 三</time>
+            </span>
+            <span class="category">
+                <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/misc.html">misc</a>
+            </span>
+            <span class="tags">
+                <i class="fa fa-tags padding-small"></i>
+                <a href="../../../../tag/xing-neng-ce-shi.html">性能测试</a>            </span>
+        </small>
+    </div>
+</div><!-- /.post-info -->                        </small>
+                    </h1>
+                </header>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="entry-content">
+                    </head><body><p><img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/P5LS1TUY3V.jpg" width="420"/></p>
 <h3 id="yi-gong-ju-jie-shao">一　工具介绍</h3>
 <p>Linpack现在在国际上已经成为最流行的用于测试高性能计算机系统浮点性能的benchmark。通过利用高性能计算机，用高斯消元法求解N元一次稠密线性代数方程组的测试，评价高性能计算机的浮点性能。HPL是针对现代并行计算机提出的测试方式。用户在不修改任意测试程序的基础上，可以调节问题规模大小N(矩阵大小)、使用到的CPU数目、使用各种优化方法等来执行该测试程序，以获取最佳的性能。HPL采用高斯消元法求解线性方程组。当求解问题规模为N时，浮点运算次数为(2/3 * N^3－2<em>N^2)。因此，只要给出问题规模N，测得系统计算时间T，峰值=计算量(2/3 * N^3－2</em>N^2)/计算时间T，测试结果以浮点运算每秒（Flops）给出。
 实测浮点峰值是指Linpack测试值，也就是说在这台机器上运行Linpack测试程序，通过各种调优方法得到的最优的测试结果。实际上在实际程序运行过程中，几乎不可能达到实测浮点峰值，更不用说达到理论浮点峰值了。这两个值只是作为衡量机器性能的一个指标，用来表明机器处理能力的一个标尺和潜能的度量。</p>
@@ -52,8 +418,8 @@ Released   : 20100928
 <p>普华桌面版本iSoftClientOS3.0SP1</p>
 <div class="highlight"><pre><span></span># vi /etc/pacman.d/mirrorlist
 </pre></div>
-<p>添加SigLevel = Never&rdquo;一行</p>
-<p>修改地址&ldquo;Server = http://ftp.isoft.zhcn.cc/<span class="math">\(repo/os/\)</span>arch&rdquo;</p>
+<p>添加SigLevel = Never”一行</p>
+<p>修改地址“Server = http://ftp.isoft.zhcn.cc/<span class="math">\(repo/os/\)</span>arch”</p>
 <div class="highlight"><pre><span></span>#pacman -Rdd gcc-multilib
 #pacman -Sy gcc-fortran
 #wget http://www.mpich.org/static/downloads/1.0.8/mpich2-1.0.8.tar.gz
@@ -86,14 +452,14 @@ Released   : 20100928
 </pre></div>
 <p>修改Make.goto文件
 以下斜体部分是Make.goto文件的内容，//后为解释部分。</p>
-<div class="highlight"><pre><span></span><span class="err">&ldquo;</span>
+<div class="highlight"><pre><span></span><span class="err">“</span>
 <span class="nv">ARCH</span> <span class="o">=</span> goto        //名字需和Make.goto的尾缀名字一致
 <span class="nv">TOPdir</span> <span class="o">=</span> /home/linpack-x86/hpl-2.1    //hpl源码所在目录
 <span class="nv">MPdir</span> <span class="o">=</span> /home/linpack-x86/mpich2-1.0.8    //mpich2源码所在目录
 <span class="nv">LAdir</span>        <span class="o">=</span> <span class="k">$(</span>HOME<span class="k">)</span>/Bench/GotoBLAS2    // GotoBlas源码的目录
 <span class="nv">LAlib</span>        <span class="o">=</span> <span class="k">$(</span>LAdir<span class="k">)</span>/libgoto2.a     // GotoBlas静态库
 <span class="nv">CC</span><span class="o">=</span> /usr/bin/mpicc       //mpicc的绝对路径
-<span class="nv">LINKER</span><span class="o">=</span> /usr/bin/mpif77     //mpif77绝对路径  &rdquo;
+<span class="nv">LINKER</span><span class="o">=</span> /usr/bin/mpif77     //mpif77绝对路径  ”
 
 <span class="c">#make arch=Goto</span>
 </pre></div>
@@ -168,7 +534,7 @@ Released   : 20100928
 
 1            # of NBs //分块矩阵的数量
 
-1 2 3 4      NBs //分块矩阵的大小，HPL采用分块矩阵的算法。分块的大小对性能有很大的影响，NB的选择和软硬件许多因素密切相关。NB值的选择主要是通过实际测试得到最优值，一般在256以下，NB &times; 8最好为
+1 2 3 4      NBs //分块矩阵的大小，HPL采用分块矩阵的算法。分块的大小对性能有很大的影响，NB的选择和软硬件许多因素密切相关。NB值的选择主要是通过实际测试得到最优值，一般在256以下，NB × 8最好为
 Cache line的倍数。
 
 0 PMAP process mapping (0=Row-,1=Column-major)  //选择处理器阵列是列的排列方式还是按行的排列方式。按列的排列方式适用于节点数较多、每个节点内CPU数较少的系统；而按行的排列方式适用于节点数较少、每个节点内CPU数较多系统。在机群系统上，按列的排列方式的性能远好于按行的排列方式。
@@ -177,7 +543,7 @@ Cache line的倍数。
 
 1 1 4        Ps
 
-1 4 1        Qs    //二维处理器网格（P &times; Q），P &times; Q = 系统CPU数 = 进程数。P&le;Q，一般来说，P的值尽量取得小一点，因为列向通信量（通信次数和通信数据量）要远大于横向通信（和实际CPU物理阵列有关）。P = 2n，即P最好选择2的幂。HPL中，L分解的列向通信采用二元交换法（Binary Exchange），当列向处理器个数P为2的幂时，性能最优。例如，当系统进程数为4的时候，P &times; Q选择为1 &times; 4的效果要比选择2 &times; 2好一些。 这主要取决于CPU物理互联网络。在集群测试中，P &times; Q  系统CPU总核数
+1 4 1        Qs    //二维处理器网格（P × Q），P × Q = 系统CPU数 = 进程数。P≤Q，一般来说，P的值尽量取得小一点，因为列向通信量（通信次数和通信数据量）要远大于横向通信（和实际CPU物理阵列有关）。P = 2n，即P最好选择2的幂。HPL中，L分解的列向通信采用二元交换法（Binary Exchange），当列向处理器个数P为2的幂时，性能最优。例如，当系统进程数为4的时候，P × Q选择为1 × 4的效果要比选择2 × 2好一些。 这主要取决于CPU物理互联网络。在集群测试中，P × Q  系统CPU总核数
 
 16.0         threshold   //测试的精度，保持默认即可
 
@@ -213,13 +579,13 @@ Cache line的倍数。
 2            SWAP (0=bin-exch,1=long,2=mix)
 
 
-64           swapping threshold  // U的广播为列向广播，HPL共提供了三种U的广播算法：二元交换（Binary Exchange）法、Long法和二者混合法。SWAP=&ldquo;0&rdquo;，采用二元交换法；SWAP=&ldquo;1&rdquo;，采用Long法；SWAP=&ldquo;2&rdquo;，采用混合法。二元交换法的通信开销为㏒2P&times;（Latency＋NB&times;LocQ（N）/Bandwith），适用于通信量较小的情况；Long法的通信开销为（㏒2P＋ P－1）&times;Latency＋K&times;NB&times;LocQ（N）/Bandwith，适用于通信量较大的情况。其中P为列向处理器数，Latency为网络延迟， Bandwith为网络带宽，K为常数，其经验值约为2.4。LocQ（N）＝NB&times;NN为通信量，NN随着求解过程的进行逐步减少。由于NN在求解过程中在不断的变化，为了充分发挥两种算法的优势，HPL提供了混合法，当NN&le;swapping threshold（第27行指定）时，采用二元交换；否则采用Long法。一般来说，我们选择混合法，阈值可通过公式求得一个大概值。对于小规模系统来说，此值性能影响不大，采用其缺省值即可。
+64           swapping threshold  // U的广播为列向广播，HPL共提供了三种U的广播算法：二元交换（Binary Exchange）法、Long法和二者混合法。SWAP=“0”，采用二元交换法；SWAP=“1”，采用Long法；SWAP=“2”，采用混合法。二元交换法的通信开销为㏒2P×（Latency＋NB×LocQ（N）/Bandwith），适用于通信量较小的情况；Long法的通信开销为（㏒2P＋ P－1）×Latency＋K×NB×LocQ（N）/Bandwith，适用于通信量较大的情况。其中P为列向处理器数，Latency为网络延迟， Bandwith为网络带宽，K为常数，其经验值约为2.4。LocQ（N）＝NB×NN为通信量，NN随着求解过程的进行逐步减少。由于NN在求解过程中在不断的变化，为了充分发挥两种算法的优势，HPL提供了混合法，当NN≤swapping threshold（第27行指定）时，采用二元交换；否则采用Long法。一般来说，我们选择混合法，阈值可通过公式求得一个大概值。对于小规模系统来说，此值性能影响不大，采用其缺省值即可。
 
 
 0            L1 in (0=transposed,1=no-transposed) form  //选择L的数据存放方式
 
 
-0          U  in (0=transposed,1=no-transposed) form   //选择U的数据存放格式。C语言矩阵在内存是按行存放的，Fortran语言是按列存放的。由于HPL采用C语言书写，而调用的BLAS库有可能采用C语言，也有可能采用Fortran语言编写。若选择&ldquo;transposed&rdquo;，则采用按列存放，否则按行存放。可以根据实际测试进行选择。
+0          U  in (0=transposed,1=no-transposed) form   //选择U的数据存放格式。C语言矩阵在内存是按行存放的，Fortran语言是按列存放的。由于HPL采用C语言书写，而调用的BLAS库有可能采用C语言，也有可能采用Fortran语言编写。若选择“transposed”，则采用按列存放，否则按行存放。可以根据实际测试进行选择。
 
 
 1            Equilibration (0=no,1=yes)  //选择是否回代，默认即可
@@ -245,12 +611,12 @@ Cache line的倍数。
 
 <span class="err">注：普华服务器系统</span><span class="n">iSoftServerOS3</span><span class="o">.</span><span class="mi">0</span><span class="n">_x86</span><span class="o">-</span><span class="mi">64</span><span class="n">_Build4</span> <span class="err">启动</span><span class="n">mpd</span><span class="err">时会出现以下提示：</span>
 
-<span class="err">&ldquo;</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">mpdlib</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span> <span class="ne">DeprecationWarning</span><span class="p">:</span> <span class="n">The</span> <span class="n">popen2</span> <span class="n">module</span> <span class="ow">is</span> <span class="n">deprecated</span><span class="o">.</span>  <span class="n">Use</span> <span class="n">the</span> <span class="n">subprocess</span> <span class="n">module</span><span class="o">.</span>
+<span class="err">“</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">mpdlib</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span> <span class="ne">DeprecationWarning</span><span class="p">:</span> <span class="n">The</span> <span class="n">popen2</span> <span class="n">module</span> <span class="ow">is</span> <span class="n">deprecated</span><span class="o">.</span>  <span class="n">Use</span> <span class="n">the</span> <span class="n">subprocess</span> <span class="n">module</span><span class="o">.</span>
 <span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">signal</span><span class="o">,</span> <span class="nn">popen2</span><span class="o">,</span> <span class="nn">socket</span><span class="o">,</span> <span class="nn">select</span><span class="o">,</span> <span class="nn">inspect</span>
 
 <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">mpdlib</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span> <span class="ne">DeprecationWarning</span><span class="p">:</span> <span class="n">the</span> <span class="n">md5</span> <span class="n">module</span> <span class="ow">is</span> <span class="n">deprecated</span><span class="p">;</span> <span class="n">use</span> <span class="n">hashlib</span> <span class="n">instead</span>
 </pre></div>
-<p>from  md5       import  new as md5new&rdquo;</p>
+<p>from  md5       import  new as md5new”</p>
 <p>应该为python版本问题造成，可以降低python版本或忽略该问题。</p>
 <p>CPU实际的物理核数为4.修改hpl文件中的PQ值为1x4</p>
 <div class="highlight"><pre><span></span>#mpirun -np 4 ./xhpl
@@ -298,12 +664,12 @@ N设定为26112</p>
 <div class="highlight"><pre><span></span>#vi /etc/hosts
 </pre></div>
 <p>主节点node0 添加如下：</p>
-<div class="highlight"><pre><span></span>&ldquo;192.168.32.165 node0
-192.168.32.171 node1&rdquo;
+<div class="highlight"><pre><span></span>“192.168.32.165 node0
+192.168.32.171 node1”
 </pre></div>
 <p>Node1添加如下：</p>
-<div class="highlight"><pre><span></span>&ldquo;192.168.32.165 node0
-192.168.32.171 node1&rdquo;
+<div class="highlight"><pre><span></span>“192.168.32.165 node0
+192.168.32.171 node1”
 </pre></div>
 <p>设置免密码登录</p>
 <div class="highlight"><pre><span></span>#ssh-keygen -t rsa
@@ -325,8 +691,8 @@ N设定为26112</p>
 <p>[root@node0 home]#scp -r linpack-x86 root@node1:/home/</p>
 <p>在主节点的hpl目录下新建mpd.hosts文件</p>
 <p>内容如下：
-&ldquo;node1
-node2&rdquo;</p>
+“node1
+node2”</p>
 <p>分别在各节点启动mpd</p>
 <div class="highlight"><pre><span></span>#mpd &amp;
 </pre></div>
@@ -443,7 +809,7 @@ End of Tests.
 <div class="highlight"><pre><span></span>#mpirun -np 2 ./xhpcg
 </pre></div>
 <p>附2. Intel MPI 和 已编译好的linpack测试</p>
-<div class="highlight"><pre><span></span>解压缩 tar &ndash;zxvf l_mpi_p_3.2.011.tgz
+<div class="highlight"><pre><span></span>解压缩 tar –zxvf l_mpi_p_3.2.011.tgz
 
 创建安装目录 mkdir /Clusterr/intelmpi ,拷贝license 到解压缩的目录中
 
@@ -452,7 +818,7 @@ End of Tests.
 root@mng l_mpi_p_3.1.038]# ./install.sh
 </pre></div>
 <p>安装完intel mpi后，使用intel编译好的linpack测试包  将l_lpk_p_10.0.2.010.tgz解压缩 </p>
-<div class="highlight"><pre><span></span>tar &ndash;zxvf l_lpk_p_10.0.2.010.tgz
+<div class="highlight"><pre><span></span>tar –zxvf l_lpk_p_10.0.2.010.tgz
 </pre></div>
 <p>测试方法同上面。</p>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
@@ -511,90 +877,85 @@ root@mng l_mpi_p_3.1.038]# ./install.sh
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-</script></body>	
-						</div>
-					</div>
-			      
-					<div style="clear: both;">&nbsp;</div>
-                                        <div class="post">
-                                        <h2 class="title">Commentaires !</h2>
-                                            <div id="disqus_thread"></div>
-                                            <script type="text/javascript">
-                                               var disqus_identifier = "2013/06/12/linpack/";
-                                               (function() {
-                                               var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                                               dsq.src = 'https://king32783784.disqus.com/embed.js';
-                                               (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                                              })();
-                                            </script>
-                                        </div>
-				</div>
-				<!-- end #content -->
-				<div id="sidebar">
-					<div id="logo">
-						<h1><a href="../../../..">Hi | World</a></h1>
-					</div>
-					<div id="menu">
-						<ul>
-							<li ><a href="../../../..">首页</a></li>
-							<li ><a href="../../../../archives.html">归档</a></li>
-                                                            <li class="current_page_item"><a href="../../../../pages/opensource.html">开源项目</a></li>
-                                                            <li class="current_page_item"><a href="../../../../pages/links.html">链接</a></li>
-                                                            <li class="current_page_item"><a href="../../../../pages/Reference material.html">参考资料</a></li>
-                                                            <li class="current_page_item"><a href="../../../../pages/todo list.html">Todo List</a></li>
-                                                            <li class="current_page_item"><a href="../../../../pages/tools.html">工具集</a></li>
-                                                            <li class="current_page_item"><a href="../../../../pages/aboutme.html">关于我</a></li>
-						</ul>
-					</div>
-					<ul>
-						<li>
-							<h2>分类列表</h2>
-							<ul>
-								 <li class="active"><a href="../../../../category/misc.html">misc</a></li>
-								 <li ><a href="../../../../category/autotestzhuan-ti.html">Autotest专题</a></li>
-								 <li ><a href="../../../../category/suan-fa.html">算法</a></li>
-								 <li ><a href="../../../../category/dockerzhuan-ti.html">Docker专题</a></li>
-								 <li ><a href="../../../../category/linux.html">Linux</a></li>
-								 <li ><a href="../../../../category/linux-benchmark.html">linux-benchmark</a></li>
-								 <li ><a href="../../../../category/linux-zi-dong-hua-ce-shi.html">linux-自动化测试</a></li>
-								 <li ><a href="../../../../category/unixhuan-jing-bian-cheng.html">unix环境编程</a></li>
-								 <li ><a href="../../../../category/xing-neng-ce-shi.html">性能测试</a></li>
-							</ul>
-						</li>
-						<li>
-						        <h2>Tags</h2>
-						        <ul>
-                                                                <li><a href="../../../../tag/selenium.html">Selenium</a></li>
-                                                                <li><a href="../../../../tag/zi-dong-hua-ce-shi.html">自动化测试</a></li>
-                                                                <li><a href="../../../../tag/ltp.html">LTP</a></li>
-                                                                <li><a href="../../../../tag/shell.html">shell</a></li>
-                                                                <li><a href="../../../../tag/suan-fa.html">算法</a></li>
-                                                                <li><a href="../../../../tag/xing-neng-ce-shi.html">性能测试</a></li>
-                                                                <li><a href="../../../../tag/python.html">Python</a></li>
-                                                                <li><a href="../../../../tag/docker.html">Docker</a></li>
-                                                                <li><a href="../../../../tag/benchmark.html">benchmark</a></li>
-                                                                <li><a href="../../../../tag/qi-ta.html">其他</a></li>
-                                                                <li><a href="../../../../tag/unixbian-cheng.html">unix编程</a></li>
-                                                                <li><a href="../../../../tag/linux.html">Linux</a></li>
-                                                                <li><a href="../../../../tag/pyunit.html">PyUnit</a></li>
-						        </ul>
-						</li>
-						
-						
-					</ul>
-				</div>
-				<!-- end #sidebar -->
-				<div style="clear: both;">&nbsp;</div>
-			</div>
-		</div>
-	</div>
-	<!-- end #page -->
+</script>
+                </div>
+                <footer class="text-right">
+                    <p>- peng.lee</p>
+                </footer>
+    <section id="comments" class="comments ">
+        <hr/>
+        <h2>Comments</h2>
+        <div id="disqus_thread"></div>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </section>
+            </div>
+    <div id="scrollspy">
+        <div class="col-lg-3 nav nav-stacked hidden-xs hidden-sm" data-spy="affix" data-offset-top="135">
+            <div id="toc"><ul><li><a class="toc-href" href="#" title="高性能计算机系统浮点性能测试">高性能计算机系统浮点性能测试</a><ul><li><a class="toc-href" href="#yi-gong-ju-jie-shao" title="一　工具介绍">一　工具介绍</a></li><li><a class="toc-href" href="#er-bian-yi-an-zhuang" title="二　编译安装">二　编译安装</a><ul><li><a class="toc-href" href="#1mpich2gotoblas2hpl" title="１.mpich2+GotoBLAS2+hpl">１.mpich2+GotoBLAS2+hpl</a><ul><li><a class="toc-href" href="#mpichan-zhuang" title="mpich安装">mpich安装</a></li><li><a class="toc-href" href="#gotoblas-2an-zhuang" title="GotoBlas 2安装">GotoBlas 2安装</a></li><li><a class="toc-href" href="#hplan-zhuang" title="HPL安装">HPL安装</a></li></ul></li><li><a class="toc-href" href="#2openmpiblashpl_1" title="2.openmpi+BLAS+hpl">2.openmpi+BLAS+hpl</a><ul><li><a class="toc-href" href="#openmpian-zhuang" title="Openmpi安装">Openmpi安装</a></li><li><a class="toc-href" href="#blas" title="BLAS">BLAS</a></li><li><a class="toc-href" href="#hpl" title="HPL">HPL</a></li></ul></li><li><a class="toc-href" href="#san-ce-shi-zhi-xing_1" title="三.测试执行">三.测试执行</a></li><li><a class="toc-href" href="#2dan-he-dan-xian-cheng" title="2.单核单线程">2.单核单线程</a></li><li><a class="toc-href" href="#3duo-he-duo-xian-cheng" title="3.多核多线程">3.多核多线程</a></li><li><a class="toc-href" href="#4da-ye-mo-shi-ce-shi" title="4.大页模式测试">4.大页模式测试</a></li><li><a class="toc-href" href="#5ji-qun-ce-shi" title="5.集群测试">5.集群测试</a></li><li><a class="toc-href" href="#4ce-shi-jie-guo-fen-xi" title="4.测试结果分析">4.测试结果分析</a></li></ul></li></ul></li></ul></div>
+        </div>
+    </div>
+        </div>
+    </article>
+</section>
+<footer>
+    <hr>
+    <div class="row">
+        <div class="col-lg-9 text-center">
+            <p><small>
+                Built by <a href="http://docs.getpelican.com/en/latest">Pelican</a> / <a href="https://github.com/ingwinlu/pelican-twitchy">pelican-twitchy</a>
+                &middot;                      <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>
+    &quot;<span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Hi | World</span>&quot; by <a xmlns:cc="http://creativecommons.org/ns#" href="../../../.." property="cc:attributionName" rel="cc:attributionURL">peng.lee</a> is
+  licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution 4.0 International License</a>, except where indicated otherwise.
 
-<div id="footer">
-	<p>Copyright (c) 2008 Sitename.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a>.</p>
-	<p>Proudly powered by <a href="http://alexis.notmyidea.org/pelican/">pelican</a>, which takes great advantages of <a href="http://python.org">python</a>.
-</p>
-</div>
-<!-- end #footer -->
+            </small></p>
+        </div>
+    </div>
+</footer>            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery Version 1.11.2 -->
+    <script src="../../../../theme/js/jquery-1.11.2.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../../../theme/js/bootstrap.min.js"></script>
+    <!-- twitchy Script -->
+    <script src="../../../../theme/js/pelican_twitchy.min.js"></script>
+    <!-- Begin Cookie Consent https://silktide.com/tools/cookie-consent/ -->
+    <script>
+        window.cookieconsent_options = {
+            message: "This site uses Cookies. If you continue without changing your settings, it is assumed that you are happy to receive all cookies from this website.",
+            learnMore: "More info",
+            link: null,
+            dismiss: "Got it!",
+            theme: "../../../../theme/css/cookieconsent/dark-floating.css",
+        };
+    </script>
+    <script src="../../../../theme/js/cookieconsent.min.js"></script>
+    <!-- End Cookie Consent -->
+
+<!-- disqus -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'True'; // required: replace example with your forum shortname
+
+            var disqus_identifier = 'linpack';
+        var disqus_url = '../../../../2013/06/12/linpack/';
+
+    var disqus_config = function () {
+        this.language = "zh";
+    };
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- /disqus -->
 </body>
 </html>

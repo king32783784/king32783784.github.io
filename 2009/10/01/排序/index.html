@@ -1,39 +1,405 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<!--
-Design by Free CSS Templates
-http://www.freecsstemplates.org
-Released for free under a Creative Commons Attribution 2.5 License
 
-Name       : Brown Stone  
-Description: A two-column, fixed-width design with dark color scheme.
-Version    : 1.0
-Released   : 20100928
-
--->
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="zh">
 <head>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>排序-希尔排序法</title>
-<link href="../../../../theme/css/style.css" rel="stylesheet" type="text/css" media="screen" />
-<link href="../../../../" type="application/atom+xml" rel="alternate" title="Hi | World ATOM Feed" />
-</head>
-<body>
-<div id="wrapper">
-	<div id="page">
-		<div id="page-bgtop">
-			<div id="page-bgbtm">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="penglee" />
+        <meta name="keywords" content="算法" />
+        <meta name="description" content="原始的算法实现在最坏的情况下需要进行O(n2)的比较和交换。V. Pratt的书[1] 对算法进行了少量修改，可以使得性能提升至O(n log2 n)。这比最好的比较算法的O(n log n)要差一些。 希尔排序通过将比较的全部元素分为几个区域来提升插入排序的性能。这样可以让一个元素可以一次性地朝最终位置前进一大步。然后算法再取越来越小的步长进行排序，算法的最后一步就是普通的插入排序，但是到了这步，需排序的数据几乎是已排好的了（此时插入排序较快）。 假设有一个很小的数据在一个已按升序排好序的数组的末端。如果用复杂度为O(n2)的排序（冒泡排序或插入排序），可能会进行n次的比较和交换才能将该数据移至正确位置。而希尔排序会用较大的步长移动数据，所以小数据只需进行少数比较和交换即可到正确位置。 一个更好理解的希尔排序实现：将数组列在一个表中并对列排序（用插入排序）。重复这过程，不过每次用更长的列来进行。最后整个表就只有一列了。将数组转换至表是为了更好地理解这算法，算法本身仅仅对原数组进行排序（通过增加索引的步长，例如是用i += step_size而不是i++）。 例如，假设有这样一组数[ 13 14 94 33 82 25 ..." />
+
+<!-- Open Graph tags -->
+<meta property="og:site_name" content="Hi | World"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="排序-希尔排序法"/>
+    <meta property="og:url" content="../../../../2009/10/01/排序/"/>
+    <meta property="og:description" content="原始的算法实现在最坏的情况下需要进行O(n2)的比较和交换。V. Pratt的书[1] 对算法进行了少量修改，可以使得性能提升至O(n log2 n)。这比最好的比较算法的O(n log n)要差一些。 希尔排序通过将比较的全部元素分为几个区域来提升插入排序的性能。这样可以让一个元素可以一次性地朝最终位置前进一大步。然后算法再取越来越小的步长进行排序，算法的最后一步就是普通的插入排序，但是到了这步，需排序的数据几乎是已排好的了（此时插入排序较快）。 假设有一个很小的数据在一个已按升序排好序的数组的末端。如果用复杂度为O(n2)的排序（冒泡排序或插入排序），可能会进行n次的比较和交换才能将该数据移至正确位置。而希尔排序会用较大的步长移动数据，所以小数据只需进行少数比较和交换即可到正确位置。 一个更好理解的希尔排序实现：将数组列在一个表中并对列排序（用插入排序）。重复这过程，不过每次用更长的列来进行。最后整个表就只有一列了。将数组转换至表是为了更好地理解这算法，算法本身仅仅对原数组进行排序（通过增加索引的步长，例如是用i += step_size而不是i++）。 例如，假设有这样一组数[ 13 14 94 33 82 25 ..."/>
+    <meta property="article:published_time" content="2009-10-01" />
+    <meta property="article:section" content="算法" />
+        <meta property="article:tag" content="算法" />
+        <meta property="article:author" content="penglee" />
+        <meta property="og:image"
+              content="../../../../favicon.png"/>
+
+    <title>排序-希尔排序法 - Hi | World</title>
+
+        <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
+
+    <link href="../../../../theme/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../../../../theme/css/pygments/colorful.css" rel="stylesheet" />
     
-                        	<div id="content">
-					<div class="post">
-						<h2 class="title"><a href="2009/10/01/排序/">排序-希尔排序法</a></h2>
-						<p class="meta"><span class="date">日期 四 01 十月 2009 </span><span class="posted">By <a href="#">penglee</a></span><span>&nbsp; | 分类 : <a href="../../../../category/suan-fa.html">算法</a></span></p>
-					<p class="meta">Tags : <span><a href="../../../../tag/suan-fa.html">算法</a> / </span>
-</p>	
-						<div style="clear: both;">&nbsp;</div>
-						<div class="entry">
-						 <body><p>原始的算法实现在最坏的情况下需要进行O(n2)的比较和交换。V. Pratt的书[1] 对算法进行了少量修改，可以使得性能提升至O(n log2 n)。这比最好的比较算法的O(n log n)要差一些。</p>
+    <link href="../../../../theme/css/pelican-twitchy.min.css" rel="stylesheet" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <!-- Feeds -->
+        <link href="../../../../feeds/atom.xml" type="application/atom+xml" rel="alternate"
+              title="Hi | World ATOM Feed" />
+        <link href="../../../../feeds/rss.xml" type="application/rss+xml" rel="alternate"
+              title="Hi | World RSS Feed" />
+</head>
+<body data-spy="scroll" data-target="#scrollspy">
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper-small" class="twitchy-background">
+            <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
+                <li>
+        <a href="../../../.." title="Hi | World" class="collapsed">
+            <span class="glyphicon glyphicon-home"></span>
+        </a>
+    </li>
+                <li class="nav-divider"></li>
+                <li>
+        <a href="../../../../archives.html" title="最新文章" class="collapsed">
+            <span class="glyphicon glyphicon-th-list"></span>
+        </a>
+    </li>
+                
+                <li class="nav-divider"></li>
+                <li id="share-small">
+                    <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-share-small" title="分享" class="collapsed">
+                        <i class="fa fa-share-alt padding-small"></i>
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-share-small" class="collapse ">
+                    <li>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2009/10/01/排序/" title="Share via Facebook" target="popup">
+                            <i class="fa fa-facebook-square padding-small"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/share?url=../../../../2009/10/01/排序/" title="Share via Google+" target="popup">
+                            <i class="fa fa-google-plus padding-small"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" title="Share via Twitter" target="popup">
+                            <i class="fa fa-twitter-square padding-small"></i>
+                        </a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-social-small" title="Social" class="collapsed">
+                        <i class="fa fa-users padding-small"></i>
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-social-small" class="collapse ">
+                    <li>
+                        <a href="https://bitbucket.org/winlu" title="Bitbucket"><i class="fa fa-bitbucket-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="mailto:derwinlu@gmail.com" title="EMAIL"><i class="fa fa-envelope-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/ingwinlu" title="GitHub"><i class="fa fa-github-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/115771807029208924055" title="Google+"><i class="fa fa-google-plus-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/derwinlu" title="Twitter"><i class="fa fa-twitter-square fa-lg padding-small"></i></a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+        <a href="#" title="Back to top" class="collapsed">
+            <span class="fa fa-arrow-up"></span>
+        </a>
+    </li>
+            </ul>
+        </div>
+        <div id="sidebar-wrapper" class="twitchy-background">
+            <ul id="accordion" class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="../../../../">
+<img src="../../../../sitelogo.png" width="200" alt="Sitelogo"/>                     </a>
+                </li>
+                    <li class="nav-divider"></li>
+                    <li>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-latest">
+                            <span class="glyphicon glyphicon-th-list padding-small"></span>
+                            最新文章
+                        </a>
+                    </li>
+                    <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
+                        <li class="">
+                            <a class="hide-overflow" href="../../../../2016/09/01/other/" title="北京折叠－郝景芳">
+                                <i class="fa fa-file-text padding-small"></i>
+                                北京折叠－郝景芳
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="../../../../2016/08/12/Docker/" title="Docker基础技术：Linux Namespace（下）">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Docker基础技术：Linux Namespace（下）
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="../../../../2016/08/11/Docker/" title="Docker基础技术：Linux Namespace（上）">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Docker基础技术：Linux Namespace（上）
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="../../../../2016/08/11/Performance/" title="如何做性能测试">
+                                <i class="fa fa-file-text padding-small"></i>
+                                如何做性能测试
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="../../../../2016/08/02/LTP/" title="LTP－kernel-syscalls-abort">
+                                <i class="fa fa-file-text padding-small"></i>
+                                LTP－kernel-syscalls-abort
+                            </a>
+                        </li>
+                    <li>
+                        <a href="../../../../archives.html">
+                            <i class="fa fa-arrow-right padding-small"></i>
+                            More
+                        </a>
+                    </li>
+                    </ul></li>
+                <li class="nav-divider"></li>
+                <li id="share">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-share" title="Share" class="collapsed">
+                        <i class="fa fa-share-alt padding-small"></i>
+                        Share
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-share" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2009/10/01/排序/" target="popup">
+                            <i class="fa fa-facebook-square padding-small"></i>
+                            Facebook
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/share?url=../../../../2009/10/01/排序/" target="popup">
+                            <i class="fa fa-google-plus padding-small"></i>
+                            Google+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" target="popup">
+                            <i class="fa fa-twitter-square padding-small"></i>
+                            Twitter
+                        </a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-social">
+                        <i class="fa fa-users padding-small"></i>
+                        联系
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-social" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="https://bitbucket.org/winlu" title="Bitbucket">
+                            <i class="fa fa-bitbucket-square fa-lg padding-small"></i>
+                            Bitbucket
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mailto:derwinlu@gmail.com" title="EMAIL">
+                            <i class="fa fa-envelope-square fa-lg padding-small"></i>
+                            EMAIL
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/ingwinlu" title="GitHub">
+                            <i class="fa fa-github-square fa-lg padding-small"></i>
+                            GitHub
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/115771807029208924055" title="Google+">
+                            <i class="fa fa-google-plus-square fa-lg padding-small"></i>
+                            Google+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/derwinlu" title="Twitter">
+                            <i class="fa fa-twitter-square fa-lg padding-small"></i>
+                            Twitter
+                        </a>
+                    </li>
+                </ul></li>
+                
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-pages">
+                        <i class="fa fa-folder-open padding-small"></i>
+                       站内导航
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-pages" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="../../../../pages/opensource.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            开源项目
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../../pages/links.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            链接
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../../pages/Reference material.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            参考资料
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../../pages/todo list.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            Todo List
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../../pages/tools.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            工具集
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="../../../../pages/aboutme.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            关于我
+                        </a>
+                    </li>
+                </ul></li>
+                
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-categories">
+                        <i class="fa fa-folder-open padding-small"></i>
+                        文章分类
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-categories" class="sidebar_submenu collapse ">
+                    <li >
+                        <a href="../../../../category/misc.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            misc
+                            <span class="badge pull-right categorybadge">26</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/autotestzhuan-ti.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Autotest专题
+                            <span class="badge pull-right categorybadge">13</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="../../../../category/suan-fa.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            算法
+                            <span class="badge pull-right categorybadge">2</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/dockerzhuan-ti.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Docker专题
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/linux.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Linux
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/linux-benchmark.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            linux-benchmark
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/linux-zi-dong-hua-ce-shi.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            linux-自动化测试
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/unixhuan-jing-bian-cheng.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            unix环境编程
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/xing-neng-ce-shi.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            性能测试
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                </ul></li>
+                
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <!-- open/close sidebar -->
+        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
+            <span id="right-arrow" class="glyphicon glyphicon-chevron-right"  title="expand sidebar"></span>
+            <span id="left-arrow" class="glyphicon glyphicon-chevron-left" title="minimize sidebar"></span>
+        </a>
+       <!-- /open/close sidebar -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+<section id="content">
+    <article>
+        <div class="row">
+            <div class="col-lg-9">
+                <header class="page-header">
+                    <h1>
+                        <a href="../../../../2009/10/01/排序/"
+                           rel="bookmark"
+                           title="Permalink to 排序-希尔排序法">
+                            排序-希尔排序法
+                        </a>
+                        <small>
+<div class="post-info">
+    <div class="publish-info-block">
+        <small>
+            <span class="published">
+                <i class="fa fa-calendar padding-small"></i><time datetime="2009-10-01T00:00:00+08:00"> 2009-10-01 四</time>
+            </span>
+            <span class="category">
+                <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/suan-fa.html">算法</a>
+            </span>
+            <span class="tags">
+                <i class="fa fa-tags padding-small"></i>
+                <a href="../../../../tag/suan-fa.html">算法</a>            </span>
+        </small>
+    </div>
+</div><!-- /.post-info -->                        </small>
+                    </h1>
+                </header>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="entry-content">
+                    </head><body><p>原始的算法实现在最坏的情况下需要进行O(n2)的比较和交换。V. Pratt的书[1] 对算法进行了少量修改，可以使得性能提升至O(n log2 n)。这比最好的比较算法的O(n log n)要差一些。</p>
 <p>希尔排序通过将比较的全部元素分为几个区域来提升插入排序的性能。这样可以让一个元素可以一次性地朝最终位置前进一大步。然后算法再取越来越小的步长进行排序，算法的最后一步就是普通的插入排序，但是到了这步，需排序的数据几乎是已排好的了（此时插入排序较快）。</p>
 <p>假设有一个很小的数据在一个已按升序排好序的数组的末端。如果用复杂度为O(n2)的排序（冒泡排序或插入排序），可能会进行n次的比较和交换才能将该数据移至正确位置。而希尔排序会用较大的步长移动数据，所以小数据只需进行少数比较和交换即可到正确位置。</p>
 <p>一个更好理解的希尔排序实现：将数组列在一个表中并对列排序（用插入排序）。重复这过程，不过每次用更长的列来进行。最后整个表就只有一列了。将数组转换至表是为了更好地理解这算法，算法本身仅仅对原数组进行排序（通过增加索引的步长，例如是用i += step_size而不是i++）。</p>
@@ -48,19 +414,19 @@ Released   : 20100928
 <p>最后以1步长进行排序（此时就是简单的插入排序了）。 步长串行</p>
 <p>步长的选择是希尔排序的重要部分。只要最终步长为1任何步长串行都可以工作。算法最开始以一定的步长进行排序。然后会继续以一定步长进行排序，最终算法以步长为1进行排序。当步长为1时，算法变为插入排序，这就保证了数据一定会被排序。</p>
 <p>Donald Shell 最初建议步长选择为\frac{n}{2}并且对步长取半直到步长达到 1。虽然这样取可以比\mathcal{O}(n^2)类的算法（插入排序）更好，但这样仍然有减少平均时间和最差时间的余地。 可能希尔排序最重要的地方在于当用较小步长排序后，以前用的较大步长仍然是有序的。比如，如果一个数列以步长5进行了排序然后再以步长3进行排序，那么该数列不仅是以步长3有序，而且是以步长5有序。如果不是这样，那么算法在迭代过程中会打乱以前的顺序，那就不会以如此短的时间完成排序了。 步长串行 最坏情况下复杂度 {n/2^i} \mathcal{O}(n^2) 2^k - 1 \mathcal{O}(n^{3/2}) 2^i 3^j \mathcal{O}( n\log^2 n )</p>
-<p>已知的最好步长串行是由Sedgewick提出的 (1, 5, 19, 41, 109,...)，该串行的项来自 9 * 4^i - 9 * 2^i + 1 和 4^i - 3 * 2^i + 1 这两个算式[1].这项研究也表明&ldquo;比较在希尔排序中是最主要的操作，而不是交换。&rdquo;用这样步长串行的希尔排序比插入排序和堆排序都要快，甚至在小数组中比快速排序还快，但是在涉及大量数据时希尔排序还是比快速排序慢。</p>
-<p>另一个在大数组中表现优异的步长串行是(斐波那契数列除去0和1将剩余的数以黄金分区比的两倍的幂进行运算得到的数列)：（1, 9, 34, 182, 836, 4025, 19001, 90358, 428481, 2034035, 9651787, 45806244, 217378076, 1031612713, &hellip;）[2] 伪代码</p>
+<p>已知的最好步长串行是由Sedgewick提出的 (1, 5, 19, 41, 109,...)，该串行的项来自 9 * 4^i - 9 * 2^i + 1 和 4^i - 3 * 2^i + 1 这两个算式[1].这项研究也表明“比较在希尔排序中是最主要的操作，而不是交换。”用这样步长串行的希尔排序比插入排序和堆排序都要快，甚至在小数组中比快速排序还快，但是在涉及大量数据时希尔排序还是比快速排序慢。</p>
+<p>另一个在大数组中表现优异的步长串行是(斐波那契数列除去0和1将剩余的数以黄金分区比的两倍的幂进行运算得到的数列)：（1, 9, 34, 182, 836, 4025, 19001, 90358, 428481, 2034035, 9651787, 45806244, 217378076, 1031612713, …）[2] 伪代码</p>
 <div class="highlight"><pre><span></span><span class="n">input</span><span class="o">:</span> <span class="n">an</span> <span class="n">array</span> <span class="n">a</span> <span class="n">of</span> <span class="n">length</span> <span class="n">n</span> <span class="k">with</span> <span class="n">array</span> <span class="n">elements</span> <span class="n">numbered</span> <span class="mi">0</span> <span class="n">to</span> <span class="n">n</span> <span class="o">?</span> <span class="mi">1</span>
-<span class="n">inc</span> <span class="err">&larr;</span> <span class="n">round</span><span class="o">(</span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="o">)</span>
+<span class="n">inc</span> <span class="err">←</span> <span class="n">round</span><span class="o">(</span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="o">)</span>
 <span class="k">while</span> <span class="n">inc</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">do</span><span class="o">:</span>
     <span class="k">for</span> <span class="n">i</span> <span class="o">=</span> <span class="n">inc</span> <span class="o">..</span> <span class="n">n</span> <span class="o">?</span> <span class="mi">1</span> <span class="k">do</span><span class="o">:</span>
-        <span class="n">temp</span> <span class="err">&larr;</span> <span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
-        <span class="n">j</span> <span class="err">&larr;</span> <span class="n">i</span>
-        <span class="k">while</span> <span class="n">j</span> <span class="err">&ge;</span> <span class="n">inc</span> <span class="n">and</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span> <span class="o">?</span> <span class="n">inc</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">temp</span> <span class="k">do</span><span class="o">:</span>
-            <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="err">&larr;</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span> <span class="o">?</span> <span class="n">inc</span><span class="o">]</span>
-            <span class="n">j</span> <span class="err">&larr;</span> <span class="n">j</span> <span class="o">?</span> <span class="n">inc</span>
-            <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="err">&larr;</span> <span class="n">temp</span>
-    <span class="n">inc</span> <span class="err">&larr;</span> <span class="n">round</span><span class="o">(</span><span class="n">inc</span> <span class="o">/</span> <span class="mf">2.2</span><span class="o">)</span>
+        <span class="n">temp</span> <span class="err">←</span> <span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
+        <span class="n">j</span> <span class="err">←</span> <span class="n">i</span>
+        <span class="k">while</span> <span class="n">j</span> <span class="err">≥</span> <span class="n">inc</span> <span class="n">and</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span> <span class="o">?</span> <span class="n">inc</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">temp</span> <span class="k">do</span><span class="o">:</span>
+            <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="err">←</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span> <span class="o">?</span> <span class="n">inc</span><span class="o">]</span>
+            <span class="n">j</span> <span class="err">←</span> <span class="n">j</span> <span class="o">?</span> <span class="n">inc</span>
+            <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="err">←</span> <span class="n">temp</span>
+    <span class="n">inc</span> <span class="err">←</span> <span class="n">round</span><span class="o">(</span><span class="n">inc</span> <span class="o">/</span> <span class="mf">2.2</span><span class="o">)</span>
 </pre></div>
 <p>C示例代码</p>
 <div class="highlight"><pre><span></span>    <span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
@@ -123,90 +489,80 @@ Released   : 20100928
         <span class="o">}</span>
      <span class="o">}</span>
 </pre></div>
-<p>Top<a href="">^</a></p></body>	
-						</div>
-					</div>
-			      
-					<div style="clear: both;">&nbsp;</div>
-                                        <div class="post">
-                                        <h2 class="title">Commentaires !</h2>
-                                            <div id="disqus_thread"></div>
-                                            <script type="text/javascript">
-                                               var disqus_identifier = "2009/10/01/排序/";
-                                               (function() {
-                                               var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                                               dsq.src = 'https://king32783784.disqus.com/embed.js';
-                                               (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                                              })();
-                                            </script>
-                                        </div>
-				</div>
-				<!-- end #content -->
-				<div id="sidebar">
-					<div id="logo">
-						<h1><a href="../../../..">Hi | World</a></h1>
-					</div>
-					<div id="menu">
-						<ul>
-							<li ><a href="../../../..">首页</a></li>
-							<li ><a href="../../../../archives.html">归档</a></li>
-                                                            <li class="current_page_item"><a href="../../../../pages/opensource.html">开源项目</a></li>
-                                                            <li class="current_page_item"><a href="../../../../pages/links.html">链接</a></li>
-                                                            <li class="current_page_item"><a href="../../../../pages/Reference material.html">参考资料</a></li>
-                                                            <li class="current_page_item"><a href="../../../../pages/todo list.html">Todo List</a></li>
-                                                            <li class="current_page_item"><a href="../../../../pages/tools.html">工具集</a></li>
-                                                            <li class="current_page_item"><a href="../../../../pages/aboutme.html">关于我</a></li>
-						</ul>
-					</div>
-					<ul>
-						<li>
-							<h2>分类列表</h2>
-							<ul>
-								 <li ><a href="../../../../category/misc.html">misc</a></li>
-								 <li ><a href="../../../../category/autotestzhuan-ti.html">Autotest专题</a></li>
-								 <li class="active"><a href="../../../../category/suan-fa.html">算法</a></li>
-								 <li ><a href="../../../../category/dockerzhuan-ti.html">Docker专题</a></li>
-								 <li ><a href="../../../../category/linux.html">Linux</a></li>
-								 <li ><a href="../../../../category/linux-benchmark.html">linux-benchmark</a></li>
-								 <li ><a href="../../../../category/linux-zi-dong-hua-ce-shi.html">linux-自动化测试</a></li>
-								 <li ><a href="../../../../category/unixhuan-jing-bian-cheng.html">unix环境编程</a></li>
-								 <li ><a href="../../../../category/xing-neng-ce-shi.html">性能测试</a></li>
-							</ul>
-						</li>
-						<li>
-						        <h2>Tags</h2>
-						        <ul>
-                                                                <li><a href="../../../../tag/selenium.html">Selenium</a></li>
-                                                                <li><a href="../../../../tag/zi-dong-hua-ce-shi.html">自动化测试</a></li>
-                                                                <li><a href="../../../../tag/ltp.html">LTP</a></li>
-                                                                <li><a href="../../../../tag/shell.html">shell</a></li>
-                                                                <li><a href="../../../../tag/suan-fa.html">算法</a></li>
-                                                                <li><a href="../../../../tag/xing-neng-ce-shi.html">性能测试</a></li>
-                                                                <li><a href="../../../../tag/python.html">Python</a></li>
-                                                                <li><a href="../../../../tag/docker.html">Docker</a></li>
-                                                                <li><a href="../../../../tag/benchmark.html">benchmark</a></li>
-                                                                <li><a href="../../../../tag/qi-ta.html">其他</a></li>
-                                                                <li><a href="../../../../tag/unixbian-cheng.html">unix编程</a></li>
-                                                                <li><a href="../../../../tag/linux.html">Linux</a></li>
-                                                                <li><a href="../../../../tag/pyunit.html">PyUnit</a></li>
-						        </ul>
-						</li>
-						
-						
-					</ul>
-				</div>
-				<!-- end #sidebar -->
-				<div style="clear: both;">&nbsp;</div>
-			</div>
-		</div>
-	</div>
-	<!-- end #page -->
+<p>Top<a href="">^</a></p>
+                </div>
+                <footer class="text-right">
+                    <p>- penglee</p>
+                </footer>
+    <section id="comments" class="comments ">
+        <hr/>
+        <h2>Comments</h2>
+        <div id="disqus_thread"></div>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </section>
+            </div>
+        </div>
+    </article>
+</section>
+<footer>
+    <hr>
+    <div class="row">
+        <div class="col-lg-9 text-center">
+            <p><small>
+                Built by <a href="http://docs.getpelican.com/en/latest">Pelican</a> / <a href="https://github.com/ingwinlu/pelican-twitchy">pelican-twitchy</a>
+                &middot;                      <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>
+    &quot;<span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Hi | World</span>&quot; by <a xmlns:cc="http://creativecommons.org/ns#" href="../../../.." property="cc:attributionName" rel="cc:attributionURL">penglee</a> is
+  licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution 4.0 International License</a>, except where indicated otherwise.
 
-<div id="footer">
-	<p>Copyright (c) 2008 Sitename.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a>.</p>
-	<p>Proudly powered by <a href="http://alexis.notmyidea.org/pelican/">pelican</a>, which takes great advantages of <a href="http://python.org">python</a>.
-</p>
-</div>
-<!-- end #footer -->
+            </small></p>
+        </div>
+    </div>
+</footer>            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery Version 1.11.2 -->
+    <script src="../../../../theme/js/jquery-1.11.2.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../../../theme/js/bootstrap.min.js"></script>
+    <!-- twitchy Script -->
+    <script src="../../../../theme/js/pelican_twitchy.min.js"></script>
+    <!-- Begin Cookie Consent https://silktide.com/tools/cookie-consent/ -->
+    <script>
+        window.cookieconsent_options = {
+            message: "This site uses Cookies. If you continue without changing your settings, it is assumed that you are happy to receive all cookies from this website.",
+            learnMore: "More info",
+            link: null,
+            dismiss: "Got it!",
+            theme: "../../../../theme/css/cookieconsent/dark-floating.css",
+        };
+    </script>
+    <script src="../../../../theme/js/cookieconsent.min.js"></script>
+    <!-- End Cookie Consent -->
+
+<!-- disqus -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'True'; // required: replace example with your forum shortname
+
+            var disqus_identifier = '排序';
+        var disqus_url = '../../../../2009/10/01/排序/';
+
+    var disqus_config = function () {
+        this.language = "zh";
+    };
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- /disqus -->
 </body>
 </html>

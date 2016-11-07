@@ -1,154 +1,439 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<!--
-Design by Free CSS Templates
-http://www.freecsstemplates.org
-Released for free under a Creative Commons Attribution 2.5 License
 
-Name       : Brown Stone  
-Description: A two-column, fixed-width design with dark color scheme.
-Version    : 1.0
-Released   : 20100928
-
--->
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="zh">
 <head>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>Hi | World - unix编程</title>
-<link href="../theme/css/style.css" rel="stylesheet" type="text/css" media="screen" />
-<link href="../" type="application/atom+xml" rel="alternate" title="Hi | World ATOM Feed" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="keywords" content="unix编程" />
+
+<!-- Open Graph tags -->
+<meta property="og:site_name" content="Hi | World"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="selenium-Sample(三）"/>
+    <meta property="og:url" content="../2015/01/25/selenium/"/>
+    <meta property="og:description" content="示例５ 拖放drag和drop 代码： # -*- coding: utf-8 -*- import time import os from selenium import webdriver from selenium.webdriver.common.action_chains import ActionChains from selenium.webdriver.support.ui import Select from selenium.webdriver.common.keys import Keys # bugzilla address url = &#34;http://192.168.32.3/&#34; class Testdrog_drop(object): def __init__(self): self.driver ..."/>
+    <meta property="article:published_time" content="2015-01-25" />
+    <meta property="article:section" content="misc" />
+        <meta property="article:tag" content="Selenium" />
+        <meta property="article:author" content="peng.lee" />
+        <meta property="og:image"
+              content="../favicon.png"/>
+
+    <title>unix编程 - Hi | World</title>
+
+        <link rel="stylesheet" href="../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
+
+    <link href="../theme/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../theme/css/pygments/colorful.css" rel="stylesheet" />
+    
+    <link href="../theme/css/pelican-twitchy.min.css" rel="stylesheet" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <!-- Feeds -->
+        <link href="../feeds/atom.xml" type="application/atom+xml" rel="alternate"
+              title="Hi | World ATOM Feed" />
+        <link href="../feeds/rss.xml" type="application/rss+xml" rel="alternate"
+              title="Hi | World RSS Feed" />
 </head>
-<body>
-<div id="wrapper">
-	<div id="page">
-		<div id="page-bgtop">
-			<div id="page-bgbtm">
- 
-        
-				<div id="content">
-					<div class="post">
-						<h2 class="title"><a href="../2009/10/10/UNIX/">原子操作</a></h2>
-						<p class="meta"><span class="date">日期  </span><span class="posted">By <a href="#">penglee</a></span><span>&nbsp; | 分类 : <a href="../category/unixhuan-jing-bian-cheng.html">unix环境编程</a></span></p>
-					<p class="meta">Tags : <span><a href="../tag/unixbian-cheng.html">unix编程</a> / </span>
-</p>
-						<div style="clear: both;">&nbsp;</div>
-						<div class="entry">
-						 <body><h4 id="zhui-jia-zhi-yi-ge-wen-jian">追加至一个文件</h4>
-<p>一个进程，将数据添加到一个文件尾端。早期不支持open的O_APPEND选项。所有程序被编写成下列形式</p>
-<div class="highlight"><pre><span></span>if (lseek(fd, 0L, 2 ) &lt; 0) /* position to EOF*/
+<body data-spy="scroll" data-target="#scrollspy">
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper-small" class="twitchy-background">
+            <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
+                <li>
+        <a href=".." title="Hi | World" class="collapsed">
+            <span class="glyphicon glyphicon-home"></span>
+        </a>
+    </li>
+                <li class="nav-divider"></li>
+                <li>
+        <a href="../archives.html" title="最新文章" class="collapsed">
+            <span class="glyphicon glyphicon-th-list"></span>
+        </a>
+    </li>
+                
+                <li class="nav-divider"></li>
+                <li id="share-small">
+                    <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-share-small" title="分享" class="collapsed">
+                        <i class="fa fa-share-alt padding-small"></i>
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-share-small" class="collapse ">
+                    <li>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=../2015/01/25/selenium/" title="Share via Facebook" target="popup">
+                            <i class="fa fa-facebook-square padding-small"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/share?url=../2015/01/25/selenium/" title="Share via Google+" target="popup">
+                            <i class="fa fa-google-plus padding-small"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" title="Share via Twitter" target="popup">
+                            <i class="fa fa-twitter-square padding-small"></i>
+                        </a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-social-small" title="Social" class="collapsed">
+                        <i class="fa fa-users padding-small"></i>
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-social-small" class="collapse ">
+                    <li>
+                        <a href="https://bitbucket.org/winlu" title="Bitbucket"><i class="fa fa-bitbucket-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="mailto:derwinlu@gmail.com" title="EMAIL"><i class="fa fa-envelope-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/ingwinlu" title="GitHub"><i class="fa fa-github-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/115771807029208924055" title="Google+"><i class="fa fa-google-plus-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/derwinlu" title="Twitter"><i class="fa fa-twitter-square fa-lg padding-small"></i></a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+        <a href="#" title="Back to top" class="collapsed">
+            <span class="fa fa-arrow-up"></span>
+        </a>
+    </li>
+            </ul>
+        </div>
+        <div id="sidebar-wrapper" class="twitchy-background">
+            <ul id="accordion" class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="../">
+<img src="../sitelogo.png" width="200" alt="Sitelogo"/>                     </a>
+                </li>
+                    <li class="nav-divider"></li>
+                    <li>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-latest">
+                            <span class="glyphicon glyphicon-th-list padding-small"></span>
+                            最新文章
+                        </a>
+                    </li>
+                    <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse ">
+                        <li class="">
+                            <a class="hide-overflow" href="../2016/09/01/other/" title="北京折叠－郝景芳">
+                                <i class="fa fa-file-text padding-small"></i>
+                                北京折叠－郝景芳
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="../2016/08/12/Docker/" title="Docker基础技术：Linux Namespace（下）">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Docker基础技术：Linux Namespace（下）
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="../2016/08/11/Docker/" title="Docker基础技术：Linux Namespace（上）">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Docker基础技术：Linux Namespace（上）
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="../2016/08/11/Performance/" title="如何做性能测试">
+                                <i class="fa fa-file-text padding-small"></i>
+                                如何做性能测试
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="../2016/08/02/LTP/" title="LTP－kernel-syscalls-abort">
+                                <i class="fa fa-file-text padding-small"></i>
+                                LTP－kernel-syscalls-abort
+                            </a>
+                        </li>
+                    <li>
+                        <a href="../archives.html">
+                            <i class="fa fa-arrow-right padding-small"></i>
+                            More
+                        </a>
+                    </li>
+                    </ul></li>
+                <li class="nav-divider"></li>
+                <li id="share">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-share" title="Share" class="collapsed">
+                        <i class="fa fa-share-alt padding-small"></i>
+                        Share
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-share" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=../2015/01/25/selenium/" target="popup">
+                            <i class="fa fa-facebook-square padding-small"></i>
+                            Facebook
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/share?url=../2015/01/25/selenium/" target="popup">
+                            <i class="fa fa-google-plus padding-small"></i>
+                            Google+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" target="popup">
+                            <i class="fa fa-twitter-square padding-small"></i>
+                            Twitter
+                        </a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-social">
+                        <i class="fa fa-users padding-small"></i>
+                        联系
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-social" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="https://bitbucket.org/winlu" title="Bitbucket">
+                            <i class="fa fa-bitbucket-square fa-lg padding-small"></i>
+                            Bitbucket
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mailto:derwinlu@gmail.com" title="EMAIL">
+                            <i class="fa fa-envelope-square fa-lg padding-small"></i>
+                            EMAIL
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/ingwinlu" title="GitHub">
+                            <i class="fa fa-github-square fa-lg padding-small"></i>
+                            GitHub
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/115771807029208924055" title="Google+">
+                            <i class="fa fa-google-plus-square fa-lg padding-small"></i>
+                            Google+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/derwinlu" title="Twitter">
+                            <i class="fa fa-twitter-square fa-lg padding-small"></i>
+                            Twitter
+                        </a>
+                    </li>
+                </ul></li>
+                
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-pages">
+                        <i class="fa fa-folder-open padding-small"></i>
+                       站内导航
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-pages" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="../pages/opensource.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            开源项目
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../pages/links.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            链接
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../pages/Reference material.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            参考资料
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../pages/todo list.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            Todo List
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../pages/tools.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            工具集
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="../pages/aboutme.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            关于我
+                        </a>
+                    </li>
+                </ul></li>
+                
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-categories">
+                        <i class="fa fa-folder-open padding-small"></i>
+                        文章分类
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-categories" class="sidebar_submenu collapse ">
+                    <li >
+                        <a href="../category/misc.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            misc
+                            <span class="badge pull-right categorybadge">26</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../category/autotestzhuan-ti.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Autotest专题
+                            <span class="badge pull-right categorybadge">13</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../category/suan-fa.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            算法
+                            <span class="badge pull-right categorybadge">2</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../category/dockerzhuan-ti.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Docker专题
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../category/linux.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Linux
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../category/linux-benchmark.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            linux-benchmark
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../category/linux-zi-dong-hua-ce-shi.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            linux-自动化测试
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../category/unixhuan-jing-bian-cheng.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            unix环境编程
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../category/xing-neng-ce-shi.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            性能测试
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                </ul></li>
+                
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <!-- open/close sidebar -->
+        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
+            <span id="right-arrow" class="glyphicon glyphicon-chevron-right"  title="expand sidebar"></span>
+            <span id="left-arrow" class="glyphicon glyphicon-chevron-left" title="minimize sidebar"></span>
+        </a>
+       <!-- /open/close sidebar -->
 
-    err_sys("lseek error");
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+<div class="row">
+    <div class="col-lg-9">
+        <header class="page-header">
+            <h1>Articles featuring unix编程</h1>
+        </header>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-9">
+            <article>
+                <h4>
+                    <time datetime="2009-10-10T00:00:00+08:00"> 2009-10-10 六</time>
+                    <a href="../2009/10/10/UNIX/">原子操作</a>
+                </h4>
+            </article>
+    </div>
+</div>
+<footer>
+    <hr>
+    <div class="row">
+        <div class="col-lg-9 text-center">
+            <p><small>
+                Built by <a href="http://docs.getpelican.com/en/latest">Pelican</a> / <a href="https://github.com/ingwinlu/pelican-twitchy">pelican-twitchy</a>
+                &middot;                      <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>
+    &quot;<span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Hi | World</span>&quot; by <a xmlns:cc="http://creativecommons.org/ns#" href=".." property="cc:attributionName" rel="cc:attributionURL">peng.lee</a> is
+  licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution 4.0 International License</a>, except where indicated otherwise.
 
-if (write(fd, buf, 100) != 100) /* and write */
+            </small></p>
+        </div>
+    </div>
+</footer>            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery Version 1.11.2 -->
+    <script src="../theme/js/jquery-1.11.2.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../theme/js/bootstrap.min.js"></script>
+    <!-- twitchy Script -->
+    <script src="../theme/js/pelican_twitchy.min.js"></script>
+    <!-- Begin Cookie Consent https://silktide.com/tools/cookie-consent/ -->
+    <script>
+        window.cookieconsent_options = {
+            message: "This site uses Cookies. If you continue without changing your settings, it is assumed that you are happy to receive all cookies from this website.",
+            learnMore: "More info",
+            link: null,
+            dismiss: "Got it!",
+            theme: "../theme/css/cookieconsent/dark-floating.css",
+        };
+    </script>
+    <script src="../theme/js/cookieconsent.min.js"></script>
+    <!-- End Cookie Consent -->
+<script>
+    function FadeInOnScroll(ObjectList){
+        ObjectList.each(function(i) {
+            var bottom_of_object = $(this).position().top + $(this).outerHeight();
+            var bottom_of_window = $(window).scrollTop() + $(window).height();
 
-    err_sys("write error");
-</pre></div>
-<p>单个进程而言，可以正常工作，但若有多个进程同事使用这种方法将数据添加到同一文件，则会产生问题。</p>
-<p>UNIX系统提供了一种方法使这种操作成为原子操作。该方法是在打开文件时设置O_APPEND标志。使内核每次对这种文件进行写之前，都将当前偏移量设置到该文件的尾端处，每次写之前就不在需要调用lseek。</p>
-<h4 id="preadhe-pwritehan-shu">pread和 pwrite函数</h4>
-<p>原型如下：</p>
-<div class="highlight"><pre><span></span>#include　＜unistd.h&gt;
-
-ssize_t pread (int filedes, void *buf, size_t nbytes, off_t offset);
-
-返回值：读到的字节数，若已到文件结尾则返回0，若出错则返回-1
-
-ssize_t pwrite(int filedes, const void *buf, size_t nbytes, off_t offset);
-
-若成功，返回已写的字节数，若出错则返回-1
-调用pread相当于顺序调用lseek和read,但是pread与这种顺序调用存在区别
-调用pread时，无法中断其定位和读写作。
-不能更新文件指针
-</pre></div>
-<h4 id="chuang-jian-yi-ge-wen-jian">创建一个文件</h4>
-<p>当用open进行打开文件时，如果该文件已经存在，open将失败。检查文件是否存在和创建该文件这两个操作是作为一个原子操作执行的。如果没有这个原子操作，需要用下面程序段。</p>
-<div class="highlight"><pre><span></span>if((fd = open(pathname, O_WRONLY)) &lt; 0 ) {
-
-    if （errno == ENOENT) {
-
-        if ((fd = creat(pathname, mode)) &lt; 0)
-            err_sys("creat error");
-    } else {
-
-        err_sys("open error");
-
+            if( bottom_of_window > bottom_of_object ){
+                $(this).fadeTo(750,1);
+            }
+        });
     }
 
-}
-</pre></div>
-<p>如果在open和creat之间，另一个进程创建了该文件，那么就会引起问题。例如，若在这两个函数调用之间，另一个进程创建了该文件，并且写进了一些数据。然后，原先的进程执行这段程序的creat。刚由另一个进程写上去的数据就会被擦除。这样两则合并为一个原子操作，就不会发生该问题。</p>
-<p>一般而言，原子操作，指的是由多步组成的操作，如果操作原子地执行，那么执行完所有步骤，要么不执行，不可能只执行一部分。</p>
-<p>Top<a href="">^</a></p></body>	
-						</div>
-					</div>
-					<div style="clear: both;">&nbsp;</div>
-				</div>
-				<div id="sidebar">
-					<div id="logo">
-						<h1><a href="..">Hi | World</a></h1>
-					</div>
-					<div id="menu">
-						<ul>
-							<li ><a href="..">首页</a></li>
-							<li ><a href="../archives.html">归档</a></li>
-                                                            <li ><a href="../pages/opensource.html">开源项目</a></li>
-                                                            <li ><a href="../pages/links.html">链接</a></li>
-                                                            <li ><a href="../pages/Reference material.html">参考资料</a></li>
-                                                            <li ><a href="../pages/todo list.html">Todo List</a></li>
-                                                            <li ><a href="../pages/tools.html">工具集</a></li>
-                                                            <li ><a href="../pages/aboutme.html">关于我</a></li>
-						</ul>
-					</div>
-					<ul>
-						<li>
-							<h2>分类列表</h2>
-							<ul>
-								 <li ><a href="../category/misc.html">misc</a></li>
-								 <li ><a href="../category/autotestzhuan-ti.html">Autotest专题</a></li>
-								 <li ><a href="../category/suan-fa.html">算法</a></li>
-								 <li ><a href="../category/dockerzhuan-ti.html">Docker专题</a></li>
-								 <li ><a href="../category/linux.html">Linux</a></li>
-								 <li ><a href="../category/linux-benchmark.html">linux-benchmark</a></li>
-								 <li ><a href="../category/linux-zi-dong-hua-ce-shi.html">linux-自动化测试</a></li>
-								 <li ><a href="../category/unixhuan-jing-bian-cheng.html">unix环境编程</a></li>
-								 <li ><a href="../category/xing-neng-ce-shi.html">性能测试</a></li>
-							</ul>
-						</li>
-						<li>
-						        <h2>Tags</h2>
-						        <ul>
-                                                                <li><a href="../tag/selenium.html">Selenium</a></li>
-                                                                <li><a href="../tag/zi-dong-hua-ce-shi.html">自动化测试</a></li>
-                                                                <li><a href="../tag/ltp.html">LTP</a></li>
-                                                                <li><a href="../tag/shell.html">shell</a></li>
-                                                                <li><a href="../tag/suan-fa.html">算法</a></li>
-                                                                <li><a href="../tag/xing-neng-ce-shi.html">性能测试</a></li>
-                                                                <li><a href="../tag/python.html">Python</a></li>
-                                                                <li><a href="../tag/docker.html">Docker</a></li>
-                                                                <li><a href="../tag/benchmark.html">benchmark</a></li>
-                                                                <li><a href="../tag/qi-ta.html">其他</a></li>
-                                                                <li><a href="../tag/unixbian-cheng.html">unix编程</a></li>
-                                                                <li><a href="../tag/linux.html">Linux</a></li>
-                                                                <li><a href="../tag/pyunit.html">PyUnit</a></li>
-						        </ul>
-						</li>
-						
-						
-					</ul>
-				</div>
-				<!-- end #sidebar -->
-				<div style="clear: both;">&nbsp;</div>
-			</div>
-		</div>
-	</div>
-	<!-- end #page -->
+    articles = $("article").fadeTo(0, 0.05);
+    FadeInOnScroll(articles)
 
-<div id="footer">
-	<p>Copyright (c) 2008 Sitename.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a>.</p>
-	<p>Proudly powered by <a href="http://alexis.notmyidea.org/pelican/">pelican</a>, which takes great advantages of <a href="http://python.org">python</a>.
-</p>
-</div>
-<!-- end #footer -->
+    $(window).scroll(function() {
+        FadeInOnScroll(articles)
+    });
+</script>
 </body>
 </html>

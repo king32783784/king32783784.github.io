@@ -1,41 +1,407 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<!--
-Design by Free CSS Templates
-http://www.freecsstemplates.org
-Released for free under a Creative Commons Attribution 2.5 License
 
-Name       : Brown Stone  
-Description: A two-column, fixed-width design with dark color scheme.
-Version    : 1.0
-Released   : 20100928
-
--->
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="zh">
 <head>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>Docker基础技术：Linux Namespace（上）<转></title>
-<link href="../../../../theme/css/style.css" rel="stylesheet" type="text/css" media="screen" />
-<link href="../../../../" type="application/atom+xml" rel="alternate" title="Hi | World ATOM Feed" />
-</head>
-<body>
-<div id="wrapper">
-	<div id="page">
-		<div id="page-bgtop">
-			<div id="page-bgbtm">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="others" />
+        <meta name="keywords" content="Docker" />
+        <meta name="description" content="时下最热的技术莫过于Docker了，很多人都觉得Docker是个新技术，其实不然，Docker除了其编程语言用go比较新外，其实它还真不是个新东西，也就是个新瓶装旧酒的东西，所谓的The New “Old Stuff”。Docker和Docker衍生的东西用到了很多很酷的技术，我会用几篇 文章来把这些技术给大家做个介绍，希望通过这些文章大家可以自己打造一个山寨版的docker。 当然，文章的风格一定会尊重时下的“流行”——我们再也没有整块整块的时间去看书去专研，而我们只有看微博微信那样的碎片时间（那怕我们有整块的时间，也被那些在手机上的APP碎片化了）。所以，这些文章的风格必然坚持“马桶风格”（希望简单到占用你拉一泡屎就时间，而且你还不用动脑子，并能学到些东西） 废话少说，我们开始。先从Linux Namespace开始。 简介 Linux Namespace是Linux提供的一种内核级别环境隔离的方法。不知道你是否还记得很早以前的Unix有一个叫chroot的系统调用（通过修改根目录把用户jail到一个特定目录下），chroot提供了一种简单的隔离模式：chroot内部的文件系统无法访问外部的内容。Linux Namespace在此基础上，提供了对UTS、IPC、mount、PID、network、User等的隔离机制。 举个例子，我们都知道，Linux下的超级父亲进程的PID是1，所以 ..." />
+
+<!-- Open Graph tags -->
+<meta property="og:site_name" content="Hi | World"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Docker基础技术：Linux Namespace（上）"/>
+    <meta property="og:url" content="../../../../2016/08/11/Docker/"/>
+    <meta property="og:description" content="时下最热的技术莫过于Docker了，很多人都觉得Docker是个新技术，其实不然，Docker除了其编程语言用go比较新外，其实它还真不是个新东西，也就是个新瓶装旧酒的东西，所谓的The New “Old Stuff”。Docker和Docker衍生的东西用到了很多很酷的技术，我会用几篇 文章来把这些技术给大家做个介绍，希望通过这些文章大家可以自己打造一个山寨版的docker。 当然，文章的风格一定会尊重时下的“流行”——我们再也没有整块整块的时间去看书去专研，而我们只有看微博微信那样的碎片时间（那怕我们有整块的时间，也被那些在手机上的APP碎片化了）。所以，这些文章的风格必然坚持“马桶风格”（希望简单到占用你拉一泡屎就时间，而且你还不用动脑子，并能学到些东西） 废话少说，我们开始。先从Linux Namespace开始。 简介 Linux Namespace是Linux提供的一种内核级别环境隔离的方法。不知道你是否还记得很早以前的Unix有一个叫chroot的系统调用（通过修改根目录把用户jail到一个特定目录下），chroot提供了一种简单的隔离模式：chroot内部的文件系统无法访问外部的内容。Linux Namespace在此基础上，提供了对UTS、IPC、mount、PID、network、User等的隔离机制。 举个例子，我们都知道，Linux下的超级父亲进程的PID是1，所以 ..."/>
+    <meta property="article:published_time" content="2016-08-11" />
+    <meta property="article:section" content="Docker专题" />
+        <meta property="article:tag" content="Docker" />
+        <meta property="article:author" content="others" />
+        <meta property="og:image"
+              content="../../../../favicon.png"/>
+
+    <title>Docker基础技术：Linux Namespace（上） - Hi | World</title>
+
+        <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
+
+    <link href="../../../../theme/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../../../../theme/css/pygments/colorful.css" rel="stylesheet" />
     
-                        	<div id="content">
-					<div class="post">
-						<h2 class="title"><a href="2016/08/11/Docker/">Docker基础技术：Linux Namespace（上）<转></a></h2>
-						<p class="meta"><span class="date">日期 四 11 八月 2016 </span><span class="posted">By <a href="#">others</a></span><span>&nbsp; | 分类 : <a href="../../../../category/dockerzhuan-ti.html">Docker专题</a></span></p>
-					<p class="meta">Tags : <span><a href="../../../../tag/docker.html">Docker</a> / </span>
-</p>	
-						<div style="clear: both;">&nbsp;</div>
-						<div class="entry">
-						 <body><p>时下最热的技术莫过于Docker了，很多人都觉得Docker是个新技术，其实不然，Docker除了其编程语言用go比较新外，其实它还真不是个新东西，也就是个新瓶装旧酒的东西，所谓的The New &ldquo;Old Stuff&rdquo;。Docker和Docker衍生的东西用到了很多很酷的技术，我会用几篇 文章来把这些技术给大家做个介绍，希望通过这些文章大家可以自己打造一个山寨版的docker。</p>
+    <link href="../../../../theme/css/pelican-twitchy.min.css" rel="stylesheet" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <!-- Feeds -->
+        <link href="../../../../feeds/atom.xml" type="application/atom+xml" rel="alternate"
+              title="Hi | World ATOM Feed" />
+        <link href="../../../../feeds/rss.xml" type="application/rss+xml" rel="alternate"
+              title="Hi | World RSS Feed" />
+</head>
+<body data-spy="scroll" data-target="#scrollspy">
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper-small" class="twitchy-background">
+            <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
+                <li>
+        <a href="../../../.." title="Hi | World" class="collapsed">
+            <span class="glyphicon glyphicon-home"></span>
+        </a>
+    </li>
+                <li class="nav-divider"></li>
+                <li>
+        <a href="../../../../archives.html" title="最新文章" class="collapsed">
+            <span class="glyphicon glyphicon-th-list"></span>
+        </a>
+    </li>
+                
+                <li class="nav-divider"></li>
+                <li id="share-small">
+                    <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-share-small" title="分享" class="collapsed">
+                        <i class="fa fa-share-alt padding-small"></i>
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-share-small" class="collapse ">
+                    <li>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2016/08/11/Docker/" title="Share via Facebook" target="popup">
+                            <i class="fa fa-facebook-square padding-small"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/share?url=../../../../2016/08/11/Docker/" title="Share via Google+" target="popup">
+                            <i class="fa fa-google-plus padding-small"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" title="Share via Twitter" target="popup">
+                            <i class="fa fa-twitter-square padding-small"></i>
+                        </a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-social-small" title="Social" class="collapsed">
+                        <i class="fa fa-users padding-small"></i>
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-social-small" class="collapse ">
+                    <li>
+                        <a href="https://bitbucket.org/winlu" title="Bitbucket"><i class="fa fa-bitbucket-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="mailto:derwinlu@gmail.com" title="EMAIL"><i class="fa fa-envelope-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/ingwinlu" title="GitHub"><i class="fa fa-github-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/115771807029208924055" title="Google+"><i class="fa fa-google-plus-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/derwinlu" title="Twitter"><i class="fa fa-twitter-square fa-lg padding-small"></i></a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+        <a href="#" title="Back to top" class="collapsed">
+            <span class="fa fa-arrow-up"></span>
+        </a>
+    </li>
+            </ul>
+        </div>
+        <div id="sidebar-wrapper" class="twitchy-background">
+            <ul id="accordion" class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="../../../../">
+<img src="../../../../sitelogo.png" width="200" alt="Sitelogo"/>                     </a>
+                </li>
+                    <li class="nav-divider"></li>
+                    <li>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-latest">
+                            <span class="glyphicon glyphicon-th-list padding-small"></span>
+                            最新文章
+                        </a>
+                    </li>
+                    <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
+                        <li class="">
+                            <a class="hide-overflow" href="../../../../2016/09/01/other/" title="北京折叠－郝景芳">
+                                <i class="fa fa-file-text padding-small"></i>
+                                北京折叠－郝景芳
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="../../../../2016/08/12/Docker/" title="Docker基础技术：Linux Namespace（下）">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Docker基础技术：Linux Namespace（下）
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a class="hide-overflow" href="../../../../2016/08/11/Docker/" title="Docker基础技术：Linux Namespace（上）">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Docker基础技术：Linux Namespace（上）
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="../../../../2016/08/11/Performance/" title="如何做性能测试">
+                                <i class="fa fa-file-text padding-small"></i>
+                                如何做性能测试
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="../../../../2016/08/02/LTP/" title="LTP－kernel-syscalls-abort">
+                                <i class="fa fa-file-text padding-small"></i>
+                                LTP－kernel-syscalls-abort
+                            </a>
+                        </li>
+                    <li>
+                        <a href="../../../../archives.html">
+                            <i class="fa fa-arrow-right padding-small"></i>
+                            More
+                        </a>
+                    </li>
+                    </ul></li>
+                <li class="nav-divider"></li>
+                <li id="share">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-share" title="Share" class="collapsed">
+                        <i class="fa fa-share-alt padding-small"></i>
+                        Share
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-share" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2016/08/11/Docker/" target="popup">
+                            <i class="fa fa-facebook-square padding-small"></i>
+                            Facebook
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/share?url=../../../../2016/08/11/Docker/" target="popup">
+                            <i class="fa fa-google-plus padding-small"></i>
+                            Google+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" target="popup">
+                            <i class="fa fa-twitter-square padding-small"></i>
+                            Twitter
+                        </a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-social">
+                        <i class="fa fa-users padding-small"></i>
+                        联系
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-social" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="https://bitbucket.org/winlu" title="Bitbucket">
+                            <i class="fa fa-bitbucket-square fa-lg padding-small"></i>
+                            Bitbucket
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mailto:derwinlu@gmail.com" title="EMAIL">
+                            <i class="fa fa-envelope-square fa-lg padding-small"></i>
+                            EMAIL
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/ingwinlu" title="GitHub">
+                            <i class="fa fa-github-square fa-lg padding-small"></i>
+                            GitHub
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/115771807029208924055" title="Google+">
+                            <i class="fa fa-google-plus-square fa-lg padding-small"></i>
+                            Google+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/derwinlu" title="Twitter">
+                            <i class="fa fa-twitter-square fa-lg padding-small"></i>
+                            Twitter
+                        </a>
+                    </li>
+                </ul></li>
+                
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-pages">
+                        <i class="fa fa-folder-open padding-small"></i>
+                       站内导航
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-pages" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="../../../../pages/opensource.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            开源项目
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../../pages/links.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            链接
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../../pages/Reference material.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            参考资料
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../../pages/todo list.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            Todo List
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../../pages/tools.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            工具集
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="../../../../pages/aboutme.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            关于我
+                        </a>
+                    </li>
+                </ul></li>
+                
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-categories">
+                        <i class="fa fa-folder-open padding-small"></i>
+                        文章分类
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-categories" class="sidebar_submenu collapse ">
+                    <li >
+                        <a href="../../../../category/misc.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            misc
+                            <span class="badge pull-right categorybadge">26</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/autotestzhuan-ti.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Autotest专题
+                            <span class="badge pull-right categorybadge">13</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/suan-fa.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            算法
+                            <span class="badge pull-right categorybadge">2</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="../../../../category/dockerzhuan-ti.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Docker专题
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/linux.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Linux
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/linux-benchmark.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            linux-benchmark
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/linux-zi-dong-hua-ce-shi.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            linux-自动化测试
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/unixhuan-jing-bian-cheng.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            unix环境编程
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/xing-neng-ce-shi.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            性能测试
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                </ul></li>
+                
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <!-- open/close sidebar -->
+        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
+            <span id="right-arrow" class="glyphicon glyphicon-chevron-right"  title="expand sidebar"></span>
+            <span id="left-arrow" class="glyphicon glyphicon-chevron-left" title="minimize sidebar"></span>
+        </a>
+       <!-- /open/close sidebar -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+<section id="content">
+    <article>
+        <div class="row">
+            <div class="col-lg-9">
+                <header class="page-header">
+                    <h1>
+                        <a href="../../../../2016/08/11/Docker/"
+                           rel="bookmark"
+                           title="Permalink to Docker基础技术：Linux Namespace（上）">
+                            Docker基础技术：Linux Namespace（上）<转>
+                        </a>
+                        <small>
+<div class="post-info">
+    <div class="publish-info-block">
+        <small>
+            <span class="published">
+                <i class="fa fa-calendar padding-small"></i><time datetime="2016-08-11T00:00:00+08:00"> 2016-08-11 四</time>
+            </span>
+            <span class="category">
+                <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/dockerzhuan-ti.html">Docker专题</a>
+            </span>
+            <span class="tags">
+                <i class="fa fa-tags padding-small"></i>
+                <a href="../../../../tag/docker.html">Docker</a>            </span>
+        </small>
+    </div>
+</div><!-- /.post-info -->                        </small>
+                    </h1>
+                </header>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="entry-content">
+                    </head><body><p>时下最热的技术莫过于Docker了，很多人都觉得Docker是个新技术，其实不然，Docker除了其编程语言用go比较新外，其实它还真不是个新东西，也就是个新瓶装旧酒的东西，所谓的The New “Old Stuff”。Docker和Docker衍生的东西用到了很多很酷的技术，我会用几篇 文章来把这些技术给大家做个介绍，希望通过这些文章大家可以自己打造一个山寨版的docker。</p>
 <p><img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/PYHO3G128V.jpg" width="420"/></p>
-<p>当然，文章的风格一定会尊重时下的&ldquo;流行&rdquo;&mdash;&mdash;我们再也没有整块整块的时间去看书去专研，而我们只有看微博微信那样的碎片时间（那怕我们有整块的时间，也被那些在手机上的APP碎片化了）。所以，这些文章的风格必然坚持&ldquo;马桶风格&rdquo;（希望简单到占用你拉一泡屎就时间，而且你还不用动脑子，并能学到些东西）</p>
+<p>当然，文章的风格一定会尊重时下的“流行”——我们再也没有整块整块的时间去看书去专研，而我们只有看微博微信那样的碎片时间（那怕我们有整块的时间，也被那些在手机上的APP碎片化了）。所以，这些文章的风格必然坚持“马桶风格”（希望简单到占用你拉一泡屎就时间，而且你还不用动脑子，并能学到些东西）</p>
 <p>废话少说，我们开始。先从Linux Namespace开始。</p>
 <h4 id="jian-jie">简介</h4>
 <p>Linux Namespace是Linux提供的一种内核级别环境隔离的方法。不知道你是否还记得很早以前的Unix有一个叫chroot的系统调用（通过修改根目录把用户jail到一个特定目录下），chroot提供了一种简单的隔离模式：chroot内部的文件系统无法访问外部的内容。Linux Namespace在此基础上，提供了对UTS、IPC、mount、PID、network、User等的隔离机制。</p>
@@ -84,9 +450,9 @@ Released   : 20100928
 </table>
 <p><strong>主要是三个系统调用</strong></p>
 <ul>
-<li>clone() &ndash; 实现线程的系统调用，用来创建一个新的进程，并可以通过设计上述参数达到隔离。</li>
-<li>unshare() &ndash; 使某进程脱离某个namespace</li>
-<li>setns() &ndash; 把某进程加入到某个namespace</li>
+<li>clone() – 实现线程的系统调用，用来创建一个新的进程，并可以通过设计上述参数达到隔离。</li>
+<li>unshare() – 使某进程脱离某个namespace</li>
+<li>setns() – 把某进程加入到某个namespace</li>
 </ul>
 <p>unshare() 和 setns() 都比较简单，大家可以自己man，我这里不说了。</p>
 <p>下面还是让我们来看一些示例（以下的测试程序最好在Linux 内核为3.8以上的版本中运行，我用的是ubuntu 14.04）。
@@ -286,7 +652,7 @@ diskstats  keys         mtrr        sysrq-trigger
 <p>这里，多说一下。在通过CLONE_NEWNS创建mount namespace后，父进程会把自己的文件结构复制给子进程中。而子进程中新的namespace中的所有mount操作都只影响自身的文件系统，而不对外界产生任何影响。这样可以做到比较严格地隔离。</p>
 <p>你可能会问，我们是不是还有别的一些文件系统也需要这样mount? 是的。
 Docker的 Mount Namespace</p>
-<p>下面我将向演示一个&ldquo;山寨镜像&rdquo;，其模仿了Docker的Mount Namespace。</p>
+<p>下面我将向演示一个“山寨镜像”，其模仿了Docker的Mount Namespace。</p>
 <p>首先，我们需要一个rootfs，也就是我们需要把我们要做的镜像中的那些命令什么的copy到一个rootfs的目录下，我们模仿Linux构建如下的目录：
     hchen@ubuntu:~/rootfs$ ls
     bin  dev  etc  home  lib  lib64  mnt  opt  proc  root  run  sbin  sys  tmp  usr  var</p>
@@ -424,7 +790,7 @@ libm-2.19.so     libnss_dns.so.2        libpython2.7.so.1.0
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
-<p>sudo运行上面的程序，你会看到下面的挂载信息以及一个所谓的&ldquo;镜像&rdquo;：
+<p>sudo运行上面的程序，你会看到下面的挂载信息以及一个所谓的“镜像”：
     hchen@ubuntu:~$ sudo ./mount
     Parent [ 4517] - start a container!
     Container [    1] - inside the container!
@@ -451,90 +817,85 @@ awk  env  groups  head  id  mesg  sort  strace  tail  top  uniq  vi  wc  xargs
 <p>接下来的事情，你可以自己玩了，我相信你的想像力 。：）</p>
 <p>在下一篇，我将向你介绍User Namespace、Network Namespace以及Namespace的其它东西。</p>
 <p><a href="https://king32783784.github.io/lipeng/2016/08/12/Docker/">Docker基础技术：Linux Namespace（下)&gt;&gt;&gt;</a></p>
-<p>（上篇完，请参看下篇）</p></body>	
-						</div>
-					</div>
-			      
-					<div style="clear: both;">&nbsp;</div>
-                                        <div class="post">
-                                        <h2 class="title">Commentaires !</h2>
-                                            <div id="disqus_thread"></div>
-                                            <script type="text/javascript">
-                                               var disqus_identifier = "2016/08/11/Docker/";
-                                               (function() {
-                                               var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                                               dsq.src = 'https://king32783784.disqus.com/embed.js';
-                                               (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                                              })();
-                                            </script>
-                                        </div>
-				</div>
-				<!-- end #content -->
-				<div id="sidebar">
-					<div id="logo">
-						<h1><a href="../../../..">Hi | World</a></h1>
-					</div>
-					<div id="menu">
-						<ul>
-							<li ><a href="../../../..">首页</a></li>
-							<li ><a href="../../../../archives.html">归档</a></li>
-                                                            <li class="current_page_item"><a href="../../../../pages/opensource.html">开源项目</a></li>
-                                                            <li class="current_page_item"><a href="../../../../pages/links.html">链接</a></li>
-                                                            <li class="current_page_item"><a href="../../../../pages/Reference material.html">参考资料</a></li>
-                                                            <li class="current_page_item"><a href="../../../../pages/todo list.html">Todo List</a></li>
-                                                            <li class="current_page_item"><a href="../../../../pages/tools.html">工具集</a></li>
-                                                            <li class="current_page_item"><a href="../../../../pages/aboutme.html">关于我</a></li>
-						</ul>
-					</div>
-					<ul>
-						<li>
-							<h2>分类列表</h2>
-							<ul>
-								 <li ><a href="../../../../category/misc.html">misc</a></li>
-								 <li ><a href="../../../../category/autotestzhuan-ti.html">Autotest专题</a></li>
-								 <li ><a href="../../../../category/suan-fa.html">算法</a></li>
-								 <li class="active"><a href="../../../../category/dockerzhuan-ti.html">Docker专题</a></li>
-								 <li ><a href="../../../../category/linux.html">Linux</a></li>
-								 <li ><a href="../../../../category/linux-benchmark.html">linux-benchmark</a></li>
-								 <li ><a href="../../../../category/linux-zi-dong-hua-ce-shi.html">linux-自动化测试</a></li>
-								 <li ><a href="../../../../category/unixhuan-jing-bian-cheng.html">unix环境编程</a></li>
-								 <li ><a href="../../../../category/xing-neng-ce-shi.html">性能测试</a></li>
-							</ul>
-						</li>
-						<li>
-						        <h2>Tags</h2>
-						        <ul>
-                                                                <li><a href="../../../../tag/selenium.html">Selenium</a></li>
-                                                                <li><a href="../../../../tag/zi-dong-hua-ce-shi.html">自动化测试</a></li>
-                                                                <li><a href="../../../../tag/ltp.html">LTP</a></li>
-                                                                <li><a href="../../../../tag/shell.html">shell</a></li>
-                                                                <li><a href="../../../../tag/suan-fa.html">算法</a></li>
-                                                                <li><a href="../../../../tag/xing-neng-ce-shi.html">性能测试</a></li>
-                                                                <li><a href="../../../../tag/python.html">Python</a></li>
-                                                                <li><a href="../../../../tag/docker.html">Docker</a></li>
-                                                                <li><a href="../../../../tag/benchmark.html">benchmark</a></li>
-                                                                <li><a href="../../../../tag/qi-ta.html">其他</a></li>
-                                                                <li><a href="../../../../tag/unixbian-cheng.html">unix编程</a></li>
-                                                                <li><a href="../../../../tag/linux.html">Linux</a></li>
-                                                                <li><a href="../../../../tag/pyunit.html">PyUnit</a></li>
-						        </ul>
-						</li>
-						
-						
-					</ul>
-				</div>
-				<!-- end #sidebar -->
-				<div style="clear: both;">&nbsp;</div>
-			</div>
-		</div>
-	</div>
-	<!-- end #page -->
+<p>（上篇完，请参看下篇）</p>
+                </div>
+                <footer class="text-right">
+                    <p>- others</p>
+                </footer>
+    <section id="comments" class="comments ">
+        <hr/>
+        <h2>Comments</h2>
+        <div id="disqus_thread"></div>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </section>
+            </div>
+    <div id="scrollspy">
+        <div class="col-lg-3 nav nav-stacked hidden-xs hidden-sm" data-spy="affix" data-offset-top="135">
+            <div id="toc"><ul><li><a class="toc-href" href="#" title="Docker基础技术：Linux Namespace（上）&lt;转&gt;">Docker基础技术：Linux Namespace（上）&lt;转&gt;</a><ul><li><a class="toc-href" href="#jian-jie" title="简介">简介</a></li><li><a class="toc-href" href="#ipc-namespace" title="IPC Namespace">IPC Namespace</a></li><li><a class="toc-href" href="#pid-namespace" title="PID Namespace">PID Namespace</a></li><li><a class="toc-href" href="#mount-namespace" title="Mount Namespace">Mount Namespace</a></li></ul></li></ul></div>
+        </div>
+    </div>
+        </div>
+    </article>
+</section>
+<footer>
+    <hr>
+    <div class="row">
+        <div class="col-lg-9 text-center">
+            <p><small>
+                Built by <a href="http://docs.getpelican.com/en/latest">Pelican</a> / <a href="https://github.com/ingwinlu/pelican-twitchy">pelican-twitchy</a>
+                &middot;                      <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>
+    &quot;<span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Hi | World</span>&quot; by <a xmlns:cc="http://creativecommons.org/ns#" href="../../../.." property="cc:attributionName" rel="cc:attributionURL">others</a> is
+  licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution 4.0 International License</a>, except where indicated otherwise.
 
-<div id="footer">
-	<p>Copyright (c) 2008 Sitename.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a>.</p>
-	<p>Proudly powered by <a href="http://alexis.notmyidea.org/pelican/">pelican</a>, which takes great advantages of <a href="http://python.org">python</a>.
-</p>
-</div>
-<!-- end #footer -->
+            </small></p>
+        </div>
+    </div>
+</footer>            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery Version 1.11.2 -->
+    <script src="../../../../theme/js/jquery-1.11.2.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../../../theme/js/bootstrap.min.js"></script>
+    <!-- twitchy Script -->
+    <script src="../../../../theme/js/pelican_twitchy.min.js"></script>
+    <!-- Begin Cookie Consent https://silktide.com/tools/cookie-consent/ -->
+    <script>
+        window.cookieconsent_options = {
+            message: "This site uses Cookies. If you continue without changing your settings, it is assumed that you are happy to receive all cookies from this website.",
+            learnMore: "More info",
+            link: null,
+            dismiss: "Got it!",
+            theme: "../../../../theme/css/cookieconsent/dark-floating.css",
+        };
+    </script>
+    <script src="../../../../theme/js/cookieconsent.min.js"></script>
+    <!-- End Cookie Consent -->
+
+<!-- disqus -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'True'; // required: replace example with your forum shortname
+
+            var disqus_identifier = 'Docker';
+        var disqus_url = '../../../../2016/08/11/Docker/';
+
+    var disqus_config = function () {
+        this.language = "zh";
+    };
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- /disqus -->
 </body>
 </html>
