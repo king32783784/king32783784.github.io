@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="others" />
-        <meta name="keywords" content="Linux" />
+        <meta name="keywords" content="Makefile" />
         <meta name="description" content="概述 什么是makefile？或许很多Winodws的程序员都不知道这个东西，因为那些Windows的IDE都为你做了这个工作，但我觉得要作一个好的和 professional的程序员，makefile还是要懂。这就好像现在有这么多的HTML的编辑器，但如果你想成为一个专业人士，你还是要了解HTML的标识的含义。特别在Unix下的软件编译，你就不能不自己写makefile了，会不会写makefile，从一个侧面说明了一个人是否具备完成大型工程的能力。 因为，makefile关系到了整个工程的编译规则。一个工程中的源文件不计数，其按类型、功能、模块分别放在若干个目录中，makefile定义了一系列的规则来指定，哪些文件需要先编译，哪些文件需要后编译，哪些文件需要重新编译，甚至于进行更复杂的功能操作，因为 makefile就像一个Shell脚本一样，其中也可以执行操作系统的命令。 makefile带来的好处就是——“自动化编译”，一旦写好，只需要一个make命令，整个工程完全自动编译，极大的提高了软件开发的效率。make是一个命令工具，是一个解释makefile中指令的命令工具，一般来说，大多数的IDE都有这个命令，比如：Delphi的make，Visual C++的nmake，Linux下GNU的make。可见，makefile都成为了一种在工程方面的编译方法。 现在讲述如何写 makefile的文章比较少，这是我想写这篇文章的原因。当然 ..." />
 
 <!-- Open Graph tags -->
@@ -16,8 +16,8 @@
     <meta property="og:url" content="../../../../2013/08/01/Makefile/"/>
     <meta property="og:description" content="概述 什么是makefile？或许很多Winodws的程序员都不知道这个东西，因为那些Windows的IDE都为你做了这个工作，但我觉得要作一个好的和 professional的程序员，makefile还是要懂。这就好像现在有这么多的HTML的编辑器，但如果你想成为一个专业人士，你还是要了解HTML的标识的含义。特别在Unix下的软件编译，你就不能不自己写makefile了，会不会写makefile，从一个侧面说明了一个人是否具备完成大型工程的能力。 因为，makefile关系到了整个工程的编译规则。一个工程中的源文件不计数，其按类型、功能、模块分别放在若干个目录中，makefile定义了一系列的规则来指定，哪些文件需要先编译，哪些文件需要后编译，哪些文件需要重新编译，甚至于进行更复杂的功能操作，因为 makefile就像一个Shell脚本一样，其中也可以执行操作系统的命令。 makefile带来的好处就是——“自动化编译”，一旦写好，只需要一个make命令，整个工程完全自动编译，极大的提高了软件开发的效率。make是一个命令工具，是一个解释makefile中指令的命令工具，一般来说，大多数的IDE都有这个命令，比如：Delphi的make，Visual C++的nmake，Linux下GNU的make。可见，makefile都成为了一种在工程方面的编译方法。 现在讲述如何写 makefile的文章比较少，这是我想写这篇文章的原因。当然 ..."/>
     <meta property="article:published_time" content="2013-08-01" />
-    <meta property="article:section" content="misc" />
-        <meta property="article:tag" content="Linux" />
+    <meta property="article:section" content="linux" />
+        <meta property="article:tag" content="Makefile" />
         <meta property="article:author" content="others" />
         <meta property="og:image"
               content="../../../../favicon.png"/>
@@ -124,7 +124,7 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
-                            <a class="hide-overflow" href="../../../../2016/09/01/other/" title="北京折叠－郝景芳">
+                            <a class="hide-overflow" href="../../../../2016/09/01/bei-jing-zhe-die-hao-jing-fang/" title="北京折叠－郝景芳">
                                 <i class="fa fa-file-text padding-small"></i>
                                 北京折叠－郝景芳
                             </a>
@@ -269,18 +269,53 @@
                     </a>
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-categories" class="sidebar_submenu collapse ">
-                    <li class="active">
-                        <a href="../../../../category/misc.html">
+                    <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-selenium.html">
                             <i class="fa fa-folder-open padding-small"></i>
-                            misc
-                            <span class="badge pull-right categorybadge">26</span>
+                            自动化测试-Selenium
+                            <span class="badge pull-right categorybadge">14</span>
                         </a>
                     </li>
                     <li >
-                        <a href="../../../../category/autotestzhuan-ti.html">
+                        <a href="../../../../category/zi-dong-hua-ce-shi-autotest.html">
                             <i class="fa fa-folder-open padding-small"></i>
-                            Autotest专题
-                            <span class="badge pull-right categorybadge">13</span>
+                            自动化测试-Autotest
+                            <span class="badge pull-right categorybadge">12</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-ltp.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-LTP
+                            <span class="badge pull-right categorybadge">5</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/bian-cheng-yu-yan-python.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            编程语言-Python
+                            <span class="badge pull-right categorybadge">3</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="../../../../category/linux.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Linux
+                            <span class="badge pull-right categorybadge">3</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/xing-neng-ce-shi.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            性能测试
+                            <span class="badge pull-right categorybadge">3</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/dockerzhuan-ti.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Docker专题
+                            <span class="badge pull-right categorybadge">2</span>
                         </a>
                     </li>
                     <li >
@@ -291,30 +326,9 @@
                         </a>
                     </li>
                     <li >
-                        <a href="../../../../category/dockerzhuan-ti.html">
+                        <a href="../../../../category/qi-ta.html">
                             <i class="fa fa-folder-open padding-small"></i>
-                            Docker专题
-                            <span class="badge pull-right categorybadge">1</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/linux.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            Linux
-                            <span class="badge pull-right categorybadge">1</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/linux-benchmark.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            linux-benchmark
-                            <span class="badge pull-right categorybadge">1</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/linux-zi-dong-hua-ce-shi.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            linux-自动化测试
+                            其他
                             <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
@@ -326,9 +340,9 @@
                         </a>
                     </li>
                     <li >
-                        <a href="../../../../category/xing-neng-ce-shi.html">
+                        <a href="../../../../category/zi-dong-hua-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
-                            性能测试
+                            自动化测试
                             <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
@@ -366,11 +380,11 @@
                 <i class="fa fa-calendar padding-small"></i><time datetime="2013-08-01T00:00:00+08:00"> 2013-08-01 四</time>
             </span>
             <span class="category">
-                <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/misc.html">misc</a>
+                <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/linux.html">linux</a>
             </span>
             <span class="tags">
                 <i class="fa fa-tags padding-small"></i>
-                <a href="../../../../tag/linux.html">Linux</a>            </span>
+                <a href="../../../../tag/makefile.html">Makefile</a>            </span>
         </small>
     </div>
 </div><!-- /.post-info -->                        </small>

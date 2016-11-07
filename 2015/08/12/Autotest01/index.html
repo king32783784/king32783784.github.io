@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="peng.lee" />
-        <meta name="keywords" content="自动化测试" />
+        <meta name="keywords" content="autotest" />
         <meta name="description" content="Autotest是一个开源的自动化测试框架.设计目的是为了测试Linux内核,同样可以用来检查新的硬件,虚拟化测试以及linux平台用户空间程序.它遵循GPL协议,并有大量的开发组织成员,其中包括像谷歌,IBM,红帽等. Avocado,是Autotest开发组,开发的下一代的自动化测试框架.详细信息参考Avocado,后续有时间会再对Avocado进行介绍. 本专题主要介绍以下内容: * 基本信息 * 客户端介绍 * 服务端介绍 * 前端介绍 * 系统管理 * 调度模块 * 如何开发 本文主要介绍关于Autotest的一些基本信息.主要内容: * Autotest主要结构 Autotest项目主页:Autotest Github: Github Autotest主要结构 下图是Autotest框架简化图: Web接口和命令行接口 Web接口和命令行接口是相辅相成的方式去连接Autotest并创建job.这两则具有相同的功能,意在方便用户.你可以用这些接口做以下事情: * 管理jobs,如创建,监控,中止等 * 管理客户端 * 查看测试结果 前端会通过向mysql数据库中创建记录的方式将jobs插入服务端. 服务端 服务端主要包括3个部分: 一个Mysql数据库,该数据库保存了所有的job,客户端(测试物理机 ..." />
 
 <!-- Open Graph tags -->
@@ -16,8 +16,8 @@
     <meta property="og:url" content="../../../../2015/08/12/Autotest01/"/>
     <meta property="og:description" content="Autotest是一个开源的自动化测试框架.设计目的是为了测试Linux内核,同样可以用来检查新的硬件,虚拟化测试以及linux平台用户空间程序.它遵循GPL协议,并有大量的开发组织成员,其中包括像谷歌,IBM,红帽等. Avocado,是Autotest开发组,开发的下一代的自动化测试框架.详细信息参考Avocado,后续有时间会再对Avocado进行介绍. 本专题主要介绍以下内容: * 基本信息 * 客户端介绍 * 服务端介绍 * 前端介绍 * 系统管理 * 调度模块 * 如何开发 本文主要介绍关于Autotest的一些基本信息.主要内容: * Autotest主要结构 Autotest项目主页:Autotest Github: Github Autotest主要结构 下图是Autotest框架简化图: Web接口和命令行接口 Web接口和命令行接口是相辅相成的方式去连接Autotest并创建job.这两则具有相同的功能,意在方便用户.你可以用这些接口做以下事情: * 管理jobs,如创建,监控,中止等 * 管理客户端 * 查看测试结果 前端会通过向mysql数据库中创建记录的方式将jobs插入服务端. 服务端 服务端主要包括3个部分: 一个Mysql数据库,该数据库保存了所有的job,客户端(测试物理机 ..."/>
     <meta property="article:published_time" content="2015-08-12" />
-    <meta property="article:section" content="Autotest专题" />
-        <meta property="article:tag" content="自动化测试" />
+    <meta property="article:section" content="自动化测试-Autotest" />
+        <meta property="article:tag" content="autotest" />
         <meta property="article:author" content="peng.lee" />
         <meta property="og:image"
               content="../../../../favicon.png"/>
@@ -124,7 +124,7 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
-                            <a class="hide-overflow" href="../../../../2016/09/01/other/" title="北京折叠－郝景芳">
+                            <a class="hide-overflow" href="../../../../2016/09/01/bei-jing-zhe-die-hao-jing-fang/" title="北京折叠－郝景芳">
                                 <i class="fa fa-file-text padding-small"></i>
                                 北京折叠－郝景芳
                             </a>
@@ -270,17 +270,52 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-categories" class="sidebar_submenu collapse ">
                     <li >
-                        <a href="../../../../category/misc.html">
+                        <a href="../../../../category/zi-dong-hua-ce-shi-selenium.html">
                             <i class="fa fa-folder-open padding-small"></i>
-                            misc
-                            <span class="badge pull-right categorybadge">26</span>
+                            自动化测试-Selenium
+                            <span class="badge pull-right categorybadge">14</span>
                         </a>
                     </li>
                     <li class="active">
-                        <a href="../../../../category/autotestzhuan-ti.html">
+                        <a href="../../../../category/zi-dong-hua-ce-shi-autotest.html">
                             <i class="fa fa-folder-open padding-small"></i>
-                            Autotest专题
-                            <span class="badge pull-right categorybadge">13</span>
+                            自动化测试-Autotest
+                            <span class="badge pull-right categorybadge">12</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-ltp.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-LTP
+                            <span class="badge pull-right categorybadge">5</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/bian-cheng-yu-yan-python.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            编程语言-Python
+                            <span class="badge pull-right categorybadge">3</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/linux.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Linux
+                            <span class="badge pull-right categorybadge">3</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/xing-neng-ce-shi.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            性能测试
+                            <span class="badge pull-right categorybadge">3</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/dockerzhuan-ti.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Docker专题
+                            <span class="badge pull-right categorybadge">2</span>
                         </a>
                     </li>
                     <li >
@@ -291,30 +326,9 @@
                         </a>
                     </li>
                     <li >
-                        <a href="../../../../category/dockerzhuan-ti.html">
+                        <a href="../../../../category/qi-ta.html">
                             <i class="fa fa-folder-open padding-small"></i>
-                            Docker专题
-                            <span class="badge pull-right categorybadge">1</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/linux.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            Linux
-                            <span class="badge pull-right categorybadge">1</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/linux-benchmark.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            linux-benchmark
-                            <span class="badge pull-right categorybadge">1</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/linux-zi-dong-hua-ce-shi.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            linux-自动化测试
+                            其他
                             <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
@@ -326,9 +340,9 @@
                         </a>
                     </li>
                     <li >
-                        <a href="../../../../category/xing-neng-ce-shi.html">
+                        <a href="../../../../category/zi-dong-hua-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
-                            性能测试
+                            自动化测试
                             <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
@@ -366,11 +380,11 @@
                 <i class="fa fa-calendar padding-small"></i><time datetime="2015-08-12T00:00:00+08:00"> 2015-08-12 三</time>
             </span>
             <span class="category">
-                <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/autotestzhuan-ti.html">Autotest专题</a>
+                <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/zi-dong-hua-ce-shi-autotest.html">自动化测试-Autotest</a>
             </span>
             <span class="tags">
                 <i class="fa fa-tags padding-small"></i>
-                <a href="../../../../tag/zi-dong-hua-ce-shi.html">自动化测试</a>            </span>
+                <a href="../../../../tag/autotest.html">autotest</a>            </span>
         </small>
     </div>
 </div><!-- /.post-info -->                        </small>

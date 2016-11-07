@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Hi | World</title><link href="http://king32783784.github.io/" rel="alternate"></link><link href="http://king32783784.github.io/feeds/others.atom.xml" rel="self"></link><id>http://king32783784.github.io/</id><updated>2016-09-01T00:00:00+08:00</updated><entry><title>北京折叠－郝景芳</title><link href="http://king32783784.github.io/2016/09/01/other/" rel="alternate"></link><published>2016-09-01T00:00:00+08:00</published><author><name>others</name></author><id>tag:king32783784.github.io,2016-09-01:2016/09/01/other/</id><summary type="html">&lt;h2 id="di-yi-mu"&gt;第一幕&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Hi | World</title><link href="http://king32783784.github.io/" rel="alternate"></link><link href="http://king32783784.github.io/feeds/others.atom.xml" rel="self"></link><id>http://king32783784.github.io/</id><updated>2016-09-01T00:00:00+08:00</updated><entry><title>北京折叠－郝景芳</title><link href="http://king32783784.github.io/2016/09/01/bei-jing-zhe-die-hao-jing-fang/" rel="alternate"></link><published>2016-09-01T00:00:00+08:00</published><author><name>others</name></author><id>tag:king32783784.github.io,2016-09-01:2016/09/01/bei-jing-zhe-die-hao-jing-fang/</id><summary type="html">&lt;h2 id="di-yi-mu"&gt;第一幕&lt;/h2&gt;
 &lt;p&gt;&lt;img height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/W3UPOU6IG2.jpg" width="420"/&gt;&lt;/p&gt;
 &lt;p&gt;清晨4:50，老刀穿过熙熙攘攘的步行街，去找彭蠡。&lt;/p&gt;
 &lt;p&gt;从垃圾站下班之后，老刀回家洗了个澡，换了衣服。白色衬衫和褐色裤子，这是他唯一一套体面衣服，衬衫袖口磨了边，他把袖子卷到胳膊肘。老刀四十八岁，没结婚，已经过了注意外表的年龄，又没人照顾起居，这一套衣服留着穿了很多年，每次穿一天，回家就脱了叠上。他在垃圾站上班，没必要穿得体面，偶尔参加谁家小孩的婚礼，才拿出来穿在身上。这一次他不想脏兮兮地见陌生人。他在垃圾站连续工作了五小时，很担心身上会有味道。&lt;/p&gt;
@@ -268,7 +268,7 @@
 &lt;p&gt;他从衣服的内衬掏出一张一万块的钞票，虚弱地递给老太太。老太太目瞪口呆，阿贝、阑阑看得傻了。他不想解释，摆摆手回到自己的房间。&lt;/p&gt;
 &lt;p&gt;摇篮里，糖糖刚刚睡醒，正迷糊着揉眼睛。他看着糖糖的脸，疲倦了一天的心软下来。他想起最初在垃圾站门口抱起糖糖时，她那张脏兮兮的哭累了的小脸。他从没后悔将她抱来。她笑了，吧唧了一下小嘴。他觉得自己还是幸运的。尽管伤了腿，但毕竟没被抓住，还带了钱回来。他不知道糖糖什么时候才能学会唱歌跳舞，成为一个淑女。&lt;/p&gt;
 &lt;p&gt;他看看时间，该去上班了。&lt;/p&gt;
-&lt;p&gt;（全文完）&lt;/p&gt;</summary><category term="其他"></category></entry><entry><title>Docker基础技术：Linux Namespace（下）</title><link href="http://king32783784.github.io/2016/08/12/Docker/" rel="alternate"></link><published>2016-08-12T00:00:00+08:00</published><author><name>others</name></author><id>tag:king32783784.github.io,2016-08-12:2016/08/12/Docker/</id><summary type="html">&lt;p&gt;在 &lt;a href="https://king32783784.github.io/lipeng/2016/08/11/Docker/"&gt;Docker基础技术：Linux Namespace（上篇)&lt;/a&gt;中我们了解了，UTD、IPC、PID、Mount 四个namespace，我们模仿Docker做了一个相当相当山寨的镜像。在这一篇中，主要想向大家介绍Linux的User和Network的Namespace。
+&lt;p&gt;（全文完）&lt;/p&gt;</summary><category term="杂文"></category></entry><entry><title>Docker基础技术：Linux Namespace（下）</title><link href="http://king32783784.github.io/2016/08/12/Docker/" rel="alternate"></link><published>2016-08-12T00:00:00+08:00</published><author><name>others</name></author><id>tag:king32783784.github.io,2016-08-12:2016/08/12/Docker/</id><summary type="html">&lt;p&gt;在 &lt;a href="https://king32783784.github.io/lipeng/2016/08/11/Docker/"&gt;Docker基础技术：Linux Namespace（上篇)&lt;/a&gt;中我们了解了，UTD、IPC、PID、Mount 四个namespace，我们模仿Docker做了一个相当相当山寨的镜像。在这一篇中，主要想向大家介绍Linux的User和Network的Namespace。
 &lt;img height="280" src="https://raw.githubusercontent.com/king32783784/king32783784.github.io/master/tmpfile/Autotest1.png" width="420"/&gt;&lt;/p&gt;
 &lt;p&gt;好，下面我们就介绍一下还剩下的这两个Namespace。&lt;/p&gt;
 &lt;h4 id="user-namespace"&gt;User Namespace&lt;/h4&gt;
@@ -3022,4 +3022,4 @@ rm -f bar.o
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="Linux"></category></entry></feed>
+&lt;/script&gt;</summary><category term="Makefile"></category></entry></feed>
