@@ -121,6 +121,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../2016/11/01/自动化测试/" title="Avocado User’s Guide">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Avocado User’s Guide
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../2016/09/01/bei-jing-zhe-die-hao-jing-fang/" title="北京折叠－郝景芳">
                                 <i class="fa fa-file-text padding-small"></i>
                                 北京折叠－郝景芳
@@ -142,12 +148,6 @@
                             <a class="hide-overflow" href="../2016/08/11/Performance/" title="如何做性能测试">
                                 <i class="fa fa-file-text padding-small"></i>
                                 如何做性能测试
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../2016/08/02/LTP/" title="LTP－kernel-syscalls-abort">
-                                <i class="fa fa-file-text padding-small"></i>
-                                LTP－kernel-syscalls-abort
                             </a>
                         </li>
                     <li>
@@ -336,6 +336,13 @@
                             <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
+                    <li >
+                        <a href="../category/zi-dong-hua-ce-shi-avocado.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Avocado
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
                 </ul></li>
                 
             </ul>
@@ -372,6 +379,75 @@
 </section>
 <div class="row">
     <div class="col-lg-9">
+            <article>
+                <h2>
+                    <a href="../2016/11/01/自动化测试/">Avocado User’s Guide</a>
+<div class="post-info">
+    <div class="publish-info-block">
+        <small>
+            <span class="published">
+                <i class="fa fa-calendar padding-small"></i><time datetime="2016-11-01T00:00:00+08:00"> 2016-11-01 二</time>
+            </span>
+            <span class="category">
+                <i class="fa fa-folder-open padding-small"></i><a href="../category/zi-dong-hua-ce-shi-avocado.html">自动化测试-Avocado</a>
+            </span>
+            <span class="tags">
+                <i class="fa fa-tags padding-small"></i>
+                <a href="../tag/avocado.html">Avocado</a>            </span>
+        </small>
+    </div>
+</div><!-- /.post-info -->                </h2>
+                <div class="summary">
+                    </head><body><h3 id="avocado-yong-hu-zhi-nan">Avocado 用户指南</h3>
+<p>内容：</p>
+<ul>
+<li>关于Avocado</li>
+<li>入门<ul>
+<li>安装Avocado</li>
+<li>使用Avocado</li>
+<li>写一个简单测试</li>
+<li>运行一个较复杂的测试</li>
+<li>第一个测试失败时中断测试job</li>
+<li>结合外部runner运行测试</li>
+<li>测试调试</li>
+</ul>
+</li>
+<li>编写Avocado测试<ul>
+<li>基本例子</li>
+<li>保存测试生成的数据（自定义）</li>
+<li>访问测试参数</li>
+<li>使用multplex文件</li>
+<li>高级日志功能</li>
+<li>unittest.TestCase 继承</li>
+<li>Setup和cleanup方法</li>
+<li>运行第三方测试集</li>
+<li>获取资源文件</li>
+<li>测试输出检查和输出记录模式</li>
+<li>Avocado Testlog，stdout和stderr模块</li>
+<li>独立进程中运行Avocado测试</li>
+<li>设置测试超时</li>
+<li>测试标签</li>
+<li>Python unitest 兼容测试和警告</li>
+<li>简单测试的环境变量</li>
+<li>简单测试的BASH扩展</li>
+<li>Wrap up</li>
+</ul>
+</li>
+<li>结果格式<ul>
+<li>人性化测试结果</li>
+<li>机器可读的结果</li>
+<li>一次多种结果</li>
+<li>Exit Codes</li>
+<li>实现其他结果格式</li>
+</ul>
+</li>
+<li>配置<ul>
+<li>配置文件的解析顺序</li>
+<li>插件设置文件</li>
+<li>解析订单概述 ...</li></ul></li></ul></body>
+                </div>
+            </article>
+            <hr/>
             <article>
                 <h2>
                     <a href="../2016/09/01/bei-jing-zhe-die-hao-jing-fang/">北京折叠－郝景芳</a>
@@ -502,47 +578,6 @@
 <p>关于平均值为什么不靠谱，我相信大家读新闻的时候经常可以看到，<strong>平均工资</strong>，<strong>平均房价</strong>，<strong>平均支出</strong>，等等这样的字眼，你就知道为什么平均值不靠谱了。（这些都是数学游戏，对于理工科的同学来说，天生应该有免疫力）</p>
 <p>软件的性能测试也一样，平均数也是不靠谱的，这里可以参看这篇详细的文章《Why Averages Suck and Percentiles are Great》，我在这里简单说一下。</p>
 <p>我们知道，性能测试时，测试得到的结果数据不总是一样的，而是有高有低的，如果算平均值就会出现这样的情况，假如，<strong>测试了10次，有9次是1ms，而有1次是1s，那么平均数据就是100ms，很明显，这完全不能反应性能测试的情况 ...</strong></p></body>
-                </div>
-            </article>
-            <hr/>
-            <article>
-                <h2>
-                    <a href="../2016/08/02/LTP/">LTP－kernel-syscalls-abort</a>
-<div class="post-info">
-    <div class="publish-info-block">
-        <small>
-            <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2016-08-02T00:00:00+08:00"> 2016-08-02 二</time>
-            </span>
-            <span class="category">
-                <i class="fa fa-folder-open padding-small"></i><a href="../category/zi-dong-hua-ce-shi-ltp.html">自动化测试-LTP</a>
-            </span>
-            <span class="tags">
-                <i class="fa fa-tags padding-small"></i>
-                <a href="../tag/ltp.html">LTP</a>            </span>
-        </small>
-    </div>
-</div><!-- /.post-info -->                </h2>
-                <div class="summary">
-                    </head><body><p>从本文开始，开始分析kernel部分的测试用例，该部分测试用例大部分为Ｃ语言编写，因此会穿插加入一定的Ｃ语言或unix环境编程的知识。</p>
-<p><img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/I0T0E4Y826.jpg" width="420"/></p>
-<h4 id="abort">abort</h4>
-<p>设计说明</p>
-<p><strong>测试策略</strong></p>
-<p>Fork child. Child出现abort,检查返回状态</p>
-<p><strong>限制</strong></p>
-<p>Core file大小的限制必须大于０</p>
-<p><strong>abort</strong></p>
-<p>函数名: abort</p>
-<p>功 能: 异常终止一个进程</p>
-<p>用 法: void abort(void);</p>
-<p>abort()是使异常程序终止，同时发送SIGABRT信号给调用进程。</p>
-<div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
-<span class="kt">void</span> <span class="nf">abort</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
-<span class="err">该函数不返回</span>
-</pre></div>
-<p>此函数将SIGABRT信号发送给调用进程（进程不应忽略此信号).ISO C规定，调用abort将向主机环境递送一个未成功终止的通知，其方法是调用raise(SIGABRT)函数。
-ISO C要求若捕捉此信号而且相应信号处理程序返回，abort仍不会返回其调用者。如果捕捉到此信号，则信号处理程序不能返回的唯一方法是它调用exit、_exit、_Exit ...</p></body>
                 </div>
             </article>
         <div class="btn-more text-right">
