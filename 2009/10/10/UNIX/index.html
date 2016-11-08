@@ -271,7 +271,7 @@
                         <a href="../../../../category/zi-dong-hua-ce-shi-selenium.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             自动化测试-Selenium
-                            <span class="badge pull-right categorybadge">14</span>
+                            <span class="badge pull-right categorybadge">15</span>
                         </a>
                     </li>
                     <li >
@@ -393,7 +393,7 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    </head><body><h4 id="yi-zhui-jia-zhi-yi-ge-wen-jian">一、追加至一个文件</h4>
+                    <body><h4 id="yi-zhui-jia-zhi-yi-ge-wen-jian">一、追加至一个文件</h4>
 <p>一个进程，将数据添加到一个文件尾端。早期不支持open的O_APPEND选项。所有程序被编写成下列形式</p>
 <div class="highlight"><pre><span></span>if (lseek(fd, 0L, 2 ) &lt; 0) /* position to EOF*/
 
@@ -438,7 +438,7 @@ ssize_t pwrite(int filedes, const void *buf, size_t nbytes, off_t offset);
 </pre></div>
 <p>如果在open和creat之间，另一个进程创建了该文件，那么就会引起问题。例如，若在这两个函数调用之间，另一个进程创建了该文件，并且写进了一些数据。然后，原先的进程执行这段程序的creat。刚由另一个进程写上去的数据就会被擦除。这样两则合并为一个原子操作，就不会发生该问题。</p>
 <p>一般而言，原子操作，指的是由多步组成的操作，如果操作原子地执行，那么执行完所有步骤，要么不执行，不可能只执行一部分。</p>
-<p>Top<a href="">^</a></p>
+<p>Top<a href="">^</a></p></body>
                 </div>
                 <footer class="text-right">
                     <p>by penglee</p>
