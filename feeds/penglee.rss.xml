@@ -63,7 +63,7 @@ sudo python setup.py install
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install -r https://raw.githubusercontent.com/avocado-framework/avocado/master/requirements.txt
 &lt;/pre&gt;&lt;/div&gt;
 &lt;h3 id="2-avocadoshi-yong_1"&gt;2. Avocado使用&lt;/h3&gt;
-&lt;p&gt;首先要使用命令行工具test runner,用来运行你的测试和收集测试结果。&lt;/p&gt;
+&lt;p&gt;&lt;span id="avocado03"&gt;首先&lt;/span&gt;要使用命令行工具test runner,用来运行你的测试和收集测试结果。&lt;/p&gt;
 &lt;h4 id="21-yun-xing-ce-shi"&gt;2.1 运行测试&lt;/h4&gt;
 &lt;p&gt;可以运行avocado加 run子命令，后面跟一个测试，例如：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ avocado run /bin/true
@@ -132,15 +132,15 @@ INSTRUMENTED: 0
 MISSING: 0
 NOT_A_TEST: 2
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id="3bian-xie-yi-ge-jian-dan-de-ce-shi"&gt;3.编写一个简单的测试&lt;/h4&gt;
-&lt;p&gt;下面是一个simple测试的简单示例：&lt;/p&gt;
+&lt;h3 id="3bian-xie-yi-ge-jian-dan-de-ce-shi_1"&gt;3.编写一个简单的测试&lt;/h3&gt;
+&lt;p&gt;下面是一个&lt;span id="avocado04"&gt;simple&lt;/span&gt;测试的简单示例：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;'#!/bin/bash'&lt;/span&gt; &amp;gt; /tmp/simple_test.sh
 $ &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s1"&gt;'exit 0 '&lt;/span&gt; &amp;gt;&amp;gt; /tmp/simple_test.sh
 $ chmod +x /tmp/simple_test.sh
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;注意，我们给这个文件增加了执行权限，它会被avocado当做一个simple test.&lt;/p&gt;
-&lt;h4 id="4yun-xing-yi-ge-jiao-fu-za-de-ce-shi"&gt;4.运行一个较复杂的测试&lt;/h4&gt;
-&lt;p&gt;你可以以任意顺序执行任意数量的测试，而且可以混合不同类型的测试：&lt;/p&gt;
+&lt;h3 id="4yun-xing-yi-ge-jiao-fu-za-de-ce-shi"&gt;4.运行一个较复杂的测试&lt;/h3&gt;
+&lt;p&gt;&lt;span id="avocado05"&gt;你&lt;/span&gt;可以以任意顺序执行任意数量的测试，而且可以混合不同类型的测试：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ avocado run failtest.py sleeptest.py synctest.py failtest.py synctest.py /tmp/simple_test.sh
 JOB ID    : 86911e49b5f2c36caeea41307cee4fecdcdfa121
 JOB LOG   : &lt;span class="nv"&gt;$HOME&lt;/span&gt;/avocado/job-results/job-2014-08-12T15.42-86911e49/job.log
@@ -156,8 +156,8 @@ RESULTS    : PASS &lt;span class="m"&gt;2&lt;/span&gt; &lt;span class="p"&gt;|&l
 TESTS TIME : 5.88 s
 JOB HTML  : &lt;span class="nv"&gt;$HOME&lt;/span&gt;/avocado/job-results/job-2014-08-12T15.42-86911e49/html/results.html
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id="5chu-xian-failhou-zhong-duan-ce-shi"&gt;5.出现fail后中断测试&lt;/h4&gt;
-&lt;p&gt;Avocado run命令包含 --failfast on 参数，当出现错误是会退出测试：&lt;/p&gt;
+&lt;h3 id="5chu-xian-failhou-zhong-duan-ce-shi"&gt;5.出现fail后中断测试&lt;/h3&gt;
+&lt;p&gt;Avocado &lt;span id="avocado06"&gt;run&lt;/span&gt;命令包含 --failfast on 参数，当出现错误是会退出测试：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ avocado run --failfast on /bin/true /bin/false /bin/true /bin/true
 JOB ID     : eaf51b8c7d6be966bdf5562c9611b1ec2db3f68a
 JOB LOG    : &lt;span class="nv"&gt;$HOME&lt;/span&gt;/avocado/job-results/job-2016-07-19T09.43-eaf51b8/job.log
@@ -169,8 +169,8 @@ TESTS      : 4
  TESTS TIME : 0.02 s
  JOB HTML   : /home/apahim/avocado/job-results/job-2016-07-19T09.43-eaf51b8/html/results.html
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h4 id="6tong-guo-wai-bu-runner-yun-xing-ce-shi"&gt;6.通过外部Runner 运行测试&lt;/h4&gt;
-&lt;p&gt;大部软件都存在自己的测试集。通常包括一个定制的runner,它可以找到并运行自己的测试。&lt;/p&gt;
+&lt;h3 id="6tong-guo-wai-bu-runner-yun-xing-ce-shi"&gt;6.通过外部Runner 运行测试&lt;/h3&gt;
+&lt;p&gt;&lt;span id="avocado07"&gt;大&lt;/span&gt;部软件都存在自己的测试集。通常包括一个定制的runner,它可以找到并运行自己的测试。&lt;/p&gt;
 &lt;p&gt;Avocado能支持运行这些测试，而且可以支持生成不同格式的结果，收集系统信息以及这些测试（Avocado的sysinfo功能）等等。&lt;/p&gt;
 &lt;p&gt;大部分方式如下：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;avocado&lt;/span&gt;&lt;span class="x"&gt; run --external -runner=/path/to/external_runner foo bar baz&lt;/span&gt;
@@ -203,8 +203,8 @@ TESTS TIME : 3.04 s
 JOB HTML   : /home/&amp;lt;user&amp;gt;/avocado/job-results/job-&amp;lt;date&amp;gt;-&amp;lt;shortid&amp;gt;/html/results.html
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;这个例子是把&amp;rdquo;/bin/curl&amp;ldquo;当做"external test runner".&lt;/p&gt;
-&lt;h4 id="8-ce-shi-diao-shi"&gt;8. 测试调试&lt;/h4&gt;
-&lt;p&gt;当开发一个新的测试时，经常做的就是查看一个测试job的运行日志。
+&lt;h3 id="7-ce-shi-diao-shi"&gt;7. 测试调试&lt;/h3&gt;
+&lt;p&gt;&lt;span id="avocado08"&gt;当&lt;/span&gt;开发一个新的测试时，经常做的就是查看一个测试job的运行日志。
 为了实现这个目的， 可以通过 avocado --show test run ... 或 avocado run --show-job-log ...&lt;/p&gt;
 &lt;p&gt;例如：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;avocado&lt;/span&gt;&lt;span class="x"&gt; --show test run examples/tests/sleeptest.py&lt;/span&gt;
@@ -285,12 +285,12 @@ JOB HTML   : /home/&amp;lt;user&amp;gt;/avocado/job-results/job-&amp;lt;date&amp
 &lt;li&gt;&lt;a href="#avocado01"&gt;关于Avocado&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://king32783784.github.io/2016/11/03/自动化测试/"&gt;入门&lt;/a&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href="https://king32783784.github.io/2016/11/03/自动化测试/#avcado02"&gt;安装Avocado&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;使用Avocado&lt;/li&gt;
-&lt;li&gt;写一个简单测试&lt;/li&gt;
-&lt;li&gt;运行一个较复杂的测试&lt;/li&gt;
-&lt;li&gt;第一个测试失败时中断测试job&lt;/li&gt;
-&lt;li&gt;结合外部runner运行测试&lt;/li&gt;
-&lt;li&gt;测试调试&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://king32783784.github.io/2016/11/03/自动化测试/#avcado03"&gt;使用Avocado&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://king32783784.github.io/2016/11/03/自动化测试/#avcado04"&gt;写一个简单测试&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://king32783784.github.io/2016/11/03/自动化测试/#avcado05"&gt;运行一个较复杂的测试&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://king32783784.github.io/2016/11/03/自动化测试/#avcado06"&gt;第一个测试失败时中断测试job&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://king32783784.github.io/2016/11/03/自动化测试/#avcado07"&gt;结合外部runner运行测试&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://king32783784.github.io/2016/11/03/自动化测试/#avcado08"&gt;测试调试&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;编写Avocado测试&lt;ul&gt;

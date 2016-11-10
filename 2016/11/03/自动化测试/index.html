@@ -457,7 +457,7 @@ sudo python setup.py install
 <div class="highlight"><pre><span></span>pip install -r https://raw.githubusercontent.com/avocado-framework/avocado/master/requirements.txt
 </pre></div>
 <h3 id="2-avocadoshi-yong_1">2. Avocado使用</h3>
-<p>首先要使用命令行工具test runner,用来运行你的测试和收集测试结果。</p>
+<p><span id="avocado03">首先</span>要使用命令行工具test runner,用来运行你的测试和收集测试结果。</p>
 <h4 id="21-yun-xing-ce-shi">2.1 运行测试</h4>
 <p>可以运行avocado加 run子命令，后面跟一个测试，例如：</p>
 <div class="highlight"><pre><span></span>$ avocado run /bin/true
@@ -526,15 +526,15 @@ INSTRUMENTED: 0
 MISSING: 0
 NOT_A_TEST: 2
 </pre></div>
-<h4 id="3bian-xie-yi-ge-jian-dan-de-ce-shi">3.编写一个简单的测试</h4>
-<p>下面是一个simple测试的简单示例：</p>
+<h3 id="3bian-xie-yi-ge-jian-dan-de-ce-shi_1">3.编写一个简单的测试</h3>
+<p>下面是一个<span id="avocado04">simple</span>测试的简单示例：</p>
 <div class="highlight"><pre><span></span>$ <span class="nb">echo</span> <span class="s1">'#!/bin/bash'</span> &gt; /tmp/simple_test.sh
 $ <span class="nb">echo</span> <span class="s1">'exit 0 '</span> &gt;&gt; /tmp/simple_test.sh
 $ chmod +x /tmp/simple_test.sh
 </pre></div>
 <p>注意，我们给这个文件增加了执行权限，它会被avocado当做一个simple test.</p>
-<h4 id="4yun-xing-yi-ge-jiao-fu-za-de-ce-shi">4.运行一个较复杂的测试</h4>
-<p>你可以以任意顺序执行任意数量的测试，而且可以混合不同类型的测试：</p>
+<h3 id="4yun-xing-yi-ge-jiao-fu-za-de-ce-shi">4.运行一个较复杂的测试</h3>
+<p><span id="avocado05">你</span>可以以任意顺序执行任意数量的测试，而且可以混合不同类型的测试：</p>
 <div class="highlight"><pre><span></span>$ avocado run failtest.py sleeptest.py synctest.py failtest.py synctest.py /tmp/simple_test.sh
 JOB ID    : 86911e49b5f2c36caeea41307cee4fecdcdfa121
 JOB LOG   : <span class="nv">$HOME</span>/avocado/job-results/job-2014-08-12T15.42-86911e49/job.log
@@ -550,8 +550,8 @@ RESULTS    : PASS <span class="m">2</span> <span class="p">|</span> ERROR <span 
 TESTS TIME : 5.88 s
 JOB HTML  : <span class="nv">$HOME</span>/avocado/job-results/job-2014-08-12T15.42-86911e49/html/results.html
 </pre></div>
-<h4 id="5chu-xian-failhou-zhong-duan-ce-shi">5.出现fail后中断测试</h4>
-<p>Avocado run命令包含 --failfast on 参数，当出现错误是会退出测试：</p>
+<h3 id="5chu-xian-failhou-zhong-duan-ce-shi">5.出现fail后中断测试</h3>
+<p>Avocado <span id="avocado06">run</span>命令包含 --failfast on 参数，当出现错误是会退出测试：</p>
 <div class="highlight"><pre><span></span>$ avocado run --failfast on /bin/true /bin/false /bin/true /bin/true
 JOB ID     : eaf51b8c7d6be966bdf5562c9611b1ec2db3f68a
 JOB LOG    : <span class="nv">$HOME</span>/avocado/job-results/job-2016-07-19T09.43-eaf51b8/job.log
@@ -563,8 +563,8 @@ TESTS      : 4
  TESTS TIME : 0.02 s
  JOB HTML   : /home/apahim/avocado/job-results/job-2016-07-19T09.43-eaf51b8/html/results.html
 </pre></div>
-<h4 id="6tong-guo-wai-bu-runner-yun-xing-ce-shi">6.通过外部Runner 运行测试</h4>
-<p>大部软件都存在自己的测试集。通常包括一个定制的runner,它可以找到并运行自己的测试。</p>
+<h3 id="6tong-guo-wai-bu-runner-yun-xing-ce-shi">6.通过外部Runner 运行测试</h3>
+<p><span id="avocado07">大</span>部软件都存在自己的测试集。通常包括一个定制的runner,它可以找到并运行自己的测试。</p>
 <p>Avocado能支持运行这些测试，而且可以支持生成不同格式的结果，收集系统信息以及这些测试（Avocado的sysinfo功能）等等。</p>
 <p>大部分方式如下：</p>
 <div class="highlight"><pre><span></span><span class="p">$</span><span class="nv">avocado</span><span class="x"> run --external -runner=/path/to/external_runner foo bar baz</span>
@@ -597,8 +597,8 @@ TESTS TIME : 3.04 s
 JOB HTML   : /home/&lt;user&gt;/avocado/job-results/job-&lt;date&gt;-&lt;shortid&gt;/html/results.html
 </pre></div>
 <p>这个例子是把”/bin/curl“当做"external test runner".</p>
-<h4 id="8-ce-shi-diao-shi">8. 测试调试</h4>
-<p>当开发一个新的测试时，经常做的就是查看一个测试job的运行日志。
+<h3 id="7-ce-shi-diao-shi">7. 测试调试</h3>
+<p><span id="avocado08">当</span>开发一个新的测试时，经常做的就是查看一个测试job的运行日志。
 为了实现这个目的， 可以通过 avocado --show test run ... 或 avocado run --show-job-log ...</p>
 <p>例如：</p>
 <div class="highlight"><pre><span></span><span class="p">$</span><span class="nv">avocado</span><span class="x"> --show test run examples/tests/sleeptest.py</span>
@@ -689,7 +689,7 @@ JOB HTML   : /home/&lt;user&gt;/avocado/job-results/job-&lt;date&gt;-&lt;shortid
             </div>
     <div id="scrollspy">
         <div class="col-lg-3 nav nav-stacked hidden-xs hidden-sm" data-spy="affix" data-offset-top="135">
-            <div id="toc"><ul><li><a class="toc-href" href="#" title="Avocado-入门">Avocado-入门</a><ul><li><a class="toc-href" href="#1avocado-an-zhuang" title="1.Avocado 安装">1.Avocado 安装</a><ul><li><a class="toc-href" href="#11-tong-guo-bao-an-zhuang" title="1.1 通过包安装">1.1 通过包安装</a></li><li><a class="toc-href" href="#12-yuan-ma-an-zhuang" title="1.2 源码安装">1.2 源码安装</a></li></ul></li><li><a class="toc-href" href="#2-avocadoshi-yong_1" title="2. Avocado使用">2. Avocado使用</a><ul><li><a class="toc-href" href="#21-yun-xing-ce-shi" title="2.1 运行测试">2.1 运行测试</a></li><li><a class="toc-href" href="#22-lie-chu-ce-shi-xiang" title="2.2 列出测试项">2.2 列出测试项</a></li><li><a class="toc-href" href="#3bian-xie-yi-ge-jian-dan-de-ce-shi" title="3.编写一个简单的测试">3.编写一个简单的测试</a></li><li><a class="toc-href" href="#4yun-xing-yi-ge-jiao-fu-za-de-ce-shi" title="4.运行一个较复杂的测试">4.运行一个较复杂的测试</a></li><li><a class="toc-href" href="#5chu-xian-failhou-zhong-duan-ce-shi" title="5.出现fail后中断测试">5.出现fail后中断测试</a></li><li><a class="toc-href" href="#6tong-guo-wai-bu-runner-yun-xing-ce-shi" title="6.通过外部Runner 运行测试">6.通过外部Runner 运行测试</a></li><li><a class="toc-href" href="#8-ce-shi-diao-shi" title="8. 测试调试">8. 测试调试</a></li></ul></li></ul></li></ul></div>
+            <div id="toc"><ul><li><a class="toc-href" href="#" title="Avocado-入门">Avocado-入门</a><ul><li><a class="toc-href" href="#1avocado-an-zhuang" title="1.Avocado 安装">1.Avocado 安装</a><ul><li><a class="toc-href" href="#11-tong-guo-bao-an-zhuang" title="1.1 通过包安装">1.1 通过包安装</a></li><li><a class="toc-href" href="#12-yuan-ma-an-zhuang" title="1.2 源码安装">1.2 源码安装</a></li></ul></li><li><a class="toc-href" href="#2-avocadoshi-yong_1" title="2. Avocado使用">2. Avocado使用</a><ul><li><a class="toc-href" href="#21-yun-xing-ce-shi" title="2.1 运行测试">2.1 运行测试</a></li><li><a class="toc-href" href="#22-lie-chu-ce-shi-xiang" title="2.2 列出测试项">2.2 列出测试项</a></li></ul></li><li><a class="toc-href" href="#3bian-xie-yi-ge-jian-dan-de-ce-shi_1" title="3.编写一个简单的测试">3.编写一个简单的测试</a></li><li><a class="toc-href" href="#4yun-xing-yi-ge-jiao-fu-za-de-ce-shi" title="4.运行一个较复杂的测试">4.运行一个较复杂的测试</a></li><li><a class="toc-href" href="#5chu-xian-failhou-zhong-duan-ce-shi" title="5.出现fail后中断测试">5.出现fail后中断测试</a></li><li><a class="toc-href" href="#6tong-guo-wai-bu-runner-yun-xing-ce-shi" title="6.通过外部Runner 运行测试">6.通过外部Runner 运行测试</a></li><li><a class="toc-href" href="#7-ce-shi-diao-shi" title="7. 测试调试">7. 测试调试</a></li></ul></li></ul></div>
         </div>
     </div>
         </div>
