@@ -12,7 +12,7 @@
 <!-- Open Graph tags -->
 <meta property="og:site_name" content="Hi | World"/>
     <meta property="og:type" content="article"/>
-    <meta property="og:title" content="selenium-专题3"/>
+    <meta property="og:title" content="selenium-常用方法"/>
     <meta property="og:url" content="../../../../2015/01/15/selenium/"/>
     <meta property="og:description" content="一 导航 使用WebDriver第一件想做的事情就是导航到指定链接。通常可以调用get方法去实现： driver.get(&#34;http://www.google.com&#34;) driver.get方法会导航到url指定的页面。webdriver会等待页面完全加载后，把控制权还给test脚本。需要注意的是，如果页面中使用了大量的AJAX负载过大，webdriver可能不知道什么时间加载完成。如果你想确保页面加载完全可以使用wait. 1.页面交互 只是导航到指定链接并不是很有用。我们想做的页面上的交互，准确的说是页面的元素操作。首先，我们要先找到它。webdriver提供了很多方法去找到元素，例如，元素定义如下： &lt;input type=&#34;text&#34; name=&#34;passwd&#34; id=&#34;passwd-id&#34; /&gt; 你可以使用下面方法找到该元素： element = driver.find_element_by_id(&#34;passwd-id&#34;) element = driver.find_element_by_name(&#34;passwd&#34;) element = driver.find_element_by_xpath(&#34;//input[@id=&#39;passwd-id ..."/>
     <meta property="article:published_time" content="2015-01-15" />
@@ -22,7 +22,7 @@
         <meta property="og:image"
               content="../../../../favicon.png"/>
 
-    <title>selenium-专题3 - Hi | World</title>
+    <title>selenium-常用方法 - Hi | World</title>
 
         <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
 
@@ -122,6 +122,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../../../../2016/11/03/自动化测试/" title="Avocado-入门">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Avocado-入门
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../../../../2016/11/01/自动化测试/" title="Avocado User’s Guide">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Avocado User’s Guide
@@ -143,12 +149,6 @@
                             <a class="hide-overflow" href="../../../../2016/08/11/Docker/" title="Docker基础技术：Linux Namespace（上）">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Docker基础技术：Linux Namespace（上）
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../../../../2016/08/11/Performance/" title="如何做性能测试">
-                                <i class="fa fa-file-text padding-small"></i>
-                                如何做性能测试
                             </a>
                         </li>
                     <li>
@@ -324,6 +324,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-avocado.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Avocado
+                            <span class="badge pull-right categorybadge">2</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/qi-ta.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             其他
@@ -334,13 +341,6 @@
                         <a href="../../../../category/unixhuan-jing-bian-cheng.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             unix环境编程
-                            <span class="badge pull-right categorybadge">1</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-avocado.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Avocado
                             <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
@@ -367,8 +367,8 @@
                     <h1>
                         <a href="../../../../2015/01/15/selenium/"
                            rel="bookmark"
-                           title="Permalink to selenium-专题3">
-                            selenium-专题3
+                           title="Permalink to selenium-常用方法">
+                            selenium-常用方法
                         </a>
                         <small>
 <div class="post-info">
@@ -393,7 +393,7 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    <body><h3 id="yi-dao-hang">一 导航</h3>
+                    </head><body><h3 id="yi-dao-hang">一 导航</h3>
 <p>使用WebDriver第一件想做的事情就是导航到指定链接。通常可以调用get方法去实现：</p>
 <div class="highlight"><pre><span></span>driver.get("http://www.google.com")
 </pre></div>
@@ -511,7 +511,7 @@ driver.get_cookies()
 </pre></div>
 <p>Top<a href="">^</a></p>
 <p>上一篇<a href="https://king32783784.github.io/2015/01/14/selenium/">Selenium主题2</a>
-下一篇<a href="https://king32783784.github.io/2015/01/16/selenium/">Selenium主题4</a></p></body>
+下一篇<a href="https://king32783784.github.io/2015/01/16/selenium/">Selenium主题4</a></p>
                 </div>
                 <footer class="text-right">
                     <p>by peng.lee</p>
@@ -527,7 +527,7 @@ driver.get_cookies()
             </div>
     <div id="scrollspy">
         <div class="col-lg-3 nav nav-stacked hidden-xs hidden-sm" data-spy="affix" data-offset-top="135">
-            <div id="toc"><ul><li><a class="toc-href" href="#" title="selenium-专题3">selenium-专题3</a><ul><li><a class="toc-href" href="#yi-dao-hang" title="一 导航">一 导航</a><ul><li><a class="toc-href" href="#1ye-mian-jiao-hu" title="1.页面交互">1.页面交互</a></li><li><a class="toc-href" href="#2tian-xie-biao-dan" title="2.填写表单">2.填写表单</a></li><li><a class="toc-href" href="#3tuo-fang" title="3.拖放">3.拖放</a></li><li><a class="toc-href" href="#4chuang-kou-he-kuang-jia-zhi-jian-yi-dong" title="4.窗口和框架之间移动">4.窗口和框架之间移动</a></li><li><a class="toc-href" href="#5dan-chu-dui-hua-kuang" title="5.弹出对话框">5.弹出对话框</a></li><li><a class="toc-href" href="#6dao-hang-li-shi-ji-lu-he-wei-zhi" title="6.导航：历史记录和位置">6.导航：历史记录和位置</a></li><li><a class="toc-href" href="#7cookies" title="7.Cookies">7.Cookies</a></li></ul></li></ul></li></ul></div>
+            <div id="toc"><ul><li><a class="toc-href" href="#" title="selenium-常用方法">selenium-常用方法</a><ul><li><a class="toc-href" href="#yi-dao-hang" title="一 导航">一 导航</a><ul><li><a class="toc-href" href="#1ye-mian-jiao-hu" title="1.页面交互">1.页面交互</a></li><li><a class="toc-href" href="#2tian-xie-biao-dan" title="2.填写表单">2.填写表单</a></li><li><a class="toc-href" href="#3tuo-fang" title="3.拖放">3.拖放</a></li><li><a class="toc-href" href="#4chuang-kou-he-kuang-jia-zhi-jian-yi-dong" title="4.窗口和框架之间移动">4.窗口和框架之间移动</a></li><li><a class="toc-href" href="#5dan-chu-dui-hua-kuang" title="5.弹出对话框">5.弹出对话框</a></li><li><a class="toc-href" href="#6dao-hang-li-shi-ji-lu-he-wei-zhi" title="6.导航：历史记录和位置">6.导航：历史记录和位置</a></li><li><a class="toc-href" href="#7cookies" title="7.Cookies">7.Cookies</a></li></ul></li></ul></li></ul></div>
         </div>
     </div>
         </div>

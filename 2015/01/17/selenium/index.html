@@ -12,7 +12,7 @@
 <!-- Open Graph tags -->
 <meta property="og:site_name" content="Hi | World"/>
     <meta property="og:type" content="article"/>
-    <meta property="og:title" content="selenium-专题5"/>
+    <meta property="og:title" content="selenium-等待"/>
     <meta property="og:url" content="../../../../2015/01/17/selenium/"/>
     <meta property="og:description" content="一、等待 目前大多数网络应用都在使用AJAX技术。当浏览器加载一个页面，页面上的元素可能分多次进行加载。这会导致元素定位困难，如果元素没有在DOM中出现，则会触发ElementNotVisibleException异常。通过等待，我们可以解决这个问题。等待提供了设置操作间的时间间隔－元素定位直接或其他元素操作。 Selenium Webdriver 提供了等待的两种类型，implicit和explicit。显式等待是使webdriver在操作之间有确定的时间等待。隐式等待是使WebDriver 去间隔的轮询DOM，尝试定位到元素。 1.显式等待 显式等待是代码中定义一定的条件，等待条件达成，继续执行。最差的方式是time.sleep(),通过设置等待时间间隔实现。有一些便利方法，会帮助设置等待时间。WebDriverWait与ExpectedCondition组合就是其中一种实现方式。 from selenium import webdriver from selenium.webdriver.common.by import By from selenium.webdriver.support.ui import WebDriverWait from ..."/>
     <meta property="article:published_time" content="2015-01-17" />
@@ -22,7 +22,7 @@
         <meta property="og:image"
               content="../../../../favicon.png"/>
 
-    <title>selenium-专题5 - Hi | World</title>
+    <title>selenium-等待 - Hi | World</title>
 
         <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
 
@@ -122,6 +122,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../../../../2016/11/03/自动化测试/" title="Avocado-入门">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Avocado-入门
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../../../../2016/11/01/自动化测试/" title="Avocado User’s Guide">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Avocado User’s Guide
@@ -143,12 +149,6 @@
                             <a class="hide-overflow" href="../../../../2016/08/11/Docker/" title="Docker基础技术：Linux Namespace（上）">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Docker基础技术：Linux Namespace（上）
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../../../../2016/08/11/Performance/" title="如何做性能测试">
-                                <i class="fa fa-file-text padding-small"></i>
-                                如何做性能测试
                             </a>
                         </li>
                     <li>
@@ -324,6 +324,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-avocado.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Avocado
+                            <span class="badge pull-right categorybadge">2</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/qi-ta.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             其他
@@ -334,13 +341,6 @@
                         <a href="../../../../category/unixhuan-jing-bian-cheng.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             unix环境编程
-                            <span class="badge pull-right categorybadge">1</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-avocado.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Avocado
                             <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
@@ -367,8 +367,8 @@
                     <h1>
                         <a href="../../../../2015/01/17/selenium/"
                            rel="bookmark"
-                           title="Permalink to selenium-专题5">
-                            selenium-专题5
+                           title="Permalink to selenium-等待">
+                            selenium-等待
                         </a>
                         <small>
 <div class="post-info">
@@ -393,7 +393,7 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    <body><h3 id="yi-deng-dai">一、等待</h3>
+                    </head><body><h3 id="yi-deng-dai">一、等待</h3>
 <p>目前大多数网络应用都在使用AJAX技术。当浏览器加载一个页面，页面上的元素可能分多次进行加载。这会导致元素定位困难，如果元素没有在DOM中出现，则会触发ElementNotVisibleException异常。通过等待，我们可以解决这个问题。等待提供了设置操作间的时间间隔－元素定位直接或其他元素操作。</p>
 <p>Selenium Webdriver 提供了等待的两种类型，implicit和explicit。显式等待是使webdriver在操作之间有确定的时间等待。隐式等待是使WebDriver 去间隔的轮询DOM，尝试定位到元素。</p>
 <h4 id="1xian-shi-deng-dai">1.显式等待</h4>
@@ -452,7 +452,7 @@ element = wait.until(EC.element_to_be_clickable(By.ID, 'someid')))</p>
 </pre></div>
 <p>Top<a href="">^</a></p>
 <p>上一篇<a href="https://king32783784.github.io/2015/01/16/selenium/">Selenium主题4</a>
-下一篇<a href="https://king32783784.github.io/2015/01/18/selenium/">Selenium主题6</a></p></body>
+下一篇<a href="https://king32783784.github.io/2015/01/18/selenium/">Selenium主题6</a></p>
                 </div>
                 <footer class="text-right">
                     <p>by peng.lee</p>
@@ -468,7 +468,7 @@ element = wait.until(EC.element_to_be_clickable(By.ID, 'someid')))</p>
             </div>
     <div id="scrollspy">
         <div class="col-lg-3 nav nav-stacked hidden-xs hidden-sm" data-spy="affix" data-offset-top="135">
-            <div id="toc"><ul><li><a class="toc-href" href="#" title="selenium-专题5">selenium-专题5</a><ul><li><a class="toc-href" href="#yi-deng-dai" title="一、等待">一、等待</a><ul><li><a class="toc-href" href="#1xian-shi-deng-dai" title="1.显式等待">1.显式等待</a><ul><li><a class="toc-href" href="#2yu-qi-tiao-jian" title="2.预期条件">2.预期条件</a></li></ul></li><li><a class="toc-href" href="#3yin-shi-deng-dai_1" title="3.隐式等待">3.隐式等待</a></li></ul></li></ul></li></ul></div>
+            <div id="toc"><ul><li><a class="toc-href" href="#" title="selenium-等待">selenium-等待</a><ul><li><a class="toc-href" href="#yi-deng-dai" title="一、等待">一、等待</a><ul><li><a class="toc-href" href="#1xian-shi-deng-dai" title="1.显式等待">1.显式等待</a><ul><li><a class="toc-href" href="#2yu-qi-tiao-jian" title="2.预期条件">2.预期条件</a></li></ul></li><li><a class="toc-href" href="#3yin-shi-deng-dai_1" title="3.隐式等待">3.隐式等待</a></li></ul></li></ul></li></ul></div>
         </div>
     </div>
         </div>

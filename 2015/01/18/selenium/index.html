@@ -12,7 +12,7 @@
 <!-- Open Graph tags -->
 <meta property="og:site_name" content="Hi | World"/>
     <meta property="og:type" content="article"/>
-    <meta property="og:title" content="selenium-专题6"/>
+    <meta property="og:title" content="selenium-页面对象"/>
     <meta property="og:url" content="../../../../2015/01/18/selenium/"/>
     <meta property="og:description" content="一、页面对象 该篇是介绍页面对象设计模式的方法。页面对象是Web应用程序用户界面的区域，测试时主要在此区域。 使用页面对象模式的好处： 创建多测试用例共用的可重复代码 减少重复的代码 如果用户界面发生改变，只需修改一次对应部分 1.测试用例 以下是一个测试python.org搜索字符串的用例，并且确保可以查到一些结果。 import unittest from selenium import webdriver import page class PythonOrgSearch(unittest.TestCase): &#39;&#39;&#39;A sample teest class to show how page object works&#39;&#39;&#39; def setUp(self): self.driver = webdriver.Firefox() self.driver.get(&#34;http://www.python ..."/>
     <meta property="article:published_time" content="2015-01-18" />
@@ -22,7 +22,7 @@
         <meta property="og:image"
               content="../../../../favicon.png"/>
 
-    <title>selenium-专题6 - Hi | World</title>
+    <title>selenium-页面对象 - Hi | World</title>
 
         <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
 
@@ -122,6 +122,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../../../../2016/11/03/自动化测试/" title="Avocado-入门">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Avocado-入门
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../../../../2016/11/01/自动化测试/" title="Avocado User’s Guide">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Avocado User’s Guide
@@ -143,12 +149,6 @@
                             <a class="hide-overflow" href="../../../../2016/08/11/Docker/" title="Docker基础技术：Linux Namespace（上）">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Docker基础技术：Linux Namespace（上）
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../../../../2016/08/11/Performance/" title="如何做性能测试">
-                                <i class="fa fa-file-text padding-small"></i>
-                                如何做性能测试
                             </a>
                         </li>
                     <li>
@@ -324,6 +324,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-avocado.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Avocado
+                            <span class="badge pull-right categorybadge">2</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/qi-ta.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             其他
@@ -334,13 +341,6 @@
                         <a href="../../../../category/unixhuan-jing-bian-cheng.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             unix环境编程
-                            <span class="badge pull-right categorybadge">1</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-avocado.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Avocado
                             <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
@@ -367,8 +367,8 @@
                     <h1>
                         <a href="../../../../2015/01/18/selenium/"
                            rel="bookmark"
-                           title="Permalink to selenium-专题6">
-                            selenium-专题6
+                           title="Permalink to selenium-页面对象">
+                            selenium-页面对象
                         </a>
                         <small>
 <div class="post-info">
@@ -393,7 +393,7 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    <body><h3 id="yi-ye-mian-dui-xiang">一、页面对象</h3>
+                    </head><body><h3 id="yi-ye-mian-dui-xiang">一、页面对象</h3>
 <p>该篇是介绍页面对象设计模式的方法。页面对象是Web应用程序用户界面的区域，测试时主要在此区域。</p>
 <p>使用页面对象模式的好处：</p>
 <ul>
@@ -508,7 +508,7 @@ locators.py：</p>
 </pre></div>
 <p>Top<a href="">^</a></p>
 <p>上一篇<a href="https://king32783784.github.io/2015/01/17/selenium/">Selenium主题5</a>
-下一篇<a href="https://king32783784.github.io/2015/01/19/selenium/">Selenium主题7</a></p></body>
+下一篇<a href="https://king32783784.github.io/2015/01/19/selenium/">Selenium主题7</a></p>
                 </div>
                 <footer class="text-right">
                     <p>by peng.lee</p>
@@ -524,7 +524,7 @@ locators.py：</p>
             </div>
     <div id="scrollspy">
         <div class="col-lg-3 nav nav-stacked hidden-xs hidden-sm" data-spy="affix" data-offset-top="135">
-            <div id="toc"><ul><li><a class="toc-href" href="#" title="selenium-专题6">selenium-专题6</a><ul><li><a class="toc-href" href="#yi-ye-mian-dui-xiang" title="一、页面对象">一、页面对象</a><ul><li><a class="toc-href" href="#1ce-shi-yong-li" title="1.测试用例">1.测试用例</a></li><li><a class="toc-href" href="#2page-dui-xiang-lei" title="2.Page　对象类">2.Page　对象类</a></li><li><a class="toc-href" href="#3page-elements" title="3.Page elements">3.Page elements</a></li><li><a class="toc-href" href="#4locators" title="4.Locators">4.Locators</a></li></ul></li></ul></li></ul></div>
+            <div id="toc"><ul><li><a class="toc-href" href="#" title="selenium-页面对象">selenium-页面对象</a><ul><li><a class="toc-href" href="#yi-ye-mian-dui-xiang" title="一、页面对象">一、页面对象</a><ul><li><a class="toc-href" href="#1ce-shi-yong-li" title="1.测试用例">1.测试用例</a></li><li><a class="toc-href" href="#2page-dui-xiang-lei" title="2.Page　对象类">2.Page　对象类</a></li><li><a class="toc-href" href="#3page-elements" title="3.Page elements">3.Page elements</a></li><li><a class="toc-href" href="#4locators" title="4.Locators">4.Locators</a></li></ul></li></ul></li></ul></div>
         </div>
     </div>
         </div>

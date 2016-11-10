@@ -1,0 +1,754 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="peng.lee" />
+        <meta name="keywords" content="Avocado" />
+        <meta name="description" content="1.Avocado 安装 1.1 通过包安装 像Fedora可以通过rpm包进行安装，其他通过RPM管理的发行版需要自己制作相关包。Avocado同样支持DEP包的安装可以在contrib/packages/debian找到。 Fedora 首先通过下面的命令获取仓库配置文件。 sudo curl https://repos-avocadoproject.rhcloud.com/static/avocado-fedora.repo -o /etc/yum.repos.d/avocado.repo 检查是否有了Avocodo和Avocado-lts的仓库配置： sudo dnf repolist avocado avocado-lts ... repo id repo name status avocado Avocado 50 avocado-lts Avocado LTS (Long Term Stability) disabled ..." />
+
+<!-- Open Graph tags -->
+<meta property="og:site_name" content="Hi | World"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Avocado-入门"/>
+    <meta property="og:url" content="../../../../2016/11/03/自动化测试/"/>
+    <meta property="og:description" content="1.Avocado 安装 1.1 通过包安装 像Fedora可以通过rpm包进行安装，其他通过RPM管理的发行版需要自己制作相关包。Avocado同样支持DEP包的安装可以在contrib/packages/debian找到。 Fedora 首先通过下面的命令获取仓库配置文件。 sudo curl https://repos-avocadoproject.rhcloud.com/static/avocado-fedora.repo -o /etc/yum.repos.d/avocado.repo 检查是否有了Avocodo和Avocado-lts的仓库配置： sudo dnf repolist avocado avocado-lts ... repo id repo name status avocado Avocado 50 avocado-lts Avocado LTS (Long Term Stability) disabled ..."/>
+    <meta property="article:published_time" content="2016-11-03" />
+    <meta property="article:section" content="自动化测试-Avocado" />
+        <meta property="article:tag" content="Avocado" />
+        <meta property="article:author" content="peng.lee" />
+        <meta property="og:image"
+              content="../../../../favicon.png"/>
+
+    <title>Avocado-入门 - Hi | World</title>
+
+        <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
+
+    <link href="../../../../theme/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../../../../theme/css/pygments/colorful.css" rel="stylesheet" />
+    
+    <link href="../../../../theme/css/pelican-twitchy.min.css" rel="stylesheet" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <!-- Feeds -->
+        <link href="../../../../feeds/atom.xml" type="application/atom+xml" rel="alternate"
+              title="Hi | World ATOM Feed" />
+</head>
+<body data-spy="scroll" data-target="#scrollspy">
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper-small" class="twitchy-background">
+            <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
+                <li>
+        <a href="../../../.." title="Hi | World" class="collapsed">
+            <span class="glyphicon glyphicon-home"></span>
+        </a>
+    </li>
+                <li class="nav-divider"></li>
+                <li>
+        <a href="../../../../archives.html" title="最新文章" class="collapsed">
+            <span class="glyphicon glyphicon-th-list"></span>
+        </a>
+    </li>
+                
+                <li class="nav-divider"></li>
+                <li id="share-small">
+                    <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-share-small" title="分享" class="collapsed">
+                        <i class="fa fa-share-alt padding-small"></i>
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-share-small" class="collapse ">
+                    <li>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2016/11/03/自动化测试/" title="Share via Facebook" target="popup">
+                            <i class="fa fa-facebook-square padding-small"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/share?url=../../../../2016/11/03/自动化测试/" title="Share via Google+" target="popup">
+                            <i class="fa fa-google-plus padding-small"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" title="Share via Twitter" target="popup">
+                            <i class="fa fa-twitter-square padding-small"></i>
+                        </a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-social-small" title="Social" class="collapsed">
+                        <i class="fa fa-users padding-small"></i>
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-social-small" class="collapse ">
+                    <li>
+                        <a href="mailto:peng.li@isoft.com.cn" title="EMAIL"><i class="fa fa-envelope-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/king32783784" title="GitHub"><i class="fa fa-github-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="http://king32783784.github.io/feeds/atom.xml" title="RSS"><i class="fa fa-rss-square fa-lg padding-small"></i></a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+        <a href="#" title="Back to top" class="collapsed">
+            <span class="fa fa-arrow-up"></span>
+        </a>
+    </li>
+            </ul>
+        </div>
+        <div id="sidebar-wrapper" class="twitchy-background">
+            <ul id="accordion" class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="../../../../">
+<img src="../../../../sitelogo.png" width="200" alt="Sitelogo"/>                     </a>
+                </li>
+                    <li class="nav-divider"></li>
+                    <li>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-latest">
+                            <span class="glyphicon glyphicon-th-list padding-small"></span>
+                            最新文章
+                        </a>
+                    </li>
+                    <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
+                        <li class="active">
+                            <a class="hide-overflow" href="../../../../2016/11/03/自动化测试/" title="Avocado-入门">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Avocado-入门
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="../../../../2016/11/01/自动化测试/" title="Avocado User’s Guide">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Avocado User’s Guide
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="../../../../2016/09/01/bei-jing-zhe-die-hao-jing-fang/" title="北京折叠－郝景芳">
+                                <i class="fa fa-file-text padding-small"></i>
+                                北京折叠－郝景芳
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="../../../../2016/08/12/Docker/" title="Docker基础技术：Linux Namespace（下）">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Docker基础技术：Linux Namespace（下）
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="../../../../2016/08/11/Docker/" title="Docker基础技术：Linux Namespace（上）">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Docker基础技术：Linux Namespace（上）
+                            </a>
+                        </li>
+                    <li>
+                        <a href="../../../../archives.html">
+                            <i class="fa fa-arrow-right padding-small"></i>
+                            更多
+                        </a>
+                    </li>
+                    </ul></li>
+                <li class="nav-divider"></li>
+                <li id="share">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-share" title="Share" class="collapsed">
+                        <i class="fa fa-share-alt padding-small"></i>
+                        分享
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-share" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2016/11/03/自动化测试/" target="popup">
+                            <i class="fa fa-facebook-square padding-small"></i>
+                            Facebook
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/share?url=../../../../2016/11/03/自动化测试/" target="popup">
+                            <i class="fa fa-google-plus padding-small"></i>
+                            Google+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" target="popup">
+                            <i class="fa fa-twitter-square padding-small"></i>
+                            Twitter
+                        </a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-social">
+                        <i class="fa fa-users padding-small"></i>
+                        联系
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-social" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="mailto:peng.li@isoft.com.cn" title="EMAIL">
+                            <i class="fa fa-envelope-square fa-lg padding-small"></i>
+                            EMAIL
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/king32783784" title="GitHub">
+                            <i class="fa fa-github-square fa-lg padding-small"></i>
+                            GitHub
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://king32783784.github.io/feeds/atom.xml" title="RSS">
+                            <i class="fa fa-rss-square fa-lg padding-small"></i>
+                            RSS
+                        </a>
+                    </li>
+                </ul></li>
+                
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-pages">
+                        <i class="fa fa-folder-open padding-small"></i>
+                       站内导航
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-pages" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="../../../../pages/opensource.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            开源项目
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../../pages/links.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            链接
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../../pages/Reference material.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            参考资料
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../../pages/todo list.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            Todo List
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../../pages/tools.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            工具集
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="../../../../pages/aboutme.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            About
+                        </a>
+                    </li>
+                </ul></li>
+                
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-categories">
+                        <i class="fa fa-folder-open padding-small"></i>
+                        文章分类
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-categories" class="sidebar_submenu collapse ">
+                    <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-selenium.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Selenium
+                            <span class="badge pull-right categorybadge">17</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-autotest.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Autotest
+                            <span class="badge pull-right categorybadge">12</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-ltp.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-LTP
+                            <span class="badge pull-right categorybadge">6</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/bian-cheng-yu-yan-python.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            编程语言-Python
+                            <span class="badge pull-right categorybadge">3</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/linux.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Linux
+                            <span class="badge pull-right categorybadge">3</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/xing-neng-ce-shi.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            性能测试
+                            <span class="badge pull-right categorybadge">3</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/dockerzhuan-ti.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Docker专题
+                            <span class="badge pull-right categorybadge">2</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/suan-fa.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            算法
+                            <span class="badge pull-right categorybadge">2</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="../../../../category/zi-dong-hua-ce-shi-avocado.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Avocado
+                            <span class="badge pull-right categorybadge">2</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/qi-ta.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            其他
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/unixhuan-jing-bian-cheng.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            unix环境编程
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                </ul></li>
+                
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <!-- open/close sidebar -->
+        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
+            <span id="right-arrow" class="glyphicon glyphicon-chevron-right"  title="expand sidebar"></span>
+            <span id="left-arrow" class="glyphicon glyphicon-chevron-left" title="minimize sidebar"></span>
+        </a>
+       <!-- /open/close sidebar -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+<section id="content">
+    <article>
+        <div class="row">
+            <div class="col-lg-9">
+                <header class="page-header">
+                    <h1>
+                        <a href="../../../../2016/11/03/自动化测试/"
+                           rel="bookmark"
+                           title="Permalink to Avocado-入门">
+                            Avocado-入门
+                        </a>
+                        <small>
+<div class="post-info">
+    <div class="publish-info-block">
+        <small>
+            <span class="published">
+                <i class="fa fa-calendar padding-small"></i><time datetime="2016-11-03T00:00:00+08:00"> 2016-11-03 四</time>
+            </span>
+            <span class="category">
+                <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/zi-dong-hua-ce-shi-avocado.html">自动化测试-Avocado</a>
+            </span>
+            <span class="tags">
+                <i class="fa fa-tags padding-small"></i>
+                <a href="../../../../tag/avocado.html">Avocado</a>            </span>
+        </small>
+    </div>
+</div><!-- /.post-info -->                        </small>
+                    </h1>
+                </header>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="entry-content">
+                    </head><body><h3 id="1avocado-an-zhuang">1.Avocado 安装</h3>
+<h4 id="11-tong-guo-bao-an-zhuang">1.1 通过包安装</h4>
+<p>像Fedora可以通过rpm包进行安装，其他通过RPM管理的发行版需要自己制作相关包。Avocado同样支持DEP包的安装可以在contrib/packages/debian找到。</p>
+<p><strong>Fedora</strong></p>
+<p>首先通过下面的命令获取仓库配置文件。</p>
+<div class="highlight"><pre><span></span>sudo curl https://repos-avocadoproject.rhcloud.com/static/avocado-fedora.repo -o /etc/yum.repos.d/avocado.repo
+</pre></div>
+<p>检查是否有了Avocodo和Avocado-lts的仓库配置：</p>
+<div class="highlight"><pre><span></span>sudo dnf repolist avocado avocado-lts 
+...
+repo id      repo name                          status
+avocado      Avocado                            50
+avocado-lts  Avocado LTS (Long Term Stability)  disabled
+</pre></div>
+<p>Avocao了解更多的LTS信息，参考<a href="https://www.redhat.com/archives/avocado-devel/2016-April/msg00038.html">Avocado Long Term Stability</a></p>
+<p>接下来，可以进行avocado安装啦：</p>
+<div class="highlight"><pre><span></span> sudo dnf install avocado
+</pre></div>
+<p>另外还有两个包需要安装：</p>
+<ul>
+<li>avocado-examples: 包含测试例子和示例文件</li>
+<li>avocado-plugins-output-html: HTML job 报告的插件</li>
+</ul>
+<p><strong>RHEL7</strong></p>
+<p>如果要运行在红帽商业版或CentOS上，需要进行下面设置：</p>
+<div class="highlight"><pre><span></span># If not already, enable epel (for RHEL7 it's following cmd)
+sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+# Add avocado repository and install avocado
+sudo curl https://repos-avocadoproject.rhcloud.com/static/avocado-el.repo -o /etc/yum.repos.d/avocado.repo
+sudo yum install avocado
+</pre></div>
+<p>同fedora一样，需要安装以下包：</p>
+<ul>
+<li>avocado-examples: 包含测试例子和示例文件</li>
+<li>avocado-plugins-output-html: HTML job 报告的插件</li>
+</ul>
+<p><strong>OpenSUSE</strong></p>
+<p>Avocado同样支持，执行运行以下命令即可：</p>
+<div class="highlight"><pre><span></span>sudo zypper install avocado
+</pre></div>
+<h4 id="12-yuan-ma-an-zhuang">1.2 源码安装</h4>
+<p>首先确保系统有基本的编译环境，如fedora：</p>
+<div class="highlight"><pre><span></span>sudo yum install -y git gcc python-devel python-pip libvirt-devel libyaml-devel redhat-rpm-config xz-devel
+</pre></div>
+<p>然后，获取源码：</p>
+<div class="highlight"><pre><span></span>git clone git://github.com/avocado-framework/avocado.git
+cd avocado
+sudo make requirements
+sudo python setup.py install
+</pre></div>
+<p>注意，python和pip需要2.7.x版本。如果安装出现问题，需要指明python2.7 和 pip2.7.</p>
+<p>Avocodo可能需要一些插件：</p>
+<div class="highlight"><pre><span></span>cd optional_plugins/html
+sudo python setup.py install
+</pre></div>
+<p><strong>安装python依赖工具</strong></p>
+<p>avocado可以通过pip安装。</p>
+<div class="highlight"><pre><span></span>pip install avocado-framework
+</pre></div>
+<p>注意：只有基本的avocado基本的test runner安装，导入插件时可能会失败，需要根据不同的系统安装不同的依赖。</p>
+<p>如果想安装全部插件，需要执行以下命令：</p>
+<div class="highlight"><pre><span></span>pip install -r https://raw.githubusercontent.com/avocado-framework/avocado/master/requirements.txt
+</pre></div>
+<h3 id="2-avocadoshi-yong_1">2. Avocado使用</h3>
+<p>首先要使用命令行工具test runner,用来运行你的测试和收集测试结果。</p>
+<h4 id="21-yun-xing-ce-shi">2.1 运行测试</h4>
+<p>可以运行avocado加 run子命令，后面跟一个测试，例如：</p>
+<div class="highlight"><pre><span></span>$ avocado run /bin/true
+JOB ID    : 381b849a62784228d2fd208d929cc49f310412dc
+JOB LOG   : <span class="nv">$HOME</span>/avocado/job-results/job-2014-08-12T15.39-381b849a/job.log
+TESTS     : 1
+<span class="o">(</span>1/1<span class="o">)</span> /bin/true: PASS <span class="o">(</span>0.01 s<span class="o">)</span>
+RESULTS    : PASS <span class="m">1</span> <span class="p">|</span> ERROR <span class="m">0</span> <span class="p">|</span> FAIL <span class="m">0</span> <span class="p">|</span> SKIP <span class="m">0</span> <span class="p">|</span> WARN <span class="m">0</span> <span class="p">|</span> INTERRUPT 0
+TESTS TIME : 0.01 s
+JOB HTML  : <span class="nv">$HOME</span>/avocado/job-results/job-2014-08-12T15.39-381b849a/html/results.html
+</pre></div>
+<p>可以看到，我们把/bin/true作为一个测试运行，并记录了测试过程。这是一个简单的例子，这是支持测试的一种类型。<a href="http://avocado-framework.readthedocs.io/en/43.0/ReferenceGuide.html#test-types">Test Types</a>了解更多的测试类型。</p>
+<p>注意： 尽管可以通过 avocao run <span class="math">\(test1 $test3... 运行多个测试，但可以导致崩溃。一个安全的方式为： avocodo run --\)</span>argument1 --$argument2 -- $test1 $test2.  后面所有内容都会当做位置参数。</p>
+<h4 id="22-lie-chu-ce-shi-xiang">2.2 列出测试项</h4>
+<p>有两种方式覆盖这些测试。可以通过--dry-run 参数模拟：</p>
+<div class="highlight"><pre><span></span><span class="n">avocado</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="o">/</span><span class="n">bin/true</span><span class="w"> </span><span class="o">--</span><span class="n">dry-run</span><span class="w"></span>
+<span class="kd">JOB</span><span class="o"> </span><span class="n">ID</span><span class="w">     </span><span class="err">:</span><span class="w"> </span><span class="mi">0000000000000000000000000000000000000000</span><span class="w"></span>
+<span class="kd">JOB</span><span class="o"> </span><span class="n">LOG</span><span class="w">    </span><span class="err">:</span><span class="w"> </span><span class="o">/</span><span class="n">tmp/avocado-dry-runSeWniM/job-2015-10-16T15</span><span class="o">.</span><span class="mi">46</span><span class="o">-</span><span class="mi">0000000</span><span class="o">/</span><span class="n">job</span><span class="o">.</span><span class="n">log</span><span class="w"></span>
+<span class="n">TESTS</span><span class="w">      </span><span class="err">:</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="o">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">1</span><span class="o">)</span><span class="w"> </span><span class="o">/</span><span class="n">bin/true</span><span class="err">:</span><span class="w"> </span><span class="kr">SKIP</span><span class="o"></span>
+<span class="n">RESULTS</span><span class="w">    </span><span class="err">:</span><span class="w"> </span><span class="n">PASS</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="n">|</span><span class="w"> </span><span class="kr">ERROR</span><span class="o"> </span><span class="mi">0</span><span class="w"> </span><span class="n">|</span><span class="w"> </span><span class="n">FAIL</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="n">|</span><span class="w"> </span><span class="kr">SKIP</span><span class="o"> </span><span class="mi">1</span><span class="w"> </span><span class="n">|</span><span class="w"> </span><span class="n">WARN</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="n">|</span><span class="w"> </span><span class="n">INTERRUPT</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<span class="n">TESTS</span><span class="w"> </span><span class="n">TIME</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="mf">0.00</span><span class="w"> </span><span class="n">s</span><span class="w"></span>
+<span class="kd">JOB</span><span class="o"> </span><span class="n">HTML</span><span class="w">   </span><span class="err">:</span><span class="w"> </span><span class="o">/</span><span class="n">tmp/avocado-dry-runSeWniM/job-2015-10-16T15</span><span class="o">.</span><span class="mi">46</span><span class="o">-</span><span class="mi">0000000</span><span class="o">/</span><span class="n">html/results</span><span class="o">.</span><span class="n">html</span><span class="w"></span>
+</pre></div>
+<p>另一个方式是使用list参数列出支持的测试参数。如：</p>
+<div class="highlight"><pre><span></span>$ avocado list
+INSTRUMENTED /usr/share/avocado/tests/abort.py
+INSTRUMENTED /usr/share/avocado/tests/datadir.py
+INSTRUMENTED /usr/share/avocado/tests/doublefail.py
+INSTRUMENTED /usr/share/avocado/tests/doublefree.py
+INSTRUMENTED /usr/share/avocado/tests/errortest.py
+INSTRUMENTED /usr/share/avocado/tests/failtest.py
+INSTRUMENTED /usr/share/avocado/tests/fiotest.py
+INSTRUMENTED /usr/share/avocado/tests/gdbtest.py
+INSTRUMENTED /usr/share/avocado/tests/gendata.py
+INSTRUMENTED /usr/share/avocado/tests/linuxbuild.py
+INSTRUMENTED /usr/share/avocado/tests/multiplextest.py 
+INSTRUMENTED /usr/share/avocado/tests/passtest.py
+INSTRUMENTED /usr/share/avocado/tests/sleeptenmin.py
+INSTRUMENTED /usr/share/avocado/tests/sleeptest.py
+INSTRUMENTED /usr/share/avocado/tests/synctest.py
+INSTRUMENTED /usr/share/avocado/tests/timeouttest.py
+INSTRUMENTED /usr/share/avocado/tests/trinity.py
+INSTRUMENTED /usr/share/avocado/tests/warntest.py 
+INSTRUMENTED /usr/share/avocado/tests/whiteboard.py
+ ...
+</pre></div>
+<p>这些测试文件被Avocodo视为包含在INSTRUMENTED测试。</p>
+<p>我们可以只列出可执行shell脚本：</p>
+<div class="highlight"><pre><span></span>$ avocado list <span class="p">|</span> grep ^SIMPLE
+SIMPLE       /usr/share/avocado/tests/env_variables.sh
+SIMPLE       /usr/share/avocado/tests/output_check.sh
+SIMPLE       /usr/share/avocado/tests/simplewarning.sh
+SIMPLE       /usr/share/avocado/tests/failtest.sh
+SIMPLE       /usr/share/avocado/tests/passtest.sh
+</pre></div>
+<p>如前面说的那样，SIMPLE表示这些文件是一些简单的可执行的测试。
+可以通过--verbose 或 -V,列出avocado中不是测试的文件。</p>
+<div class="highlight"><pre><span></span>$ avocado list examples/gdb-prerun-scripts/ -V
+Type       file
+NOT_A_TEST examples/gdb-prerun-scripts/README
+NOT_A_TEST examples/gdb-prerun-scripts/pass-sigusr1
+
+SIMPLE: 0
+INSTRUMENTED: 0
+MISSING: 0
+NOT_A_TEST: 2
+</pre></div>
+<h4 id="3bian-xie-yi-ge-jian-dan-de-ce-shi">3.编写一个简单的测试</h4>
+<p>下面是一个simple测试的简单示例：</p>
+<div class="highlight"><pre><span></span>$ <span class="nb">echo</span> <span class="s1">'#!/bin/bash'</span> &gt; /tmp/simple_test.sh
+$ <span class="nb">echo</span> <span class="s1">'exit 0 '</span> &gt;&gt; /tmp/simple_test.sh
+$ chmod +x /tmp/simple_test.sh
+</pre></div>
+<p>注意，我们给这个文件增加了执行权限，它会被avocado当做一个simple test.</p>
+<h4 id="4yun-xing-yi-ge-jiao-fu-za-de-ce-shi">4.运行一个较复杂的测试</h4>
+<p>你可以以任意顺序执行任意数量的测试，而且可以混合不同类型的测试：</p>
+<div class="highlight"><pre><span></span>$ avocado run failtest.py sleeptest.py synctest.py failtest.py synctest.py /tmp/simple_test.sh
+JOB ID    : 86911e49b5f2c36caeea41307cee4fecdcdfa121
+JOB LOG   : <span class="nv">$HOME</span>/avocado/job-results/job-2014-08-12T15.42-86911e49/job.log
+TESTS     : 6
+ <span class="o">(</span>1/6<span class="o">)</span> failtest.py:FailTest.test: FAIL <span class="o">(</span>0.00 s<span class="o">)</span>
+ <span class="o">(</span>2/6<span class="o">)</span> sleeptest.py:SleepTest.test: PASS <span class="o">(</span>1.00 s<span class="o">)</span>
+ <span class="o">(</span>3/6<span class="o">)</span> synctest.py:SyncTest.test: PASS <span class="o">(</span>2.43 s<span class="o">)</span>
+ <span class="o">(</span>4/6<span class="o">)</span> failtest.py:FailTest.test: FAIL <span class="o">(</span>0.00 s<span class="o">)</span>
+ <span class="o">(</span>5/6<span class="o">)</span> synctest.py:SyncTest.test: PASS <span class="o">(</span>2.44 s<span class="o">)</span>
+ <span class="o">(</span>6/6<span class="o">)</span> /bin/true: PASS <span class="o">(</span>0.00 s<span class="o">)</span>
+ <span class="o">(</span>6/6<span class="o">)</span> /tmp/simple_test.sh.1: PASS <span class="o">(</span>0.02 s<span class="o">)</span>
+RESULTS    : PASS <span class="m">2</span> <span class="p">|</span> ERROR <span class="m">2</span> <span class="p">|</span> FAIL <span class="m">2</span> <span class="p">|</span> SKIP <span class="m">0</span> <span class="p">|</span> WARN <span class="m">0</span> <span class="p">|</span> INTERRUPT 0
+TESTS TIME : 5.88 s
+JOB HTML  : <span class="nv">$HOME</span>/avocado/job-results/job-2014-08-12T15.42-86911e49/html/results.html
+</pre></div>
+<h4 id="5chu-xian-failhou-zhong-duan-ce-shi">5.出现fail后中断测试</h4>
+<p>Avocado run命令包含 --failfast on 参数，当出现错误是会退出测试：</p>
+<div class="highlight"><pre><span></span>$ avocado run --failfast on /bin/true /bin/false /bin/true /bin/true
+JOB ID     : eaf51b8c7d6be966bdf5562c9611b1ec2db3f68a
+JOB LOG    : <span class="nv">$HOME</span>/avocado/job-results/job-2016-07-19T09.43-eaf51b8/job.log
+TESTS      : 4
+ <span class="o">(</span>1/4<span class="o">)</span> /bin/true: PASS <span class="o">(</span>0.01 s<span class="o">)</span>
+ <span class="o">(</span>2/4<span class="o">)</span> /bin/false: FAIL <span class="o">(</span>0.01 s<span class="o">)</span>
+ Interrupting job <span class="o">(</span>failfast<span class="o">)</span>.
+ RESULTS    : PASS <span class="m">1</span> <span class="p">|</span> ERROR <span class="m">0</span> <span class="p">|</span> FAIL <span class="m">1</span> <span class="p">|</span> SKIP <span class="m">2</span> <span class="p">|</span> WARN <span class="m">0</span> <span class="p">|</span> INTERRUPT 0
+ TESTS TIME : 0.02 s
+ JOB HTML   : /home/apahim/avocado/job-results/job-2016-07-19T09.43-eaf51b8/html/results.html
+</pre></div>
+<h4 id="6tong-guo-wai-bu-runner-yun-xing-ce-shi">6.通过外部Runner 运行测试</h4>
+<p>大部软件都存在自己的测试集。通常包括一个定制的runner,它可以找到并运行自己的测试。</p>
+<p>Avocado能支持运行这些测试，而且可以支持生成不同格式的结果，收集系统信息以及这些测试（Avocado的sysinfo功能）等等。</p>
+<p>大部分方式如下：</p>
+<div class="highlight"><pre><span></span><span class="p">$</span><span class="nv">avocado</span><span class="x"> run --external -runner=/path/to/external_runner foo bar baz</span>
+</pre></div>
+<p>这个例子，avocado会产生foo bar baz的测试结果。实际结果将来源于执行 /path/to/external_runner foo /path/to/external_runner bar和/path/to/external_runner baz</p>
+<p>另一种方式展示这一特性，就是思考“外部runner"可以是解释器和可以解释执行任何测试。UNIXshell,/bin/sh就可以被当做外部执行引擎，而且shell脚本就可以当成它的测试：</p>
+<div class="highlight"><pre><span></span>$ <span class="nb">echo</span> <span class="s2">"exit 0"</span> &gt; /tmp/pass
+$ <span class="nb">echo</span> <span class="s2">"exit 1"</span> &gt; /tmp/fail
+$ avocado run --external-runner<span class="o">=</span>/bin/sh /tmp/pass /tmp/fail
+JOB ID     : 4a2a1d259690cc7b226e33facdde4f628ab30741
+JOB LOG    : /home/&lt;user&gt;/avocado/job-results/job-&lt;date&gt;-&lt;shortid&gt;/job.log
+TESTS      : 2
+ <span class="o">(</span>1/2<span class="o">)</span> /tmp/pass: PASS <span class="o">(</span>0.01 s<span class="o">)</span>
+ <span class="o">(</span>2/2<span class="o">)</span> /tmp/fail: FAIL <span class="o">(</span>0.01 s<span class="o">)</span>
+RESULTS    : PASS <span class="m">1</span> <span class="p">|</span> ERROR <span class="m">0</span> <span class="p">|</span> FAIL <span class="m">1</span> <span class="p">|</span> SKIP <span class="m">0</span> <span class="p">|</span> WARN <span class="m">0</span> <span class="p">|</span> INTERRUPT 0
+TESTS TIME : 0.01 s
+JOB HTML   : /home/&lt;user&gt;/avocado/job-results/job-&lt;date&gt;-&lt;shortid&gt;/html/results.html
+</pre></div>
+<p>这个例子很明显，可以通过给/tmp/pass和/tmp/fail ，shell“shebangs”（＃！/ bin / sh）来实现，使它们可执行（chmod + x / tmp / pass / tmp / ，并将其作为“简单”测试运行。</p>
+<p>下面看另一个例子：</p>
+<div class="highlight"><pre><span></span>$ avocado run --external-runner<span class="o">=</span>/bin/curl http://local-avocado-server:9405/jobs/ <span class="se">\</span>
+                                   http://remote-avocado-server:9405/jobs/
+JOB ID     : 56016a1ffffaba02492fdbd5662ac0b958f51e11
+JOB LOG    : /home/&lt;user&gt;/avocado/job-results/job-&lt;date&gt;-&lt;shortid&gt;/job.log
+TESTS      : 2
+<span class="o">(</span>1/2<span class="o">)</span> http://local-avocado-server:9405/jobs/: PASS <span class="o">(</span>0.02 s<span class="o">)</span>
+<span class="o">(</span>2/2<span class="o">)</span> http://remote-avocado-server:9405/jobs/: FAIL <span class="o">(</span>3.02 s<span class="o">)</span>
+RESULTS    : PASS <span class="m">1</span> <span class="p">|</span> ERROR <span class="m">0</span> <span class="p">|</span> FAIL <span class="m">1</span> <span class="p">|</span> SKIP <span class="m">0</span> <span class="p">|</span> WARN <span class="m">0</span> <span class="p">|</span> INTERRUPT 0
+TESTS TIME : 3.04 s
+JOB HTML   : /home/&lt;user&gt;/avocado/job-results/job-&lt;date&gt;-&lt;shortid&gt;/html/results.html
+</pre></div>
+<p>这个例子是把”/bin/curl“当做"external test runner".</p>
+<h4 id="8-ce-shi-diao-shi">8. 测试调试</h4>
+<p>当开发一个新的测试时，经常做的就是查看一个测试job的运行日志。
+为了实现这个目的， 可以通过 avocado --show test run ... 或 avocado run --show-job-log ...</p>
+<p>例如：</p>
+<div class="highlight"><pre><span></span><span class="p">$</span><span class="nv">avocado</span><span class="x"> --show test run examples/tests/sleeptest.py</span>
+<span class="x">...</span>
+<span class="x">Job ID: f9ea1742134e5352dec82335af584d1f151d4b85</span>
+
+<span class="x">START 1-sleeptest.py:SleepTest.test</span>
+
+<span class="x">PARAMS (key=timeout, path=*, default=None) =&gt; None</span>
+<span class="x">PARAMS (key=sleep_length, path=*, default=1) =&gt; 1</span>
+<span class="x">Sleeping for 1.00 seconds</span>
+<span class="x">PASS 1-sleeptest.py:SleepTest.test</span>
+
+<span class="x">Test results available in </span><span class="p">$</span><span class="nv">HOME</span><span class="x">/avocado/job-results/job-2015-06-02T10.45-f9ea174</span>
+
+<span class="x">UI输出被抑制，只显示作业日志，这使得它成为测试开发和调试的有用功能。</span>
+</pre></div>
+<p><img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/8N5QJCOLP7.jpg" width="420"/></p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+                </div>
+                <footer class="text-right">
+                    <p>by peng.lee</p>
+                </footer>
+    <section id="comments" class="comments ">
+        <hr/>
+        <h2>Comments</h2>
+        <div id="disqus_thread"></div>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </section>
+            </div>
+    <div id="scrollspy">
+        <div class="col-lg-3 nav nav-stacked hidden-xs hidden-sm" data-spy="affix" data-offset-top="135">
+            <div id="toc"><ul><li><a class="toc-href" href="#" title="Avocado-入门">Avocado-入门</a><ul><li><a class="toc-href" href="#1avocado-an-zhuang" title="1.Avocado 安装">1.Avocado 安装</a><ul><li><a class="toc-href" href="#11-tong-guo-bao-an-zhuang" title="1.1 通过包安装">1.1 通过包安装</a></li><li><a class="toc-href" href="#12-yuan-ma-an-zhuang" title="1.2 源码安装">1.2 源码安装</a></li></ul></li><li><a class="toc-href" href="#2-avocadoshi-yong_1" title="2. Avocado使用">2. Avocado使用</a><ul><li><a class="toc-href" href="#21-yun-xing-ce-shi" title="2.1 运行测试">2.1 运行测试</a></li><li><a class="toc-href" href="#22-lie-chu-ce-shi-xiang" title="2.2 列出测试项">2.2 列出测试项</a></li><li><a class="toc-href" href="#3bian-xie-yi-ge-jian-dan-de-ce-shi" title="3.编写一个简单的测试">3.编写一个简单的测试</a></li><li><a class="toc-href" href="#4yun-xing-yi-ge-jiao-fu-za-de-ce-shi" title="4.运行一个较复杂的测试">4.运行一个较复杂的测试</a></li><li><a class="toc-href" href="#5chu-xian-failhou-zhong-duan-ce-shi" title="5.出现fail后中断测试">5.出现fail后中断测试</a></li><li><a class="toc-href" href="#6tong-guo-wai-bu-runner-yun-xing-ce-shi" title="6.通过外部Runner 运行测试">6.通过外部Runner 运行测试</a></li><li><a class="toc-href" href="#8-ce-shi-diao-shi" title="8. 测试调试">8. 测试调试</a></li></ul></li></ul></li></ul></div>
+        </div>
+    </div>
+        </div>
+    </article>
+</section>
+<footer>
+    <hr>
+    <div class="row">
+        <div class="col-lg-9 text-center">
+            <p><small>
+                Built by <a href="http://docs.getpelican.com/en/latest">Pelican</a> / <a href="https://github.com/ingwinlu/pelican-twitchy">pelican-twitchy</a>
+                &middot;                    &copy; 2016 peng.lee
+            </small></p>
+        </div>
+    </div>
+</footer>            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery Version 1.11.2 -->
+    <script src="../../../../theme/js/jquery-1.11.2.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../../../theme/js/bootstrap.min.js"></script>
+    <!-- twitchy Script -->
+    <script src="../../../../theme/js/pelican_twitchy.min.js"></script>
+    <!-- Begin Cookie Consent https://silktide.com/tools/cookie-consent/ -->
+    <script>
+        window.cookieconsent_options = {
+            message: "This site uses Cookies. If you continue without changing your settings, it is assumed that you are happy to receive all cookies from this website.",
+            learnMore: "More info",
+            link: null,
+            dismiss: "Got it!",
+            theme: "../../../../theme/css/cookieconsent/dark-floating.css",
+        };
+    </script>
+    <script src="../../../../theme/js/cookieconsent.min.js"></script>
+    <!-- End Cookie Consent -->
+
+<!-- disqus -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'True'; // required: replace example with your forum shortname
+
+            var disqus_identifier = '自动化测试';
+        var disqus_url = '../../../../2016/11/03/自动化测试/';
+
+    var disqus_config = function () {
+        this.language = "zh";
+    };
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- /disqus -->
+</body>
+</html>
