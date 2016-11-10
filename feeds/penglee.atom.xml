@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>Hi | World</title><link href="http://king32783784.github.io/" rel="alternate"></link><link href="http://king32783784.github.io/feeds/penglee.atom.xml" rel="self"></link><id>http://king32783784.github.io/</id><updated>2016-11-03T00:00:00+08:00</updated><entry><title>Avocado-入门</title><link href="http://king32783784.github.io/2016/11/03/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" rel="alternate"></link><published>2016-11-03T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2016-11-03:2016/11/03/自动化测试/</id><summary type="html">&lt;h3 id="1avocado-an-zhuang"&gt;1.Avocado 安装&lt;/h3&gt;
 &lt;h4 id="11-tong-guo-bao-an-zhuang"&gt;1.1 通过包安装&lt;/h4&gt;
-&lt;p&gt;像Fedora可以通过rpm包进行安装，其他通过RPM管理的发行版需要自己制作相关包。Avocado同样支持DEP包的安装可以在contrib/packages/debian找到。&lt;/p&gt;
+&lt;p&gt;像&lt;span id="avocado02"&gt;Fedora&lt;/span&gt;Fedora可以通过rpm包进行安装，其他通过RPM管理的发行版需要自己制作相关包。Avocado同样支持DEP包的安装可以在contrib/packages/debian找到。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Fedora&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;首先通过下面的命令获取仓库配置文件。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo curl https://repos-avocadoproject.rhcloud.com/static/avocado-fedora.repo -o /etc/yum.repos.d/avocado.repo
@@ -283,8 +283,8 @@ JOB HTML   : /home/&amp;lt;user&amp;gt;/avocado/job-results/job-&amp;lt;date&amp
 &lt;p&gt;内容：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="#avocado01"&gt;关于Avocado&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;入门&lt;ul&gt;
-&lt;li&gt;安装Avocado&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://king32783784.github.io/2016/11/02/自动化测试/"&gt;入门&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://king32783784.github.io/2016/11/02/自动化测试/#avcado02"&gt;安装Avocado&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;使用Avocado&lt;/li&gt;
 &lt;li&gt;写一个简单测试&lt;/li&gt;
 &lt;li&gt;运行一个较复杂的测试&lt;/li&gt;
