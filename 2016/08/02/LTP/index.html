@@ -400,7 +400,7 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    </head><body><p>从本文开始，开始分析kernel部分的测试用例，该部分测试用例大部分为Ｃ语言编写，因此会穿插加入一定的Ｃ语言或unix环境编程的知识。</p>
+                    <body><p>从本文开始，开始分析kernel部分的测试用例，该部分测试用例大部分为Ｃ语言编写，因此会穿插加入一定的Ｃ语言或unix环境编程的知识。</p>
 <p><img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/I0T0E4Y826.jpg" width="420"/></p>
 <h4 id="abort">abort</h4>
 <p>设计说明</p>
@@ -553,9 +553,9 @@ SIGABRT {si_signo=SIGABRT, si_code=SI_TKILL, si_pid=18489, si_uid=0} ---
 <p><strong>什么是头文件呢？</strong></p>
 <p>在C语言家族程序中，头文件被大量使用。一般而言，每个C++/C程序通常由头文件(header files)和定义文件(definition files)组成。头文件作为一种包含功能函数、数据接口声明的载体文件，主要用于保存程序的声明(declaration)，而定义文件用于保存程序的实现 (implementation)</p>
 <p _="
-" printf_hello="printf(“Hello" world_="world!”);
-">让我们来看，经典程序 “Hello world!”　
-定义文件名“First.c”
+" printf_hello="printf(&ldquo;Hello" world_="world!&rdquo;);
+">让我们来看，经典程序 &ldquo;Hello world!&rdquo;　
+定义文件名&ldquo;First.c&rdquo;
     main()</p>
 <div class="highlight"><pre><span></span>&lt;sample-1&gt;
 </pre></div>
@@ -563,7 +563,7 @@ SIGABRT {si_signo=SIGABRT, si_code=SI_TKILL, si_pid=18489, si_uid=0} ---
 <p>文件名 First.c　变形</p>
 <div class="highlight"><pre><span></span>printStr()
 {
-    printf(“Hello world!”);
+    printf(&ldquo;Hello world!&rdquo;);
 }
 main()
 {
@@ -581,7 +581,7 @@ printStr()
 
 printStr()
 {
-    printf(“Hello world!”);
+    printf(&ldquo;Hello world!&rdquo;);
 }
 
 &lt;sample-3&gt;
@@ -591,15 +591,15 @@ printStr()
 文件名 First.c</p>
 <div class="highlight"><pre><span></span>play2()
 {
-  ……………….
+  &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.
   play1()
-  ………………..
+  &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..
 }
 play1()
 {
-    ……………………..
+    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..
     play2()
-    ……………………
+    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;
 }
 main()
 {
@@ -615,15 +615,15 @@ main()
 play2();
 play2()
 {
-    ……………….
+    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.
     play1()
-    ………………..
+    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..
 }
 play1()
 {
-    ……………………..
+    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..
     play2()
-    ……………………
+    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;
 );
 }
 main()
@@ -639,18 +639,18 @@ main()
 play2();
 </pre></div>
 <p>文件名 First.C</p>
-<div class="highlight"><pre><span></span>#include “first.h”
+<div class="highlight"><pre><span></span>#include &ldquo;first.h&rdquo;
 play2()
 {
-    ……………….
+    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.
     play1()
-    ………………..
+    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..
 }
 play1()
 {
-    ……………………..
+    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..
     play2()
-    ……………………
+    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;
 );
 }
 main()
@@ -667,9 +667,9 @@ play1()
 <p>sencond.c文件</p>
 <div class="highlight"><pre><span></span>***()
 {
-    …………….
+    &hellip;&hellip;&hellip;&hellip;&hellip;.
     Play();
-    ……………….
+    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.
 }
 
 &lt;sample-7&gt;
@@ -1067,7 +1067,7 @@ rlim_t rlim_max;
 
 <span class="p">}</span>
 </pre></div>
-<p>abort测试分析结束。</p>
+<p>abort测试分析结束。</p></body>
                 </div>
                 <footer class="text-right">
                     <p>by peng.lee</p>

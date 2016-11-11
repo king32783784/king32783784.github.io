@@ -400,7 +400,7 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    </head><body><p><strong>1.简单的宏定义</strong></p>
+                    <body><p><strong>1.简单的宏定义</strong></p>
 <div class="highlight"><pre><span></span>#define MAXTIME 1000
 </pre></div>
 <p>简单的MATIME定义好了，它代表1000，如果在程序中写：</p>
@@ -408,7 +408,7 @@
 </pre></div>
 <p>编译器在处理这个代码之前会对MAXTIME进行替换为1000。
 宏定义类同于简单的文本替换，而不是变量。</p>
-<p><strong>2.define的“函数定义”</strong></p>
+<p><strong>2.define的&ldquo;函数定义&rdquo;</strong></p>
 <p>define可以像函数那样接受一些参数，如下：</p>
 <div class="highlight"><pre><span></span>#define max(x,y)(x)&gt;(y)?(x):(y);
 </pre></div>
@@ -438,7 +438,7 @@ stmt1;/
 stmt2;/
 }while(0) /*(no trailing;)*/
 </pre></div>
-<p>每行换行时加上换行符“/”</p>
+<p>每行换行时加上换行符&ldquo;/&rdquo;</p>
 <p><strong>4.条件编译</strong></p>
 <p>在大规模的开发中，define最重要的功能就是条件编译。也就是本文的用法。</p>
 <div class="highlight"><pre><span></span><span class="cp">#ifdef UCLINU</span>
@@ -465,12 +465,12 @@ stmt2;/
 <p>例如
     #ifndef <strong>headerfileXXX</strong>
     #define <strong>headerfileXXX</strong>
-    …
+    &hellip;
     //文件内容
-    …
+    &hellip;
     #endif</p>
 <p><strong>7.define命令的一些高级用法</strong></p>
-<p>define中的三个特殊符号“#” “##” “#@”，前面提到过但未解释。</p>
+<p>define中的三个特殊符号&ldquo;#&rdquo; &ldquo;##&rdquo; &ldquo;#@&rdquo;，前面提到过但未解释。</p>
 <div class="highlight"><pre><span></span>#define Conn(x,y) x##y
 </pre></div>
 <p>x##y 表示什么？ 表示x连接y,</p>
@@ -579,7 +579,7 @@ __cplusplus：当编写C++程序时该标识符被定义。
     b = t; \  
 } while(0)
 </pre></div>
-<h1 id="definede-zhe-xie-gao-ji-yong-fa-zai-linuxnei-he-yuan-dai-ma-hen-duo-chu-chu-xian-ke-yue-du-can-kao-nei-he-yuan-dai-ma">define的这些高级用法在Linux内核源代码很多处出现，可阅读参考内核源代码。</h1>
+<h1 id="definede-zhe-xie-gao-ji-yong-fa-zai-linuxnei-he-yuan-dai-ma-hen-duo-chu-chu-xian-ke-yue-du-can-kao-nei-he-yuan-dai-ma">define的这些高级用法在Linux内核源代码很多处出现，可阅读参考内核源代码。</h1></body>
                 </div>
                 <footer class="text-right">
                     <p>by peng.lee</p>
