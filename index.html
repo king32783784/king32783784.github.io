@@ -121,6 +121,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="./2016/11/12/自动化测试/" title="Avocado-编写Avocado测试">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Avocado-编写Avocado测试
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="./2016/11/03/自动化测试/" title="Avocado-入门">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Avocado-入门
@@ -142,12 +148,6 @@
                             <a class="hide-overflow" href="./2016/08/12/Docker/" title="Docker基础技术：Linux Namespace（下）">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Docker基础技术：Linux Namespace（下）
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="./2016/08/11/Docker/" title="Docker基础技术：Linux Namespace（上）">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Docker基础技术：Linux Namespace（上）
                             </a>
                         </li>
                     <li>
@@ -309,6 +309,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="./category/zi-dong-hua-ce-shi-avocado.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Avocado
+                            <span class="badge pull-right categorybadge">3</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="./category/bian-cheng-yu-yan-c.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             编程语言-C
@@ -333,13 +340,6 @@
                         <a href="./category/unixhuan-jing-bian-cheng.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             unix环境编程
-                            <span class="badge pull-right categorybadge">2</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="./category/zi-dong-hua-ce-shi-avocado.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Avocado
                             <span class="badge pull-right categorybadge">2</span>
                         </a>
                     </li>
@@ -386,6 +386,47 @@
 </section>
 <div class="row">
     <div class="col-lg-9">
+            <article>
+                <h2>
+                    <a href="./2016/11/12/自动化测试/">Avocado-编写Avocado测试</a>
+<div class="post-info">
+    <div class="publish-info-block">
+        <small>
+            <span class="published">
+                <i class="fa fa-calendar padding-small"></i><time datetime="2016-11-12T00:00:00+08:00"> 2016-11-12 六</time>
+            </span>
+            <span class="category">
+                <i class="fa fa-folder-open padding-small"></i><a href="./category/zi-dong-hua-ce-shi-avocado.html">自动化测试-Avocado</a>
+            </span>
+            <span class="tags">
+                <i class="fa fa-tags padding-small"></i>
+                <a href="./tag/avocado.html">Avocado</a>            </span>
+        </small>
+    </div>
+</div><!-- /.post-info -->                </h2>
+                <div class="summary">
+                    <body><h3 id="bian-xie-avocadoce-shi">编写Avocado测试</h3>
+<p>现在我们开始使用python编写Avocado测试，测试继承于avocado.Test.</p>
+<h4 id="ji-ben-li-zi">基本例子</h4>
+<p>创建一个时间测试，sleeptest,测试非常简单，只是sleep一会：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">avocado</span> <span class="kn">import</span> <span class="n">Test</span>
+
+<span class="k">class</span> <span class="nc">SleepTest</span><span class="p">(</span><span class="n">Test</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">sleep_length</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'sleep_length'</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">"Sleep for </span><span class="si">%.2f</span><span class="s2"> seconds"</span><span class="p">,</span> <span class="n">sleep_length</span><span class="p">)</span>
+        <span class="n">time</span> <span class="n">sleep</span><span class="p">(</span><span class="n">sleep_length</span><span class="p">)</span>
+</pre></div>
+<p>这是为avocado编写的一个简单示例，可以使用其他power API编写。</p>
+<p>从上面的例子可以看出，avocado测试从avocado.Test继承的test方法入手。</p>
+<h5 id="duo-ge-ce-shi-he-ming-ming-yue-ding">多个测试和命名约定</h5>
+<p>可以在一个类中存在多个测试。</p>
+<p>要想做多个测试，只需要在命名方法前加test,例如test_foo ...</p></body>
+                </div>
+            </article>
+            <hr/>
             <article>
                 <h2>
                     <a href="./2016/11/03/自动化测试/">Avocado-入门</a>
@@ -552,35 +593,6 @@ avocado-lts  Avocado LTS (Long Term ...</pre></div></body>
 <li>第三个字段表示映射的范围，一般填1，表示一一对应。</li>
 </ul>
 <p>比如 ...</p></body>
-                </div>
-            </article>
-            <hr/>
-            <article>
-                <h2>
-                    <a href="./2016/08/11/Docker/">Docker基础技术：Linux Namespace（上）<转></a>
-<div class="post-info">
-    <div class="publish-info-block">
-        <small>
-            <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2016-08-11T00:00:00+08:00"> 2016-08-11 四</time>
-            </span>
-            <span class="category">
-                <i class="fa fa-folder-open padding-small"></i><a href="./category/dockerzhuan-ti.html">Docker专题</a>
-            </span>
-            <span class="tags">
-                <i class="fa fa-tags padding-small"></i>
-                <a href="./tag/docker.html">Docker</a>            </span>
-        </small>
-    </div>
-</div><!-- /.post-info -->                </h2>
-                <div class="summary">
-                    <body><p>时下最热的技术莫过于Docker了，很多人都觉得Docker是个新技术，其实不然，Docker除了其编程语言用go比较新外，其实它还真不是个新东西，也就是个新瓶装旧酒的东西，所谓的The New “Old Stuff”。Docker和Docker衍生的东西用到了很多很酷的技术，我会用几篇 文章来把这些技术给大家做个介绍，希望通过这些文章大家可以自己打造一个山寨版的docker。</p>
-<p><img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/PYHO3G128V.jpg" width="420"/></p>
-<p>当然，文章的风格一定会尊重时下的“流行”——我们再也没有整块整块的时间去看书去专研，而我们只有看微博微信那样的碎片时间（那怕我们有整块的时间，也被那些在手机上的APP碎片化了）。所以，这些文章的风格必然坚持“马桶风格”（希望简单到占用你拉一泡屎就时间，而且你还不用动脑子，并能学到些东西）</p>
-<p>废话少说，我们开始。先从Linux Namespace开始。</p>
-<h4 id="jian-jie">简介</h4>
-<p>Linux Namespace是Linux提供的一种内核级别环境隔离的方法。不知道你是否还记得很早以前的Unix有一个叫chroot的系统调用（通过修改根目录把用户jail到一个特定目录下），chroot提供了一种简单的隔离模式：chroot内部的文件系统无法访问外部的内容。Linux Namespace在此基础上，提供了对UTS、IPC、mount、PID、network、User等的隔离机制。</p>
-<p>举个例子，我们都知道，Linux下的超级父亲进程的PID是1，所以 ...</p></body>
                 </div>
             </article>
         <div class="btn-more text-right">
