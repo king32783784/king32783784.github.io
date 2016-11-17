@@ -121,6 +121,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="./2016/11/13/python/" title="pyqt基本操作">
+                                <i class="fa fa-file-text padding-small"></i>
+                                pyqt基本操作
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="./2016/11/12/自动化测试/" title="Avocado-编写Avocado测试">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Avocado-编写Avocado测试
@@ -142,12 +148,6 @@
                             <a class="hide-overflow" href="./2016/09/01/bei-jing-zhe-die-hao-jing-fang/" title="北京折叠－郝景芳">
                                 <i class="fa fa-file-text padding-small"></i>
                                 北京折叠－郝景芳
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="./2016/08/12/Docker/" title="Docker基础技术：Linux Namespace（下）">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Docker基础技术：Linux Namespace（下）
                             </a>
                         </li>
                     <li>
@@ -344,6 +344,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="./category/python-pyqt.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Python-pyqt
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="./category/qi-ta.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             其他
@@ -388,6 +395,58 @@
     <div class="col-lg-9">
             <article>
                 <h2>
+                    <a href="./2016/11/13/python/">pyqt基本操作</a>
+<div class="post-info">
+    <div class="publish-info-block">
+        <small>
+            <span class="published">
+                <i class="fa fa-calendar padding-small"></i><time datetime="2016-11-13T00:00:00+08:00"> 2016-11-13 日</time>
+            </span>
+            <span class="category">
+                <i class="fa fa-folder-open padding-small"></i><a href="./category/python-pyqt.html">Python-pyqt</a>
+            </span>
+            <span class="tags">
+                <i class="fa fa-tags padding-small"></i>
+                <a href="./tag/pyqt.html">pyqt</a>            </span>
+        </small>
+    </div>
+</div><!-- /.post-info -->                </h2>
+                <div class="summary">
+                    </head><body><h3 id="pyqtji-ben-cao-zuo">PyQt基本操作</h3>
+<h4 id="ji-ben-de-jie-mian">基本的界面：</h4>
+<table class="table highlighttable table-striped table-hover"><tbody><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1">#*-* coding=utf-8 *-*</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">PyQt4</span> <span class="kn">import</span> <span class="n">QtCore</span><span class="p">,</span> <span class="n">QtGui</span>
+
+<span class="k">class</span> <span class="nc">MyWindow</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QMainWindow</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">QtGui</span><span class="o">.</span><span class="n">QMainWindow</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="s2">"pyQt"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">600 ...</span></pre></div></td></tr></tbody></table></body>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2>
                     <a href="./2016/11/12/自动化测试/">Avocado-编写Avocado测试</a>
 <div class="post-info">
     <div class="publish-info-block">
@@ -405,7 +464,7 @@
     </div>
 </div><!-- /.post-info -->                </h2>
                 <div class="summary">
-                    <body><h3 id="bian-xie-avocadoce-shi">编写Avocado测试</h3>
+                    </head><body><h3 id="bian-xie-avocadoce-shi">编写Avocado测试</h3>
 <p>现在我们开始使用python编写Avocado测试，测试继承于avocado.Test.</p>
 <h4 id="ji-ben-li-zi">基本例子</h4>
 <p>创建一个时间测试，sleeptest,测试非常简单，只是sleep一会：</p>
@@ -446,7 +505,7 @@
     </div>
 </div><!-- /.post-info -->                </h2>
                 <div class="summary">
-                    <body><h3 id="1avocado-an-zhuang">1.Avocado 安装</h3>
+                    </head><body><h3 id="1avocado-an-zhuang">1.Avocado 安装</h3>
 <h4 id="11-tong-guo-bao-an-zhuang">1.1 通过包安装</h4>
 <p>像<span id="avocado02">Fedora</span>可以通过rpm包进行安装，其他通过RPM管理的发行版需要自己制作相关包。Avocado同样支持DEP包的安装可以在contrib/packages/debian找到。</p>
 <p><strong>Fedora</strong></p>
@@ -481,7 +540,7 @@ avocado-lts  Avocado LTS (Long Term ...</pre></div></body>
     </div>
 </div><!-- /.post-info -->                </h2>
                 <div class="summary">
-                    <body><h3 id="avocado-yong-hu-zhi-nan">Avocado 用户指南</h3>
+                    </head><body><h3 id="avocado-yong-hu-zhi-nan">Avocado 用户指南</h3>
 <p>内容：</p>
 <ul>
 <li><a href="#avocado01">关于Avocado</a></li>
@@ -550,49 +609,13 @@ avocado-lts  Avocado LTS (Long Term ...</pre></div></body>
     </div>
 </div><!-- /.post-info -->                </h2>
                 <div class="summary">
-                    <body><h2 id="di-yi-mu">第一幕</h2>
+                    </head><body><h2 id="di-yi-mu">第一幕</h2>
 <p><img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/W3UPOU6IG2.jpg" width="420"/></p>
 <p>清晨4:50，老刀穿过熙熙攘攘的步行街，去找彭蠡。</p>
 <p>从垃圾站下班之后，老刀回家洗了个澡，换了衣服。白色衬衫和褐色裤子，这是他唯一一套体面衣服，衬衫袖口磨了边，他把袖子卷到胳膊肘。老刀四十八岁，没结婚，已经过了注意外表的年龄，又没人照顾起居，这一套衣服留着穿了很多年，每次穿一天，回家就脱了叠上。他在垃圾站上班，没必要穿得体面，偶尔参加谁家小孩的婚礼，才拿出来穿在身上。这一次他不想脏兮兮地见陌生人。他在垃圾站连续工作了五小时，很担心身上会有味道。</p>
 <p>步行街上挤满了刚刚下班的人。拥挤的男人女人围着小摊子挑土特产，大声讨价还价。食客围着塑料桌子，埋头在酸辣粉的热气腾腾中，饿虎扑食一般，白色蒸汽遮住了脸。油炸的香味弥漫。货摊上的酸枣和核桃堆成山，腊肉在头顶摇摆。这个点是全天最热闹的时间，基本都收工了，忙碌了几个小时的人们都赶过来吃一顿饱饭，人声鼎沸。</p>
 <p>老刀艰难地穿过人群。端盘子的伙计一边喊着让让一边推开挡道的人，开出一条路来，老刀跟在后面。</p>
 <p>彭蠡家在小街深处。老刀上楼，彭蠡不在家。问邻居，邻居说他每天快到关门才回来，具体几点不清楚 ...</p></body>
-                </div>
-            </article>
-            <hr/>
-            <article>
-                <h2>
-                    <a href="./2016/08/12/Docker/">Docker基础技术：Linux Namespace（下）<转></a>
-<div class="post-info">
-    <div class="publish-info-block">
-        <small>
-            <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2016-08-12T00:00:00+08:00"> 2016-08-12 五</time>
-            </span>
-            <span class="category">
-                <i class="fa fa-folder-open padding-small"></i><a href="./category/dockerzhuan-ti.html">Docker专题</a>
-            </span>
-            <span class="tags">
-                <i class="fa fa-tags padding-small"></i>
-                <a href="./tag/docker.html">Docker</a>            </span>
-        </small>
-    </div>
-</div><!-- /.post-info -->                </h2>
-                <div class="summary">
-                    <body><p>在 <a href="https://king32783784.github.io/lipeng/2016/08/11/Docker/">Docker基础技术：Linux Namespace（上篇)</a>中我们了解了，UTD、IPC、PID、Mount 四个namespace，我们模仿Docker做了一个相当相当山寨的镜像。在这一篇中，主要想向大家介绍Linux的User和Network的Namespace。
-<img class="img-responsive" height="280" src="https://raw.githubusercontent.com/king32783784/king32783784.github.io/master/tmpfile/Autotest1.png" width="420"/></p>
-<p>好，下面我们就介绍一下还剩下的这两个Namespace。</p>
-<h4 id="user-namespace">User Namespace</h4>
-<p><strong>User Namespace</strong> 主要是用了CLONE_NEWUSER的参数。使用了这个参数后，内部看到的UID和GID已经与外部不同了，默认显示为65534。那是因为容器找不到其真正的UID所以，设置上了最大的UID（其设置定义在/proc/sys/kernel/overflowuid）。</p>
-<p>要把容器中的uid和真实系统的uid给映射在一起，需要修改 <strong>/proc/<pid>/uid_map</pid></strong>  和 <strong>/proc/<pid>/gid_map</pid></strong> 这两个文件。这两个文件的格式为：</p>
-<p>ID-inside-ns ID-outside-ns length</p>
-<p>其中：</p>
-<ul>
-<li>第一个字段ID-inside-ns表示在容器显示的UID或GID，</li>
-<li>第二个字段ID-outside-ns表示容器外映射的真实的UID或GID。</li>
-<li>第三个字段表示映射的范围，一般填1，表示一一对应。</li>
-</ul>
-<p>比如 ...</p></body>
                 </div>
             </article>
         <div class="btn-more text-right">
