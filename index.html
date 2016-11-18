@@ -121,6 +121,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="./2016/11/14/python/" title="pyqt基本操作二">
+                                <i class="fa fa-file-text padding-small"></i>
+                                pyqt基本操作二
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="./2016/11/13/python/" title="pyqt基本操作">
                                 <i class="fa fa-file-text padding-small"></i>
                                 pyqt基本操作
@@ -142,12 +148,6 @@
                             <a class="hide-overflow" href="./2016/11/01/自动化测试/" title="Avocado User’s Guide">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Avocado User’s Guide
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="./2016/09/01/bei-jing-zhe-die-hao-jing-fang/" title="北京折叠－郝景芳">
-                                <i class="fa fa-file-text padding-small"></i>
-                                北京折叠－郝景芳
                             </a>
                         </li>
                     <li>
@@ -330,6 +330,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="./category/python-pyqt.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Python-pyqt
+                            <span class="badge pull-right categorybadge">2</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="./category/suan-fa.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             算法
@@ -341,13 +348,6 @@
                             <i class="fa fa-folder-open padding-small"></i>
                             unix环境编程
                             <span class="badge pull-right categorybadge">2</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="./category/python-pyqt.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            Python-pyqt
-                            <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
                     <li >
@@ -395,6 +395,53 @@
     <div class="col-lg-9">
             <article>
                 <h2>
+                    <a href="./2016/11/14/python/">pyqt基本操作二</a>
+<div class="post-info">
+    <div class="publish-info-block">
+        <small>
+            <span class="published">
+                <i class="fa fa-calendar padding-small"></i><time datetime="2016-11-14T00:00:00+08:00"> 2016-11-14 一</time>
+            </span>
+            <span class="category">
+                <i class="fa fa-folder-open padding-small"></i><a href="./category/python-pyqt.html">Python-pyqt</a>
+            </span>
+            <span class="tags">
+                <i class="fa fa-tags padding-small"></i>
+                <a href="./tag/pyqt.html">pyqt</a>            </span>
+        </small>
+    </div>
+</div><!-- /.post-info -->                </h2>
+                <div class="summary">
+                    </head><body><h3 id="dan-xing-wen-ben-he-duo-xing-wen-ben">单行文本和多行文本</h3>
+<p>PyQt中提供了单行文本框和多行文本框。使用QtGui.QLineEdit可以创建单行文本框。使用QtGui.QTextEdit可以创建多行文本框。</p>
+<h4 id="dan-xing-wen-ben-kuang">单行文本框</h4>
+<p>使用QtGui.QLineEdit可以创建单行文本框，通过修改其属性可以将其设置为密码框。当创建单行文本后，可以使用以下的方法设置文本框的属性或对文本框中的内容进行操作。</p>
+<ul>
+<li>clear() :清除文本框中的内容</li>
+<li>contextMenuEvent: 右键菜单事件</li>
+<li>copy(): 复制文本框中的内容</li>
+<li>cut(): 剪切文本框中的内容</li>
+<li>paste(): 向文本框中粘贴内容</li>
+<li>redo(): 重做</li>
+<li>selectAll(): 全选</li>
+<li>selectedText(): 获取选中的文本</li>
+<li>setAlignment(): 设置文本对齐方式</li>
+<li>setEchoMode:　设置文本框类型</li>
+<li>setMaxLength()：设置文本框中最大字符数</li>
+<li>setText():设置文本框中的文字
+*　undo(): 撤销</li>
+</ul>
+<p>下面的例子，创建一个单行文本框和密码框
+    #!/usr/bin/env python
+    # <em>-</em> coding=utf-8 <em>-</em></p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">PyQt4 ...</span></pre></div></body>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2>
                     <a href="./2016/11/13/python/">pyqt基本操作</a>
 <div class="post-info">
     <div class="publish-info-block">
@@ -412,7 +459,8 @@
     </div>
 </div><!-- /.post-info -->                </h2>
                 <div class="summary">
-                    </head><body><h3 id="pyqtji-ben-cao-zuo">PyQt基本操作</h3>
+                    </head><body><p>pyqt是对Qt的封装。Ｑt是面向对象的图形用户界面库，可以在多个操作系统上使用。</p>
+<h3 id="pyqtji-ben-cao-zuo">PyQt基本操作</h3>
 <h4 id="ji-ben-de-jie-mian">基本的界面：</h4>
 <table class="table highlighttable table-striped table-hover"><tbody><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -434,14 +482,12 @@
 <span class="c1">#*-* coding=utf-8 *-*</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">PyQt4</span> <span class="kn">import</span> <span class="n">QtCore</span><span class="p">,</span> <span class="n">QtGui</span>
+<span class="kn">from</span> <span class="nn">PyQt4</span> <span class="kn">import</span> <span class="n">QtCore</span><span class="p">,</span> <span class="n">QtGui</span><span class="err">　　　　　　</span><span class="c1"># 导入PyQt模块</span>
 
-<span class="k">class</span> <span class="nc">MyWindow</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QMainWindow</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">MyWindow</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QMainWindow</span><span class="p">):</span><span class="err">　　　　</span><span class="c1"># 通过继承QtGui.QMainWindow创建类</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">QtGui</span><span class="o">.</span><span class="n">QMainWindow</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="s2">"pyQt"</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">600 ...</span></pre></div></td></tr></tbody></table></body>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span><span class="err">　　　　　　　　　　　</span><span class="c1"># 初始化方法</span>
+        <span class="n">QtGui</span><span class="o">.</span><span class="n">QMainWindow</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self ...</span></pre></div></td></tr></tbody></table></body>
                 </div>
             </article>
             <hr/>
@@ -587,35 +633,6 @@ avocado-lts  Avocado LTS (Long Term ...</pre></div></body>
 <li>配置文件的解析顺序</li>
 <li>插件设置文件</li>
 <li>解析订单概述 ...</li></ul></li></ul></body>
-                </div>
-            </article>
-            <hr/>
-            <article>
-                <h2>
-                    <a href="./2016/09/01/bei-jing-zhe-die-hao-jing-fang/">北京折叠－郝景芳</a>
-<div class="post-info">
-    <div class="publish-info-block">
-        <small>
-            <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2016-09-01T00:00:00+08:00"> 2016-09-01 四</time>
-            </span>
-            <span class="category">
-                <i class="fa fa-folder-open padding-small"></i><a href="./category/qi-ta.html">其他</a>
-            </span>
-            <span class="tags">
-                <i class="fa fa-tags padding-small"></i>
-                <a href="./tag/za-wen.html">杂文</a>            </span>
-        </small>
-    </div>
-</div><!-- /.post-info -->                </h2>
-                <div class="summary">
-                    </head><body><h2 id="di-yi-mu">第一幕</h2>
-<p><img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/W3UPOU6IG2.jpg" width="420"/></p>
-<p>清晨4:50，老刀穿过熙熙攘攘的步行街，去找彭蠡。</p>
-<p>从垃圾站下班之后，老刀回家洗了个澡，换了衣服。白色衬衫和褐色裤子，这是他唯一一套体面衣服，衬衫袖口磨了边，他把袖子卷到胳膊肘。老刀四十八岁，没结婚，已经过了注意外表的年龄，又没人照顾起居，这一套衣服留着穿了很多年，每次穿一天，回家就脱了叠上。他在垃圾站上班，没必要穿得体面，偶尔参加谁家小孩的婚礼，才拿出来穿在身上。这一次他不想脏兮兮地见陌生人。他在垃圾站连续工作了五小时，很担心身上会有味道。</p>
-<p>步行街上挤满了刚刚下班的人。拥挤的男人女人围着小摊子挑土特产，大声讨价还价。食客围着塑料桌子，埋头在酸辣粉的热气腾腾中，饿虎扑食一般，白色蒸汽遮住了脸。油炸的香味弥漫。货摊上的酸枣和核桃堆成山，腊肉在头顶摇摆。这个点是全天最热闹的时间，基本都收工了，忙碌了几个小时的人们都赶过来吃一顿饱饭，人声鼎沸。</p>
-<p>老刀艰难地穿过人群。端盘子的伙计一边喊着让让一边推开挡道的人，开出一条路来，老刀跟在后面。</p>
-<p>彭蠡家在小街深处。老刀上楼，彭蠡不在家。问邻居，邻居说他每天快到关门才回来，具体几点不清楚 ...</p></body>
                 </div>
             </article>
         <div class="btn-more text-right">
