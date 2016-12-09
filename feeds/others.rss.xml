@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>Hi | World</title><link>http://king32783784.github.io/</link><description>李鹏的技术分享  &lt;a href="pages/aboutme.html"&gt;更多...&lt;/a&gt;</description><lastBuildDate>Thu, 01 Sep 2016 00:00:00 +0800</lastBuildDate><item><title>北京折叠－郝景芳</title><link>http://king32783784.github.io/2016/09/01/bei-jing-zhe-die-hao-jing-fang/</link><description>&lt;h2 id="di-yi-mu"&gt;第一幕&lt;/h2&gt;
-&lt;p&gt;&lt;img height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/W3UPOU6IG2.jpg" width="420"/&gt;&lt;/p&gt;
+<rss version="2.0"><channel><title>Hi | World</title><link>http://king32783784.github.io/</link><description>不会开发的测试不是好测试  &lt;a href="pages/aboutme.html"&gt;更多...&lt;/a&gt;</description><lastBuildDate>Thu, 01 Sep 2016 00:00:00 +0800</lastBuildDate><item><title>北京折叠－郝景芳</title><link>http://king32783784.github.io/2016/09/01/bei-jing-zhe-die-hao-jing-fang/</link><description>&lt;body&gt;&lt;h2 id="di-yi-mu"&gt;第一幕&lt;/h2&gt;
+&lt;p&gt;&lt;img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/W3UPOU6IG2.jpg" width="420"/&gt;&lt;/p&gt;
 &lt;p&gt;清晨4:50，老刀穿过熙熙攘攘的步行街，去找彭蠡。&lt;/p&gt;
 &lt;p&gt;从垃圾站下班之后，老刀回家洗了个澡，换了衣服。白色衬衫和褐色裤子，这是他唯一一套体面衣服，衬衫袖口磨了边，他把袖子卷到胳膊肘。老刀四十八岁，没结婚，已经过了注意外表的年龄，又没人照顾起居，这一套衣服留着穿了很多年，每次穿一天，回家就脱了叠上。他在垃圾站上班，没必要穿得体面，偶尔参加谁家小孩的婚礼，才拿出来穿在身上。这一次他不想脏兮兮地见陌生人。他在垃圾站连续工作了五小时，很担心身上会有味道。&lt;/p&gt;
 &lt;p&gt;步行街上挤满了刚刚下班的人。拥挤的男人女人围着小摊子挑土特产，大声讨价还价。食客围着塑料桌子，埋头在酸辣粉的热气腾腾中，饿虎扑食一般，白色蒸汽遮住了脸。油炸的香味弥漫。货摊上的酸枣和核桃堆成山，腊肉在头顶摇摆。这个点是全天最热闹的时间，基本都收工了，忙碌了几个小时的人们都赶过来吃一顿饱饭，人声鼎沸。&lt;/p&gt;
@@ -268,8 +268,8 @@
 &lt;p&gt;他从衣服的内衬掏出一张一万块的钞票，虚弱地递给老太太。老太太目瞪口呆，阿贝、阑阑看得傻了。他不想解释，摆摆手回到自己的房间。&lt;/p&gt;
 &lt;p&gt;摇篮里，糖糖刚刚睡醒，正迷糊着揉眼睛。他看着糖糖的脸，疲倦了一天的心软下来。他想起最初在垃圾站门口抱起糖糖时，她那张脏兮兮的哭累了的小脸。他从没后悔将她抱来。她笑了，吧唧了一下小嘴。他觉得自己还是幸运的。尽管伤了腿，但毕竟没被抓住，还带了钱回来。他不知道糖糖什么时候才能学会唱歌跳舞，成为一个淑女。&lt;/p&gt;
 &lt;p&gt;他看看时间，该去上班了。&lt;/p&gt;
-&lt;p&gt;（全文完）&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">others</dc:creator><pubDate>Thu, 01 Sep 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-09-01:2016/09/01/bei-jing-zhe-die-hao-jing-fang/</guid><category>杂文</category></item><item><title>Docker基础技术：Linux Namespace（下）</title><link>http://king32783784.github.io/2016/08/12/Docker/</link><description>&lt;p&gt;在 &lt;a href="https://king32783784.github.io/lipeng/2016/08/11/Docker/"&gt;Docker基础技术：Linux Namespace（上篇)&lt;/a&gt;中我们了解了，UTD、IPC、PID、Mount 四个namespace，我们模仿Docker做了一个相当相当山寨的镜像。在这一篇中，主要想向大家介绍Linux的User和Network的Namespace。
-&lt;img height="280" src="https://raw.githubusercontent.com/king32783784/king32783784.github.io/master/tmpfile/Autotest1.png" width="420"/&gt;&lt;/p&gt;
+&lt;p&gt;（全文完）&lt;/p&gt;&lt;/body&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">others</dc:creator><pubDate>Thu, 01 Sep 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-09-01:2016/09/01/bei-jing-zhe-die-hao-jing-fang/</guid><category>杂文</category></item><item><title>Docker基础技术：Linux Namespace（下）</title><link>http://king32783784.github.io/2016/08/12/Docker/</link><description>&lt;body&gt;&lt;p&gt;在 &lt;a href="https://king32783784.github.io/lipeng/2016/08/11/Docker/"&gt;Docker基础技术：Linux Namespace（上篇)&lt;/a&gt;中我们了解了，UTD、IPC、PID、Mount 四个namespace，我们模仿Docker做了一个相当相当山寨的镜像。在这一篇中，主要想向大家介绍Linux的User和Network的Namespace。
+&lt;img class="img-responsive" height="280" src="https://raw.githubusercontent.com/king32783784/king32783784.github.io/master/tmpfile/Autotest1.png" width="420"/&gt;&lt;/p&gt;
 &lt;p&gt;好，下面我们就介绍一下还剩下的这两个Namespace。&lt;/p&gt;
 &lt;h4 id="user-namespace"&gt;User Namespace&lt;/h4&gt;
 &lt;p&gt;&lt;strong&gt;User Namespace&lt;/strong&gt; 主要是用了CLONE_NEWUSER的参数。使用了这个参数后，内部看到的UID和GID已经与外部不同了，默认显示为65534。那是因为容器找不到其真正的UID所以，设置上了最大的UID（其设置定义在/proc/sys/kernel/overflowuid）。&lt;/p&gt;
@@ -423,7 +423,7 @@ uid=0(root) gid=0(root) groups=0(root),65534(nogroup)
 &lt;h4 id="network-namespace"&gt;Network Namespace&lt;/h4&gt;
 &lt;p&gt;Network的Namespace比较啰嗦。在Linux下，我们一般用ip命令创建Network Namespace（Docker的源码中，它没有用ip命令，而是自己实现了ip命令内的一些功能&amp;mdash;&amp;mdash;是用了Raw Socket发些&amp;ldquo;奇怪&amp;rdquo;的数据，呵呵）。这里，我还是用ip命令讲解一下。&lt;/p&gt;
 &lt;p&gt;首先，我们先看个图，下面这个图基本上就是Docker在宿主机上的网络示意图（其中的物理网卡并不准确，因为docker可能会运行在一个VM中，所以，这里所谓的&amp;ldquo;物理网卡&amp;rdquo;其实也就是一个有可以路由的IP的网卡）&lt;/p&gt;
-&lt;p&gt;&lt;img alt="" src="https://king32783784.github.io/lipeng/tmpfile/network.namespace.jpg"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" class="img-responsive" src="https://king32783784.github.io/lipeng/tmpfile/network.namespace.jpg"/&gt;&lt;/p&gt;
 &lt;p&gt;上图中，Docker使用了一个私有网段，172.40.1.0，docker还可能会使用10.0.0.0和192.168.0.0这两个私有网段，关键看你的路由表中是否配置了，如果没有配置，就会使用，如果你的路由表配置了所有私有网段，那么docker启动时就会出错了。&lt;/p&gt;
 &lt;p&gt;当你启动一个Docker容器后，你可以使用ip link show或ip addr show来查看当前宿主机的网络情况（我们可以看到有一个docker0，还有一个veth22a38e6的虚拟网卡&amp;mdash;&amp;mdash;给容器用的）：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;hchen@ubuntu:~$ ip link show
@@ -596,15 +596,15 @@ setns(fd, 0); // 加入新的namespace
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">others</dc:creator><pubDate>Fri, 12 Aug 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-08-12:2016/08/12/Docker/</guid><category>Docker</category></item><item><title>Docker基础技术：Linux Namespace（上）</title><link>http://king32783784.github.io/2016/08/11/Docker/</link><description>&lt;p&gt;时下最热的技术莫过于Docker了，很多人都觉得Docker是个新技术，其实不然，Docker除了其编程语言用go比较新外，其实它还真不是个新东西，也就是个新瓶装旧酒的东西，所谓的The New &amp;ldquo;Old Stuff&amp;rdquo;。Docker和Docker衍生的东西用到了很多很酷的技术，我会用几篇 文章来把这些技术给大家做个介绍，希望通过这些文章大家可以自己打造一个山寨版的docker。&lt;/p&gt;
-&lt;p&gt;&lt;img height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/PYHO3G128V.jpg" width="420"/&gt;&lt;/p&gt;
+&lt;/script&gt;&lt;/body&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">others</dc:creator><pubDate>Fri, 12 Aug 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-08-12:2016/08/12/Docker/</guid><category>Docker</category></item><item><title>Docker基础技术：Linux Namespace（上）</title><link>http://king32783784.github.io/2016/08/11/Docker/</link><description>&lt;body&gt;&lt;p&gt;时下最热的技术莫过于Docker了，很多人都觉得Docker是个新技术，其实不然，Docker除了其编程语言用go比较新外，其实它还真不是个新东西，也就是个新瓶装旧酒的东西，所谓的The New &amp;ldquo;Old Stuff&amp;rdquo;。Docker和Docker衍生的东西用到了很多很酷的技术，我会用几篇 文章来把这些技术给大家做个介绍，希望通过这些文章大家可以自己打造一个山寨版的docker。&lt;/p&gt;
+&lt;p&gt;&lt;img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/PYHO3G128V.jpg" width="420"/&gt;&lt;/p&gt;
 &lt;p&gt;当然，文章的风格一定会尊重时下的&amp;ldquo;流行&amp;rdquo;&amp;mdash;&amp;mdash;我们再也没有整块整块的时间去看书去专研，而我们只有看微博微信那样的碎片时间（那怕我们有整块的时间，也被那些在手机上的APP碎片化了）。所以，这些文章的风格必然坚持&amp;ldquo;马桶风格&amp;rdquo;（希望简单到占用你拉一泡屎就时间，而且你还不用动脑子，并能学到些东西）&lt;/p&gt;
 &lt;p&gt;废话少说，我们开始。先从Linux Namespace开始。&lt;/p&gt;
 &lt;h4 id="jian-jie"&gt;简介&lt;/h4&gt;
 &lt;p&gt;Linux Namespace是Linux提供的一种内核级别环境隔离的方法。不知道你是否还记得很早以前的Unix有一个叫chroot的系统调用（通过修改根目录把用户jail到一个特定目录下），chroot提供了一种简单的隔离模式：chroot内部的文件系统无法访问外部的内容。Linux Namespace在此基础上，提供了对UTS、IPC、mount、PID、network、User等的隔离机制。&lt;/p&gt;
 &lt;p&gt;举个例子，我们都知道，Linux下的超级父亲进程的PID是1，所以，同chroot一样，如果我们可以把用户的进程空间jail到某个进程分支下，并像chroot那样让其下面的进程 看到的那个超级父进程的PID为1，于是就可以达到资源隔离的效果了（不同的PID namespace中的进程无法看到彼此）&lt;/p&gt;
 &lt;p&gt;Linux Namespace 有如下种类，官方文档在这里&lt;a href="http://lwn.net/Articles/531114/"&gt;《Namespace in Operation》&lt;/a&gt;&lt;/p&gt;
-&lt;table&gt;
+&lt;table class="table table-hover table-striped"&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;分类&lt;/th&gt;
@@ -1014,7 +1014,7 @@ awk  env  groups  head  id  mesg  sort  strace  tail  top  uniq  vi  wc  xargs
 &lt;p&gt;接下来的事情，你可以自己玩了，我相信你的想像力 。：）&lt;/p&gt;
 &lt;p&gt;在下一篇，我将向你介绍User Namespace、Network Namespace以及Namespace的其它东西。&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://king32783784.github.io/lipeng/2016/08/12/Docker/"&gt;Docker基础技术：Linux Namespace（下)&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;（上篇完，请参看下篇）&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">others</dc:creator><pubDate>Thu, 11 Aug 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-08-11:2016/08/11/Docker/</guid><category>Docker</category></item><item><title>如何做性能测试</title><link>http://king32783784.github.io/2016/08/11/Performance/</link><description>&lt;p&gt;偶然间看到了阿里中间件Dubbo的性能测试报告，我觉得这份性能测试报告让人觉得做这性能测试的人根本不懂性能测试，我觉得这份报告会把大众带沟里去，所以，想写下这篇文章，做一点科普。&lt;/p&gt;
+&lt;p&gt;（上篇完，请参看下篇）&lt;/p&gt;&lt;/body&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">others</dc:creator><pubDate>Thu, 11 Aug 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-08-11:2016/08/11/Docker/</guid><category>Docker</category></item><item><title>如何做性能测试</title><link>http://king32783784.github.io/2016/08/11/Performance/</link><description>&lt;body&gt;&lt;p&gt;偶然间看到了阿里中间件Dubbo的性能测试报告，我觉得这份性能测试报告让人觉得做这性能测试的人根本不懂性能测试，我觉得这份报告会把大众带沟里去，所以，想写下这篇文章，做一点科普。&lt;/p&gt;
 &lt;p&gt;首先，这份测试报告里的主要问题如下：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -1038,7 +1038,7 @@ awk  env  groups  head  id  mesg  sort  strace  tail  top  uniq  vi  wc  xargs
 &lt;h4 id="wei-shi-yao-xiang-ying-shi-jian-latencyyao-he-tun-tu-liang-thoughputgua-gou"&gt;为什么响应时间（latency）要和吞吐量（Thoughput）挂钩&lt;/h4&gt;
 &lt;p&gt;系统的性能如果只看吞吐量，不看响应时间是没有意义的。我的系统可以顶10万请求，但是响应时间已经到了5秒钟，这样的系统已经不可用了，这样的吞吐量也是没有意义的。&lt;/p&gt;
 &lt;p&gt;我们知道，当并发量（吞吐量）上涨的时候，系统会变得越来越不稳定，响应时间的波动也会越来越大，响应时间也会变得越来越慢，而吞吐率也越来越上不去（如下图所示），包括CPU的使用率情况也会如此。所以，当系统变得不稳定的时候，吞吐量已经没有意义了。吞吐量有意义的时候仅当系统稳定的时候。
-&lt;img alt="" src="https://king32783784.github.io/lipeng/tmpfile/BenchmarkOptimalRate.png"/&gt;&lt;/p&gt;
+&lt;img alt="" class="img-responsive" src="https://king32783784.github.io/lipeng/tmpfile/BenchmarkOptimalRate.png"/&gt;&lt;/p&gt;
 &lt;h4 id="benchmarkoptimalrate"&gt;BenchmarkOptimalRate&lt;/h4&gt;
 &lt;p&gt;所以，吞吐量的值必需有响应时间来卡。比如：TP99小于100ms的时候，系统可以承载的最大并发数是1000qps。这意味着，我们要不断的在不同的并发数上测试，以找到软件的最稳定时的最大吞吐量。&lt;/p&gt;
 &lt;h4 id="wei-shi-yao-xiang-ying-shi-jian-tun-tu-liang-he-cheng-gong-lu-yao-gua-gou"&gt;为什么响应时间吞吐量和成功率要挂钩&lt;/h4&gt;
@@ -1063,7 +1063,7 @@ awk  env  groups  head  id  mesg  sort  strace  tail  top  uniq  vi  wc  xargs
 &lt;p&gt;&lt;strong&gt;是不是很繁锁？是的，只因为，这是工程，工程是一门科学，科学是严谨的。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;欢迎大家也分享一下你们性能测试的经验和方法。&lt;/p&gt;
 &lt;p&gt;（全文完）&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;（本文来源于酷 壳 &amp;ndash; CoolShell.cn ，请勿用于任何商业用途）&lt;/em&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">others</dc:creator><pubDate>Thu, 11 Aug 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-08-11:2016/08/11/Performance/</guid><category>性能测试</category></item><item><title>Makefile中文手册</title><link>http://king32783784.github.io/2013/08/01/Makefile/</link><description>&lt;h4 id="yi-gai-shu"&gt;一 概述&lt;/h4&gt;
+&lt;p&gt;&lt;em&gt;（本文来源于酷 壳 &amp;ndash; CoolShell.cn ，请勿用于任何商业用途）&lt;/em&gt;&lt;/p&gt;&lt;/body&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">others</dc:creator><pubDate>Thu, 11 Aug 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-08-11:2016/08/11/Performance/</guid><category>性能测试</category></item><item><title>Makefile中文手册</title><link>http://king32783784.github.io/2013/08/01/Makefile/</link><description>&lt;body&gt;&lt;h4 id="yi-gai-shu"&gt;一 概述&lt;/h4&gt;
 &lt;p&gt;什么是makefile？或许很多Winodws的程序员都不知道这个东西，因为那些Windows的IDE都为你做了这个工作，但我觉得要作一个好的和 professional的程序员，makefile还是要懂。这就好像现在有这么多的HTML的编辑器，但如果你想成为一个专业人士，你还是要了解HTML的标识的含义。特别在Unix下的软件编译，你就不能不自己写makefile了，会不会写makefile，从一个侧面说明了一个人是否具备完成大型工程的能力。&lt;/p&gt;
 &lt;p&gt;因为，makefile关系到了整个工程的编译规则。一个工程中的源文件不计数，其按类型、功能、模块分别放在若干个目录中，makefile定义了一系列的规则来指定，哪些文件需要先编译，哪些文件需要后编译，哪些文件需要重新编译，甚至于进行更复杂的功能操作，因为 makefile就像一个Shell脚本一样，其中也可以执行操作系统的命令。&lt;/p&gt;
 &lt;p&gt;makefile带来的好处就是&amp;mdash;&amp;mdash;&amp;ldquo;自动化编译&amp;rdquo;，一旦写好，只需要一个make命令，整个工程完全自动编译，极大的提高了软件开发的效率。make是一个命令工具，是一个解释makefile中指令的命令工具，一般来说，大多数的IDE都有这个命令，比如：Delphi的make，Visual C++的nmake，Linux下GNU的make。可见，makefile都成为了一种在工程方面的编译方法。&lt;/p&gt;
@@ -2544,8 +2544,8 @@ endif
 &lt;p&gt;&amp;ldquo;-B&amp;rdquo;&lt;/p&gt;
 &lt;p&gt;&amp;ldquo;--always-make&amp;rdquo;&lt;/p&gt;
 &lt;p&gt;认为所有的目标都需要更新（重编译）。&lt;/p&gt;
-&lt;p&gt;&amp;ldquo;-C &lt;dir&gt;&amp;rdquo;&lt;/dir&gt;&lt;/p&gt;
-&lt;p&gt;&amp;ldquo;--directory=&lt;dir&gt;&amp;rdquo;&lt;/dir&gt;&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;-C &lt;/p&gt;&lt;dir&gt;&amp;rdquo;&lt;/dir&gt;&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;--directory=&lt;/p&gt;&lt;dir&gt;&amp;rdquo;&lt;/dir&gt;&lt;p&gt;&lt;/p&gt;
 &lt;p&gt;指定读取makefile的目录。如果有多个&amp;ldquo;-C&amp;rdquo;参数，make的解释是后面的路径以前面的作为相对路径，并以最后的目录作为被指定目录。如：&amp;ldquo;make &amp;ndash;C ~hchen/test &amp;ndash;C prog&amp;rdquo;等价于&amp;ldquo;make &amp;ndash;C ~hchen/test/prog&amp;rdquo;。&lt;/p&gt;
 &lt;p&gt;&amp;ldquo;&amp;mdash;debug[=&lt;options&gt;]&amp;rdquo;&lt;/options&gt;&lt;/p&gt;
 &lt;p&gt;输出make的调试信息。它有几种不同的级别可供选择，如果没有参数，那就是输出最简单的调试信息。下面是&lt;options&gt;的取值：&lt;/options&gt;&lt;/p&gt;
@@ -2570,8 +2570,8 @@ endif
 &lt;p&gt;&amp;ldquo;-i&amp;rdquo;&lt;/p&gt;
 &lt;p&gt;&amp;ldquo;--ignore-errors&amp;rdquo;&lt;/p&gt;
 &lt;p&gt;在执行时忽略所有的错误。&lt;/p&gt;
-&lt;p&gt;&amp;ldquo;-I &lt;dir&gt;&amp;rdquo;&lt;/dir&gt;&lt;/p&gt;
-&lt;p&gt;&amp;ldquo;--include-dir=&lt;dir&gt;&amp;rdquo;&lt;/dir&gt;&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;-I &lt;/p&gt;&lt;dir&gt;&amp;rdquo;&lt;/dir&gt;&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;--include-dir=&lt;/p&gt;&lt;dir&gt;&amp;rdquo;&lt;/dir&gt;&lt;p&gt;&lt;/p&gt;
 &lt;p&gt;指定一个被包含makefile的搜索目标。可以使用多个&amp;ldquo;-I&amp;rdquo;参数来指定多个目录。&lt;/p&gt;
 &lt;p&gt;&amp;ldquo;-j [&lt;jobsnum&gt;]&amp;rdquo;&lt;/jobsnum&gt;&lt;/p&gt;
 &lt;p&gt;&amp;ldquo;--jobs[=&lt;jobsnum&gt;]&amp;rdquo;&lt;/jobsnum&gt;&lt;/p&gt;
@@ -3022,4 +3022,4 @@ rm -f bar.o
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">others</dc:creator><pubDate>Thu, 01 Aug 2013 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2013-08-01:2013/08/01/Makefile/</guid><category>Makefile</category></item></channel></rss>
+&lt;/script&gt;&lt;/body&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">others</dc:creator><pubDate>Thu, 01 Aug 2013 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2013-08-01:2013/08/01/Makefile/</guid><category>Makefile</category></item></channel></rss>
