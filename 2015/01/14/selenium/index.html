@@ -10,7 +10,7 @@
         <meta name="description" content="入门 简单用法 如果已经具备了Selenium＆Python，可以这样开始使用： from selenium import webdriver from selenium.webdriver.common.keys import Keys driver = webdriver.Firefox() driver.get(&#34;http://www.python.org&#34;) assert &#34;Python&#34; in driver.title elem = driver.find_element_by_name(&#34;q&#34;) elem.clear() elem.send_keys(&#34;pycon&#34;) elem.send_keys(Keys.RETURN) assert &#34;No results found.&#34; not in driver ..." />
 
 <!-- Open Graph tags -->
-<meta property="og:site_name" content="Hi | World"/>
+<meta property="og:site_name" content="在技术分享的路上"/>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="selenium-入门"/>
     <meta property="og:url" content="../../../../2015/01/14/selenium/"/>
@@ -22,7 +22,7 @@
         <meta property="og:image"
               content="../../../../favicon.png"/>
 
-    <title>selenium-入门 - Hi | World</title>
+    <title>selenium-入门 - 在技术分享的路上</title>
 
         <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
 
@@ -40,7 +40,7 @@
     
     <!-- Feeds -->
         <link href="../../../../feeds/atom.xml" type="application/atom+xml" rel="alternate"
-              title="Hi | World ATOM Feed" />
+              title="在技术分享的路上 ATOM Feed" />
 </head>
 <body data-spy="scroll" data-target="#scrollspy">
     <div id="wrapper">
@@ -48,7 +48,7 @@
         <div id="sidebar-wrapper-small" class="twitchy-background">
             <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
                 <li>
-        <a href="../../../.." title="Hi | World" class="collapsed">
+        <a href="../../../.." title="在技术分享的路上" class="collapsed">
             <span class="glyphicon glyphicon-home"></span>
         </a>
     </li>
@@ -444,7 +444,7 @@ Keys类提供键盘操作比如RETURN, F1,ALT等。
 <p>webdriver 提供一些如find_element_by_*的方法用于定位元素。例如，输入文本元素可以通过find_element_by_name方法使用名称属性来定位。定位方法会在后续进行详细解释。</p>
 <div class="highlight"><pre><span></span>elem = driver.find_element_by_name("q")
 </pre></div>
-<p>接下来，是发送关键信息，比较像从键盘输入。特殊关键信息可以通过selenium.webdriver.common.keys中的Keys 类实现。安全考虑，首先要确认输入区没有其他信息（如“搜索框”），以免影响搜索结果：</p>
+<p>接下来，是发送关键信息，比较像从键盘输入。特殊关键信息可以通过selenium.webdriver.common.keys中的Keys 类实现。安全考虑，首先要确认输入区没有其他信息（如&ldquo;搜索框&rdquo;），以免影响搜索结果：</p>
 <div class="highlight"><pre><span></span>elem.clear()
 elem.send_keys("pycon")
 elem.send_keys(Keys.RETURN)
@@ -457,7 +457,7 @@ elem.send_keys(Keys.RETURN)
 </pre></div>
 <p>sample1:
 测试百度首页的查询功能：
-百度搜索框“<input autocomplete="off" class="s_ipt" id="kw" maxlength="100" name="wd" type="text"/>”
+百度搜索框&ldquo;<input autocomplete="off" class="s_ipt" id="kw" maxlength="100" name="wd" type="text"/>&rdquo;
 code:</p>
 <table class="table highlighttable table-striped table-hover"><tbody><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -562,7 +562,7 @@ code:</p>
 <p>webdriver 提供一些如find_element_by_*的方法用于定位元素。例如，输入文本元素可以通过find_element_by_name方法使用名称属性来定位。定位方法会在后续进行详细解释。</p>
 <div class="highlight"><pre><span></span>elem = driver.find_element_by_name("q")
 </pre></div>
-<p>接下来，是发送关键信息，比较像从键盘输入。特殊关键信息可以通过selenium.webdriver.common.keys中的Keys 类实现。安全考虑，首先要确认输入区没有其他信息（如“搜索框”），以免影响搜索结果：</p>
+<p>接下来，是发送关键信息，比较像从键盘输入。特殊关键信息可以通过selenium.webdriver.common.keys中的Keys 类实现。安全考虑，首先要确认输入区没有其他信息（如&ldquo;搜索框&rdquo;），以免影响搜索结果：</p>
 <div class="highlight"><pre><span></span>elem.clear()
 elem.send_keys("pycon")
 elem.send_keys(Keys.RETURN)

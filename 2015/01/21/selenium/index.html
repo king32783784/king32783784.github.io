@@ -10,7 +10,7 @@
         <meta name="description" content="Remote WebDriver WebDriver实现。 class selenium.webdriver.remote.webdriver.WebDriver(command_executor=&#39;http://127.0.0.1:4444/wd/hub&#39;, desired_capabilities=None, browser_profile=None, proxy=None, keep_alive=False, file_detector=None) Bases: object 控制浏览器向remote server发送命令。Remote server 运行的协议定义为https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol. 属性： * session_id- webdriver用于打开和控制浏览器窗口的ＩＤ字符串 * capabilities- Dictionaty of effective capabilities ..." />
 
 <!-- Open Graph tags -->
-<meta property="og:site_name" content="Hi | World"/>
+<meta property="og:site_name" content="在技术分享的路上"/>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="selenium-Remote WebDriver"/>
     <meta property="og:url" content="../../../../2015/01/21/selenium/"/>
@@ -22,7 +22,7 @@
         <meta property="og:image"
               content="../../../../favicon.png"/>
 
-    <title>selenium-Remote WebDriver - Hi | World</title>
+    <title>selenium-Remote WebDriver - 在技术分享的路上</title>
 
         <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
 
@@ -40,7 +40,7 @@
     
     <!-- Feeds -->
         <link href="../../../../feeds/atom.xml" type="application/atom+xml" rel="alternate"
-              title="Hi | World ATOM Feed" />
+              title="在技术分享的路上 ATOM Feed" />
 </head>
 <body data-spy="scroll" data-target="#scrollspy">
     <div id="wrapper">
@@ -48,7 +48,7 @@
         <div id="sidebar-wrapper-small" class="twitchy-background">
             <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
                 <li>
-        <a href="../../../.." title="Hi | World" class="collapsed">
+        <a href="../../../.." title="在技术分享的路上" class="collapsed">
             <span class="glyphicon glyphicon-home"></span>
         </a>
     </li>
@@ -421,8 +421,8 @@
     　　　
 add_cookie(cookie_dict)</p>
 <p>添加cookie到当前会话。
-Args: * cookie_dict:字典对象，具有所需要的秘钥－”name"和“value".
-keys选项　”path", "domain", "secure", "expiry"</p>
+Args: * cookie_dict:字典对象，具有所需要的秘钥－&rdquo;name"和&ldquo;value".
+keys选项　&rdquo;path", "domain", "secure", "expiry"</p>
 <p>用法：</p>
 <div class="highlight"><pre><span></span>driver.add_cookie({'name':'foo', 'value':'bar'}) driver.add_cookie({'name':'foo', 'value':
 'bar', 'path':'/'}) driver.add_cookie({'name':'foo', 'value':'bar','path':'/','secure':True})
@@ -675,7 +675,7 @@ driver.window_handles</p>
 <span class="n">find_element_by_css_selector</span><span class="o">(</span><span class="n">css_selector</span><span class="o">)</span>
 
     <span class="err">通过子元素的</span><span class="n">CSS</span> <span class="n">selector</span><span class="err">查找元素</span>
-    <span class="n">css_selector</span><span class="o">:</span> <span class="n">CSS</span> <span class="n">selector</span> <span class="n">string</span> <span class="err">例如‘</span><span class="n">a</span><span class="o">.</span><span class="na">nav</span><span class="err">#</span><span class="n">home</span><span class="s1">'</span>
+    <span class="n">css_selector</span><span class="o">:</span> <span class="n">CSS</span> <span class="n">selector</span> <span class="n">string</span> <span class="err">例如&lsquo;</span><span class="n">a</span><span class="o">.</span><span class="na">nav</span><span class="err">#</span><span class="n">home</span><span class="s1">'</span>
 
 <span class="s1">find_element_by_id(id_)</span>
 
@@ -750,7 +750,7 @@ driver.window_handles</p>
 
     <span class="n">id</span>
         <span class="n">selenium</span> <span class="err">使用的内部编号</span>
-        <span class="err">主要内部用户使用。可以用于简单检查</span><span class="mi">2</span><span class="err">个元素是否为同一元素，可以使用“</span><span class="o">==</span><span class="err">”：</span>
+        <span class="err">主要内部用户使用。可以用于简单检查</span><span class="mi">2</span><span class="err">个元素是否为同一元素，可以使用&ldquo;</span><span class="o">==</span><span class="err">&rdquo;：</span>
             <span class="k">if</span> <span class="n">element1</span> <span class="o">==</span> <span class="n">element2</span><span class="o">:</span>
                 <span class="n">print</span><span class="o">(</span><span class="s2">"These 2 are equal"</span><span class="o">)</span>
 
@@ -789,19 +789,19 @@ driver.window_handles</p>
     deselect_all()
         清除所有选中的条目。只对选中多个支持的选择有效。如果SELECT如果不支持复合选择，则抛出NotImplementedError.</p>
 <div class="highlight"><pre><span></span>deselect_by_index(index)
-    取消给定索引出的选项。通过元素的“index”属性进行，不仅仅通过计数。
+    取消给定索引出的选项。通过元素的&ldquo;index&rdquo;属性进行，不仅仅通过计数。
     index: 被取消选项的索引
-    如果指定的index没有SELECT,将抛出“NoSuchElementException"异常。
+    如果指定的index没有SELECT,将抛出&ldquo;NoSuchElementException"异常。
 
 deselect_by_value(value)
-   取消匹配参数值的选项。例如给点参数”foo"，将取消这样的选项：
+   取消匹配参数值的选项。例如给点参数&rdquo;foo"，将取消这样的选项：
        <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"foo"</span><span class="nt">&gt;</span>Bar<span class="nt">&lt;/option&gt;</span>
 
    value: 要匹配的值
-   如果没有选项匹配给定的参数值，将抛出“NoSuchElementException"异常。
+   如果没有选项匹配给定的参数值，将抛出&ldquo;NoSuchElementException"异常。
 
 deselect_by_visible_text(text)
-       取消同参数值匹配的可见文本的选择项。例如给出”Bar"，这样的选项就会取消：
+       取消同参数值匹配的可见文本的选择项。例如给出&rdquo;Bar"，这样的选项就会取消：
            <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"foo"</span><span class="nt">&gt;</span>Bar<span class="nt">&lt;/option&gt;</span>
 
            text:要匹配的可见文本
@@ -809,16 +809,16 @@ deselect_by_visible_text(text)
 select_by_index(index)
     选择指定索引的选项。通过元素的index属性进行，不是通过counting.
     index:被选中选项的索引
-    如果给定的索引指定的选项不存在，将抛出”NoSuchElementException"异常
+    如果给定的索引指定的选项不存在，将抛出&rdquo;NoSuchElementException"异常
 
 select_by_value(value)
-    选择匹配参数值的所有选项。例如，给定“foo"，这样的选项将会选中：
+    选择匹配参数值的所有选项。例如，给定&ldquo;foo"，这样的选项将会选中：
         <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"foo"</span><span class="nt">&gt;</span>Bar<span class="nt">&lt;/option&gt;</span>
         vale:需要匹配的值
-    如果没有选项匹配给定的参数值，将抛出”NoSuchElementException"异常。
+    如果没有选项匹配给定的参数值，将抛出&rdquo;NoSuchElementException"异常。
 
 select_by_visible_text(text)
-    选择所有匹配可视文本的选项。例如给定参数“Bar"，这样的选项将会选中：
+    选择所有匹配可视文本的选项。例如给定参数&ldquo;Bar"，这样的选项将会选中：
         <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"foo"</span><span class="nt">&gt;</span>Bar<span class="nt">&lt;/option&gt;</span>
         text:要匹配的可见文本
     如果没有选项匹配给定的参数值，将会抛出StaleElementReferenceException异常。
@@ -873,7 +873,7 @@ until_not(method, message='')
 <p>class selenium.webdriver.support.expected_conditions.element_selection_state_to_be(element, is_selected)</p>
 <div class="highlight"><pre><span></span><span class="n">Bases</span><span class="o">:</span> <span class="n">object</span>
 
-<span class="n">An</span> <span class="n">expectation</span> <span class="k">for</span> <span class="n">checking</span> <span class="k">if</span> <span class="n">the</span> <span class="n">given</span> <span class="n">element</span> <span class="k">is</span> <span class="n">selected</span><span class="o">.</span> <span class="n">element</span> <span class="k">is</span> <span class="n">WebElement</span> <span class="n">object</span> <span class="n">is_selected</span> <span class="k">is</span> <span class="n">a</span> <span class="n">Boolean</span><span class="o">.</span><span class="err">”</span>
+<span class="n">An</span> <span class="n">expectation</span> <span class="k">for</span> <span class="n">checking</span> <span class="k">if</span> <span class="n">the</span> <span class="n">given</span> <span class="n">element</span> <span class="k">is</span> <span class="n">selected</span><span class="o">.</span> <span class="n">element</span> <span class="k">is</span> <span class="n">WebElement</span> <span class="n">object</span> <span class="n">is_selected</span> <span class="k">is</span> <span class="n">a</span> <span class="n">Boolean</span><span class="o">.</span><span class="err">&rdquo;</span>
 </pre></div>
 <p>class selenium.webdriver.support.expected_conditions.element_to_be_clickable(locator)</p>
 <div class="highlight"><pre><span></span><span class="n">Bases</span><span class="o">:</span> <span class="n">object</span>
@@ -920,7 +920,7 @@ until_not(method, message='')
 <p>class selenium.webdriver.support.expected_conditions.text_to_be_present_in_element_value(locator, text_)</p>
 <div class="highlight"><pre><span></span><span class="n">Bases</span><span class="o">:</span> <span class="n">object</span>
 
-<span class="n">An</span> <span class="n">expectation</span> <span class="k">for</span> <span class="n">checking</span> <span class="k">if</span> <span class="n">the</span> <span class="n">given</span> <span class="n">text</span> <span class="k">is</span> <span class="n">present</span> <span class="k">in</span> <span class="n">the</span> <span class="n">element</span><span class="err">’</span><span class="n">s</span> <span class="n">locator</span><span class="o">,</span> <span class="n">text</span>
+<span class="n">An</span> <span class="n">expectation</span> <span class="k">for</span> <span class="n">checking</span> <span class="k">if</span> <span class="n">the</span> <span class="n">given</span> <span class="n">text</span> <span class="k">is</span> <span class="n">present</span> <span class="k">in</span> <span class="n">the</span> <span class="n">element</span><span class="err">&rsquo;</span><span class="n">s</span> <span class="n">locator</span><span class="o">,</span> <span class="n">text</span>
 </pre></div>
 <p>class selenium.webdriver.support.expected_conditions.title_contains(title)</p>
 <div class="highlight"><pre><span></span><span class="n">Bases</span><span class="o">:</span> <span class="n">object</span>

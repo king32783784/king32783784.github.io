@@ -10,7 +10,7 @@
         <meta name="description" content="Control file specification 该篇主要介绍control文件的标准.该标准主要为了使自定义的control文件能够提供前端或测试所需要的信息,并且能够通过前端修改. 主要内容: 命名control文件 常用变量 示例 control文件命名 control文件命名必须是control.xxxx,xxxx是你定义或则代码评审定义． 例如，５００次硬重启测试，一个正规的定义就是 control.hard500 常用变量 下面是一个常用变量的列表 变量名 描述 *AUTHOR 测试编写的个人或公司信息 ＤEPENENCIES 测试依赖信息，比如&#34;CONSOLE&#34; *DOC 描述测试包括哪些参数的说明 EXPERIMENTAL 如果定义为True,测试忽略 *NAME 前端识别测试的名称 RUN_VERIFY 定义scheduler是否执行验证，默认为True SYNC_COUNT 次数，接受大于等于１的参数，默认为１ *TIME 说明测试时长， ＳＨＯＲＴ&lt;15m, MEDIUM &lt; 4H ,LONG ..." />
 
 <!-- Open Graph tags -->
-<meta property="og:site_name" content="Hi | World"/>
+<meta property="og:site_name" content="在技术分享的路上"/>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="Autotest-Control file specification"/>
     <meta property="og:url" content="../../../../2015/08/15/autotest/"/>
@@ -22,7 +22,7 @@
         <meta property="og:image"
               content="../../../../favicon.png"/>
 
-    <title>Autotest-Control file specification - Hi | World</title>
+    <title>Autotest-Control file specification - 在技术分享的路上</title>
 
         <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
 
@@ -40,7 +40,7 @@
     
     <!-- Feeds -->
         <link href="../../../../feeds/atom.xml" type="application/atom+xml" rel="alternate"
-              title="Hi | World ATOM Feed" />
+              title="在技术分享的路上 ATOM Feed" />
 </head>
 <body data-spy="scroll" data-target="#scrollspy">
     <div id="wrapper">
@@ -48,7 +48,7 @@
         <div id="sidebar-wrapper-small" class="twitchy-background">
             <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
                 <li>
-        <a href="../../../.." title="Hi | World" class="collapsed">
+        <a href="../../../.." title="在技术分享的路上" class="collapsed">
             <span class="glyphicon glyphicon-home"></span>
         </a>
     </li>
@@ -479,7 +479,7 @@
 <p>设计者的信息是必填，用来后续追踪测试和修改bug,邮箱地址是必须的．</p>
 <p><strong>DEPENDENCIES（可选，默认：none)</strong></p>
 <p>相关性是描述你需要运行测试什么类型硬件的一种方式。 依赖是说,比如你需要测试蓝牙：</p>
-<div class="highlight"><pre><span></span>DEPENDENCY =“bluetooth”
+<div class="highlight"><pre><span></span>DEPENDENCY =&ldquo;bluetooth&rdquo;
 </pre></div>
 <p>其中， Bluetooth是在自动测试创建并已添加到一台机器,自动测试或者通过CLI或Django管理界面的确切标签。 </p>
 <p><strong>DOC(必需)</strong></p>
