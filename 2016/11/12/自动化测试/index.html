@@ -455,7 +455,7 @@
         <span class="n">long</span><span class="o">:</span>
             <span class="n">sleep_length</span><span class="o">:</span> <span class="mi">5</span>
 </pre></div>
-<p>当我们用avocado run $test --mux-yaml $file.yaml运行这个例子，3个variants会执行并且内容会插入/run的命名空间。每个variant包含变量的“type"和"sleep_length"。要获取有效值，需要名称（”sleep_length)和path。需要选择路径 ,在这个例子：/run/sleeptest/length/<em>或sleeptest/</em>,取决于如何设置。</p>
+<p>当我们用avocado run $test --mux-yaml $file.yaml运行这个例子，3个variants会执行并且内容会插入/run的命名空间。每个variant包含变量的&ldquo;type"和"sleep_length"。要获取有效值，需要名称（&rdquo;sleep_length)和path。需要选择路径 ,在这个例子：/run/sleeptest/length/<em>或sleeptest/</em>,取决于如何设置。</p>
 <p>默认的参数是可选的，但是要处理好这部分。可能有人运行你的测试时选择不同的参数或没有参数，它仍然能够很好的运行。</p>
 <p>所以关于如何访问"sleep_length"的完整示例：</p>
 <div class="highlight"><pre><span></span>self.params.get("sleep_length", "/*/sleeptest/*", 1)
@@ -481,7 +481,7 @@ RESULTS    : PASS <span class="m">3</span> <span class="p">|</span> ERROR <span 
 TESTS TIME : 6.50 s
 JOB HTML   : <span class="nv">$HOME</span>/avocado/job-results/job-2014-08-12T15.44-d565e8de/html/results.html
 </pre></div>
-<p>The --mux-yaml accepts either only <span class="math">\(FILE_LOCATION or $INJECT_TO:\)</span>FILE_LOCATION. As explained in Test variants - Mux without any path the content gets injected into /run in order to be in the default relative path location. The <span class="math">\(INJECT_TO can be either relative path, then it’s injected into /run/\)</span>INJECT_TO location, or absolute path (starting with '/'), then it’s injected directly into the specified path and it’s up to the test/framework developer to get the value from this location (using path or adding the path to mux-path). To understand the difference execute those commands:</p>
+<p>The --mux-yaml accepts either only <span class="math">\(FILE_LOCATION or $INJECT_TO:\)</span>FILE_LOCATION. As explained in Test variants - Mux without any path the content gets injected into /run in order to be in the default relative path location. The <span class="math">\(INJECT_TO can be either relative path, then it&rsquo;s injected into /run/\)</span>INJECT_TO location, or absolute path (starting with '/'), then it&rsquo;s injected directly into the specified path and it&rsquo;s up to the test/framework developer to get the value from this location (using path or adding the path to mux-path). To understand the difference execute those commands:</p>
 <div class="highlight"><pre><span></span>$ avocado multiplex -t -m examples/tests/sleeptest.py.data/sleeptest.yaml
 $ avocado multiplex -t -m duration:examples/tests/sleeptest.py.data/sleeptest.yaml
 $ avocado multiplex -t -m /my/location:examples/tests/sleeptest.pt.data/sleeptest.yaml
@@ -679,8 +679,8 @@ Empty <span class="nb">test</span> ID. A <span class="nb">test</span> path or <s
         <div class="col-lg-9 text-center">
             <p><small>
                 <a href="http://www.reliablecounter.com" target="_blank"><img src="http://www.reliablecounter.com/count.php?page=https://king32783784.github.io/&digit=style/plain/6/&reloads=0" alt="" title="" border="0"></a><br /><a href="http://www.fabbly.com" target="_blank" style="font-family: Geneva, Arial; font-size: 9px; color: #330010; text-decoration: none;"></a>
-                Built</a>  </a>
-                &middot;                    &copy;2009 by lipeng
+                Copyright</a>  </a>
+                <!--&middot;-->                    &copy;2009 李鹏
             </small></p>
         </div>
     </div>

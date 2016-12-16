@@ -426,8 +426,8 @@
 <p>普华桌面版本iSoftClientOS3.0SP1</p>
 <div class="highlight"><pre><span></span># vi /etc/pacman.d/mirrorlist
 </pre></div>
-<p>添加SigLevel = Never”一行</p>
-<p>修改地址“Server = http://ftp.isoft.zhcn.cc/<span class="math">\(repo/os/\)</span>arch”</p>
+<p>添加SigLevel = Never&rdquo;一行</p>
+<p>修改地址&ldquo;Server = http://ftp.isoft.zhcn.cc/<span class="math">\(repo/os/\)</span>arch&rdquo;</p>
 <div class="highlight"><pre><span></span>#pacman -Rdd gcc-multilib
 #pacman -Sy gcc-fortran
 #wget http://www.mpich.org/static/downloads/1.0.8/mpich2-1.0.8.tar.gz
@@ -460,14 +460,14 @@
 </pre></div>
 <p>修改Make.goto文件
 以下斜体部分是Make.goto文件的内容，//后为解释部分。</p>
-<div class="highlight"><pre><span></span><span class="err">“</span>
+<div class="highlight"><pre><span></span><span class="err">&ldquo;</span>
 <span class="nv">ARCH</span> <span class="o">=</span> goto        //名字需和Make.goto的尾缀名字一致
 <span class="nv">TOPdir</span> <span class="o">=</span> /home/linpack-x86/hpl-2.1    //hpl源码所在目录
 <span class="nv">MPdir</span> <span class="o">=</span> /home/linpack-x86/mpich2-1.0.8    //mpich2源码所在目录
 <span class="nv">LAdir</span>        <span class="o">=</span> <span class="k">$(</span>HOME<span class="k">)</span>/Bench/GotoBLAS2    // GotoBlas源码的目录
 <span class="nv">LAlib</span>        <span class="o">=</span> <span class="k">$(</span>LAdir<span class="k">)</span>/libgoto2.a     // GotoBlas静态库
 <span class="nv">CC</span><span class="o">=</span> /usr/bin/mpicc       //mpicc的绝对路径
-<span class="nv">LINKER</span><span class="o">=</span> /usr/bin/mpif77     //mpif77绝对路径  ”
+<span class="nv">LINKER</span><span class="o">=</span> /usr/bin/mpif77     //mpif77绝对路径  &rdquo;
 
 <span class="c">#make arch=Goto</span>
 </pre></div>
@@ -541,7 +541,7 @@
 
 1            # of NBs //分块矩阵的数量
 
-1 2 3 4      NBs //分块矩阵的大小，HPL采用分块矩阵的算法。分块的大小对性能有很大的影响，NB的选择和软硬件许多因素密切相关。NB值的选择主要是通过实际测试得到最优值，一般在256以下，NB × 8最好为
+1 2 3 4      NBs //分块矩阵的大小，HPL采用分块矩阵的算法。分块的大小对性能有很大的影响，NB的选择和软硬件许多因素密切相关。NB值的选择主要是通过实际测试得到最优值，一般在256以下，NB &times; 8最好为
 Cache line的倍数。
 
 0 PMAP process mapping (0=Row-,1=Column-major)  //选择处理器阵列是列的排列方式还是按行的排列方式。按列的排列方式适用于节点数较多、每个节点内CPU数较少的系统；而按行的排列方式适用于节点数较少、每个节点内CPU数较多系统。在机群系统上，按列的排列方式的性能远好于按行的排列方式。
@@ -550,7 +550,7 @@ Cache line的倍数。
 
 1 1 4        Ps
 
-1 4 1        Qs    //二维处理器网格（P × Q），P × Q = 系统CPU数 = 进程数。P≤Q，一般来说，P的值尽量取得小一点，因为列向通信量（通信次数和通信数据量）要远大于横向通信（和实际CPU物理阵列有关）。P = 2n，即P最好选择2的幂。HPL中，L分解的列向通信采用二元交换法（Binary Exchange），当列向处理器个数P为2的幂时，性能最优。例如，当系统进程数为4的时候，P × Q选择为1 × 4的效果要比选择2 × 2好一些。 这主要取决于CPU物理互联网络。在集群测试中，P × Q  系统CPU总核数
+1 4 1        Qs    //二维处理器网格（P &times; Q），P &times; Q = 系统CPU数 = 进程数。P&le;Q，一般来说，P的值尽量取得小一点，因为列向通信量（通信次数和通信数据量）要远大于横向通信（和实际CPU物理阵列有关）。P = 2n，即P最好选择2的幂。HPL中，L分解的列向通信采用二元交换法（Binary Exchange），当列向处理器个数P为2的幂时，性能最优。例如，当系统进程数为4的时候，P &times; Q选择为1 &times; 4的效果要比选择2 &times; 2好一些。 这主要取决于CPU物理互联网络。在集群测试中，P &times; Q  系统CPU总核数
 
 16.0         threshold   //测试的精度，保持默认即可
 
@@ -586,13 +586,13 @@ Cache line的倍数。
 2            SWAP (0=bin-exch,1=long,2=mix)
 
 
-64           swapping threshold  // U的广播为列向广播，HPL共提供了三种U的广播算法：二元交换（Binary Exchange）法、Long法和二者混合法。SWAP=“0”，采用二元交换法；SWAP=“1”，采用Long法；SWAP=“2”，采用混合法。二元交换法的通信开销为㏒2P×（Latency＋NB×LocQ（N）/Bandwith），适用于通信量较小的情况；Long法的通信开销为（㏒2P＋ P－1）×Latency＋K×NB×LocQ（N）/Bandwith，适用于通信量较大的情况。其中P为列向处理器数，Latency为网络延迟， Bandwith为网络带宽，K为常数，其经验值约为2.4。LocQ（N）＝NB×NN为通信量，NN随着求解过程的进行逐步减少。由于NN在求解过程中在不断的变化，为了充分发挥两种算法的优势，HPL提供了混合法，当NN≤swapping threshold（第27行指定）时，采用二元交换；否则采用Long法。一般来说，我们选择混合法，阈值可通过公式求得一个大概值。对于小规模系统来说，此值性能影响不大，采用其缺省值即可。
+64           swapping threshold  // U的广播为列向广播，HPL共提供了三种U的广播算法：二元交换（Binary Exchange）法、Long法和二者混合法。SWAP=&ldquo;0&rdquo;，采用二元交换法；SWAP=&ldquo;1&rdquo;，采用Long法；SWAP=&ldquo;2&rdquo;，采用混合法。二元交换法的通信开销为㏒2P&times;（Latency＋NB&times;LocQ（N）/Bandwith），适用于通信量较小的情况；Long法的通信开销为（㏒2P＋ P－1）&times;Latency＋K&times;NB&times;LocQ（N）/Bandwith，适用于通信量较大的情况。其中P为列向处理器数，Latency为网络延迟， Bandwith为网络带宽，K为常数，其经验值约为2.4。LocQ（N）＝NB&times;NN为通信量，NN随着求解过程的进行逐步减少。由于NN在求解过程中在不断的变化，为了充分发挥两种算法的优势，HPL提供了混合法，当NN&le;swapping threshold（第27行指定）时，采用二元交换；否则采用Long法。一般来说，我们选择混合法，阈值可通过公式求得一个大概值。对于小规模系统来说，此值性能影响不大，采用其缺省值即可。
 
 
 0            L1 in (0=transposed,1=no-transposed) form  //选择L的数据存放方式
 
 
-0          U  in (0=transposed,1=no-transposed) form   //选择U的数据存放格式。C语言矩阵在内存是按行存放的，Fortran语言是按列存放的。由于HPL采用C语言书写，而调用的BLAS库有可能采用C语言，也有可能采用Fortran语言编写。若选择“transposed”，则采用按列存放，否则按行存放。可以根据实际测试进行选择。
+0          U  in (0=transposed,1=no-transposed) form   //选择U的数据存放格式。C语言矩阵在内存是按行存放的，Fortran语言是按列存放的。由于HPL采用C语言书写，而调用的BLAS库有可能采用C语言，也有可能采用Fortran语言编写。若选择&ldquo;transposed&rdquo;，则采用按列存放，否则按行存放。可以根据实际测试进行选择。
 
 
 1            Equilibration (0=no,1=yes)  //选择是否回代，默认即可
@@ -618,12 +618,12 @@ Cache line的倍数。
 
 <span class="err">注：普华服务器系统</span><span class="n">iSoftServerOS3</span><span class="o">.</span><span class="mi">0</span><span class="n">_x86</span><span class="o">-</span><span class="mi">64</span><span class="n">_Build4</span> <span class="err">启动</span><span class="n">mpd</span><span class="err">时会出现以下提示：</span>
 
-<span class="err">“</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">mpdlib</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span> <span class="ne">DeprecationWarning</span><span class="p">:</span> <span class="n">The</span> <span class="n">popen2</span> <span class="n">module</span> <span class="ow">is</span> <span class="n">deprecated</span><span class="o">.</span>  <span class="n">Use</span> <span class="n">the</span> <span class="n">subprocess</span> <span class="n">module</span><span class="o">.</span>
+<span class="err">&ldquo;</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">mpdlib</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span> <span class="ne">DeprecationWarning</span><span class="p">:</span> <span class="n">The</span> <span class="n">popen2</span> <span class="n">module</span> <span class="ow">is</span> <span class="n">deprecated</span><span class="o">.</span>  <span class="n">Use</span> <span class="n">the</span> <span class="n">subprocess</span> <span class="n">module</span><span class="o">.</span>
 <span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">signal</span><span class="o">,</span> <span class="nn">popen2</span><span class="o">,</span> <span class="nn">socket</span><span class="o">,</span> <span class="nn">select</span><span class="o">,</span> <span class="nn">inspect</span>
 
 <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">mpdlib</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span> <span class="ne">DeprecationWarning</span><span class="p">:</span> <span class="n">the</span> <span class="n">md5</span> <span class="n">module</span> <span class="ow">is</span> <span class="n">deprecated</span><span class="p">;</span> <span class="n">use</span> <span class="n">hashlib</span> <span class="n">instead</span>
 </pre></div>
-<p>from  md5       import  new as md5new”</p>
+<p>from  md5       import  new as md5new&rdquo;</p>
 <p>应该为python版本问题造成，可以降低python版本或忽略该问题。</p>
 <p>CPU实际的物理核数为4.修改hpl文件中的PQ值为1x4</p>
 <div class="highlight"><pre><span></span>#mpirun -np 4 ./xhpl
@@ -671,12 +671,12 @@ N设定为26112</p>
 <div class="highlight"><pre><span></span>#vi /etc/hosts
 </pre></div>
 <p>主节点node0 添加如下：</p>
-<div class="highlight"><pre><span></span>“192.168.32.165 node0
-192.168.32.171 node1”
+<div class="highlight"><pre><span></span>&ldquo;192.168.32.165 node0
+192.168.32.171 node1&rdquo;
 </pre></div>
 <p>Node1添加如下：</p>
-<div class="highlight"><pre><span></span>“192.168.32.165 node0
-192.168.32.171 node1”
+<div class="highlight"><pre><span></span>&ldquo;192.168.32.165 node0
+192.168.32.171 node1&rdquo;
 </pre></div>
 <p>设置免密码登录</p>
 <div class="highlight"><pre><span></span>#ssh-keygen -t rsa
@@ -698,8 +698,8 @@ N设定为26112</p>
 <p>[root@node0 home]#scp -r linpack-x86 root@node1:/home/</p>
 <p>在主节点的hpl目录下新建mpd.hosts文件</p>
 <p>内容如下：
-“node1
-node2”</p>
+&ldquo;node1
+node2&rdquo;</p>
 <p>分别在各节点启动mpd</p>
 <div class="highlight"><pre><span></span>#mpd &amp;
 </pre></div>
@@ -816,7 +816,7 @@ End of Tests.
 <div class="highlight"><pre><span></span>#mpirun -np 2 ./xhpcg
 </pre></div>
 <h3 id="fu-2-intel-mpi-he-yi-bian-yi-hao-de-linpackce-shi">附2. Intel MPI 和 已编译好的linpack测试</h3>
-<div class="highlight"><pre><span></span>解压缩 tar –zxvf l_mpi_p_3.2.011.tgz
+<div class="highlight"><pre><span></span>解压缩 tar &ndash;zxvf l_mpi_p_3.2.011.tgz
 
 创建安装目录 mkdir /Clusterr/intelmpi ,拷贝license 到解压缩的目录中
 
@@ -825,7 +825,7 @@ End of Tests.
 root@mng l_mpi_p_3.1.038]# ./install.sh
 </pre></div>
 <p>安装完intel mpi后，使用intel编译好的linpack测试包  将l_lpk_p_10.0.2.010.tgz解压缩 </p>
-<div class="highlight"><pre><span></span>tar –zxvf l_lpk_p_10.0.2.010.tgz
+<div class="highlight"><pre><span></span>tar &ndash;zxvf l_lpk_p_10.0.2.010.tgz
 </pre></div>
 <p>测试方法同上面。</p>
 <p>Top<a href="">^</a></p>
@@ -915,8 +915,8 @@ root@mng l_mpi_p_3.1.038]# ./install.sh
         <div class="col-lg-9 text-center">
             <p><small>
                 <a href="http://www.reliablecounter.com" target="_blank"><img src="http://www.reliablecounter.com/count.php?page=https://king32783784.github.io/&digit=style/plain/6/&reloads=0" alt="" title="" border="0"></a><br /><a href="http://www.fabbly.com" target="_blank" style="font-family: Geneva, Arial; font-size: 9px; color: #330010; text-decoration: none;"></a>
-                Built</a>  </a>
-                &middot;                    &copy;2009 by lipeng
+                Copyright</a>  </a>
+                <!--&middot;-->                    &copy;2009 李鹏
             </small></p>
         </div>
     </div>
