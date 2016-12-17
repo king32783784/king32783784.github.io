@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="peng.lee" />
         <meta name="keywords" content="Avocado" />
-        <meta name="description" content="编写Avocado测试 现在我们开始使用python编写Avocado测试，测试继承于avocado.Test. 基本例子 创建一个时间测试，sleeptest,测试非常简单，只是sleep一会： import time from avocado import Test class SleepTest(Test): def test(self): sleep_length = self.params.get(&#39;sleep_length&#39;, default=1) self.log.debug(&#34;Sleep for %.2f seconds&#34;, sleep_length) time sleep(sleep_length) 这是为avocado编写的一个简单示例，可以使用其他power API编写。 从上面的例子可以看出，avocado测试从avocado.Test继承的test方法入手。 多个测试和命名约定 可以在一个类中存在多个测试。 要想做多个测试，只需要在命名方法前加test,例如test_foo ..." />
+        <meta name="description" content="编写Avocado测试 现在我们开始使用python编写Avocado测试，测试继承于avocado.Test. 基本例子 创建一个时间测试，sleeptest,测试非常简单，只是sleep一会： import time from avocado import Test class SleepTest(Test): def test(self): sleep_length = self.params.get(&#39;sleep_length&#39;, default=1) self.log.debug(&#34;Sleep for %.2f seconds&#34;, sleep_length) time sleep(sleep_length) 这是为avocado编写的一个简单示例，可以使用其他power API编写。 从上面的例子可以看出，avocado测试从avocado.Test继承的test方法入手。 多个测试和命名约定 可以在一个类中存在多个测试。 要想做多个测试，只需要在命名方法前加test,例如test_foo …" />
 
 <!-- Open Graph tags -->
-<meta property="og:site_name" content="灰.白"/>
+<meta property="og:site_name" content="Vim.Linux"/>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="Avocado-编写Avocado测试"/>
     <meta property="og:url" content="../../../../2016/11/12/自动化测试/"/>
-    <meta property="og:description" content="编写Avocado测试 现在我们开始使用python编写Avocado测试，测试继承于avocado.Test. 基本例子 创建一个时间测试，sleeptest,测试非常简单，只是sleep一会： import time from avocado import Test class SleepTest(Test): def test(self): sleep_length = self.params.get(&#39;sleep_length&#39;, default=1) self.log.debug(&#34;Sleep for %.2f seconds&#34;, sleep_length) time sleep(sleep_length) 这是为avocado编写的一个简单示例，可以使用其他power API编写。 从上面的例子可以看出，avocado测试从avocado.Test继承的test方法入手。 多个测试和命名约定 可以在一个类中存在多个测试。 要想做多个测试，只需要在命名方法前加test,例如test_foo ..."/>
+    <meta property="og:description" content="编写Avocado测试 现在我们开始使用python编写Avocado测试，测试继承于avocado.Test. 基本例子 创建一个时间测试，sleeptest,测试非常简单，只是sleep一会： import time from avocado import Test class SleepTest(Test): def test(self): sleep_length = self.params.get(&#39;sleep_length&#39;, default=1) self.log.debug(&#34;Sleep for %.2f seconds&#34;, sleep_length) time sleep(sleep_length) 这是为avocado编写的一个简单示例，可以使用其他power API编写。 从上面的例子可以看出，avocado测试从avocado.Test继承的test方法入手。 多个测试和命名约定 可以在一个类中存在多个测试。 要想做多个测试，只需要在命名方法前加test,例如test_foo …"/>
     <meta property="article:published_time" content="2016-11-12" />
     <meta property="article:section" content="自动化测试-Avocado" />
         <meta property="article:tag" content="Avocado" />
@@ -22,7 +22,7 @@
         <meta property="og:image"
               content="../../../../favicon.png"/>
 
-    <title>Avocado-编写Avocado测试 - 灰.白</title>
+    <title>Avocado-编写Avocado测试 - Vim.Linux</title>
 
         <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
 
@@ -40,7 +40,7 @@
     
     <!-- Feeds -->
         <link href="../../../../feeds/atom.xml" type="application/atom+xml" rel="alternate"
-              title="灰.白 ATOM Feed" />
+              title="Vim.Linux ATOM Feed" />
 </head>
 <body data-spy="scroll" data-target="#scrollspy">
     <div id="wrapper">
@@ -48,7 +48,7 @@
         <div id="sidebar-wrapper-small" class="twitchy-background">
             <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
                 <li>
-        <a href="../../../.." title="灰.白" class="collapsed">
+        <a href="../../../.." title="Vim.Linux" class="collapsed">
             <span class="glyphicon glyphicon-home"></span>
         </a>
     </li>
@@ -251,7 +251,7 @@
                             工具集
                         </a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="../../../../pages/aboutme.html">
                             <i class="fa fa-file-text padding-small"></i>
                             About
@@ -389,7 +389,7 @@
     <div class="publish-info-block">
         <small>
             <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2016-11-12T00:00:00+08:00"> 2016-11-12 六</time>
+                <i class="fa fa-calendar padding-small"></i><time datetime="2016-11-12T00:00:00+08:00"> 2016-11-12 Sat</time>
             </span>
             <span class="category">
                 <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/zi-dong-hua-ce-shi-avocado.html">自动化测试-Avocado</a>
@@ -407,7 +407,7 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    <body><h3 id="bian-xie-avocadoce-shi">编写Avocado测试</h3>
+                    </head><body><h3 id="bian-xie-avocadoce-shi">编写Avocado测试</h3>
 <p>现在我们开始使用python编写Avocado测试，测试继承于avocado.Test.</p>
 <h4 id="ji-ben-li-zi">基本例子</h4>
 <p>创建一个时间测试，sleeptest,测试非常简单，只是sleep一会：</p>
@@ -455,7 +455,7 @@
         <span class="n">long</span><span class="o">:</span>
             <span class="n">sleep_length</span><span class="o">:</span> <span class="mi">5</span>
 </pre></div>
-<p>当我们用avocado run $test --mux-yaml $file.yaml运行这个例子，3个variants会执行并且内容会插入/run的命名空间。每个variant包含变量的&ldquo;type"和"sleep_length"。要获取有效值，需要名称（&rdquo;sleep_length)和path。需要选择路径 ,在这个例子：/run/sleeptest/length/<em>或sleeptest/</em>,取决于如何设置。</p>
+<p>当我们用avocado run $test --mux-yaml $file.yaml运行这个例子，3个variants会执行并且内容会插入/run的命名空间。每个variant包含变量的“type"和"sleep_length"。要获取有效值，需要名称（”sleep_length)和path。需要选择路径 ,在这个例子：/run/sleeptest/length/<em>或sleeptest/</em>,取决于如何设置。</p>
 <p>默认的参数是可选的，但是要处理好这部分。可能有人运行你的测试时选择不同的参数或没有参数，它仍然能够很好的运行。</p>
 <p>所以关于如何访问"sleep_length"的完整示例：</p>
 <div class="highlight"><pre><span></span>self.params.get("sleep_length", "/*/sleeptest/*", 1)
@@ -481,7 +481,7 @@ RESULTS    : PASS <span class="m">3</span> <span class="p">|</span> ERROR <span 
 TESTS TIME : 6.50 s
 JOB HTML   : <span class="nv">$HOME</span>/avocado/job-results/job-2014-08-12T15.44-d565e8de/html/results.html
 </pre></div>
-<p>The --mux-yaml accepts either only <span class="math">\(FILE_LOCATION or $INJECT_TO:\)</span>FILE_LOCATION. As explained in Test variants - Mux without any path the content gets injected into /run in order to be in the default relative path location. The <span class="math">\(INJECT_TO can be either relative path, then it&rsquo;s injected into /run/\)</span>INJECT_TO location, or absolute path (starting with '/'), then it&rsquo;s injected directly into the specified path and it&rsquo;s up to the test/framework developer to get the value from this location (using path or adding the path to mux-path). To understand the difference execute those commands:</p>
+<p>The --mux-yaml accepts either only $FILE_LOCATION or $INJECT_TO:$FILE_LOCATION. As explained in Test variants - Mux without any path the content gets injected into /run in order to be in the default relative path location. The $INJECT_TO can be either relative path, then it’s injected into /run/$INJECT_TO location, or absolute path (starting with '/'), then it’s injected directly into the specified path and it’s up to the test/framework developer to get the value from this location (using path or adding the path to mux-path). To understand the difference execute those commands:</p>
 <div class="highlight"><pre><span></span>$ avocado multiplex -t -m examples/tests/sleeptest.py.data/sleeptest.yaml
 $ avocado multiplex -t -m duration:examples/tests/sleeptest.py.data/sleeptest.yaml
 $ avocado multiplex -t -m /my/location:examples/tests/sleeptest.pt.data/sleeptest.yaml
@@ -593,63 +593,6 @@ Empty <span class="nb">test</span> ID. A <span class="nb">test</span> path or <s
 <p>同一个progress日志记录器，可以在多个测试方法和在多个测试模块一起使用。 在给出的示例中，测试名称用于给出额外的上下文。</p>
 <p>&lt;未完待续&gt;</p>
 <p><img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/4C0XUNHJ7C.jpg" width="420"/></p>
-<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
-
-    if (false) {
-        align = (screen.width < 768) ? "left" : align;
-        indent = (screen.width < 768) ? "0em" : indent;
-        linebreak = (screen.width < 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    var location_protocol = (false) ? 'https' : document.location.protocol;
-    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-</script></body>
                 </div>
                 <footer class="text-right">
                     <p>by peng.lee</p>
@@ -672,15 +615,14 @@ Empty <span class="nb">test</span> ID. A <span class="nb">test</span> path or <s
     </article>
 </section>
 
-<!--"-->
 <footer>
     <hr>
     <div class="row">
         <div class="col-lg-9 text-center">
             <p><small>
                 <a href="http://www.reliablecounter.com" target="_blank"><img src="http://www.reliablecounter.com/count.php?page=https://king32783784.github.io/&digit=style/plain/6/&reloads=0" alt="" title="" border="0"></a><br /><a href="http://www.fabbly.com" target="_blank" style="font-family: Geneva, Arial; font-size: 9px; color: #330010; text-decoration: none;"></a>
-                Copyright</a>  </a>
-                <!--&middot;-->                    &copy;2009 李鹏
+                Built by <a href="http://docs.getpelican.com/en/latest">Pelican</a> / <a href="https://github.com/ingwinlu/pelican-twitchy">pelican-twitchy</a>
+                &middot;                    &copy; 2016 peng.lee
             </small></p>
         </div>
     </div>

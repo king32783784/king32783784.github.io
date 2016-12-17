@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="penglee" />
         <meta name="keywords" content="unix编程" />
-        <meta name="description" content="信号 我们运行如下命令，可看到Linux支持的信号列表： $ kill -l1) SIGHUP 2) SIGINT 3) SIGQUIT 4) SIGILL 5) SIGTRAP 6) SIGABRT 7) SIGBUS 8) SIGFPE 9) SIGKILL 10) SIGUSR1 11) SIGSEGV 12) SIGUSR213) SIGPIPE 14) SIGALRM 15) SIGTERM 17) SIGCHLD18) SIGCONT 19) SIGSTOP 20) SIGTSTP 21) SIGTTIN22) SIGTTOU 23) SIGURG 24) SIGXCPU 25) SIGXFSZ26) SIGVTALRM ..." />
+        <meta name="description" content="信号 我们运行如下命令，可看到Linux支持的信号列表： $ kill -l1) SIGHUP 2) SIGINT 3) SIGQUIT 4) SIGILL 5) SIGTRAP 6) SIGABRT 7) SIGBUS 8) SIGFPE 9) SIGKILL 10) SIGUSR1 11) SIGSEGV 12) SIGUSR213) SIGPIPE 14) SIGALRM 15) SIGTERM 17) SIGCHLD18) SIGCONT 19) SIGSTOP 20) SIGTSTP 21) SIGTTIN22) SIGTTOU 23) SIGURG 24) SIGXCPU 25) SIGXFSZ26) SIGVTALRM …" />
 
 <!-- Open Graph tags -->
-<meta property="og:site_name" content="灰.白"/>
+<meta property="og:site_name" content="Vim.Linux"/>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="信号"/>
     <meta property="og:url" content="../../../../2009/10/12/UNIX/"/>
-    <meta property="og:description" content="信号 我们运行如下命令，可看到Linux支持的信号列表： $ kill -l1) SIGHUP 2) SIGINT 3) SIGQUIT 4) SIGILL 5) SIGTRAP 6) SIGABRT 7) SIGBUS 8) SIGFPE 9) SIGKILL 10) SIGUSR1 11) SIGSEGV 12) SIGUSR213) SIGPIPE 14) SIGALRM 15) SIGTERM 17) SIGCHLD18) SIGCONT 19) SIGSTOP 20) SIGTSTP 21) SIGTTIN22) SIGTTOU 23) SIGURG 24) SIGXCPU 25) SIGXFSZ26) SIGVTALRM ..."/>
+    <meta property="og:description" content="信号 我们运行如下命令，可看到Linux支持的信号列表： $ kill -l1) SIGHUP 2) SIGINT 3) SIGQUIT 4) SIGILL 5) SIGTRAP 6) SIGABRT 7) SIGBUS 8) SIGFPE 9) SIGKILL 10) SIGUSR1 11) SIGSEGV 12) SIGUSR213) SIGPIPE 14) SIGALRM 15) SIGTERM 17) SIGCHLD18) SIGCONT 19) SIGSTOP 20) SIGTSTP 21) SIGTTIN22) SIGTTOU 23) SIGURG 24) SIGXCPU 25) SIGXFSZ26) SIGVTALRM …"/>
     <meta property="article:published_time" content="2009-10-12" />
     <meta property="article:section" content="unix环境编程" />
         <meta property="article:tag" content="unix编程" />
@@ -22,7 +22,7 @@
         <meta property="og:image"
               content="../../../../favicon.png"/>
 
-    <title>信号 - 灰.白</title>
+    <title>信号 - Vim.Linux</title>
 
         <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
 
@@ -40,7 +40,7 @@
     
     <!-- Feeds -->
         <link href="../../../../feeds/atom.xml" type="application/atom+xml" rel="alternate"
-              title="灰.白 ATOM Feed" />
+              title="Vim.Linux ATOM Feed" />
 </head>
 <body data-spy="scroll" data-target="#scrollspy">
     <div id="wrapper">
@@ -48,7 +48,7 @@
         <div id="sidebar-wrapper-small" class="twitchy-background">
             <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
                 <li>
-        <a href="../../../.." title="灰.白" class="collapsed">
+        <a href="../../../.." title="Vim.Linux" class="collapsed">
             <span class="glyphicon glyphicon-home"></span>
         </a>
     </li>
@@ -251,7 +251,7 @@
                             工具集
                         </a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="../../../../pages/aboutme.html">
                             <i class="fa fa-file-text padding-small"></i>
                             About
@@ -389,7 +389,7 @@
     <div class="publish-info-block">
         <small>
             <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2009-10-12T00:00:00+08:00"> 2009-10-12 一</time>
+                <i class="fa fa-calendar padding-small"></i><time datetime="2009-10-12T00:00:00+08:00"> 2009-10-12 Mon</time>
             </span>
             <span class="category">
                 <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/unixhuan-jing-bian-cheng.html">unix环境编程</a>
@@ -407,7 +407,7 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    <body><p><strong>信号</strong></p>
+                    </head><body><p><strong>信号</strong></p>
 <p>我们运行如下命令，可看到Linux支持的信号列表：</p>
 <div class="highlight"><pre><span></span>$ <span class="nb">kill</span> -l1<span class="o">)</span> SIGHUP        2<span class="o">)</span> SIGINT        3<span class="o">)</span> SIGQUIT       4<span class="o">)</span> SIGILL 5<span class="o">)</span> SIGTRAP       6<span class="o">)</span> SIGABRT       7<span class="o">)</span> SIGBUS        8<span class="o">)</span> SIGFPE 9<span class="o">)</span> SIGKILL      10<span class="o">)</span> SIGUSR1      11<span class="o">)</span> SIGSEGV      12<span class="o">)</span> SIGUSR213<span class="o">)</span> SIGPIPE      14<span class="o">)</span> SIGALRM      15<span class="o">)</span> SIGTERM      17<span class="o">)</span> SIGCHLD18<span class="o">)</span> SIGCONT      19<span class="o">)</span> SIGSTOP      20<span class="o">)</span> SIGTSTP      21<span class="o">)</span> SIGTTIN22<span class="o">)</span> SIGTTOU      23<span class="o">)</span> SIGURG       24<span class="o">)</span> SIGXCPU      25<span class="o">)</span> SIGXFSZ26<span class="o">)</span> SIGVTALRM    27<span class="o">)</span> SIGPROF      28<span class="o">)</span> SIGWINCH     29<span class="o">)</span> SIGIO30<span class="o">)</span> SIGPWR       31<span class="o">)</span> SIGSYS       34<span class="o">)</span> SIGRTMIN     35<span class="o">)</span> SIGRTMIN+136<span class="o">)</span> SIGRTMIN+2   37<span class="o">)</span> SIGRTMIN+3   38<span class="o">)</span> SIGRTMIN+4   39<span class="o">)</span> SIGRTMIN+540<span class="o">)</span> SIGRTMIN+6   41<span class="o">)</span> SIGRTMIN+7   42<span class="o">)</span> SIGRTMIN+8   43<span class="o">)</span> SIGRTMIN+944<span class="o">)</span> SIGRTMIN+10 45<span class="o">)</span> SIGRTMIN+11 46<span class="o">)</span> SIGRTMIN+12 47<span class="o">)</span> SIGRTMIN+1348<span class="o">)</span> SIGRTMIN+14 49<span class="o">)</span> SIGRTMIN+15 50<span class="o">)</span> SIGRTMAX-14 51<span class="o">)</span> SIGRTMAX-1352<span class="o">)</span> SIGRTMAX-12 53<span class="o">)</span> SIGRTMAX-11 54<span class="o">)</span> SIGRTMAX-10 55<span class="o">)</span> SIGRTMAX-956<span class="o">)</span> SIGRTMAX-8   57<span class="o">)</span> SIGRTMAX-7   58<span class="o">)</span> SIGRTMAX-6   59<span class="o">)</span> SIGRTMAX-560<span class="o">)</span> SIGRTMAX-4   61<span class="o">)</span> SIGRTMAX-3   62<span class="o">)</span> SIGRTMAX-2   63<span class="o">)</span> SIGRTMAX-164<span class="o">)</span> SIGRTMAX
 </pre></div>
@@ -501,7 +501,7 @@
      <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
-<p>在3秒内向这个程序发送SIGUSR1，只有第一个被接收到，而SIGRTMIN则不会有这样的问题。</p></body>
+<p>在3秒内向这个程序发送SIGUSR1，只有第一个被接收到，而SIGRTMIN则不会有这样的问题。</p>
                 </div>
                 <footer class="text-right">
                     <p>by penglee</p>
@@ -519,15 +519,14 @@
     </article>
 </section>
 
-<!--"-->
 <footer>
     <hr>
     <div class="row">
         <div class="col-lg-9 text-center">
             <p><small>
                 <a href="http://www.reliablecounter.com" target="_blank"><img src="http://www.reliablecounter.com/count.php?page=https://king32783784.github.io/&digit=style/plain/6/&reloads=0" alt="" title="" border="0"></a><br /><a href="http://www.fabbly.com" target="_blank" style="font-family: Geneva, Arial; font-size: 9px; color: #330010; text-decoration: none;"></a>
-                Copyright</a>  </a>
-                <!--&middot;-->                    &copy;2009 李鹏
+                Built by <a href="http://docs.getpelican.com/en/latest">Pelican</a> / <a href="https://github.com/ingwinlu/pelican-twitchy">pelican-twitchy</a>
+                &middot;                    &copy; 2016 peng.lee
             </small></p>
         </div>
     </div>

@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="penglee" />
         <meta name="keywords" content="autotest" />
-        <meta name="description" content="Control file specification 该篇主要介绍control文件的标准.该标准主要为了使自定义的control文件能够提供前端或测试所需要的信息,并且能够通过前端修改. 主要内容: 命名control文件 常用变量 示例 control文件命名 control文件命名必须是control.xxxx,xxxx是你定义或则代码评审定义． 例如，５００次硬重启测试，一个正规的定义就是 control.hard500 常用变量 下面是一个常用变量的列表 变量名 描述 *AUTHOR 测试编写的个人或公司信息 ＤEPENENCIES 测试依赖信息，比如&#34;CONSOLE&#34; *DOC 描述测试包括哪些参数的说明 EXPERIMENTAL 如果定义为True,测试忽略 *NAME 前端识别测试的名称 RUN_VERIFY 定义scheduler是否执行验证，默认为True SYNC_COUNT 次数，接受大于等于１的参数，默认为１ *TIME 说明测试时长， ＳＨＯＲＴ&lt;15m, MEDIUM &lt; 4H ,LONG ..." />
+        <meta name="description" content="Control file specification 该篇主要介绍control文件的标准.该标准主要为了使自定义的control文件能够提供前端或测试所需要的信息,并且能够通过前端修改. 主要内容: 命名control文件 常用变量 示例 control文件命名 control文件命名必须是control.xxxx,xxxx是你定义或则代码评审定义． 例如，５００次硬重启测试，一个正规的定义就是 control.hard500 常用变量 下面是一个常用变量的列表 变量名 描述 *AUTHOR 测试编写的个人或公司信息 ＤEPENENCIES 测试依赖信息，比如&#34;CONSOLE&#34; *DOC 描述测试包括哪些参数的说明 EXPERIMENTAL 如果定义为True,测试忽略 *NAME 前端识别测试的名称 RUN_VERIFY 定义scheduler是否执行验证，默认为True SYNC_COUNT 次数，接受大于等于１的参数，默认为１ *TIME 说明测试时长， ＳＨＯＲＴ&lt;15m, MEDIUM &lt; 4H ,LONG …" />
 
 <!-- Open Graph tags -->
-<meta property="og:site_name" content="灰.白"/>
+<meta property="og:site_name" content="Vim.Linux"/>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="Autotest-Control file specification"/>
     <meta property="og:url" content="../../../../2015/08/15/autotest/"/>
-    <meta property="og:description" content="Control file specification 该篇主要介绍control文件的标准.该标准主要为了使自定义的control文件能够提供前端或测试所需要的信息,并且能够通过前端修改. 主要内容: 命名control文件 常用变量 示例 control文件命名 control文件命名必须是control.xxxx,xxxx是你定义或则代码评审定义． 例如，５００次硬重启测试，一个正规的定义就是 control.hard500 常用变量 下面是一个常用变量的列表 变量名 描述 *AUTHOR 测试编写的个人或公司信息 ＤEPENENCIES 测试依赖信息，比如&#34;CONSOLE&#34; *DOC 描述测试包括哪些参数的说明 EXPERIMENTAL 如果定义为True,测试忽略 *NAME 前端识别测试的名称 RUN_VERIFY 定义scheduler是否执行验证，默认为True SYNC_COUNT 次数，接受大于等于１的参数，默认为１ *TIME 说明测试时长， ＳＨＯＲＴ&lt;15m, MEDIUM &lt; 4H ,LONG ..."/>
+    <meta property="og:description" content="Control file specification 该篇主要介绍control文件的标准.该标准主要为了使自定义的control文件能够提供前端或测试所需要的信息,并且能够通过前端修改. 主要内容: 命名control文件 常用变量 示例 control文件命名 control文件命名必须是control.xxxx,xxxx是你定义或则代码评审定义． 例如，５００次硬重启测试，一个正规的定义就是 control.hard500 常用变量 下面是一个常用变量的列表 变量名 描述 *AUTHOR 测试编写的个人或公司信息 ＤEPENENCIES 测试依赖信息，比如&#34;CONSOLE&#34; *DOC 描述测试包括哪些参数的说明 EXPERIMENTAL 如果定义为True,测试忽略 *NAME 前端识别测试的名称 RUN_VERIFY 定义scheduler是否执行验证，默认为True SYNC_COUNT 次数，接受大于等于１的参数，默认为１ *TIME 说明测试时长， ＳＨＯＲＴ&lt;15m, MEDIUM &lt; 4H ,LONG …"/>
     <meta property="article:published_time" content="2015-08-15" />
     <meta property="article:section" content="自动化测试-Autotest" />
         <meta property="article:tag" content="autotest" />
@@ -22,7 +22,7 @@
         <meta property="og:image"
               content="../../../../favicon.png"/>
 
-    <title>Autotest-Control file specification - 灰.白</title>
+    <title>Autotest-Control file specification - Vim.Linux</title>
 
         <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
 
@@ -40,7 +40,7 @@
     
     <!-- Feeds -->
         <link href="../../../../feeds/atom.xml" type="application/atom+xml" rel="alternate"
-              title="灰.白 ATOM Feed" />
+              title="Vim.Linux ATOM Feed" />
 </head>
 <body data-spy="scroll" data-target="#scrollspy">
     <div id="wrapper">
@@ -48,7 +48,7 @@
         <div id="sidebar-wrapper-small" class="twitchy-background">
             <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
                 <li>
-        <a href="../../../.." title="灰.白" class="collapsed">
+        <a href="../../../.." title="Vim.Linux" class="collapsed">
             <span class="glyphicon glyphicon-home"></span>
         </a>
     </li>
@@ -251,7 +251,7 @@
                             工具集
                         </a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="../../../../pages/aboutme.html">
                             <i class="fa fa-file-text padding-small"></i>
                             About
@@ -389,7 +389,7 @@
     <div class="publish-info-block">
         <small>
             <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2015-08-15T00:00:00+08:00"> 2015-08-15 六</time>
+                <i class="fa fa-calendar padding-small"></i><time datetime="2015-08-15T00:00:00+08:00"> 2015-08-15 Sat</time>
             </span>
             <span class="category">
                 <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/zi-dong-hua-ce-shi-autotest.html">自动化测试-Autotest</a>
@@ -407,7 +407,7 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+                    </head><body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
 <h2 id="control-file-specification">Control file specification</h2>
 <p>该篇主要介绍control文件的标准.该标准主要为了使自定义的control文件能够提供前端或测试所需要的信息,并且能够通过前端修改.
 主要内容:</p>
@@ -479,7 +479,7 @@
 <p>设计者的信息是必填，用来后续追踪测试和修改bug,邮箱地址是必须的．</p>
 <p><strong>DEPENDENCIES（可选，默认：none)</strong></p>
 <p>相关性是描述你需要运行测试什么类型硬件的一种方式。 依赖是说,比如你需要测试蓝牙：</p>
-<div class="highlight"><pre><span></span>DEPENDENCY =&ldquo;bluetooth&rdquo;
+<div class="highlight"><pre><span></span>DEPENDENCY =“bluetooth”
 </pre></div>
 <p>其中， Bluetooth是在自动测试创建并已添加到一台机器,自动测试或者通过CLI或Django管理界面的确切标签。 </p>
 <p><strong>DOC(必需)</strong></p>
@@ -556,7 +556,7 @@ parallel_simple(run, machines)
 </pre></div>
 <p>Top<a href="">^</a></p>
 <p>上一篇<a href="https://king32783784.github.io/2015/08/14/autotest/">Autotest:Autotest-client control&gt;&gt;&gt;</a>
-下一篇<a href="https://king32783784.github.io/2015/08/16/autotest/">Autotest:Autotest-add test&gt;&gt;&gt;</a></p></body>
+下一篇<a href="https://king32783784.github.io/2015/08/16/autotest/">Autotest:Autotest-add test&gt;&gt;&gt;</a></p>
                 </div>
                 <footer class="text-right">
                     <p>by penglee</p>
@@ -579,15 +579,14 @@ parallel_simple(run, machines)
     </article>
 </section>
 
-<!--"-->
 <footer>
     <hr>
     <div class="row">
         <div class="col-lg-9 text-center">
             <p><small>
                 <a href="http://www.reliablecounter.com" target="_blank"><img src="http://www.reliablecounter.com/count.php?page=https://king32783784.github.io/&digit=style/plain/6/&reloads=0" alt="" title="" border="0"></a><br /><a href="http://www.fabbly.com" target="_blank" style="font-family: Geneva, Arial; font-size: 9px; color: #330010; text-decoration: none;"></a>
-                Copyright</a>  </a>
-                <!--&middot;-->                    &copy;2009 李鹏
+                Built by <a href="http://docs.getpelican.com/en/latest">Pelican</a> / <a href="https://github.com/ingwinlu/pelican-twitchy">pelican-twitchy</a>
+                &middot;                    &copy; 2016 peng.lee
             </small></p>
         </div>
     </div>

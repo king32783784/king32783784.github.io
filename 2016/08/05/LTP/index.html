@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="peng.lee" />
         <meta name="keywords" content="LTP" />
-        <meta name="description" content="accept用例分析 case本身说明： Verify that accept() returns the proper errno for various failure cases 验证accept()是否返回正确的errno. 测试log accept01 1 TPASS : bad file descriptor successful accept01 2 TPASS : bad file descriptor successful accept01 3 TPASS : invalid socket buffer successful accept01 4 TPASS : invalid salen successful accept01 5 TPASS : invalid salen successful accept01 ..." />
+        <meta name="description" content="accept用例分析 case本身说明： Verify that accept() returns the proper errno for various failure cases 验证accept()是否返回正确的errno. 测试log accept01 1 TPASS : bad file descriptor successful accept01 2 TPASS : bad file descriptor successful accept01 3 TPASS : invalid socket buffer successful accept01 4 TPASS : invalid salen successful accept01 5 TPASS : invalid salen successful accept01 …" />
 
 <!-- Open Graph tags -->
-<meta property="og:site_name" content="灰.白"/>
+<meta property="og:site_name" content="Vim.Linux"/>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="LTP－kernel-syscalls-accept()"/>
     <meta property="og:url" content="../../../../2016/08/05/LTP/"/>
-    <meta property="og:description" content="accept用例分析 case本身说明： Verify that accept() returns the proper errno for various failure cases 验证accept()是否返回正确的errno. 测试log accept01 1 TPASS : bad file descriptor successful accept01 2 TPASS : bad file descriptor successful accept01 3 TPASS : invalid socket buffer successful accept01 4 TPASS : invalid salen successful accept01 5 TPASS : invalid salen successful accept01 ..."/>
+    <meta property="og:description" content="accept用例分析 case本身说明： Verify that accept() returns the proper errno for various failure cases 验证accept()是否返回正确的errno. 测试log accept01 1 TPASS : bad file descriptor successful accept01 2 TPASS : bad file descriptor successful accept01 3 TPASS : invalid socket buffer successful accept01 4 TPASS : invalid salen successful accept01 5 TPASS : invalid salen successful accept01 …"/>
     <meta property="article:published_time" content="2016-08-05" />
     <meta property="article:section" content="自动化测试-LTP" />
         <meta property="article:tag" content="LTP" />
@@ -22,7 +22,7 @@
         <meta property="og:image"
               content="../../../../favicon.png"/>
 
-    <title>LTP－kernel-syscalls-accept() - 灰.白</title>
+    <title>LTP－kernel-syscalls-accept() - Vim.Linux</title>
 
         <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
 
@@ -40,7 +40,7 @@
     
     <!-- Feeds -->
         <link href="../../../../feeds/atom.xml" type="application/atom+xml" rel="alternate"
-              title="灰.白 ATOM Feed" />
+              title="Vim.Linux ATOM Feed" />
 </head>
 <body data-spy="scroll" data-target="#scrollspy">
     <div id="wrapper">
@@ -48,7 +48,7 @@
         <div id="sidebar-wrapper-small" class="twitchy-background">
             <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
                 <li>
-        <a href="../../../.." title="灰.白" class="collapsed">
+        <a href="../../../.." title="Vim.Linux" class="collapsed">
             <span class="glyphicon glyphicon-home"></span>
         </a>
     </li>
@@ -251,7 +251,7 @@
                             工具集
                         </a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="../../../../pages/aboutme.html">
                             <i class="fa fa-file-text padding-small"></i>
                             About
@@ -389,7 +389,7 @@
     <div class="publish-info-block">
         <small>
             <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2016-08-05T00:00:00+08:00"> 2016-08-05 五</time>
+                <i class="fa fa-calendar padding-small"></i><time datetime="2016-08-05T00:00:00+08:00"> 2016-08-05 Fri</time>
             </span>
             <span class="category">
                 <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/zi-dong-hua-ce-shi-ltp.html">自动化测试-LTP</a>
@@ -407,7 +407,7 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    <body><h4 id="acceptyong-li-fen-xi">accept用例分析</h4>
+                    </head><body><h4 id="acceptyong-li-fen-xi">accept用例分析</h4>
 <p>case本身说明：</p>
 <div class="highlight"><pre><span></span>Verify that accept() returns the proper errno for various failure cases
 </pre></div>
@@ -422,7 +422,7 @@ accept01    6  TPASS  :  no queued connections successful
 accept01    7  TPASS  :  UDP accept successful
 </pre></div>
 <p>~                                              <br/>
-测试错误类型包括:</p>
+测试错误类型包括:<br/></p>
 <div class="highlight"><pre><span></span>bad file descriptor、invalid socket buffer、invalid salen、no queued connections、 UDP accept等
 </pre></div>
 <p><strong>accept函数</strong></p>
@@ -560,7 +560,7 @@ int TST_TOTAL = sizeof(tdat) / sizeof(tdat[0]); /*通过数组的长度，计算
 <span class="p">}</span>
 </pre></div>
 <p _="
-" _tdat_testno_.experr="(tdat[testno].experr" if="if">2.setup0函数case1测试前设置
+" _tdat_testno_.experr="(tdat[testno].experr" if="">2.setup0函数case1测试前设置
     static void setup0(void)</p>
 <p>3.setup2</p>
 <div class="highlight"><pre><span></span>static void setup2(void)
@@ -666,7 +666,7 @@ TEST_LOOPING是int usc_test_looping(int counter)函数，该函数后面的文�
 <p>然后将tdat中的对应参数，分别执行accept函数，如果预期的返回值不符或则返回值小于0且和预期的错误类型不匹配，则调用tst_resm()，进行出错处理。tst_resm将在后面进行分析。如果符合预期，则打印TPASS，然后调用tdat[testno].clearnup()分别清理环境。</p>
 <p>最后调用cleanup()清理，tst_exit()退出，tst_exit()在单独分析ltp测试框架时分析。</p>
 <p>到此，我们就清楚accept测试的内容了。</p>
-<p><img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/H01L2BILXC.jpg" width="420"/></p></body>
+<p><img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/H01L2BILXC.jpg" width="420"/></p>
                 </div>
                 <footer class="text-right">
                     <p>by peng.lee</p>
@@ -689,15 +689,14 @@ TEST_LOOPING是int usc_test_looping(int counter)函数，该函数后面的文�
     </article>
 </section>
 
-<!--"-->
 <footer>
     <hr>
     <div class="row">
         <div class="col-lg-9 text-center">
             <p><small>
                 <a href="http://www.reliablecounter.com" target="_blank"><img src="http://www.reliablecounter.com/count.php?page=https://king32783784.github.io/&digit=style/plain/6/&reloads=0" alt="" title="" border="0"></a><br /><a href="http://www.fabbly.com" target="_blank" style="font-family: Geneva, Arial; font-size: 9px; color: #330010; text-decoration: none;"></a>
-                Copyright</a>  </a>
-                <!--&middot;-->                    &copy;2009 李鹏
+                Built by <a href="http://docs.getpelican.com/en/latest">Pelican</a> / <a href="https://github.com/ingwinlu/pelican-twitchy">pelican-twitchy</a>
+                &middot;                    &copy; 2016 peng.lee
             </small></p>
         </div>
     </div>

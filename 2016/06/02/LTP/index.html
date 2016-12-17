@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="peng.lee" />
         <meta name="keywords" content="LTP" />
-        <meta name="description" content="本节将重点分析commands部分的用例。 Command主要用例 主要case包括： case 包含子case ade ar file ld ldd nm objdump size at at cpio cpio cron cron df df du du eject eject fileutils cp ln mkdir mv gzip gzip insmod insmod logrotate logrotate lsmod lsmod mail mail mkfs mkfs mkswap mkswap sssd sssd su su tar tar ..." />
+        <meta name="description" content="本节将重点分析commands部分的用例。 Command主要用例 主要case包括： case 包含子case ade ar file ld ldd nm objdump size at at cpio cpio cron cron df df du du eject eject fileutils cp ln mkdir mv gzip gzip insmod insmod logrotate logrotate lsmod lsmod mail mail mkfs mkfs mkswap mkswap sssd sssd su su tar tar …" />
 
 <!-- Open Graph tags -->
-<meta property="og:site_name" content="灰.白"/>
+<meta property="og:site_name" content="Vim.Linux"/>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="LTP－Command"/>
     <meta property="og:url" content="../../../../2016/06/02/LTP/"/>
-    <meta property="og:description" content="本节将重点分析commands部分的用例。 Command主要用例 主要case包括： case 包含子case ade ar file ld ldd nm objdump size at at cpio cpio cron cron df df du du eject eject fileutils cp ln mkdir mv gzip gzip insmod insmod logrotate logrotate lsmod lsmod mail mail mkfs mkfs mkswap mkswap sssd sssd su su tar tar ..."/>
+    <meta property="og:description" content="本节将重点分析commands部分的用例。 Command主要用例 主要case包括： case 包含子case ade ar file ld ldd nm objdump size at at cpio cpio cron cron df df du du eject eject fileutils cp ln mkdir mv gzip gzip insmod insmod logrotate logrotate lsmod lsmod mail mail mkfs mkfs mkswap mkswap sssd sssd su su tar tar …"/>
     <meta property="article:published_time" content="2016-06-02" />
     <meta property="article:section" content="自动化测试-LTP" />
         <meta property="article:tag" content="LTP" />
@@ -22,7 +22,7 @@
         <meta property="og:image"
               content="../../../../favicon.png"/>
 
-    <title>LTP－Command - 灰.白</title>
+    <title>LTP－Command - Vim.Linux</title>
 
         <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
 
@@ -40,7 +40,7 @@
     
     <!-- Feeds -->
         <link href="../../../../feeds/atom.xml" type="application/atom+xml" rel="alternate"
-              title="灰.白 ATOM Feed" />
+              title="Vim.Linux ATOM Feed" />
 </head>
 <body data-spy="scroll" data-target="#scrollspy">
     <div id="wrapper">
@@ -48,7 +48,7 @@
         <div id="sidebar-wrapper-small" class="twitchy-background">
             <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
                 <li>
-        <a href="../../../.." title="灰.白" class="collapsed">
+        <a href="../../../.." title="Vim.Linux" class="collapsed">
             <span class="glyphicon glyphicon-home"></span>
         </a>
     </li>
@@ -251,7 +251,7 @@
                             工具集
                         </a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="../../../../pages/aboutme.html">
                             <i class="fa fa-file-text padding-small"></i>
                             About
@@ -389,7 +389,7 @@
     <div class="publish-info-block">
         <small>
             <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2016-06-02T00:00:00+08:00"> 2016-06-02 四</time>
+                <i class="fa fa-calendar padding-small"></i><time datetime="2016-06-02T00:00:00+08:00"> 2016-06-02 Thu</time>
             </span>
             <span class="category">
                 <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/zi-dong-hua-ce-shi-ltp.html">自动化测试-LTP</a>
@@ -407,7 +407,7 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    <body><p>本节将重点分析commands部分的用例。</p>
+                    </head><body><p>本节将重点分析commands部分的用例。</p>
 <h4 id="commandzhu-yao-yong-li">Command主要用例</h4>
 <p>主要case包括：</p>
 <table class="table table-hover table-striped">
@@ -745,7 +745,7 @@ LD_LIBRARY_PATH=. ./main
 </pre></div>
 <p>通过结果判定的设置来看，主要验证ar命令的库的创建、库列表信息导出、往库中添加文件、移除库中的文件。</p>
 <p>测试代码片段：</p>
-<p>标志&ldquo;a"：在 PositionName 参数标识的现有文件后安置指定的文件。</p>
+<p>标志“a"：在 PositionName 参数标识的现有文件后安置指定的文件。</p>
 <div class="highlight"><pre><span></span><span class="x">ar -cr </span><span class="p">$</span><span class="nv">TCtmp</span><span class="x">/lib.a file1.in file3.in</span>
 <span class="x">crtest</span>
 
@@ -794,7 +794,7 @@ LD_LIBRARY_PATH=. ./main
 <p>(28) Signal SIGQUIT</p>
 <p>(29) Signal SIGHUP; ar should not remove archive that existed before invocation.</p>
 <p>(30) Signal SIGINIT; ar should not remove archive that existed before invocation.</p>
-<p>(31) Signal SIGQUIT; ar should not remove archive that existed before invocation.</p></body>
+<p>(31) Signal SIGQUIT; ar should not remove archive that existed before invocation.</p>
                 </div>
                 <footer class="text-right">
                     <p>by peng.lee</p>
@@ -817,15 +817,14 @@ LD_LIBRARY_PATH=. ./main
     </article>
 </section>
 
-<!--"-->
 <footer>
     <hr>
     <div class="row">
         <div class="col-lg-9 text-center">
             <p><small>
                 <a href="http://www.reliablecounter.com" target="_blank"><img src="http://www.reliablecounter.com/count.php?page=https://king32783784.github.io/&digit=style/plain/6/&reloads=0" alt="" title="" border="0"></a><br /><a href="http://www.fabbly.com" target="_blank" style="font-family: Geneva, Arial; font-size: 9px; color: #330010; text-decoration: none;"></a>
-                Copyright</a>  </a>
-                <!--&middot;-->                    &copy;2009 李鹏
+                Built by <a href="http://docs.getpelican.com/en/latest">Pelican</a> / <a href="https://github.com/ingwinlu/pelican-twitchy">pelican-twitchy</a>
+                &middot;                    &copy; 2016 peng.lee
             </small></p>
         </div>
     </div>

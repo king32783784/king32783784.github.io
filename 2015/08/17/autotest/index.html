@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="penglee" />
         <meta name="keywords" content="autotest" />
-        <meta name="description" content="使用和添加测试分析器 添加一个分析器和添加一个测试项目类似.每个分析器都有自己的子目录(client/profilers或你可以查看profilers/),一个标准例子: 一个控制文件. profilers/myprofiler/control 分析器控制脚本. profilers/myprofiler.py 分析器的源码(如果不仅仅是控制脚本) 我们来看一下已有的分析器. autotest提供readprofile,尽管这不是个最简单的方式,但是能够看到你想了解的全部信息.readprofile支持编译近内核. 控制文件非常简单,像这样: job.profilers.add(&#39;readprofile&#39;) job.run_test(&#39;sleeptest&#39;, 1) job.profilers.delete(&#39;readprofile&#39;) 只是说明&#34;请再以下测试中使用readprofile&#34;.一次测试,如果想添加多个分析器,可以多次调用profilers.add. 还有源码包&#34;util-linux-2.12r.tar.bz2&#34;,将会解压到src/.python控制脚本将定义,分析器要做的大部分事情.通过查看readprofile ..." />
+        <meta name="description" content="使用和添加测试分析器 添加一个分析器和添加一个测试项目类似.每个分析器都有自己的子目录(client/profilers或你可以查看profilers/),一个标准例子: 一个控制文件. profilers/myprofiler/control 分析器控制脚本. profilers/myprofiler.py 分析器的源码(如果不仅仅是控制脚本) 我们来看一下已有的分析器. autotest提供readprofile,尽管这不是个最简单的方式,但是能够看到你想了解的全部信息.readprofile支持编译近内核. 控制文件非常简单,像这样: job.profilers.add(&#39;readprofile&#39;) job.run_test(&#39;sleeptest&#39;, 1) job.profilers.delete(&#39;readprofile&#39;) 只是说明&#34;请再以下测试中使用readprofile&#34;.一次测试,如果想添加多个分析器,可以多次调用profilers.add. 还有源码包&#34;util-linux-2.12r.tar.bz2&#34;,将会解压到src/.python控制脚本将定义,分析器要做的大部分事情.通过查看readprofile …" />
 
 <!-- Open Graph tags -->
-<meta property="og:site_name" content="灰.白"/>
+<meta property="og:site_name" content="Vim.Linux"/>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="Autotest-Using and developing job profilers"/>
     <meta property="og:url" content="../../../../2015/08/17/autotest/"/>
-    <meta property="og:description" content="使用和添加测试分析器 添加一个分析器和添加一个测试项目类似.每个分析器都有自己的子目录(client/profilers或你可以查看profilers/),一个标准例子: 一个控制文件. profilers/myprofiler/control 分析器控制脚本. profilers/myprofiler.py 分析器的源码(如果不仅仅是控制脚本) 我们来看一下已有的分析器. autotest提供readprofile,尽管这不是个最简单的方式,但是能够看到你想了解的全部信息.readprofile支持编译近内核. 控制文件非常简单,像这样: job.profilers.add(&#39;readprofile&#39;) job.run_test(&#39;sleeptest&#39;, 1) job.profilers.delete(&#39;readprofile&#39;) 只是说明&#34;请再以下测试中使用readprofile&#34;.一次测试,如果想添加多个分析器,可以多次调用profilers.add. 还有源码包&#34;util-linux-2.12r.tar.bz2&#34;,将会解压到src/.python控制脚本将定义,分析器要做的大部分事情.通过查看readprofile ..."/>
+    <meta property="og:description" content="使用和添加测试分析器 添加一个分析器和添加一个测试项目类似.每个分析器都有自己的子目录(client/profilers或你可以查看profilers/),一个标准例子: 一个控制文件. profilers/myprofiler/control 分析器控制脚本. profilers/myprofiler.py 分析器的源码(如果不仅仅是控制脚本) 我们来看一下已有的分析器. autotest提供readprofile,尽管这不是个最简单的方式,但是能够看到你想了解的全部信息.readprofile支持编译近内核. 控制文件非常简单,像这样: job.profilers.add(&#39;readprofile&#39;) job.run_test(&#39;sleeptest&#39;, 1) job.profilers.delete(&#39;readprofile&#39;) 只是说明&#34;请再以下测试中使用readprofile&#34;.一次测试,如果想添加多个分析器,可以多次调用profilers.add. 还有源码包&#34;util-linux-2.12r.tar.bz2&#34;,将会解压到src/.python控制脚本将定义,分析器要做的大部分事情.通过查看readprofile …"/>
     <meta property="article:published_time" content="2015-08-17" />
     <meta property="article:section" content="自动化测试-Autotest" />
         <meta property="article:tag" content="autotest" />
@@ -22,7 +22,7 @@
         <meta property="og:image"
               content="../../../../favicon.png"/>
 
-    <title>Autotest-Using and developing job profilers - 灰.白</title>
+    <title>Autotest-Using and developing job profilers - Vim.Linux</title>
 
         <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
 
@@ -40,7 +40,7 @@
     
     <!-- Feeds -->
         <link href="../../../../feeds/atom.xml" type="application/atom+xml" rel="alternate"
-              title="灰.白 ATOM Feed" />
+              title="Vim.Linux ATOM Feed" />
 </head>
 <body data-spy="scroll" data-target="#scrollspy">
     <div id="wrapper">
@@ -48,7 +48,7 @@
         <div id="sidebar-wrapper-small" class="twitchy-background">
             <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
                 <li>
-        <a href="../../../.." title="灰.白" class="collapsed">
+        <a href="../../../.." title="Vim.Linux" class="collapsed">
             <span class="glyphicon glyphicon-home"></span>
         </a>
     </li>
@@ -251,7 +251,7 @@
                             工具集
                         </a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="../../../../pages/aboutme.html">
                             <i class="fa fa-file-text padding-small"></i>
                             About
@@ -389,7 +389,7 @@
     <div class="publish-info-block">
         <small>
             <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2015-08-17T00:00:00+08:00"> 2015-08-17 一</time>
+                <i class="fa fa-calendar padding-small"></i><time datetime="2015-08-17T00:00:00+08:00"> 2015-08-17 Mon</time>
             </span>
             <span class="category">
                 <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/zi-dong-hua-ce-shi-autotest.html">自动化测试-Autotest</a>
@@ -407,7 +407,7 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+                    </head><body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
 <h2 id="shi-yong-he-tian-jia-ce-shi-fen-xi-qi">使用和添加测试分析器</h2>
 <p>添加一个分析器和添加一个测试项目类似.每个分析器都有自己的子目录(client/profilers或你可以查看profilers/),一个标准例子:</p>
 <ul>
@@ -486,7 +486,7 @@ self.cmd = self.srcdir + '/sys-utils/readprofile'
 <p>只需要在profilers下创建一个新目录,然后添加自己的控制文件,源码和控制脚本.最简单的方式是直接复制已有的readprofile.py为mytest.py,并且修改顶部的类名.</p>
 <p>Top<a href="">^</a></p>
 <p>上一篇<a href="https://king32783784.github.io/2015/08/16/autotest/">Autotest：Autotest-add test&gt;&gt;</a>
-下一篇<a href="https://king32783784.github.io/2015/08/18/autotest/">Autotest:Autotest-Linux distribution detection&gt;&gt;&gt;</a></p></body>
+下一篇<a href="https://king32783784.github.io/2015/08/18/autotest/">Autotest:Autotest-Linux distribution detection&gt;&gt;&gt;</a></p>
                 </div>
                 <footer class="text-right">
                     <p>by penglee</p>
@@ -509,15 +509,14 @@ self.cmd = self.srcdir + '/sys-utils/readprofile'
     </article>
 </section>
 
-<!--"-->
 <footer>
     <hr>
     <div class="row">
         <div class="col-lg-9 text-center">
             <p><small>
                 <a href="http://www.reliablecounter.com" target="_blank"><img src="http://www.reliablecounter.com/count.php?page=https://king32783784.github.io/&digit=style/plain/6/&reloads=0" alt="" title="" border="0"></a><br /><a href="http://www.fabbly.com" target="_blank" style="font-family: Geneva, Arial; font-size: 9px; color: #330010; text-decoration: none;"></a>
-                Copyright</a>  </a>
-                <!--&middot;-->                    &copy;2009 李鹏
+                Built by <a href="http://docs.getpelican.com/en/latest">Pelican</a> / <a href="https://github.com/ingwinlu/pelican-twitchy">pelican-twitchy</a>
+                &middot;                    &copy; 2016 peng.lee
             </small></p>
         </div>
     </div>

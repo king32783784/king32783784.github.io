@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="peng.lee" />
         <meta name="keywords" content="Selenium" />
-        <meta name="description" content="expected_conditions 模块的源码分析 from selenium.common.exceptions import NoSuchElementException from selenium.common.exceptions import NoSuchFrameException from selenium.common.exceptions import StateElementReferenceException from selenium.common.exceptions import WebDriverException from selenium.common.exceptions import NoAlertPresentException 导入异常处理模块。 title_is class title_is(object): def __init__(self, title) self.title = title def __call__(self, driver) return self ..." />
+        <meta name="description" content="expected_conditions 模块的源码分析 from selenium.common.exceptions import NoSuchElementException from selenium.common.exceptions import NoSuchFrameException from selenium.common.exceptions import StateElementReferenceException from selenium.common.exceptions import WebDriverException from selenium.common.exceptions import NoAlertPresentException 导入异常处理模块。 title_is class title_is(object): def __init__(self, title) self.title = title def __call__(self, driver) return self …" />
 
 <!-- Open Graph tags -->
-<meta property="og:site_name" content="灰.白"/>
+<meta property="og:site_name" content="Vim.Linux"/>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="selenium-expected_conditions源码分析"/>
     <meta property="og:url" content="../../../../2015/02/03/selenium/"/>
-    <meta property="og:description" content="expected_conditions 模块的源码分析 from selenium.common.exceptions import NoSuchElementException from selenium.common.exceptions import NoSuchFrameException from selenium.common.exceptions import StateElementReferenceException from selenium.common.exceptions import WebDriverException from selenium.common.exceptions import NoAlertPresentException 导入异常处理模块。 title_is class title_is(object): def __init__(self, title) self.title = title def __call__(self, driver) return self ..."/>
+    <meta property="og:description" content="expected_conditions 模块的源码分析 from selenium.common.exceptions import NoSuchElementException from selenium.common.exceptions import NoSuchFrameException from selenium.common.exceptions import StateElementReferenceException from selenium.common.exceptions import WebDriverException from selenium.common.exceptions import NoAlertPresentException 导入异常处理模块。 title_is class title_is(object): def __init__(self, title) self.title = title def __call__(self, driver) return self …"/>
     <meta property="article:published_time" content="2015-02-03" />
     <meta property="article:section" content="自动化测试-Selenium" />
         <meta property="article:tag" content="Selenium" />
@@ -22,7 +22,7 @@
         <meta property="og:image"
               content="../../../../favicon.png"/>
 
-    <title>selenium-expected_conditions源码分析 - 灰.白</title>
+    <title>selenium-expected_conditions源码分析 - Vim.Linux</title>
 
         <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
 
@@ -40,7 +40,7 @@
     
     <!-- Feeds -->
         <link href="../../../../feeds/atom.xml" type="application/atom+xml" rel="alternate"
-              title="灰.白 ATOM Feed" />
+              title="Vim.Linux ATOM Feed" />
 </head>
 <body data-spy="scroll" data-target="#scrollspy">
     <div id="wrapper">
@@ -48,7 +48,7 @@
         <div id="sidebar-wrapper-small" class="twitchy-background">
             <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
                 <li>
-        <a href="../../../.." title="灰.白" class="collapsed">
+        <a href="../../../.." title="Vim.Linux" class="collapsed">
             <span class="glyphicon glyphicon-home"></span>
         </a>
     </li>
@@ -251,7 +251,7 @@
                             工具集
                         </a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="../../../../pages/aboutme.html">
                             <i class="fa fa-file-text padding-small"></i>
                             About
@@ -389,7 +389,7 @@
     <div class="publish-info-block">
         <small>
             <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2015-02-03T00:00:00+08:00"> 2015-02-03 二</time>
+                <i class="fa fa-calendar padding-small"></i><time datetime="2015-02-03T00:00:00+08:00"> 2015-02-03 Tue</time>
             </span>
             <span class="category">
                 <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/zi-dong-hua-ce-shi-selenium.html">自动化测试-Selenium</a>
@@ -407,7 +407,7 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    <body><h4 id="expected_conditions-mo-kuai-de-yuan-ma-fen-xi">expected_conditions 模块的源码分析</h4>
+                    </head><body><h4 id="expected_conditions-mo-kuai-de-yuan-ma-fen-xi">expected_conditions 模块的源码分析</h4>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">selenium.common.exceptions</span> <span class="kn">import</span> <span class="n">NoSuchElementException</span>
 <span class="kn">from</span> <span class="nn">selenium.common.exceptions</span> <span class="kn">import</span> <span class="n">NoSuchFrameException</span>
 <span class="kn">from</span> <span class="nn">selenium.common.exceptions</span> <span class="kn">import</span> <span class="n">StateElementReferenceException</span>
@@ -445,7 +445,7 @@
 </pre></div>
 <p>说明：检查页面的DOM上是否存在指定元素。该元素并不需要是可见的。 locator - 用于找到元素的元组，包括找到元素的方式和值.
 返回找到元素。</p>
-<p>用法：例如判断当前页面是否存在id为&ldquo;kw"的元素，presence_of_located((By.ID, "kw"))</p>
+<p>用法：例如判断当前页面是否存在id为“kw"的元素，presence_of_located((By.ID, "kw"))</p>
 <p>By中包含ID、XPATH、LINK_TEXT、 PARTIAL_LINK_TEXT、NAME、TAG_NAME、CLASS_NAME、CSS_SELECTOR</p>
 <p>_find_elemnt()用于查找元素，简单看一下_find_elment()方法的实现：</p>
 <div class="highlight"><pre><span></span>def _find_element(driver, by)
@@ -470,7 +470,7 @@
 <p>说明：期望检查元素是否出现在页面的DOM上并可见。 可见性意味着元素不仅显示，而且具有大于0的高度和宽度。
 locator - 用于找到元素的元组，包括找到元素的方式和值.
 返回找到的元素</p>
-<p>方法：例如判断当前页面是否存在name为&ldquo;wd"的元素，并且该元素可视，visibility_of_element_located((By.NAME, "wd"))</p>
+<p>方法：例如判断当前页面是否存在name为“wd"的元素，并且该元素可视，visibility_of_element_located((By.NAME, "wd"))</p>
 <p>调用_element_if_visible()方法检查元素是否存在并可视</p>
 <div class="highlight"><pre><span></span>def _element_if_visible(element, visibility=True):
     retrun element if element.is_displayed() == visibility else False
@@ -525,7 +525,7 @@ def __call__(self, driver):
             <span class="k">return</span> <span class="nb">False</span>
 </pre></div>
 <p>说明： 期望检查给定的文本是否存在于指定的element.locator的text中。存在返回True,不存在返回false.
-用法： 例如检查名称为&rdquo;tj_trhao123"的元素文本中是否包含"hao123",((By.NAME, "tj_trhao123"), "hao123"))</p>
+用法： 例如检查名称为”tj_trhao123"的元素文本中是否包含"hao123",((By.NAME, "tj_trhao123"), "hao123"))</p>
 <h5 id="text_to_be_present_in_element_value">text_to_be_present_in_element_value</h5>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">text_to_be_present_in_element_value</span>(<span class="n">object</span>):
     <span class="n">def</span> <span class="n">__init__</span>(<span class="k">self</span>, <span class="n">locator</span>, <span class="n">text_</span>):
@@ -544,7 +544,7 @@ def __call__(self, driver):
             <span class="k">return</span> <span class="nb">False</span>
 </pre></div>
 <p>说明： 期望检查给定文本是否存在于元素的定位器定位到元素的文本中。存在返回True，不存在返回false。
-用法： 判断"百度一下&ldquo;，是否存在于id为su的元素的&rdquo;value"属性值中，text_to_be_present_in_element_value((By.ID, "su"), "百度一下"))</p>
+用法： 判断"百度一下“，是否存在于id为su的元素的”value"属性值中，text_to_be_present_in_element_value((By.ID, "su"), "百度一下"))</p>
 <p>从代码中可以看到同样是通过_find_element找到元素，并且通过get_attribute获取元素值。</p>
 <h5 id="frame_to_be_available_and_switch_to_it">frame_to_be_available_and_switch_to_it</h5>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">frame_to_be_available_and_switch_to_it</span>(<span class="n">object</span>):
@@ -686,7 +686,7 @@ class SwitchTo:
             <span class="k">return</span> <span class="nb">False</span>
 </pre></div>
 <p>说明：判断是否有弹窗（一般为警告信息）。有返回alert,没有返回False.</p>
-<p><img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/X0VEL34U0E.jpg" width="480"/></p></body>
+<p><img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/X0VEL34U0E.jpg" width="480"/></p>
                 </div>
                 <footer class="text-right">
                     <p>by peng.lee</p>
@@ -709,15 +709,14 @@ class SwitchTo:
     </article>
 </section>
 
-<!--"-->
 <footer>
     <hr>
     <div class="row">
         <div class="col-lg-9 text-center">
             <p><small>
                 <a href="http://www.reliablecounter.com" target="_blank"><img src="http://www.reliablecounter.com/count.php?page=https://king32783784.github.io/&digit=style/plain/6/&reloads=0" alt="" title="" border="0"></a><br /><a href="http://www.fabbly.com" target="_blank" style="font-family: Geneva, Arial; font-size: 9px; color: #330010; text-decoration: none;"></a>
-                Copyright</a>  </a>
-                <!--&middot;-->                    &copy;2009 李鹏
+                Built by <a href="http://docs.getpelican.com/en/latest">Pelican</a> / <a href="https://github.com/ingwinlu/pelican-twitchy">pelican-twitchy</a>
+                &middot;                    &copy; 2016 peng.lee
             </small></p>
         </div>
     </div>

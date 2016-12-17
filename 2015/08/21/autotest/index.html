@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="penglee" />
         <meta name="keywords" content="autotest" />
-        <meta name="description" content="KVM支持 如前所述，Autoserv 支持控制虚拟机。这个对象设计的可以支持虚拟机管理/hypervisors。一开始，只支持kvm,为了支持KVM，你需要做： 1.创建虚拟机，运行在虚拟层的机器 2.创建KVM对象，通过get()指定源，KVM InstallableObject安装到指定的虚拟机。 3.创建KVMGuest对象，需要指定做其他事情，KVM对象在上面已创建。 4.使用KVMGuest对象运行一些其他类型的虚拟机命令，如改变内核，运行autotest 可以通过查看server/kvm.py 和server/hosts/kvm_guest.py查看其他信息，尤其是KVM.install()的前面的函数和KVMGuest的函数构造。 下面给出一个Autoserv 控制文件的例子，第5行包括解析获取addresslist 列表，这个控制文件是由python实现。 remote_host = hosts.SSHHost(&#34;192.168.1.1&#34;) kvm_on_remote_host ..." />
+        <meta name="description" content="KVM支持 如前所述，Autoserv 支持控制虚拟机。这个对象设计的可以支持虚拟机管理/hypervisors。一开始，只支持kvm,为了支持KVM，你需要做： 1.创建虚拟机，运行在虚拟层的机器 2.创建KVM对象，通过get()指定源，KVM InstallableObject安装到指定的虚拟机。 3.创建KVMGuest对象，需要指定做其他事情，KVM对象在上面已创建。 4.使用KVMGuest对象运行一些其他类型的虚拟机命令，如改变内核，运行autotest 可以通过查看server/kvm.py 和server/hosts/kvm_guest.py查看其他信息，尤其是KVM.install()的前面的函数和KVMGuest的函数构造。 下面给出一个Autoserv 控制文件的例子，第5行包括解析获取addresslist 列表，这个控制文件是由python实现。 remote_host = hosts.SSHHost(&#34;192.168.1.1&#34;) kvm_on_remote_host …" />
 
 <!-- Open Graph tags -->
-<meta property="og:site_name" content="灰.白"/>
+<meta property="og:site_name" content="Vim.Linux"/>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="Autotest-Autotest Remote (Autoserv)(二）"/>
     <meta property="og:url" content="../../../../2015/08/21/autotest/"/>
-    <meta property="og:description" content="KVM支持 如前所述，Autoserv 支持控制虚拟机。这个对象设计的可以支持虚拟机管理/hypervisors。一开始，只支持kvm,为了支持KVM，你需要做： 1.创建虚拟机，运行在虚拟层的机器 2.创建KVM对象，通过get()指定源，KVM InstallableObject安装到指定的虚拟机。 3.创建KVMGuest对象，需要指定做其他事情，KVM对象在上面已创建。 4.使用KVMGuest对象运行一些其他类型的虚拟机命令，如改变内核，运行autotest 可以通过查看server/kvm.py 和server/hosts/kvm_guest.py查看其他信息，尤其是KVM.install()的前面的函数和KVMGuest的函数构造。 下面给出一个Autoserv 控制文件的例子，第5行包括解析获取addresslist 列表，这个控制文件是由python实现。 remote_host = hosts.SSHHost(&#34;192.168.1.1&#34;) kvm_on_remote_host ..."/>
+    <meta property="og:description" content="KVM支持 如前所述，Autoserv 支持控制虚拟机。这个对象设计的可以支持虚拟机管理/hypervisors。一开始，只支持kvm,为了支持KVM，你需要做： 1.创建虚拟机，运行在虚拟层的机器 2.创建KVM对象，通过get()指定源，KVM InstallableObject安装到指定的虚拟机。 3.创建KVMGuest对象，需要指定做其他事情，KVM对象在上面已创建。 4.使用KVMGuest对象运行一些其他类型的虚拟机命令，如改变内核，运行autotest 可以通过查看server/kvm.py 和server/hosts/kvm_guest.py查看其他信息，尤其是KVM.install()的前面的函数和KVMGuest的函数构造。 下面给出一个Autoserv 控制文件的例子，第5行包括解析获取addresslist 列表，这个控制文件是由python实现。 remote_host = hosts.SSHHost(&#34;192.168.1.1&#34;) kvm_on_remote_host …"/>
     <meta property="article:published_time" content="2015-08-21" />
     <meta property="article:section" content="自动化测试-Autotest" />
         <meta property="article:tag" content="autotest" />
@@ -22,7 +22,7 @@
         <meta property="og:image"
               content="../../../../favicon.png"/>
 
-    <title>Autotest-Autotest Remote (Autoserv)(二） - 灰.白</title>
+    <title>Autotest-Autotest Remote (Autoserv)(二） - Vim.Linux</title>
 
         <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
 
@@ -40,7 +40,7 @@
     
     <!-- Feeds -->
         <link href="../../../../feeds/atom.xml" type="application/atom+xml" rel="alternate"
-              title="灰.白 ATOM Feed" />
+              title="Vim.Linux ATOM Feed" />
 </head>
 <body data-spy="scroll" data-target="#scrollspy">
     <div id="wrapper">
@@ -48,7 +48,7 @@
         <div id="sidebar-wrapper-small" class="twitchy-background">
             <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
                 <li>
-        <a href="../../../.." title="灰.白" class="collapsed">
+        <a href="../../../.." title="Vim.Linux" class="collapsed">
             <span class="glyphicon glyphicon-home"></span>
         </a>
     </li>
@@ -251,7 +251,7 @@
                             工具集
                         </a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="../../../../pages/aboutme.html">
                             <i class="fa fa-file-text padding-small"></i>
                             About
@@ -389,7 +389,7 @@
     <div class="publish-info-block">
         <small>
             <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2015-08-21T00:00:00+08:00"> 2015-08-21 五</time>
+                <i class="fa fa-calendar padding-small"></i><time datetime="2015-08-21T00:00:00+08:00"> 2015-08-21 Fri</time>
             </span>
             <span class="category">
                 <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/zi-dong-hua-ce-shi-autotest.html">自动化测试-Autotest</a>
@@ -407,7 +407,7 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+                    </head><body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
 <h3 id="kvmzhi-chi">KVM支持</h3>
 <p>如前所述，Autoserv 支持控制虚拟机。这个对象设计的可以支持虚拟机管理/hypervisors。一开始，只支持kvm,为了支持KVM，你需要做：
     1.创建虚拟机，运行在虚拟层的机器
@@ -584,7 +584,7 @@ iface vhost2 inet static
 </ul>
 <p>Top<a href="">^</a></p>
 <p>上一篇<a href="https://king32783784.github.io/2015/08/20/autotest/">Autotest： Autotest-Autotest Remote (Autoserv)(一）&gt;&gt;</a>
-下一篇<a href="https://king32783784.github.io/2015/08/22/autotest/">Autotest:Autotest-Autotest Remote (Autoserv)(三）&gt;&gt;&gt;</a></p></body>
+下一篇<a href="https://king32783784.github.io/2015/08/22/autotest/">Autotest:Autotest-Autotest Remote (Autoserv)(三）&gt;&gt;&gt;</a></p>
                 </div>
                 <footer class="text-right">
                     <p>by penglee</p>
@@ -607,15 +607,14 @@ iface vhost2 inet static
     </article>
 </section>
 
-<!--"-->
 <footer>
     <hr>
     <div class="row">
         <div class="col-lg-9 text-center">
             <p><small>
                 <a href="http://www.reliablecounter.com" target="_blank"><img src="http://www.reliablecounter.com/count.php?page=https://king32783784.github.io/&digit=style/plain/6/&reloads=0" alt="" title="" border="0"></a><br /><a href="http://www.fabbly.com" target="_blank" style="font-family: Geneva, Arial; font-size: 9px; color: #330010; text-decoration: none;"></a>
-                Copyright</a>  </a>
-                <!--&middot;-->                    &copy;2009 李鹏
+                Built by <a href="http://docs.getpelican.com/en/latest">Pelican</a> / <a href="https://github.com/ingwinlu/pelican-twitchy">pelican-twitchy</a>
+                &middot;                    &copy; 2016 peng.lee
             </small></p>
         </div>
     </div>

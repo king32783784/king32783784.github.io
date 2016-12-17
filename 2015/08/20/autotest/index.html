@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="penglee" />
         <meta name="keywords" content="autotest" />
-        <meta name="description" content="Autoserv 是“自动化机器控制“的框架 Autoserv 目的是控制机器，它可以： 电源管理 安装内核 修改bootloader * 运行任意命令 运行Autotest Local(客户端）测试 传输文件 被控制的机器可以是： 本机 远程机器（通过ssh 和 conmux) 虚拟机(通过ＫＶＭ） 控制文件 类似于autotest,Autoserv同样使用控制文件。这些控制文件和autotest使用不同的命令，但是像autotest一样包含一些内部的可以调研python解释器的功能。 这里有一个控制文件的例子，用来控制远程host安装.dep内核。若文件存在server/目录并且命名为example.control,可以在server/目录通过./autotest-remote example.control调用： remote_host = host.SSHHost(&#34;192.168.1.1&#34;) print remote_host.run ..." />
+        <meta name="description" content="Autoserv 是“自动化机器控制“的框架 Autoserv 目的是控制机器，它可以： 电源管理 安装内核 修改bootloader * 运行任意命令 运行Autotest Local(客户端）测试 传输文件 被控制的机器可以是： 本机 远程机器（通过ssh 和 conmux) 虚拟机(通过ＫＶＭ） 控制文件 类似于autotest,Autoserv同样使用控制文件。这些控制文件和autotest使用不同的命令，但是像autotest一样包含一些内部的可以调研python解释器的功能。 这里有一个控制文件的例子，用来控制远程host安装.dep内核。若文件存在server/目录并且命名为example.control,可以在server/目录通过./autotest-remote example.control调用： remote_host = host.SSHHost(&#34;192.168.1.1&#34;) print remote_host.run …" />
 
 <!-- Open Graph tags -->
-<meta property="og:site_name" content="灰.白"/>
+<meta property="og:site_name" content="Vim.Linux"/>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="Autotest-Autotest Remote (Autoserv)（一）"/>
     <meta property="og:url" content="../../../../2015/08/20/autotest/"/>
-    <meta property="og:description" content="Autoserv 是“自动化机器控制“的框架 Autoserv 目的是控制机器，它可以： 电源管理 安装内核 修改bootloader * 运行任意命令 运行Autotest Local(客户端）测试 传输文件 被控制的机器可以是： 本机 远程机器（通过ssh 和 conmux) 虚拟机(通过ＫＶＭ） 控制文件 类似于autotest,Autoserv同样使用控制文件。这些控制文件和autotest使用不同的命令，但是像autotest一样包含一些内部的可以调研python解释器的功能。 这里有一个控制文件的例子，用来控制远程host安装.dep内核。若文件存在server/目录并且命名为example.control,可以在server/目录通过./autotest-remote example.control调用： remote_host = host.SSHHost(&#34;192.168.1.1&#34;) print remote_host.run ..."/>
+    <meta property="og:description" content="Autoserv 是“自动化机器控制“的框架 Autoserv 目的是控制机器，它可以： 电源管理 安装内核 修改bootloader * 运行任意命令 运行Autotest Local(客户端）测试 传输文件 被控制的机器可以是： 本机 远程机器（通过ssh 和 conmux) 虚拟机(通过ＫＶＭ） 控制文件 类似于autotest,Autoserv同样使用控制文件。这些控制文件和autotest使用不同的命令，但是像autotest一样包含一些内部的可以调研python解释器的功能。 这里有一个控制文件的例子，用来控制远程host安装.dep内核。若文件存在server/目录并且命名为example.control,可以在server/目录通过./autotest-remote example.control调用： remote_host = host.SSHHost(&#34;192.168.1.1&#34;) print remote_host.run …"/>
     <meta property="article:published_time" content="2015-08-20" />
     <meta property="article:section" content="自动化测试-Autotest" />
         <meta property="article:tag" content="autotest" />
@@ -22,7 +22,7 @@
         <meta property="og:image"
               content="../../../../favicon.png"/>
 
-    <title>Autotest-Autotest Remote (Autoserv)（一） - 灰.白</title>
+    <title>Autotest-Autotest Remote (Autoserv)（一） - Vim.Linux</title>
 
         <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
 
@@ -40,7 +40,7 @@
     
     <!-- Feeds -->
         <link href="../../../../feeds/atom.xml" type="application/atom+xml" rel="alternate"
-              title="灰.白 ATOM Feed" />
+              title="Vim.Linux ATOM Feed" />
 </head>
 <body data-spy="scroll" data-target="#scrollspy">
     <div id="wrapper">
@@ -48,7 +48,7 @@
         <div id="sidebar-wrapper-small" class="twitchy-background">
             <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
                 <li>
-        <a href="../../../.." title="灰.白" class="collapsed">
+        <a href="../../../.." title="Vim.Linux" class="collapsed">
             <span class="glyphicon glyphicon-home"></span>
         </a>
     </li>
@@ -251,7 +251,7 @@
                             工具集
                         </a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="../../../../pages/aboutme.html">
                             <i class="fa fa-file-text padding-small"></i>
                             About
@@ -389,7 +389,7 @@
     <div class="publish-info-block">
         <small>
             <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2015-08-20T00:00:00+08:00"> 2015-08-20 四</time>
+                <i class="fa fa-calendar padding-small"></i><time datetime="2015-08-20T00:00:00+08:00"> 2015-08-20 Thu</time>
             </span>
             <span class="category">
                 <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/zi-dong-hua-ce-shi-autotest.html">自动化测试-Autotest</a>
@@ -407,8 +407,8 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
-<p>Autoserv 是&ldquo;自动化机器控制&ldquo;的框架
+                    </head><body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
+<p>Autoserv 是“自动化机器控制“的框架
 Autoserv 目的是控制机器，它可以：</p>
 <ul>
 <li>电源管理</li>
@@ -482,7 +482,7 @@ ssh运行命令，通过scp进行文件传输。</p>
 <p>Site host 是一个空类，可以添加特殊的方法或支持所以类型hostts的属性。它定义在server/hosts/site_host_py文件中，不过可能是空的。
 创建这样的一个类的灵感来自于如更新bios，侦测硬件版本或一些对普通用户不常用的操作。</p>
 <h4 id="kvmguest">KVMGuest</h4>
-<p>KVMGuest 表示可以运行程序的KVM 虚拟机。　它必须绑定到其他host, 这些机器实际上运行于虚拟层。KVMGuest和SSHHost非常类似，但它可以通过hardreset方法（Guest中）调用hypervisor的命令去实现&rdquo;硬复位&ldquo;.可以通过查看<a href="">KVM section</a>查看更多的KVM和KVMguest信息。</p>
+<p>KVMGuest 表示可以运行程序的KVM 虚拟机。　它必须绑定到其他host, 这些机器实际上运行于虚拟层。KVMGuest和SSHHost非常类似，但它可以通过hardreset方法（Guest中）调用hypervisor的命令去实现”硬复位“.可以通过查看<a href="">KVM section</a>查看更多的KVM和KVMguest信息。</p>
 <h4 id="bootloader">Bootloader</h4>
 <p>Boottool 是一个查询和修改bootloader文件的perl脚本。Autoserv提供Bootloader类，是围绕boottool的包装。Ａutoserv 在需要时会第一时间将boottool脚本自动复制到一个临时目录。可以通过查看server/hosts/bootloader.py查看支持方法的信息。其中最重要的一个方法是add_kernel()</p>
 <p>当添加了一个新内核是，boottool会复用上一个内核的命令行及配置，来实现一个新的启动项菜单。</p>
@@ -506,7 +506,7 @@ ssh运行命令，通过scp进行文件传输。</p>
 <ul>
 <li>run()运行一个控制文件的语法如下：run(control_file, results_dir, host).control_file 参数支持get()和intallableObject相同类型的值。</li>
 </ul>
-<p>下面是一个Autoserv控制文件和运行Autotest job的例子。测试结果会传输到server的&ldquo;job_results"目录下。
+<p>下面是一个Autoserv控制文件和运行Autotest job的例子。测试结果会传输到server的“job_results"目录下。
     remote_host = hosts.SSHHost("192.168.1.1")</p>
 <div class="highlight"><pre><span></span>at = autotest.Autotest()
 at.get("/var/local/autotest/client")
@@ -569,7 +569,7 @@ print "Done"
 <p>未完待续</p>
 <p>Top<a href="">^</a></p>
 <p>上一篇<a href="https://king32783784.github.io/2015/08/19/autotest/">Autotest：Autotest-others&gt;&gt;</a>
-下一篇<a href="https://king32783784.github.io/2015/08/21/autotest/">Autotest:Autotest-Autotest Remote (Autoserv)(二）&gt;&gt;&gt;</a></p></body>
+下一篇<a href="https://king32783784.github.io/2015/08/21/autotest/">Autotest:Autotest-Autotest Remote (Autoserv)(二）&gt;&gt;&gt;</a></p>
                 </div>
                 <footer class="text-right">
                     <p>by penglee</p>
@@ -592,15 +592,14 @@ print "Done"
     </article>
 </section>
 
-<!--"-->
 <footer>
     <hr>
     <div class="row">
         <div class="col-lg-9 text-center">
             <p><small>
                 <a href="http://www.reliablecounter.com" target="_blank"><img src="http://www.reliablecounter.com/count.php?page=https://king32783784.github.io/&digit=style/plain/6/&reloads=0" alt="" title="" border="0"></a><br /><a href="http://www.fabbly.com" target="_blank" style="font-family: Geneva, Arial; font-size: 9px; color: #330010; text-decoration: none;"></a>
-                Copyright</a>  </a>
-                <!--&middot;-->                    &copy;2009 李鹏
+                Built by <a href="http://docs.getpelican.com/en/latest">Pelican</a> / <a href="https://github.com/ingwinlu/pelican-twitchy">pelican-twitchy</a>
+                &middot;                    &copy; 2016 peng.lee
             </small></p>
         </div>
     </div>

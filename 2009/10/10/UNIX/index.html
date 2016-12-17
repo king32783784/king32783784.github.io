@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="penglee" />
         <meta name="keywords" content="unix编程" />
-        <meta name="description" content="一、追加至一个文件 一个进程，将数据添加到一个文件尾端。早期不支持open的O_APPEND选项。所有程序被编写成下列形式 if (lseek(fd, 0L, 2 ) &lt; 0) /* position to EOF*/ err_sys(&#34;lseek error&#34;); if (write(fd, buf, 100) != 100) /* and write */ err_sys(&#34;write error&#34;); 单个进程而言，可以正常工作，但若有多个进程同事使用这种方法将数据添加到同一文件，则会产生问题。 UNIX系统提供了一种方法使这种操作成为原子操作。该方法是在打开文件时设置O_APPEND标志。使内核每次对这种文件进行写之前，都将当前偏移量设置到该文件的尾端处，每次写之前就不在需要调用lseek。 二、pread和 pwrite函数 原型如下： #include ＜unistd.h&gt; ssize_t pread (int filedes, void ..." />
+        <meta name="description" content="一、追加至一个文件 一个进程，将数据添加到一个文件尾端。早期不支持open的O_APPEND选项。所有程序被编写成下列形式 if (lseek(fd, 0L, 2 ) &lt; 0) /* position to EOF*/ err_sys(&#34;lseek error&#34;); if (write(fd, buf, 100) != 100) /* and write */ err_sys(&#34;write error&#34;); 单个进程而言，可以正常工作，但若有多个进程同事使用这种方法将数据添加到同一文件，则会产生问题。 UNIX系统提供了一种方法使这种操作成为原子操作。该方法是在打开文件时设置O_APPEND标志。使内核每次对这种文件进行写之前，都将当前偏移量设置到该文件的尾端处，每次写之前就不在需要调用lseek。 二、pread和 pwrite函数 原型如下： #include ＜unistd.h&gt; ssize_t pread (int filedes, void …" />
 
 <!-- Open Graph tags -->
-<meta property="og:site_name" content="灰.白"/>
+<meta property="og:site_name" content="Vim.Linux"/>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="原子操作"/>
     <meta property="og:url" content="../../../../2009/10/10/UNIX/"/>
-    <meta property="og:description" content="一、追加至一个文件 一个进程，将数据添加到一个文件尾端。早期不支持open的O_APPEND选项。所有程序被编写成下列形式 if (lseek(fd, 0L, 2 ) &lt; 0) /* position to EOF*/ err_sys(&#34;lseek error&#34;); if (write(fd, buf, 100) != 100) /* and write */ err_sys(&#34;write error&#34;); 单个进程而言，可以正常工作，但若有多个进程同事使用这种方法将数据添加到同一文件，则会产生问题。 UNIX系统提供了一种方法使这种操作成为原子操作。该方法是在打开文件时设置O_APPEND标志。使内核每次对这种文件进行写之前，都将当前偏移量设置到该文件的尾端处，每次写之前就不在需要调用lseek。 二、pread和 pwrite函数 原型如下： #include ＜unistd.h&gt; ssize_t pread (int filedes, void ..."/>
+    <meta property="og:description" content="一、追加至一个文件 一个进程，将数据添加到一个文件尾端。早期不支持open的O_APPEND选项。所有程序被编写成下列形式 if (lseek(fd, 0L, 2 ) &lt; 0) /* position to EOF*/ err_sys(&#34;lseek error&#34;); if (write(fd, buf, 100) != 100) /* and write */ err_sys(&#34;write error&#34;); 单个进程而言，可以正常工作，但若有多个进程同事使用这种方法将数据添加到同一文件，则会产生问题。 UNIX系统提供了一种方法使这种操作成为原子操作。该方法是在打开文件时设置O_APPEND标志。使内核每次对这种文件进行写之前，都将当前偏移量设置到该文件的尾端处，每次写之前就不在需要调用lseek。 二、pread和 pwrite函数 原型如下： #include ＜unistd.h&gt; ssize_t pread (int filedes, void …"/>
     <meta property="article:published_time" content="2009-10-10" />
     <meta property="article:section" content="unix环境编程" />
         <meta property="article:tag" content="unix编程" />
@@ -22,7 +22,7 @@
         <meta property="og:image"
               content="../../../../favicon.png"/>
 
-    <title>原子操作 - 灰.白</title>
+    <title>原子操作 - Vim.Linux</title>
 
         <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
 
@@ -40,7 +40,7 @@
     
     <!-- Feeds -->
         <link href="../../../../feeds/atom.xml" type="application/atom+xml" rel="alternate"
-              title="灰.白 ATOM Feed" />
+              title="Vim.Linux ATOM Feed" />
 </head>
 <body data-spy="scroll" data-target="#scrollspy">
     <div id="wrapper">
@@ -48,7 +48,7 @@
         <div id="sidebar-wrapper-small" class="twitchy-background">
             <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
                 <li>
-        <a href="../../../.." title="灰.白" class="collapsed">
+        <a href="../../../.." title="Vim.Linux" class="collapsed">
             <span class="glyphicon glyphicon-home"></span>
         </a>
     </li>
@@ -251,7 +251,7 @@
                             工具集
                         </a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="../../../../pages/aboutme.html">
                             <i class="fa fa-file-text padding-small"></i>
                             About
@@ -389,7 +389,7 @@
     <div class="publish-info-block">
         <small>
             <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2009-10-10T00:00:00+08:00"> 2009-10-10 六</time>
+                <i class="fa fa-calendar padding-small"></i><time datetime="2009-10-10T00:00:00+08:00"> 2009-10-10 Sat</time>
             </span>
             <span class="category">
                 <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/unixhuan-jing-bian-cheng.html">unix环境编程</a>
@@ -407,7 +407,7 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    <body><h4 id="yi-zhui-jia-zhi-yi-ge-wen-jian">一、追加至一个文件</h4>
+                    </head><body><h4 id="yi-zhui-jia-zhi-yi-ge-wen-jian">一、追加至一个文件</h4>
 <p>一个进程，将数据添加到一个文件尾端。早期不支持open的O_APPEND选项。所有程序被编写成下列形式</p>
 <div class="highlight"><pre><span></span>if (lseek(fd, 0L, 2 ) &lt; 0) /* position to EOF*/
 
@@ -452,7 +452,7 @@ ssize_t pwrite(int filedes, const void *buf, size_t nbytes, off_t offset);
 </pre></div>
 <p>如果在open和creat之间，另一个进程创建了该文件，那么就会引起问题。例如，若在这两个函数调用之间，另一个进程创建了该文件，并且写进了一些数据。然后，原先的进程执行这段程序的creat。刚由另一个进程写上去的数据就会被擦除。这样两则合并为一个原子操作，就不会发生该问题。</p>
 <p>一般而言，原子操作，指的是由多步组成的操作，如果操作原子地执行，那么执行完所有步骤，要么不执行，不可能只执行一部分。</p>
-<p>Top<a href="">^</a></p></body>
+<p>Top<a href="">^</a></p>
                 </div>
                 <footer class="text-right">
                     <p>by penglee</p>
@@ -475,15 +475,14 @@ ssize_t pwrite(int filedes, const void *buf, size_t nbytes, off_t offset);
     </article>
 </section>
 
-<!--"-->
 <footer>
     <hr>
     <div class="row">
         <div class="col-lg-9 text-center">
             <p><small>
                 <a href="http://www.reliablecounter.com" target="_blank"><img src="http://www.reliablecounter.com/count.php?page=https://king32783784.github.io/&digit=style/plain/6/&reloads=0" alt="" title="" border="0"></a><br /><a href="http://www.fabbly.com" target="_blank" style="font-family: Geneva, Arial; font-size: 9px; color: #330010; text-decoration: none;"></a>
-                Copyright</a>  </a>
-                <!--&middot;-->                    &copy;2009 李鹏
+                Built by <a href="http://docs.getpelican.com/en/latest">Pelican</a> / <a href="https://github.com/ingwinlu/pelican-twitchy">pelican-twitchy</a>
+                &middot;                    &copy; 2016 peng.lee
             </small></p>
         </div>
     </div>
