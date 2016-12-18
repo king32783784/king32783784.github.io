@@ -1,0 +1,2077 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Vim.Linux - peng.li</title><link href="http://king32783784.github.io/" rel="alternate"></link><link href="http://king32783784.github.io/feeds/pengli.atom.xml" rel="self"></link><id>http://king32783784.github.io/</id><updated>2013-08-29T00:00:00+08:00</updated><entry><title>PMON启动信息详解</title><link href="http://king32783784.github.io/2013/08/29/pmon/" rel="alternate"></link><published>2013-08-29T00:00:00+08:00</published><updated>2013-08-29T00:00:00+08:00</updated><author><name>peng.li</name></author><id>tag:king32783784.github.io,2013-08-29:/2013/08/29/pmon/</id><summary type="html">&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/P5LS1TUY3V.jpg" width="420"/&gt;&lt;/p&gt;
+&lt;p&gt;启动过程：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;PMON2000&lt;/span&gt; &lt;span class="nv"&gt;MIPS&lt;/span&gt; &lt;span class="nv"&gt;Initializing&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="nv"&gt;Standby&lt;/span&gt;&lt;span class="p"&gt;...&lt;/span&gt; &lt;span class="cm"&gt;/*CPU  Initializing*/&lt;/span&gt;
+
+ &lt;span class="mh"&gt;0xbfe00190&lt;/span&gt; &lt;span class="s s-Atom"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;00008062&lt;/span&gt;&lt;span class="s s-Atom"&gt;f0f8f0f0&lt;/span&gt; 
+&lt;span class="nv"&gt;CPU&lt;/span&gt; &lt;span class="nv"&gt;CLK&lt;/span&gt; &lt;span class="nv"&gt;SEL&lt;/span&gt; &lt;span class="s s-Atom"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;00000002&lt;/span&gt;
+&lt;span class="nv"&gt;CPU&lt;/span&gt; &lt;span class="s s-Atom"&gt;clk&lt;/span&gt; &lt;span class="s s-Atom"&gt;frequency&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;SYSCLK&lt;/span&gt; &lt;span class="s s-Atom"&gt;x&lt;/span&gt; &lt;span class="mh"&gt;0x00000020&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;  &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="s s-Atom"&gt;/×CPU的频率×&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;span class="nv"&gt;MEM&lt;/span&gt; &lt;span class="nv"&gt;CLK&lt;/span&gt; &lt;span class="nv"&gt;SEL&lt;/span&gt; &lt;span class="s s-Atom"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;00000003&lt;/span&gt;
+&lt;span class="nv"&gt;DDR&lt;/span&gt; &lt;span class="s s-Atom"&gt;clk&lt;/span&gt; &lt;span class="s s-Atom"&gt;frequency&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;MEMCLK&lt;/span&gt; &lt;span class="s s-Atom"&gt;x&lt;/span&gt; &lt;span class="mh"&gt;0x00000021&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;  &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="cm"&gt;/*DDR的频率×/&lt;/span&gt;
+
+&lt;span class="cm"&gt;CPU 1 READ TEST...&lt;/span&gt;
+&lt;span class="cm"&gt;CPU 1 READ TEST OK./×CPU 读测试×/&lt;/span&gt;
+&lt;span class="cm"&gt;HT0 frequency reconfig  /×总线时钟重新设置×/&lt;/span&gt;
+&lt;span class="cm"&gt;Fix …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;</summary><content type="html">&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/P5LS1TUY3V.jpg" width="420"/&gt;&lt;/p&gt;
+&lt;p&gt;启动过程：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;PMON2000&lt;/span&gt; &lt;span class="nv"&gt;MIPS&lt;/span&gt; &lt;span class="nv"&gt;Initializing&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="nv"&gt;Standby&lt;/span&gt;&lt;span class="p"&gt;...&lt;/span&gt; &lt;span class="cm"&gt;/*CPU  Initializing*/&lt;/span&gt;
+
+ &lt;span class="mh"&gt;0xbfe00190&lt;/span&gt; &lt;span class="s s-Atom"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;00008062&lt;/span&gt;&lt;span class="s s-Atom"&gt;f0f8f0f0&lt;/span&gt; 
+&lt;span class="nv"&gt;CPU&lt;/span&gt; &lt;span class="nv"&gt;CLK&lt;/span&gt; &lt;span class="nv"&gt;SEL&lt;/span&gt; &lt;span class="s s-Atom"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;00000002&lt;/span&gt;
+&lt;span class="nv"&gt;CPU&lt;/span&gt; &lt;span class="s s-Atom"&gt;clk&lt;/span&gt; &lt;span class="s s-Atom"&gt;frequency&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;SYSCLK&lt;/span&gt; &lt;span class="s s-Atom"&gt;x&lt;/span&gt; &lt;span class="mh"&gt;0x00000020&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;  &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="s s-Atom"&gt;/×CPU的频率×&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;span class="nv"&gt;MEM&lt;/span&gt; &lt;span class="nv"&gt;CLK&lt;/span&gt; &lt;span class="nv"&gt;SEL&lt;/span&gt; &lt;span class="s s-Atom"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;00000003&lt;/span&gt;
+&lt;span class="nv"&gt;DDR&lt;/span&gt; &lt;span class="s s-Atom"&gt;clk&lt;/span&gt; &lt;span class="s s-Atom"&gt;frequency&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;MEMCLK&lt;/span&gt; &lt;span class="s s-Atom"&gt;x&lt;/span&gt; &lt;span class="mh"&gt;0x00000021&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;  &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="cm"&gt;/*DDR的频率×/&lt;/span&gt;
+
+&lt;span class="cm"&gt;CPU 1 READ TEST...&lt;/span&gt;
+&lt;span class="cm"&gt;CPU 1 READ TEST OK./×CPU 读测试×/&lt;/span&gt;
+&lt;span class="cm"&gt;HT0 frequency reconfig  /×总线时钟重新设置×/&lt;/span&gt;
+&lt;span class="cm"&gt;Fix L1xbar illegal access at NODE 0&lt;/span&gt;
+&lt;span class="cm"&gt;Fix L1xbar illegal access at NODE 1 /×修复节点的一级缓存×/&lt;/span&gt;
+
+&lt;span class="cm"&gt;Fix L2xbar in NODE 0&lt;/span&gt;
+&lt;span class="cm"&gt;Fix L2xbar in NODE 1  /×修复节点的二级缓存×/&lt;/span&gt;
+&lt;span class="cm"&gt;Init tlb...  /×初始化TLB×/&lt;/span&gt;
+&lt;span class="cm"&gt;Init htpcitlb.../×初始化PCI总线TLB×/&lt;/span&gt;
+&lt;span class="cm"&gt;godson2 caches found /×初始化缓存×/&lt;/span&gt;
+&lt;span class="cm"&gt;Jump to 9fc /×跳转到9fc*/&lt;/span&gt;
+&lt;span class="s s-Atom"&gt;scache&lt;/span&gt; &lt;span class="s s-Atom"&gt;init&lt;/span&gt; &lt;span class="s s-Atom"&gt;done&lt;/span&gt; &lt;span class="s s-Atom"&gt;/×chache&lt;/span&gt; &lt;span class="s s-Atom"&gt;初始化完成*/&lt;/span&gt;
+
+
+&lt;span class="nv"&gt;Start&lt;/span&gt; &lt;span class="nv"&gt;Init&lt;/span&gt; &lt;span class="nv"&gt;Memory&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s s-Atom"&gt;wait&lt;/span&gt; &lt;span class="s s-Atom"&gt;a&lt;/span&gt; &lt;span class="s s-Atom"&gt;while&lt;/span&gt;&lt;span class="p"&gt;......&lt;/span&gt;
+&lt;span class="nv"&gt;NODE&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="nv"&gt;MEMORY&lt;/span&gt; &lt;span class="nv"&gt;CONFIG&lt;/span&gt; &lt;span class="nv"&gt;BEGIN&lt;/span&gt;&lt;span class="cm"&gt;/*开始初始化内存，首先是节点0的内存×/&lt;/span&gt;
+
+
+
+&lt;span class="cm"&gt;Open SMBUS controller/*开启SMBUS控制器×/&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;Probing DDR MC1 SLOT:    /*侦测 DDR控制器MC1 插槽*/ &lt;/span&gt;
+&lt;span class="cm"&gt;Probe MC1 slot 0.       /*侦测到MC1 slot0 内存颗粒×/&lt;/span&gt;
+&lt;span class="cm"&gt;Probe MC1 slot 1.&lt;/span&gt;
+&lt;span class="cm"&gt;NO DIMM in this slot. /×MC1 slot 1 没有内存颗粒×/&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;Probing DDR MC0 SLOT: &lt;/span&gt;
+&lt;span class="cm"&gt;Probe MC0 slot 0.&lt;/span&gt;
+&lt;span class="cm"&gt;Probe MC0 slot 1.&lt;/span&gt;
+&lt;span class="cm"&gt;NO DIMM in this slot./×MC0同MC1*/&lt;/span&gt;
+
+
+
+
+&lt;span class="cm"&gt;s1 = 0xf0a10400__f0a10400&lt;/span&gt;
+&lt;span class="cm"&gt;/*&lt;/span&gt;
+
+&lt;span class="cm"&gt;new s1 = 0xf0a10400__f0a10400&lt;/span&gt;
+&lt;span class="cm"&gt;Disable cpu buffered read  /*关闭CPU缓存读×/&lt;/span&gt;
+&lt;span class="cm"&gt;Disable read buffer&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;Enable register space of MEMORY   /×设置内存寄存器模块使能×/&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;The MC param is:&lt;/span&gt;
+&lt;span class="cm"&gt;00000100  00000100&lt;/span&gt;
+&lt;span class="cm"&gt;00000001  00010001&lt;/span&gt;
+&lt;span class="cm"&gt;...&lt;/span&gt;
+
+&lt;span class="cm"&gt;/×写入内存参数×/&lt;/span&gt;
+
+&lt;span class="cm"&gt;Disable register space of MEMORY&lt;/span&gt;
+&lt;span class="cm"&gt;/*关闭内存的寄存器模块*/&lt;/span&gt;
+
+&lt;span class="cm"&gt;NODE ID:00000000&lt;/span&gt;
+&lt;span class="cm"&gt;Lock Scache Node x--9800?01000000000~4K...&lt;/span&gt;
+&lt;span class="cm"&gt;Lock Scache Done.&lt;/span&gt;
+
+&lt;span class="cm"&gt;Start ARB Leveling....&lt;/span&gt;
+&lt;span class="cm"&gt;/*启动ARB训练*/&lt;/span&gt;
+
+&lt;span class="cm"&gt;Start Write Leveling. Wait a while...&lt;/span&gt;
+&lt;span class="cm"&gt;Min value: 0x0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;Max value: 0x4e46443c44484e50&lt;/span&gt;
+&lt;span class="cm"&gt;Cal Mid value: 0x120a0800080c1214&lt;/span&gt;
+&lt;span class="cm"&gt;/×写入练习×/&lt;/span&gt;
+
+&lt;span class="cm"&gt;Start read leveling..&lt;/span&gt;
+
+&lt;span class="cm"&gt;Level slice: 0x00000007&lt;/span&gt;
+&lt;span class="cm"&gt;Wait a while...&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_FAIL_MARK: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_CFG: 0x00000101&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_GD_MIN: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_GD_MAX: 0x00002222&lt;/span&gt;
+&lt;span class="cm"&gt;    RDLVL_DELAYP_GD_MIN: 0x00000808&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYP_GD_MAX: 0x00003a3c&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYN_GD_MIN: 0x00000404&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYN_GD_MAX: 0x00003a3a&lt;/span&gt;
+&lt;span class="cm"&gt;This Slice level success, use first value.&lt;/span&gt;
+&lt;span class="cm"&gt;/*这一级片训练成功，采用第一个值×/&lt;/span&gt;
+
+&lt;span class="cm"&gt;Level slice: 0x00000006&lt;/span&gt;
+&lt;span class="cm"&gt;Wait a while...&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_FAIL_MARK: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_CFG: 0x00000101&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_GD_MIN: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_GD_MAX: 0x00002222&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYP_GD_MIN: 0x00000808&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYP_GD_MAX: 0x00003a3a&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYN_GD_MIN: 0x00000808&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYN_GD_MAX: 0x00003c3c&lt;/span&gt;
+&lt;span class="cm"&gt;This Slice level success, use second value.&lt;/span&gt;
+&lt;span class="cm"&gt;/*这一级片训练成功，采用第二个值×/&lt;/span&gt;
+
+&lt;span class="cm"&gt;Level slice: 0x00000005&lt;/span&gt;
+&lt;span class="cm"&gt;Wait a while...&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_FAIL_MARK: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_CFG: 0x00000101&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_GD_MIN: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_GD_MAX: 0x00002222&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYP_GD_MIN: 0x00000808&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYP_GD_MAX: 0x00003a3a&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYN_GD_MIN: 0x00000808&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYN_GD_MAX: 0x00003c3c&lt;/span&gt;
+&lt;span class="cm"&gt;This Slice level success, use second value.&lt;/span&gt;
+&lt;span class="cm"&gt;/*这一级片训练成功，采用第二个值×/&lt;/span&gt;
+
+&lt;span class="cm"&gt;Level slice: 0x00000004&lt;/span&gt;
+&lt;span class="cm"&gt;Wait a while...&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_FAIL_MARK: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_CFG: 0x00000101&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_GD_MIN: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_GD_MAX: 0x00002222&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYP_GD_MIN: 0x00000808&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYP_GD_MAX: 0x00003a3a&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYN_GD_MIN: 0x00000808&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYN_GD_MAX: 0x00003c3c&lt;/span&gt;
+&lt;span class="cm"&gt;This Slice level success, use second value.&lt;/span&gt;
+&lt;span class="cm"&gt;/*这一级片训练成功，采用第二个值×/&lt;/span&gt;
+
+&lt;span class="cm"&gt;Level slice: 0x00000003&lt;/span&gt;
+&lt;span class="cm"&gt;Wait a while...&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_FAIL_MARK: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_CFG: 0x00000101&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_GD_MIN: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_GD_MAX: 0x00002222&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYP_GD_MIN: 0x00000404&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYP_GD_MAX: 0x00003c3c&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYN_GD_MIN: 0x00000404&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYN_GD_MAX: 0x00003c3c&lt;/span&gt;
+&lt;span class="cm"&gt;This Slice level success, use second value.&lt;/span&gt;
+&lt;span class="cm"&gt;/*这一级片训练成功，采用第二个值×/&lt;/span&gt;
+
+&lt;span class="cm"&gt;Level slice: 0x00000002&lt;/span&gt;
+&lt;span class="cm"&gt;Wait a while...&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_FAIL_MARK: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_CFG: 0x00000101&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_GD_MIN: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_GD_MAX: 0x00002222&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYP_GD_MIN: 0x00000404&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYP_GD_MAX: 0x00003e3e&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYN_GD_MIN: 0x00000404&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYN_GD_MAX: 0x00003e3e&lt;/span&gt;
+&lt;span class="cm"&gt;This Slice level success, use second value.&lt;/span&gt;
+&lt;span class="cm"&gt;/*这一级片训练成功，采用第二个值×/&lt;/span&gt;
+
+&lt;span class="cm"&gt;Level slice: 0x00000001&lt;/span&gt;
+&lt;span class="cm"&gt;Wait a while...&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_FAIL_MARK: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_CFG: 0x00000101&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_GD_MIN: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_GD_MAX: 0x00002222&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYP_GD_MIN: 0x00000404&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYP_GD_MAX: 0x00003e3e&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYN_GD_MIN: 0x00000404&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYN_GD_MAX: 0x00003c3c&lt;/span&gt;
+&lt;span class="cm"&gt;This Slice level success, use second value.&lt;/span&gt;
+&lt;span class="cm"&gt;/*这一级片训练成功，采用第二个值×/&lt;/span&gt;
+
+&lt;span class="cm"&gt;Level slice: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;Wait a while...&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_FAIL_MARK: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_CFG: 0x00000101&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_GD_MIN: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_GD_MAX: 0x00002222&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYP_GD_MIN: 0x00000404&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYP_GD_MAX: 0x00003e3e&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYN_GD_MIN: 0x00000404&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYN_GD_MAX: 0x00003c3c&lt;/span&gt;
+&lt;span class="cm"&gt;This Slice level success, use second value.&lt;/span&gt;
+&lt;span class="cm"&gt;/*这一级片训练成功，采用第二个值×/&lt;/span&gt;
+
+&lt;span class="cm"&gt;ARB Leveling Finished./*ARB训练完成，MC设置如下：*/&lt;/span&gt;
+&lt;span class="cm"&gt;After ARB level. The MC configuration is:  &lt;/span&gt;
+&lt;span class="cm"&gt;...&lt;/span&gt;
+&lt;span class="cm"&gt;00000c2d  00000c2d&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;Unlock Scache Node x--9800?01000000000~4K...&lt;/span&gt;
+&lt;span class="cm"&gt;Unlock Scache Done.&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;Disable register space of MEMORY&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;MC0 Config DONE&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;Enable register space of MEMORY&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;The MC param is:&lt;/span&gt;
+&lt;span class="cm"&gt;00000100  00000100&lt;/span&gt;
+
+&lt;span class="cm"&gt;00000000  00000000&lt;/span&gt;
+
+&lt;span class="cm"&gt;...&lt;/span&gt;
+&lt;span class="cm"&gt;Disable register space of MEMORY&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;NODE ID:00000000&lt;/span&gt;
+&lt;span class="cm"&gt;Lock Scache Node x--9800?01000000000~4K...&lt;/span&gt;
+&lt;span class="cm"&gt;Lock Scache Done.&lt;/span&gt;
+
+&lt;span class="cm"&gt;Start ARB Leveling....&lt;/span&gt;
+
+&lt;span class="cm"&gt;Start Write Leveling. Wait a while...&lt;/span&gt;
+&lt;span class="cm"&gt;Wrlvl Error: This Byte Window not found.&lt;/span&gt;
+&lt;span class="cm"&gt;Failed byte is byte: 00000006&lt;/span&gt;
+&lt;span class="cm"&gt;Try another pad compensation.&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;Start Write Leveling. Wait a while...&lt;/span&gt;
+&lt;span class="cm"&gt;Wrlvl Error: This Byte Window not found.&lt;/span&gt;
+&lt;span class="cm"&gt;Failed byte is byte: 00000006&lt;/span&gt;
+&lt;span class="cm"&gt;Try another pad compensation.&lt;/span&gt;
+
+&lt;span class="cm"&gt;Start Write Leveling. Wait a while...&lt;/span&gt;
+&lt;span class="cm"&gt;Wrlvl Error: This Byte Window not found.&lt;/span&gt;
+&lt;span class="cm"&gt;Failed byte is byte: 00000006&lt;/span&gt;
+&lt;span class="cm"&gt;Try another pad compensation.&lt;/span&gt;
+
+&lt;span class="cm"&gt;Write level failed. Write default value(0x30).&lt;/span&gt;
+
+&lt;span class="cm"&gt;/*写训练失败×/&lt;/span&gt;
+
+&lt;span class="cm"&gt;Start read leveling..&lt;/span&gt;
+
+&lt;span class="cm"&gt;Level slice: 0x00000007&lt;/span&gt;
+&lt;span class="cm"&gt;Wait a while...&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_FAIL_MARK: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_CFG: 0x00000101&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_GD_MIN: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_GD_MAX: 0x00002222&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYP_GD_MIN: 0x00000404&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYP_GD_MAX: 0x0000383a&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYN_GD_MIN: 0x00000404&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYN_GD_MAX: 0x00003c3c&lt;/span&gt;
+&lt;span class="cm"&gt;This Slice level success, use first value.&lt;/span&gt;
+
+&lt;span class="cm"&gt;Level slice: 0x00000006&lt;/span&gt;
+&lt;span class="cm"&gt;Wait a while...&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_FAIL_MARK: 0x00000003&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_CFG: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_GD_MIN: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_GD_MAX: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYP_GD_MIN: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYP_GD_MAX: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYN_GD_MIN: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYN_GD_MAX: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;Try another pad compensation.&lt;/span&gt;
+
+&lt;span class="cm"&gt;ERROR: This Slice level failed, write default value.&lt;/span&gt;
+
+&lt;span class="cm"&gt;/×读训练失败×/&lt;/span&gt;
+
+&lt;span class="cm"&gt;Level slice: 0x00000005&lt;/span&gt;
+&lt;span class="cm"&gt;Wait a while...&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_FAIL_MARK: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_CFG: 0x00000101&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_GD_MIN: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_GD_MAX: 0x00001c1c&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYP_GD_MIN: 0x00000808&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYP_GD_MAX: 0x00003a3a&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYN_GD_MIN: 0x00000404&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYN_GD_MAX: 0x00003e3e&lt;/span&gt;
+&lt;span class="cm"&gt;This Slice level success, use second value.&lt;/span&gt;
+
+&lt;span class="cm"&gt;Level slice: 0x00000004&lt;/span&gt;
+&lt;span class="cm"&gt;Wait a while...&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_FAIL_MARK: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_CFG: 0x00000101&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_GD_MIN: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_GD_MAX: 0x00001818&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYP_GD_MIN: 0x00000808&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYP_GD_MAX: 0x00003a3a&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYN_GD_MIN: 0x00000808&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYN_GD_MAX: 0x00003c3c&lt;/span&gt;
+&lt;span class="cm"&gt;This Slice level success, use second value.&lt;/span&gt;
+
+&lt;span class="cm"&gt;Level slice: 0x00000003&lt;/span&gt;
+&lt;span class="cm"&gt;Wait a while...&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_FAIL_MARK: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_CFG: 0x00000101&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_GD_MIN: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_GD_MAX: 0x00001a1a&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYP_GD_MIN: 0x00000808&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYP_GD_MAX: 0x00003e3e&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYN_GD_MIN: 0x00000404&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYN_GD_MAX: 0x00003e3e&lt;/span&gt;
+&lt;span class="cm"&gt;This Slice level success, use second value.&lt;/span&gt;
+
+&lt;span class="cm"&gt;Level slice: 0x00000002&lt;/span&gt;
+&lt;span class="cm"&gt;Wait a while...&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_FAIL_MARK: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_CFG: 0x00000101&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_GD_MIN: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_GD_MAX: 0x00001e1e&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYP_GD_MIN: 0x00000404&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYP_GD_MAX: 0x00003e3e&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYN_GD_MIN: 0x00000404&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYN_GD_MAX: 0x00003c3c&lt;/span&gt;
+&lt;span class="cm"&gt;This Slice level success, use second value.&lt;/span&gt;
+
+&lt;span class="cm"&gt;Level slice: 0x00000001&lt;/span&gt;
+&lt;span class="cm"&gt;Wait a while...&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_FAIL_MARK: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_CFG: 0x00000101&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_GD_MIN: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_GD_MAX: 0x00002020&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYP_GD_MIN: 0x00000404&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYP_GD_MAX: 0x00004040&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYN_GD_MIN: 0x00000404&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYN_GD_MAX: 0x00003e3e&lt;/span&gt;
+&lt;span class="cm"&gt;This Slice level success, use second value.&lt;/span&gt;
+
+&lt;span class="cm"&gt;Level slice: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;Wait a while...&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_FAIL_MARK: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_CFG: 0x00000101&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_GD_MIN: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_GATE_GD_MAX: 0x00002222&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYP_GD_MIN: 0x00000404&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYP_GD_MAX: 0x00003c3c&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYN_GD_MIN: 0x00000404&lt;/span&gt;
+&lt;span class="cm"&gt;RDLVL_DELAYN_GD_MAX: 0x00003e3e&lt;/span&gt;
+&lt;span class="cm"&gt;This Slice level success, use second value.&lt;/span&gt;
+
+&lt;span class="cm"&gt;ERROR!!!: ARB Leveling Fail&lt;/span&gt;
+
+&lt;span class="cm"&gt;/*内存训练失败×/&lt;/span&gt;
+
+&lt;span class="cm"&gt;RW Diff 0x0010000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;RD Diff 0x0010000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;Unlock Scache Node x--9800?01000000000~4K...&lt;/span&gt;
+&lt;span class="cm"&gt;Unlock Scache Done.&lt;/span&gt;
+
+&lt;span class="cm"&gt;Disable register space of MEMORY&lt;/span&gt;
+
+&lt;span class="cm"&gt;MC1 Config DONE&lt;/span&gt;
+
+&lt;span class="cm"&gt;msize = 0x00000008&lt;/span&gt;
+&lt;span class="cm"&gt;!!!MEM is at NO_INTERLEAVE mode. If this is not the expected setting, &lt;/span&gt;
+&lt;span class="cm"&gt;please check whether the two MC_MEMSIZE is equal&lt;/span&gt;
+&lt;span class="cm"&gt;DDR space open : 0x00000000 - 0x0FFFFFFF&lt;/span&gt;
+&lt;span class="cm"&gt;PCI space open: 0x80000000 - 0x8FFFFFFF&lt;/span&gt;
+&lt;span class="cm"&gt;MC0 space open : 0x80000000 - 0xFFFFFFFF&lt;/span&gt;
+&lt;span class="cm"&gt;MC1 space open : 0x100000000 - 0x17FFFFFFF&lt;/span&gt;
+&lt;span class="cm"&gt;DDR space open : 0x080000000 - 0x17FFFFFFF&lt;/span&gt;
+&lt;span class="cm"&gt;Full PCI space opened as cpu.&lt;/span&gt;
+&lt;span class="cm"&gt;NODE 1 MEMORY CONFIG BEGIN&lt;/span&gt;
+&lt;span class="cm"&gt;/节点1 开始内存训练×/&lt;/span&gt;
+
+&lt;span class="cm"&gt;Open SMBUS controller&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;Probing DDR MC1 SLOT: &lt;/span&gt;
+&lt;span class="cm"&gt;Probe MC1 slot 0.&lt;/span&gt;
+&lt;span class="cm"&gt;Probe MC1 slot 1.&lt;/span&gt;
+&lt;span class="cm"&gt;NO DIMM in this slot.&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;Probing DDR MC0 SLOT: &lt;/span&gt;
+&lt;span class="cm"&gt;Probe MC0 slot 0.&lt;/span&gt;
+&lt;span class="cm"&gt;Probe MC0 slot 1.&lt;/span&gt;
+&lt;span class="cm"&gt;NO DIMM in this slot.&lt;/span&gt;
+
+&lt;span class="cm"&gt;s1 = 0xf0a10400__f0a10401&lt;/span&gt;
+
+&lt;span class="cm"&gt;new s1 = 0xf0a10400__f0a10401&lt;/span&gt;
+&lt;span class="cm"&gt;Disable cpu buffered read&lt;/span&gt;
+&lt;span class="cm"&gt;Disable read buffer&lt;/span&gt;
+
+&lt;span class="cm"&gt;MC1 Config DONE&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;msize = 0x00000800&lt;/span&gt;
+&lt;span class="cm"&gt;!!!MEM is at NO_INTERLEAVE mode. If this is not the expected setting, /×内存未启用交错模式×/&lt;/span&gt;
+&lt;span class="cm"&gt;please check whether the two MC_MEMSIZE is equal&lt;/span&gt;
+&lt;span class="cm"&gt;DDR space open : 0x00000000 - 0x0FFFFFFF&lt;/span&gt;
+&lt;span class="cm"&gt;PCI space open: 0x80000000 - 0x8FFFFFFF&lt;/span&gt;
+&lt;span class="cm"&gt;MC0 space open : 0x80000000 - 0xFFFFFFFF&lt;/span&gt;
+&lt;span class="cm"&gt;MC1 space open : 0x100000000 - 0x17FFFFFFF&lt;/span&gt;
+&lt;span class="cm"&gt;DDR space open : 0x080000000 - 0x17FFFFFFF&lt;/span&gt;
+&lt;span class="cm"&gt;Full PCI space opened as cpu.&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;system msize = 0x00000808&lt;/span&gt;
+&lt;span class="cm"&gt;system s3 = 0x0003030f76543210&lt;/span&gt;
+&lt;span class="cm"&gt;Init Memory done.&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;store DIMM info of MC0&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;store DIMM info of MC1&lt;/span&gt;
+&lt;span class="cm"&gt;32 bit PCI space translate to 64 bit HT space&lt;/span&gt;
+&lt;span class="cm"&gt;Waiting HyperTransport bus to be up.&amp;gt;&lt;/span&gt;
+&lt;span class="cm"&gt;00110020&lt;/span&gt;
+&lt;span class="cm"&gt;HT RX DMA address ENABLE&lt;/span&gt;
+&lt;span class="cm"&gt;HT RX DMA address ENABLE done 1&lt;/span&gt;
+&lt;span class="cm"&gt;HT RX DMA address ENABLE done 2&lt;/span&gt;
+&lt;span class="cm"&gt;Setting HyperTransport Controller to be 8-bit width&lt;/span&gt;
+&lt;span class="cm"&gt;00110020&lt;/span&gt;
+&lt;span class="cm"&gt;Setting HyperTransport Controller to be 800Mhz&lt;/span&gt;
+&lt;span class="cm"&gt;80258523&lt;/span&gt;
+&lt;span class="cm"&gt;SET HT as HOST&lt;/span&gt;
+&lt;span class="cm"&gt;2001000820010008&lt;/span&gt;
+&lt;span class="cm"&gt;Setting HyperTransport Southbridge to be 8-bit width&lt;/span&gt;
+&lt;span class="cm"&gt;00110020&lt;/span&gt;
+&lt;span class="cm"&gt;Setting HyperTransport Southbridge to be 800M&lt;/span&gt;
+&lt;span class="cm"&gt;1c750060&lt;/span&gt;
+&lt;span class="cm"&gt;Setting Watch Dog to make a WARM RESET&lt;/span&gt;
+&lt;span class="cm"&gt;Watch dog Enable&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;Watch dog decode enable&lt;/span&gt;
+&lt;span class="cm"&gt;00000000&lt;/span&gt;
+&lt;span class="cm"&gt;Watch dog control value&lt;/span&gt;
+&lt;span class="cm"&gt;00000000&lt;/span&gt;
+&lt;span class="cm"&gt;00000000&lt;/span&gt;
+&lt;span class="cm"&gt;Set Watch dog control value&lt;/span&gt;
+&lt;span class="cm"&gt;Waiting HyperTransport bus to be down.&amp;gt;&lt;/span&gt;
+&lt;span class="cm"&gt;00110010&lt;/span&gt;
+&lt;span class="cm"&gt;Waiting HyperTransport bus to be up.&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;=&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;=&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;=&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;=&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;=&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;=&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;=&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;=&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;=&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;=&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;=&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;=&lt;/span&gt;
+&lt;span class="cm"&gt;00110020&lt;/span&gt;
+&lt;span class="cm"&gt;Setting HyperTransport Southbridge back to be 8-bit width and 200Mhz for next RESET&lt;/span&gt;
+&lt;span class="cm"&gt;1c750560&lt;/span&gt;
+&lt;span class="cm"&gt;Checking HyperTransport bus CRC error bit.&lt;/span&gt;
+&lt;span class="cm"&gt;Checking HyperTransport SouthBridge CRC error bit.&lt;/span&gt;
+&lt;span class="cm"&gt;Done&lt;/span&gt;
+&lt;span class="cm"&gt;Read HT Channel priority&lt;/span&gt;
+&lt;span class="cm"&gt;00904321&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;======This is cww's world:1&lt;/span&gt;
+
+
+&lt;span class="cm"&gt; enable rs780 dev8...&lt;/span&gt;
+
+
+&lt;span class="cm"&gt; test GPPSB&lt;/span&gt;
+
+
+&lt;span class="cm"&gt; Enabled GPPSB success...&lt;/span&gt;
+
+
+&lt;span class="cm"&gt; sb700 lpc init...&lt;/span&gt;
+
+
+&lt;span class="cm"&gt; set boottimerdisable&lt;/span&gt;
+
+
+&lt;span class="cm"&gt; enable lpc controller&lt;/span&gt;
+
+
+&lt;span class="cm"&gt; enable port 80 LPC decode&lt;/span&gt;
+
+
+&lt;span class="cm"&gt; Decode port 0x3f8-0x3ff&lt;/span&gt;
+
+
+&lt;span class="cm"&gt; Decode port 0x60-0x66&lt;/span&gt;
+
+
+&lt;span class="cm"&gt; SuperIO RTC&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;======This is cww's world:2&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;======X1 core0 map windows:&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff02000: 0000000018000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff02008: 00000e0000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff02010: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff02018: 0000000040000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff02020: 000000001e000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff02028: 00000c0000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff02030: 0000200000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff02038: 000000fdfe000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff02040: fffffffffc000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff02048: ffffff0000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff02050: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff02058: ffffffffc0000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff02060: ffffffffff000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff02068: 00000c0000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff02070: 0000200000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff02078: 000000fffe000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff02080: 00000efdfc0000f7&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff02088: 00000e00000000f7&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff02090: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff02098: 00000e00400000f7&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff020a0: 00000e00000000f7&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff020a8: 00000c00000000f7&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff020b0: 00002000000000f7&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff020b8: 000000fdfe0000f7&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;======X2 cpu map windows:&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00000: 000000001fc00000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00008: 0000000010000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00010: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00018: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00020: 0000000080000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00028: 0000000100000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00030: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00038: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00040: fffffffffff00000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00048: fffffffff0000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00050: fffffffff0000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00058: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00060: ffffffff80000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00068: ffffffff80000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00070: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00078: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00080: 000000001fc000f2&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00088: 0000000010000082&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00090: 00000000000000f0&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00098: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff000a0: 00000000000000f0&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff000a8: 00000000000000f1&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff000b0: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff000b8: 0000000000000000&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;======X2 pci map windows:&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00100: 0000000080000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00108: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00110: 0000000080000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00118: 0000000080000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00120: 0000000080000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00128: 0000000100000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00130: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00138: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00140: ffffffff80000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00148: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00150: fffffffff0000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00158: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00160: ffffffff80000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00168: ffffffff80000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00170: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00178: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00180: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00188: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00190: 00000000000000f0&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff00198: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff001a0: 00000000000000f0&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff001a8: 00000000000000f1&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff001b0: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900000003ff001b8: 0000000000000000&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;======read HT config reg:&lt;/span&gt;
+&lt;span class="cm"&gt;90000efdfb000000: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;90000efdfb000060: 0080fff0c0000000&lt;/span&gt;
+&lt;span class="cm"&gt;90000efdfb000068: 00008000c0000000&lt;/span&gt;
+&lt;span class="cm"&gt;90000efdfb000070: 0000000000000000&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;======X1 core0 map windows:&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff02000: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff02008: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff02010: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff02018: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff02020: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff02028: 00001c0000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff02030: 0000200000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff02038: 00000efdfe000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff02040: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff02048: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff02050: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff02058: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff02060: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff02068: 00001c0000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff02070: 0000200000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff02078: 0000fffffe000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff02080: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff02088: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff02090: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff02098: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff020a0: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff020a8: 00001c00000000f7&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff020b0: 00002000000000f7&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff020b8: 000000fdfe0000f6&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;======X2 cpu map windows:&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00000: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00008: 0000100010000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00010: 0000100000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00018: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00020: 0000100080000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00028: 0000100100000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00030: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00038: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00040: fffffffff0000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00048: fffffffff0000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00050: fffffffff0000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00058: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00060: ffffffff80000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00068: ffffffff80000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00070: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00078: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00080: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00088: 0000000010000082&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00090: 00000000000000f0&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00098: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff000a0: 00000000000000f0&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff000a8: 00000000000000f1&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff000b0: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff000b8: 0000000000000000&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;======X2 pci map windows:&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00100: 0000000080000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00108: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00110: 0000100080000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00118: 0000000080000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00120: 0000100080000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00128: 0000100100000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00130: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00138: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00140: ffffffff80000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00148: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00150: fffffffff0000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00158: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00160: ffffffff80000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00168: ffffffff80000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00170: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00178: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00180: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00188: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00190: 00000000000000f0&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff00198: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff001a0: 00000000000000f0&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff001a8: 00000000000000f1&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff001b0: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;900010003ff001b8: 0000000000000000&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;======read HT config reg:&lt;/span&gt;
+&lt;span class="cm"&gt;90001efdfb000000: 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;90001efdfb000060: 0080fff0c0000000&lt;/span&gt;
+&lt;span class="cm"&gt;90001efdfb000068: 00008000c0000000&lt;/span&gt;
+&lt;span class="cm"&gt;90001efdfb000070: 0000000000000000&lt;/span&gt;
+
+
+&lt;span class="cm"&gt; spd_info_store begain.&lt;/span&gt;
+
+
+&lt;span class="cm"&gt; spd_info_store done.&lt;/span&gt;
+&lt;span class="cm"&gt;Copy PMON to execute location...&lt;/span&gt;
+&lt;span class="cm"&gt;  start = 0x81000000&lt;/span&gt;
+&lt;span class="cm"&gt;  s0 = 0x3ec00000&lt;/span&gt;
+&lt;span class="cm"&gt;81000000&lt;/span&gt;
+&lt;span class="cm"&gt;81010000&lt;/span&gt;
+&lt;span class="cm"&gt;81020000&lt;/span&gt;
+&lt;span class="cm"&gt;81030000&lt;/span&gt;
+&lt;span class="cm"&gt;81040000&lt;/span&gt;
+&lt;span class="cm"&gt;81050000&lt;/span&gt;
+&lt;span class="cm"&gt;81060000&lt;/span&gt;
+&lt;span class="cm"&gt;81070000&lt;/span&gt;
+&lt;span class="cm"&gt;81080000&lt;/span&gt;
+&lt;span class="cm"&gt;81090000&lt;/span&gt;
+&lt;span class="cm"&gt;810a0000&lt;/span&gt;
+&lt;span class="cm"&gt;810b0000&lt;/span&gt;
+&lt;span class="cm"&gt;copy text section done.&lt;/span&gt;
+&lt;span class="cm"&gt;Copy PMON to execute location done.&lt;/span&gt;
+&lt;span class="cm"&gt;sp=80ffc000&lt;/span&gt;
+&lt;span class="cm"&gt;Uncompressing Bios..................................................................................OK,Booting Bios&lt;/span&gt;
+&lt;span class="cm"&gt;memorysize_high_n1 0xf0000000&lt;/span&gt;
+&lt;span class="cm"&gt;FREQ&lt;/span&gt;
+&lt;span class="cm"&gt;RTC: 12-15-03 08:40:12&lt;/span&gt;
+&lt;span class="cm"&gt;FREI&lt;/span&gt;
+&lt;span class="cm"&gt;cpu fre 799980000&lt;/span&gt;
+&lt;span class="cm"&gt;DONE&lt;/span&gt;
+&lt;span class="cm"&gt;DEVI&lt;/span&gt;
+&lt;span class="cm"&gt;ENVI&lt;/span&gt;
+&lt;span class="cm"&gt;MAPV&lt;/span&gt;
+&lt;span class="cm"&gt;in envinit&lt;/span&gt;
+&lt;span class="cm"&gt;nvram=bfc00000&lt;/span&gt;
+&lt;span class="cm"&gt;NVRAM@bfcfd800&lt;/span&gt;
+&lt;span class="cm"&gt;STDV&lt;/span&gt;
+&lt;span class="cm"&gt;80100000:  memory between 82fff000-83000000  is already been allocated,heap is already above this point&lt;/span&gt;
+&lt;span class="cm"&gt;SBDD&lt;/span&gt;
+&lt;span class="cm"&gt;rs780_early_setup&lt;/span&gt;
+&lt;span class="cm"&gt;sb700_early_setup&lt;/span&gt;
+&lt;span class="cm"&gt;rs780_before_pci_fixup&lt;/span&gt;
+&lt;span class="cm"&gt;sb700_before_pci_fixup&lt;/span&gt;
+&lt;span class="cm"&gt;rs780_enable&lt;/span&gt;
+&lt;span class="cm"&gt;sb700_enable&lt;/span&gt;
+&lt;span class="cm"&gt;disable bus0 device pcie bridges&lt;/span&gt;
+&lt;span class="cm"&gt;disable OHCI and EHCI controller&lt;/span&gt;
+&lt;span class="cm"&gt;enable OHCI controller&lt;/span&gt;
+&lt;span class="cm"&gt;P12PCIH&lt;/span&gt;
+&lt;span class="cm"&gt;PCIH&lt;/span&gt;
+&lt;span class="cm"&gt;pcie-slot device: vendor:ffff product:ffff&lt;/span&gt;
+&lt;span class="cm"&gt;PCIS&lt;/span&gt;
+&lt;span class="cm"&gt;PCIR&lt;/span&gt;
+&lt;span class="cm"&gt;PCIW&lt;/span&gt;
+&lt;span class="cm"&gt;vga_dev =:0&lt;/span&gt;
+&lt;span class="cm"&gt;pcie_dev :0 vga_dev ==:82fff348&lt;/span&gt;
+&lt;span class="cm"&gt;vga_dev =:82fff348&lt;/span&gt;
+&lt;span class="cm"&gt;pcie_dev :0 vga_dev ==:82fff348&lt;/span&gt;
+&lt;span class="cm"&gt;sb700_after_pci_fixup&lt;/span&gt;
+&lt;span class="cm"&gt;NETI&lt;/span&gt;
+&lt;span class="cm"&gt;RTCL&lt;/span&gt;
+&lt;span class="cm"&gt;PCID&lt;/span&gt;
+&lt;span class="cm"&gt;VGAI&lt;/span&gt;
+&lt;span class="cm"&gt;memorysize=b000000,base=82efe4f0,sysMem=82eee4e8,vram=be0a0000&lt;/span&gt;
+&lt;span class="cm"&gt;in setup_int_vect!done!USE inter-graphic device: vendor:1002, device=0x:9615&lt;/span&gt;
+&lt;span class="cm"&gt;vgarom romaddress:0x8014a940&lt;/span&gt;
+&lt;span class="cm"&gt;Rom base addr: 8014a940&lt;/span&gt;
+&lt;span class="cm"&gt;VGA bios found&lt;/span&gt;
+&lt;span class="cm"&gt;rom size is 59k&lt;/span&gt;
+&lt;span class="cm"&gt;PCI data structure at offset 1c0&lt;/span&gt;
+&lt;span class="cm"&gt;video bios address: c7f00000&lt;/span&gt;
+&lt;span class="cm"&gt;lock vga&lt;/span&gt;
+&lt;span class="cm"&gt;starting bios emu...&lt;/span&gt;
+&lt;span class="cm"&gt;ax=0,bx=0,cx=0,dx=0&lt;/span&gt;
+&lt;span class="cm"&gt;just before emu done ax(0x128)&lt;/span&gt;
+&lt;span class="cm"&gt;bios emu done&lt;/span&gt;
+
+
+
+
+&lt;span class="cm"&gt;vesa_mode : 0x0&lt;/span&gt;
+&lt;span class="cm"&gt;ax 4f02 bx 4114&lt;/span&gt;
+&lt;span class="cm"&gt;run_bios_int,intno=10,ret=1&lt;/span&gt;
+&lt;span class="cm"&gt;VESA&lt;/span&gt;
+&lt;span class="cm"&gt;VESA FB init complete.&lt;/span&gt;
+&lt;span class="cm"&gt;fbaddress 0x40000000 ioaddress 0x48000000&lt;/span&gt;
+&lt;span class="cm"&gt;fbaddress = c0000000&lt;/span&gt;
+&lt;span class="cm"&gt;begin fb_init&lt;/span&gt;
+&lt;span class="cm"&gt;cfb_console init,fb=c0000000&lt;/span&gt;
+&lt;span class="cm"&gt;CONSOLE_SIZE 960000&lt;/span&gt;
+&lt;span class="cm"&gt;after fb_init&lt;/span&gt;
+&lt;span class="cm"&gt;in configure&lt;/span&gt;
+&lt;span class="cm"&gt;mainbus0 (root)&lt;/span&gt;
+&lt;span class="cm"&gt;localbus0 at mainbus0&lt;/span&gt;
+&lt;span class="cm"&gt;loopdev0 at mainbus0pcibr0 at mainbus0&lt;/span&gt;
+&lt;span class="cm"&gt;pci0 at pcibr0 bus 0&lt;/span&gt;
+&lt;span class="cm"&gt;ppb0 at pci0 dev 1 function 0 vendor/product: 0x1022/0x9602 (bridge, PCI)&lt;/span&gt;
+&lt;span class="cm"&gt;pci1 at ppb0 bus 1&lt;/span&gt;
+&lt;span class="cm"&gt;vendor/product: 0x1002/0x9615 (display, VGA) at pci1 dev 5 function 0 not configured&lt;/span&gt;
+&lt;span class="cm"&gt;ppb1 at pci0 dev 2 function 0 vendor/product: 0x1022/0x9603 (bridge, PCI)&lt;/span&gt;
+&lt;span class="cm"&gt;pci2 at ppb1 bus 2&lt;/span&gt;
+&lt;span class="cm"&gt;ppb2 at pci0 dev 3 function 0 vendor/product: 0x1022/0x960b (bridge, PCI)&lt;/span&gt;
+&lt;span class="cm"&gt;pci3 at ppb2 bus 3&lt;/span&gt;
+&lt;span class="cm"&gt;ppb3 at pci0 dev 4 function 0 vendor/product: 0x1022/0x9604 (bridge, PCI)&lt;/span&gt;
+&lt;span class="cm"&gt;pci4 at ppb3 bus 4&lt;/span&gt;
+&lt;span class="cm"&gt;ppb4 at pci0 dev 9 function 0 vendor/product: 0x1022/0x9608 (bridge, PCI)&lt;/span&gt;
+&lt;span class="cm"&gt;pci5 at ppb4 bus 5&lt;/span&gt;
+&lt;span class="cm"&gt;em0 at pci5 dev 0 function 0 vendor/product: 0x8086/0x10d3 (network, ethernet)ent-&amp;gt;driver_data is 0x3&lt;/span&gt;
+&lt;span class="cm"&gt;em_probe done!&lt;/span&gt;
+&lt;span class="cm"&gt;: generic poll, address 00:23:90:10:96:93&lt;/span&gt;
+&lt;span class="cm"&gt;in if attach&lt;/span&gt;
+&lt;span class="cm"&gt;ppb5 at pci0 dev 10 function 0 vendor/product: 0x1022/0x9609 (bridge, PCI)&lt;/span&gt;
+&lt;span class="cm"&gt;pci6 at ppb5 bus 6&lt;/span&gt;
+&lt;span class="cm"&gt;em1 at pci6 dev 0 function 0 vendor/product: 0x8086/0x10d3 (network, ethernet)ent-&amp;gt;driver_data is 0x3&lt;/span&gt;
+&lt;span class="cm"&gt;em_probe done!&lt;/span&gt;
+&lt;span class="cm"&gt;: generic poll, address 00:23:90:10:20:59&lt;/span&gt;
+&lt;span class="cm"&gt;in if attach&lt;/span&gt;
+&lt;span class="cm"&gt;pciide0 at pci0 dev 17 function 0 vendor/product: 0x1002/0x4390 (mass storage, IDE): DMA, (partial support), ch 0 cfg to native-PCI, ch 1 cfg to native-PCI&lt;/span&gt;
+&lt;span class="cm"&gt;pciide0: using generic poll for native-PCI interrupt&lt;/span&gt;
+&lt;span class="cm"&gt;wd0 at pciide0 channel 0 drive 0: &amp;lt;WDC WD5000AAKX-221CA1&amp;gt;&lt;/span&gt;
+&lt;span class="cm"&gt;wd0: can use 16-bit, PIO mode 4, DMA mode 2&lt;/span&gt;
+&lt;span class="cm"&gt;wd0: 16-sector PIO, LBA, 131071MB, 16383 cyl, 16 head, 63 sec, 268435455 sectors&lt;/span&gt;
+&lt;span class="cm"&gt;wd1 at pciide0 channel 1 drive 0: &amp;lt;WDC WD5000AAKX-221CA1&amp;gt;&lt;/span&gt;
+&lt;span class="cm"&gt;wd1: can use 16-bit, PIO mode 4, DMA mode 2&lt;/span&gt;
+&lt;span class="cm"&gt;wd1: 16-sector PIO, LBA, 131071MB, 16383 cyl, 16 head, 63 sec, 268435455 sectors&lt;/span&gt;
+&lt;span class="cm"&gt;pciide0:0:0: using DMA data transfers&lt;/span&gt;
+&lt;span class="cm"&gt;pciide0:1:0: using DMA data transfers&lt;/span&gt;
+&lt;span class="cm"&gt;ohci0 at pci0 dev 18 function 0 vendor/product: 0x1002/0x4397 (serialbus, USB)usb base addr : 0xc8708000, bus_base is : 0xc0000000&lt;/span&gt;
+&lt;span class="cm"&gt;OHCI revision: 0x00000110&lt;/span&gt;
+&lt;span class="cm"&gt;  RH: a: 0x02000b03 b: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;early period(0x0)&lt;/span&gt;
+&lt;span class="cm"&gt;OHCI 8b01f000 initialized ok&lt;/span&gt;
+&lt;span class="cm"&gt;drive at ohci0 devnum 1, Product OHCI Root Hub&lt;/span&gt;
+&lt;span class="cm"&gt; not configured&lt;/span&gt;
+&lt;span class="cm"&gt;ohci1 at pci0 dev 18 function 1 vendor/product: 0x1002/0x4398 (serialbus, USB)usb base addr : 0xc8707000, bus_base is : 0xc0000000&lt;/span&gt;
+&lt;span class="cm"&gt;OHCI revision: 0x00000110&lt;/span&gt;
+&lt;span class="cm"&gt;  RH: a: 0x02000b03 b: 0x00000000&lt;/span&gt;
+&lt;span class="cm"&gt;early period(0x0)&lt;/span&gt;
+&lt;span class="cm"&gt;OHCI 8b026c00 initialized ok&lt;/span&gt;
+&lt;span class="cm"&gt;drive at ohci1 devnum 3, Product Wired Keyboard 600&lt;/span&gt;
+&lt;span class="cm"&gt; not configured&lt;/span&gt;
+&lt;span class="cm"&gt;Read Capacity returns: 0xff17ef00, 0x20000&lt;/span&gt;
+&lt;span class="cm"&gt;Capacity = 0xef1800, blocksz = 0x200&lt;/span&gt;
+&lt;span class="cm"&gt;usb0 at ohci1 devnum 4, Product OnlyDisk                      &lt;/span&gt;
+&lt;span class="cm"&gt;drive at ohci1 devnum 2, Product OHCI Root Hub&lt;/span&gt;
+&lt;span class="cm"&gt; not configured&lt;/span&gt;
+&lt;span class="cm"&gt;vendor/product: 0x1002/0x4396 (serialbus, USB) at pci0 dev 18 function 2 not configured&lt;/span&gt;
+&lt;span class="cm"&gt;vendor/product: 0x1002/0x4397 (serialbus, USB) at pci0 dev 19 function 0 not configured&lt;/span&gt;
+&lt;span class="cm"&gt;vendor/product: 0x1002/0x4398 (serialbus, USB) at pci0 dev 19 function 1 not configured&lt;/span&gt;
+&lt;span class="cm"&gt;vendor/product: 0x1002/0x4396 (serialbus, USB) at pci0 dev 19 function 2 not configured&lt;/span&gt;
+&lt;span class="cm"&gt;vendor/product: 0x1002/0x4385 (serialbus, subclass: 0x05) at pci0 dev 20 function 0 not configured&lt;/span&gt;
+&lt;span class="cm"&gt;pciide1 at pci0 dev 20 function 1 vendor/product: 0x1002/0x439c (mass storage, IDE): DMA, (partial support), ch 0 cfg to compat, ch 1 cfg to compat&lt;/span&gt;
+&lt;span class="cm"&gt;vendor/product: 0x1002/0x4383 (multimedia, subclass: 0x03) at pci0 dev 20 function 2 not configured&lt;/span&gt;
+&lt;span class="cm"&gt;vendor/product: 0x1002/0x439d (bridge, ISA) at pci0 dev 20 function 3 not configured&lt;/span&gt;
+&lt;span class="cm"&gt;ppb6 at pci0 dev 20 function 4 vendor/product: 0x1002/0x4384 (bridge, PCI)&lt;/span&gt;
+&lt;span class="cm"&gt;pci7 at ppb6 bus 7&lt;/span&gt;
+&lt;span class="cm"&gt;vendor/product: 0x1002/0x4399 (serialbus, USB) at pci0 dev 20 function 5 not configured&lt;/span&gt;
+&lt;span class="cm"&gt;out configure&lt;/span&gt;
+&lt;span class="cm"&gt;Self test cmd failed,ignored!&lt;/span&gt;
+&lt;span class="cm"&gt;KBD_TEST cmd failed,ignored!&lt;/span&gt;
+&lt;span class="cm"&gt;Keyboard succesfully initialized.&lt;/span&gt;
+&lt;span class="cm"&gt;Press &amp;lt;Del&amp;gt; to set BIOS,waiting for 3 seconds here..... &lt;/span&gt;
+&lt;span class="cm"&gt;devconfig done.&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;-----------------godson3a_smbus_fixup---------------&lt;/span&gt;
+&lt;span class="cm"&gt; set smbus reg (0xbe) :1212 (usb intr map)&lt;/span&gt;
+&lt;span class="cm"&gt; set smbus reg (0xaf) :1c (sata intr map)&lt;/span&gt;
+&lt;span class="cm"&gt;SB700 interrupt PIC set begin,  &lt;/span&gt;
+&lt;span class="cm"&gt;set pic_5 pass&lt;/span&gt;
+&lt;span class="cm"&gt;set pic_5 pass&lt;/span&gt;
+&lt;span class="cm"&gt;set pic_6 pass&lt;/span&gt;
+&lt;span class="cm"&gt;set pic_5 pass&lt;/span&gt;
+&lt;span class="cm"&gt;set pic_5 pass&lt;/span&gt;
+&lt;span class="cm"&gt;set pic_a pass&lt;/span&gt;
+&lt;span class="cm"&gt;set pic_9 pass&lt;/span&gt;
+&lt;span class="cm"&gt;set pic_5 pass&lt;/span&gt;
+&lt;span class="cm"&gt;PIC control bit: 00007d37&lt;/span&gt;
+&lt;span class="cm"&gt;original int mode: 0x00000000 &lt;/span&gt;
+&lt;span class="cm"&gt;&amp;lt;1&amp;gt; now int mode: 0x00000078 &lt;/span&gt;
+&lt;span class="cm"&gt;waiting....&lt;/span&gt;
+&lt;span class="cm"&gt;&amp;lt;1&amp;gt; now int mode: 0x00007878 &lt;/span&gt;
+&lt;span class="cm"&gt;SB700 interrupt PIC set done &lt;/span&gt;
+&lt;span class="cm"&gt;SB700 device interrupt route begin&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;rte0 fixup: em0 ---------------&amp;gt; int5&lt;/span&gt;
+&lt;span class="cm"&gt;SB700 device  route em0: int5 &lt;/span&gt;
+&lt;span class="cm"&gt;SB700 device  route em1: int6&lt;/span&gt;
+
+
+&lt;span class="cm"&gt; godson3a_sata_fixup: sata ---------------&amp;gt; int5 &lt;/span&gt;
+&lt;span class="cm"&gt;-----------------tset sata------------------&lt;/span&gt;
+&lt;span class="cm"&gt;sata pci_config 0x40 (14)&lt;/span&gt;
+&lt;span class="cm"&gt;godson3a_sata: fix sata mode==:5&lt;/span&gt;
+&lt;span class="cm"&gt;godson3a_ide_fixup: fix ide mode&lt;/span&gt;
+&lt;span class="cm"&gt;godson3a fixup: usb ------&amp;gt; int6 &lt;/span&gt;
+&lt;span class="cm"&gt;godson3a fixup: usb ------&amp;gt; int6 &lt;/span&gt;
+&lt;span class="cm"&gt;godson3a fixup: usb ------&amp;gt; int6 &lt;/span&gt;
+&lt;span class="cm"&gt;godson3a fixup: usb ------&amp;gt; int6 &lt;/span&gt;
+&lt;span class="cm"&gt;godson3a fixup: usb ------&amp;gt; int6 &lt;/span&gt;
+&lt;span class="cm"&gt;godson3a fixup: usb ------&amp;gt; int6 &lt;/span&gt;
+&lt;span class="cm"&gt;godson3a fixup: usb ------&amp;gt; int6 &lt;/span&gt;
+&lt;span class="cm"&gt;godson3a fixup: usb ------&amp;gt; int6 &lt;/span&gt;
+&lt;span class="cm"&gt;godson3a fixup: VGA ------&amp;gt; int6 &lt;/span&gt;
+&lt;span class="cm"&gt;godson3a fixup: VGA ------&amp;gt; int6 &lt;/span&gt;
+&lt;span class="cm"&gt;05:00:00 interrupt line : Error&lt;/span&gt;
+&lt;span class="cm"&gt;06:00:00 interrupt line : Error&lt;/span&gt;
+&lt;span class="cm"&gt;ifinit done.&lt;/span&gt;
+&lt;span class="cm"&gt;domaininit done.&lt;/span&gt;
+&lt;span class="cm"&gt;init_proc....&lt;/span&gt;
+&lt;span class="cm"&gt;HSTI&lt;/span&gt;
+&lt;span class="cm"&gt;SYMI&lt;/span&gt;
+&lt;span class="cm"&gt;SBDE&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[&lt;/span&gt;
+&lt;span class="cm"&gt;[[  [[[[[[[[[       [[[[[       [[[[   [[[[[  [[[[[      [[[[[       [[[[[       [[[[   [[[[[  [[&lt;/span&gt;
+&lt;span class="cm"&gt;[[  [[[[[[[[   [[[[  [[[   [[[[  [[[    [[[[  [[[[  [[[[  [[[   [[[[  [[[   [[[[  [[[    [[[[  [[&lt;/span&gt;
+&lt;span class="cm"&gt;[[  [[[[[[[[  [[[[[[ [[[  [[[[[[ [[[  [  [[[  [[[  [[[[[[[[[[[[   [[[[[[[  [[[[[[ [[[  [  [[[  [[&lt;/span&gt;
+&lt;span class="cm"&gt;[[  [[[[[[[[  [[[[[[ [[[  [[[[[[ [[[  [[  [[  [[[  [[[    [[[[[[[    [[[[  [[[[[[ [[[  [[  [[  [[&lt;/span&gt;
+&lt;span class="cm"&gt;[[  [[[[[[[[  [[[[[[ [[[  [[[[[[ [[[  [[[  [  [[[  [[[[[  [[[[[[[[[[  [[[  [[[[[[ [[[  [[[  [  [[&lt;/span&gt;
+&lt;span class="cm"&gt;[[  [[[[[[[[   [[[[  [[[   [[[[  [[[  [[[[    [[[   [[[[  [[[   [[[  [[[[   [[[[  [[[  [[[[    [[&lt;/span&gt;
+&lt;span class="cm"&gt;[[       [[[[       [[[[[       [[[[  [[[[[   [[[[       [[[[[      [[[[[[       [[[[  [[[[[   [[&lt;/span&gt;
+&lt;span class="cm"&gt;[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[2011 Loongson][[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;Configuration [Bonito,EL,NET,SCSI,IDE]&lt;/span&gt;
+&lt;span class="cm"&gt;Version: PMON2013 V3.1R052B0053D0201 (Bonito) #1: Fri Feb  1 09:22:13 CST 2013 commit 39e53a7fafbe17ff77b63e61c49f1794f1907570 Author: Chen Xinke &amp;lt;chenxinke@ict.ac.cn&amp;gt; Date:   Sun Jan 27 15:20:17 2013 +0800 .&lt;/span&gt;
+&lt;span class="cm"&gt;Supported loaders [txt, srec, elf, bin]&lt;/span&gt;
+&lt;span class="cm"&gt;Supported filesystems [net, fat, fs, disk, iso9660, socket, tty, ram]&lt;/span&gt;
+&lt;span class="cm"&gt;This software may be redistributed under the BSD copyright.&lt;/span&gt;
+&lt;span class="cm"&gt;Copyright 2000-2002, Opsycon AB, Sweden.&lt;/span&gt;
+&lt;span class="cm"&gt;Copyright 2005, ICT CAS.&lt;/span&gt;
+&lt;span class="cm"&gt;CPU GODSON3 @ 799.98 MHz/ Bus @ 275 MHz&lt;/span&gt;
+&lt;span class="cm"&gt;Memory size 8192 MB .&lt;/span&gt;
+&lt;span class="cm"&gt;Primary Instruction cache size 64kb (32 line, 4 way)&lt;/span&gt;
+&lt;span class="cm"&gt;Primary Data cache size 64kb (32 line, 4 way)&lt;/span&gt;
+&lt;span class="cm"&gt;Secondary cache size 4096kb&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;BEV1&lt;/span&gt;
+&lt;span class="cm"&gt;BEV0&lt;/span&gt;
+&lt;span class="cm"&gt;BEV in SR set to zero.&lt;/span&gt;
+&lt;span class="cm"&gt;Token is correct!&lt;/span&gt;
+&lt;span class="cm"&gt;flag is 0x0003030f76543210&lt;/span&gt;
+&lt;span class="cm"&gt;Store MC info of Node 0 MC 0&lt;/span&gt;
+&lt;span class="cm"&gt;Now enable ddr config windows&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;Now Read out DDR parameter from DDR MC0 controler after DDR training&lt;/span&gt;
+&lt;span class="cm"&gt;Read out DDR MC0 config Done.&lt;/span&gt;
+&lt;span class="cm"&gt;Programming flash 8000b888:5c8 into bfc0d000&lt;/span&gt;
+&lt;span class="cm"&gt;Disable all space write protection of 49LF008A. &lt;/span&gt;
+&lt;span class="cm"&gt;Erasing FLASH block  13      | Done.&lt;/span&gt;
+&lt;span class="cm"&gt;Enable all space write protection of 49LF008A. Programming FLASH. Disable all space write protection of 49LF008A. / Done.&lt;/span&gt;
+&lt;span class="cm"&gt;Enable all space write protection of 49LF008A. Verifying FLASH.  No Errors found.&lt;/span&gt;
+&lt;span class="cm"&gt;Store MC info of Node 0 MC 1&lt;/span&gt;
+&lt;span class="cm"&gt;Now enable ddr config windows&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;Now Read out DDR parameter from DDR MC1 controler after DDR training&lt;/span&gt;
+&lt;span class="cm"&gt;Read out DDR MC1 config Done.&lt;/span&gt;
+&lt;span class="cm"&gt;Programming flash 8000b888:5c8 into bfc0e000&lt;/span&gt;
+&lt;span class="cm"&gt;Disable all space write protection of 49LF008A. &lt;/span&gt;
+&lt;span class="cm"&gt;Erasing FLASH block  14       Done.&lt;/span&gt;
+&lt;span class="cm"&gt;Enable all space write protection of 49LF008A. Programming FLASH. Disable all space write protection of 49LF008A. -\ Done.&lt;/span&gt;
+&lt;span class="cm"&gt;Enable all space write protection of 49LF008A. Verifying FLASH.  No Errors found.&lt;/span&gt;
+&lt;span class="cm"&gt;Store MC info of Node 1 MC 0&lt;/span&gt;
+&lt;span class="cm"&gt;Now enable ddr config windows&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;Now Read out DDR parameter from DDR MC0 controler after DDR training&lt;/span&gt;
+&lt;span class="cm"&gt;Read out DDR MC0 config Done.&lt;/span&gt;
+&lt;span class="cm"&gt;Programming flash 8000b888:5c8 into bfc0f000&lt;/span&gt;
+&lt;span class="cm"&gt;Disable all space write protection of 49LF008A. &lt;/span&gt;
+&lt;span class="cm"&gt;Erasing FLASH block  15       Done.&lt;/span&gt;
+&lt;span class="cm"&gt;Enable all space write protection of 49LF008A. Programming FLASH. Disable all space write protection of 49LF008A. | Done.&lt;/span&gt;
+&lt;span class="cm"&gt;Enable all space write protection of 49LF008A. Verifying FLASH. / No Errors found.&lt;/span&gt;
+&lt;span class="cm"&gt;Store MC info of Node 1 MC 1&lt;/span&gt;
+&lt;span class="cm"&gt;Now enable ddr config windows&lt;/span&gt;
+
+
+&lt;span class="cm"&gt;Now Read out DDR parameter from DDR MC1 controler after DDR training&lt;/span&gt;
+&lt;span class="cm"&gt;Read out DDR MC1 config Done.&lt;/span&gt;
+&lt;span class="cm"&gt;Programming flash 8000b888:5c8 into bfc10000&lt;/span&gt;
+&lt;span class="cm"&gt;Disable all space write protection of 49LF008A. &lt;/span&gt;
+&lt;span class="cm"&gt;Erasing FLASH block  16       Done.&lt;/span&gt;
+&lt;span class="cm"&gt;Enable all space write protection of 49LF008A. Programming FLASH. Disable all space write protection of 49LF008A. - Done.&lt;/span&gt;
+&lt;span class="cm"&gt;Enable all space write protection of 49LF008A. Verifying FLASH.  No Errors found.&lt;/span&gt;
+&lt;span class="cm"&gt;There is no 1 linux partion&lt;/span&gt;
+&lt;span class="cm"&gt;we can't locate root directory in super block!&lt;/span&gt;
+&lt;span class="cm"&gt;usage: bl -d cdrom/ide boot_config_file&lt;/span&gt;
+&lt;span class="cm"&gt;\|usage: bl -d cdrom/ide boot_config_file&lt;/span&gt;
+&lt;span class="cm"&gt;usage: bl -d cdrom/ide boot_config_file&lt;/span&gt;
+&lt;span class="cm"&gt;Now booting the LoongsonLinuxSystem&lt;/span&gt;
+&lt;span class="cm"&gt;Loading file: /dev/fs/ext2@wd0/boot/vmlinux20130419.numa (elf)&lt;/span&gt;
+&lt;span class="cm"&gt;(elf)&lt;/span&gt;
+&lt;span class="cm"&gt;0x80300000/11711552  + 0x80e2b440/17428768(z)  + 19271 syms /-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/&lt;/span&gt;
+&lt;span class="cm"&gt;Entry address is 80305bf0&lt;/span&gt;
+&lt;span class="cm"&gt;Boot with parameters: console=tty root=/dev/sda1&lt;/span&gt;
+&lt;span class="cm"&gt;/home/TMP/wanghongmei/28/pmon-loongson3/pmon/common/env.c:length of boot_param is 00000090&lt;/span&gt;
+&lt;span class="cm"&gt;ac = 00000003, nsp @ 8a7fff00, env @ 8a7fff30, en @ 801453d0&lt;/span&gt;
+&lt;span class="cm"&gt;vsp = 08xffffffff8a7fff10, ssp @ 08xffffffff8a7fff30&lt;/span&gt;
+&lt;span class="cm"&gt;board_name:Loongson-3A-780E-2w-V1.02-demo ---0x80142730 10&lt;/span&gt;
+&lt;span class="cm"&gt;Shutdown:0x80074b68 reset:0x80074cb4&lt;/span&gt;
+&lt;span class="cm"&gt;   zero      at       v0       v1       a0       a1       a2       a3   &lt;/span&gt;
+&lt;span class="cm"&gt; 00000000 00000000 00000000 00000000 00000003 8a7fff00 8a7fff30 801453d0&lt;/span&gt;
+&lt;span class="cm"&gt;    t0       t1       t2       t3       t4       t5       t6       t7   &lt;/span&gt;
+&lt;span class="cm"&gt; 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000&lt;/span&gt;
+&lt;span class="cm"&gt;    s0       s1       s2       s3       s4       s5       s6       s7   &lt;/span&gt;
+&lt;span class="cm"&gt; 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000&lt;/span&gt;
+&lt;span class="cm"&gt;    t8       t9       k0       k1       gp       sp       s8       ra   &lt;/span&gt;
+&lt;span class="cm"&gt; 00000000 00000000 00000000 00000000 00000000 8a7ffee0 00000000 800aa3f0&lt;/span&gt;
+&lt;span class="cm"&gt;CP0_Config3: CP0 16.3 (0xa0)&lt;/span&gt;
+&lt;span class="cm"&gt;CP0_PageGrain: CP0 5.1 (0x20000000)&lt;/span&gt;
+&lt;span class="cm"&gt;Caller cpu 0&lt;/span&gt;
+&lt;span class="cm"&gt;NUMA: Discovered 8 cpus on 2 nodes&lt;/span&gt;
+&lt;span class="cm"&gt;Debug: node_id:0, mem_type:1, mem_start:0x1000000, mem_size:0xf0 MB&lt;/span&gt;
+&lt;span class="cm"&gt;       start_pfn:0x0, end_pfn:0x4000, num_physpages:0x4000&lt;/span&gt;
+&lt;span class="cm"&gt;Debug: node_id:0, mem_type:2, mem_start:0x90000000, mem_size:0xf00 MB&lt;/span&gt;
+&lt;span class="cm"&gt;       start_pfn:0x24000, end_pfn:0x60000, num_physpages:0x40000&lt;/span&gt;
+&lt;span class="cm"&gt;smbios_addr : 0xfffe000&lt;/span&gt;
+&lt;span class="cm"&gt;node0's addrspace_offset is 0x0&lt;/span&gt;
+&lt;span class="cm"&gt;node0's start_pfn is 0x0, end_pfn is 0x60000, freepfn is 0x7b3&lt;/span&gt;
+&lt;span class="cm"&gt;Debug: node_id:0, mem_type:3, mem_start:0xfffe000, mem_size:0x0 MB&lt;/span&gt;
+&lt;span class="cm"&gt;Mengxf: total_memsize :0x1000 MB&lt;/span&gt;
+&lt;span class="cm"&gt;Debug: node_id:1, mem_type:1, mem_start:0x1000000, mem_size:0xf0 MB&lt;/span&gt;
+&lt;span class="cm"&gt;       start_pfn:0x40000000, end_pfn:0x40004000, num_physpages:0x44000&lt;/span&gt;
+&lt;span class="cm"&gt;Debug: node_id:1, mem_type:2, mem_start:0x90000000, mem_size:0xf00 MB&lt;/span&gt;
+&lt;span class="cm"&gt;       start_pfn:0x40024000, end_pfn:0x40060000, num_physpages:0x80000&lt;/span&gt;
+&lt;span class="cm"&gt;node1's addrspace_offset is 0x100000000000&lt;/span&gt;
+&lt;span class="cm"&gt;node1's start_pfn is 0x40000000, end_pfn is 0x40060000, freepfn is 0x40000000&lt;/span&gt;
+&lt;span class="cm"&gt;Mengxf: total_memsize :0x1000 MB&lt;/span&gt;
+&lt;span class="cm"&gt;NUMA: set cpumask cpu 0 on node 0&lt;/span&gt;
+&lt;span class="cm"&gt;NUMA: set cpumask cpu 1 on node 0&lt;/span&gt;
+&lt;span class="cm"&gt;NUMA: set cpumask cpu 2 on node 0&lt;/span&gt;
+&lt;span class="cm"&gt;NUMA: set cpumask cpu 3 on node 0&lt;/span&gt;
+&lt;span class="cm"&gt;NUMA: set cpumask cpu 4 on node 1&lt;/span&gt;
+&lt;span class="cm"&gt;NUMA: set cpumask cpu 5 on node 1&lt;/span&gt;
+&lt;span class="cm"&gt;NUMA: set cpumask cpu 6 on node 1&lt;/span&gt;
+&lt;span class="cm"&gt;NUMA: set cpumask cpu 7 on node 1&lt;/span&gt;
+&lt;span class="cm"&gt;SET HT_DMA CACHED&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Linux version 2.6.36.3+ (git@ubuntu) (gcc version 4.4.0 (GCC) ) #18 SMP Fri Apr 19 15:23:35 CST 2013&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] shutdown:0xffffffff80074b68 reset:0xffffffff80074cb4&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] vbios locate in ffffffff8014a940&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Version:1 PMON_Version_V3.1R052B0053D0201&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Board name:Loongson-3A-780E-2w-V1.02-demo ffffffff80142730 10&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Board type:0(RS780E)&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] cpu_clock:799980000, cputye:2, nr_cpus:8, ccnuma_smp:65536,single_double_way:131072&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] lp:ffffffff8a7fff58, irq_source:ffffffff80142698, offset:-174840000, ht_int_bit:1000000,ht_enable:d17b&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] pci_mem_start:40000000, pci_mem_end:7fffffff&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Caller cpu 0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] NUMA: Discovered 8 cpus on 2 nodes&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] bootconsole [early0] enabled&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] CPU revision is: 00006305 (ICT Loongson-3A5)&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] FPU revision is: 00770501&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Checking for the multiply/shift bug... no.&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Checking for the daddiu bug... no.&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Determined physical RAM map:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Initrd not found or empty - disabling initrd&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] swiotlb:restricted 32bit dma!&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] SWIOTLB: swiotlbsize = 0x4000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Placing 64MB software IO TLB between 98000000026dc000 - 98000000066dc000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] software IO TLB at phys 0x26dc000 - 0x66dc000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Zone PFN ranges:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000]   DMA32    0x00000000 -&amp;gt; 0x00040000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000]   Normal   0x00040000 -&amp;gt; 0x40060000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Movable zone start PFN for each node&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] early_node_map[4] active PFN ranges&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000]     0: 0x00000000 -&amp;gt; 0x00004000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000]     0: 0x00024000 -&amp;gt; 0x00060000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000]     1: 0x40000000 -&amp;gt; 0x40004000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000]     1: 0x40024000 -&amp;gt; 0x40060000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] sizhiying--nr_node_ids:2,highest:3 FILE:mm/page_alloc.c,func:setup_nr_node_ids&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Detected 7 available secondary CPU(s)&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] PERCPU: Embedded 3 pages/cpu @9800000006758000 s13376 r8192 d27584 u65536&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] pcpu-alloc: s13376 r8192 d27584 u65536 alloc=4*16384&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] pcpu-alloc: [0] 0 [0] 1 [0] 2 [0] 3 [0] 4 [0] 5 [0] 6 [0] 7 &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Built 2 zonelists in Zone order, mobility grouping on.  Total pages: 521600&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Policy zone: Normal&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Kernel command line: console=tty root=/dev/sda1 &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] PID hash table entries: 4096 (order: 1, 32768 bytes)&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] c0_config1 = fffffffffee37193&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Primary instruction cache 64kB, VIPT, 4-way, linesize 32 bytes.&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Primary data cache 64kB, 4-way, VIPT, no aliases, linesize 32 bytes&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] c0_config2 = ffffffff80001743&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Unified secondary cache 4096kB 4-way, linesize 32 bytes, waybit=0.&lt;/span&gt;
+&lt;span class="cm"&gt;total ram pages initialed 0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007b7&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001b008 count:0 mapcount:-1048576 mapping:(null) index:0x0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5ef8&amp;gt;] free_hot_cold_page+0x5c/0x250&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6adc&amp;gt;] free_all_bootmem_core+0x154/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Disabling lock debugging due to kernel taint&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007b8&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001b040 count:0 mapcount:-1048576 mapping:(null) index:0x10000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5ef8&amp;gt;] free_hot_cold_page+0x5c/0x250&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6adc&amp;gt;] free_all_bootmem_core+0x154/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:6bdb6db6e00007b9&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001b078 count:0 mapcount:0 mapping:00ff000000000000 index:0x10000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x10000000000000()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5ef8&amp;gt;] free_hot_cold_page+0x5c/0x250&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6adc&amp;gt;] free_all_bootmem_core+0x154/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:6bdb6db6e00007ba&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001b0b0 count:0 mapcount:-15663104 mapping:(null) index:0x0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x10000000000000()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5ef8&amp;gt;] free_hot_cold_page+0x5c/0x250&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6adc&amp;gt;] free_all_bootmem_core+0x154/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007bb&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001b0e8 count:0 mapcount:0 mapping:00ff000000000000 index:0xff000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5ef8&amp;gt;] free_hot_cold_page+0x5c/0x250&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6adc&amp;gt;] free_all_bootmem_core+0x154/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007bd&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001b158 count:0 mapcount:-1048576 mapping:(null) index:0x0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5ef8&amp;gt;] free_hot_cold_page+0x5c/0x250&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6adc&amp;gt;] free_all_bootmem_core+0x154/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007be&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001b190 count:0 mapcount:0 mapping:0010000000000000 index:0x10000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5ef8&amp;gt;] free_hot_cold_page+0x5c/0x250&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6adc&amp;gt;] free_all_bootmem_core+0x154/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:6bdb6db6e00007bf&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001b1c8 count:0 mapcount:-15663104 mapping:(null) index:0x0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0xff000000000000()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5ef8&amp;gt;] free_hot_cold_page+0x5c/0x250&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6adc&amp;gt;] free_all_bootmem_core+0x154/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:6bdb6db6e00007c0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001b200 count:0 mapcount:0 mapping:00ff000000000000 index:0x0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0xff000000000000()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007c2&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001b270 count:0 mapcount:0 mapping:00ff000000000000 index:0x10000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007c3&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001b2a8 count:0 mapcount:0 mapping:00ff000000000000 index:0xff000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007c4&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001b2e0 count:0 mapcount:-1048576 mapping:(null) index:0x0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007c6&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001b350 count:0 mapcount:0 mapping:00ff000000000000 index:0x10000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007c7&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001b388 count:0 mapcount:0 mapping:00ff000000000000 index:0xff000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007c8&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001b3c0 count:0 mapcount:-1048576 mapping:(null) index:0x0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007ca&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001b430 count:0 mapcount:0 mapping:0010000000000000 index:0x10000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007cb&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001b468 count:0 mapcount:0 mapping:00ff000000000000 index:0xff000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007cc&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001b4a0 count:0 mapcount:-1048576 mapping:(null) index:0x0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007ce&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001b510 count:0 mapcount:0 mapping:0010000000000000 index:0x10000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007cf&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001b548 count:0 mapcount:0 mapping:00ff000000000000 index:0xff000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007d0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001b580 count:0 mapcount:-1048576 mapping:(null) index:0x0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007d2&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001b5f0 count:0 mapcount:0 mapping:00ff000000000000 index:0x10000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007d3&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001b628 count:0 mapcount:0 mapping:00ff000000000000 index:0xff000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007d4&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001b660 count:0 mapcount:-1048576 mapping:(null) index:0x0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007d6&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001b6d0 count:0 mapcount:0 mapping:00ff000000000000 index:0x10000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007d7&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001b708 count:0 mapcount:-1048576 mapping:00ff000000000000 index:0xff000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007d8&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001b740 count:0 mapcount:-1048576 mapping:(null) index:0x0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007da&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001b7b0 count:0 mapcount:0 mapping:00ff000000000000 index:0x10000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007db&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001b7e8 count:0 mapcount:0 mapping:00ff000000000000 index:0xff000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007dc&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001b820 count:0 mapcount:-1048576 mapping:(null) index:0x0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007de&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001b890 count:0 mapcount:0 mapping:00ff000000000000 index:0x10000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007df&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001b8c8 count:0 mapcount:0 mapping:00ff000000000000 index:0xff000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007e0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001b900 count:0 mapcount:-1048576 mapping:(null) index:0x0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007e2&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001b970 count:0 mapcount:0 mapping:00ff000000000000 index:0x10000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007e3&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001b9a8 count:0 mapcount:0 mapping:00ff000000000000 index:0xff000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007e4&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001b9e0 count:0 mapcount:-1048576 mapping:(null) index:0x0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007e6&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001ba50 count:0 mapcount:0 mapping:00ff000000000000 index:0x10000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007e7&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001ba88 count:0 mapcount:-1048576 mapping:00ff000000000000 index:0xff000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007e8&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001bac0 count:0 mapcount:-1048576 mapping:(null) index:0x0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007ea&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001bb30 count:0 mapcount:0 mapping:00ff000000000000 index:0x10000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007eb&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001bb68 count:0 mapcount:0 mapping:00ff000000000000 index:0xff000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007ec&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001bba0 count:0 mapcount:-1048576 mapping:(null) index:0x0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007ee&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001bc10 count:0 mapcount:0 mapping:00ff000000000000 index:0x10000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007ef&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001bc48 count:0 mapcount:0 mapping:00ff000000000000 index:0xff000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007f0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001bc80 count:0 mapcount:-1048576 mapping:(null) index:0x0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007f2&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001bcf0 count:0 mapcount:0 mapping:00ff000000000000 index:0x10000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007f3&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001bd28 count:0 mapcount:0 mapping:00ff000000000000 index:0xff000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007f4&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001bd60 count:0 mapcount:-1048576 mapping:(null) index:0x0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007f6&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001bdd0 count:0 mapcount:0 mapping:00ff000000000000 index:0x10000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007f7&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001be08 count:0 mapcount:0 mapping:00ff000000000000 index:0xff000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007f8&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001be40 count:0 mapcount:-1048576 mapping:(null) index:0x0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007fa&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001beb0 count:0 mapcount:0 mapping:00ff000000000000 index:0x10000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007fb&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001bee8 count:0 mapcount:0 mapping:00ff000000000000 index:0xff000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007fc&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001bf20 count:0 mapcount:-1048576 mapping:(null) index:0x0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007fe&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001bf90 count:0 mapcount:0 mapping:00ff000000000000 index:0x10000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:007ff&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001bfc8 count:0 mapcount:0 mapping:00ff000000000000 index:0xff000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:00800&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001c000 count:0 mapcount:-1048576 mapping:(null) index:0x0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:00802&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001c070 count:0 mapcount:0 mapping:0010000000000000 index:0x10000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:00803&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001c0a8 count:0 mapcount:0 mapping:00ff000000000000 index:0xff000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BUG: Bad page state in process swapper  pfn:00804&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page:980000010001c0e0 count:0 mapcount:-1048576 mapping:(null) index:0x0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] page flags: 0x0()&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8031f9b4&amp;gt;] dump_stack+0x8/0x34&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a3fec&amp;gt;] bad_page+0x10c/0x138&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a4ca4&amp;gt;] free_pages_prepare+0xa8/0x100&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5d3c&amp;gt;] __free_pages_ok+0x38/0x17c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6ab4&amp;gt;] free_all_bootmem_core+0x12c/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Unhandled kernel unaligned access[#1]:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Cpu 0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] $ 0   : 0000000000000000 00000000140000e0 0000000000000000 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] $ 4   : 0000000000000000 ffffffff80cf3c50 0000000000000002 0000000000000001&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] $ 8   : 0000000000000040 0000000000000003 0000000000000001 0000000000000006&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] $12   : 00000000140000e0 000000001000001e ffffffff80e30560 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] $16   : 0000000000000000 ffffffffdc690008 001af6daee9e5e08 ffffffff80e30540&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] $20   : 0000000000000000 00001fffffffffff 0000000000021400 0000000000000009&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] $24   : 0000000000000000 ffffffff8032382c                                  &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] $28   : ffffffff80cf0000 ffffffff80cf3c20 00000000000215f8 ffffffff80300400&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Hi    : 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Lo    : 0000000000000003&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] epc   : ffffffff8032bacc do_ade+0x1cc/0x594&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000]     Tainted: G    B      &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] ra    : ffffffff80300400 ret_from_exception+0x0/0x24&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Status: 140000e2    KX SX UX KERNEL EXL &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Cause : 40008010&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] BadVA : 001af6daee9e5e0f&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] PrId  : 00006305 (ICT Loongson-3A5)&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Modules linked in:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Process swapper (pid: 0, threadinfo=ffffffff80cf0000, task=ffffffff80d015c0, tls=0000000000000000)&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Stack : 00000000140000e0 ffffffff80cf3bef 98000001000215f8 0010000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000]         0000000000060000 ffffffff80300400 0000000000000000 00000000140000e0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000]         0000000000000000 001af6daee9e5e00 001af6db6db80000 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000]         0000000000000002 0000000000000001 0000000000000040 0000000000000003&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000]         0000000000000001 0000000000000006 9800000100021540 98000001000215b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000]         ffffffff80e30560 0000000000000000 98000001000215f8 0010000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000]         0000000000060000 ffffffff80e30540 0000000000000000 00001fffffffffff&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000]         0000000000021400 0000000000000009 0000000000000000 ffffffff8032382c&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000]         0000000000000001 98000001000215c0 ffffffff80cf0000 ffffffff80cf3d80&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000]         00000000000215f8 ffffffff803a5f10 00000000140000e2 0000000000000000&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000]         ...&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Call Trace:&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff8032bacc&amp;gt;] do_ade+0x1cc/0x594&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80300400&amp;gt;] ret_from_exception+0x0/0x24&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a2c60&amp;gt;] get_pageblock_flags_group+0x74/0xd0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff803a5f10&amp;gt;] free_hot_cold_page+0x74/0x250&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80de6adc&amp;gt;] free_all_bootmem_core+0x154/0x2ac&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddf980&amp;gt;] mem_init+0xac/0x1b0&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] [&amp;lt;ffffffff80ddc8d0&amp;gt;] start_kernel+0x190/0x468&lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Code: 00431024  144000c6  00000000 &amp;lt;6a430007&amp;gt; 6e430000  24020000  0060902d  144000b0  00a0202d &lt;/span&gt;
+&lt;span class="cm"&gt;[    0.000000] Kernel panic - not syncing: Attempted to kill the idle task!&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</content><category term="pmon"></category></entry><entry><title>通过printf函数简单实现解析不定参数表</title><link href="http://king32783784.github.io/2013/05/27/C/" rel="alternate"></link><published>2013-05-27T00:00:00+08:00</published><updated>2013-05-27T00:00:00+08:00</updated><author><name>peng.li</name></author><id>tag:king32783784.github.io,2013-05-27:/2013/05/27/C/</id><summary type="html">&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/P5LS1TUY3V.jpg" width="420"/&gt;&lt;/p&gt;
+&lt;p&gt;先看代码，&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;minprintf&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;#include&amp;lt;stdarg.h&amp;gt;
+/*minprintf:minimal printf with variable argument list */
+
+void minprintf(char *fmt,...)
+
+{
+
+va_list ap; /*points to unnamed arg in turn */
+
+char *p, *sval;
+
+int ival;
+
+double dval;
+
+va_start(ap,fmt); /*make ap point to 1st unamed arg*/
+
+for (p = fmt; *p; p++) {
+
+if (*p != '%') {
+
+putchar(*p …&lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;</summary><content type="html">&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/P5LS1TUY3V.jpg" width="420"/&gt;&lt;/p&gt;
+&lt;p&gt;先看代码，&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;minprintf&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;#include&amp;lt;stdarg.h&amp;gt;
+/*minprintf:minimal printf with variable argument list */
+
+void minprintf(char *fmt,...)
+
+{
+
+va_list ap; /*points to unnamed arg in turn */
+
+char *p, *sval;
+
+int ival;
+
+double dval;
+
+va_start(ap,fmt); /*make ap point to 1st unamed arg*/
+
+for (p = fmt; *p; p++) {
+
+if (*p != '%') {
+
+putchar(*p);
+
+continue;
+
+}
+
+switch(*++p) {
+
+
+case 'd':
+
+ival = va_arg(ap ,int);
+
+printf("%d", ival);
+
+break;
+
+
+case 'f':
+
+ival = va_arg(ap ,double);
+
+printf("%f", ival);
+
+break;
+
+case 's':
+
+for(sval = va_arg(ap,char *);*sval;sval ++)
+
+putchar(*sval);
+
+break;
+
+default:
+
+putchar(*p);
+
+break;
+
+}
+
+}
+
+va_end(ap) ; /*clean up when done*/
+
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;在C语言中，没有函数重载。所以要想实现不定数目的函数参数，变得比较复杂。了解这个问题，涉及到标准头文件&lt;stdarg,h&gt;几个宏定义，va_start和va_end 等。在此之前，先看一下C语言中传递函数的参数时的用法和原理：&lt;/stdarg,h&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;1.在c中，当我们无法列出传递函数的所有实参的类型和数目时，，可以用省略号指定参数列表。&lt;/p&gt;
+&lt;p&gt;void foo(...);&lt;/p&gt;
+&lt;p&gt;void foo(parm_list,..);&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这就是C中一种传参的形式，多用于变长参数表。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;2.函数参数传递的原理&lt;/p&gt;
+&lt;p&gt;函数参数是以数据结构：栈的形式存取，从右至左入栈。这跟栈的机制有关。&lt;/p&gt;
+&lt;p&gt;参数的内存存放格式：参数存放在内存的堆栈段中，在执行函数时，从最后一个开始入栈。因此栈底的高地址，栈顶低地址。void func(int x,float y,char z),在函数调用的时候，是参char z先进栈，然后是 floaty,intx,出的时候顺序是相反的。理论上说，如果我们找到任意变量的地址，并知道其他变量的类型，便可以通过移动位置（指针移位运算，找到其他的输入变量。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;下面看几个宏定义&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;typedef char* va_list;
+
+void va_start(va_list ap, prev_param):/ANSI version*/
+
+type va_arg(va_list ao,type);
+
+void va_end(va_list ap);
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;va_list是一个字符指针，可以理解为当前参数的一个指针，取参必须通过这个指针进行。&lt;/p&gt;
+&lt;p&gt;1在调用参数表之前，定义一个va_list类型的变量（假设va_list类型变量被定义为ap）；&lt;/p&gt;
+&lt;p&gt;2然后应该对ap进行初始化，让它指向可变参数列表的第一个参数，是通过va_start实现的，第一个参数是ap本身，第二个参数是在变参表前面紧挨着的一个变量，即“...”之前的那个参数。&lt;/p&gt;
+&lt;p&gt;3 获取参数，调用va_arg,他的第一个参数是ap，第二个参数是获取的参数的指定类型，然后返回这个指定类型的值，并且把ap指向参数的下一个变量位置&lt;/p&gt;
+&lt;p&gt;4 获取所有参加之后，我们有必要将ap指针关掉，调用va_end ，他是将ap指向为空，应该养成取完参数之后，关闭指针的习惯，一般情况下，vstart 和 vend 同时出现。&lt;/p&gt;
+&lt;p&gt;如下面的小例子&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
+
+&lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;fun&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;  &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,..)&lt;/span&gt;
+
+&lt;span class="p"&gt;{&lt;/span&gt;
+
+   &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;temp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+   &lt;span class="n"&gt;temp&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+  &lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="p"&gt;{&lt;/span&gt;
+
+   &lt;span class="n"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"%d"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;temp&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;temp&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="p"&gt;{&lt;/span&gt;
+
+    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+
+    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="n"&gt;fun&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;获取省略号指定的参数&lt;/p&gt;
+&lt;p&gt;在函数体声明一个va_list，然后用va_start函数获取参数列表中的参数,使用完毕后调用va_end（）结束，例如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;void TestFun(char *pszDest, int DestLen, const char* pszFormat,...)
+
+{
+
+  va_list args;
+
+  va_start(args,pszFormat); //"一定要"..."之前的那个参数
+
+  _vsnprintf(pszDest,Destlen,pszFormat,args);
+
+  va_end(args);
+ }
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;5.如何使用参数个数可变的函数,&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
+
+&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;string.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
+
+&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;stdarg.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
+
+&lt;span class="cm"&gt;/*注意函数原型声明,至少有一个确定的参数,后面跟省略号*/&lt;/span&gt;
+
+&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;demo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;char&lt;/span&gt;&lt;span class="p"&gt;,...)&lt;/span&gt;
+
+&lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="p"&gt;{&lt;/span&gt;
+
+      &lt;span class="n"&gt;demo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"DEMO"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;"This"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;"is"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;"a"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;"demo!"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;" "&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+ &lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="nf"&gt;demo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;,...)&lt;/span&gt;
+
+&lt;span class="p"&gt;{&lt;/span&gt;
+
+&lt;span class="cm"&gt;/*定义保存函数参数的结构*/&lt;/span&gt;
+
+&lt;span class="kt"&gt;va_list&lt;/span&gt; &lt;span class="n"&gt;argp&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="kt"&gt;int&lt;/span&gt; &lt;span class="n"&gt;argno&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="kt"&gt;char&lt;/span&gt; &lt;span class="n"&gt;para&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="cm"&gt;/*argp 指向第一个可选参数,msg是最后一个确定的参数*/&lt;/span&gt;
+
+&lt;span class="n"&gt;va_start&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;argp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="p"&gt;{&lt;/span&gt;
+
+&lt;span class="k"&gt;while&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="p"&gt;{&lt;/span&gt;
+
+&lt;span class="n"&gt;para&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;va_arg&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;argp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kt"&gt;char&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;strcmp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;para&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;" "&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;break&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="n"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"Parameter #%d is :%s&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;argno&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;para&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="n"&gt;argno&lt;/span&gt; &lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="n"&gt;va_end&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;argp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;retrun&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;6 回过头来看一下一开始那个程序.&lt;/p&gt;
+&lt;p&gt;minprintf函数用来遍历printf函数的参数表,它的参数为printf函数中参数的指针
+指针ap 用来实现遍历函数的参数列表.在函数运行中ap会先后指向参数表中的每一个参数.&lt;/p&gt;
+&lt;p&gt;va_start(ap,fmt).ap指向省略中的第一个参数.fmt指向最后一个函数参数表中有名参数.即开始时ap指向的参数的前一个参数.&lt;/p&gt;
+&lt;p&gt;for(p =fmt;&lt;em&gt;p;p++),p初始为&lt;/em&gt;fmt ,即指向ap前一个参数,通过对p的循环实现ap指针遍历省略的参数表.&lt;/p&gt;
+&lt;p&gt;就有了下面的switch,来讨论可能出现的参数.&lt;/p&gt;
+&lt;p&gt;最后通过va_end(ap),将ap指向NULL.避免出现异常.注意:，应该养成，关闭指针的习惯.&lt;/p&gt;
+&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</content><category term="C"></category></entry></feed>

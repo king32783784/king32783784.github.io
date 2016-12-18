@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>Vim.Linux - peng.li</title><link>http://king32783784.github.io/</link><description>Don't know how to develop's testers are not good testers &lt;a href="pages/aboutme.html"&gt;More...&lt;/a&gt;</description><lastBuildDate>Thu, 29 Aug 2013 00:00:00 +0800</lastBuildDate><item><title>PMON启动信息详解</title><link>http://king32783784.github.io/2013/08/29/pmon/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/P5LS1TUY3V.jpg" width="420"/&gt;&lt;/p&gt;
+&lt;p&gt;启动过程：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;PMON2000&lt;/span&gt; &lt;span class="nv"&gt;MIPS&lt;/span&gt; &lt;span class="nv"&gt;Initializing&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="nv"&gt;Standby&lt;/span&gt;&lt;span class="p"&gt;...&lt;/span&gt; &lt;span class="cm"&gt;/*CPU  Initializing*/&lt;/span&gt;
+
+ &lt;span class="mh"&gt;0xbfe00190&lt;/span&gt; &lt;span class="s s-Atom"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;00008062&lt;/span&gt;&lt;span class="s s-Atom"&gt;f0f8f0f0&lt;/span&gt; 
+&lt;span class="nv"&gt;CPU&lt;/span&gt; &lt;span class="nv"&gt;CLK&lt;/span&gt; &lt;span class="nv"&gt;SEL&lt;/span&gt; &lt;span class="s s-Atom"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;00000002&lt;/span&gt;
+&lt;span class="nv"&gt;CPU&lt;/span&gt; &lt;span class="s s-Atom"&gt;clk&lt;/span&gt; &lt;span class="s s-Atom"&gt;frequency&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;SYSCLK&lt;/span&gt; &lt;span class="s s-Atom"&gt;x&lt;/span&gt; &lt;span class="mh"&gt;0x00000020&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;  &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="s s-Atom"&gt;/×CPU的频率×&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;
+&lt;span class="nv"&gt;MEM&lt;/span&gt; &lt;span class="nv"&gt;CLK&lt;/span&gt; &lt;span class="nv"&gt;SEL&lt;/span&gt; &lt;span class="s s-Atom"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;00000003&lt;/span&gt;
+&lt;span class="nv"&gt;DDR&lt;/span&gt; &lt;span class="s s-Atom"&gt;clk&lt;/span&gt; &lt;span class="s s-Atom"&gt;frequency&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nv"&gt;MEMCLK&lt;/span&gt; &lt;span class="s s-Atom"&gt;x&lt;/span&gt; &lt;span class="mh"&gt;0x00000021&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;  &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="cm"&gt;/*DDR的频率×/&lt;/span&gt;
+
+&lt;span class="cm"&gt;CPU 1 READ TEST...&lt;/span&gt;
+&lt;span class="cm"&gt;CPU 1 READ TEST OK./×CPU 读测试×/&lt;/span&gt;
+&lt;span class="cm"&gt;HT0 frequency reconfig  /×总线时钟重新设置×/&lt;/span&gt;
+&lt;span class="cm"&gt;Fix …&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">peng.li</dc:creator><pubDate>Thu, 29 Aug 2013 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2013-08-29:/2013/08/29/pmon/</guid><category>pmon</category></item><item><title>通过printf函数简单实现解析不定参数表</title><link>http://king32783784.github.io/2013/05/27/C/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/P5LS1TUY3V.jpg" width="420"/&gt;&lt;/p&gt;
+&lt;p&gt;先看代码，&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;minprintf&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;#include&amp;lt;stdarg.h&amp;gt;
+/*minprintf:minimal printf with variable argument list */
+
+void minprintf(char *fmt,...)
+
+{
+
+va_list ap; /*points to unnamed arg in turn */
+
+char *p, *sval;
+
+int ival;
+
+double dval;
+
+va_start(ap,fmt); /*make ap point to 1st unamed arg*/
+
+for (p = fmt; *p; p++) {
+
+if (*p != '%') {
+
+putchar(*p …&lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">peng.li</dc:creator><pubDate>Mon, 27 May 2013 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2013-05-27:/2013/05/27/C/</guid><category>C</category></item></channel></rss>
