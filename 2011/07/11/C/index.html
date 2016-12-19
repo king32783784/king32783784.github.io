@@ -295,6 +295,13 @@
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
+                    <li class="active">
+                        <a href="../../../../category/bian-cheng-yu-yan-c.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            编程语言-C
+                            <span class="badge pull-right categorybadge">3</span>
+                        </a>
+                    </li>
                     <li >
                         <a href="../../../../category/bian-cheng-yu-yan-python.html">
                             <i class="fa fa-folder-open padding-small"></i>
@@ -316,13 +323,6 @@
                             <span class="badge pull-right categorybadge">3</span>
                         </a>
                     </li>
-                    <li class="active">
-                        <a href="../../../../category/bian-cheng-yu-yan-c.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            编程语言-C
-                            <span class="badge pull-right categorybadge">2</span>
-                        </a>
-                    </li>
                     <li >
                         <a href="../../../../category/dockerzhuan-ti.html">
                             <i class="fa fa-folder-open padding-small"></i>
@@ -338,6 +338,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/qi-ta.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            其他
+                            <span class="badge pull-right categorybadge">2</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/suan-fa.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             算法
@@ -349,13 +356,6 @@
                             <i class="fa fa-folder-open padding-small"></i>
                             unix环境编程
                             <span class="badge pull-right categorybadge">2</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/qi-ta.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            其他
-                            <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
                 </ul></li>
@@ -426,9 +426,9 @@
 </pre></div>
 <p><strong>初始化</strong></p>
 <p>1.初始化的就是定义一个结构体变量，并且给它赋值比如：</p>
-<div class="highlight"><pre><span></span>TEST_T gst  = {1, &ldquo;12345&rdquo;}; /*可以初始化，设置i为1，c为一个字符串.*/
+<div class="highlight"><pre><span></span>TEST_T gst  = {1, “12345”}; /*可以初始化，设置i为1，c为一个字符串.*/
 TEST_T gst  = {1}; /*初始化个数少于实际个数时，只初始化前面的成员。*/
-TEST_T gst  = {.c=&ldquo;12345&rdquo;}; /*有选择的初始化成员。*/
+TEST_T gst  = {.c=“12345”}; /*有选择的初始化成员。*/
 </pre></div>
 <p>2、复合字面量。</p>
 <div class="highlight"><pre><span></span>gst = (TEST_T){122, "1256"}; /*这是一个赋值语句，也可以作为初始化。可以出现在程序的任何地方。*/
