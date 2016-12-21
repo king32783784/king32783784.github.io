@@ -1,50 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>路漫.求索</title><link href="http://king32783784.github.io/" rel="alternate"></link><link href="http://king32783784.github.io/feeds/pengli.atom.xml" rel="self"></link><id>http://king32783784.github.io/</id><updated>2013-08-29T00:00:00+08:00</updated><entry><title>PMON启动信息详解</title><link href="http://king32783784.github.io/2013/08/29/pmon/" rel="alternate"></link><published>2013-08-29T00:00:00+08:00</published><author><name>peng.li</name></author><id>tag:king32783784.github.io,2013-08-29:2013/08/29/pmon/</id><summary type="html">&lt;p&gt;&lt;img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/P5LS1TUY3V.jpg" height="280" width="420"&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>路漫.求索</title><link href="http://king32783784.github.io/" rel="alternate"></link><link href="http://king32783784.github.io/feeds/pengli.atom.xml" rel="self"></link><id>http://king32783784.github.io/</id><updated>2013-08-29T00:00:00+08:00</updated><entry><title>PMON启动信息详解</title><link href="http://king32783784.github.io/2013/08/29/pmon/" rel="alternate"></link><published>2013-08-29T00:00:00+08:00</published><author><name>peng.li</name></author><id>tag:king32783784.github.io,2013-08-29:2013/08/29/pmon/</id><summary type="html">&lt;body&gt;&lt;p&gt;&lt;img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/P5LS1TUY3V.jpg" width="420"/&gt;&lt;/p&gt;
 &lt;p&gt;启动过程：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;PMON2000 MIPS Initializing. Standby... /*CPU  Initializing*/
 
  0xbfe00190 : 00008062f0f8f0f0 
 CPU CLK SEL : 00000002
-CPU clk frequency = SYSCLK x 0x00000020 /  1 /×CPU的频率×/
+CPU clk frequency = SYSCLK x 0x00000020 /  1 /&amp;times;CPU的频率&amp;times;/
 MEM CLK SEL : 00000003
-DDR clk frequency = MEMCLK x 0x00000021 /  3 /*DDR的频率×/
+DDR clk frequency = MEMCLK x 0x00000021 /  3 /*DDR的频率&amp;times;/
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;CPU 1 READ TEST...
-CPU 1 READ TEST OK./×CPU 读测试×/
-HT0 frequency reconfig  /×总线时钟重新设置×/
+CPU 1 READ TEST OK./&amp;times;CPU 读测试&amp;times;/
+HT0 frequency reconfig  /&amp;times;总线时钟重新设置&amp;times;/
 Fix L1xbar illegal access at NODE 0
-Fix L1xbar illegal access at NODE 1 /×修复节点的一级缓存×/&lt;/p&gt;
+Fix L1xbar illegal access at NODE 1 /&amp;times;修复节点的一级缓存&amp;times;/&lt;/p&gt;
 &lt;p&gt;Fix L2xbar in NODE 0
-Fix L2xbar in NODE 1  /×修复节点的二级缓存×/
-Init tlb...  /×初始化TLB×/
-Init htpcitlb.../×初始化PCI总线TLB×/
-godson2 caches found /×初始化缓存×/
-Jump to 9fc /×跳转到9fc&lt;em&gt;/
-scache init done /×chache 初始化完成&lt;/em&gt;/&lt;/p&gt;
+Fix L2xbar in NODE 1  /&amp;times;修复节点的二级缓存&amp;times;/
+Init tlb...  /&amp;times;初始化TLB&amp;times;/
+Init htpcitlb.../&amp;times;初始化PCI总线TLB&amp;times;/
+godson2 caches found /&amp;times;初始化缓存&amp;times;/
+Jump to 9fc /&amp;times;跳转到9fc&lt;em&gt;/
+scache init done /&amp;times;chache 初始化完成&lt;/em&gt;/&lt;/p&gt;
 &lt;p&gt;Start Init Memory, wait a while......
-NODE 0 MEMORY CONFIG BEGIN/*开始初始化内存，首先是节点0的内存×/&lt;/p&gt;
-&lt;p&gt;Open SMBUS controller/*开启SMBUS控制器×/&lt;/p&gt;
+NODE 0 MEMORY CONFIG BEGIN/*开始初始化内存，首先是节点0的内存&amp;times;/&lt;/p&gt;
+&lt;p&gt;Open SMBUS controller/*开启SMBUS控制器&amp;times;/&lt;/p&gt;
 &lt;p&gt;Probing DDR MC1 SLOT:    /&lt;em&gt;侦测 DDR控制器MC1 插槽&lt;/em&gt;/ 
-Probe MC1 slot 0.       /*侦测到MC1 slot0 内存颗粒×/
+Probe MC1 slot 0.       /*侦测到MC1 slot0 内存颗粒&amp;times;/
 Probe MC1 slot 1.
-NO DIMM in this slot. /×MC1 slot 1 没有内存颗粒×/&lt;/p&gt;
+NO DIMM in this slot. /&amp;times;MC1 slot 1 没有内存颗粒&amp;times;/&lt;/p&gt;
 &lt;p&gt;Probing DDR MC0 SLOT: 
 Probe MC0 slot 0.
 Probe MC0 slot 1.
-NO DIMM in this slot./×MC0同MC1*/&lt;/p&gt;
+NO DIMM in this slot./&amp;times;MC0同MC1*/&lt;/p&gt;
 &lt;p&gt;s1 = 0xf0a10400__f0a10400
 /*&lt;/p&gt;
 &lt;p&gt;new s1 = 0xf0a10400__f0a10400
-Disable cpu buffered read  /*关闭CPU缓存读×/
+Disable cpu buffered read  /*关闭CPU缓存读&amp;times;/
 Disable read buffer      &lt;/p&gt;
-&lt;p&gt;Enable register space of MEMORY   /×设置内存寄存器模块使能×/&lt;/p&gt;
+&lt;p&gt;Enable register space of MEMORY   /&amp;times;设置内存寄存器模块使能&amp;times;/&lt;/p&gt;
 &lt;p&gt;The MC param is:
 00000100  00000100
 00000001  00010001
 ...&lt;/p&gt;
-&lt;p&gt;/×写入内存参数×/&lt;/p&gt;
+&lt;p&gt;/&amp;times;写入内存参数&amp;times;/&lt;/p&gt;
 &lt;p&gt;Disable register space of MEMORY
 /&lt;em&gt;关闭内存的寄存器模块&lt;/em&gt;/&lt;/p&gt;
 &lt;p&gt;NODE ID:00000000
@@ -56,7 +54,7 @@ Lock Scache Done.      &lt;/p&gt;
 Min value: 0x0000000000000000
 Max value: 0x4e46443c44484e50
 Cal Mid value: 0x120a0800080c1214
-/×写入练习×/&lt;/p&gt;
+/&amp;times;写入练习&amp;times;/&lt;/p&gt;
 &lt;p&gt;Start read leveling..&lt;/p&gt;
 &lt;p&gt;Level slice: 0x00000007
 Wait a while...
@@ -69,7 +67,7 @@ RDLVL_DELAYP_GD_MAX: 0x00003a3c
 RDLVL_DELAYN_GD_MIN: 0x00000404
 RDLVL_DELAYN_GD_MAX: 0x00003a3a
 This Slice level success, use first value.
-/*这一级片训练成功，采用第一个值×/&lt;/p&gt;
+/*这一级片训练成功，采用第一个值&amp;times;/&lt;/p&gt;
 &lt;p&gt;Level slice: 0x00000006
 Wait a while...
 RDLVL_FAIL_MARK: 0x00000000
@@ -81,7 +79,7 @@ RDLVL_DELAYP_GD_MAX: 0x00003a3a
 RDLVL_DELAYN_GD_MIN: 0x00000808
 RDLVL_DELAYN_GD_MAX: 0x00003c3c
 This Slice level success, use second value.
-/*这一级片训练成功，采用第二个值×/&lt;/p&gt;
+/*这一级片训练成功，采用第二个值&amp;times;/&lt;/p&gt;
 &lt;p&gt;Level slice: 0x00000005
 Wait a while...
 RDLVL_FAIL_MARK: 0x00000000
@@ -93,7 +91,7 @@ RDLVL_DELAYP_GD_MAX: 0x00003a3a
 RDLVL_DELAYN_GD_MIN: 0x00000808
 RDLVL_DELAYN_GD_MAX: 0x00003c3c
 This Slice level success, use second value.
-/*这一级片训练成功，采用第二个值×/&lt;/p&gt;
+/*这一级片训练成功，采用第二个值&amp;times;/&lt;/p&gt;
 &lt;p&gt;Level slice: 0x00000004
 Wait a while...
 RDLVL_FAIL_MARK: 0x00000000
@@ -105,7 +103,7 @@ RDLVL_DELAYP_GD_MAX: 0x00003a3a
 RDLVL_DELAYN_GD_MIN: 0x00000808
 RDLVL_DELAYN_GD_MAX: 0x00003c3c
 This Slice level success, use second value.
-/*这一级片训练成功，采用第二个值×/&lt;/p&gt;
+/*这一级片训练成功，采用第二个值&amp;times;/&lt;/p&gt;
 &lt;p&gt;Level slice: 0x00000003
 Wait a while...
 RDLVL_FAIL_MARK: 0x00000000
@@ -117,7 +115,7 @@ RDLVL_DELAYP_GD_MAX: 0x00003c3c
 RDLVL_DELAYN_GD_MIN: 0x00000404
 RDLVL_DELAYN_GD_MAX: 0x00003c3c
 This Slice level success, use second value.
-/*这一级片训练成功，采用第二个值×/&lt;/p&gt;
+/*这一级片训练成功，采用第二个值&amp;times;/&lt;/p&gt;
 &lt;p&gt;Level slice: 0x00000002
 Wait a while...
 RDLVL_FAIL_MARK: 0x00000000
@@ -129,7 +127,7 @@ RDLVL_DELAYP_GD_MAX: 0x00003e3e
 RDLVL_DELAYN_GD_MIN: 0x00000404
 RDLVL_DELAYN_GD_MAX: 0x00003e3e
 This Slice level success, use second value.
-/*这一级片训练成功，采用第二个值×/&lt;/p&gt;
+/*这一级片训练成功，采用第二个值&amp;times;/&lt;/p&gt;
 &lt;p&gt;Level slice: 0x00000001
 Wait a while...
 RDLVL_FAIL_MARK: 0x00000000
@@ -141,7 +139,7 @@ RDLVL_DELAYP_GD_MAX: 0x00003e3e
 RDLVL_DELAYN_GD_MIN: 0x00000404
 RDLVL_DELAYN_GD_MAX: 0x00003c3c
 This Slice level success, use second value.
-/*这一级片训练成功，采用第二个值×/&lt;/p&gt;
+/*这一级片训练成功，采用第二个值&amp;times;/&lt;/p&gt;
 &lt;p&gt;Level slice: 0x00000000
 Wait a while...
 RDLVL_FAIL_MARK: 0x00000000
@@ -153,9 +151,9 @@ RDLVL_DELAYP_GD_MAX: 0x00003e3e
 RDLVL_DELAYN_GD_MIN: 0x00000404
 RDLVL_DELAYN_GD_MAX: 0x00003c3c
 This Slice level success, use second value.
-/*这一级片训练成功，采用第二个值×/&lt;/p&gt;
+/*这一级片训练成功，采用第二个值&amp;times;/&lt;/p&gt;
 &lt;p&gt;ARB Leveling Finished./&lt;em&gt;ARB训练完成，MC设置如下：&lt;/em&gt;/
-After ARB level. The MC configuration is:&lt;br /&gt;
+After ARB level. The MC configuration is:&lt;br/&gt;
 ...
 00000c2d  00000c2d&lt;/p&gt;
 &lt;p&gt;Unlock Scache Node x--9800?01000000000~4K...
@@ -185,7 +183,7 @@ Wrlvl Error: This Byte Window not found.
 Failed byte is byte: 00000006
 Try another pad compensation.&lt;/p&gt;
 &lt;p&gt;Write level failed. Write default value(0x30).&lt;/p&gt;
-&lt;p&gt;/*写训练失败×/&lt;/p&gt;
+&lt;p&gt;/*写训练失败&amp;times;/&lt;/p&gt;
 &lt;p&gt;Start read leveling..&lt;/p&gt;
 &lt;p&gt;Level slice: 0x00000007
 Wait a while...
@@ -210,7 +208,7 @@ RDLVL_DELAYN_GD_MIN: 0x00000000
 RDLVL_DELAYN_GD_MAX: 0x00000000
 Try another pad compensation.&lt;/p&gt;
 &lt;p&gt;ERROR: This Slice level failed, write default value.&lt;/p&gt;
-&lt;p&gt;/×读训练失败×/&lt;/p&gt;
+&lt;p&gt;/&amp;times;读训练失败&amp;times;/&lt;/p&gt;
 &lt;p&gt;Level slice: 0x00000005
 Wait a while...
 RDLVL_FAIL_MARK: 0x00000000
@@ -278,7 +276,7 @@ RDLVL_DELAYN_GD_MIN: 0x00000404
 RDLVL_DELAYN_GD_MAX: 0x00003e3e
 This Slice level success, use second value.&lt;/p&gt;
 &lt;p&gt;ERROR!!!: ARB Leveling Fail&lt;/p&gt;
-&lt;p&gt;/*内存训练失败×/&lt;/p&gt;
+&lt;p&gt;/*内存训练失败&amp;times;/&lt;/p&gt;
 &lt;p&gt;RW Diff 0x0010000000000000
 RD Diff 0x0010000000000000
 Unlock Scache Node x--9800?01000000000~4K...
@@ -295,7 +293,7 @@ MC1 space open : 0x100000000 - 0x17FFFFFFF
 DDR space open : 0x080000000 - 0x17FFFFFFF
 Full PCI space opened as cpu.
 NODE 1 MEMORY CONFIG BEGIN
-/节点1 开始内存训练×/&lt;/p&gt;
+/节点1 开始内存训练&amp;times;/&lt;/p&gt;
 &lt;p&gt;Open SMBUS controller&lt;/p&gt;
 &lt;p&gt;Probing DDR MC1 SLOT: 
 Probe MC1 slot 0.
@@ -311,7 +309,7 @@ Disable cpu buffered read
 Disable read buffer&lt;/p&gt;
 &lt;p&gt;MC1 Config DONE&lt;/p&gt;
 &lt;p&gt;msize = 0x00000800
-!!!MEM is at NO_INTERLEAVE mode. If this is not the expected setting, /×内存未启用交错模式×/
+!!!MEM is at NO_INTERLEAVE mode. If this is not the expected setting, /&amp;times;内存未启用交错模式&amp;times;/
 please check whether the two MC_MEMSIZE is equal
 DDR space open : 0x00000000 - 0x0FFFFFFF
 PCI space open: 0x80000000 - 0x8FFFFFFF
@@ -646,10 +644,10 @@ bios emu done&lt;/p&gt;
 in if attach
 pciide0 at pci0 dev 17 function 0 vendor/product: 0x1002/0x4390 (mass storage, IDE): DMA, (partial support), ch 0 cfg to native-PCI, ch 1 cfg to native-PCI
 pciide0: using generic poll for native-PCI interrupt
-wd0 at pciide0 channel 0 drive 0: &lt;WDC WD5000AAKX-221CA1&gt;
+wd0 at pciide0 channel 0 drive 0: &lt;wdc wd5000aakx-221ca1=""&gt;
 wd0: can use 16-bit, PIO mode 4, DMA mode 2
 wd0: 16-sector PIO, LBA, 131071MB, 16383 cyl, 16 head, 63 sec, 268435455 sectors
-wd1 at pciide0 channel 1 drive 0: &lt;WDC WD5000AAKX-221CA1&gt;
+wd1 at pciide0 channel 1 drive 0: &lt;wdc wd5000aakx-221ca1=""&gt;
 wd1: can use 16-bit, PIO mode 4, DMA mode 2
 wd1: 16-sector PIO, LBA, 131071MB, 16383 cyl, 16 head, 63 sec, 268435455 sectors
 pciide0:0:0: using DMA data transfers
@@ -670,7 +668,7 @@ drive at ohci1 devnum 3, Product Wired Keyboard 600
  not configured
 Read Capacity returns: 0xff17ef00, 0x20000
 Capacity = 0xef1800, blocksz = 0x200
-usb0 at ohci1 devnum 4, Product OnlyDisk                    &lt;br /&gt;
+usb0 at ohci1 devnum 4, Product OnlyDisk                    &lt;br/&gt;
 drive at ohci1 devnum 2, Product OHCI Root Hub
  not configured
 vendor/product: 0x1002/0x4396 (serialbus, USB) at pci0 dev 18 function 2 not configured
@@ -688,15 +686,15 @@ out configure
 Self test cmd failed,ignored!
 KBD_TEST cmd failed,ignored!
 Keyboard succesfully initialized.
-Press &lt;Del&gt; to set BIOS,waiting for 3 seconds here..... 
-devconfig done.&lt;/dd&gt;
+Press &lt;del&gt; to set BIOS,waiting for 3 seconds here..... 
+devconfig done.&lt;/del&gt;&lt;/wdc&gt;&lt;/wdc&gt;&lt;/dd&gt;
 &lt;/dl&gt;
 &lt;/dd&gt;
 &lt;/dl&gt;
 &lt;p&gt;-----------------godson3a_smbus_fixup---------------
  set smbus reg (0xbe) :1212 (usb intr map)
  set smbus reg (0xaf) :1c (sata intr map)
-SB700 interrupt PIC set begin,&lt;br /&gt;
+SB700 interrupt PIC set begin,&lt;br/&gt;
 set pic_5 pass
 set pic_5 pass
 set pic_6 pass
@@ -748,7 +746,7 @@ SBDE&lt;/p&gt;
 [[       [[[[       [[[[[       [[[[  [[[[[   [[[[       [[[[[      [[[[[[       [[[[  [[[[[   [[
 [[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[2011 Loongson][[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[&lt;/p&gt;
 &lt;p&gt;Configuration [Bonito,EL,NET,SCSI,IDE]
-Version: PMON2013 V3.1R052B0053D0201 (Bonito) #1: Fri Feb  1 09:22:13 CST 2013 commit 39e53a7fafbe17ff77b63e61c49f1794f1907570 Author: Chen Xinke &lt;a href="&amp;#109;&amp;#97;&amp;#105;&amp;#108;&amp;#116;&amp;#111;&amp;#58;&amp;#99;&amp;#104;&amp;#101;&amp;#110;&amp;#120;&amp;#105;&amp;#110;&amp;#107;&amp;#101;&amp;#64;&amp;#105;&amp;#99;&amp;#116;&amp;#46;&amp;#97;&amp;#99;&amp;#46;&amp;#99;&amp;#110;"&gt;&amp;#99;&amp;#104;&amp;#101;&amp;#110;&amp;#120;&amp;#105;&amp;#110;&amp;#107;&amp;#101;&amp;#64;&amp;#105;&amp;#99;&amp;#116;&amp;#46;&amp;#97;&amp;#99;&amp;#46;&amp;#99;&amp;#110;&lt;/a&gt; Date:   Sun Jan 27 15:20:17 2013 +0800 .
+Version: PMON2013 V3.1R052B0053D0201 (Bonito) #1: Fri Feb  1 09:22:13 CST 2013 commit 39e53a7fafbe17ff77b63e61c49f1794f1907570 Author: Chen Xinke &lt;a href="mailto:chenxinke@ict.ac.cn"&gt;chenxinke@ict.ac.cn&lt;/a&gt; Date:   Sun Jan 27 15:20:17 2013 +0800 .
 Supported loaders [txt, srec, elf, bin]
 Supported filesystems [net, fat, fs, disk, iso9660, socket, tty, ram]
 This software may be redistributed under the BSD copyright.
@@ -816,13 +814,13 @@ ac = 00000003, nsp @ 8a7fff00, env @ 8a7fff30, en @ 801453d0
 vsp = 08xffffffff8a7fff10, ssp @ 08xffffffff8a7fff30
 board_name:Loongson-3A-780E-2w-V1.02-demo ---0x80142730 10
 Shutdown:0x80074b68 reset:0x80074cb4
-   zero      at       v0       v1       a0       a1       a2       a3 &lt;br /&gt;
+   zero      at       v0       v1       a0       a1       a2       a3 &lt;br/&gt;
  00000000 00000000 00000000 00000000 00000003 8a7fff00 8a7fff30 801453d0
-    t0       t1       t2       t3       t4       t5       t6       t7 &lt;br /&gt;
+    t0       t1       t2       t3       t4       t5       t6       t7 &lt;br/&gt;
  00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
-    s0       s1       s2       s3       s4       s5       s6       s7 &lt;br /&gt;
+    s0       s1       s2       s3       s4       s5       s6       s7 &lt;br/&gt;
  00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
-    t8       t9       k0       k1       gp       sp       s8       ra &lt;br /&gt;
+    t8       t9       k0       k1       gp       sp       s8       ra &lt;br/&gt;
  00000000 00000000 00000000 00000000 00000000 8a7ffee0 00000000 800aa3f0
 CP0_Config3: CP0 16.3 (0xa0)
 CP0_PageGrain: CP0 5.1 (0x20000000)
@@ -1628,12 +1626,12 @@ total ram pages initialed 0
 [    0.000000] $12   : 00000000140000e0 000000001000001e ffffffff80e30560 0000000000000000
 [    0.000000] $16   : 0000000000000000 ffffffffdc690008 001af6daee9e5e08 ffffffff80e30540
 [    0.000000] $20   : 0000000000000000 00001fffffffffff 0000000000021400 0000000000000009
-[    0.000000] $24   : 0000000000000000 ffffffff8032382c                                &lt;br /&gt;
+[    0.000000] $24   : 0000000000000000 ffffffff8032382c                                &lt;br/&gt;
 [    0.000000] $28   : ffffffff80cf0000 ffffffff80cf3c20 00000000000215f8 ffffffff80300400
 [    0.000000] Hi    : 0000000000000000
 [    0.000000] Lo    : 0000000000000003
 [    0.000000] epc   : ffffffff8032bacc do_ade+0x1cc/0x594
-[    0.000000]     Tainted: G    B    &lt;br /&gt;
+[    0.000000]     Tainted: G    B    &lt;br/&gt;
 [    0.000000] ra    : ffffffff80300400 ret_from_exception+0x0/0x24
 [    0.000000] Status: 140000e2    KX SX UX KERNEL EXL 
 [    0.000000] Cause : 40008010
@@ -1663,7 +1661,7 @@ total ram pages initialed 0
 [    0.000000] 
 [    0.000000] 
 [    0.000000] Code: 00431024  144000c6  00000000 &amp;lt;6a430007&amp;gt; 6e430000  24020000  0060902d  144000b0  00a0202d 
-[    0.000000] Kernel panic - not syncing: Attempted to kill the idle task!&lt;/p&gt;</summary><category term="pmon"></category></entry><entry><title>通过printf函数简单实现解析不定参数表</title><link href="http://king32783784.github.io/2013/05/27/C/" rel="alternate"></link><published>2013-05-27T00:00:00+08:00</published><author><name>peng.li</name></author><id>tag:king32783784.github.io,2013-05-27:2013/05/27/C/</id><summary type="html">&lt;p&gt;&lt;img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/P5LS1TUY3V.jpg" height="280" width="420"&gt;&lt;/p&gt;
+[    0.000000] Kernel panic - not syncing: Attempted to kill the idle task!&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6adc&gt;&lt;/ffffffff803a5f10&gt;&lt;/ffffffff803a2c60&gt;&lt;/ffffffff80300400&gt;&lt;/ffffffff8032bacc&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6ab4&gt;&lt;/ffffffff803a5d3c&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6adc&gt;&lt;/ffffffff803a5ef8&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6adc&gt;&lt;/ffffffff803a5ef8&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6adc&gt;&lt;/ffffffff803a5ef8&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6adc&gt;&lt;/ffffffff803a5ef8&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6adc&gt;&lt;/ffffffff803a5ef8&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6adc&gt;&lt;/ffffffff803a5ef8&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6adc&gt;&lt;/ffffffff803a5ef8&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/ffffffff80ddc8d0&gt;&lt;/ffffffff80ddf980&gt;&lt;/ffffffff80de6adc&gt;&lt;/ffffffff803a5ef8&gt;&lt;/ffffffff803a4ca4&gt;&lt;/ffffffff803a3fec&gt;&lt;/ffffffff8031f9b4&gt;&lt;/p&gt;&lt;/body&gt;</summary><category term="pmon"></category></entry><entry><title>通过printf函数简单实现解析不定参数表</title><link href="http://king32783784.github.io/2013/05/27/C/" rel="alternate"></link><published>2013-05-27T00:00:00+08:00</published><author><name>peng.li</name></author><id>tag:king32783784.github.io,2013-05-27:2013/05/27/C/</id><summary type="html">&lt;body&gt;&lt;p&gt;&lt;img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/P5LS1TUY3V.jpg" width="420"/&gt;&lt;/p&gt;
 &lt;p&gt;先看代码，&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;minprintf&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;#include&amp;lt;stdarg.h&amp;gt;
@@ -1685,7 +1683,7 @@ va_start(ap,fmt); /*make ap point to 1st unamed arg*/
 
 for (p = fmt; *p; p++) {
 
-if (*p != &amp;#39;%&amp;#39;) {
+if (*p != '%') {
 
 putchar(*p);
 
@@ -1696,24 +1694,24 @@ continue;
 switch(*++p) {
 
 
-case &amp;#39;d&amp;#39;:
+case 'd':
 
 ival = va_arg(ap ,int);
 
-printf(&amp;quot;%d&amp;quot;, ival);
+printf("%d", ival);
 
 break;
 
 
-case &amp;#39;f&amp;#39;:
+case 'f':
 
 ival = va_arg(ap ,double);
 
-printf(&amp;quot;%f&amp;quot;, ival);
+printf("%f", ival);
 
 break;
 
-case &amp;#39;s&amp;#39;:
+case 's':
 
 for(sval = va_arg(ap,char *);*sval;sval ++)
 
@@ -1735,9 +1733,7 @@ va_end(ap) ; /*clean up when done*/
 
 }
 &lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;在C语言中，没有函数重载。所以要想实现不定数目的函数参数，变得比较复杂。了解这个问题，涉及到标准头文件&lt;stdarg,h&gt;几个宏定义，va_start和va_end 等。在此之前，先看一下C语言中传递函数的参数时的用法和原理：&lt;/p&gt;
+&lt;p&gt;在C语言中，没有函数重载。所以要想实现不定数目的函数参数，变得比较复杂。了解这个问题，涉及到标准头文件&lt;stdarg,h&gt;几个宏定义，va_start和va_end 等。在此之前，先看一下C语言中传递函数的参数时的用法和原理：&lt;/stdarg,h&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;1.在c中，当我们无法列出传递函数的所有实参的类型和数目时，，可以用省略号指定参数列表。&lt;/p&gt;
@@ -1762,11 +1758,9 @@ type va_arg(va_list ao,type);
 
 void va_end(va_list ap);
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;va_list是一个字符指针，可以理解为当前参数的一个指针，取参必须通过这个指针进行。&lt;/p&gt;
 &lt;p&gt;1在调用参数表之前，定义一个va_list类型的变量（假设va_list类型变量被定义为ap）；&lt;/p&gt;
-&lt;p&gt;2然后应该对ap进行初始化，让它指向可变参数列表的第一个参数，是通过va_start实现的，第一个参数是ap本身，第二个参数是在变参表前面紧挨着的一个变量，即“...”之前的那个参数。&lt;/p&gt;
+&lt;p&gt;2然后应该对ap进行初始化，让它指向可变参数列表的第一个参数，是通过va_start实现的，第一个参数是ap本身，第二个参数是在变参表前面紧挨着的一个变量，即&amp;ldquo;...&amp;rdquo;之前的那个参数。&lt;/p&gt;
 &lt;p&gt;3 获取参数，调用va_arg,他的第一个参数是ap，第二个参数是获取的参数的指定类型，然后返回这个指定类型的值，并且把ap指向参数的下一个变量位置&lt;/p&gt;
 &lt;p&gt;4 获取所有参加之后，我们有必要将ap指针关掉，调用va_end ，他是将ap指向为空，应该养成取完参数之后，关闭指针的习惯，一般情况下，vstart 和 vend 同时出现。&lt;/p&gt;
 &lt;p&gt;如下面的小例子&lt;/p&gt;
@@ -1784,7 +1778,7 @@ void va_end(va_list ap);
 
 &lt;span class="p"&gt;{&lt;/span&gt;
 
-   &lt;span class="n"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;%d&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;temp&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+   &lt;span class="n"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"%d"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;temp&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
     &lt;span class="n"&gt;temp&lt;/span&gt;&lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
 &lt;span class="p"&gt;}&lt;/span&gt;
@@ -1809,8 +1803,6 @@ void va_end(va_list ap);
 
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;获取省略号指定的参数&lt;/p&gt;
 &lt;p&gt;在函数体声明一个va_list，然后用va_start函数获取参数列表中的参数,使用完毕后调用va_end（）结束，例如：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;void TestFun(char *pszDest, int DestLen, const char* pszFormat,...)
@@ -1819,15 +1811,13 @@ void va_end(va_list ap);
 
   va_list args;
 
-  va_start(args,pszFormat); //&amp;quot;一定要&amp;quot;...&amp;quot;之前的那个参数
+  va_start(args,pszFormat); //"一定要"..."之前的那个参数
 
   _vsnprintf(pszDest,Destlen,pszFormat,args);
 
   va_end(args);
  }
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;5.如何使用参数个数可变的函数,&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="cp"&gt;#include&lt;/span&gt; &lt;span class="cpf"&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span class="cp"&gt;&lt;/span&gt;
 
@@ -1843,7 +1833,7 @@ void va_end(va_list ap);
 
 &lt;span class="p"&gt;{&lt;/span&gt;
 
-      &lt;span class="n"&gt;demo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;DEMO&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;This&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;is&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;a&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;demo!&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;quot; &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+      &lt;span class="n"&gt;demo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"DEMO"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;"This"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;"is"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;"a"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;"demo!"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;" "&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 
 &lt;span class="p"&gt;}&lt;/span&gt;
 
@@ -1871,11 +1861,11 @@ void va_end(va_list ap);
 
 &lt;span class="n"&gt;para&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;va_arg&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;argp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="kt"&gt;char&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 
-&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;strcmp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;para&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;quot; &amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;strcmp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;para&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;" "&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
     &lt;span class="k"&gt;break&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
-&lt;span class="n"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Parameter #%d is :%s&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;argno&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;para&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="n"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"Parameter #%d is :%s&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;argno&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;para&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 
 &lt;span class="n"&gt;argno&lt;/span&gt; &lt;span class="o"&gt;++&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
@@ -1887,8 +1877,6 @@ void va_end(va_list ap);
 
 &lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;6 回过头来看一下一开始那个程序.&lt;/p&gt;
 &lt;p&gt;minprintf函数用来遍历printf函数的参数表,它的参数为printf函数中参数的指针
 指针ap 用来实现遍历函数的参数列表.在函数运行中ap会先后指向参数表中的每一个参数.&lt;/p&gt;
@@ -1896,4 +1884,4 @@ void va_end(va_list ap);
 &lt;p&gt;for(p =fmt;&lt;em&gt;p;p++),p初始为&lt;/em&gt;fmt ,即指向ap前一个参数,通过对p的循环实现ap指针遍历省略的参数表.&lt;/p&gt;
 &lt;p&gt;就有了下面的switch,来讨论可能出现的参数.&lt;/p&gt;
 &lt;p&gt;最后通过va_end(ap),将ap指向NULL.避免出现异常.注意:，应该养成，关闭指针的习惯.&lt;/p&gt;
-&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</summary><category term="C"></category></entry></feed>
+&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;</summary><category term="C"></category></entry></feed>

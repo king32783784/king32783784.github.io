@@ -230,7 +230,7 @@
                     <li>
                         <a href="../../../../pages/links.html">
                             <i class="fa fa-file-text padding-small"></i>
-                            链接
+                            常用链接
                         </a>
                     </li>
                     <li>
@@ -254,7 +254,13 @@
                     <li class="active">
                         <a href="../../../../pages/aboutme.html">
                             <i class="fa fa-file-text padding-small"></i>
-                            About
+                            关于我
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../../pages/doc.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            专题文档
                         </a>
                     </li>
                 </ul></li>
@@ -584,7 +590,7 @@ TESTS      : 4
 <div class="highlight"><pre><span></span><span class="p">$</span><span class="nv">avocado</span><span class="x"> run --external -runner=/path/to/external_runner foo bar baz</span>
 </pre></div>
 <p>这个例子，avocado会产生foo bar baz的测试结果。实际结果将来源于执行 /path/to/external_runner foo /path/to/external_runner bar和/path/to/external_runner baz</p>
-<p>另一种方式展示这一特性，就是思考“外部runner"可以是解释器和可以解释执行任何测试。UNIXshell,/bin/sh就可以被当做外部执行引擎，而且shell脚本就可以当成它的测试：</p>
+<p>另一种方式展示这一特性，就是思考&ldquo;外部runner"可以是解释器和可以解释执行任何测试。UNIXshell,/bin/sh就可以被当做外部执行引擎，而且shell脚本就可以当成它的测试：</p>
 <div class="highlight"><pre><span></span>$ <span class="nb">echo</span> <span class="s2">"exit 0"</span> &gt; /tmp/pass
 $ <span class="nb">echo</span> <span class="s2">"exit 1"</span> &gt; /tmp/fail
 $ avocado run --external-runner<span class="o">=</span>/bin/sh /tmp/pass /tmp/fail
@@ -597,7 +603,7 @@ RESULTS    : PASS <span class="m">1</span> <span class="p">|</span> ERROR <span 
 TESTS TIME : 0.01 s
 JOB HTML   : /home/&lt;user&gt;/avocado/job-results/job-&lt;date&gt;-&lt;shortid&gt;/html/results.html
 </pre></div>
-<p>这个例子很明显，可以通过给/tmp/pass和/tmp/fail ，shell“shebangs”（＃！/ bin / sh）来实现，使它们可执行（chmod + x / tmp / pass / tmp / ，并将其作为“简单”测试运行。</p>
+<p>这个例子很明显，可以通过给/tmp/pass和/tmp/fail ，shell&ldquo;shebangs&rdquo;（＃！/ bin / sh）来实现，使它们可执行（chmod + x / tmp / pass / tmp / ，并将其作为&ldquo;简单&rdquo;测试运行。</p>
 <p>下面看另一个例子：</p>
 <div class="highlight"><pre><span></span>$ avocado run --external-runner<span class="o">=</span>/bin/curl http://local-avocado-server:9405/jobs/ <span class="se">\</span>
                                    http://remote-avocado-server:9405/jobs/
@@ -610,7 +616,7 @@ RESULTS    : PASS <span class="m">1</span> <span class="p">|</span> ERROR <span 
 TESTS TIME : 3.04 s
 JOB HTML   : /home/&lt;user&gt;/avocado/job-results/job-&lt;date&gt;-&lt;shortid&gt;/html/results.html
 </pre></div>
-<p>这个例子是把”/bin/curl“当做"external test runner".</p>
+<p>这个例子是把&rdquo;/bin/curl&ldquo;当做"external test runner".</p>
 <h3 id="7-ce-shi-diao-shi">7. 测试调试</h3>
 <p><span id="avocado08">当</span>开发一个新的测试时，经常做的就是查看一个测试job的运行日志。
 为了实现这个目的， 可以通过 avocado --show test run ... 或 avocado run --show-job-log ...</p>
