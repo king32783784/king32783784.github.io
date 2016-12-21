@@ -10,7 +10,7 @@
         <meta name="description" content="启动过程： PMON2000 MIPS Initializing. Standby... /*CPU Initializing*/ 0xbfe00190 : 00008062f0f8f0f0 CPU CLK SEL : 00000002 CPU clk frequency = SYSCLK x 0x00000020 / 1 /×CPU的频率×/ MEM CLK SEL : 00000003 DDR clk frequency = MEMCLK x 0x00000021 / 3 /*DDR的频率×/ CPU 1 READ TEST... CPU 1 READ TEST OK./×CPU 读测试×/ HT0 frequency reconfig /×总线时钟重新设置×/ Fix L1xbar ..." />
 
 <!-- Open Graph tags -->
-<meta property="og:site_name" content="灰.白"/>
+<meta property="og:site_name" content="路漫.求索"/>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="PMON启动信息详解"/>
     <meta property="og:url" content="../../../../2013/08/29/pmon/"/>
@@ -22,7 +22,7 @@
         <meta property="og:image"
               content="../../../../favicon.png"/>
 
-    <title>PMON启动信息详解 - 灰.白</title>
+    <title>PMON启动信息详解 - 路漫.求索</title>
 
         <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
 
@@ -40,7 +40,7 @@
     
     <!-- Feeds -->
         <link href="../../../../feeds/atom.xml" type="application/atom+xml" rel="alternate"
-              title="灰.白 ATOM Feed" />
+              title="路漫.求索 ATOM Feed" />
 </head>
 <body data-spy="scroll" data-target="#scrollspy">
     <div id="wrapper">
@@ -48,7 +48,7 @@
         <div id="sidebar-wrapper-small" class="twitchy-background">
             <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
                 <li>
-        <a href="../../../.." title="灰.白" class="collapsed">
+        <a href="../../../.." title="路漫.求索" class="collapsed">
             <span class="glyphicon glyphicon-home"></span>
         </a>
     </li>
@@ -413,44 +413,44 @@
 
  0xbfe00190 : 00008062f0f8f0f0 
 CPU CLK SEL : 00000002
-CPU clk frequency = SYSCLK x 0x00000020 /  1 /×CPU的频率×/
+CPU clk frequency = SYSCLK x 0x00000020 /  1 /&times;CPU的频率&times;/
 MEM CLK SEL : 00000003
-DDR clk frequency = MEMCLK x 0x00000021 /  3 /*DDR的频率×/
+DDR clk frequency = MEMCLK x 0x00000021 /  3 /*DDR的频率&times;/
 </pre></div>
 <p>CPU 1 READ TEST...
-CPU 1 READ TEST OK./×CPU 读测试×/
-HT0 frequency reconfig  /×总线时钟重新设置×/
+CPU 1 READ TEST OK./&times;CPU 读测试&times;/
+HT0 frequency reconfig  /&times;总线时钟重新设置&times;/
 Fix L1xbar illegal access at NODE 0
-Fix L1xbar illegal access at NODE 1 /×修复节点的一级缓存×/</p>
+Fix L1xbar illegal access at NODE 1 /&times;修复节点的一级缓存&times;/</p>
 <p>Fix L2xbar in NODE 0
-Fix L2xbar in NODE 1  /×修复节点的二级缓存×/
-Init tlb...  /×初始化TLB×/
-Init htpcitlb.../×初始化PCI总线TLB×/
-godson2 caches found /×初始化缓存×/
-Jump to 9fc /×跳转到9fc<em>/
-scache init done /×chache 初始化完成</em>/</p>
+Fix L2xbar in NODE 1  /&times;修复节点的二级缓存&times;/
+Init tlb...  /&times;初始化TLB&times;/
+Init htpcitlb.../&times;初始化PCI总线TLB&times;/
+godson2 caches found /&times;初始化缓存&times;/
+Jump to 9fc /&times;跳转到9fc<em>/
+scache init done /&times;chache 初始化完成</em>/</p>
 <p>Start Init Memory, wait a while......
-NODE 0 MEMORY CONFIG BEGIN/*开始初始化内存，首先是节点0的内存×/</p>
-<p>Open SMBUS controller/*开启SMBUS控制器×/</p>
+NODE 0 MEMORY CONFIG BEGIN/*开始初始化内存，首先是节点0的内存&times;/</p>
+<p>Open SMBUS controller/*开启SMBUS控制器&times;/</p>
 <p>Probing DDR MC1 SLOT:    /<em>侦测 DDR控制器MC1 插槽</em>/ 
-Probe MC1 slot 0.       /*侦测到MC1 slot0 内存颗粒×/
+Probe MC1 slot 0.       /*侦测到MC1 slot0 内存颗粒&times;/
 Probe MC1 slot 1.
-NO DIMM in this slot. /×MC1 slot 1 没有内存颗粒×/</p>
+NO DIMM in this slot. /&times;MC1 slot 1 没有内存颗粒&times;/</p>
 <p>Probing DDR MC0 SLOT: 
 Probe MC0 slot 0.
 Probe MC0 slot 1.
-NO DIMM in this slot./×MC0同MC1*/</p>
+NO DIMM in this slot./&times;MC0同MC1*/</p>
 <p>s1 = 0xf0a10400__f0a10400
 /*</p>
 <p>new s1 = 0xf0a10400__f0a10400
-Disable cpu buffered read  /*关闭CPU缓存读×/
+Disable cpu buffered read  /*关闭CPU缓存读&times;/
 Disable read buffer      </p>
-<p>Enable register space of MEMORY   /×设置内存寄存器模块使能×/</p>
+<p>Enable register space of MEMORY   /&times;设置内存寄存器模块使能&times;/</p>
 <p>The MC param is:
 00000100  00000100
 00000001  00010001
 ...</p>
-<p>/×写入内存参数×/</p>
+<p>/&times;写入内存参数&times;/</p>
 <p>Disable register space of MEMORY
 /<em>关闭内存的寄存器模块</em>/</p>
 <p>NODE ID:00000000
@@ -462,7 +462,7 @@ Lock Scache Done.      </p>
 Min value: 0x0000000000000000
 Max value: 0x4e46443c44484e50
 Cal Mid value: 0x120a0800080c1214
-/×写入练习×/</p>
+/&times;写入练习&times;/</p>
 <p>Start read leveling..</p>
 <p>Level slice: 0x00000007
 Wait a while...
@@ -475,7 +475,7 @@ RDLVL_DELAYP_GD_MAX: 0x00003a3c
 RDLVL_DELAYN_GD_MIN: 0x00000404
 RDLVL_DELAYN_GD_MAX: 0x00003a3a
 This Slice level success, use first value.
-/*这一级片训练成功，采用第一个值×/</p>
+/*这一级片训练成功，采用第一个值&times;/</p>
 <p>Level slice: 0x00000006
 Wait a while...
 RDLVL_FAIL_MARK: 0x00000000
@@ -487,7 +487,7 @@ RDLVL_DELAYP_GD_MAX: 0x00003a3a
 RDLVL_DELAYN_GD_MIN: 0x00000808
 RDLVL_DELAYN_GD_MAX: 0x00003c3c
 This Slice level success, use second value.
-/*这一级片训练成功，采用第二个值×/</p>
+/*这一级片训练成功，采用第二个值&times;/</p>
 <p>Level slice: 0x00000005
 Wait a while...
 RDLVL_FAIL_MARK: 0x00000000
@@ -499,7 +499,7 @@ RDLVL_DELAYP_GD_MAX: 0x00003a3a
 RDLVL_DELAYN_GD_MIN: 0x00000808
 RDLVL_DELAYN_GD_MAX: 0x00003c3c
 This Slice level success, use second value.
-/*这一级片训练成功，采用第二个值×/</p>
+/*这一级片训练成功，采用第二个值&times;/</p>
 <p>Level slice: 0x00000004
 Wait a while...
 RDLVL_FAIL_MARK: 0x00000000
@@ -511,7 +511,7 @@ RDLVL_DELAYP_GD_MAX: 0x00003a3a
 RDLVL_DELAYN_GD_MIN: 0x00000808
 RDLVL_DELAYN_GD_MAX: 0x00003c3c
 This Slice level success, use second value.
-/*这一级片训练成功，采用第二个值×/</p>
+/*这一级片训练成功，采用第二个值&times;/</p>
 <p>Level slice: 0x00000003
 Wait a while...
 RDLVL_FAIL_MARK: 0x00000000
@@ -523,7 +523,7 @@ RDLVL_DELAYP_GD_MAX: 0x00003c3c
 RDLVL_DELAYN_GD_MIN: 0x00000404
 RDLVL_DELAYN_GD_MAX: 0x00003c3c
 This Slice level success, use second value.
-/*这一级片训练成功，采用第二个值×/</p>
+/*这一级片训练成功，采用第二个值&times;/</p>
 <p>Level slice: 0x00000002
 Wait a while...
 RDLVL_FAIL_MARK: 0x00000000
@@ -535,7 +535,7 @@ RDLVL_DELAYP_GD_MAX: 0x00003e3e
 RDLVL_DELAYN_GD_MIN: 0x00000404
 RDLVL_DELAYN_GD_MAX: 0x00003e3e
 This Slice level success, use second value.
-/*这一级片训练成功，采用第二个值×/</p>
+/*这一级片训练成功，采用第二个值&times;/</p>
 <p>Level slice: 0x00000001
 Wait a while...
 RDLVL_FAIL_MARK: 0x00000000
@@ -547,7 +547,7 @@ RDLVL_DELAYP_GD_MAX: 0x00003e3e
 RDLVL_DELAYN_GD_MIN: 0x00000404
 RDLVL_DELAYN_GD_MAX: 0x00003c3c
 This Slice level success, use second value.
-/*这一级片训练成功，采用第二个值×/</p>
+/*这一级片训练成功，采用第二个值&times;/</p>
 <p>Level slice: 0x00000000
 Wait a while...
 RDLVL_FAIL_MARK: 0x00000000
@@ -559,7 +559,7 @@ RDLVL_DELAYP_GD_MAX: 0x00003e3e
 RDLVL_DELAYN_GD_MIN: 0x00000404
 RDLVL_DELAYN_GD_MAX: 0x00003c3c
 This Slice level success, use second value.
-/*这一级片训练成功，采用第二个值×/</p>
+/*这一级片训练成功，采用第二个值&times;/</p>
 <p>ARB Leveling Finished./<em>ARB训练完成，MC设置如下：</em>/
 After ARB level. The MC configuration is:<br/>
 ...
@@ -591,7 +591,7 @@ Wrlvl Error: This Byte Window not found.
 Failed byte is byte: 00000006
 Try another pad compensation.</p>
 <p>Write level failed. Write default value(0x30).</p>
-<p>/*写训练失败×/</p>
+<p>/*写训练失败&times;/</p>
 <p>Start read leveling..</p>
 <p>Level slice: 0x00000007
 Wait a while...
@@ -616,7 +616,7 @@ RDLVL_DELAYN_GD_MIN: 0x00000000
 RDLVL_DELAYN_GD_MAX: 0x00000000
 Try another pad compensation.</p>
 <p>ERROR: This Slice level failed, write default value.</p>
-<p>/×读训练失败×/</p>
+<p>/&times;读训练失败&times;/</p>
 <p>Level slice: 0x00000005
 Wait a while...
 RDLVL_FAIL_MARK: 0x00000000
@@ -684,7 +684,7 @@ RDLVL_DELAYN_GD_MIN: 0x00000404
 RDLVL_DELAYN_GD_MAX: 0x00003e3e
 This Slice level success, use second value.</p>
 <p>ERROR!!!: ARB Leveling Fail</p>
-<p>/*内存训练失败×/</p>
+<p>/*内存训练失败&times;/</p>
 <p>RW Diff 0x0010000000000000
 RD Diff 0x0010000000000000
 Unlock Scache Node x--9800?01000000000~4K...
@@ -701,7 +701,7 @@ MC1 space open : 0x100000000 - 0x17FFFFFFF
 DDR space open : 0x080000000 - 0x17FFFFFFF
 Full PCI space opened as cpu.
 NODE 1 MEMORY CONFIG BEGIN
-/节点1 开始内存训练×/</p>
+/节点1 开始内存训练&times;/</p>
 <p>Open SMBUS controller</p>
 <p>Probing DDR MC1 SLOT: 
 Probe MC1 slot 0.
@@ -717,7 +717,7 @@ Disable cpu buffered read
 Disable read buffer</p>
 <p>MC1 Config DONE</p>
 <p>msize = 0x00000800
-!!!MEM is at NO_INTERLEAVE mode. If this is not the expected setting, /×内存未启用交错模式×/
+!!!MEM is at NO_INTERLEAVE mode. If this is not the expected setting, /&times;内存未启用交错模式&times;/
 please check whether the two MC_MEMSIZE is equal
 DDR space open : 0x00000000 - 0x0FFFFFFF
 PCI space open: 0x80000000 - 0x8FFFFFFF

@@ -10,7 +10,7 @@
         <meta name="description" content="本节将重点分析commands部分的用例。 Command主要用例 主要case包括： case 包含子case ade ar file ld ldd nm objdump size at at cpio cpio cron cron df df du du eject eject fileutils cp ln mkdir mv gzip gzip insmod insmod logrotate logrotate lsmod lsmod mail mail mkfs mkfs mkswap mkswap sssd sssd su su tar tar ..." />
 
 <!-- Open Graph tags -->
-<meta property="og:site_name" content="灰.白"/>
+<meta property="og:site_name" content="路漫.求索"/>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="LTP－Command"/>
     <meta property="og:url" content="../../../../2016/06/02/LTP/"/>
@@ -22,7 +22,7 @@
         <meta property="og:image"
               content="../../../../favicon.png"/>
 
-    <title>LTP－Command - 灰.白</title>
+    <title>LTP－Command - 路漫.求索</title>
 
         <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
 
@@ -40,7 +40,7 @@
     
     <!-- Feeds -->
         <link href="../../../../feeds/atom.xml" type="application/atom+xml" rel="alternate"
-              title="灰.白 ATOM Feed" />
+              title="路漫.求索 ATOM Feed" />
 </head>
 <body data-spy="scroll" data-target="#scrollspy">
     <div id="wrapper">
@@ -48,7 +48,7 @@
         <div id="sidebar-wrapper-small" class="twitchy-background">
             <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
                 <li>
-        <a href="../../../.." title="灰.白" class="collapsed">
+        <a href="../../../.." title="路漫.求索" class="collapsed">
             <span class="glyphicon glyphicon-home"></span>
         </a>
     </li>
@@ -745,7 +745,7 @@ LD_LIBRARY_PATH=. ./main
 </pre></div>
 <p>通过结果判定的设置来看，主要验证ar命令的库的创建、库列表信息导出、往库中添加文件、移除库中的文件。</p>
 <p>测试代码片段：</p>
-<p>标志“a"：在 PositionName 参数标识的现有文件后安置指定的文件。</p>
+<p>标志&ldquo;a"：在 PositionName 参数标识的现有文件后安置指定的文件。</p>
 <div class="highlight"><pre><span></span><span class="x">ar -cr </span><span class="p">$</span><span class="nv">TCtmp</span><span class="x">/lib.a file1.in file3.in</span>
 <span class="x">crtest</span>
 

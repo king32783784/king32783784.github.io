@@ -10,7 +10,7 @@
         <meta name="description" content="结构体声明 例如： struct Student { char name[20]; char sex; int age; char addr[40]; } /定义一个Student 类型的student变量/ struct Student student; 定义结构体的时候每次都要写struct显得比较繁琐，可以用typedef来方便声明。这样就可以想int、char一样定义结构体类型了。比如： typedef struct _TEST_T { int i; char c[10]; }TEST_T; 初始化 1.初始化的就是定义一个结构体变量，并且给它赋值比如： TEST_T gst = {1, “12345”}; /*可以初始化，设置i为1，c为一个字符串.*/ TEST_T gst = {1}; /*初始化个数少于实际个数时，只初始化前面的成员。*/ TEST_T ..." />
 
 <!-- Open Graph tags -->
-<meta property="og:site_name" content="灰.白"/>
+<meta property="og:site_name" content="路漫.求索"/>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="C-结构体声明"/>
     <meta property="og:url" content="../../../../2011/07/11/C/"/>
@@ -22,7 +22,7 @@
         <meta property="og:image"
               content="../../../../favicon.png"/>
 
-    <title>C-结构体声明 - 灰.白</title>
+    <title>C-结构体声明 - 路漫.求索</title>
 
         <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
 
@@ -40,7 +40,7 @@
     
     <!-- Feeds -->
         <link href="../../../../feeds/atom.xml" type="application/atom+xml" rel="alternate"
-              title="灰.白 ATOM Feed" />
+              title="路漫.求索 ATOM Feed" />
 </head>
 <body data-spy="scroll" data-target="#scrollspy">
     <div id="wrapper">
@@ -48,7 +48,7 @@
         <div id="sidebar-wrapper-small" class="twitchy-background">
             <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
                 <li>
-        <a href="../../../.." title="灰.白" class="collapsed">
+        <a href="../../../.." title="路漫.求索" class="collapsed">
             <span class="glyphicon glyphicon-home"></span>
         </a>
     </li>
@@ -426,9 +426,9 @@
 </pre></div>
 <p><strong>初始化</strong></p>
 <p>1.初始化的就是定义一个结构体变量，并且给它赋值比如：</p>
-<div class="highlight"><pre><span></span>TEST_T gst  = {1, “12345”}; /*可以初始化，设置i为1，c为一个字符串.*/
+<div class="highlight"><pre><span></span>TEST_T gst  = {1, &ldquo;12345&rdquo;}; /*可以初始化，设置i为1，c为一个字符串.*/
 TEST_T gst  = {1}; /*初始化个数少于实际个数时，只初始化前面的成员。*/
-TEST_T gst  = {.c=“12345”}; /*有选择的初始化成员。*/
+TEST_T gst  = {.c=&ldquo;12345&rdquo;}; /*有选择的初始化成员。*/
 </pre></div>
 <p>2、复合字面量。</p>
 <div class="highlight"><pre><span></span>gst = (TEST_T){122, "1256"}; /*这是一个赋值语句，也可以作为初始化。可以出现在程序的任何地方。*/

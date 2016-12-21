@@ -10,7 +10,7 @@
         <meta name="description" content="1.Avocado 安装 1.1 通过包安装 像Fedora可以通过rpm包进行安装，其他通过RPM管理的发行版需要自己制作相关包。Avocado同样支持DEP包的安装可以在contrib/packages/debian找到。 Fedora 首先通过下面的命令获取仓库配置文件。 sudo curl https://repos-avocadoproject.rhcloud.com/static/avocado-fedora.repo -o /etc/yum.repos.d/avocado.repo 检查是否有了Avocodo和Avocado-lts的仓库配置： sudo dnf repolist avocado avocado-lts ... repo id repo name status avocado Avocado 50 avocado-lts Avocado LTS (Long Term ..." />
 
 <!-- Open Graph tags -->
-<meta property="og:site_name" content="灰.白"/>
+<meta property="og:site_name" content="路漫.求索"/>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="Avocado-入门"/>
     <meta property="og:url" content="../../../../2016/11/03/自动化测试/"/>
@@ -22,7 +22,7 @@
         <meta property="og:image"
               content="../../../../favicon.png"/>
 
-    <title>Avocado-入门 - 灰.白</title>
+    <title>Avocado-入门 - 路漫.求索</title>
 
         <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
 
@@ -40,7 +40,7 @@
     
     <!-- Feeds -->
         <link href="../../../../feeds/atom.xml" type="application/atom+xml" rel="alternate"
-              title="灰.白 ATOM Feed" />
+              title="路漫.求索 ATOM Feed" />
 </head>
 <body data-spy="scroll" data-target="#scrollspy">
     <div id="wrapper">
@@ -48,7 +48,7 @@
         <div id="sidebar-wrapper-small" class="twitchy-background">
             <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
                 <li>
-        <a href="../../../.." title="灰.白" class="collapsed">
+        <a href="../../../.." title="路漫.求索" class="collapsed">
             <span class="glyphicon glyphicon-home"></span>
         </a>
     </li>
@@ -584,7 +584,7 @@ TESTS      : 4
 <div class="highlight"><pre><span></span><span class="p">$</span><span class="nv">avocado</span><span class="x"> run --external -runner=/path/to/external_runner foo bar baz</span>
 </pre></div>
 <p>这个例子，avocado会产生foo bar baz的测试结果。实际结果将来源于执行 /path/to/external_runner foo /path/to/external_runner bar和/path/to/external_runner baz</p>
-<p>另一种方式展示这一特性，就是思考“外部runner"可以是解释器和可以解释执行任何测试。UNIXshell,/bin/sh就可以被当做外部执行引擎，而且shell脚本就可以当成它的测试：</p>
+<p>另一种方式展示这一特性，就是思考&ldquo;外部runner"可以是解释器和可以解释执行任何测试。UNIXshell,/bin/sh就可以被当做外部执行引擎，而且shell脚本就可以当成它的测试：</p>
 <div class="highlight"><pre><span></span>$ <span class="nb">echo</span> <span class="s2">"exit 0"</span> &gt; /tmp/pass
 $ <span class="nb">echo</span> <span class="s2">"exit 1"</span> &gt; /tmp/fail
 $ avocado run --external-runner<span class="o">=</span>/bin/sh /tmp/pass /tmp/fail
@@ -597,7 +597,7 @@ RESULTS    : PASS <span class="m">1</span> <span class="p">|</span> ERROR <span 
 TESTS TIME : 0.01 s
 JOB HTML   : /home/&lt;user&gt;/avocado/job-results/job-&lt;date&gt;-&lt;shortid&gt;/html/results.html
 </pre></div>
-<p>这个例子很明显，可以通过给/tmp/pass和/tmp/fail ，shell“shebangs”（＃！/ bin / sh）来实现，使它们可执行（chmod + x / tmp / pass / tmp / ，并将其作为“简单”测试运行。</p>
+<p>这个例子很明显，可以通过给/tmp/pass和/tmp/fail ，shell&ldquo;shebangs&rdquo;（＃！/ bin / sh）来实现，使它们可执行（chmod + x / tmp / pass / tmp / ，并将其作为&ldquo;简单&rdquo;测试运行。</p>
 <p>下面看另一个例子：</p>
 <div class="highlight"><pre><span></span>$ avocado run --external-runner<span class="o">=</span>/bin/curl http://local-avocado-server:9405/jobs/ <span class="se">\</span>
                                    http://remote-avocado-server:9405/jobs/
@@ -610,7 +610,7 @@ RESULTS    : PASS <span class="m">1</span> <span class="p">|</span> ERROR <span 
 TESTS TIME : 3.04 s
 JOB HTML   : /home/&lt;user&gt;/avocado/job-results/job-&lt;date&gt;-&lt;shortid&gt;/html/results.html
 </pre></div>
-<p>这个例子是把”/bin/curl“当做"external test runner".</p>
+<p>这个例子是把&rdquo;/bin/curl&ldquo;当做"external test runner".</p>
 <h3 id="7-ce-shi-diao-shi">7. 测试调试</h3>
 <p><span id="avocado08">当</span>开发一个新的测试时，经常做的就是查看一个测试job的运行日志。
 为了实现这个目的， 可以通过 avocado --show test run ... 或 avocado run --show-job-log ...</p>
