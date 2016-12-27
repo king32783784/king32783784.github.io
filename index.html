@@ -121,6 +121,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="./2016/12/24/python/" title="python数据存储">
+                                <i class="fa fa-file-text padding-small"></i>
+                                python数据存储
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="./2016/11/15/python/" title="pyqt基本操作(三）">
                                 <i class="fa fa-file-text padding-small"></i>
                                 pyqt基本操作(三）
@@ -142,12 +148,6 @@
                             <a class="hide-overflow" href="./2016/11/03/自动化测试/" title="Avocado-入门">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Avocado-入门
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="./2016/11/01/自动化测试/" title="Avocado User’s Guide">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Avocado User’s Guide
                             </a>
                         </li>
                     <li>
@@ -363,6 +363,13 @@
                             <span class="badge pull-right categorybadge">2</span>
                         </a>
                     </li>
+                    <li >
+                        <a href="./category/misc.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            misc
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
                 </ul></li>
                 
             </ul>
@@ -399,6 +406,41 @@
 </section>
 <div class="row">
     <div class="col-lg-9">
+            <article>
+                <h2>
+                    <a href="./2016/12/24/python/">python数据存储</a>
+<div class="post-info">
+    <div class="publish-info-block">
+        <small>
+            <span class="published">
+                <i class="fa fa-calendar padding-small"></i><time datetime="2016-12-24T00:00:00+08:00"> 2016-12-24 六</time>
+            </span>
+            <span class="category">
+                <i class="fa fa-folder-open padding-small"></i><a href="./category/misc.html">misc</a>
+            </span>
+            <span class="tags">
+                <i class="fa fa-tags padding-small"></i>
+                <a href="./tag/python.html">Python</a>            </span>
+        </small>
+    </div>
+</div><!-- /.post-info -->                </h2>
+                <div class="summary">
+                    <body><h3 id="cun-chu-fang-shi">存储方式</h3>
+<p>Python的数据存储主要是以下六类：普通文件、DBM文件、Pickled对象存储、shelve对象存储、对象数据库存储、关系数据库存储。</p>
+<h4 id="dbmwen-jian">DBM文件</h4>
+<p>普通文件不解释了，DBM就是把字符串的键值对存储在文件里：</p>
+<p>Python代码</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">anydbm</span>                             
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">file</span> <span class="o">=</span> <span class="n">anydbm</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">'movie'</span><span class="p">,</span> <span class="s1">'c'</span><span class="p">)</span>        <span class="c1"># make a DBM file called 'movie' </span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">file</span><span class="p">[</span><span class="s1">'Batman'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'Pow!'</span>                 <span class="c1"># store a string under key 'Batman' </span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">file</span><span class="o">.</span><span class="n">keys</span><span class="p">(</span> <span class="p">)</span>                                 <span class="c1"># get the file's key directory</span>
+
+<span class="p">[</span><span class="s1">'Batman'</span><span class="p">]</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">file</span><span class="p">[</span><span class="s1">'Batman'</span><span class="p">]</span>                          <span class="c1"># fetch value for key 'Batman ...</span></pre></div></body>
+                </div>
+            </article>
+            <hr/>
             <article>
                 <h2>
                     <a href="./2016/11/15/python/">pyqt基本操作(三）</a>
@@ -581,75 +623,6 @@
 repo id      repo name                          status
 avocado      Avocado                            50
 avocado-lts  Avocado LTS (Long Term ...</pre></div></body>
-                </div>
-            </article>
-            <hr/>
-            <article>
-                <h2>
-                    <a href="./2016/11/01/自动化测试/">Avocado User’s Guide</a>
-<div class="post-info">
-    <div class="publish-info-block">
-        <small>
-            <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2016-11-01T00:00:00+08:00"> 2016-11-01 二</time>
-            </span>
-            <span class="category">
-                <i class="fa fa-folder-open padding-small"></i><a href="./category/zi-dong-hua-ce-shi-avocado.html">自动化测试-Avocado</a>
-            </span>
-            <span class="tags">
-                <i class="fa fa-tags padding-small"></i>
-                <a href="./tag/avocado.html">Avocado</a>            </span>
-        </small>
-    </div>
-</div><!-- /.post-info -->                </h2>
-                <div class="summary">
-                    <body><h3 id="avocado-yong-hu-zhi-nan">Avocado 用户指南</h3>
-<p>内容：</p>
-<ul>
-<li><a href="#avocado01">关于Avocado</a></li>
-<li><a href="https://king32783784.github.io/2016/11/03/自动化测试/">入门</a><ul>
-<li><a href="https://king32783784.github.io/2016/11/03/自动化测试/#avocado02">安装Avocado</a></li>
-<li><a href="https://king32783784.github.io/2016/11/03/自动化测试/#avocado03">使用Avocado</a></li>
-<li><a href="https://king32783784.github.io/2016/11/03/自动化测试/#avocado04">写一个简单测试</a></li>
-<li><a href="https://king32783784.github.io/2016/11/03/自动化测试/#avocado05">运行一个较复杂的测试</a></li>
-<li><a href="https://king32783784.github.io/2016/11/03/自动化测试/#avocado06">第一个测试失败时中断测试job</a></li>
-<li><a href="https://king32783784.github.io/2016/11/03/自动化测试/#avocado07">结合外部runner运行测试</a></li>
-<li><a href="https://king32783784.github.io/2016/11/03/自动化测试/#avocado08">测试调试</a></li>
-</ul>
-</li>
-<li>编写Avocado测试<ul>
-<li>基本例子</li>
-<li>保存测试生成的数据（自定义）</li>
-<li>访问测试参数</li>
-<li>使用multplex文件</li>
-<li>高级日志功能</li>
-<li>unittest.TestCase 继承</li>
-<li>Setup和cleanup方法</li>
-<li>运行第三方测试集</li>
-<li>获取资源文件</li>
-<li>测试输出检查和输出记录模式</li>
-<li>Avocado Testlog，stdout和stderr模块</li>
-<li>独立进程中运行Avocado测试</li>
-<li>设置测试超时</li>
-<li>测试标签</li>
-<li>Python unitest 兼容测试和警告</li>
-<li>简单测试的环境变量</li>
-<li>简单测试的BASH扩展</li>
-<li>Wrap up</li>
-</ul>
-</li>
-<li>结果格式<ul>
-<li>人性化测试结果</li>
-<li>机器可读的结果</li>
-<li>一次多种结果</li>
-<li>Exit Codes</li>
-<li>实现其他结果格式</li>
-</ul>
-</li>
-<li>配置<ul>
-<li>配置文件的解析顺序</li>
-<li>插件设置文件</li>
-<li>解析订单概述 ...</li></ul></li></ul></body>
                 </div>
             </article>
         <div class="btn-more text-right">
