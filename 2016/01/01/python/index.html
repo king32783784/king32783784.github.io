@@ -344,6 +344,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/misc.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            misc
+                            <span class="badge pull-right categorybadge">2</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/python-pyqt.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             Python-pyqt
@@ -362,13 +369,6 @@
                             <i class="fa fa-folder-open padding-small"></i>
                             unix环境编程
                             <span class="badge pull-right categorybadge">2</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/misc.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            misc
-                            <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
                 </ul></li>
@@ -441,7 +441,7 @@
 <p>unittest2: <a href="https://pypi.python.org/pypi/unittest2">A backport of new unittest features for Python 2.4-2.6</a></p>
 <p>Many new features were added to unittest in Python 2.7, including test discovery. unittest2 allows you to use these features with earlier versions of Python.</p>
 <p><a href="https://web.archive.org/web/20150315073817/http://www.xprogramming.com/testfram.htm">Simple Smalltalk Testing: With Patterns</a></p>
-<p>Kent Beck’s original paper on testing frameworks using the pattern shared by unittest.</p>
+<p>Kent Beck&rsquo;s original paper on testing frameworks using the pattern shared by unittest.</p>
 <p><a href="https://nose.readthedocs.io/en/latest/">Nose</a> and <a href="http://docs.pytest.org/en/latest/">py.test</a></p>
 <p>Third-party unittest frameworks with a lighter-weight syntax for writing tests. For example, assert func(10) == 42.</p>
 <p><a href="https://wiki.python.org/moin/PythonTestingToolsTaxonomy">The Python Testing Tools Taxonomy</a></p>
@@ -481,7 +481,7 @@
     <span class="k">if</span> <span class="n">__name__</span><span class="o">==</span><span class="s1">'__main__'</span><span class="p">:</span>
         <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
 </pre></div>
-<p>通过继承unittest.TestCase类来创建测试用例，测试用例中３个独立的测试函数以“test"为开头命令。通过这种命名方式，执行器可以知道哪些方法是测试方法。
+<p>通过继承unittest.TestCase类来创建测试用例，测试用例中３个独立的测试函数以&ldquo;test"为开头命令。通过这种命名方式，执行器可以知道哪些方法是测试方法。
 需要注意的是３个测试方法分别调用assertEqual()函数来检查预期结果；调用assertTure()函数来判断条件；调用assertRaises()函数来验证是否触发了预期的异常。这３个方法作为断言语句判断用例执行的正确性，以便执行器手机测试结果并产生测试报告。</p>
 <p>如果定义setUp()方法，每个测试用例执行前都会执行setUp();同样的，如果定义的tearDown()方法，每个测试用例执行完后都会执行tearDown()方法。上面的例子，setup()方法用来为每个用例创建一个新序列。</p>
 <p>例子的最后一段介绍了一种简单调用测试用例的方法－unittest.main().它为用例提供了命令行界面运行，脚本运行会输出以下内容：</p>
@@ -491,7 +491,7 @@ Ran 3 tests in 0.000s
 
 OK
 </pre></div>
-<p>连续３个点"..."表示３个测试用例都运行通过，如果运行失败显示“Ｆ”，例如“.FF"表示后２个用例运行失败。</p>
+<p>连续３个点"..."表示３个测试用例都运行通过，如果运行失败显示&ldquo;Ｆ&rdquo;，例如&ldquo;.FF"表示后２个用例运行失败。</p>
 <p>有很多更易管理，输出信息更简洁，并且不在命令行运行的方法来替代unittest.main()方法运行测试用例。例如以下方法，替换例子的最后一行unittest.main():</p>
 <div class="highlight"><pre><span></span>suite = unittest.TestLoader().loadTestsFormTestCase(TestSequenceFunctions)
 unittest.TestTestRunner(verbosity=2).run(suite)

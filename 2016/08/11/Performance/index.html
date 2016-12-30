@@ -344,6 +344,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/misc.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            misc
+                            <span class="badge pull-right categorybadge">2</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/python-pyqt.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             Python-pyqt
@@ -362,13 +369,6 @@
                             <i class="fa fa-folder-open padding-small"></i>
                             unix环境编程
                             <span class="badge pull-right categorybadge">2</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/misc.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            misc
-                            <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
                 </ul></li>
@@ -438,7 +438,7 @@
 <p>软件的性能测试也一样，平均数也是不靠谱的，这里可以参看这篇详细的文章《Why Averages Suck and Percentiles are Great》，我在这里简单说一下。</p>
 <p>我们知道，性能测试时，测试得到的结果数据不总是一样的，而是有高有低的，如果算平均值就会出现这样的情况，假如，<strong>测试了10次，有9次是1ms，而有1次是1s，那么平均数据就是100ms，很明显，这完全不能反应性能测试的情况，也许那1s的请求就是一个不正常的值，是个噪点，应该去掉。</strong> 所以，我们会在一些评委打分中看到要去掉一个最高分一个最低分，然后再算平均值。</p>
 <p>另外，中位数（Mean）可能会比平均数要稍微靠谱一些，所谓中位数的意就是把将一组数据按大小顺序排列，处在最中间位置的一个数叫做这组数据的中位数 ，这意味着至少有50%的数据低于或高于这个中位数。</p>
-<p>当然，最为正确的统计做法是用百分比分布统计。也就是英文中的<strong>TP – Top Percentile</strong> ，TP50的意思在，50%的请求都小于某个值，TP90表示90%的请求小于某个时间。</p>
+<p>当然，最为正确的统计做法是用百分比分布统计。也就是英文中的<strong>TP &ndash; Top Percentile</strong> ，TP50的意思在，50%的请求都小于某个值，TP90表示90%的请求小于某个时间。</p>
 <p>比如：我们有一组数据：[ 10ms,  1s, 200ms, 100ms]，我们把其从小到大排个序：[10ms, 100ms, 200ms, 1s]，于是我们知道，TP50，就是50%的请求ceil(4<em>0.5)=2时间是小于100ms的，TP90就是90%的请求ceil(4</em>0.9)=4时间小于1s。于是：TP50就是100ms，TP90就是1s。</p>
 <p>我以前在路透做的金融系统响应时间的性能测试的要求是这样的，<strong>99.9%的请求必须小于1ms，所有的平均时间必须小于1ms。两个条件的限制。</strong></p>
 <h4 id="wei-shi-yao-xiang-ying-shi-jian-latencyyao-he-tun-tu-liang-thoughputgua-gou">为什么响应时间（latency）要和吞吐量（Thoughput）挂钩</h4>
@@ -452,7 +452,7 @@
 <p>40%，那么，这10万的并发完全就是一个笑话了。</p>
 <p>性能测试的失败率的容忍应该是非常低的。对于一些关键系统，成功请求数必须在100%，一点都不能含糊。</p>
 <h4 id="ru-he-yan-jin-di-zuo-xing-neng-ce-shi">如何严谨地做性能测试</h4>
-<p>一般来说，性能测试要统一考虑这么几个因素：<strong>Thoughput吞吐量，Latency响应时间，资源利用</strong>（CPU/MEM/IO/Bandwidth…），<strong>成功率，系统稳定性</strong>。</p>
+<p>一般来说，性能测试要统一考虑这么几个因素：<strong>Thoughput吞吐量，Latency响应时间，资源利用</strong>（CPU/MEM/IO/Bandwidth&hellip;），<strong>成功率，系统稳定性</strong>。</p>
 <p>下面的这些性能测试的方式基本上来源自我的老老东家汤森路透，一家做real-time的金融数据系统的公司。</p>
 <p><strong>一，你得定义一个系统的响应时间latency，建议是TP99，以及成功率。</strong>
 比如路透的定义：99.9%的响应时间必需在1ms之内，平均响应时间在1ms以内，100%的请求成功。</p>
@@ -469,7 +469,7 @@
 <p><strong>是不是很繁锁？是的，只因为，这是工程，工程是一门科学，科学是严谨的。</strong></p>
 <p>欢迎大家也分享一下你们性能测试的经验和方法。</p>
 <p>（全文完）</p>
-<p><em>（本文来源于酷 壳 – CoolShell.cn ，请勿用于任何商业用途）</em></p></body>
+<p><em>（本文来源于酷 壳 &ndash; CoolShell.cn ，请勿用于任何商业用途）</em></p></body>
                 </div>
                 <footer class="text-right">
                     <p>by others</p>

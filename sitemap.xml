@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://king32783784.github.io/</loc>
-<lastmod>2016-12-30T10:02:28-00:00</lastmod>
+<lastmod>2016-12-30T15:19:18-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>http://king32783784.github.io/archives.html</loc>
-<lastmod>2016-12-30T10:02:28-00:00</lastmod>
+<lastmod>2016-12-30T15:19:18-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>http://king32783784.github.io/tags.html</loc>
-<lastmod>2016-12-30T10:02:28-00:00</lastmod>
+<lastmod>2016-12-30T15:19:18-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>http://king32783784.github.io/categories.html</loc>
-<lastmod>2016-12-30T10:02:28-00:00</lastmod>
+<lastmod>2016-12-30T15:19:18-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
@@ -132,6 +132,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://king32783784.github.io/2016/11/01/自动化测试/</loc>
 <lastmod>2016-11-01T00:00:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://king32783784.github.io/2016/10/03/python/</loc>
+<lastmod>2016-10-03T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -606,6 +613,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://king32783784.github.io/category/misc.html</loc>
+<lastmod>2016-12-27T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.6</priority>
+</url>
+
+<url>
 <loc>http://king32783784.github.io/category/python-pyqt.html</loc>
 <lastmod>2016-11-15T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -622,13 +636,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://king32783784.github.io/category/unixhuan-jing-bian-cheng.html</loc>
 <lastmod>2009-10-12T00:00:00+08:06</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.6</priority>
-</url>
-
-<url>
-<loc>http://king32783784.github.io/category/misc.html</loc>
-<lastmod>2016-12-27T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
@@ -774,6 +781,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://king32783784.github.io/author/li-peng.html</loc>
+<lastmod>2016-12-27T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.6</priority>
+</url>
+
+<url>
 <loc>http://king32783784.github.io/author/others.html</loc>
 <lastmod>2016-09-01T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -782,7 +796,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://king32783784.github.io/author/penglee.html</loc>
-<lastmod>2016-12-27T00:00:00+08:06</lastmod>
+<lastmod>2016-12-24T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
@@ -802,6 +816,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://king32783784.github.io/2016/10/03/python/</loc>
+<lastmod>2016-10-03T00:00:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://king32783784.github.io/2016/11/13/python/</loc>
 <lastmod>2016-11-13T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
@@ -818,6 +839,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://king32783784.github.io/2016/11/15/python/</loc>
 <lastmod>2016-11-15T00:00:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://king32783784.github.io/2016/10/03/python/</loc>
+<lastmod>2016-10-03T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -858,6 +886,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://king32783784.github.io/2016/10/03/python/</loc>
+<lastmod>2016-10-03T00:00:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://king32783784.github.io/2016/11/13/python/</loc>
 <lastmod>2016-11-13T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
@@ -881,6 +916,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://king32783784.github.io/2016/12/24/python/</loc>
 <lastmod>2016-12-24T00:00:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://king32783784.github.io/2016/10/03/python/</loc>
+<lastmod>2016-10-03T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -965,6 +1007,41 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://king32783784.github.io/2016/11/03/自动化测试/</loc>
 <lastmod>2016-11-03T00:00:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://king32783784.github.io/2016/12/24/python/</loc>
+<lastmod>2016-12-24T00:00:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://king32783784.github.io/2016/11/13/python/</loc>
+<lastmod>2016-11-13T00:00:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://king32783784.github.io/2016/01/01/python/</loc>
+<lastmod>2016-01-01T00:00:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://king32783784.github.io/2016/11/15/python/</loc>
+<lastmod>2016-11-15T00:00:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://king32783784.github.io/2016/12/27/python/</loc>
+<lastmod>2016-12-27T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1196,6 +1273,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://king32783784.github.io/2016/12/24/python/</loc>
 <lastmod>2016-12-24T00:00:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://king32783784.github.io/2016/10/03/python/</loc>
+<lastmod>2016-10-03T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>

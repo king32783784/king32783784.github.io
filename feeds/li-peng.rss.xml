@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>分享让技术流行起来</title><link>http://king32783784.github.io/</link><description>Don't know how to develop's testers are not good testers &lt;a href="pages/aboutme.html"&gt;More...&lt;/a&gt;</description><lastBuildDate>Tue, 27 Dec 2016 00:00:00 +0800</lastBuildDate><item><title>python shelve</title><link>http://king32783784.github.io/2016/12/27/python/</link><description>&lt;body&gt;&lt;p&gt;本文对shelve模块进行说明。&lt;/p&gt;
+&lt;p&gt;shelve模块实现了对任意可被pickle的python对象进行持久存储，并提供了类字典的API使用。&lt;/p&gt;
+&lt;p&gt;&lt;img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/4C0XUNHJ7C.jpg" width="420"/&gt;&lt;/p&gt;
+&lt;h3 id="jian-jie"&gt;简介&lt;/h3&gt;
+&lt;p&gt;当使用关系数据库太重时，shelve模块可以为python对象提供了一个简单的持久的存储选择。它就像字典一样，通过关键字访问shelf对象，其值经过pickle,写入anydbm创建和管理的数据库。在使用时，可以自己定义一些存储结构使其存储较复杂的数据。&lt;/p&gt;
+&lt;h3 id="chuang-jian-shelfdui-xiang"&gt;创建shelf对象&lt;/h3&gt;
+&lt;p&gt;最简单的使用shelve模块的方式是通过DbfilenameShelf类。使用函数shelve.open()(使用的是anydbm）来存储数据。可以使用类或简单的调用：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;shelve&lt;/span&gt;
+
+&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;shelve&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'test_shelf.db'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# 创建test_shelf.db文件进行存储&lt;/span&gt;
+&lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'key1'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;'int'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'float'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;9.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'string'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'Sample Data'&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="err"&gt;　&lt;/span&gt;&lt;span class="c1"&gt;#　写入key1，值可以是python支持的对象，看起来和字典的用法一样&lt;/span&gt;
+&lt;span class="k"&gt;finally&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;访问已存储的数据，打开shelf,可以像字典一样进行使用。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;s = shelve.open('test_shelf.db')  # 打开已存在的数据文件
+try:
+    existing = s['key1'] # 获取之前存储的key1
+finally:
+    s.close()
+
+print(existing)  # 打印s['key1'],会得到刚才存储的数据
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;执行结果：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python shelve_create.py
+$ python shelve_existing.py
+&lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;'int'&lt;/span&gt;: 10, &lt;span class="s1"&gt;'float'&lt;/span&gt;: 9.5, &lt;span class="s1"&gt;'string'&lt;/span&gt;: &lt;span class="s1"&gt;'Sample data'&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;dbm模块不支持多个应用同时写入同一数据库，如果客户端或程序不会修改shelf,请指定shelve以只读方式打开数据库。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;s = shelve.open('test_shelf.db', flag='r')   # 打开时指定flag＝&amp;lsquo;r'，只读模式打开
+try:
+    existing =  s['key1']
+finally:
+    s.close()
+
+print existing
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;当数据库以只读模式打开，但又试图更改数据库时，会引起一个访问出错异常。这一异常类型依赖于在创建数据库时被anydbm选择的数据库模块。&lt;/p&gt;
+&lt;h3 id="xie-hui"&gt;写回&lt;/h3&gt;
+&lt;p&gt;默认情况下，Shelves不去追踪可变对象的修改。意思就是，如果你改变了已存储在shelf中的一个项目的内容，就必须重新存储该项目来更新shelf.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;s = shelve.open('test_shelf.db')
+try:
+    print s['key1']
+    s['key']['new_value'] = 'this is not here before'
+finally:
+    s.close()
+
+s = shelve.open('test_shelf.db', writeback = True) # 设置写回或同步
+try:
+   print s['key1']
+finally:
+    s.close()
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;在这个例子中，没有对字典的关键字key1的内容进行存储，虽然打开时设置了writeback,因此重新打开shelf时，key1内容没有改变。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python shelve_create.py
+$ python shelve_withoutwriteback.py
+&lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;'int'&lt;/span&gt;: 10, &lt;span class="s1"&gt;'float'&lt;/span&gt;: 9.5, &lt;span class="s1"&gt;'string'&lt;/span&gt;: &lt;span class="s1"&gt;'Sample data'&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;'int'&lt;/span&gt;: 10, &lt;span class="s1"&gt;'float'&lt;/span&gt;: 9.5, &lt;span class="s1"&gt;'string'&lt;/span&gt;: &lt;span class="s1"&gt;'Sample data'&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;为了自动捕捉存储在shelf中的可变对象所发生的改变，需改变前设置writeback可用.writeback标志导致shelf使用一缓存来记住从数据库中调出的所有对象。当shelf关闭的时候，每一个缓存中的对象也重新写回数据库。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;s = shelve.open('test_shelf.db', writeback=True)
+try:
+    print(s['key1'])
+    s['key1']['new_value'] = 'this was not here before'
+    print(s['key1'])
+finally;
+    s.close()
+
+s = shelve.open('test_shelf.db', writeback=True)
+try:
+    print(s['key1'])
+finally:
+    s.close()
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;执行结果：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python shelve_create.py
+$ python shelve_writeback.py
+&lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;'int'&lt;/span&gt;: 10, &lt;span class="s1"&gt;'float'&lt;/span&gt;: 9.5, &lt;span class="s1"&gt;'string'&lt;/span&gt;: &lt;span class="s1"&gt;'Sample data'&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;'int'&lt;/span&gt;: 10, &lt;span class="s1"&gt;'new_value'&lt;/span&gt;: &lt;span class="s1"&gt;'this was not here before'&lt;/span&gt;, &lt;span class="s1"&gt;'float'&lt;/span&gt;: 9.5, &lt;span class="s1"&gt;'string'&lt;/span&gt;: &lt;span class="s1"&gt;'Sample data'&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;'int'&lt;/span&gt;: 10, &lt;span class="s1"&gt;'new_value'&lt;/span&gt;: &lt;span class="s1"&gt;'this was not here before'&lt;/span&gt;, &lt;span class="s1"&gt;'float'&lt;/span&gt;: 9.5, &lt;span class="s1"&gt;'string'&lt;/span&gt;: &lt;span class="s1"&gt;'Sample data'&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;虽然使用writeback模式可用减少出错几率，也能更加透明化对象的持久性。但是，不是每种情况都要使用writeback模式。原因看到前面的示例，应该能猜到。当shelf打开时，缓存就要占用额外的内存。
+并且，当shelf关闭时，同样会对缓存中的对象再次写回数据库，增加了开销。即使没有进行改变，仍然会进行数据写回。比较好的方式是，确认需要写入数据时，再设置writeback,读数据时设置只读或默认即可。&lt;/p&gt;
+&lt;h3 id="zhi-ding-shelflei-xing"&gt;指定shelf类型&lt;/h3&gt;
+&lt;p&gt;上面的例子全部使用默认的shelf实现。使用shelve.open()直接代替一种shelf实现，是常见用法, 尤其是在不关心用哪种数据库存储数据的时候. 然而, 有时常会关心它. 如果是在这种情况下, 通常就会直接使用DbfilenameShelf或者BsdDbShelf, 更或者是通过Shelf的子类来解决问题.&lt;/p&gt;&lt;/body&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Tue, 27 Dec 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-12-27:2016/12/27/python/</guid><category>Python</category></item><item><title>python metaclass</title><link>http://king32783784.github.io/2016/10/03/python/</link><description>&lt;body&gt;&lt;h3 id="lei-ye-shi-dui-xiang"&gt;类也是对象&lt;/h3&gt;
+&lt;p&gt;在理解元类之前，需要先掌握python中的类。Python中的类的概念借鉴于Smalltalk, 显得有些奇特。大多数编程语言中，类就是一组用来描述如何生成一个对象的代码段。在Python中这一点仍然成立：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; class ObjectCreator(object):
+...     pass
+... 
+&amp;gt;&amp;gt;&amp;gt; my_object = ObjectCreator()
+&amp;gt;&amp;gt;&amp;gt; print my_object
+&amp;lt;__main__.ObjectCreator object at 0x7fcad0b76590&amp;gt;
+&amp;gt;&amp;gt;&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;但是python的类还远不止如此。类同样也是一种对象。是的，没错，就是对象。只要使用关键字class,Python解释器在执行的时候就会创建一个对象。下面的代码段：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;class ObjectCreator(object):
+   ...     pass
+   ...&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;将在内存中创建一个对象，名字就是ObjectCreator. &lt;strong&gt;这个对象（类）自身具有创建对象（类示例）的能力，而这就是为什么它是一个类的原因.&lt;/strong&gt; 但是，它的本质仍然是一个对象，于是乎你可以对它做如下的操作：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1）可以将它赋值给一个变量&lt;/li&gt;
+&lt;li&gt;2）可以拷贝它&lt;/li&gt;
+&lt;li&gt;3）可以为它增加属性&lt;/li&gt;
+&lt;li&gt;4）可以将它作为函数参数进行传递&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;下面是示例：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; print ObjectCreator     # 你可以打印一个类，因为它其实也是一个对象
+&amp;lt;class '__main__.ObjectCreator'&amp;gt;
+&amp;gt;&amp;gt;&amp;gt; def echo(o):
+&amp;hellip;       print o
+&amp;hellip;
+&amp;gt;&amp;gt;&amp;gt; echo(ObjectCreator)                 # 你可以将类做为参数传给函数
+&amp;lt;class '__main__.ObjectCreator'&amp;gt;
+&amp;gt;&amp;gt;&amp;gt; print hasattr(ObjectCreator, 'new_attribute')
+Fasle
+&amp;gt;&amp;gt;&amp;gt; ObjectCreator.new_attribute = 'foo' #  你可以为类增加属性
+&amp;gt;&amp;gt;&amp;gt; print hasattr(ObjectCreator, 'new_attribute')
+True
+&amp;gt;&amp;gt;&amp;gt; print ObjectCreator.new_attribute
+foo
+&amp;gt;&amp;gt;&amp;gt; ObjectCreatorMirror = ObjectCreator # 你可以将类赋值给一个变量
+&amp;gt;&amp;gt;&amp;gt; print ObjectCreatorMirror()
+&amp;lt;__main__.ObjectCreator object at 0x8997b4c&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="dong-tai-di-chuang-jian-lei"&gt;动态地创建类&lt;/h3&gt;
+&lt;p&gt;因为类也是对象，可以在运行时动态的创建他们，就像其他任何对象一样。首先，可以在函数中创建类，使用class关键字即可。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; def choose_class(name):
+&amp;hellip;       if name == 'foo':
+&amp;hellip;           class Foo(object):
+&amp;hellip;               pass
+&amp;hellip;           return Foo     # 返回的是类，不是类的实例
+&amp;hellip;       else:
+&amp;hellip;           class Bar(object):
+&amp;hellip;               pass
+&amp;hellip;           return Bar
+&amp;hellip;
+&amp;gt;&amp;gt;&amp;gt; MyClass = choose_class('foo')
+&amp;gt;&amp;gt;&amp;gt; print MyClass              # 函数返回的是类，不是类的实例
+&amp;lt;class '__main__'.Foo&amp;gt;
+&amp;gt;&amp;gt;&amp;gt; print MyClass()            # 你可以通过这个类创建类实例，也就是对象
+&amp;lt;__main__.Foo object at 0x89c6d4c&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;但这还不够动态，仍然需要自己编写整个类的代码。由于类也是对象，所以它们必须是通过什么东西生成的才对。当你使用class关键字时，Python解释器自动创建这个对象。
+但就和Python中大多数事情一样，Python仍然提供给你手动处理的方法。还记得内建函数type吗？这个古老而又强大的函数能够让你知道一个对象的类型是什么，就像这样：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; print type(1)
+&amp;lt;type 'int'&amp;gt;
+&amp;gt;&amp;gt;&amp;gt; print type("1")
+&amp;lt;type 'str'&amp;gt;
+&amp;gt;&amp;gt;&amp;gt; print type(ObjectCreator)
+&amp;lt;type 'type'&amp;gt;
+&amp;gt;&amp;gt;&amp;gt; print type(ObjectCreator())
+&amp;lt;class '__main__.ObjectCreator'&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这里，type有一种完全不同的能力，能动态的创建类。type可以接受一个类的描述作为参数，然后返回一个类。（根据传入参数的不同，同一个函数拥有两种完全不同的用法是一件
+很傻的事情，但这在python中是为了保持向后兼容性）&lt;/p&gt;
+&lt;p&gt;type可以像这样工作：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;type(类名， 父类的元组（针对继承的情况，可以为空）， 包含属性的字典（名称和值））
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;比如下面的代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; class MyShinyClass(object):
+...     pass
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;可以手动这样创建：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt;MyShinyClass = type('MyShinyClass', (), {})
+&amp;gt;&amp;gt;&amp;gt;print MyShinyClass
+&amp;lt;class '__main__.MyShinyClass'&amp;gt;
+&amp;gt;&amp;gt;&amp;gt; print MyShinyClass()  #  创建一个该类的实例
+&amp;lt;__main__.MyShinyClass object at 0x8997cec&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;你会发现我们使用MyShinyClass作为类名，并且也可以把它当做一个变量来作为类的引用。类和变量是不同的，这里没有任何理由把事情搞复杂。&lt;/p&gt;
+&lt;p&gt;type接受一个字典来为类定义属性， 因此：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; class Foo(object):
+...     bar = True
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;可以翻译为：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt;Foo = type('Foo', (), {'bar':True})
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;并且可以将Foo当成一个普通的类一样使用：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; print Foo
+&amp;lt;class '__main__.Foo'&amp;gt;
+&amp;gt;&amp;gt;&amp;gt; print Foo.bar
+True
+&amp;gt;&amp;gt;&amp;gt; f = Foo()
+&amp;gt;&amp;gt;&amp;gt; print f
+&amp;lt;__main__.Foo object at 0x8a9b84c&amp;gt;
+&amp;gt;&amp;gt;&amp;gt; print f.bar
+True
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;当然，你可以向这个类继承，所以，如下代码&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; class FooChild(Foo):
+...    pass
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;就可以写成：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; FooChild = type('FooChild', (Foo,), {})
+&amp;gt;&amp;gt;&amp;gt; print FooChild
+&amp;lt;class '__main__.FooChild'&amp;gt;
+&amp;gt;&amp;gt;&amp;gt; print FooChild.bar   # bar属性是由Foo继承而来
+True
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;最终你会希望为你的类增加方法，只需要定义一个有着恰当签名的函数并将其作为属性赋值就可以了。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; def echo_bar(self): 
+&amp;hellip;       print self.bar
+&amp;hellip;
+&amp;gt;&amp;gt;&amp;gt; FooChild = type('FooChild', (Foo,), {'echo_bar': echo_bar})
+&amp;gt;&amp;gt;&amp;gt; hasattr(Foo, 'echo_bar')
+False
+&amp;gt;&amp;gt;&amp;gt; hasattr(FooChild, 'echo_bar')
+True
+&amp;gt;&amp;gt;&amp;gt; my_foo = FooChild()
+&amp;gt;&amp;gt;&amp;gt; my_foo.echo_bar()
+True
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;你可以看到，python中，类也是对象，可以动态的创建类。这就是当你使用关键字class时python在幕后做的事情，而这就是通过元类来实现的。&lt;/p&gt;
+&lt;h3 id="dao-di-shi-yao-shi-yuan-lei"&gt;到底什么是元类？&lt;/h3&gt;
+&lt;p&gt;元类就是用来创建类的&amp;ldquo;东西&amp;rdquo;。你创建类就是为了创建类的实例对象，不是吗？但是我们已经了解到python中的类也是对象。元类就是用来创建类（对象）的，元类就是类的类，可以这样理解：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;MyClas = MetaClass()
+MyObject = MyClass()
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;你可以看到了type可以让你像这样做：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;MyClass = type('MyClass', (), {})
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这就是因为函数type实际上就是一个元类。type就是Python在背后用来创建所有类的元类。str用来创建字符串对象的类，int是用来创建整数对象的类，type就是创建类对象的类。可以通过检查
+__class__属性来看到这一点。Python中所有的东西，注意，我是指所有的东西--都是对象。包括整数、字符串、函数以及类。他们全部都是对象，而且他们都是从一个类创建而来。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; age = 35
+&amp;gt;&amp;gt;&amp;gt; age.__class__
+&amp;lt;type 'int'&amp;gt;
+&amp;gt;&amp;gt;&amp;gt; name = 'bob'
+&amp;gt;&amp;gt;&amp;gt; name.__class__
+&amp;lt;type 'str'&amp;gt;
+&amp;gt;&amp;gt;&amp;gt; def foo(): pass
+&amp;gt;&amp;gt;&amp;gt;foo.__class__
+&amp;lt;type 'function'&amp;gt;
+&amp;gt;&amp;gt;&amp;gt; class Bar(object): pass
+&amp;gt;&amp;gt;&amp;gt; b = Bar()
+&amp;gt;&amp;gt;&amp;gt; b.__class__
+&amp;lt;class '__main__.Bar'&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;现在，对于任何一个__class__的__class__属性又是什么？&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; a.__class__.__class__
+&amp;lt;type 'type'&amp;gt;
+&amp;gt;&amp;gt;&amp;gt; age.__class__.__class__
+&amp;lt;type 'type'&amp;gt;
+&amp;gt;&amp;gt;&amp;gt; foo.__class__.__class__
+&amp;lt;type 'type'&amp;gt;
+&amp;gt;&amp;gt;&amp;gt; b.__class__.__class__
+&amp;lt;type 'type'&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;因此元类就是创建类这种对象的东西，如果你喜欢的话，可以把元类称作&amp;ldquo;类工厂&amp;rdquo;（不要和工厂类搞混就好） type就是Python内建元类，当然，你也可以创建自己的元类。&lt;/p&gt;
+&lt;h3 id="__metaclass__shu-xing"&gt;__metaclass__属性&lt;/h3&gt;
+&lt;p&gt;你可以在写一个类的时候为其添加__metaclass__属性。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;Foo&lt;/span&gt;(&lt;span class="n"&gt;object&lt;/span&gt;):
+    &lt;span class="n"&gt;__metaclass__&lt;/span&gt; = &lt;span class="n"&gt;something&lt;/span&gt;...
+[..]
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;如果这么做了，python就会用元类来创建类Foo. 这里面有些技巧，首先写下class Foo(object),但是类对象Foo还没有在内存中创建。Python会在类的定义中寻找__metaclass__属性，如果找到了，
+python就会用它来创建类Foo,如果没有找到，就会用内建的type来创建这个类。把下面的这段话反复读几次，当你写下如下代码时：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;Foo&lt;/span&gt;(&lt;span class="n"&gt;Bar&lt;/span&gt;):
+    &lt;span class="nb"&gt;pass&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Python 做了如下操作：&lt;/p&gt;
+&lt;p&gt;Foo中有__metaclass__有这个属性吗？ 如果是，Python会在内存中通过__metaclass__创建一个名字为Foo的类对象（我说的是类对象，不是类实例哈）。如果Python没有找到__metaclass__，它会
+ 在Bar(父类）中寻找__metaclass__属性，并尝试做和前面同样的操作。如果Python在任何父类中都找不到__metaclass__，它就会在模块层次中寻找__metaclass__,并尝试做和前面同样的操作。如果还是找不到__metaclass__, Python就会用内置的type来创建这个类的对象。&lt;/p&gt;
+&lt;p&gt;现在的问题是，可以在__metaclass__中放置那些代码呢？答案是：可以创建一个类的东西。那什么可以创建一个类呢？type,或则任何使用到type或子类化type的东西都可以。&lt;/p&gt;
+&lt;h3 id="zi-ding-yi-yuan-lei"&gt;自定义元类&lt;/h3&gt;
+&lt;p&gt;元类的主要目的就是为了当创建类时能够自动的改变类。通常，你会为API做这样的事情，你希望可以创建符合当前上下文的类。假想一个很傻的例子，你决定在你的模块里所有的类的属性都应该是大写形式。有好几种方法可以办到，但其中一种就是通过在模块级别设定__metaclass__。采用这种方法，这个模块中的所有类都会通过这个元类来创建，我们只需要告诉元类把所有的属性都改成大写形式即可。&lt;/p&gt;
+&lt;p&gt;幸运的是，__metaclass__实际上可以被任意调用，它并不是一个正式的类。所以，我们这里先以一个简单的函数作为例子开始。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# 元类会自动将你通常传给&amp;ldquo;type"的参数作为自己的参数传入
+def upper_attr(future_class_name, future_class_parents, future__class_attr)
+    '''返回一个类对象，将属性都转为大写形式&amp;lsquo;&amp;rsquo;&amp;lsquo;
+    #  选择所有不以&amp;ldquo;__&amp;rdquo;开头的属性
+    attrs = ((name, value) for name, value in future_class_attr.items() if not name.startswith('__'))
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&amp;lt;未完待续&amp;gt;&lt;/p&gt;&lt;/body&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 03 Oct 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-10-03:2016/10/03/python/</guid><category>Python</category></item></channel></rss>

@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="author" content="peng.lee" />
+        <meta name="author" content="李鹏" />
         <meta name="keywords" content="Python" />
         <meta name="description" content="本文对shelve模块进行说明。 shelve模块实现了对任意可被pickle的python对象进行持久存储，并提供了类字典的API使用。 简介 当使用关系数据库太重时，shelve模块可以为python对象提供了一个简单的持久的存储选择。它就像字典一样，通过关键字访问shelf对象，其值经过pickle,写入anydbm创建和管理的数据库。在使用时，可以自己定义一些存储结构使其存储较复杂的数据。 创建shelf对象 最简单的使用shelve模块的方式是通过DbfilenameShelf类。使用函数shelve.open()(使用的是anydbm）来存储数据。可以使用类或简单的调用： import shelve s = shelve.open(&#39;test_shelf.db&#39;) # 创建test_shelf.db文件进行存储 try: s[&#39;key1&#39;] = {&#39;int&#39;:10, &#39;float&#39;:9.5, &#39;string&#39;: &#39;Sample Data&#39;} # 写入key1，值可以是python支持的对象，看起来和字典的用法一样 finally: s.close() 访问已存储的数据，打开shelf,可以像字典一样进行使用。 s = shelve ..." />
 
@@ -18,7 +18,7 @@
     <meta property="article:published_time" content="2016-12-27" />
     <meta property="article:section" content="misc" />
         <meta property="article:tag" content="Python" />
-        <meta property="article:author" content="peng.lee" />
+        <meta property="article:author" content="李鹏" />
         <meta property="og:image"
               content="../../../../favicon.png"/>
 
@@ -343,6 +343,13 @@
                             <span class="badge pull-right categorybadge">2</span>
                         </a>
                     </li>
+                    <li class="active">
+                        <a href="../../../../category/misc.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            misc
+                            <span class="badge pull-right categorybadge">2</span>
+                        </a>
+                    </li>
                     <li >
                         <a href="../../../../category/python-pyqt.html">
                             <i class="fa fa-folder-open padding-small"></i>
@@ -362,13 +369,6 @@
                             <i class="fa fa-folder-open padding-small"></i>
                             unix环境编程
                             <span class="badge pull-right categorybadge">2</span>
-                        </a>
-                    </li>
-                    <li class="active">
-                        <a href="../../../../category/misc.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            misc
-                            <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
                 </ul></li>
@@ -450,7 +450,7 @@ $ python shelve_existing.py
 <span class="o">{</span><span class="s1">'int'</span>: 10, <span class="s1">'float'</span>: 9.5, <span class="s1">'string'</span>: <span class="s1">'Sample data'</span><span class="o">}</span>
 </pre></div>
 <p>dbm模块不支持多个应用同时写入同一数据库，如果客户端或程序不会修改shelf,请指定shelve以只读方式打开数据库。</p>
-<div class="highlight"><pre><span></span>s = shelve.open('test_shelf.db', flag='r')   # 打开时指定flag＝‘r'，只读模式打开
+<div class="highlight"><pre><span></span>s = shelve.open('test_shelf.db', flag='r')   # 打开时指定flag＝&lsquo;r'，只读模式打开
 try:
     existing =  s['key1']
 finally:
@@ -508,7 +508,7 @@ $ python shelve_writeback.py
 <p>上面的例子全部使用默认的shelf实现。使用shelve.open()直接代替一种shelf实现，是常见用法, 尤其是在不关心用哪种数据库存储数据的时候. 然而, 有时常会关心它. 如果是在这种情况下, 通常就会直接使用DbfilenameShelf或者BsdDbShelf, 更或者是通过Shelf的子类来解决问题.</p></body>
                 </div>
                 <footer class="text-right">
-                    <p>by peng.lee</p>
+                    <p>by 李鹏</p>
                 </footer>
     <section id="comments" class="comments ">
         <hr/>
