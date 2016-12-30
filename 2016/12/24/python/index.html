@@ -16,7 +16,7 @@
     <meta property="og:url" content="../../../../2016/12/24/python/"/>
     <meta property="og:description" content="存储方式 Python的数据存储主要是以下六类：普通文件、DBM文件、Pickled对象存储、shelve对象存储、对象数据库存储、关系数据库存储。 DBM文件 普通文件不解释了，DBM就是把字符串的键值对存储在文件里： Python代码 &gt;&gt;&gt; import anydbm &gt;&gt;&gt; file = anydbm.open(&#39;movie&#39;, &#39;c&#39;) # make a DBM file called &#39;movie&#39; &gt;&gt;&gt; file[&#39;Batman&#39;] = &#39;Pow!&#39; # store a string under key &#39;Batman&#39; &gt;&gt;&gt; file.keys( ) # get the file&#39;s key directory [&#39;Batman&#39;] &gt;&gt;&gt; file[&#39;Batman&#39;] # fetch value for key &#39;Batman ..."/>
     <meta property="article:published_time" content="2016-12-24" />
-    <meta property="article:section" content="misc" />
+    <meta property="article:section" content="编程语言-Python" />
         <meta property="article:tag" content="Python" />
         <meta property="article:author" content="peng.lee" />
         <meta property="og:image"
@@ -121,6 +121,12 @@
                         </a>
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
+                        <li class="">
+                            <a class="hide-overflow" href="../../../../2016/12/30/其他/" title="技术人员的发展之路">
+                                <i class="fa fa-file-text padding-small"></i>
+                                技术人员的发展之路
+                            </a>
+                        </li>
                         <li class="active">
                             <a class="hide-overflow" href="../../../../2016/12/24/python/" title="python数据存储">
                                 <i class="fa fa-file-text padding-small"></i>
@@ -143,12 +149,6 @@
                             <a class="hide-overflow" href="../../../../2016/11/12/自动化测试/" title="Avocado-编写Avocado测试">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Avocado-编写Avocado测试
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../../../../2016/11/03/自动化测试/" title="Avocado-入门">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Avocado-入门
                             </a>
                         </li>
                     <li>
@@ -294,6 +294,13 @@
                             <span class="badge pull-right categorybadge">7</span>
                         </a>
                     </li>
+                    <li class="active">
+                        <a href="../../../../category/bian-cheng-yu-yan-python.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            编程语言-Python
+                            <span class="badge pull-right categorybadge">4</span>
+                        </a>
+                    </li>
                     <li >
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
@@ -309,16 +316,16 @@
                         </a>
                     </li>
                     <li >
-                        <a href="../../../../category/bian-cheng-yu-yan-python.html">
+                        <a href="../../../../category/linux.html">
                             <i class="fa fa-folder-open padding-small"></i>
-                            编程语言-Python
+                            Linux
                             <span class="badge pull-right categorybadge">3</span>
                         </a>
                     </li>
                     <li >
-                        <a href="../../../../category/linux.html">
+                        <a href="../../../../category/qi-ta.html">
                             <i class="fa fa-folder-open padding-small"></i>
-                            Linux
+                            其他
                             <span class="badge pull-right categorybadge">3</span>
                         </a>
                     </li>
@@ -344,13 +351,6 @@
                         </a>
                     </li>
                     <li >
-                        <a href="../../../../category/qi-ta.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            其他
-                            <span class="badge pull-right categorybadge">2</span>
-                        </a>
-                    </li>
-                    <li >
                         <a href="../../../../category/suan-fa.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             算法
@@ -362,13 +362,6 @@
                             <i class="fa fa-folder-open padding-small"></i>
                             unix环境编程
                             <span class="badge pull-right categorybadge">2</span>
-                        </a>
-                    </li>
-                    <li class="active">
-                        <a href="../../../../category/misc.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            misc
-                            <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
                 </ul></li>
@@ -405,7 +398,7 @@
                 <i class="fa fa-calendar padding-small"></i><time datetime="2016-12-24T00:00:00+08:00"> 2016-12-24 六</time>
             </span>
             <span class="category">
-                <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/misc.html">misc</a>
+                <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/bian-cheng-yu-yan-python.html">编程语言-Python</a>
             </span>
             <span class="tags">
                 <i class="fa fa-tags padding-small"></i>
@@ -478,7 +471,7 @@
     <span class="p">{</span><span class="s1">'motto'</span><span class="p">:</span> <span class="s1">'Ni!'</span><span class="p">,</span> <span class="s1">'name'</span><span class="p">:</span> <span class="s1">'Knight'</span><span class="p">}</span>
 </pre></div>
 <p>对象数据库的存储没怎么了解，因为不习惯用它存储数据。感觉应该和shelve差不多吧，只是把数据保存到了数据库里（其实还是一个文件嘛），然后增加了些事务之类的高级功能。</p>
-<p>Python中关系数据库的存储是重点，操作关系数据库最“简单”的就是直接用DB-API，就像Java里的JDBC；当然，数据结构复杂了、设计要求高了，就得找些ORM框架偷懒了，主要有独立的SQLAlchemy，Django的自带ORM等。</p>
+<p>Python中关系数据库的存储是重点，操作关系数据库最&ldquo;简单&rdquo;的就是直接用DB-API，就像Java里的JDBC；当然，数据结构复杂了、设计要求高了，就得找些ORM框架偷懒了，主要有独立的SQLAlchemy，Django的自带ORM等。</p>
 <p><img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/8N5QJCOLP7.jpg" width="420"/></p>
 <h3 id="jian-dan-bi-jiao-pythonde-shu-ju-cao-zuo_1">简单比较Python的数据操作</h3>
 <p>Python中操作关系数据库最直接的就是用DB-API了，流程一般是：连接、执行SQL语句、提交、断开。以MySQL为例，下面是各步骤的代码示例：</p>
@@ -530,7 +523,7 @@
     <span class="n">release_date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateField</span><span class="p">()</span>  
     <span class="n">num_stars</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">IntegerField</span><span class="p">()</span>
 </pre></div>
-<p>Python的代码已经很清楚了，类对应表，成员变量对应表的列，列属性由models.XXXField(…)定义。如果实体类没有显式定义主键，Django会默认加上一句：</p>
+<p>Python的代码已经很清楚了，类对应表，成员变量对应表的列，列属性由models.XXXField(&hellip;)定义。如果实体类没有显式定义主键，Django会默认加上一句：</p>
 <div class="highlight"><pre><span></span>id = models.AutoField(primary_key=True)
 </pre></div>
 <p>Django里可以这样定义枚举型数据：</p>
@@ -562,8 +555,8 @@ place = models.OneToOneField(Place")
         <span class="n">super</span>(<span class="n">Blog</span>, <span class="k">self</span>).<span class="n">save</span>(*<span class="n">args</span>, **<span class="n">kwargs</span>) <span class="c c-Singleline"># Call the "real" save() method.  </span>
         <span class="n">do_something_else</span>()
 </pre></div>
-<p>发现没，Django里存取数据不需要那种session，最讨厌Hibernate里的session了，总是报“Session Closed”错误……</p>
-<p>Python还有一个独立的ORM框架——SQLAlchemy。功能更强大，支持的数据库也比Django自带的ORM工具要多。它有两种建立实体类的方法。</p>
+<p>发现没，Django里存取数据不需要那种session，最讨厌Hibernate里的session了，总是报&ldquo;Session Closed&rdquo;错误&hellip;&hellip;</p>
+<p>Python还有一个独立的ORM框架&mdash;&mdash;SQLAlchemy。功能更强大，支持的数据库也比Django自带的ORM工具要多。它有两种建立实体类的方法。</p>
 <p>一种是分开定义，再将表定义和类定义映射起来。首先是建立表的定义：</p>
 <div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">Table</span><span class="p">,</span> <span class="n">Column</span><span class="p">,</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">String</span><span class="p">,</span> <span class="n">MetaData</span><span class="p">,</span> <span class="n">ForeignKey</span>  
 <span class="o">&gt;&gt;&gt;</span> <span class="n">metadata</span> <span class="o">=</span> <span class="n">MetaData</span><span class="p">()</span>  
@@ -616,7 +609,7 @@ place = models.OneToOneField(Place")
 或者  
 &gt;&gt;&gt; session.commit()
 </pre></div>
-<p>SQLAlchemy框架还有一个衍生产品——Elixir，在SQLAlchemy的基础上对其映射方式做了些封装，使得实体类的定义有点类似Django中的定义方式。</p>
+<p>SQLAlchemy框架还有一个衍生产品&mdash;&mdash;Elixir，在SQLAlchemy的基础上对其映射方式做了些封装，使得实体类的定义有点类似Django中的定义方式。</p>
 <p>话说Django的ORM与它的其他模块结合的很紧密，不好单独使用；SQLAlchemy虽然强大，但风格不太喜欢，所以下一步打算深入两个ORM框架的代码，看看他们是怎么实现的。一方面好抉择用哪一个，另外也可以看看在自己的应用中能否自己做一个简单的ORM。</p></body>
                 </div>
                 <footer class="text-right">

@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://king32783784.github.io/</loc>
-<lastmod>2016-12-27T08:45:01-00:00</lastmod>
+<lastmod>2016-12-30T08:30:52-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>http://king32783784.github.io/archives.html</loc>
-<lastmod>2016-12-27T08:45:01-00:00</lastmod>
+<lastmod>2016-12-30T08:30:52-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>http://king32783784.github.io/tags.html</loc>
-<lastmod>2016-12-27T08:45:01-00:00</lastmod>
+<lastmod>2016-12-30T08:30:52-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>http://king32783784.github.io/categories.html</loc>
-<lastmod>2016-12-27T08:45:01-00:00</lastmod>
+<lastmod>2016-12-30T08:30:52-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
@@ -78,6 +78,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <lastmod>2016-12-21T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
+</url>
+
+<url>
+<loc>http://king32783784.github.io/2016/12/30/其他/</loc>
+<lastmod>2016-12-30T00:00:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
 </url>
 
 <url>
@@ -543,6 +550,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://king32783784.github.io/category/bian-cheng-yu-yan-python.html</loc>
+<lastmod>2016-12-24T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.6</priority>
+</url>
+
+<url>
 <loc>http://king32783784.github.io/category/xing-neng-ce-shi.html</loc>
 <lastmod>2016-08-11T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -557,15 +571,15 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://king32783784.github.io/category/bian-cheng-yu-yan-python.html</loc>
-<lastmod>2016-03-11T00:00:00+08:06</lastmod>
+<loc>http://king32783784.github.io/category/linux.html</loc>
+<lastmod>2014-03-01T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
-<loc>http://king32783784.github.io/category/linux.html</loc>
-<lastmod>2014-03-01T00:00:00+08:06</lastmod>
+<loc>http://king32783784.github.io/category/qi-ta.html</loc>
+<lastmod>2016-12-30T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
@@ -592,13 +606,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://king32783784.github.io/category/qi-ta.html</loc>
-<lastmod>2016-09-01T00:00:00+08:06</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.6</priority>
-</url>
-
-<url>
 <loc>http://king32783784.github.io/category/suan-fa.html</loc>
 <lastmod>2013-07-01T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -608,13 +615,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://king32783784.github.io/category/unixhuan-jing-bian-cheng.html</loc>
 <lastmod>2009-10-12T00:00:00+08:06</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.6</priority>
-</url>
-
-<url>
-<loc>http://king32783784.github.io/category/misc.html</loc>
-<lastmod>2016-12-24T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
@@ -662,6 +662,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://king32783784.github.io/tag/shell.html</loc>
+<lastmod>2014-03-01T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.6</priority>
+</url>
+
+<url>
 <loc>http://king32783784.github.io/tag/python.html</loc>
 <lastmod>2016-12-24T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -671,13 +678,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://king32783784.github.io/tag/pyqt.html</loc>
 <lastmod>2016-11-15T00:00:00+08:06</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.6</priority>
-</url>
-
-<url>
-<loc>http://king32783784.github.io/tag/shell.html</loc>
-<lastmod>2014-03-01T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
@@ -739,8 +739,22 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://king32783784.github.io/tag/qi-ta.html</loc>
+<lastmod>2016-12-30T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.6</priority>
+</url>
+
+<url>
 <loc>http://king32783784.github.io/tag/pyunit.html</loc>
 <lastmod>2016-01-01T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.6</priority>
+</url>
+
+<url>
+<loc>http://king32783784.github.io/author/chen-hao.html</loc>
+<lastmod>2016-12-30T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
