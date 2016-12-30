@@ -127,6 +127,12 @@
                             </a>
                         </li>
                         <li class="">
+                            <a class="hide-overflow" href="./2016/12/27/python/" title="python shelve">
+                                <i class="fa fa-file-text padding-small"></i>
+                                python shelve
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="./2016/12/24/python/" title="python数据存储">
                                 <i class="fa fa-file-text padding-small"></i>
                                 python数据存储
@@ -142,12 +148,6 @@
                             <a class="hide-overflow" href="./2016/11/13/python/" title="pyqt基本操作">
                                 <i class="fa fa-file-text padding-small"></i>
                                 pyqt基本操作
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="./2016/11/12/自动化测试/" title="Avocado-编写Avocado测试">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Avocado-编写Avocado测试
                             </a>
                         </li>
                     <li>
@@ -363,6 +363,13 @@
                             <span class="badge pull-right categorybadge">2</span>
                         </a>
                     </li>
+                    <li >
+                        <a href="./category/misc.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            misc
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
                 </ul></li>
                 
             </ul>
@@ -420,8 +427,47 @@
                 <div class="summary">
                     <body><p>2012年的时候写过一篇叫《程序算法与人生选择》的文章，我用算法来类比如何做选择，说白了就是怎么去计算，但是并没有讲程序员可以发展的方向有哪些。 所以，就算是有这些所谓的方法论，我们可能对自己的
   发展还是会很纠结和无所事从，尤其是人到了30岁，这种彷徨和迷惑越来越重。虽然我之前也写过一篇《编程年龄和编程技能》的文章，但是还是有很多做技术的人对于自己能否在年纪大时还能去做技术感到没有信心。我猜测，这其中，最大的问题的是，目前从事技术工作的种种负面的经历（比如经常性的加班，被当成棋子或劳动力等等），让人完全看不到希望和前途，尤其是随着年纪越来越大，对未来的越来越没有信心。</p>
-<p>同时，也是因为在GIAC的大会被问到，程序员老了怎么办？而在年底这段时间，也和几个朋友在交流中不断地重复谈到个人发展的这个话题。我的人生过半，活到&ldquo;不惑&rdquo;的年纪，自然经常性的对什么事都会回头看看总结归纳，所以，在交谈过程中和交谈过后，自己也有一些思考想记录下来。因为我本人也是在这条路上的人，所以，谈不上给他人指导，我同样也是在瞎乱折腾同样每天在思考自己要去哪儿的&ldquo;一尘世间迷途老生&rdquo;。况且，我的经历和眼界非常有限，因此，下面的这些关于个人发展的文字和思考必然是受我的眼界和经历所局限的。也欢迎大家补充和指正。</p>
+<p>同时，也是因为在GIAC的大会被问到，程序员老了怎么办？而在年底这段时间，也和几个朋友在交流中不断地重复谈到个人发展的这个话题。我的人生过半，活到“不惑”的年纪，自然经常性的对什么事都会回头看看总结归纳，所以，在交谈过程中和交谈过后，自己也有一些思考想记录下来。因为我本人也是在这条路上的人，所以，谈不上给他人指导，我同样也是在瞎乱折腾同样每天在思考自己要去哪儿的“一尘世间迷途老生”。况且，我的经历和眼界非常有限，因此，下面的这些关于个人发展的文字和思考必然是受我的眼界和经历所局限的。也欢迎大家补充和指正。</p>
 <p>这些东西不一定对，也不一定就是全部 ...</p></body>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2>
+                    <a href="./2016/12/27/python/">python shelve</a>
+<div class="post-info">
+    <div class="publish-info-block">
+        <small>
+            <span class="published">
+                <i class="fa fa-calendar padding-small"></i><time datetime="2016-12-27T00:00:00+08:00"> 2016-12-27 二</time>
+            </span>
+            <span class="category">
+                <i class="fa fa-folder-open padding-small"></i><a href="./category/misc.html">misc</a>
+            </span>
+            <span class="tags">
+                <i class="fa fa-tags padding-small"></i>
+                <a href="./tag/python.html">Python</a>            </span>
+        </small>
+    </div>
+</div><!-- /.post-info -->                </h2>
+                <div class="summary">
+                    <body><p>本文对shelve模块进行说明。</p>
+<p>shelve模块实现了对任意可被pickle的python对象进行持久存储，并提供了类字典的API使用。</p>
+<p><img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/4C0XUNHJ7C.jpg" width="420"/></p>
+<h3 id="jian-jie">简介</h3>
+<p>当使用关系数据库太重时，shelve模块可以为python对象提供了一个简单的持久的存储选择。它就像字典一样，通过关键字访问shelf对象，其值经过pickle,写入anydbm创建和管理的数据库。在使用时，可以自己定义一些存储结构使其存储较复杂的数据。</p>
+<h3 id="chuang-jian-shelfdui-xiang">创建shelf对象</h3>
+<p>最简单的使用shelve模块的方式是通过DbfilenameShelf类。使用函数shelve.open()(使用的是anydbm）来存储数据。可以使用类或简单的调用：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">shelve</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">shelve</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">'test_shelf.db'</span><span class="p">)</span>  <span class="c1"># 创建test_shelf.db文件进行存储</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">s</span><span class="p">[</span><span class="s1">'key1'</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'int'</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="s1">'float'</span><span class="p">:</span><span class="mf">9.5</span><span class="p">,</span> <span class="s1">'string'</span><span class="p">:</span> <span class="s1">'Sample Data'</span><span class="p">}</span><span class="err">　</span><span class="c1">#　写入key1，值可以是python支持的对象，看起来和字典的用法一样</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">s</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+<p>访问已存储的数据，打开shelf,可以像字典一样进行使用。</p>
+<div class="highlight"><pre><span></span>s = shelve ...</pre></div></body>
                 </div>
             </article>
             <hr/>
@@ -566,47 +612,6 @@
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span><span class="err">　　　　　　　　　　　</span><span class="c1"># 初始化方法</span>
         <span class="n">QtGui</span><span class="o">.</span><span class="n">QMainWindow</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self ...</span></pre></div></td></tr></tbody></table></body>
-                </div>
-            </article>
-            <hr/>
-            <article>
-                <h2>
-                    <a href="./2016/11/12/自动化测试/">Avocado-编写Avocado测试</a>
-<div class="post-info">
-    <div class="publish-info-block">
-        <small>
-            <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2016-11-12T00:00:00+08:00"> 2016-11-12 六</time>
-            </span>
-            <span class="category">
-                <i class="fa fa-folder-open padding-small"></i><a href="./category/zi-dong-hua-ce-shi-avocado.html">自动化测试-Avocado</a>
-            </span>
-            <span class="tags">
-                <i class="fa fa-tags padding-small"></i>
-                <a href="./tag/avocado.html">Avocado</a>            </span>
-        </small>
-    </div>
-</div><!-- /.post-info -->                </h2>
-                <div class="summary">
-                    <body><h3 id="bian-xie-avocadoce-shi">编写Avocado测试</h3>
-<p>现在我们开始使用python编写Avocado测试，测试继承于avocado.Test.</p>
-<h4 id="ji-ben-li-zi">基本例子</h4>
-<p>创建一个时间测试，sleeptest,测试非常简单，只是sleep一会：</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">from</span> <span class="nn">avocado</span> <span class="kn">import</span> <span class="n">Test</span>
-
-<span class="k">class</span> <span class="nc">SleepTest</span><span class="p">(</span><span class="n">Test</span><span class="p">):</span>
-
-    <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">sleep_length</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'sleep_length'</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">"Sleep for </span><span class="si">%.2f</span><span class="s2"> seconds"</span><span class="p">,</span> <span class="n">sleep_length</span><span class="p">)</span>
-        <span class="n">time</span> <span class="n">sleep</span><span class="p">(</span><span class="n">sleep_length</span><span class="p">)</span>
-</pre></div>
-<p>这是为avocado编写的一个简单示例，可以使用其他power API编写。</p>
-<p>从上面的例子可以看出，avocado测试从avocado.Test继承的test方法入手。</p>
-<h5 id="duo-ge-ce-shi-he-ming-ming-yue-ding">多个测试和命名约定</h5>
-<p>可以在一个类中存在多个测试。</p>
-<p>要想做多个测试，只需要在命名方法前加test,例如test_foo ...</p></body>
                 </div>
             </article>
         <div class="btn-more text-right">

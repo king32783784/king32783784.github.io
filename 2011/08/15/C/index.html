@@ -128,6 +128,12 @@
                             </a>
                         </li>
                         <li class="">
+                            <a class="hide-overflow" href="../../../../2016/12/27/python/" title="python shelve">
+                                <i class="fa fa-file-text padding-small"></i>
+                                python shelve
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../../../../2016/12/24/python/" title="python数据存储">
                                 <i class="fa fa-file-text padding-small"></i>
                                 python数据存储
@@ -143,12 +149,6 @@
                             <a class="hide-overflow" href="../../../../2016/11/13/python/" title="pyqt基本操作">
                                 <i class="fa fa-file-text padding-small"></i>
                                 pyqt基本操作
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../../../../2016/11/12/自动化测试/" title="Avocado-编写Avocado测试">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Avocado-编写Avocado测试
                             </a>
                         </li>
                     <li>
@@ -364,6 +364,13 @@
                             <span class="badge pull-right categorybadge">2</span>
                         </a>
                     </li>
+                    <li >
+                        <a href="../../../../category/misc.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            misc
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
                 </ul></li>
                 
             </ul>
@@ -421,7 +428,7 @@
 </pre></div>
 <p>编译器在处理这个代码之前会对MAXTIME进行替换为1000。
 宏定义类同于简单的文本替换，而不是变量。</p>
-<p><strong>2.define的&ldquo;函数定义&rdquo;</strong></p>
+<p><strong>2.define的“函数定义”</strong></p>
 <p>define可以像函数那样接受一些参数，如下：</p>
 <div class="highlight"><pre><span></span>#define max(x,y)(x)&gt;(y)?(x):(y);
 </pre></div>
@@ -451,7 +458,7 @@ stmt1;/
 stmt2;/
 }while(0) /*(no trailing;)*/
 </pre></div>
-<p>每行换行时加上换行符&ldquo;/&rdquo;</p>
+<p>每行换行时加上换行符“/”</p>
 <p><strong>4.条件编译</strong></p>
 <p>在大规模的开发中，define最重要的功能就是条件编译。也就是本文的用法。</p>
 <div class="highlight"><pre><span></span><span class="cp">#ifdef UCLINU</span>
@@ -478,12 +485,12 @@ stmt2;/
 <p>例如
     #ifndef <strong>headerfileXXX</strong>
     #define <strong>headerfileXXX</strong>
-    &hellip;
+    …
     //文件内容
-    &hellip;
+    …
     #endif</p>
 <p><strong>7.define命令的一些高级用法</strong></p>
-<p>define中的三个特殊符号&ldquo;#&rdquo; &ldquo;##&rdquo; &ldquo;#@&rdquo;，前面提到过但未解释。</p>
+<p>define中的三个特殊符号“#” “##” “#@”，前面提到过但未解释。</p>
 <div class="highlight"><pre><span></span>#define Conn(x,y) x##y
 </pre></div>
 <p>x##y 表示什么？ 表示x连接y,</p>
