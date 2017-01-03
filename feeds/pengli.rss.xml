@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>分享让技术流行起来</title><link>http://king32783784.github.io/</link><description>Don't know how to develop's testers are not good testers &lt;a href="pages/aboutme.html"&gt;More...&lt;/a&gt;</description><lastBuildDate>Thu, 29 Aug 2013 00:00:00 +0800</lastBuildDate><item><title>PMON启动信息详解</title><link>http://king32783784.github.io/2013/08/29/pmon/</link><description>&lt;body&gt;&lt;p&gt;&lt;img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/P5LS1TUY3V.jpg" width="420"/&gt;&lt;/p&gt;
+<rss version="2.0"><channel><title>路漫求索</title><link>http://king32783784.github.io/</link><description>分享让技术流行起来 &lt;a href="pages/aboutme.html"&gt;More...&lt;/a&gt;</description><lastBuildDate>Thu, 29 Aug 2013 00:00:00 +0800</lastBuildDate><item><title>PMON启动信息详解</title><link>http://king32783784.github.io/2013/08/29/pmon/</link><description>&lt;body&gt;&lt;p&gt;&lt;img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/P5LS1TUY3V.jpg" width="420"/&gt;&lt;/p&gt;
 &lt;p&gt;启动过程：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;PMON2000 MIPS Initializing. Standby... /*CPU  Initializing*/
 

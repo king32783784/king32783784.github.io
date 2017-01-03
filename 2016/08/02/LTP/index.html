@@ -10,7 +10,7 @@
         <meta name="description" content="从本文开始，开始分析kernel部分的测试用例，该部分测试用例大部分为Ｃ语言编写，因此会穿插加入一定的Ｃ语言或unix环境编程的知识。 abort 设计说明 测试策略 Fork child. Child出现abort,检查返回状态 限制 Core file大小的限制必须大于０ abort 函数名: abort 功 能: 异常终止一个进程 用 法: void abort(void); abort()是使异常程序终止，同时发送SIGABRT信号给调用进程。 #include &lt;stdlib.h&gt; void abort(void); 该函数不返回 此函数将SIGABRT信号发送给调用进程（进程不应忽略此信号).ISO C规定，调用abort将向主机环境递送一个未成功终止的通知，其方法是调用raise(SIGABRT)函数。 ISO C要求若捕捉此信号而且相应信号处理程序返回，abort仍不会返回其调用者。如果捕捉到此信号，则信号处理程序不能返回的唯一方法是它调用exit、_exit、_Exit ..." />
 
 <!-- Open Graph tags -->
-<meta property="og:site_name" content="分享让技术流行起来"/>
+<meta property="og:site_name" content="路漫求索"/>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="LTP－kernel-syscalls-abort"/>
     <meta property="og:url" content="../../../../2016/08/02/LTP/"/>
@@ -22,7 +22,7 @@
         <meta property="og:image"
               content="../../../../favicon.png"/>
 
-    <title>LTP－kernel-syscalls-abort - 分享让技术流行起来</title>
+    <title>LTP－kernel-syscalls-abort - 路漫求索</title>
 
         <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
 
@@ -40,7 +40,7 @@
     
     <!-- Feeds -->
         <link href="../../../../feeds/atom.xml" type="application/atom+xml" rel="alternate"
-              title="分享让技术流行起来 ATOM Feed" />
+              title="路漫求索 ATOM Feed" />
 </head>
 <body data-spy="scroll" data-target="#scrollspy">
     <div id="wrapper">
@@ -48,7 +48,7 @@
         <div id="sidebar-wrapper-small" class="twitchy-background">
             <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
                 <li>
-        <a href="../../../.." title="分享让技术流行起来" class="collapsed">
+        <a href="../../../.." title="路漫求索" class="collapsed">
             <span class="glyphicon glyphicon-home"></span>
         </a>
     </li>

@@ -10,7 +10,7 @@
         <meta name="description" content="一、追加至一个文件 一个进程，将数据添加到一个文件尾端。早期不支持open的O_APPEND选项。所有程序被编写成下列形式 if (lseek(fd, 0L, 2 ) &lt; 0) /* position to EOF*/ err_sys(&#34;lseek error&#34;); if (write(fd, buf, 100) != 100) /* and write */ err_sys(&#34;write error&#34;); 单个进程而言，可以正常工作，但若有多个进程同事使用这种方法将数据添加到同一文件，则会产生问题。 UNIX系统提供了一种方法使这种操作成为原子操作。该方法是在打开文件时设置O_APPEND标志。使内核每次对这种文件进行写之前，都将当前偏移量设置到该文件的尾端处，每次写之前就不在需要调用lseek。 二、pread和 pwrite函数 原型如下： #include ＜unistd.h&gt; ssize_t pread (int filedes, void ..." />
 
 <!-- Open Graph tags -->
-<meta property="og:site_name" content="分享让技术流行起来"/>
+<meta property="og:site_name" content="路漫求索"/>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="原子操作"/>
     <meta property="og:url" content="../../../../2009/10/10/UNIX/"/>
@@ -22,7 +22,7 @@
         <meta property="og:image"
               content="../../../../favicon.png"/>
 
-    <title>原子操作 - 分享让技术流行起来</title>
+    <title>原子操作 - 路漫求索</title>
 
         <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
 
@@ -40,7 +40,7 @@
     
     <!-- Feeds -->
         <link href="../../../../feeds/atom.xml" type="application/atom+xml" rel="alternate"
-              title="分享让技术流行起来 ATOM Feed" />
+              title="路漫求索 ATOM Feed" />
 </head>
 <body data-spy="scroll" data-target="#scrollspy">
     <div id="wrapper">
@@ -48,7 +48,7 @@
         <div id="sidebar-wrapper-small" class="twitchy-background">
             <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
                 <li>
-        <a href="../../../.." title="分享让技术流行起来" class="collapsed">
+        <a href="../../../.." title="路漫求索" class="collapsed">
             <span class="glyphicon glyphicon-home"></span>
         </a>
     </li>
