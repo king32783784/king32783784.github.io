@@ -84,7 +84,135 @@ $ python shelve_writeback.py
 &lt;p&gt;虽然使用writeback模式可用减少出错几率，也能更加透明化对象的持久性。但是，不是每种情况都要使用writeback模式。原因看到前面的示例，应该能猜到。当shelf打开时，缓存就要占用额外的内存。
 并且，当shelf关闭时，同样会对缓存中的对象再次写回数据库，增加了开销。即使没有进行改变，仍然会进行数据写回。比较好的方式是，确认需要写入数据时，再设置writeback,读数据时设置只读或默认即可。&lt;/p&gt;
 &lt;h3 id="zhi-ding-shelflei-xing"&gt;指定shelf类型&lt;/h3&gt;
-&lt;p&gt;上面的例子全部使用默认的shelf实现。使用shelve.open()直接代替一种shelf实现，是常见用法, 尤其是在不关心用哪种数据库存储数据的时候. 然而, 有时常会关心它. 如果是在这种情况下, 通常就会直接使用DbfilenameShelf或者BsdDbShelf, 更或者是通过Shelf的子类来解决问题.&lt;/p&gt;&lt;/body&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Tue, 27 Dec 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-12-27:2016/12/27/python/</guid><category>Python</category></item><item><title>python metaclass</title><link>http://king32783784.github.io/2016/10/03/python/</link><description>&lt;body&gt;&lt;h3 id="lei-ye-shi-dui-xiang"&gt;类也是对象&lt;/h3&gt;
+&lt;p&gt;上面的例子全部使用默认的shelf实现。使用shelve.open()直接代替一种shelf实现，是常见用法, 尤其是在不关心用哪种数据库存储数据的时候. 然而, 有时常会关心它. 如果是在这种情况下, 通常就会直接使用DbfilenameShelf或者BsdDbShelf, 更或者是通过Shelf的子类来解决问题.&lt;/p&gt;&lt;/body&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Tue, 27 Dec 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-12-27:2016/12/27/python/</guid><category>Python</category></item><item><title>sqlite3 - SQLite数据库DB-API 2.0接口</title><link>http://king32783784.github.io/2016/12/25/python/</link><description>&lt;body&gt;&lt;h3 id="jian-jie"&gt;简介&lt;/h3&gt;
+&lt;p&gt;SQLite 是一个Ｃ库，它提供了一个轻量级的基于磁盘的数据库，不需要一个单独的服务进程。允许使用非标准的SQL查询语言的变体访问数据库。
+一些应用程序可以使用SQLite进行存储内部数据。也可以使用SQLite建立应用原型，随后再将数据或代码移植到大型的数据库，比如PostgreSQL或Ｏracle.&lt;/p&gt;
+&lt;p&gt;sqlite3模块由Gerhard Haring编写，提供了一个sql接口，该接口和&lt;a href="https://www.python.org/dev/peps/pep-0249/"&gt;PEP 249&lt;/a&gt;描述的DB-API 2.0规范兼容。&lt;/p&gt;
+&lt;p&gt;若要使用该模块，必须首先创建一个表示数据库的连接/connection对象。例如这边的例子，将数据存储到example.db文件：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sqlite3&lt;/span&gt;
+&lt;span class="n"&gt;conn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sqlite3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'example.db'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;还可以使用特殊名称:memory:在RAM(内存）中创建数据库。&lt;/p&gt;
+&lt;p&gt;一旦有了一个连接／connection,就可以创建cursor/游标对象并调用其execute()方法来执行SQL命令：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;c = conn.cursor()
+# Create table
+c.execute('''CREATE TABLE stocks
+             (data text, trans text, symbol text, qty real, price real)''')
+
+# Insert a row of data
+c.execute("INSERT INTO stocks VALUES('2006-01-05', 'BUY', 'RHAT', 100, 35.15)")
+
+# Save(commit) the changes
+conn.commit()
+
+# We can also close the connection if we　are done with it.
+# Just be sure any changes have been committed or they will be lost.
+conn.close()
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;保存过的数据是持久的并在以后的会话中可用：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sqlite3&lt;/span&gt;
+&lt;span class="n"&gt;conn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sqlite3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'example.db'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;通常的SQL操作需要使用Python变量中的值。不应该使用Python的字符串操作来组装查询，因为这样是不安全的。容易受到SQL注入攻击。&lt;/p&gt;
+&lt;p&gt;相反，应该使用DB API参数替代。对于你想使用的值，用？作为一个占位符，给游标的execute()方法的第二个参数提供一个值的元组。其他的数据库模块可能使用不同的占位符，如％s或:1。例如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Never do this -- insecure!
+symbol = 'RHAT'
+c.execute("SELECT * FROM stocks WHERE symbol = '%s'" % symbol)
+
+# Do this instead
+t = ('RHAT')
+c.execute("SELECT * FROM stocks WHERE symbol = ?', t)
+print c.fetchone()
+
+# Larger example that inserts many records at a time
+purchases = [('2006-03-28', 'BUY', 'IBM', 1000, 45.00),
+             ('2006-04-05', 'BUY', 'MSFT', 1000, 72.00),
+             ('2006-04-06', 'SELL', 'IBM', 500, 53.00),
+             ]
+c.executemany('INSERT INTO stocks VALUES(?,?,?,?,?)', purchases)
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;为了取回select语句的执行结果，可以把游标cursor当做一个迭代器，通过调用游标的fetchone()方法来获取单行结果；或者通过调用fetchall()方法获取结果集列表。&lt;/p&gt;
+&lt;p&gt;例如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; for row in c.execute('SELECT * FROM stocks ORDER BY price'):
+        print row
+(u'2006-01-05', u'BUY', u'RHAT', 100, 35.14)
+(u'2006-03-28', u'BUY', u'IBM', 1000, 45.0)
+(u'2006-04-06', u'SELL', u'IBM', 500, 53.0)
+(u'2006-04-05', u'BUY', u'MSFT', 1000, 72.0)
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;参考资料&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/ghaering/pysqlite"&gt;https://github.com/ghaering/pysqlite&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The pysqlite web page &amp;ndash; sqlite3 is developed externally under the name &amp;ldquo;pysqlite&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.sqlite.org/"&gt;http://www.sqlite.org/&lt;/a&gt;
+The SQLite web page; the documentation describes the syntax and the available data types for the supported SQL dialect.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://www.w3schools.com/sql/"&gt;http://www.w3schools.com/sql/&lt;/a&gt;
+Tutorial, reference and examples for learning SQL syntax.&lt;/p&gt;
+&lt;h3 id="xiang-guan-mo-kuai-han-shu-he-chang-liang"&gt;相关模块函数和常量&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;sqlite3.version&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;该模块的字符串形式的版本号，不是SQLite库的版本&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;sqlite3.version_info&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;该模块的整数元组形式的版本号，不是SQLite库的版本&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;sqlite3.sqlite_version&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;SQLite库的版本号，字符串形式&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;sqlite3.sqlite_version_info&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;SQLite库的版本号，整数元组形式。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;sqlite3.PARSE_DECLTYPES&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;该常量用于connect()函数的detect_typed参数&lt;/p&gt;
+&lt;p&gt;设置它使得sqlite3模块解析每个返回列的声明的类型。它将解析出声明的类型的第一个单词，比如，　&amp;ldquo;inter primary key", 它将解析出"integer", 而"number(10)",将解析出&amp;rdquo;number"。然而对应那列，它将查询转换器字典并对类型使用对应注册的转换器函数。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;sqlite3.PARSE_COLNAMES&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;该常量用于connect()函数的detect_typed参数&lt;/p&gt;
+&lt;p&gt;设置它使得SQLite接口解析每个返回列的列名。它将查找[mytype]形式的字符串，然后决定'mytype'是列的类型。将会尝试在转换器字典中找到对应于&amp;ldquo;mytype"的转换器，然后将转换器函数应用于返回的值。Cursor.description中找到的列名只是列名的第一个单词，即，如果SQL中有类似 &lt;t3&gt;&lt;t4&gt;'as&lt;/t4&gt; &lt;t5&gt;"x&lt;/t5&gt; &lt;t6&gt;[datetime]"'&lt;/t6&gt;&lt;/t3&gt;的内容，那么第一个单词将会解析成列名，知道有空格为止，列名只是简单的"x".&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;sqlite3.connect(database[,timeout, detect_types, isolation_level,check_same_thread, factory, cached_statements])&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;打开到SQLite数据库文件database的连接。可以使用:memory: 打开内存的数据库连接。&lt;/p&gt;
+&lt;p&gt;当多个连接访问数据库，其中一个进程修改了数据库，SQLite数据库会锁定，直到事务被提交。timeout参数指明为了得到锁，连接最多等待的时间，如果超时会抛出异常。超时参数默认为5s.&lt;/p&gt;
+&lt;p&gt;对于isolation_level参数，请参阅connection对象的Connection.isolation_level属性。&lt;/p&gt;
+&lt;p&gt;SQLite原生只支持文本、整数、实数、BLOB和NULL类型。如果想使用其他类型，需要自行添加。detect_types参数和使用由register_converter()函数注册的自定义转换器。&lt;/p&gt;
+&lt;p&gt;detect_types默认为0（即关闭），可以设置为PARSE_DECLTYPES和PARSE_COLNAMES的任意组合用来打开类型检测。&lt;/p&gt;
+&lt;p&gt;默认情况下，sqlite3模块使用Connection类以调用connect.然而，可以继承Connection类，通过将子类提供给factory参数，使得connect()使用你的子类&lt;/p&gt;
+&lt;p&gt;SQLite3模块内部使用语句缓存来避免SQL解析开销。如果想要显示设置连接所缓存的语句的数量，可以设置cached_statements参数。在当前实现中的默认设置是缓存100条语句。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;sqlite3.register_converter(typename, callable)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;注册可调用对象用来将来自数据库的bytestring转换成为自定义的python类型。对数据库所有有typename类型的值调用该可调用的对象。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;sqlite3.register_converter(typename, callable)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;注册可调用对象用来将来自数据库的bytestring转换成为自定义的Python类型。对数据库所有有typename类型的值调用该可调用对象。参见connect()函数的detect_types参数以了解类型检测是如何工作的。请注意typename的大小写和查询中类型的名称必须匹配 ！&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;sqlite3.register_adapter(type, callable)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;注册可调用对象用来将自定义的 Python 类型type转换为 SQLite 的支持的类型。可调用对象callable接受一个Python值为参数，返回值的类型必须为如下类型之一：int，long，float，str （UTF-8 编码）， unicode 或缓冲。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;sqlite3.complete_statement(sql)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;如果字符串sql包含一个或多个以分号结束的完整的SQL语句则返回True 。它不验证SQL的语法正确性，只是检查没有未关闭的字符串常量以及语句是以分号结束的。&lt;/p&gt;
+&lt;p&gt;这可以用于生成一个 sqlite shell，如以下示例所示：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;A minimal SQLite shell for experiments&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sqlite3&lt;/span&gt;
+
+&lt;span class="n"&gt;con&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sqlite3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;":memory:"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;con&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;isolation_level&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;
+&lt;span class="n"&gt;cur&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;con&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="nb"&gt;buffer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;""&lt;/span&gt;
+
+&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;"Enter your SQL commands to execute in sqlite3."&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;"Enter a blank line to exit."&lt;/span&gt;
+
+&lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;raw_input&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;""&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;break&lt;/span&gt;
+    &lt;span class="nb"&gt;buffer&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;sqlite3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;complete_statement&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;buffer&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="nb"&gt;buffer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;buffer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;strip&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+            &lt;span class="n"&gt;cur&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;buffer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;buffer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lstrip&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;upper&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;startswith&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"SELECT"&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+                &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;cur&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fetchall&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="n"&gt;sqlite3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Error&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;"An error occurred:"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+        &lt;span class="nb"&gt;buffer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;""&lt;/span&gt;
+
+&lt;span class="n"&gt;con&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;sqlite3.enable_callback_tracebacks(flag)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;默认情况下你不会在用户定义的函数、 聚合、 转换器、 授权者回调等地方得到回溯对象（调用栈对象）。如果想要调试它们，将flag设置为True调用此函数。之后可以在sys.stderr通过回调得到回溯。使用False来再次禁用该功能。&lt;/p&gt;
+&lt;p&gt;&amp;lt;未完待续&amp;gt;    &lt;/p&gt;&lt;/body&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sun, 25 Dec 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-12-25:2016/12/25/python/</guid><category>Python</category></item><item><title>python metaclass</title><link>http://king32783784.github.io/2016/10/03/python/</link><description>&lt;body&gt;&lt;h3 id="lei-ye-shi-dui-xiang"&gt;类也是对象&lt;/h3&gt;
 &lt;p&gt;在理解元类之前，需要先掌握python中的类。Python中的类的概念借鉴于Smalltalk, 显得有些奇特。大多数编程语言中，类就是一组用来描述如何生成一个对象的代码段。在Python中这一点仍然成立：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; class ObjectCreator(object):
 ...     pass

@@ -133,6 +133,12 @@
                             </a>
                         </li>
                         <li class="">
+                            <a class="hide-overflow" href="../2016/12/25/python/" title="sqlite3 - SQLite数据库DB-API 2.0接口">
+                                <i class="fa fa-file-text padding-small"></i>
+                                sqlite3 - SQLite数据库DB-API 2.0接口
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../2016/12/24/python/" title="python数据存储">
                                 <i class="fa fa-file-text padding-small"></i>
                                 python数据存储
@@ -142,12 +148,6 @@
                             <a class="hide-overflow" href="../2016/11/15/python/" title="pyqt基本操作(三）">
                                 <i class="fa fa-file-text padding-small"></i>
                                 pyqt基本操作(三）
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../2016/11/13/python/" title="pyqt基本操作">
-                                <i class="fa fa-file-text padding-small"></i>
-                                pyqt基本操作
                             </a>
                         </li>
                     <li>
@@ -297,7 +297,7 @@
                         <a href="../category/bian-cheng-yu-yan-python.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             编程语言-Python
-                            <span class="badge pull-right categorybadge">4</span>
+                            <span class="badge pull-right categorybadge">5</span>
                         </a>
                     </li>
                     <li >
@@ -473,6 +473,41 @@
             <hr/>
             <article>
                 <h2>
+                    <a href="../2016/12/25/python/">sqlite3 - SQLite数据库DB-API 2.0接口</a>
+<div class="post-info">
+    <div class="publish-info-block">
+        <small>
+            <span class="published">
+                <i class="fa fa-calendar padding-small"></i><time datetime="2016-12-25T00:00:00+08:00"> 2016-12-25 日</time>
+            </span>
+            <span class="category">
+                <i class="fa fa-folder-open padding-small"></i><a href="../category/bian-cheng-yu-yan-python.html">编程语言-Python</a>
+            </span>
+            <span class="tags">
+                <i class="fa fa-tags padding-small"></i>
+                <a href="../tag/python.html">Python</a>            </span>
+        </small>
+    </div>
+</div><!-- /.post-info -->                </h2>
+                <div class="summary">
+                    <body><h3 id="jian-jie">简介</h3>
+<p>SQLite 是一个Ｃ库，它提供了一个轻量级的基于磁盘的数据库，不需要一个单独的服务进程。允许使用非标准的SQL查询语言的变体访问数据库。
+一些应用程序可以使用SQLite进行存储内部数据。也可以使用SQLite建立应用原型，随后再将数据或代码移植到大型的数据库，比如PostgreSQL或Ｏracle.</p>
+<p>sqlite3模块由Gerhard Haring编写，提供了一个sql接口，该接口和<a href="https://www.python.org/dev/peps/pep-0249/">PEP 249</a>描述的DB-API 2.0规范兼容。</p>
+<p>若要使用该模块，必须首先创建一个表示数据库的连接/connection对象。例如这边的例子，将数据存储到example.db文件：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">'example.db'</span><span class="p">)</span>
+</pre></div>
+<p>还可以使用特殊名称:memory:在RAM(内存）中创建数据库。</p>
+<p>一旦有了一个连接／connection,就可以创建cursor/游标对象并调用其execute()方法来执行SQL命令：</p>
+<div class="highlight"><pre><span></span>c = conn.cursor()
+# Create table
+c.execute('''CREATE ...</pre></div></body>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2>
                     <a href="../2016/12/24/python/">python数据存储</a>
 <div class="post-info">
     <div class="publish-info-block">
@@ -561,57 +596,6 @@
 21
 22
 23 ...</pre></div></td></tr></tbody></table></body>
-                </div>
-            </article>
-            <hr/>
-            <article>
-                <h2>
-                    <a href="../2016/11/13/python/">pyqt基本操作</a>
-<div class="post-info">
-    <div class="publish-info-block">
-        <small>
-            <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2016-11-13T00:00:00+08:00"> 2016-11-13 日</time>
-            </span>
-            <span class="category">
-                <i class="fa fa-folder-open padding-small"></i><a href="../category/python-pyqt.html">Python-pyqt</a>
-            </span>
-            <span class="tags">
-                <i class="fa fa-tags padding-small"></i>
-                <a href="../tag/pyqt.html">pyqt</a>            </span>
-        </small>
-    </div>
-</div><!-- /.post-info -->                </h2>
-                <div class="summary">
-                    <body><p>pyqt是对Qt的封装。Ｑt是面向对象的图形用户界面库，可以在多个操作系统上使用。</p>
-<h3 id="pyqtji-ben-cao-zuo">PyQt基本操作</h3>
-<h4 id="ji-ben-de-jie-mian">基本的界面：</h4>
-<table class="table highlighttable table-striped table-hover"><tbody><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
-<span class="c1">#*-* coding=utf-8 *-*</span>
-
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">PyQt4</span> <span class="kn">import</span> <span class="n">QtCore</span><span class="p">,</span> <span class="n">QtGui</span><span class="err">　　　　　　</span><span class="c1"># 导入PyQt模块</span>
-
-<span class="k">class</span> <span class="nc">MyWindow</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QMainWindow</span><span class="p">):</span><span class="err">　　　　</span><span class="c1"># 通过继承QtGui.QMainWindow创建类</span>
-
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span><span class="err">　　　　　　　　　　　</span><span class="c1"># 初始化方法</span>
-        <span class="n">QtGui</span><span class="o">.</span><span class="n">QMainWindow</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self ...</span></pre></div></td></tr></tbody></table></body>
                 </div>
             </article>
         <div class="btn-more text-right">
