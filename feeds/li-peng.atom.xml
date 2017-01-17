@@ -1,106 +1,262 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>路漫求索</title><link href="http://king32783784.github.io/" rel="alternate"></link><link href="http://king32783784.github.io/feeds/li-peng.atom.xml" rel="self"></link><id>http://king32783784.github.io/</id><updated>2016-12-27T00:00:00+08:00</updated><entry><title>python shelve</title><link href="http://king32783784.github.io/2016/12/27/python/" rel="alternate"></link><published>2016-12-27T00:00:00+08:00</published><author><name>李鹏</name></author><id>tag:king32783784.github.io,2016-12-27:2016/12/27/python/</id><summary type="html">&lt;body&gt;&lt;p&gt;本文对shelve模块进行说明。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>路漫求索</title><link href="http://king32783784.github.io/" rel="alternate"></link><link href="http://king32783784.github.io/feeds/li-peng.atom.xml" rel="self"></link><id>http://king32783784.github.io/</id><updated>2017-01-15T00:00:00+08:00</updated><entry><title>python metaclass(下）</title><link href="http://king32783784.github.io/2017/01/15/python/" rel="alternate"></link><published>2017-01-15T00:00:00+08:00</published><author><name>李鹏</name></author><id>tag:king32783784.github.io,2017-01-15:2017/01/15/python/</id><summary type="html">&lt;h3&gt;自定义元类&lt;/h3&gt;
+&lt;p&gt;元类的主要目的就是为了当创建类时能够自动地改变类。通常，你会为API做这样的事情，你希望可以创建符合当前上下文的类。假想一个很傻的例子，你决定在你的模块里所有的类的属性都应该是大写形式。有好几种方法可以办到，但其中一种就是通过在模块级别设定__metaclass__。采用这种方法，这个模块中的所有类都会通过这个元类来创建，我们只需要告诉元类把所有的属性都改成大写形式就万事大吉了。&lt;/p&gt;
+&lt;p&gt;幸运的是，__metaclass__实际上可以被任意调用，它并不需要是一个正式的类（我知道，某些名字里带有‘class’的东西并不需要是一个class，画画图理解下，这很有帮助）。所以，我们这里就先以一个简单的函数作为例子开始。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# 元类会自动将你通常传给“type&amp;quot;的参数作为自己的参数传入
+def upper_attr(future_class_name, future_class_parents, future_class_attr)
+    &amp;quot;&amp;quot;&amp;quot;返回一个类对象，将属性都转为大写形式”“”
+    # 选择所有不以“__&amp;quot;的属性
+    attrs = ((name, value) for name, value in future_class_attr.items() if not name.startswith(&amp;#39;__&amp;#39;))
+
+# 将他们转为大写形式
+uppercase_attr = dict((name.upper(), value) for name, value in attrs)
+
+# 通过type来做类对象的创建
+return type(future_class_name, future_class_parents, uppercase_attr)
+
+__metaclass__ = upper_attr # 这会作用到这个模块所有的类
+
+class Foo(object):
+    # 我们可以只在这里定义__mataclass__,这样就只会作用于这个类中
+    bar = &amp;#39;bip&amp;quot;
+print hasattr(Foo, &amp;#39;bar&amp;#39;)
+# 输出 False
+print hasattr(Foo, &amp;#39;BAR&amp;#39;)
+# 输出 True
+f = Foo()
+print f.BAR
+# 打印&amp;quot;bip&amp;quot;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;下面是用一个真正的class作为元类。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c c-Singleline"&gt;# 记住， ‘type&amp;#39;实际上是一个类， 就像‘str&amp;#39;和’int&amp;#39;一样&lt;/span&gt;
+&lt;span class="c c-Singleline"&gt;# 所以，可以从type继承&lt;/span&gt;
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;UpperAttrMetaClass&lt;/span&gt;(&lt;span class="n"&gt;type&lt;/span&gt;):
+    &lt;span class="c c-Singleline"&gt;# __new__是在__init__之前被调用的特殊方法&lt;/span&gt;
+    &lt;span class="c c-Singleline"&gt;# __new__是用来创建对象并返回的方法&lt;/span&gt;
+    &lt;span class="c c-Singleline"&gt;# 而__init__只是用来将传入的参数初始化给对象&lt;/span&gt;
+    &lt;span class="c c-Singleline"&gt;# __new__很少用到，除非你希望能够控制对象的创建&lt;/span&gt;
+    &lt;span class="c c-Singleline"&gt;# 这里创建的对象是类，我嫩希望能够自定义它， 所以我们这里改写__new__&lt;/span&gt;
+    &lt;span class="c c-Singleline"&gt;# 如果你希望的话，可以在__init__中做些事情&lt;/span&gt;
+    &lt;span class="c c-Singleline"&gt;# 还有一些高级的用法会涉及到改写__call__特殊方法，但是我们这里不用&lt;/span&gt;
+
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;__new__&lt;/span&gt;(&lt;span class="n"&gt;upperattr_metaclass&lt;/span&gt;, &lt;span class="n"&gt;future_class_name&lt;/span&gt;,
+                &lt;span class="n"&gt;future_class_parents&lt;/span&gt;, &lt;span class="n"&gt;future_class_attr&lt;/span&gt;):
+        &lt;span class="n"&gt;attrs&lt;/span&gt; = ((&lt;span class="nb"&gt;name&lt;/span&gt;, &lt;span class="nb"&gt;value&lt;/span&gt;) &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nb"&gt;name&lt;/span&gt;, &lt;span class="nb"&gt;value&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;future_class_attr&lt;/span&gt;.&lt;span class="n"&gt;items&lt;/span&gt;() &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;not&lt;/span&gt; &lt;span class="nb"&gt;name&lt;/span&gt;.&lt;span class="n"&gt;startswith&lt;/span&gt;(&lt;span class="s"&gt;&amp;#39;__&amp;#39;&lt;/span&gt;))
+        &lt;span class="n"&gt;uppercase_attr&lt;/span&gt; = &lt;span class="n"&gt;dict&lt;/span&gt;((&lt;span class="nb"&gt;name&lt;/span&gt;.&lt;span class="n"&gt;upper&lt;/span&gt;(), &lt;span class="nb"&gt;value&lt;/span&gt;) &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nb"&gt;name&lt;/span&gt;, &lt;span class="nb"&gt;value&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;attrs&lt;/span&gt;)
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;type&lt;/span&gt;(&lt;span class="n"&gt;future_class_name&lt;/span&gt;, &lt;span class="n"&gt;future_class_parents&lt;/span&gt;, &lt;span class="n"&gt;uppercase_attr&lt;/span&gt;)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;但是这种方法其实不是oop。我们直接调用了type, 而且我们没有改写父类的__new__方法。 现在我们这样处理：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;upperattr_metaclass&lt;/span&gt;(&lt;span class="n"&gt;type&lt;/span&gt;):
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;__new__&lt;/span&gt;(&lt;span class="n"&gt;upperattr_metaclass&lt;/span&gt;, &lt;span class="n"&gt;future_class_name&lt;/span&gt;,
+                &lt;span class="n"&gt;future_class_parents&lt;/span&gt;, &lt;span class="n"&gt;future_class_attr&lt;/span&gt;):
+        &lt;span class="n"&gt;attrs&lt;/span&gt; = ((&lt;span class="nb"&gt;name&lt;/span&gt;, &lt;span class="nb"&gt;value&lt;/span&gt;) &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nb"&gt;name&lt;/span&gt;, &lt;span class="nb"&gt;value&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;future_class_attr&lt;/span&gt;.&lt;span class="n"&gt;items&lt;/span&gt;() 
+                  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;not&lt;/span&gt; &lt;span class="nb"&gt;name&lt;/span&gt;.&lt;span class="n"&gt;startswith&lt;/span&gt;(&lt;span class="s"&gt;&amp;#39;__&amp;#39;&lt;/span&gt;)
+        &lt;span class="n"&gt;uppercase_attr&lt;/span&gt; = &lt;span class="n"&gt;dict&lt;/span&gt;((&lt;span class="nb"&gt;name&lt;/span&gt;.&lt;span class="n"&gt;upper&lt;/span&gt;(), &lt;span class="nb"&gt;value&lt;/span&gt;) &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nb"&gt;name&lt;/span&gt;, &lt;span class="nb"&gt;value&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;attrs&lt;/span&gt;)
+
+        &lt;span class="c c-Singleline"&gt;# 复用type.__new__方法&lt;/span&gt;
+        &lt;span class="c c-Singleline"&gt;# 这就是OOP编程&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;type&lt;/span&gt;.&lt;span class="n"&gt;__new__&lt;/span&gt;(&lt;span class="n"&gt;upperattr_metaclass&lt;/span&gt;, &lt;span class="n"&gt;futurn_class_name&lt;/span&gt;, 
+                            &lt;span class="n"&gt;future_class_parents&lt;/span&gt;, &lt;span class="n"&gt;uppercase_attr&lt;/span&gt;)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;你可能已经注意到了有个额外的参数upperattr_metaclass, 这并没有什么特别的。类方法的第一个参数总是表示当前的实例， 就像在普通的类方法中的self参数一样。当然，为了清晰起见，
+这里的名字我起的比较长。但是就像self一样，所有的参数都有他们的传统的名称。因此在一个真实产品中的一个元类应该像这样：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;UpperAttrMetaclass&lt;/span&gt;(&lt;span class="n"&gt;type&lt;/span&gt;):
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;__new__&lt;/span&gt;(&lt;span class="n"&gt;cls&lt;/span&gt;, &lt;span class="nb"&gt;name&lt;/span&gt;, &lt;span class="n"&gt;bases&lt;/span&gt;, &lt;span class="n"&gt;dct&lt;/span&gt;):
+        &lt;span class="n"&gt;attrs&lt;/span&gt; = ((&lt;span class="nb"&gt;name&lt;/span&gt;, &lt;span class="nb"&gt;value&lt;/span&gt;) &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nb"&gt;name&lt;/span&gt;, &lt;span class="nb"&gt;value&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;dct&lt;/span&gt;.&lt;span class="n"&gt;items&lt;/span&gt;() &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;not&lt;/span&gt; &lt;span class="nb"&gt;name&lt;/span&gt;.&lt;span class="n"&gt;startswith&lt;/span&gt;(&lt;span class="s"&gt;&amp;#39;__&amp;#39;&lt;/span&gt;)
+        &lt;span class="n"&gt;uppercase_attr&lt;/span&gt; = &lt;span class="n"&gt;dict&lt;/span&gt;((&lt;span class="nb"&gt;name&lt;/span&gt;.&lt;span class="n"&gt;upper&lt;/span&gt;(), &lt;span class="nb"&gt;value&lt;/span&gt;) &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nb"&gt;name&lt;/span&gt;, &lt;span class="nb"&gt;value&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;attrs&lt;/span&gt;)
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;type&lt;/span&gt;.&lt;span class="n"&gt;__new__&lt;/span&gt;(&lt;span class="n"&gt;cls&lt;/span&gt;, &lt;span class="nb"&gt;name&lt;/span&gt;, &lt;span class="n"&gt;bases&lt;/span&gt;, &lt;span class="n"&gt;uppercase_attr&lt;/span&gt;)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;如果使用super方法的话，我们还可以使它变得更清晰一些，这会缓解继承（是的，你可以拥有元类，从元类继承，从type继承）&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;UpperAttrMetaclass&lt;/span&gt;(&lt;span class="n"&gt;type&lt;/span&gt;):
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;__new__&lt;/span&gt;(&lt;span class="n"&gt;cls&lt;/span&gt;, &lt;span class="nb"&gt;name&lt;/span&gt;, &lt;span class="n"&gt;bases&lt;/span&gt;, &lt;span class="n"&gt;dct&lt;/span&gt;):
+        &lt;span class="n"&gt;attrs&lt;/span&gt; = ((&lt;span class="nb"&gt;name&lt;/span&gt;, &lt;span class="nb"&gt;value&lt;/span&gt;) &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nb"&gt;name&lt;/span&gt;, &lt;span class="nb"&gt;value&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;dct&lt;/span&gt;.&lt;span class="n"&gt;items&lt;/span&gt;() &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;not&lt;/span&gt; &lt;span class="nb"&gt;name&lt;/span&gt;.&lt;span class="n"&gt;startswith&lt;/span&gt;(&lt;span class="s"&gt;&amp;#39;__&amp;#39;&lt;/span&gt;)
+        &lt;span class="n"&gt;uppercase_attr&lt;/span&gt; = &lt;span class="n"&gt;dict&lt;/span&gt;((&lt;span class="nb"&gt;name&lt;/span&gt;.&lt;span class="n"&gt;upper&lt;/span&gt;(), &lt;span class="nb"&gt;value&lt;/span&gt;) &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="nb"&gt;name&lt;/span&gt;, &lt;span class="nb"&gt;value&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;attrs&lt;/span&gt;)
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;supper&lt;/span&gt;(&lt;span class="n"&gt;UpperAttrMetaclass&lt;/span&gt;, &lt;span class="n"&gt;cls&lt;/span&gt;).&lt;span class="n"&gt;__new__&lt;/span&gt;(&lt;span class="n"&gt;cls&lt;/span&gt;, &lt;span class="nb"&gt;name&lt;/span&gt;, &lt;span class="n"&gt;bases&lt;/span&gt;, &lt;span class="n"&gt;uppercase_attr&lt;/span&gt;)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;就是这样，除此之外，关于元类真的没有别的可说的了。使用到元类的代码比较复杂，这背后的原因并不是因为元类本身，而是因为你通常会使用元类去做一些晦涩的事情，依赖于自身，
+控制继承等等。确实，用元类搞些”黑魔法“是特别有用的，因而会搞出复杂的东西来。但就元类本身而言，其实是很简单的：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1) 拦截类的创建&lt;/li&gt;
+&lt;li&gt;2) 修改类&lt;/li&gt;
+&lt;li&gt;3) 返回修改之后的类&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;为什么要用metaclass类而不是函数？&lt;/h3&gt;
+&lt;p&gt;由于__metaclass__ 可以接受任何可调用的对象，那为何还要使用类呢，因为很显然使用类会更加复杂啊？原因如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1) 意图会更加清晰。当你读到UpperAttrMetaclass(type)时，你知道接下来会发生什么&lt;/li&gt;
+&lt;li&gt;2) 可以使用oop编程。元类可以从元类中继承而来，改写父类的方法。元类甚至还可以使用元类&lt;/li&gt;
+&lt;li&gt;3) 可以把代码组织的更好。当你使用元类的时候肯定不会向上面的这种简单场景，通常都是针对比较复杂的问题。将多个方法归并到一个类中会很有帮助。&lt;/li&gt;
+&lt;li&gt;4) 可以使用__new__, __init__已经__call__这样的特殊方法。他们能帮你处理不同的任务。通常你可以把所有的东西都在__new__里处理掉，有些人还是觉得__init__更舒服。&lt;/li&gt;
+&lt;li&gt;5) 哇哦，这东西的名字是metaclass, 肯定非善类，要小心&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;什么地方使用元类？&lt;/h3&gt;
+&lt;p&gt;现在回到主题，究竟为什么会使用这样一种容易出错而且晦涩的特效？一般来说，根本就用不上它：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;“元类就是深度的魔法，99%的用户应该根本不必为此操心。如果你想搞清楚究竟是否需要用到元类，那么你就不需要它。那些实际用到元类的人都非常清楚地知道他们需要做什么，而且根本不需要解释为什么要用元类。”  —— Python界的领袖 Tim Peters
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;元类的主要用途是创建API。一个典型的例子是Django ORM. 它允许你像这样定义：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;Person&lt;/span&gt;(&lt;span class="n"&gt;models&lt;/span&gt;.&lt;span class="n"&gt;Model&lt;/span&gt;):
+    &lt;span class="nb"&gt;name&lt;/span&gt; = &lt;span class="n"&gt;models&lt;/span&gt;.&lt;span class="n"&gt;CharField&lt;/span&gt;(&lt;span class="n"&gt;max_length&lt;/span&gt;=&lt;span class="mi"&gt;30&lt;/span&gt;)
+    &lt;span class="n"&gt;age&lt;/span&gt; = &lt;span class="n"&gt;models&lt;/span&gt;.&lt;span class="n"&gt;IntegerField&lt;/span&gt;()
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;但是如果你像这样做的话：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;guy = Person(name=&amp;#39;bob&amp;#39;, age=&amp;#39;35&amp;#39;)
+print guy.age
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;这并不会返回一个IntegerField对象， 而是会返回一个int， 甚至可以直接从数据库中取出数据。这是有可能的，因为models.Model定义了__metaclass__,并且使用了一些魔法能够将你刚刚定义的
+简单的Person类转变成对数据库的一个复杂hook。Django框架将这些看起来很复杂的东西通过暴露一个简单的使用元类的API将其化简，通过这个API重新创建代码，在背后完成真正的工作。&lt;/p&gt;
+&lt;h3&gt;最后&lt;/h3&gt;
+&lt;p&gt;首先，类其实是能够创建出类实例的对象。当然，类本身也是实例，是元类的实例。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt;class Foo(object): pass
+&amp;gt;&amp;gt;&amp;gt;id(Foo)
+38082608
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;python中的一切都是对象，他们要么是类的实例，要么是元类的实例，除了type.type实际上是它自己的元类，在纯Python环境中不能做到的，需要在实现层面通过一些手段做到的。
+其次，元类是很复杂的。 对应非常简单的类，你可能不希望通过元类来对类做修改。你可以通过其他两种技术来修改类：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1) Monkey patching&lt;/li&gt;
+&lt;li&gt;2) class decorators&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;当你需要动态修改类时，最好使用上面的两种技术。当然，绝大部分情况下是不需要动态修改类的。&lt;/p&gt;
+&lt;p&gt;《完》&lt;/p&gt;
+&lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/10/03/python/"&gt;python metaclass(上)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/WBB0EXYSWE.jpg" height="320" width="540"&gt;&lt;/p&gt;</summary><category term="Python"></category></entry><entry><title>python shelve</title><link href="http://king32783784.github.io/2016/12/27/python/" rel="alternate"></link><published>2016-12-27T00:00:00+08:00</published><author><name>李鹏</name></author><id>tag:king32783784.github.io,2016-12-27:2016/12/27/python/</id><summary type="html">&lt;p&gt;本文对shelve模块进行说明。&lt;/p&gt;
 &lt;p&gt;shelve模块实现了对任意可被pickle的python对象进行持久存储，并提供了类字典的API使用。&lt;/p&gt;
-&lt;p&gt;&lt;img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/4C0XUNHJ7C.jpg" width="420"/&gt;&lt;/p&gt;
-&lt;h3 id="jian-jie"&gt;简介&lt;/h3&gt;
+&lt;p&gt;&lt;img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/4C0XUNHJ7C.jpg" height="280" width="420"&gt;&lt;/p&gt;
+&lt;h3&gt;简介&lt;/h3&gt;
 &lt;p&gt;当使用关系数据库太重时，shelve模块可以为python对象提供了一个简单的持久的存储选择。它就像字典一样，通过关键字访问shelf对象，其值经过pickle,写入anydbm创建和管理的数据库。在使用时，可以自己定义一些存储结构使其存储较复杂的数据。&lt;/p&gt;
-&lt;h3 id="chuang-jian-shelfdui-xiang"&gt;创建shelf对象&lt;/h3&gt;
+&lt;h3&gt;创建shelf对象&lt;/h3&gt;
 &lt;p&gt;最简单的使用shelve模块的方式是通过DbfilenameShelf类。使用函数shelve.open()(使用的是anydbm）来存储数据。可以使用类或简单的调用：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;shelve&lt;/span&gt;
 
-&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;shelve&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'test_shelf.db'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# 创建test_shelf.db文件进行存储&lt;/span&gt;
+&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;shelve&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;test_shelf.db&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# 创建test_shelf.db文件进行存储&lt;/span&gt;
 &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'key1'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;'int'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'float'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;9.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'string'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'Sample Data'&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="err"&gt;　&lt;/span&gt;&lt;span class="c1"&gt;#　写入key1，值可以是python支持的对象，看起来和字典的用法一样&lt;/span&gt;
+    &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;key1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;int&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;float&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;9.5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;string&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Sample Data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="err"&gt;　&lt;/span&gt;&lt;span class="c1"&gt;#　写入key1，值可以是python支持的对象，看起来和字典的用法一样&lt;/span&gt;
 &lt;span class="k"&gt;finally&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;访问已存储的数据，打开shelf,可以像字典一样进行使用。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;s = shelve.open('test_shelf.db')  # 打开已存在的数据文件
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;s = shelve.open(&amp;#39;test_shelf.db&amp;#39;)  # 打开已存在的数据文件
 try:
-    existing = s['key1'] # 获取之前存储的key1
+    existing = s[&amp;#39;key1&amp;#39;] # 获取之前存储的key1
 finally:
     s.close()
 
-print(existing)  # 打印s['key1'],会得到刚才存储的数据
+print(existing)  # 打印s[&amp;#39;key1&amp;#39;],会得到刚才存储的数据
 &lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;执行结果：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python shelve_create.py
 $ python shelve_existing.py
-&lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;'int'&lt;/span&gt;: 10, &lt;span class="s1"&gt;'float'&lt;/span&gt;: 9.5, &lt;span class="s1"&gt;'string'&lt;/span&gt;: &lt;span class="s1"&gt;'Sample data'&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;int&amp;#39;&lt;/span&gt;: 10, &lt;span class="s1"&gt;&amp;#39;float&amp;#39;&lt;/span&gt;: 9.5, &lt;span class="s1"&gt;&amp;#39;string&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;Sample data&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;dbm模块不支持多个应用同时写入同一数据库，如果客户端或程序不会修改shelf,请指定shelve以只读方式打开数据库。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;s = shelve.open('test_shelf.db', flag='r')   # 打开时指定flag＝&amp;lsquo;r'，只读模式打开
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;s = shelve.open(&amp;#39;test_shelf.db&amp;#39;, flag=&amp;#39;r&amp;#39;)   # 打开时指定flag＝‘r&amp;#39;，只读模式打开
 try:
-    existing =  s['key1']
+    existing =  s[&amp;#39;key1&amp;#39;]
 finally:
     s.close()
 
 print existing
 &lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;当数据库以只读模式打开，但又试图更改数据库时，会引起一个访问出错异常。这一异常类型依赖于在创建数据库时被anydbm选择的数据库模块。&lt;/p&gt;
-&lt;h3 id="xie-hui"&gt;写回&lt;/h3&gt;
+&lt;h3&gt;写回&lt;/h3&gt;
 &lt;p&gt;默认情况下，Shelves不去追踪可变对象的修改。意思就是，如果你改变了已存储在shelf中的一个项目的内容，就必须重新存储该项目来更新shelf.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;s = shelve.open('test_shelf.db')
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;s = shelve.open(&amp;#39;test_shelf.db&amp;#39;)
 try:
-    print s['key1']
-    s['key']['new_value'] = 'this is not here before'
+    print s[&amp;#39;key1&amp;#39;]
+    s[&amp;#39;key&amp;#39;][&amp;#39;new_value&amp;#39;] = &amp;#39;this is not here before&amp;#39;
 finally:
     s.close()
 
-s = shelve.open('test_shelf.db', writeback = True) # 设置写回或同步
+s = shelve.open(&amp;#39;test_shelf.db&amp;#39;, writeback = True) # 设置写回或同步
 try:
-   print s['key1']
+   print s[&amp;#39;key1&amp;#39;]
 finally:
     s.close()
 &lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;在这个例子中，没有对字典的关键字key1的内容进行存储，虽然打开时设置了writeback,因此重新打开shelf时，key1内容没有改变。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python shelve_create.py
 $ python shelve_withoutwriteback.py
-&lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;'int'&lt;/span&gt;: 10, &lt;span class="s1"&gt;'float'&lt;/span&gt;: 9.5, &lt;span class="s1"&gt;'string'&lt;/span&gt;: &lt;span class="s1"&gt;'Sample data'&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
-&lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;'int'&lt;/span&gt;: 10, &lt;span class="s1"&gt;'float'&lt;/span&gt;: 9.5, &lt;span class="s1"&gt;'string'&lt;/span&gt;: &lt;span class="s1"&gt;'Sample data'&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;int&amp;#39;&lt;/span&gt;: 10, &lt;span class="s1"&gt;&amp;#39;float&amp;#39;&lt;/span&gt;: 9.5, &lt;span class="s1"&gt;&amp;#39;string&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;Sample data&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;int&amp;#39;&lt;/span&gt;: 10, &lt;span class="s1"&gt;&amp;#39;float&amp;#39;&lt;/span&gt;: 9.5, &lt;span class="s1"&gt;&amp;#39;string&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;Sample data&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;为了自动捕捉存储在shelf中的可变对象所发生的改变，需改变前设置writeback可用.writeback标志导致shelf使用一缓存来记住从数据库中调出的所有对象。当shelf关闭的时候，每一个缓存中的对象也重新写回数据库。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;s = shelve.open('test_shelf.db', writeback=True)
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;s = shelve.open(&amp;#39;test_shelf.db&amp;#39;, writeback=True)
 try:
-    print(s['key1'])
-    s['key1']['new_value'] = 'this was not here before'
-    print(s['key1'])
+    print(s[&amp;#39;key1&amp;#39;])
+    s[&amp;#39;key1&amp;#39;][&amp;#39;new_value&amp;#39;] = &amp;#39;this was not here before&amp;#39;
+    print(s[&amp;#39;key1&amp;#39;])
 finally;
     s.close()
 
-s = shelve.open('test_shelf.db', writeback=True)
+s = shelve.open(&amp;#39;test_shelf.db&amp;#39;, writeback=True)
 try:
-    print(s['key1'])
+    print(s[&amp;#39;key1&amp;#39;])
 finally:
     s.close()
 &lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;执行结果：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python shelve_create.py
 $ python shelve_writeback.py
-&lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;'int'&lt;/span&gt;: 10, &lt;span class="s1"&gt;'float'&lt;/span&gt;: 9.5, &lt;span class="s1"&gt;'string'&lt;/span&gt;: &lt;span class="s1"&gt;'Sample data'&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
-&lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;'int'&lt;/span&gt;: 10, &lt;span class="s1"&gt;'new_value'&lt;/span&gt;: &lt;span class="s1"&gt;'this was not here before'&lt;/span&gt;, &lt;span class="s1"&gt;'float'&lt;/span&gt;: 9.5, &lt;span class="s1"&gt;'string'&lt;/span&gt;: &lt;span class="s1"&gt;'Sample data'&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
-&lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;'int'&lt;/span&gt;: 10, &lt;span class="s1"&gt;'new_value'&lt;/span&gt;: &lt;span class="s1"&gt;'this was not here before'&lt;/span&gt;, &lt;span class="s1"&gt;'float'&lt;/span&gt;: 9.5, &lt;span class="s1"&gt;'string'&lt;/span&gt;: &lt;span class="s1"&gt;'Sample data'&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;int&amp;#39;&lt;/span&gt;: 10, &lt;span class="s1"&gt;&amp;#39;float&amp;#39;&lt;/span&gt;: 9.5, &lt;span class="s1"&gt;&amp;#39;string&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;Sample data&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;int&amp;#39;&lt;/span&gt;: 10, &lt;span class="s1"&gt;&amp;#39;new_value&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;this was not here before&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;float&amp;#39;&lt;/span&gt;: 9.5, &lt;span class="s1"&gt;&amp;#39;string&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;Sample data&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;int&amp;#39;&lt;/span&gt;: 10, &lt;span class="s1"&gt;&amp;#39;new_value&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;this was not here before&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;float&amp;#39;&lt;/span&gt;: 9.5, &lt;span class="s1"&gt;&amp;#39;string&amp;#39;&lt;/span&gt;: &lt;span class="s1"&gt;&amp;#39;Sample data&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;虽然使用writeback模式可用减少出错几率，也能更加透明化对象的持久性。但是，不是每种情况都要使用writeback模式。原因看到前面的示例，应该能猜到。当shelf打开时，缓存就要占用额外的内存。
 并且，当shelf关闭时，同样会对缓存中的对象再次写回数据库，增加了开销。即使没有进行改变，仍然会进行数据写回。比较好的方式是，确认需要写入数据时，再设置writeback,读数据时设置只读或默认即可。&lt;/p&gt;
-&lt;h3 id="zhi-ding-shelflei-xing"&gt;指定shelf类型&lt;/h3&gt;
-&lt;p&gt;上面的例子全部使用默认的shelf实现。使用shelve.open()直接代替一种shelf实现，是常见用法, 尤其是在不关心用哪种数据库存储数据的时候. 然而, 有时常会关心它. 如果是在这种情况下, 通常就会直接使用DbfilenameShelf或者BsdDbShelf, 更或者是通过Shelf的子类来解决问题.&lt;/p&gt;&lt;/body&gt;</summary><category term="Python"></category></entry><entry><title>sqlite3 - SQLite数据库DB-API 2.0接口</title><link href="http://king32783784.github.io/2016/12/25/python/" rel="alternate"></link><published>2016-12-25T00:00:00+08:00</published><author><name>李鹏</name></author><id>tag:king32783784.github.io,2016-12-25:2016/12/25/python/</id><summary type="html">&lt;body&gt;&lt;h3 id="jian-jie"&gt;简介&lt;/h3&gt;
+&lt;h3&gt;指定shelf类型&lt;/h3&gt;
+&lt;p&gt;上面的例子全部使用默认的shelf实现。使用shelve.open()直接代替一种shelf实现，是常见用法, 尤其是在不关心用哪种数据库存储数据的时候. 然而, 有时常会关心它. 如果是在这种情况下, 通常就会直接使用DbfilenameShelf或者BsdDbShelf, 更或者是通过Shelf的子类来解决问题.&lt;/p&gt;</summary><category term="Python"></category></entry><entry><title>sqlite3 - SQLite数据库DB-API 2.0接口</title><link href="http://king32783784.github.io/2016/12/25/python/" rel="alternate"></link><published>2016-12-25T00:00:00+08:00</published><author><name>李鹏</name></author><id>tag:king32783784.github.io,2016-12-25:2016/12/25/python/</id><summary type="html">&lt;h3&gt;简介&lt;/h3&gt;
 &lt;p&gt;SQLite 是一个Ｃ库，它提供了一个轻量级的基于磁盘的数据库，不需要一个单独的服务进程。允许使用非标准的SQL查询语言的变体访问数据库。
 一些应用程序可以使用SQLite进行存储内部数据。也可以使用SQLite建立应用原型，随后再将数据或代码移植到大型的数据库，比如PostgreSQL或Ｏracle.&lt;/p&gt;
 &lt;p&gt;sqlite3模块由Gerhard Haring编写，提供了一个sql接口，该接口和&lt;a href="https://www.python.org/dev/peps/pep-0249/"&gt;PEP 249&lt;/a&gt;描述的DB-API 2.0规范兼容。&lt;/p&gt;
 &lt;p&gt;若要使用该模块，必须首先创建一个表示数据库的连接/connection对象。例如这边的例子，将数据存储到example.db文件：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sqlite3&lt;/span&gt;
-&lt;span class="n"&gt;conn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sqlite3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'example.db'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;conn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sqlite3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;example.db&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;还可以使用特殊名称:memory:在RAM(内存）中创建数据库。&lt;/p&gt;
 &lt;p&gt;一旦有了一个连接／connection,就可以创建cursor/游标对象并调用其execute()方法来执行SQL命令：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;c = conn.cursor()
 # Create table
-c.execute('''CREATE TABLE stocks
-             (data text, trans text, symbol text, qty real, price real)''')
+c.execute(&amp;#39;&amp;#39;&amp;#39;CREATE TABLE stocks
+             (data text, trans text, symbol text, qty real, price real)&amp;#39;&amp;#39;&amp;#39;)
 
 # Insert a row of data
-c.execute("INSERT INTO stocks VALUES('2006-01-05', 'BUY', 'RHAT', 100, 35.15)")
+c.execute(&amp;quot;INSERT INTO stocks VALUES(&amp;#39;2006-01-05&amp;#39;, &amp;#39;BUY&amp;#39;, &amp;#39;RHAT&amp;#39;, 100, 35.15)&amp;quot;)
 
 # Save(commit) the changes
 conn.commit()
@@ -109,46 +265,54 @@ conn.commit()
 # Just be sure any changes have been committed or they will be lost.
 conn.close()
 &lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;保存过的数据是持久的并在以后的会话中可用：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sqlite3&lt;/span&gt;
-&lt;span class="n"&gt;conn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sqlite3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'example.db'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;conn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sqlite3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;example.db&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;通常的SQL操作需要使用Python变量中的值。不应该使用Python的字符串操作来组装查询，因为这样是不安全的。容易受到SQL注入攻击。&lt;/p&gt;
 &lt;p&gt;相反，应该使用DB API参数替代。对于你想使用的值，用？作为一个占位符，给游标的execute()方法的第二个参数提供一个值的元组。其他的数据库模块可能使用不同的占位符，如％s或:1。例如：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Never do this -- insecure!
-symbol = 'RHAT'
-c.execute("SELECT * FROM stocks WHERE symbol = '%s'" % symbol)
+symbol = &amp;#39;RHAT&amp;#39;
+c.execute(&amp;quot;SELECT * FROM stocks WHERE symbol = &amp;#39;%s&amp;#39;&amp;quot; % symbol)
 
 # Do this instead
-t = ('RHAT')
-c.execute("SELECT * FROM stocks WHERE symbol = ?', t)
+t = (&amp;#39;RHAT&amp;#39;)
+c.execute(&amp;quot;SELECT * FROM stocks WHERE symbol = ?&amp;#39;, t)
 print c.fetchone()
 
 # Larger example that inserts many records at a time
-purchases = [('2006-03-28', 'BUY', 'IBM', 1000, 45.00),
-             ('2006-04-05', 'BUY', 'MSFT', 1000, 72.00),
-             ('2006-04-06', 'SELL', 'IBM', 500, 53.00),
+purchases = [(&amp;#39;2006-03-28&amp;#39;, &amp;#39;BUY&amp;#39;, &amp;#39;IBM&amp;#39;, 1000, 45.00),
+             (&amp;#39;2006-04-05&amp;#39;, &amp;#39;BUY&amp;#39;, &amp;#39;MSFT&amp;#39;, 1000, 72.00),
+             (&amp;#39;2006-04-06&amp;#39;, &amp;#39;SELL&amp;#39;, &amp;#39;IBM&amp;#39;, 500, 53.00),
              ]
-c.executemany('INSERT INTO stocks VALUES(?,?,?,?,?)', purchases)
+c.executemany(&amp;#39;INSERT INTO stocks VALUES(?,?,?,?,?)&amp;#39;, purchases)
 &lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;为了取回select语句的执行结果，可以把游标cursor当做一个迭代器，通过调用游标的fetchone()方法来获取单行结果；或者通过调用fetchall()方法获取结果集列表。&lt;/p&gt;
 &lt;p&gt;例如：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; for row in c.execute('SELECT * FROM stocks ORDER BY price'):
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; for row in c.execute(&amp;#39;SELECT * FROM stocks ORDER BY price&amp;#39;):
         print row
-(u'2006-01-05', u'BUY', u'RHAT', 100, 35.14)
-(u'2006-03-28', u'BUY', u'IBM', 1000, 45.0)
-(u'2006-04-06', u'SELL', u'IBM', 500, 53.0)
-(u'2006-04-05', u'BUY', u'MSFT', 1000, 72.0)
+(u&amp;#39;2006-01-05&amp;#39;, u&amp;#39;BUY&amp;#39;, u&amp;#39;RHAT&amp;#39;, 100, 35.14)
+(u&amp;#39;2006-03-28&amp;#39;, u&amp;#39;BUY&amp;#39;, u&amp;#39;IBM&amp;#39;, 1000, 45.0)
+(u&amp;#39;2006-04-06&amp;#39;, u&amp;#39;SELL&amp;#39;, u&amp;#39;IBM&amp;#39;, 500, 53.0)
+(u&amp;#39;2006-04-05&amp;#39;, u&amp;#39;BUY&amp;#39;, u&amp;#39;MSFT&amp;#39;, 1000, 72.0)
 &lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;参考资料&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.com/ghaering/pysqlite"&gt;https://github.com/ghaering/pysqlite&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;The pysqlite web page &amp;ndash; sqlite3 is developed externally under the name &amp;ldquo;pysqlite&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;The pysqlite web page – sqlite3 is developed externally under the name “pysqlite”.&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://www.sqlite.org/"&gt;http://www.sqlite.org/&lt;/a&gt;
 The SQLite web page; the documentation describes the syntax and the available data types for the supported SQL dialect.&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://www.w3schools.com/sql/"&gt;http://www.w3schools.com/sql/&lt;/a&gt;
 Tutorial, reference and examples for learning SQL syntax.&lt;/p&gt;
-&lt;h3 id="xiang-guan-mo-kuai-han-shu-he-chang-liang"&gt;相关模块函数和常量&lt;/h3&gt;
+&lt;h3&gt;相关模块函数和常量&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;sqlite3.version&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;该模块的字符串形式的版本号，不是SQLite库的版本&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;sqlite3.version_info&lt;/strong&gt;&lt;/p&gt;
@@ -159,10 +323,10 @@ Tutorial, reference and examples for learning SQL syntax.&lt;/p&gt;
 &lt;p&gt;SQLite库的版本号，整数元组形式。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;sqlite3.PARSE_DECLTYPES&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;该常量用于connect()函数的detect_typed参数&lt;/p&gt;
-&lt;p&gt;设置它使得sqlite3模块解析每个返回列的声明的类型。它将解析出声明的类型的第一个单词，比如，　&amp;ldquo;inter primary key", 它将解析出"integer", 而"number(10)",将解析出&amp;rdquo;number"。然而对应那列，它将查询转换器字典并对类型使用对应注册的转换器函数。&lt;/p&gt;
+&lt;p&gt;设置它使得sqlite3模块解析每个返回列的声明的类型。它将解析出声明的类型的第一个单词，比如，　“inter primary key", 它将解析出"integer", 而"number(10)",将解析出”number"。然而对应那列，它将查询转换器字典并对类型使用对应注册的转换器函数。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;sqlite3.PARSE_COLNAMES&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;该常量用于connect()函数的detect_typed参数&lt;/p&gt;
-&lt;p&gt;设置它使得SQLite接口解析每个返回列的列名。它将查找[mytype]形式的字符串，然后决定'mytype'是列的类型。将会尝试在转换器字典中找到对应于&amp;ldquo;mytype"的转换器，然后将转换器函数应用于返回的值。Cursor.description中找到的列名只是列名的第一个单词，即，如果SQL中有类似 &lt;t3&gt;&lt;t4&gt;'as&lt;/t4&gt; &lt;t5&gt;"x&lt;/t5&gt; &lt;t6&gt;[datetime]"'&lt;/t6&gt;&lt;/t3&gt;的内容，那么第一个单词将会解析成列名，知道有空格为止，列名只是简单的"x".&lt;/p&gt;
+&lt;p&gt;设置它使得SQLite接口解析每个返回列的列名。它将查找[mytype]形式的字符串，然后决定'mytype'是列的类型。将会尝试在转换器字典中找到对应于“mytype"的转换器，然后将转换器函数应用于返回的值。Cursor.description中找到的列名只是列名的第一个单词，即，如果SQL中有类似 &lt;t3&gt;&lt;t4&gt;'as&lt;/t4&gt; &lt;t5&gt;"x&lt;/t5&gt; &lt;t6&gt;[datetime]"'&lt;/t6&gt;&lt;/t3&gt;的内容，那么第一个单词将会解析成列名，知道有空格为止，列名只是简单的"x".&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;sqlite3.connect(database[,timeout, detect_types, isolation_level,check_same_thread, factory, cached_statements])&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;打开到SQLite数据库文件database的连接。可以使用:memory: 打开内存的数据库连接。&lt;/p&gt;
 &lt;p&gt;当多个连接访问数据库，其中一个进程修改了数据库，SQLite数据库会锁定，直到事务被提交。timeout参数指明为了得到锁，连接最多等待的时间，如果超时会抛出异常。超时参数默认为5s.&lt;/p&gt;
@@ -183,18 +347,18 @@ Tutorial, reference and examples for learning SQL syntax.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;A minimal SQLite shell for experiments&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sqlite3&lt;/span&gt;
 
-&lt;span class="n"&gt;con&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sqlite3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;":memory:"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;con&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sqlite3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;:memory:&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;con&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;isolation_level&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;
 &lt;span class="n"&gt;cur&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;con&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 
-&lt;span class="nb"&gt;buffer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;""&lt;/span&gt;
+&lt;span class="nb"&gt;buffer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;
 
-&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;"Enter your SQL commands to execute in sqlite3."&lt;/span&gt;
-&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;"Enter a blank line to exit."&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Enter your SQL commands to execute in sqlite3.&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Enter a blank line to exit.&amp;quot;&lt;/span&gt;
 
 &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;raw_input&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;""&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="k"&gt;break&lt;/span&gt;
     &lt;span class="nb"&gt;buffer&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;
     &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;sqlite3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;complete_statement&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;buffer&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -202,17 +366,19 @@ Tutorial, reference and examples for learning SQL syntax.&lt;/p&gt;
             &lt;span class="nb"&gt;buffer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;buffer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;strip&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
             &lt;span class="n"&gt;cur&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;buffer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;buffer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lstrip&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;upper&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;startswith&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"SELECT"&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;buffer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;lstrip&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;upper&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;startswith&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;SELECT&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
                 &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;cur&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fetchall&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
         &lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="n"&gt;sqlite3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Error&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-            &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;"An error occurred:"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-        &lt;span class="nb"&gt;buffer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;""&lt;/span&gt;
+            &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;An error occurred:&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+        &lt;span class="nb"&gt;buffer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;
 
 &lt;span class="n"&gt;con&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;&lt;strong&gt;sqlite3.enable_callback_tracebacks(flag)&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;默认情况下你不会在用户定义的函数、 聚合、 转换器、 授权者回调等地方得到回溯对象（调用栈对象）。如果想要调试它们，将flag设置为True调用此函数。之后可以在sys.stderr通过回调得到回溯。使用False来再次禁用该功能。&lt;/p&gt;
-&lt;p&gt;&amp;lt;未完待续&amp;gt;    &lt;/p&gt;&lt;/body&gt;</summary><category term="Python"></category></entry><entry><title>python metaclass</title><link href="http://king32783784.github.io/2016/10/03/python/" rel="alternate"></link><published>2016-10-03T00:00:00+08:00</published><author><name>李鹏</name></author><id>tag:king32783784.github.io,2016-10-03:2016/10/03/python/</id><summary type="html">&lt;body&gt;&lt;h3 id="lei-ye-shi-dui-xiang"&gt;类也是对象&lt;/h3&gt;
+&lt;p&gt;&amp;lt;未完待续&amp;gt;    &lt;/p&gt;</summary><category term="Python"></category></entry><entry><title>python metaclass(上）</title><link href="http://king32783784.github.io/2016/10/03/python/" rel="alternate"></link><published>2016-10-03T00:00:00+08:00</published><author><name>李鹏</name></author><id>tag:king32783784.github.io,2016-10-03:2016/10/03/python/</id><summary type="html">&lt;h3&gt;类也是对象&lt;/h3&gt;
 &lt;p&gt;在理解元类之前，需要先掌握python中的类。Python中的类的概念借鉴于Smalltalk, 显得有些奇特。大多数编程语言中，类就是一组用来描述如何生成一个对象的代码段。在Python中这一点仍然成立：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; class ObjectCreator(object):
 ...     pass
@@ -222,6 +388,8 @@ Tutorial, reference and examples for learning SQL syntax.&lt;/p&gt;
 &amp;lt;__main__.ObjectCreator object at 0x7fcad0b76590&amp;gt;
 &amp;gt;&amp;gt;&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;但是python的类还远不止如此。类同样也是一种对象。是的，没错，就是对象。只要使用关键字class,Python解释器在执行的时候就会创建一个对象。下面的代码段：&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;blockquote&gt;
@@ -241,16 +409,16 @@ Tutorial, reference and examples for learning SQL syntax.&lt;/p&gt;
 &lt;/ul&gt;
 &lt;p&gt;下面是示例：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; print ObjectCreator     # 你可以打印一个类，因为它其实也是一个对象
-&amp;lt;class '__main__.ObjectCreator'&amp;gt;
+&amp;lt;class &amp;#39;__main__.ObjectCreator&amp;#39;&amp;gt;
 &amp;gt;&amp;gt;&amp;gt; def echo(o):
-&amp;hellip;       print o
-&amp;hellip;
+…       print o
+…
 &amp;gt;&amp;gt;&amp;gt; echo(ObjectCreator)                 # 你可以将类做为参数传给函数
-&amp;lt;class '__main__.ObjectCreator'&amp;gt;
-&amp;gt;&amp;gt;&amp;gt; print hasattr(ObjectCreator, 'new_attribute')
+&amp;lt;class &amp;#39;__main__.ObjectCreator&amp;#39;&amp;gt;
+&amp;gt;&amp;gt;&amp;gt; print hasattr(ObjectCreator, &amp;#39;new_attribute&amp;#39;)
 Fasle
-&amp;gt;&amp;gt;&amp;gt; ObjectCreator.new_attribute = 'foo' #  你可以为类增加属性
-&amp;gt;&amp;gt;&amp;gt; print hasattr(ObjectCreator, 'new_attribute')
+&amp;gt;&amp;gt;&amp;gt; ObjectCreator.new_attribute = &amp;#39;foo&amp;#39; #  你可以为类增加属性
+&amp;gt;&amp;gt;&amp;gt; print hasattr(ObjectCreator, &amp;#39;new_attribute&amp;#39;)
 True
 &amp;gt;&amp;gt;&amp;gt; print ObjectCreator.new_attribute
 foo
@@ -258,62 +426,78 @@ foo
 &amp;gt;&amp;gt;&amp;gt; print ObjectCreatorMirror()
 &amp;lt;__main__.ObjectCreator object at 0x8997b4c&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;h3 id="dong-tai-di-chuang-jian-lei"&gt;动态地创建类&lt;/h3&gt;
+
+
+&lt;h3&gt;动态地创建类&lt;/h3&gt;
 &lt;p&gt;因为类也是对象，可以在运行时动态的创建他们，就像其他任何对象一样。首先，可以在函数中创建类，使用class关键字即可。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; def choose_class(name):
-&amp;hellip;       if name == 'foo':
-&amp;hellip;           class Foo(object):
-&amp;hellip;               pass
-&amp;hellip;           return Foo     # 返回的是类，不是类的实例
-&amp;hellip;       else:
-&amp;hellip;           class Bar(object):
-&amp;hellip;               pass
-&amp;hellip;           return Bar
-&amp;hellip;
-&amp;gt;&amp;gt;&amp;gt; MyClass = choose_class('foo')
+…       if name == &amp;#39;foo&amp;#39;:
+…           class Foo(object):
+…               pass
+…           return Foo     # 返回的是类，不是类的实例
+…       else:
+…           class Bar(object):
+…               pass
+…           return Bar
+…
+&amp;gt;&amp;gt;&amp;gt; MyClass = choose_class(&amp;#39;foo&amp;#39;)
 &amp;gt;&amp;gt;&amp;gt; print MyClass              # 函数返回的是类，不是类的实例
-&amp;lt;class '__main__'.Foo&amp;gt;
+&amp;lt;class &amp;#39;__main__&amp;#39;.Foo&amp;gt;
 &amp;gt;&amp;gt;&amp;gt; print MyClass()            # 你可以通过这个类创建类实例，也就是对象
 &amp;lt;__main__.Foo object at 0x89c6d4c&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;但这还不够动态，仍然需要自己编写整个类的代码。由于类也是对象，所以它们必须是通过什么东西生成的才对。当你使用class关键字时，Python解释器自动创建这个对象。
 但就和Python中大多数事情一样，Python仍然提供给你手动处理的方法。还记得内建函数type吗？这个古老而又强大的函数能够让你知道一个对象的类型是什么，就像这样：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; print type(1)
-&amp;lt;type 'int'&amp;gt;
-&amp;gt;&amp;gt;&amp;gt; print type("1")
-&amp;lt;type 'str'&amp;gt;
+&amp;lt;type &amp;#39;int&amp;#39;&amp;gt;
+&amp;gt;&amp;gt;&amp;gt; print type(&amp;quot;1&amp;quot;)
+&amp;lt;type &amp;#39;str&amp;#39;&amp;gt;
 &amp;gt;&amp;gt;&amp;gt; print type(ObjectCreator)
-&amp;lt;type 'type'&amp;gt;
+&amp;lt;type &amp;#39;type&amp;#39;&amp;gt;
 &amp;gt;&amp;gt;&amp;gt; print type(ObjectCreator())
-&amp;lt;class '__main__.ObjectCreator'&amp;gt;
+&amp;lt;class &amp;#39;__main__.ObjectCreator&amp;#39;&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;这里，type有一种完全不同的能力，能动态的创建类。type可以接受一个类的描述作为参数，然后返回一个类。（根据传入参数的不同，同一个函数拥有两种完全不同的用法是一件
 很傻的事情，但这在python中是为了保持向后兼容性）&lt;/p&gt;
 &lt;p&gt;type可以像这样工作：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;type(类名， 父类的元组（针对继承的情况，可以为空）， 包含属性的字典（名称和值））
 &lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;比如下面的代码：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; class MyShinyClass(object):
 ...     pass
 &lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;可以手动这样创建：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt;MyShinyClass = type('MyShinyClass', (), {})
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt;MyShinyClass = type(&amp;#39;MyShinyClass&amp;#39;, (), {})
 &amp;gt;&amp;gt;&amp;gt;print MyShinyClass
-&amp;lt;class '__main__.MyShinyClass'&amp;gt;
+&amp;lt;class &amp;#39;__main__.MyShinyClass&amp;#39;&amp;gt;
 &amp;gt;&amp;gt;&amp;gt; print MyShinyClass()  #  创建一个该类的实例
 &amp;lt;__main__.MyShinyClass object at 0x8997cec&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;你会发现我们使用MyShinyClass作为类名，并且也可以把它当做一个变量来作为类的引用。类和变量是不同的，这里没有任何理由把事情搞复杂。&lt;/p&gt;
 &lt;p&gt;type接受一个字典来为类定义属性， 因此：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; class Foo(object):
 ...     bar = True
 &lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;可以翻译为：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt;Foo = type('Foo', (), {'bar':True})
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt;Foo = type(&amp;#39;Foo&amp;#39;, (), {&amp;#39;bar&amp;#39;:True})
 &lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;并且可以将Foo当成一个普通的类一样使用：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; print Foo
-&amp;lt;class '__main__.Foo'&amp;gt;
+&amp;lt;class &amp;#39;__main__.Foo&amp;#39;&amp;gt;
 &amp;gt;&amp;gt;&amp;gt; print Foo.bar
 True
 &amp;gt;&amp;gt;&amp;gt; f = Foo()
@@ -322,88 +506,111 @@ True
 &amp;gt;&amp;gt;&amp;gt; print f.bar
 True
 &lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;当然，你可以向这个类继承，所以，如下代码&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; class FooChild(Foo):
 ...    pass
 &lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;就可以写成：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; FooChild = type('FooChild', (Foo,), {})
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; FooChild = type(&amp;#39;FooChild&amp;#39;, (Foo,), {})
 &amp;gt;&amp;gt;&amp;gt; print FooChild
-&amp;lt;class '__main__.FooChild'&amp;gt;
+&amp;lt;class &amp;#39;__main__.FooChild&amp;#39;&amp;gt;
 &amp;gt;&amp;gt;&amp;gt; print FooChild.bar   # bar属性是由Foo继承而来
 True
 &lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;最终你会希望为你的类增加方法，只需要定义一个有着恰当签名的函数并将其作为属性赋值就可以了。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; def echo_bar(self): 
-&amp;hellip;       print self.bar
-&amp;hellip;
-&amp;gt;&amp;gt;&amp;gt; FooChild = type('FooChild', (Foo,), {'echo_bar': echo_bar})
-&amp;gt;&amp;gt;&amp;gt; hasattr(Foo, 'echo_bar')
+…       print self.bar
+…
+&amp;gt;&amp;gt;&amp;gt; FooChild = type(&amp;#39;FooChild&amp;#39;, (Foo,), {&amp;#39;echo_bar&amp;#39;: echo_bar})
+&amp;gt;&amp;gt;&amp;gt; hasattr(Foo, &amp;#39;echo_bar&amp;#39;)
 False
-&amp;gt;&amp;gt;&amp;gt; hasattr(FooChild, 'echo_bar')
+&amp;gt;&amp;gt;&amp;gt; hasattr(FooChild, &amp;#39;echo_bar&amp;#39;)
 True
 &amp;gt;&amp;gt;&amp;gt; my_foo = FooChild()
 &amp;gt;&amp;gt;&amp;gt; my_foo.echo_bar()
 True
 &lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;你可以看到，python中，类也是对象，可以动态的创建类。这就是当你使用关键字class时python在幕后做的事情，而这就是通过元类来实现的。&lt;/p&gt;
-&lt;h3 id="dao-di-shi-yao-shi-yuan-lei"&gt;到底什么是元类？&lt;/h3&gt;
-&lt;p&gt;元类就是用来创建类的&amp;ldquo;东西&amp;rdquo;。你创建类就是为了创建类的实例对象，不是吗？但是我们已经了解到python中的类也是对象。元类就是用来创建类（对象）的，元类就是类的类，可以这样理解：&lt;/p&gt;
+&lt;h3&gt;到底什么是元类？&lt;/h3&gt;
+&lt;p&gt;元类就是用来创建类的“东西”。你创建类就是为了创建类的实例对象，不是吗？但是我们已经了解到python中的类也是对象。元类就是用来创建类（对象）的，元类就是类的类，可以这样理解：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;MyClas = MetaClass()
 MyObject = MyClass()
 &lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;你可以看到了type可以让你像这样做：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;MyClass = type('MyClass', (), {})
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;MyClass = type(&amp;#39;MyClass&amp;#39;, (), {})
 &lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;这就是因为函数type实际上就是一个元类。type就是Python在背后用来创建所有类的元类。str用来创建字符串对象的类，int是用来创建整数对象的类，type就是创建类对象的类。可以通过检查
 __class__属性来看到这一点。Python中所有的东西，注意，我是指所有的东西--都是对象。包括整数、字符串、函数以及类。他们全部都是对象，而且他们都是从一个类创建而来。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; age = 35
 &amp;gt;&amp;gt;&amp;gt; age.__class__
-&amp;lt;type 'int'&amp;gt;
-&amp;gt;&amp;gt;&amp;gt; name = 'bob'
+&amp;lt;type &amp;#39;int&amp;#39;&amp;gt;
+&amp;gt;&amp;gt;&amp;gt; name = &amp;#39;bob&amp;#39;
 &amp;gt;&amp;gt;&amp;gt; name.__class__
-&amp;lt;type 'str'&amp;gt;
+&amp;lt;type &amp;#39;str&amp;#39;&amp;gt;
 &amp;gt;&amp;gt;&amp;gt; def foo(): pass
 &amp;gt;&amp;gt;&amp;gt;foo.__class__
-&amp;lt;type 'function'&amp;gt;
+&amp;lt;type &amp;#39;function&amp;#39;&amp;gt;
 &amp;gt;&amp;gt;&amp;gt; class Bar(object): pass
 &amp;gt;&amp;gt;&amp;gt; b = Bar()
 &amp;gt;&amp;gt;&amp;gt; b.__class__
-&amp;lt;class '__main__.Bar'&amp;gt;
+&amp;lt;class &amp;#39;__main__.Bar&amp;#39;&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;现在，对于任何一个__class__的__class__属性又是什么？&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; a.__class__.__class__
-&amp;lt;type 'type'&amp;gt;
+&amp;lt;type &amp;#39;type&amp;#39;&amp;gt;
 &amp;gt;&amp;gt;&amp;gt; age.__class__.__class__
-&amp;lt;type 'type'&amp;gt;
+&amp;lt;type &amp;#39;type&amp;#39;&amp;gt;
 &amp;gt;&amp;gt;&amp;gt; foo.__class__.__class__
-&amp;lt;type 'type'&amp;gt;
+&amp;lt;type &amp;#39;type&amp;#39;&amp;gt;
 &amp;gt;&amp;gt;&amp;gt; b.__class__.__class__
-&amp;lt;type 'type'&amp;gt;
+&amp;lt;type &amp;#39;type&amp;#39;&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;因此元类就是创建类这种对象的东西，如果你喜欢的话，可以把元类称作&amp;ldquo;类工厂&amp;rdquo;（不要和工厂类搞混就好） type就是Python内建元类，当然，你也可以创建自己的元类。&lt;/p&gt;
-&lt;h3 id="__metaclass__shu-xing"&gt;__metaclass__属性&lt;/h3&gt;
+
+
+&lt;p&gt;因此元类就是创建类这种对象的东西，如果你喜欢的话，可以把元类称作“类工厂”（不要和工厂类搞混就好） type就是Python内建元类，当然，你也可以创建自己的元类。&lt;/p&gt;
+&lt;h3&gt;__metaclass__属性&lt;/h3&gt;
 &lt;p&gt;你可以在写一个类的时候为其添加__metaclass__属性。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;Foo&lt;/span&gt;(&lt;span class="n"&gt;object&lt;/span&gt;):
     &lt;span class="n"&gt;__metaclass__&lt;/span&gt; = &lt;span class="n"&gt;something&lt;/span&gt;...
 [..]
 &lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;如果这么做了，python就会用元类来创建类Foo. 这里面有些技巧，首先写下class Foo(object),但是类对象Foo还没有在内存中创建。Python会在类的定义中寻找__metaclass__属性，如果找到了，
 python就会用它来创建类Foo,如果没有找到，就会用内建的type来创建这个类。把下面的这段话反复读几次，当你写下如下代码时：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;Foo&lt;/span&gt;(&lt;span class="n"&gt;Bar&lt;/span&gt;):
     &lt;span class="nb"&gt;pass&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;Python 做了如下操作：&lt;/p&gt;
 &lt;p&gt;Foo中有__metaclass__有这个属性吗？ 如果是，Python会在内存中通过__metaclass__创建一个名字为Foo的类对象（我说的是类对象，不是类实例哈）。如果Python没有找到__metaclass__，它会
  在Bar(父类）中寻找__metaclass__属性，并尝试做和前面同样的操作。如果Python在任何父类中都找不到__metaclass__，它就会在模块层次中寻找__metaclass__,并尝试做和前面同样的操作。如果还是找不到__metaclass__, Python就会用内置的type来创建这个类的对象。&lt;/p&gt;
 &lt;p&gt;现在的问题是，可以在__metaclass__中放置那些代码呢？答案是：可以创建一个类的东西。那什么可以创建一个类呢？type,或则任何使用到type或子类化type的东西都可以。&lt;/p&gt;
-&lt;h3 id="zi-ding-yi-yuan-lei"&gt;自定义元类&lt;/h3&gt;
+&lt;h3&gt;自定义元类&lt;/h3&gt;
 &lt;p&gt;元类的主要目的就是为了当创建类时能够自动的改变类。通常，你会为API做这样的事情，你希望可以创建符合当前上下文的类。假想一个很傻的例子，你决定在你的模块里所有的类的属性都应该是大写形式。有好几种方法可以办到，但其中一种就是通过在模块级别设定__metaclass__。采用这种方法，这个模块中的所有类都会通过这个元类来创建，我们只需要告诉元类把所有的属性都改成大写形式即可。&lt;/p&gt;
 &lt;p&gt;幸运的是，__metaclass__实际上可以被任意调用，它并不是一个正式的类。所以，我们这里先以一个简单的函数作为例子开始。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# 元类会自动将你通常传给&amp;ldquo;type"的参数作为自己的参数传入
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# 元类会自动将你通常传给“type&amp;quot;的参数作为自己的参数传入
 def upper_attr(future_class_name, future_class_parents, future__class_attr)
-    '''返回一个类对象，将属性都转为大写形式&amp;lsquo;&amp;rsquo;&amp;lsquo;
-    #  选择所有不以&amp;ldquo;__&amp;rdquo;开头的属性
-    attrs = ((name, value) for name, value in future_class_attr.items() if not name.startswith('__'))
+    &amp;#39;&amp;#39;&amp;#39;返回一个类对象，将属性都转为大写形式‘’‘
+    #  选择所有不以“__”开头的属性
+    attrs = ((name, value) for name, value in future_class_attr.items() if not name.startswith(&amp;#39;__&amp;#39;))
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&amp;lt;未完待续&amp;gt;&lt;/p&gt;&lt;/body&gt;</summary><category term="Python"></category></entry></feed>
+
+
+&lt;p&gt;下一篇&lt;a href="https://king32783784.github.io/2017/01/15/python/"&gt;python metaclass(下)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/WBB0EXYSWE.jpg" height="320" width="540"&gt;&lt;/p&gt;</summary><category term="Python"></category></entry></feed>

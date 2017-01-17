@@ -121,6 +121,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="./2017/01/15/python/" title="python metaclass(下）">
+                                <i class="fa fa-file-text padding-small"></i>
+                                python metaclass(下）
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="./2016/12/30/其他/" title="技术人员的发展之路">
                                 <i class="fa fa-file-text padding-small"></i>
                                 技术人员的发展之路
@@ -142,12 +148,6 @@
                             <a class="hide-overflow" href="./2016/12/24/python/" title="python数据存储">
                                 <i class="fa fa-file-text padding-small"></i>
                                 python数据存储
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="./2016/11/15/python/" title="pyqt基本操作(三）">
-                                <i class="fa fa-file-text padding-small"></i>
-                                pyqt基本操作(三）
                             </a>
                         </li>
                     <li>
@@ -322,6 +322,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="./category/misc.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            misc
+                            <span class="badge pull-right categorybadge">3</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="./category/qi-ta.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             其他
@@ -339,13 +346,6 @@
                         <a href="./category/dockerzhuan-ti.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             Docker专题
-                            <span class="badge pull-right categorybadge">2</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="./category/misc.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            misc
                             <span class="badge pull-right categorybadge">2</span>
                         </a>
                     </li>
@@ -408,6 +408,36 @@
     <div class="col-lg-9">
             <article>
                 <h2>
+                    <a href="./2017/01/15/python/">python metaclass(下）</a>
+<div class="post-info">
+    <div class="publish-info-block">
+        <small>
+            <span class="published">
+                <i class="fa fa-calendar padding-small"></i><time datetime="2017-01-15T00:00:00+08:00"> 2017-01-15 日</time>
+            </span>
+            <span class="category">
+                <i class="fa fa-folder-open padding-small"></i><a href="./category/misc.html">misc</a>
+            </span>
+            <span class="tags">
+                <i class="fa fa-tags padding-small"></i>
+                <a href="./tag/python.html">Python</a>            </span>
+        </small>
+    </div>
+</div><!-- /.post-info -->                </h2>
+                <div class="summary">
+                    <body><h3 id="zi-ding-yi-yuan-lei">自定义元类</h3>
+<p>元类的主要目的就是为了当创建类时能够自动地改变类。通常，你会为API做这样的事情，你希望可以创建符合当前上下文的类。假想一个很傻的例子，你决定在你的模块里所有的类的属性都应该是大写形式。有好几种方法可以办到，但其中一种就是通过在模块级别设定__metaclass__。采用这种方法，这个模块中的所有类都会通过这个元类来创建，我们只需要告诉元类把所有的属性都改成大写形式就万事大吉了。</p>
+<p>幸运的是，__metaclass__实际上可以被任意调用，它并不需要是一个正式的类（我知道，某些名字里带有‘class’的东西并不需要是一个class，画画图理解下，这很有帮助）。所以，我们这里就先以一个简单的函数作为例子开始。</p>
+<div class="highlight"><pre><span></span># 元类会自动将你通常传给“type"的参数作为自己的参数传入
+def upper_attr(future_class_name, future_class_parents, future_class_attr)
+    """返回一个类对象，将属性都转为大写形式”“”
+    # 选择所有不以“__"的属性
+    attrs = ((name, value) for name, value in future_class_attr.items() if not name.startswith('__ ...</pre></div></body>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2>
                     <a href="./2016/12/30/其他/">技术人员的发展之路</a>
 <div class="post-info">
     <div class="publish-info-block">
@@ -427,7 +457,7 @@
                 <div class="summary">
                     <body><p>2012年的时候写过一篇叫《程序算法与人生选择》的文章，我用算法来类比如何做选择，说白了就是怎么去计算，但是并没有讲程序员可以发展的方向有哪些。 所以，就算是有这些所谓的方法论，我们可能对自己的
   发展还是会很纠结和无所事从，尤其是人到了30岁，这种彷徨和迷惑越来越重。虽然我之前也写过一篇《编程年龄和编程技能》的文章，但是还是有很多做技术的人对于自己能否在年纪大时还能去做技术感到没有信心。我猜测，这其中，最大的问题的是，目前从事技术工作的种种负面的经历（比如经常性的加班，被当成棋子或劳动力等等），让人完全看不到希望和前途，尤其是随着年纪越来越大，对未来的越来越没有信心。</p>
-<p>同时，也是因为在GIAC的大会被问到，程序员老了怎么办？而在年底这段时间，也和几个朋友在交流中不断地重复谈到个人发展的这个话题。我的人生过半，活到&ldquo;不惑&rdquo;的年纪，自然经常性的对什么事都会回头看看总结归纳，所以，在交谈过程中和交谈过后，自己也有一些思考想记录下来。因为我本人也是在这条路上的人，所以，谈不上给他人指导，我同样也是在瞎乱折腾同样每天在思考自己要去哪儿的&ldquo;一尘世间迷途老生&rdquo;。况且，我的经历和眼界非常有限，因此，下面的这些关于个人发展的文字和思考必然是受我的眼界和经历所局限的。也欢迎大家补充和指正。</p>
+<p>同时，也是因为在GIAC的大会被问到，程序员老了怎么办？而在年底这段时间，也和几个朋友在交流中不断地重复谈到个人发展的这个话题。我的人生过半，活到“不惑”的年纪，自然经常性的对什么事都会回头看看总结归纳，所以，在交谈过程中和交谈过后，自己也有一些思考想记录下来。因为我本人也是在这条路上的人，所以，谈不上给他人指导，我同样也是在瞎乱折腾同样每天在思考自己要去哪儿的“一尘世间迷途老生”。况且，我的经历和眼界非常有限，因此，下面的这些关于个人发展的文字和思考必然是受我的眼界和经历所局限的。也欢迎大家补充和指正。</p>
 <p>这些东西不一定对，也不一定就是全部 ...</p></body>
                 </div>
             </article>
@@ -538,64 +568,6 @@ c.execute('''CREATE ...</pre></div></body>
 <span class="p">[</span><span class="s1">'Batman'</span><span class="p">]</span>
 
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">file</span><span class="p">[</span><span class="s1">'Batman'</span><span class="p">]</span>                          <span class="c1"># fetch value for key 'Batman ...</span></pre></div></body>
-                </div>
-            </article>
-            <hr/>
-            <article>
-                <h2>
-                    <a href="./2016/11/15/python/">pyqt基本操作(三）</a>
-<div class="post-info">
-    <div class="publish-info-block">
-        <small>
-            <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2016-11-15T00:00:00+08:00"> 2016-11-15 二</time>
-            </span>
-            <span class="category">
-                <i class="fa fa-folder-open padding-small"></i><a href="./category/python-pyqt.html">Python-pyqt</a>
-            </span>
-            <span class="tags">
-                <i class="fa fa-tags padding-small"></i>
-                <a href="./tag/pyqt.html">pyqt</a>            </span>
-        </small>
-    </div>
-</div><!-- /.post-info -->                </h2>
-                <div class="summary">
-                    <body><h3 id="dui-hua-kuang">对话框</h3>
-<p>PyQT提供基本的消息框和标准对话框。在PyQt也可以根据需要创建自定义的对话框。</p>
-<p>使用PyQt提供的类和方法可以创建和使用消息框、标准对话框等。标准对话框包含基本的打开，关闭，字体选择对话框和颜色选择对话框等。</p>
-<h4 id="xiao-xi-kuang">消息框</h4>
-<p>使用QtGui.QMessageBox类中的方法可以创建简单的消息框，用于向用户传递信息。QtGui.QMessageBox类中包含一下方法：
-　
-<em> about():创建关于消息框
-</em> aboutQt(): 创建关于Qt消息框
-<em> critical():　创建错误处理对话框
-</em> infomation():　创建信息消息框
-<em> question(): 创建询问消息框
-</em> warning(): 创建警告消息框</p>
-<p>以下是示例：</p>
-<table class="table highlighttable table-striped table-hover"><tbody><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23 ...</pre></div></td></tr></tbody></table></body>
                 </div>
             </article>
         <div class="btn-more text-right">
