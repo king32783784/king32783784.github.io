@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="author" content="penglee" />
+        <meta name="author" content="李鹏" />
         <meta name="keywords" content="unix编程" />
         <meta name="description" content="一、追加至一个文件 一个进程，将数据添加到一个文件尾端。早期不支持open的O_APPEND选项。所有程序被编写成下列形式 if (lseek(fd, 0L, 2 ) &lt; 0) /* position to EOF*/ err_sys(&#34;lseek error&#34;); if (write(fd, buf, 100) != 100) /* and write */ err_sys(&#34;write error&#34;); 单个进程而言，可以正常工作，但若有多个进程同事使用这种方法将数据添加到同一文件，则会产生问题。 UNIX系统提供了一种方法使这种操作成为原子操作。该方法是在打开文件时设置O_APPEND标志。使内核每次对这种文件进行写之前，都将当前偏移量设置到该文件的尾端处，每次写之前就不在需要调用lseek。 二、pread和 pwrite函数 原型如下： #include ＜unistd.h&gt; ssize_t pread (int filedes, void ..." />
 
@@ -18,7 +18,7 @@
     <meta property="article:published_time" content="2009-10-10" />
     <meta property="article:section" content="unix环境编程" />
         <meta property="article:tag" content="unix编程" />
-        <meta property="article:author" content="penglee" />
+        <meta property="article:author" content="李鹏" />
         <meta property="og:image"
               content="../../../../favicon.png"/>
 
@@ -122,7 +122,7 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
-                            <a class="hide-overflow" href="../../../../2017/01/15/python/" title="python metaclass(下）">
+                            <a class="hide-overflow" href="../../../../2017/01/15/编程语言-Python/" title="python metaclass(下）">
                                 <i class="fa fa-file-text padding-small"></i>
                                 python metaclass(下）
                             </a>
@@ -134,7 +134,7 @@
                             </a>
                         </li>
                         <li class="">
-                            <a class="hide-overflow" href="../../../../2016/12/27/python/" title="python shelve">
+                            <a class="hide-overflow" href="../../../../2016/12/27/编程语言-Python/" title="python shelve">
                                 <i class="fa fa-file-text padding-small"></i>
                                 python shelve
                             </a>
@@ -330,6 +330,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/python-pyqt.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Python-pyqt
+                            <span class="badge pull-right categorybadge">3</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/qi-ta.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             其他
@@ -347,13 +354,6 @@
                         <a href="../../../../category/dockerzhuan-ti.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             Docker专题
-                            <span class="badge pull-right categorybadge">2</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/python-pyqt.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            Python-pyqt
                             <span class="badge pull-right categorybadge">2</span>
                         </a>
                     </li>
@@ -468,7 +468,7 @@ ssize_t pwrite(int filedes, const void *buf, size_t nbytes, off_t offset);
 <p>Top<a href="">^</a></p></body>
                 </div>
                 <footer class="text-right">
-                    <p>by penglee</p>
+                    <p>by 李鹏</p>
                 </footer>
     <section id="comments" class="comments ">
         <hr/>

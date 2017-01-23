@@ -6,23 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="李鹏" />
-        <meta name="keywords" content="autotest" />
-        <meta name="description" content="使用和添加测试分析器 添加一个分析器和添加一个测试项目类似.每个分析器都有自己的子目录(client/profilers或你可以查看profilers/),一个标准例子: 一个控制文件. profilers/myprofiler/control 分析器控制脚本. profilers/myprofiler.py 分析器的源码(如果不仅仅是控制脚本) 我们来看一下已有的分析器. autotest提供readprofile,尽管这不是个最简单的方式,但是能够看到你想了解的全部信息.readprofile支持编译近内核. 控制文件非常简单,像这样: job.profilers.add(&#39;readprofile&#39;) job.run_test(&#39;sleeptest&#39;, 1) job.profilers.delete(&#39;readprofile&#39;) 只是说明&#34;请再以下测试中使用readprofile&#34;.一次测试,如果想添加多个分析器,可以多次调用profilers.add. 还有源码包&#34;util-linux-2.12r.tar.bz2&#34;,将会解压到src/.python控制脚本将定义,分析器要做的大部分事情.通过查看readprofile ..." />
+        <meta name="keywords" content="Python" />
+        <meta name="description" content="自定义元类 元类的主要目的就是为了当创建类时能够自动地改变类。通常，你会为API做这样的事情，你希望可以创建符合当前上下文的类。假想一个很傻的例子，你决定在你的模块里所有的类的属性都应该是大写形式。有好几种方法可以办到，但其中一种就是通过在模块级别设定__metaclass__。采用这种方法，这个模块中的所有类都会通过这个元类来创建，我们只需要告诉元类把所有的属性都改成大写形式就万事大吉了。 幸运的是，__metaclass__实际上可以被任意调用，它并不需要是一个正式的类（我知道，某些名字里带有‘class’的东西并不需要是一个class，画画图理解下，这很有帮助）。所以，我们这里就先以一个简单的函数作为例子开始。 # 元类会自动将你通常传给“type&#34;的参数作为自己的参数传入 def upper_attr(future_class_name, future_class_parents, future_class_attr) &#34;&#34;&#34;返回一个类对象，将属性都转为大写形式”“” # 选择所有不以“__&#34;的属性 attrs = ((name, value) for name, value in future_class_attr.items() if not name.startswith(&#39;__ ..." />
 
 <!-- Open Graph tags -->
 <meta property="og:site_name" content="路漫求索"/>
     <meta property="og:type" content="article"/>
-    <meta property="og:title" content="Autotest-Using and developing job profilers"/>
-    <meta property="og:url" content="../../../../2015/08/17/autotest/"/>
-    <meta property="og:description" content="使用和添加测试分析器 添加一个分析器和添加一个测试项目类似.每个分析器都有自己的子目录(client/profilers或你可以查看profilers/),一个标准例子: 一个控制文件. profilers/myprofiler/control 分析器控制脚本. profilers/myprofiler.py 分析器的源码(如果不仅仅是控制脚本) 我们来看一下已有的分析器. autotest提供readprofile,尽管这不是个最简单的方式,但是能够看到你想了解的全部信息.readprofile支持编译近内核. 控制文件非常简单,像这样: job.profilers.add(&#39;readprofile&#39;) job.run_test(&#39;sleeptest&#39;, 1) job.profilers.delete(&#39;readprofile&#39;) 只是说明&#34;请再以下测试中使用readprofile&#34;.一次测试,如果想添加多个分析器,可以多次调用profilers.add. 还有源码包&#34;util-linux-2.12r.tar.bz2&#34;,将会解压到src/.python控制脚本将定义,分析器要做的大部分事情.通过查看readprofile ..."/>
-    <meta property="article:published_time" content="2015-08-17" />
-    <meta property="article:section" content="自动化测试-Autotest" />
-        <meta property="article:tag" content="autotest" />
+    <meta property="og:title" content="python metaclass(下）"/>
+    <meta property="og:url" content="../../../../2017/01/15/编程语言-Python/"/>
+    <meta property="og:description" content="自定义元类 元类的主要目的就是为了当创建类时能够自动地改变类。通常，你会为API做这样的事情，你希望可以创建符合当前上下文的类。假想一个很傻的例子，你决定在你的模块里所有的类的属性都应该是大写形式。有好几种方法可以办到，但其中一种就是通过在模块级别设定__metaclass__。采用这种方法，这个模块中的所有类都会通过这个元类来创建，我们只需要告诉元类把所有的属性都改成大写形式就万事大吉了。 幸运的是，__metaclass__实际上可以被任意调用，它并不需要是一个正式的类（我知道，某些名字里带有‘class’的东西并不需要是一个class，画画图理解下，这很有帮助）。所以，我们这里就先以一个简单的函数作为例子开始。 # 元类会自动将你通常传给“type&#34;的参数作为自己的参数传入 def upper_attr(future_class_name, future_class_parents, future_class_attr) &#34;&#34;&#34;返回一个类对象，将属性都转为大写形式”“” # 选择所有不以“__&#34;的属性 attrs = ((name, value) for name, value in future_class_attr.items() if not name.startswith(&#39;__ ..."/>
+    <meta property="article:published_time" content="2017-01-15" />
+    <meta property="article:section" content="misc" />
+        <meta property="article:tag" content="Python" />
         <meta property="article:author" content="李鹏" />
         <meta property="og:image"
               content="../../../../favicon.png"/>
 
-    <title>Autotest-Using and developing job profilers - 路漫求索</title>
+    <title>python metaclass(下） - 路漫求索</title>
 
         <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
 
@@ -67,12 +67,12 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-share-small" class="collapse ">
                     <li>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2015/08/17/autotest/" title="Share via Facebook" target="popup">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2017/01/15/编程语言-Python/" title="Share via Facebook" target="popup">
                             <i class="fa fa-facebook-square padding-small"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="https://plus.google.com/share?url=../../../../2015/08/17/autotest/" title="Share via Google+" target="popup">
+                        <a href="https://plus.google.com/share?url=../../../../2017/01/15/编程语言-Python/" title="Share via Google+" target="popup">
                             <i class="fa fa-google-plus padding-small"></i>
                         </a>
                     </li>
@@ -121,7 +121,7 @@
                         </a>
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
-                        <li class="">
+                        <li class="active">
                             <a class="hide-overflow" href="../../../../2017/01/15/编程语言-Python/" title="python metaclass(下）">
                                 <i class="fa fa-file-text padding-small"></i>
                                 python metaclass(下）
@@ -167,13 +167,13 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-share" class="sidebar_submenu collapse ">
                     <li>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2015/08/17/autotest/" target="popup">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2017/01/15/编程语言-Python/" target="popup">
                             <i class="fa fa-facebook-square padding-small"></i>
                             Facebook
                         </a>
                     </li>
                     <li>
-                        <a href="https://plus.google.com/share?url=../../../../2015/08/17/autotest/" target="popup">
+                        <a href="https://plus.google.com/share?url=../../../../2017/01/15/编程语言-Python/" target="popup">
                             <i class="fa fa-google-plus padding-small"></i>
                             Google+
                         </a>
@@ -280,7 +280,7 @@
                             <span class="badge pull-right categorybadge">17</span>
                         </a>
                     </li>
-                    <li class="active">
+                    <li >
                         <a href="../../../../category/zi-dong-hua-ce-shi-autotest.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             自动化测试-Autotest
@@ -322,7 +322,7 @@
                             <span class="badge pull-right categorybadge">3</span>
                         </a>
                     </li>
-                    <li >
+                    <li class="active">
                         <a href="../../../../category/misc.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             misc
@@ -392,24 +392,24 @@
             <div class="col-lg-9">
                 <header class="page-header">
                     <h1>
-                        <a href="../../../../2015/08/17/autotest/"
+                        <a href="../../../../2017/01/15/编程语言-Python/"
                            rel="bookmark"
-                           title="Permalink to Autotest-Using and developing job profilers">
-                            Autotest-Using and developing job profilers
+                           title="Permalink to python metaclass(下）">
+                            python metaclass(下）
                         </a>
                         <small>
 <div class="post-info">
     <div class="publish-info-block">
         <small>
             <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2015-08-17T00:00:00+08:00"> 2015-08-17 一</time>
+                <i class="fa fa-calendar padding-small"></i><time datetime="2017-01-15T00:00:00+08:00"> 2017-01-15 日</time>
             </span>
             <span class="category">
-                <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/zi-dong-hua-ce-shi-autotest.html">自动化测试-Autotest</a>
+                <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/misc.html">misc</a>
             </span>
             <span class="tags">
                 <i class="fa fa-tags padding-small"></i>
-                <a href="../../../../tag/autotest.html">autotest</a>            </span>
+                <a href="../../../../tag/python.html">Python</a>            </span>
         </small>
     </div>
 </div><!-- /.post-info -->                        </small>
@@ -420,86 +420,127 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
-<h2 id="shi-yong-he-tian-jia-ce-shi-fen-xi-qi">使用和添加测试分析器</h2>
-<p>添加一个分析器和添加一个测试项目类似.每个分析器都有自己的子目录(client/profilers或你可以查看profilers/),一个标准例子:</p>
-<ul>
-<li>一个控制文件. profilers/myprofiler/control</li>
-<li>分析器控制脚本. profilers/myprofiler.py</li>
-<li>分析器的源码(如果不仅仅是控制脚本)</li>
-</ul>
-<p>我们来看一下已有的分析器. autotest提供readprofile,尽管这不是个最简单的方式,但是能够看到你想了解的全部信息.readprofile支持编译近内核.</p>
-<p>控制文件非常简单,像这样:</p>
-<div class="highlight"><pre><span></span>job.profilers.add('readprofile')
-job.run_test('sleeptest', 1)
-job.profilers.delete('readprofile')
-</pre></div>
-<p>只是说明"请再以下测试中使用readprofile".一次测试,如果想添加多个分析器,可以多次调用profilers.add.</p>
-<p>还有源码包"util-linux-2.12r.tar.bz2",将会解压到src/.python控制脚本将定义,分析器要做的大部分事情.通过查看readprofile.py,我们可以看到
-profiler主类,定义版本.可以看到以下个函数:</p>
-<ul>
-<li>setup()  它会在第一次用profiler时执行,并且编译源码.</li>
-<li>intialize() 将在导入profiler时执行</li>
-<li>start() 启动分析</li>
-<li>stop() 停止分析</li>
-<li>report() 利用profiler数据生成报告</li>
-</ul>
-<p>接下来 看一下这些方法的细节.</p>
-<h3 id="setup">Setup</h3>
-<p>setup(),在版本变动之前,每次测试只执行一次.它会解压util-linux-2.12r.tar.bz2至src/,并且编译.</p>
-<div class="highlight"><pre><span></span>#http://www.kernel.org/pub/linux/util-linux/util-linux-2.12r.tar.bz2
-def setup(self, tarball = 'util-linux-2.12r.tar.bz2'):
-    self.tarball = unmap_url(self.bindir, tarball, self.tmpdir)
-    extract_tarball_to_dir(self.tarball, self.srcdir)
-</pre></div>
-<p>注释信息告诉我们去哪得到源码.函数定义的参数,定义了使用什么版本的源码.接下来,使用unmap_url下载源码,并且返回一个源码的保存路径.</p>
-<div class="highlight"><pre><span></span>os.chdir(self.srcdir)
-system('./configure')
-os.chdir('sys-utils')
-system('make readprofile)
-</pre></div>
-<p>先是切换目录到self.srcdir.切换后,执行./configure,然后执行编译.这里使用的system()(不是os.system(),system()是一个包装后的os.system()).如果返回值
-不是0,它将会自动抛出异常.</p>
-<h3 id="initialize">Initialize</h3>
-<div class="highlight"><pre><span></span>def initialize(self):
-    try:
-        system('grep -iq" profile = "/proc/cmdline")
-    except:
-        raise CmdError, 'readprofile not enabled'
+                    <body><h3 id="zi-ding-yi-yuan-lei">自定义元类</h3>
+<p>元类的主要目的就是为了当创建类时能够自动地改变类。通常，你会为API做这样的事情，你希望可以创建符合当前上下文的类。假想一个很傻的例子，你决定在你的模块里所有的类的属性都应该是大写形式。有好几种方法可以办到，但其中一种就是通过在模块级别设定__metaclass__。采用这种方法，这个模块中的所有类都会通过这个元类来创建，我们只需要告诉元类把所有的属性都改成大写形式就万事大吉了。</p>
+<p>幸运的是，__metaclass__实际上可以被任意调用，它并不需要是一个正式的类（我知道，某些名字里带有‘class’的东西并不需要是一个class，画画图理解下，这很有帮助）。所以，我们这里就先以一个简单的函数作为例子开始。</p>
+<div class="highlight"><pre><span></span># 元类会自动将你通常传给“type"的参数作为自己的参数传入
+def upper_attr(future_class_name, future_class_parents, future_class_attr)
+    """返回一个类对象，将属性都转为大写形式”“”
+    # 选择所有不以“__"的属性
+    attrs = ((name, value) for name, value in future_class_attr.items() if not name.startswith('__'))
 
-self.cmd = self.srcdir + '/sys-utils/readprofile'
+# 将他们转为大写形式
+uppercase_attr = dict((name.upper(), value) for name, value in attrs)
+
+# 通过type来做类对象的创建
+return type(future_class_name, future_class_parents, uppercase_attr)
+
+__metaclass__ = upper_attr # 这会作用到这个模块所有的类
+
+class Foo(object):
+    # 我们可以只在这里定义__mataclass__,这样就只会作用于这个类中
+    bar = 'bip"
+print hasattr(Foo, 'bar')
+# 输出 False
+print hasattr(Foo, 'BAR')
+# 输出 True
+f = Foo()
+print f.BAR
+# 打印"bip"
 </pre></div>
-<p>它会在我们导入profiler后执行,用来检查 readprofile是否使能.</p>
-<h3 id="start">Start</h3>
-<div class="highlight"><pre><span></span>def start(self, test):
-    system(self.cmd + '-r')
+<p>下面是用一个真正的class作为元类。</p>
+<div class="highlight"><pre><span></span><span class="c c-Singleline"># 记住， ‘type'实际上是一个类， 就像‘str'和’int'一样</span>
+<span class="c c-Singleline"># 所以，可以从type继承</span>
+<span class="k">class</span> <span class="n">UpperAttrMetaClass</span>(<span class="n">type</span>):
+    <span class="c c-Singleline"># __new__是在__init__之前被调用的特殊方法</span>
+    <span class="c c-Singleline"># __new__是用来创建对象并返回的方法</span>
+    <span class="c c-Singleline"># 而__init__只是用来将传入的参数初始化给对象</span>
+    <span class="c c-Singleline"># __new__很少用到，除非你希望能够控制对象的创建</span>
+    <span class="c c-Singleline"># 这里创建的对象是类，我嫩希望能够自定义它， 所以我们这里改写__new__</span>
+    <span class="c c-Singleline"># 如果你希望的话，可以在__init__中做些事情</span>
+    <span class="c c-Singleline"># 还有一些高级的用法会涉及到改写__call__特殊方法，但是我们这里不用</span>
+
+    <span class="n">def</span> <span class="n">__new__</span>(<span class="n">upperattr_metaclass</span>, <span class="n">future_class_name</span>,
+                <span class="n">future_class_parents</span>, <span class="n">future_class_attr</span>):
+        <span class="n">attrs</span> = ((<span class="nb">name</span>, <span class="nb">value</span>) <span class="k">for</span> <span class="nb">name</span>, <span class="nb">value</span> <span class="n">in</span> <span class="n">future_class_attr</span>.<span class="n">items</span>() <span class="k">if</span> <span class="nb">not</span> <span class="nb">name</span>.<span class="n">startswith</span>(<span class="s">'__'</span>))
+        <span class="n">uppercase_attr</span> = <span class="n">dict</span>((<span class="nb">name</span>.<span class="n">upper</span>(), <span class="nb">value</span>) <span class="k">for</span> <span class="nb">name</span>, <span class="nb">value</span> <span class="n">in</span> <span class="n">attrs</span>)
+        <span class="k">return</span> <span class="n">type</span>(<span class="n">future_class_name</span>, <span class="n">future_class_parents</span>, <span class="n">uppercase_attr</span>)
 </pre></div>
-<p>启动profiler, 只是执行readprofile -r</p>
-<h3 id="stop">Stop</h3>
-<div class="highlight"><pre><span></span>def stop(self, test):
-    # There's no real way to stop readprofile, so we stash the 
-    # rad data at this point instead. BAD EXAMPLE TO COPY!;-)
-    self.rawprofile = test.profdir + '/profile.raw'
-    print "STOP"
-    shutil.copyfile('/proc/profile', self.rawprofile)
+<p>但是这种方法其实不是oop。我们直接调用了type, 而且我们没有改写父类的__new__方法。 现在我们这样处理：</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">upperattr_metaclass</span>(<span class="n">type</span>):
+    <span class="n">def</span> <span class="n">__new__</span>(<span class="n">upperattr_metaclass</span>, <span class="n">future_class_name</span>,
+                <span class="n">future_class_parents</span>, <span class="n">future_class_attr</span>):
+        <span class="n">attrs</span> = ((<span class="nb">name</span>, <span class="nb">value</span>) <span class="k">for</span> <span class="nb">name</span>, <span class="nb">value</span> <span class="n">in</span> <span class="n">future_class_attr</span>.<span class="n">items</span>() 
+                  <span class="k">if</span> <span class="nb">not</span> <span class="nb">name</span>.<span class="n">startswith</span>(<span class="s">'__'</span>)
+        <span class="n">uppercase_attr</span> = <span class="n">dict</span>((<span class="nb">name</span>.<span class="n">upper</span>(), <span class="nb">value</span>) <span class="k">for</span> <span class="nb">name</span>, <span class="nb">value</span> <span class="n">in</span> <span class="n">attrs</span>)
+
+        <span class="c c-Singleline"># 复用type.__new__方法</span>
+        <span class="c c-Singleline"># 这就是OOP编程</span>
+        <span class="k">return</span> <span class="n">type</span>.<span class="n">__new__</span>(<span class="n">upperattr_metaclass</span>, <span class="n">futurn_class_name</span>, 
+                            <span class="n">future_class_parents</span>, <span class="n">uppercase_attr</span>)
 </pre></div>
-<p>一般的话,只运行readprofile --stop即可.但是如果启用的多个分析器,我们这样做为了区分每个的分析数据,使他们不相互影响.</p>
-<h3 id="report">Report</h3>
-<div class="highlight"><pre><span></span>def report(self, test):
-    args = ' -n'
-    args += ' -m' + get_systemmap()
-    args += ' -p' + self.rawprofile
-    cmd = self.cmd + ' ' + args
-    txtprofile = test.profdir + '/profile.text'
-    system(cmd + ' | sort -nr &gt; ' + txtprofile)
-    system('bzip2' + self.rawprofile)
+<p>你可能已经注意到了有个额外的参数upperattr_metaclass, 这并没有什么特别的。类方法的第一个参数总是表示当前的实例， 就像在普通的类方法中的self参数一样。当然，为了清晰起见，
+这里的名字我起的比较长。但是就像self一样，所有的参数都有他们的传统的名称。因此在一个真实产品中的一个元类应该像这样：</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">UpperAttrMetaclass</span>(<span class="n">type</span>):
+    <span class="n">def</span> <span class="n">__new__</span>(<span class="n">cls</span>, <span class="nb">name</span>, <span class="n">bases</span>, <span class="n">dct</span>):
+        <span class="n">attrs</span> = ((<span class="nb">name</span>, <span class="nb">value</span>) <span class="k">for</span> <span class="nb">name</span>, <span class="nb">value</span> <span class="n">in</span> <span class="n">dct</span>.<span class="n">items</span>() <span class="k">if</span> <span class="nb">not</span> <span class="nb">name</span>.<span class="n">startswith</span>(<span class="s">'__'</span>)
+        <span class="n">uppercase_attr</span> = <span class="n">dict</span>((<span class="nb">name</span>.<span class="n">upper</span>(), <span class="nb">value</span>) <span class="k">for</span> <span class="nb">name</span>, <span class="nb">value</span> <span class="n">in</span> <span class="n">attrs</span>)
+        <span class="k">return</span> <span class="n">type</span>.<span class="n">__new__</span>(<span class="n">cls</span>, <span class="nb">name</span>, <span class="n">bases</span>, <span class="n">uppercase_attr</span>)
 </pre></div>
-<p>将分析数据转成txt. 我们需要找到kernel的Sytem.map和用户空间产生的结果(a test file).我们将结果保存在test子目录下的profiling/,这个目录在set up时已自动创建.</p>
-<h3 id="tian-jia-zi-ji-de-profiler">添加自己的profiler</h3>
-<p>只需要在profilers下创建一个新目录,然后添加自己的控制文件,源码和控制脚本.最简单的方式是直接复制已有的readprofile.py为mytest.py,并且修改顶部的类名.</p>
-<p>Top<a href="">^</a></p>
-<p>上一篇<a href="https://king32783784.github.io/2015/08/16/autotest/">Autotest：Autotest-add test&gt;&gt;</a>
-下一篇<a href="https://king32783784.github.io/2015/08/18/autotest/">Autotest:Autotest-Linux distribution detection&gt;&gt;&gt;</a></p></body>
+<p>如果使用super方法的话，我们还可以使它变得更清晰一些，这会缓解继承（是的，你可以拥有元类，从元类继承，从type继承）</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">UpperAttrMetaclass</span>(<span class="n">type</span>):
+    <span class="n">def</span> <span class="n">__new__</span>(<span class="n">cls</span>, <span class="nb">name</span>, <span class="n">bases</span>, <span class="n">dct</span>):
+        <span class="n">attrs</span> = ((<span class="nb">name</span>, <span class="nb">value</span>) <span class="k">for</span> <span class="nb">name</span>, <span class="nb">value</span> <span class="n">in</span> <span class="n">dct</span>.<span class="n">items</span>() <span class="k">if</span> <span class="nb">not</span> <span class="nb">name</span>.<span class="n">startswith</span>(<span class="s">'__'</span>)
+        <span class="n">uppercase_attr</span> = <span class="n">dict</span>((<span class="nb">name</span>.<span class="n">upper</span>(), <span class="nb">value</span>) <span class="k">for</span> <span class="nb">name</span>, <span class="nb">value</span> <span class="n">in</span> <span class="n">attrs</span>)
+        <span class="k">return</span> <span class="n">supper</span>(<span class="n">UpperAttrMetaclass</span>, <span class="n">cls</span>).<span class="n">__new__</span>(<span class="n">cls</span>, <span class="nb">name</span>, <span class="n">bases</span>, <span class="n">uppercase_attr</span>)
+</pre></div>
+<p>就是这样，除此之外，关于元类真的没有别的可说的了。使用到元类的代码比较复杂，这背后的原因并不是因为元类本身，而是因为你通常会使用元类去做一些晦涩的事情，依赖于自身，
+控制继承等等。确实，用元类搞些”黑魔法“是特别有用的，因而会搞出复杂的东西来。但就元类本身而言，其实是很简单的：</p>
+<ul>
+<li>1) 拦截类的创建</li>
+<li>2) 修改类</li>
+<li>3) 返回修改之后的类</li>
+</ul>
+<h3 id="wei-shi-yao-yao-yong-metaclasslei-er-bu-shi-han-shu">为什么要用metaclass类而不是函数？</h3>
+<p>由于__metaclass__ 可以接受任何可调用的对象，那为何还要使用类呢，因为很显然使用类会更加复杂啊？原因如下：</p>
+<ul>
+<li>1) 意图会更加清晰。当你读到UpperAttrMetaclass(type)时，你知道接下来会发生什么</li>
+<li>2) 可以使用oop编程。元类可以从元类中继承而来，改写父类的方法。元类甚至还可以使用元类</li>
+<li>3) 可以把代码组织的更好。当你使用元类的时候肯定不会向上面的这种简单场景，通常都是针对比较复杂的问题。将多个方法归并到一个类中会很有帮助。</li>
+<li>4) 可以使用__new__, __init__已经__call__这样的特殊方法。他们能帮你处理不同的任务。通常你可以把所有的东西都在__new__里处理掉，有些人还是觉得__init__更舒服。</li>
+<li>5) 哇哦，这东西的名字是metaclass, 肯定非善类，要小心</li>
+</ul>
+<h3 id="shi-yao-di-fang-shi-yong-yuan-lei">什么地方使用元类？</h3>
+<p>现在回到主题，究竟为什么会使用这样一种容易出错而且晦涩的特效？一般来说，根本就用不上它：</p>
+<div class="highlight"><pre><span></span>“元类就是深度的魔法，99%的用户应该根本不必为此操心。如果你想搞清楚究竟是否需要用到元类，那么你就不需要它。那些实际用到元类的人都非常清楚地知道他们需要做什么，而且根本不需要解释为什么要用元类。”  —— Python界的领袖 Tim Peters
+</pre></div>
+<p>元类的主要用途是创建API。一个典型的例子是Django ORM. 它允许你像这样定义：</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">Person</span>(<span class="n">models</span>.<span class="n">Model</span>):
+    <span class="nb">name</span> = <span class="n">models</span>.<span class="n">CharField</span>(<span class="n">max_length</span>=<span class="mi">30</span>)
+    <span class="n">age</span> = <span class="n">models</span>.<span class="n">IntegerField</span>()
+</pre></div>
+<p>但是如果你像这样做的话：</p>
+<div class="highlight"><pre><span></span>guy = Person(name='bob', age='35')
+print guy.age
+</pre></div>
+<p>这并不会返回一个IntegerField对象， 而是会返回一个int， 甚至可以直接从数据库中取出数据。这是有可能的，因为models.Model定义了__metaclass__,并且使用了一些魔法能够将你刚刚定义的
+简单的Person类转变成对数据库的一个复杂hook。Django框架将这些看起来很复杂的东西通过暴露一个简单的使用元类的API将其化简，通过这个API重新创建代码，在背后完成真正的工作。</p>
+<h3 id="zui-hou">最后</h3>
+<p>首先，类其实是能够创建出类实例的对象。当然，类本身也是实例，是元类的实例。</p>
+<div class="highlight"><pre><span></span>&gt;&gt;&gt;class Foo(object): pass
+&gt;&gt;&gt;id(Foo)
+38082608
+</pre></div>
+<p>python中的一切都是对象，他们要么是类的实例，要么是元类的实例，除了type.type实际上是它自己的元类，在纯Python环境中不能做到的，需要在实现层面通过一些手段做到的。
+其次，元类是很复杂的。 对应非常简单的类，你可能不希望通过元类来对类做修改。你可以通过其他两种技术来修改类：</p>
+<ul>
+<li>1) Monkey patching</li>
+<li>2) class decorators</li>
+</ul>
+<p>当你需要动态修改类时，最好使用上面的两种技术。当然，绝大部分情况下是不需要动态修改类的。</p>
+<p>《完》</p>
+<p>上一篇<a href="https://king32783784.github.io/2015/10/03/python/">python metaclass(上)</a></p>
+<p><img class="img-responsive" height="320" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/WBB0EXYSWE.jpg" width="540"/></p></body>
                 </div>
                 <footer class="text-right">
                     <p>by 李鹏</p>
@@ -515,7 +556,7 @@ self.cmd = self.srcdir + '/sys-utils/readprofile'
             </div>
     <div id="scrollspy">
         <div class="col-lg-3 nav nav-stacked hidden-xs hidden-sm" data-spy="affix" data-offset-top="135">
-            <div id="toc"><ul><li><a class="toc-href" href="#" title="Autotest-Using and developing job profilers">Autotest-Using and developing job profilers</a><ul><li><a class="toc-href" href="#shi-yong-he-tian-jia-ce-shi-fen-xi-qi" title="使用和添加测试分析器">使用和添加测试分析器</a><ul><li><a class="toc-href" href="#setup" title="Setup">Setup</a></li><li><a class="toc-href" href="#initialize" title="Initialize">Initialize</a></li><li><a class="toc-href" href="#start" title="Start">Start</a></li><li><a class="toc-href" href="#stop" title="Stop">Stop</a></li><li><a class="toc-href" href="#report" title="Report">Report</a></li><li><a class="toc-href" href="#tian-jia-zi-ji-de-profiler" title="添加自己的profiler">添加自己的profiler</a></li></ul></li></ul></li></ul></div>
+            <div id="toc"><ul><li><a class="toc-href" href="#" title="python metaclass(下）">python metaclass(下）</a><ul><li><a class="toc-href" href="#zi-ding-yi-yuan-lei" title="自定义元类">自定义元类</a></li><li><a class="toc-href" href="#wei-shi-yao-yao-yong-metaclasslei-er-bu-shi-han-shu" title="为什么要用metaclass类而不是函数？">为什么要用metaclass类而不是函数？</a></li><li><a class="toc-href" href="#shi-yao-di-fang-shi-yong-yuan-lei" title="什么地方使用元类？">什么地方使用元类？</a></li><li><a class="toc-href" href="#zui-hou" title="最后">最后</a></li></ul></li></ul></div>
         </div>
     </div>
         </div>
@@ -563,8 +604,8 @@ self.cmd = self.srcdir + '/sys-utils/readprofile'
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
     var disqus_shortname = 'True'; // required: replace example with your forum shortname
 
-            var disqus_identifier = 'autotest';
-        var disqus_url = '../../../../2015/08/17/autotest/';
+            var disqus_identifier = '编程语言-Python';
+        var disqus_url = '../../../../2017/01/15/编程语言-Python/';
 
     var disqus_config = function () {
         this.language = "zh";

@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="author" content="peng.lee" />
+        <meta name="author" content="李鹏" />
         <meta name="keywords" content="C" />
         <meta name="description" content="1.简单的宏定义 #define MAXTIME 1000 简单的MATIME定义好了，它代表1000，如果在程序中写： if(i&lt;MAXTIME){...} 编译器在处理这个代码之前会对MAXTIME进行替换为1000。 宏定义类同于简单的文本替换，而不是变量。 2.define的“函数定义” define可以像函数那样接受一些参数，如下： #define max(x,y)(x)&gt;(y)?(x):(y); 这个定义将返回两个数中最大的，而且这个函数没有经过类型检查，好像函数模板，但没有模板安全。存在隐患： #define Add(a,b) a+b; 如果代数式 cAdd(a,b)d,本意为a+b然后去和c、d相乘，而define只是一个简单替换，式子反而变为了： c ..." />
 
@@ -18,7 +18,7 @@
     <meta property="article:published_time" content="2011-08-15" />
     <meta property="article:section" content="编程语言-C" />
         <meta property="article:tag" content="C" />
-        <meta property="article:author" content="peng.lee" />
+        <meta property="article:author" content="李鹏" />
         <meta property="og:image"
               content="../../../../favicon.png"/>
 
@@ -122,7 +122,7 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
-                            <a class="hide-overflow" href="../../../../2017/01/15/python/" title="python metaclass(下）">
+                            <a class="hide-overflow" href="../../../../2017/01/15/编程语言-Python/" title="python metaclass(下）">
                                 <i class="fa fa-file-text padding-small"></i>
                                 python metaclass(下）
                             </a>
@@ -134,7 +134,7 @@
                             </a>
                         </li>
                         <li class="">
-                            <a class="hide-overflow" href="../../../../2016/12/27/python/" title="python shelve">
+                            <a class="hide-overflow" href="../../../../2016/12/27/编程语言-Python/" title="python shelve">
                                 <i class="fa fa-file-text padding-small"></i>
                                 python shelve
                             </a>
@@ -330,6 +330,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/python-pyqt.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Python-pyqt
+                            <span class="badge pull-right categorybadge">3</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/qi-ta.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             其他
@@ -347,13 +354,6 @@
                         <a href="../../../../category/dockerzhuan-ti.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             Docker专题
-                            <span class="badge pull-right categorybadge">2</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/python-pyqt.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            Python-pyqt
                             <span class="badge pull-right categorybadge">2</span>
                         </a>
                     </li>
@@ -602,7 +602,7 @@ __cplusplus：当编写C++程序时该标识符被定义。
 <h1 id="definede-zhe-xie-gao-ji-yong-fa-zai-linuxnei-he-yuan-dai-ma-hen-duo-chu-chu-xian-ke-yue-du-can-kao-nei-he-yuan-dai-ma">define的这些高级用法在Linux内核源代码很多处出现，可阅读参考内核源代码。</h1></body>
                 </div>
                 <footer class="text-right">
-                    <p>by peng.lee</p>
+                    <p>by 李鹏</p>
                 </footer>
     <section id="comments" class="comments ">
         <hr/>

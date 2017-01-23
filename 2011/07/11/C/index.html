@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="author" content="peng.lee" />
+        <meta name="author" content="李鹏" />
         <meta name="keywords" content="C" />
         <meta name="description" content="结构体声明 例如： struct Student { char name[20]; char sex; int age; char addr[40]; } /定义一个Student 类型的student变量/ struct Student student; 定义结构体的时候每次都要写struct显得比较繁琐，可以用typedef来方便声明。这样就可以想int、char一样定义结构体类型了。比如： typedef struct _TEST_T { int i; char c[10]; }TEST_T; 初始化 1.初始化的就是定义一个结构体变量，并且给它赋值比如： TEST_T gst = {1, “12345”}; /*可以初始化，设置i为1，c为一个字符串.*/ TEST_T gst = {1}; /*初始化个数少于实际个数时，只初始化前面的成员。*/ TEST_T ..." />
 
@@ -18,7 +18,7 @@
     <meta property="article:published_time" content="2011-07-11" />
     <meta property="article:section" content="编程语言-C" />
         <meta property="article:tag" content="C" />
-        <meta property="article:author" content="peng.lee" />
+        <meta property="article:author" content="李鹏" />
         <meta property="og:image"
               content="../../../../favicon.png"/>
 
@@ -122,7 +122,7 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
-                            <a class="hide-overflow" href="../../../../2017/01/15/python/" title="python metaclass(下）">
+                            <a class="hide-overflow" href="../../../../2017/01/15/编程语言-Python/" title="python metaclass(下）">
                                 <i class="fa fa-file-text padding-small"></i>
                                 python metaclass(下）
                             </a>
@@ -134,7 +134,7 @@
                             </a>
                         </li>
                         <li class="">
-                            <a class="hide-overflow" href="../../../../2016/12/27/python/" title="python shelve">
+                            <a class="hide-overflow" href="../../../../2016/12/27/编程语言-Python/" title="python shelve">
                                 <i class="fa fa-file-text padding-small"></i>
                                 python shelve
                             </a>
@@ -330,6 +330,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/python-pyqt.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Python-pyqt
+                            <span class="badge pull-right categorybadge">3</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/qi-ta.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             其他
@@ -347,13 +354,6 @@
                         <a href="../../../../category/dockerzhuan-ti.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             Docker专题
-                            <span class="badge pull-right categorybadge">2</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/python-pyqt.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            Python-pyqt
                             <span class="badge pull-right categorybadge">2</span>
                         </a>
                     </li>
@@ -465,7 +465,7 @@ TEST_T gst  = {.c=“12345”}; /*有选择的初始化成员。*/
 <p>声明和定义的区别在于是否分配内存进行存储。</p></body>
                 </div>
                 <footer class="text-right">
-                    <p>by peng.lee</p>
+                    <p>by 李鹏</p>
                 </footer>
     <section id="comments" class="comments ">
         <hr/>

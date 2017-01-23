@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="author" content="peng.lee" />
+        <meta name="author" content="李鹏" />
         <meta name="keywords" content="Selenium" />
         <meta name="description" content="一 导航 使用WebDriver第一件想做的事情就是导航到指定链接。通常可以调用get方法去实现： driver.get(&#34;http://www.google.com&#34;) driver.get方法会导航到url指定的页面。webdriver会等待页面完全加载后，把控制权还给test脚本。需要注意的是，如果页面中使用了大量的AJAX负载过大，webdriver可能不知道什么时间加载完成。如果你想确保页面加载完全可以使用wait. 1.页面交互 只是导航到指定链接并不是很有用。我们想做的页面上的交互，准确的说是页面的元素操作。首先，我们要先找到它。webdriver提供了很多方法去找到元素，例如，元素定义如下： &lt;input type=&#34;text&#34; name=&#34;passwd&#34; id=&#34;passwd-id&#34; /&gt; 你可以使用下面方法找到该元素： element = driver.find_element_by_id(&#34;passwd-id&#34;) element = driver.find_element_by_name(&#34;passwd&#34;) element = driver.find_element_by_xpath(&#34;//input[@id=&#39;passwd-id ..." />
 
@@ -18,7 +18,7 @@
     <meta property="article:published_time" content="2015-01-15" />
     <meta property="article:section" content="自动化测试-Selenium" />
         <meta property="article:tag" content="Selenium" />
-        <meta property="article:author" content="peng.lee" />
+        <meta property="article:author" content="李鹏" />
         <meta property="og:image"
               content="../../../../favicon.png"/>
 
@@ -122,7 +122,7 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
-                            <a class="hide-overflow" href="../../../../2017/01/15/python/" title="python metaclass(下）">
+                            <a class="hide-overflow" href="../../../../2017/01/15/编程语言-Python/" title="python metaclass(下）">
                                 <i class="fa fa-file-text padding-small"></i>
                                 python metaclass(下）
                             </a>
@@ -134,7 +134,7 @@
                             </a>
                         </li>
                         <li class="">
-                            <a class="hide-overflow" href="../../../../2016/12/27/python/" title="python shelve">
+                            <a class="hide-overflow" href="../../../../2016/12/27/编程语言-Python/" title="python shelve">
                                 <i class="fa fa-file-text padding-small"></i>
                                 python shelve
                             </a>
@@ -330,6 +330,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/python-pyqt.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Python-pyqt
+                            <span class="badge pull-right categorybadge">3</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/qi-ta.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             其他
@@ -347,13 +354,6 @@
                         <a href="../../../../category/dockerzhuan-ti.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             Docker专题
-                            <span class="badge pull-right categorybadge">2</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/python-pyqt.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            Python-pyqt
                             <span class="badge pull-right categorybadge">2</span>
                         </a>
                     </li>
@@ -541,7 +541,7 @@ driver.get_cookies()
 下一篇<a href="https://king32783784.github.io/2015/01/16/selenium/">Selenium主题4</a></p></body>
                 </div>
                 <footer class="text-right">
-                    <p>by peng.lee</p>
+                    <p>by 李鹏</p>
                 </footer>
     <section id="comments" class="comments ">
         <hr/>
