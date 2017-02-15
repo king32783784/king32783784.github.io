@@ -432,9 +432,9 @@
 </pre></div>
 <p><strong>初始化</strong></p>
 <p>1.初始化的就是定义一个结构体变量，并且给它赋值比如：</p>
-<div class="highlight"><pre><span></span>TEST_T gst  = {1, “12345”}; /*可以初始化，设置i为1，c为一个字符串.*/
+<div class="highlight"><pre><span></span>TEST_T gst  = {1, &ldquo;12345&rdquo;}; /*可以初始化，设置i为1，c为一个字符串.*/
 TEST_T gst  = {1}; /*初始化个数少于实际个数时，只初始化前面的成员。*/
-TEST_T gst  = {.c=“12345”}; /*有选择的初始化成员。*/
+TEST_T gst  = {.c=&ldquo;12345&rdquo;}; /*有选择的初始化成员。*/
 </pre></div>
 <p>2、复合字面量。</p>
 <div class="highlight"><pre><span></span>gst = (TEST_T){122, "1256"}; /*这是一个赋值语句，也可以作为初始化。可以出现在程序的任何地方。*/

@@ -472,7 +472,7 @@ c.executemany('INSERT INTO stocks VALUES(?,?,?,?,?)', purchases)
 </pre></div>
 <p>参考资料</p>
 <p><a href="https://github.com/ghaering/pysqlite">https://github.com/ghaering/pysqlite</a></p>
-<p>The pysqlite web page – sqlite3 is developed externally under the name “pysqlite”.</p>
+<p>The pysqlite web page &ndash; sqlite3 is developed externally under the name &ldquo;pysqlite&rdquo;.</p>
 <p><a href="http://www.sqlite.org/">http://www.sqlite.org/</a>
 The SQLite web page; the documentation describes the syntax and the available data types for the supported SQL dialect.</p>
 <p><a href="http://www.w3schools.com/sql/">http://www.w3schools.com/sql/</a>
@@ -488,10 +488,10 @@ Tutorial, reference and examples for learning SQL syntax.</p>
 <p>SQLite库的版本号，整数元组形式。</p>
 <p><strong>sqlite3.PARSE_DECLTYPES</strong></p>
 <p>该常量用于connect()函数的detect_typed参数</p>
-<p>设置它使得sqlite3模块解析每个返回列的声明的类型。它将解析出声明的类型的第一个单词，比如，　“inter primary key", 它将解析出"integer", 而"number(10)",将解析出”number"。然而对应那列，它将查询转换器字典并对类型使用对应注册的转换器函数。</p>
+<p>设置它使得sqlite3模块解析每个返回列的声明的类型。它将解析出声明的类型的第一个单词，比如，　&ldquo;inter primary key", 它将解析出"integer", 而"number(10)",将解析出&rdquo;number"。然而对应那列，它将查询转换器字典并对类型使用对应注册的转换器函数。</p>
 <p><strong>sqlite3.PARSE_COLNAMES</strong></p>
 <p>该常量用于connect()函数的detect_typed参数</p>
-<p>设置它使得SQLite接口解析每个返回列的列名。它将查找[mytype]形式的字符串，然后决定'mytype'是列的类型。将会尝试在转换器字典中找到对应于“mytype"的转换器，然后将转换器函数应用于返回的值。Cursor.description中找到的列名只是列名的第一个单词，即，如果SQL中有类似 <t3><t4>'as</t4> <t5>"x</t5> <t6>[datetime]"'</t6></t3>的内容，那么第一个单词将会解析成列名，知道有空格为止，列名只是简单的"x".</p>
+<p>设置它使得SQLite接口解析每个返回列的列名。它将查找[mytype]形式的字符串，然后决定'mytype'是列的类型。将会尝试在转换器字典中找到对应于&ldquo;mytype"的转换器，然后将转换器函数应用于返回的值。Cursor.description中找到的列名只是列名的第一个单词，即，如果SQL中有类似 <t3><t4>'as</t4> <t5>"x</t5> <t6>[datetime]"'</t6></t3>的内容，那么第一个单词将会解析成列名，知道有空格为止，列名只是简单的"x".</p>
 <p><strong>sqlite3.connect(database[,timeout, detect_types, isolation_level,check_same_thread, factory, cached_statements])</strong></p>
 <p>打开到SQLite数据库文件database的连接。可以使用:memory: 打开内存的数据库连接。</p>
 <p>当多个连接访问数据库，其中一个进程修改了数据库，SQLite数据库会锁定，直到事务被提交。timeout参数指明为了得到锁，连接最多等待的时间，如果超时会抛出异常。超时参数默认为5s.</p>
