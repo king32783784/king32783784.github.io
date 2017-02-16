@@ -444,8 +444,8 @@
 <div class="highlight"><pre><span></span>&gt;&gt;&gt; print ObjectCreator     # 你可以打印一个类，因为它其实也是一个对象
 &lt;class '__main__.ObjectCreator'&gt;
 &gt;&gt;&gt; def echo(o):
-&hellip;       print o
-&hellip;
+…       print o
+…
 &gt;&gt;&gt; echo(ObjectCreator)                 # 你可以将类做为参数传给函数
 &lt;class '__main__.ObjectCreator'&gt;
 &gt;&gt;&gt; print hasattr(ObjectCreator, 'new_attribute')
@@ -462,15 +462,15 @@ foo
 <h3 id="dong-tai-di-chuang-jian-lei">动态地创建类</h3>
 <p>因为类也是对象，可以在运行时动态的创建他们，就像其他任何对象一样。首先，可以在函数中创建类，使用class关键字即可。</p>
 <div class="highlight"><pre><span></span>&gt;&gt;&gt; def choose_class(name):
-&hellip;       if name == 'foo':
-&hellip;           class Foo(object):
-&hellip;               pass
-&hellip;           return Foo     # 返回的是类，不是类的实例
-&hellip;       else:
-&hellip;           class Bar(object):
-&hellip;               pass
-&hellip;           return Bar
-&hellip;
+…       if name == 'foo':
+…           class Foo(object):
+…               pass
+…           return Foo     # 返回的是类，不是类的实例
+…       else:
+…           class Bar(object):
+…               pass
+…           return Bar
+…
 &gt;&gt;&gt; MyClass = choose_class('foo')
 &gt;&gt;&gt; print MyClass              # 函数返回的是类，不是类的实例
 &lt;class '__main__'.Foo&gt;
@@ -536,8 +536,8 @@ True
 </pre></div>
 <p>最终你会希望为你的类增加方法，只需要定义一个有着恰当签名的函数并将其作为属性赋值就可以了。</p>
 <div class="highlight"><pre><span></span>&gt;&gt;&gt; def echo_bar(self): 
-&hellip;       print self.bar
-&hellip;
+…       print self.bar
+…
 &gt;&gt;&gt; FooChild = type('FooChild', (Foo,), {'echo_bar': echo_bar})
 &gt;&gt;&gt; hasattr(Foo, 'echo_bar')
 False
@@ -549,7 +549,7 @@ True
 </pre></div>
 <p>你可以看到，python中，类也是对象，可以动态的创建类。这就是当你使用关键字class时python在幕后做的事情，而这就是通过元类来实现的。</p>
 <h3 id="dao-di-shi-yao-shi-yuan-lei">到底什么是元类？</h3>
-<p>元类就是用来创建类的&ldquo;东西&rdquo;。你创建类就是为了创建类的实例对象，不是吗？但是我们已经了解到python中的类也是对象。元类就是用来创建类（对象）的，元类就是类的类，可以这样理解：</p>
+<p>元类就是用来创建类的“东西”。你创建类就是为了创建类的实例对象，不是吗？但是我们已经了解到python中的类也是对象。元类就是用来创建类（对象）的，元类就是类的类，可以这样理解：</p>
 <div class="highlight"><pre><span></span>MyClas = MetaClass()
 MyObject = MyClass()
 </pre></div>
@@ -582,7 +582,7 @@ __class__属性来看到这一点。Python中所有的东西，注意，我是�
 &gt;&gt;&gt; b.__class__.__class__
 &lt;type 'type'&gt;
 </pre></div>
-<p>因此元类就是创建类这种对象的东西，如果你喜欢的话，可以把元类称作&ldquo;类工厂&rdquo;（不要和工厂类搞混就好） type就是Python内建元类，当然，你也可以创建自己的元类。</p>
+<p>因此元类就是创建类这种对象的东西，如果你喜欢的话，可以把元类称作“类工厂”（不要和工厂类搞混就好） type就是Python内建元类，当然，你也可以创建自己的元类。</p>
 <h3 id="__metaclass__shu-xing">__metaclass__属性</h3>
 <p>你可以在写一个类的时候为其添加__metaclass__属性。</p>
 <div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">Foo</span>(<span class="n">object</span>):
@@ -601,10 +601,10 @@ python就会用它来创建类Foo,如果没有找到，就会用内建的type来
 <h3 id="zi-ding-yi-yuan-lei">自定义元类</h3>
 <p>元类的主要目的就是为了当创建类时能够自动的改变类。通常，你会为API做这样的事情，你希望可以创建符合当前上下文的类。假想一个很傻的例子，你决定在你的模块里所有的类的属性都应该是大写形式。有好几种方法可以办到，但其中一种就是通过在模块级别设定__metaclass__。采用这种方法，这个模块中的所有类都会通过这个元类来创建，我们只需要告诉元类把所有的属性都改成大写形式即可。</p>
 <p>幸运的是，__metaclass__实际上可以被任意调用，它并不是一个正式的类。所以，我们这里先以一个简单的函数作为例子开始。</p>
-<div class="highlight"><pre><span></span># 元类会自动将你通常传给&ldquo;type"的参数作为自己的参数传入
+<div class="highlight"><pre><span></span># 元类会自动将你通常传给“type"的参数作为自己的参数传入
 def upper_attr(future_class_name, future_class_parents, future__class_attr)
-    '''返回一个类对象，将属性都转为大写形式&lsquo;&rsquo;&lsquo;
-    #  选择所有不以&ldquo;__&rdquo;开头的属性
+    '''返回一个类对象，将属性都转为大写形式‘’‘
+    #  选择所有不以“__”开头的属性
     attrs = ((name, value) for name, value in future_class_attr.items() if not name.startswith('__'))
 </pre></div>
 <p>下一篇<a href="https://king32783784.github.io/2017/01/15/python/">python metaclass(下)</a></p>

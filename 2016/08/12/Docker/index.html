@@ -413,8 +413,7 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    <body><p>在 <a href="https://king32783784.github.io/lipeng/2016/08/11/Docker/">Docker基础技术：Linux Namespace（上篇)</a>中我们了解了，UTD、IPC、PID、Mount 四个namespace，我们模仿Docker做了一个相当相当山寨的镜像。在这一篇中，主要想向大家介绍Linux的User和Network的Namespace。
-<img class="img-responsive" height="280" src="https://raw.githubusercontent.com/king32783784/king32783784.github.io/master/tmpfile/Autotest1.png" width="420"/></p>
+                    <body><p>在 <a href="https://king32783784.github.io/lipeng/2016/08/11/Docker/">Docker基础技术：Linux Namespace（上篇)</a>中我们了解了，UTD、IPC、PID、Mount 四个namespace，我们模仿Docker做了一个相当相当山寨的镜像。在这一篇中，主要想向大家介绍Linux的User和Network的Namespace。</p>
 <p>好，下面我们就介绍一下还剩下的这两个Namespace。</p>
 <h4 id="user-namespace">User Namespace</h4>
 <p><strong>User Namespace</strong> 主要是用了CLONE_NEWUSER的参数。使用了这个参数后，内部看到的UID和GID已经与外部不同了，默认显示为65534。那是因为容器找不到其真正的UID所以，设置上了最大的UID（其设置定义在/proc/sys/kernel/overflowuid）。</p>
@@ -549,28 +548,29 @@
 <span class="p">}</span>
 </pre></div>
 <p>上面的程序，我们用了一个pipe来对父子进程进行同步，为什么要这样做？因为子进程中有一个execv的系统调用，这个系统调用会把当前子进程的进程空间给全部覆盖掉，我们希望在execv之前就做好user namespace的uid/gid的映射，这样，execv运行的/bin/bash就会因为我们设置了uid为0的inside-uid而变成#号的提示符。</p>
-<p>整个程序的运行效果如下：
-    hchen@ubuntu:~<span class="math">\( id
-    uid=1000(hchen) gid=1000(hchen) groups=1000(hchen)
-    hchen@ubuntu:~\)</span> ./user #&lt;--以hchen用户运行
-    Parent: eUID = 1000;  eGID = 1000, UID=1000, GID=1000
-    Parent [ 3262] - start a container!
-    Parent [ 3262] - Container [ 3263]!
-    Parent [ 3262] - user/group mapping done!
-    Container [    1] - inside the container!
-    Container: eUID = 0;  eGID = 0, UID=0, GID=0 #&lt;---Container里的UID/GID都为0了
-    Container [    1] - setup hostname!</p>
-<div class="highlight"><pre><span></span>root@container:~# id #&lt;----我们可以看到容器里的用户和命令行提示符是root用户了
-uid=0(root) gid=0(root) groups=0(root),65534(nogroup)
+<p>整个程序的运行效果如下：</p>
+<div class="highlight"><pre><span></span><span class="nt">hchen</span><span class="k">@ubuntu</span><span class="o">:~$</span> <span class="nt">id</span>
+<span class="nt">uid</span><span class="o">=</span><span class="nt">1000</span><span class="o">(</span><span class="nt">hchen</span><span class="o">)</span> <span class="nt">gid</span><span class="o">=</span><span class="nt">1000</span><span class="o">(</span><span class="nt">hchen</span><span class="o">)</span> <span class="nt">groups</span><span class="o">=</span><span class="nt">1000</span><span class="o">(</span><span class="nt">hchen</span><span class="o">)</span>
+<span class="nt">hchen</span><span class="k">@ubuntu</span><span class="o">:~$</span> <span class="o">./</span><span class="nt">user</span> <span class="err">#</span><span class="o">&lt;</span><span class="nt">--</span><span class="err">以</span><span class="nt">hchen</span><span class="err">用户运行</span>
+<span class="nt">Parent</span><span class="o">:</span> <span class="nt">eUID</span> <span class="o">=</span> <span class="nt">1000</span><span class="p">;</span>  <span class="nt">eGID</span> <span class="o">=</span> <span class="nt">1000</span><span class="o">,</span> <span class="nt">UID</span><span class="o">=</span><span class="nt">1000</span><span class="o">,</span> <span class="nt">GID</span><span class="o">=</span><span class="nt">1000</span>
+<span class="nt">Parent</span> <span class="cp">[</span> <span class="mi">3262</span><span class="cp">]</span> <span class="nt">-</span> <span class="nt">start</span> <span class="nt">a</span> <span class="nt">container</span><span class="o">!</span>
+<span class="nt">Parent</span> <span class="cp">[</span> <span class="mi">3262</span><span class="cp">]</span> <span class="nt">-</span> <span class="nt">Container</span> <span class="cp">[</span> <span class="mi">3263</span><span class="cp">]</span><span class="o">!</span>
+<span class="nt">Parent</span> <span class="cp">[</span> <span class="mi">3262</span><span class="cp">]</span> <span class="nt">-</span> <span class="nt">user</span><span class="o">/</span><span class="nt">group</span> <span class="nt">mapping</span> <span class="nt">done</span><span class="o">!</span>
+<span class="nt">Container</span> <span class="cp">[</span>    <span class="mi">1</span><span class="cp">]</span> <span class="nt">-</span> <span class="nt">inside</span> <span class="nt">the</span> <span class="nt">container</span><span class="o">!</span>
+<span class="nt">Container</span><span class="o">:</span> <span class="nt">eUID</span> <span class="o">=</span> <span class="nt">0</span><span class="p">;</span>  <span class="nt">eGID</span> <span class="o">=</span> <span class="nt">0</span><span class="o">,</span> <span class="nt">UID</span><span class="o">=</span><span class="nt">0</span><span class="o">,</span> <span class="nt">GID</span><span class="o">=</span><span class="nt">0</span> <span class="err">#</span><span class="o">&lt;</span><span class="nt">---Container</span><span class="err">里的</span><span class="nt">UID</span><span class="o">/</span><span class="nt">GID</span><span class="err">都为</span><span class="nt">0</span><span class="err">了</span>
+<span class="nt">Container</span> <span class="cp">[</span>    <span class="mi">1</span><span class="cp">]</span> <span class="nt">-</span> <span class="nt">setup</span> <span class="nt">hostname</span><span class="o">!</span>
+
+<span class="nt">root</span><span class="k">@container</span><span class="o">:~</span><span class="err">#</span> <span class="nt">id</span> <span class="err">#</span><span class="o">&lt;</span><span class="nt">----</span><span class="err">我们可以看到容器里的用户和命令行提示符是</span><span class="nt">root</span><span class="err">用户了</span>
+<span class="nt">uid</span><span class="o">=</span><span class="nt">0</span><span class="o">(</span><span class="nt">root</span><span class="o">)</span> <span class="nt">gid</span><span class="o">=</span><span class="nt">0</span><span class="o">(</span><span class="nt">root</span><span class="o">)</span> <span class="nt">groups</span><span class="o">=</span><span class="nt">0</span><span class="o">(</span><span class="nt">root</span><span class="o">),</span><span class="nt">65534</span><span class="o">(</span><span class="nt">nogroup</span><span class="o">)</span>
+<span class="err">虽然容器里是</span><span class="nt">root</span><span class="err">，但其实这个容器的</span><span class="o">/</span><span class="nt">bin</span><span class="o">/</span><span class="nt">bash</span><span class="err">进程是以一个普通用户</span><span class="nt">hchen</span><span class="err">来运行的。这样一来，我们容器的安全性会得到提高。</span>
 </pre></div>
-<p>虽然容器里是root，但其实这个容器的/bin/bash进程是以一个普通用户hchen来运行的。这样一来，我们容器的安全性会得到提高。</p>
 <p>我们注意到，User Namespace是以普通用户运行，但是别的Namespace需要root权限，那么，如果我要同时使用多个Namespace，该怎么办呢？一般来说，我们先用一般用户创建User Namespace，然后把这个一般用户映射成root，在容器内用root来创建其它的Namesapce。</p>
 <h4 id="network-namespace">Network Namespace</h4>
-<p>Network的Namespace比较啰嗦。在Linux下，我们一般用ip命令创建Network Namespace（Docker的源码中，它没有用ip命令，而是自己实现了ip命令内的一些功能&mdash;&mdash;是用了Raw Socket发些&ldquo;奇怪&rdquo;的数据，呵呵）。这里，我还是用ip命令讲解一下。</p>
-<p>首先，我们先看个图，下面这个图基本上就是Docker在宿主机上的网络示意图（其中的物理网卡并不准确，因为docker可能会运行在一个VM中，所以，这里所谓的&ldquo;物理网卡&rdquo;其实也就是一个有可以路由的IP的网卡）</p>
+<p>Network的Namespace比较啰嗦。在Linux下，我们一般用ip命令创建Network Namespace（Docker的源码中，它没有用ip命令，而是自己实现了ip命令内的一些功能——是用了Raw Socket发些“奇怪”的数据，呵呵）。这里，我还是用ip命令讲解一下。</p>
+<p>首先，我们先看个图，下面这个图基本上就是Docker在宿主机上的网络示意图（其中的物理网卡并不准确，因为docker可能会运行在一个VM中，所以，这里所谓的“物理网卡”其实也就是一个有可以路由的IP的网卡）</p>
 <p><img alt="" class="img-responsive" src="https://king32783784.github.io/lipeng/tmpfile/network.namespace.jpg"/></p>
 <p>上图中，Docker使用了一个私有网段，172.40.1.0，docker还可能会使用10.0.0.0和192.168.0.0这两个私有网段，关键看你的路由表中是否配置了，如果没有配置，就会使用，如果你的路由表配置了所有私有网段，那么docker启动时就会出错了。</p>
-<p>当你启动一个Docker容器后，你可以使用ip link show或ip addr show来查看当前宿主机的网络情况（我们可以看到有一个docker0，还有一个veth22a38e6的虚拟网卡&mdash;&mdash;给容器用的）：</p>
+<p>当你启动一个Docker容器后，你可以使用ip link show或ip addr show来查看当前宿主机的网络情况（我们可以看到有一个docker0，还有一个veth22a38e6的虚拟网卡——给容器用的）：</p>
 <div class="highlight"><pre><span></span>hchen@ubuntu:~$ ip link show
 1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state ...
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -634,7 +634,7 @@ ip netns exec <span class="cp">${</span><span class="n">container</span><span cl
 ip netns exec <span class="cp">${</span><span class="n">container</span><span class="o">-</span><span class="n">pid</span><span class="cp">}</span> ip addr add <span class="cp">${</span><span class="n">ROUTEABLE_IP</span><span class="cp">}</span> dev eth1 ;
 </pre></div>
 <p>上面的示例是我们为正在运行的docker容器，增加一个eth1的网卡，并给了一个静态的可被外部访问到的IP地址。</p>
-<p>这个需要把外部的&ldquo;物理网卡&rdquo;配置成混杂模式，这样这个eth1网卡就会向外通过ARP协议发送自己的Mac地址，然后外部的交换机就会把到这个IP地址的包转到&ldquo;物理网卡&rdquo;上，因为是混杂模式，所以eth1就能收到相关的数据，一看，是自己的，那么就收到。这样，Docker容器的网络就和外部通了。</p>
+<p>这个需要把外部的“物理网卡”配置成混杂模式，这样这个eth1网卡就会向外通过ARP协议发送自己的Mac地址，然后外部的交换机就会把到这个IP地址的包转到“物理网卡”上，因为是混杂模式，所以eth1就能收到相关的数据，一看，是自己的，那么就收到。这样，Docker容器的网络就和外部通了。</p>
 <p>当然，无论是Docker的NAT方式，还是混杂模式都会有性能上的问题，NAT不用说了，存在一个转发的开销，混杂模式呢，网卡上收到的负载都会完全交给所有的虚拟网卡上，于是就算一个网卡上没有数据，但也会被其它网卡上的数据所影响。</p>
 <p>这两种方式都不够完美，我们知道，真正解决这种网络问题需要使用VLAN技术，于是Google的同学们为Linux内核实现了一个IPVLAN的驱动，这基本上就是为Docker量身定制的。</p>
 <h4 id="namespacewen-jian">Namespace文件</h4>
@@ -671,7 +671,7 @@ lrwxrwxrwx 1 root root 0  4月  7 22:01 user -&gt; user:[4026531837]
 lrwxrwxrwx 1 root root 0  4月  7 22:01 uts -&gt; uts:[4026532521]
 </pre></div>
 <p>我们可以看到，其中的ipc，net，user是同一个ID，而mnt,pid,uts都是不一样的。如果两个进程指向的namespace编号相同，就说明他们在同一个namespace下，否则则在不同namespace里面。</p>
-<p>这些文件还有另一个作用，那就是，一旦这些文件被打开，只要其fd被占用着，那么就算PID所属的所有进程都已经结束，创建的namespace也会一直存在。比如：我们可以通过：mount &ndash;bind /proc/4600/ns/uts ~/uts 来hold这个namespace。</p>
+<p>这些文件还有另一个作用，那就是，一旦这些文件被打开，只要其fd被占用着，那么就算PID所属的所有进程都已经结束，创建的namespace也会一直存在。比如：我们可以通过：mount –bind /proc/4600/ns/uts ~/uts 来hold这个namespace。</p>
 <p>另外，我们在上篇中讲过一个setns的系统调用，其函数声明如下：</p>
 <div class="highlight"><pre><span></span>int setns(int fd, int nstype);
 </pre></div>
@@ -682,66 +682,9 @@ setns(fd, 0); // 加入新的namespace
 <p>参考文档</p>
 <p><a href="http://lwn.net/Articles/531114/">Namespaces in operation</a></p>
 <p><a href="http://man7.org/linux/man-pages/man7/namespaces.7.html">Linux Namespace Man Page</a></p>
-<p><a href="http://crosbymichael.com/creating-containers-part-1.html">Creat Containers &ndash; Part 1</a></p>
+<p><a href="http://crosbymichael.com/creating-containers-part-1.html">Creat Containers – Part 1</a></p>
 <p><a href="https://blog.yadutaf.fr/2013/12/22/introduction-to-linux-namespaces-part-1-uts/">Introduction to Linux namespaces</a></p>
-<p>（全文完）</p>
-<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
-
-    if (false) {
-        align = (screen.width < 768) ? "left" : align;
-        indent = (screen.width < 768) ? "0em" : indent;
-        linebreak = (screen.width < 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    var location_protocol = (false) ? 'https' : document.location.protocol;
-    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-</script></body>
+<p>（全文完）</p></body>
                 </div>
                 <footer class="text-right">
                     <p>by others</p>
