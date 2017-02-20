@@ -7467,7 +7467,71 @@ test_shuffle (__main__.TestSequenceFunctions) ... ok
 
 
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/20/autotest/"&gt;Autotest： Autotest-Autotest Remote (Autoserv)(三）&amp;gt;&amp;gt;&lt;/a&gt;
-下一篇&lt;a href=""&gt;Autotest:&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sun, 01 Nov 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-11-01:2015/11/01/autotest/</guid><category>autotest</category></item><item><title>Autotest-Autotest Remote (Autoserv)(三）</title><link>http://king32783784.github.io/2015/08/22/autotest/</link><description>&lt;p&gt;&lt;img src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" height="280" width="480"&gt;&lt;/p&gt;
+下一篇&lt;a href=""&gt;Autotest:&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sun, 01 Nov 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-11-01:2015/11/01/autotest/</guid><category>autotest</category></item><item><title>leetcode - Two Sum</title><link>http://king32783784.github.io/2015/10/01/python/</link><description>&lt;h4&gt;问题描述&lt;/h4&gt;
+&lt;p&gt;Given an array of integers, return indices of the two numbers such that they add up to a specific target.&lt;/p&gt;
+&lt;p&gt;You may assume that each input would have exactly one solution, and you may not use the same element twice.&lt;/p&gt;
+&lt;p&gt;Example:
+Given nums = [2, 7, 11, 15], target = 9,&lt;/p&gt;
+&lt;p&gt;Because nums[0] + nums[1] = 2 + 7 = 9,
+return [0, 1]&lt;/p&gt;
+&lt;p&gt;大体意思就是给出一个数组，数组中存在两个数的和为给出的目标和，数组中的数字只能用一次，给出符合要求数的索引值。&lt;/p&gt;
+&lt;h4&gt;Python示例&lt;/h4&gt;
+&lt;p&gt;示例一&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;Solution&lt;/span&gt;(&lt;span class="n"&gt;object&lt;/span&gt;):
+
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;twoSum&lt;/span&gt;(&lt;span class="k"&gt;self&lt;/span&gt;, &lt;span class="n"&gt;nums&lt;/span&gt;, &lt;span class="n"&gt;target&lt;/span&gt;):
+
+        &lt;span class="s"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+&lt;span class="s"&gt;        :type nums: List[int]&lt;/span&gt;
+
+&lt;span class="s"&gt;        :type target: int&lt;/span&gt;
+
+&lt;span class="s"&gt;        :rtype: List[int]&lt;/span&gt;
+
+&lt;span class="s"&gt;        &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;len&lt;/span&gt;(&lt;span class="n"&gt;nums&lt;/span&gt;) &amp;lt; &lt;span class="mi"&gt;2&lt;/span&gt;:
+
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;False&lt;/span&gt;
+
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;firstindex&lt;/span&gt;, &lt;span class="n"&gt;firstnum&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;enumerate&lt;/span&gt;(&lt;span class="n"&gt;nums&lt;/span&gt;):   &lt;span class="c c-Singleline"&gt;# 遍历数组&lt;/span&gt;
+
+            &lt;span class="n"&gt;secondnum&lt;/span&gt; = &lt;span class="n"&gt;target&lt;/span&gt; - &lt;span class="n"&gt;firstnum&lt;/span&gt;
+          &lt;span class="c c-Singleline"&gt;# 求匹配的值&lt;/span&gt;
+            &lt;span class="n"&gt;nums&lt;/span&gt;[&lt;span class="n"&gt;firstindex&lt;/span&gt;] = &lt;span class="s"&gt;&amp;quot;a&amp;quot;&lt;/span&gt;
+                 &lt;span class="c c-Singleline"&gt;# 替换该值，避免影响获取匹配值的索引&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;secondnum&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;nums:&lt;/span&gt;
+                  &lt;span class="c c-Singleline"&gt;# 判断数组中是否包含匹配值&lt;/span&gt;
+                &lt;span class="n"&gt;secondindex&lt;/span&gt; = &lt;span class="n"&gt;nums&lt;/span&gt;.&lt;span class="nb"&gt;index&lt;/span&gt;(&lt;span class="n"&gt;secondnum&lt;/span&gt;)
+&lt;span class="c c-Singleline"&gt;# 获取匹配值的索引&lt;/span&gt;
+                &lt;span class="k"&gt;return&lt;/span&gt; [&lt;span class="n"&gt;firstindex&lt;/span&gt;, &lt;span class="n"&gt;secondindex&lt;/span&gt;]
+   &lt;span class="c c-Singleline"&gt;# 返回坐标&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;该示例运行leetcode的测试代码的时间为699 ms。&lt;/p&gt;
+&lt;p&gt;替换对应数值，获取匹配值的索引，消耗了时间。&lt;/p&gt;
+&lt;p&gt;示例二&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;Solution&lt;/span&gt;(&lt;span class="n"&gt;object&lt;/span&gt;):
+
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;twoSum&lt;/span&gt;(&lt;span class="k"&gt;self&lt;/span&gt;, &lt;span class="n"&gt;nums&lt;/span&gt;, &lt;span class="n"&gt;target&lt;/span&gt;):
+
+        &lt;span class="n"&gt;dict&lt;/span&gt; = {}                 &lt;span class="c c-Singleline"&gt;# 字典保存对应值的索引&lt;/span&gt;
+
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;, &lt;span class="nb"&gt;value&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;enumerate&lt;/span&gt;(&lt;span class="n"&gt;nums&lt;/span&gt;):
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;# 遍历数组
+                if target-value in dict:
+      # 判断匹配值是否在字典中
+                    return (dict[target-value], i)
+  # 如果存在，返回字典中对应索引，和当前索引
+                dict[value] = i
+                     # 将当前值和对应索引保存到字典&lt;/p&gt;
+&lt;p&gt;该示例运行leetcode的测试代码的时间为346ms。
+减少示例一替换和获取索引值的耗时。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Thu, 01 Oct 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-10-01:2015/10/01/python/</guid><category>Python-Two Sum</category></item><item><title>Autotest-Autotest Remote (Autoserv)(三）</title><link>http://king32783784.github.io/2015/08/22/autotest/</link><description>&lt;p&gt;&lt;img src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" height="280" width="480"&gt;&lt;/p&gt;
 &lt;h3&gt;Running Autotest In a Guest&lt;/h3&gt;
 &lt;p&gt;接下来看一下虚拟机guest执行一次测试的列子。control文件有点特别的是需要在host中运行OProfile收集运行时的信息。使用oprofile前，需要在guest安装。
 给KVm指定一个IP，就会有一个虚拟机生成。试图运行虚拟机里面的oprofile，但没有成功。最后，选项"opcontrol --setup"应根据host中vmlinux位置调整。&lt;/p&gt;
