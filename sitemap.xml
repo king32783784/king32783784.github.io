@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://king32783784.github.io/</loc>
-<lastmod>2017-02-20T17:34:18-00:00</lastmod>
+<lastmod>2017-02-22T11:26:10-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>http://king32783784.github.io/archives.html</loc>
-<lastmod>2017-02-20T17:34:18-00:00</lastmod>
+<lastmod>2017-02-22T11:26:10-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>http://king32783784.github.io/tags.html</loc>
-<lastmod>2017-02-20T17:34:18-00:00</lastmod>
+<lastmod>2017-02-22T11:26:10-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>http://king32783784.github.io/categories.html</loc>
-<lastmod>2017-02-20T17:34:18-00:00</lastmod>
+<lastmod>2017-02-22T11:26:10-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
@@ -132,6 +132,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://king32783784.github.io/2016/12/24/python/</loc>
 <lastmod>2016-12-24T00:00:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://king32783784.github.io/2016/12/01/mongodb/</loc>
+<lastmod>2016-12-01T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -690,6 +697,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://king32783784.github.io/category/mongodb.html</loc>
+<lastmod>2016-12-01T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.6</priority>
+</url>
+
+<url>
 <loc>http://king32783784.github.io/tag/selenium.html</loc>
 <lastmod>2015-02-03T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -795,6 +809,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://king32783784.github.io/tag/mongodb.html</loc>
+<lastmod>2016-12-01T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.6</priority>
+</url>
+
+<url>
 <loc>http://king32783784.github.io/tag/python-two-sum.html</loc>
 <lastmod>2015-10-01T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -846,6 +867,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://king32783784.github.io/author/others.html</loc>
 <lastmod>2016-09-01T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.6</priority>
+</url>
+
+<url>
+<loc>http://king32783784.github.io/author/penglee.html</loc>
+<lastmod>2016-12-01T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
