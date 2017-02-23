@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>路漫求索</title><link href="http://king32783784.github.io/" rel="alternate"></link><link href="http://king32783784.github.io/feeds/penglee.atom.xml" rel="self"></link><id>http://king32783784.github.io/</id><updated>2016-12-01T00:00:00+08:00</updated><entry><title>Mongodb-linux安装</title><link href="http://king32783784.github.io/2016/12/01/mongodb/" rel="alternate"></link><published>2016-12-01T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2016-12-01:2016/12/01/mongodb/</id><summary type="html">&lt;p&gt;MongoDB是由c++编写，是一个基于分布式文件存储的开源数据库系统。数据结构由键值对组成，类似于json对象。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>路漫求索</title><link href="http://king32783784.github.io/" rel="alternate"></link><link href="http://king32783784.github.io/feeds/penglee.atom.xml" rel="self"></link><id>http://king32783784.github.io/</id><updated>2016-12-01T00:00:00+08:00</updated><entry><title>Mongodb-linux安装</title><link href="http://king32783784.github.io/2016/12/01/mongodb/" rel="alternate"></link><published>2016-12-01T00:00:00+08:00</published><author><name>peng.lee</name></author><id>tag:king32783784.github.io,2016-12-01:2016/12/01/mongodb/</id><summary type="html">&lt;body&gt;&lt;p&gt;MongoDB是由c++编写，是一个基于分布式文件存储的开源数据库系统。数据结构由键值对组成，类似于json对象。&lt;/p&gt;
 &lt;p&gt;Mongodb支持Red Hat、SUSE、Amazon、Ubuntu、Debian系统的安装包直接安装。公司自己的操作系统不在这个范围内，所以需要通过Tarball安装。Tarball安装支持除了前面列举的
 linux系统之外的安装。注意，如果是前面列举的操作系统之一，就不要再采用这种方式安装了。&lt;/p&gt;
-&lt;h4&gt;安装MongoDB 社区版本&lt;/h4&gt;
+&lt;h4 id="an-zhuang-mongodb-she-qu-ban-ben"&gt;安装MongoDB 社区版本&lt;/h4&gt;
 &lt;p&gt;MondgoDB目前只提供64位linux系统。按照下面的安装步骤进行安装。我选择的是3.2版本&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;下载MongoDB二进制文件&lt;/li&gt;
@@ -10,8 +10,6 @@ linux系统之外的安装。注意，如果是前面列举的操作系统之一
 &lt;p&gt;例如：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;curl -O https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.4.2.tgz
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;至于下载到哪个目录，根据自己情况自定义选择。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -24,11 +22,11 @@ linux系统之外的安装。注意，如果是前面列举的操作系统之一
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;添加mongodb的二进制目录到PATH变量&lt;/p&gt;
-&lt;p&gt;export PATH=&lt;mongodb-install-directory&gt;/bin:$PATH&lt;/p&gt;
+&lt;p&gt;export PATH=&lt;mongodb-install-directory&gt;/bin:$PATH&lt;/mongodb-install-directory&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;mongodb-install-directory 替换为实际存放目录&lt;/p&gt;
-&lt;h4&gt;运行社区版MongoDB&lt;/h4&gt;
+&lt;h4 id="yun-xing-she-qu-ban-mongodb"&gt;运行社区版MongoDB&lt;/h4&gt;
 &lt;p&gt;在启动MongoDB之前，创建一个用于mongod程序写入数据的目录。默认情况下，mongod程序使用/data/db目录。 如果想创建其他目录，并使用，需要在启动mongod前通过dbpath指定。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -47,31 +45,23 @@ linux系统之外的安装。注意，如果是前面列举的操作系统之一
   如果系统环境变量PATH包括mongod，并且使用默认的数据仓库（/data/db)，可以通过mongod简单的启动：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mongod
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;启动log片段：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;2016-12-01T10&lt;/span&gt;&lt;span class="nd"&gt;:56:56&lt;/span&gt;&lt;span class="nc"&gt;.238&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nt"&gt;0800&lt;/span&gt; &lt;span class="nt"&gt;I&lt;/span&gt; &lt;span class="nt"&gt;FTDC&lt;/span&gt;     &lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;initandlisten&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; &lt;span class="nt"&gt;Initializing&lt;/span&gt; &lt;span class="nt"&gt;full-time&lt;/span&gt; &lt;span class="nt"&gt;diagnostic&lt;/span&gt; &lt;span class="nt"&gt;data&lt;/span&gt; &lt;span class="nt"&gt;capture&lt;/span&gt; &lt;span class="nt"&gt;with&lt;/span&gt; &lt;span class="nt"&gt;directory&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;/data/db/diagnostic.data&amp;#39;&lt;/span&gt;
-&lt;span class="nt"&gt;2016-12-01T10&lt;/span&gt;&lt;span class="nd"&gt;:56:56&lt;/span&gt;&lt;span class="nc"&gt;.504&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nt"&gt;0800&lt;/span&gt; &lt;span class="nt"&gt;I&lt;/span&gt; &lt;span class="nt"&gt;INDEX&lt;/span&gt;    &lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;initandlisten&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; &lt;span class="nt"&gt;build&lt;/span&gt; &lt;span class="nt"&gt;index&lt;/span&gt; &lt;span class="nt"&gt;on&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;admin&lt;/span&gt;&lt;span class="nc"&gt;.system.version&lt;/span&gt; &lt;span class="nt"&gt;properties&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt; &lt;span class="n"&gt;version&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nt"&gt;name&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;incompatible_with_version_32&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nt"&gt;ns&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;admin.system.version&amp;quot;&lt;/span&gt; &lt;span class="err"&gt;}&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;2016-12-01T10&lt;/span&gt;&lt;span class="nd"&gt;:56:56&lt;/span&gt;&lt;span class="nc"&gt;.238&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nt"&gt;0800&lt;/span&gt; &lt;span class="nt"&gt;I&lt;/span&gt; &lt;span class="nt"&gt;FTDC&lt;/span&gt;     &lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;initandlisten&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; &lt;span class="nt"&gt;Initializing&lt;/span&gt; &lt;span class="nt"&gt;full-time&lt;/span&gt; &lt;span class="nt"&gt;diagnostic&lt;/span&gt; &lt;span class="nt"&gt;data&lt;/span&gt; &lt;span class="nt"&gt;capture&lt;/span&gt; &lt;span class="nt"&gt;with&lt;/span&gt; &lt;span class="nt"&gt;directory&lt;/span&gt; &lt;span class="s1"&gt;'/data/db/diagnostic.data'&lt;/span&gt;
+&lt;span class="nt"&gt;2016-12-01T10&lt;/span&gt;&lt;span class="nd"&gt;:56:56&lt;/span&gt;&lt;span class="nc"&gt;.504&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nt"&gt;0800&lt;/span&gt; &lt;span class="nt"&gt;I&lt;/span&gt; &lt;span class="nt"&gt;INDEX&lt;/span&gt;    &lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;initandlisten&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; &lt;span class="nt"&gt;build&lt;/span&gt; &lt;span class="nt"&gt;index&lt;/span&gt; &lt;span class="nt"&gt;on&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nt"&gt;admin&lt;/span&gt;&lt;span class="nc"&gt;.system.version&lt;/span&gt; &lt;span class="nt"&gt;properties&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt; &lt;span class="n"&gt;version&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nt"&gt;name&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"incompatible_with_version_32"&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nt"&gt;ns&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"admin.system.version"&lt;/span&gt; &lt;span class="err"&gt;}&lt;/span&gt;
 &lt;span class="nt"&gt;2016-12-01T10&lt;/span&gt;&lt;span class="nd"&gt;:56:56&lt;/span&gt;&lt;span class="nc"&gt;.504&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nt"&gt;0800&lt;/span&gt; &lt;span class="nt"&gt;I&lt;/span&gt; &lt;span class="nt"&gt;INDEX&lt;/span&gt;    &lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;initandlisten&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt;          &lt;span class="nt"&gt;building&lt;/span&gt; &lt;span class="nt"&gt;index&lt;/span&gt; &lt;span class="nt"&gt;using&lt;/span&gt; &lt;span class="nt"&gt;bulk&lt;/span&gt; &lt;span class="nt"&gt;method&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt; &lt;span class="nt"&gt;build&lt;/span&gt; &lt;span class="nt"&gt;may&lt;/span&gt; &lt;span class="nt"&gt;temporarily&lt;/span&gt; &lt;span class="nt"&gt;use&lt;/span&gt; &lt;span class="nt"&gt;up&lt;/span&gt; &lt;span class="nt"&gt;to&lt;/span&gt; &lt;span class="nt"&gt;500&lt;/span&gt; &lt;span class="nt"&gt;megabytes&lt;/span&gt; &lt;span class="nt"&gt;of&lt;/span&gt; &lt;span class="nt"&gt;RAM&lt;/span&gt;
 &lt;span class="nt"&gt;2016-12-01T10&lt;/span&gt;&lt;span class="nd"&gt;:56:56&lt;/span&gt;&lt;span class="nc"&gt;.504&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nt"&gt;0800&lt;/span&gt; &lt;span class="nt"&gt;I&lt;/span&gt; &lt;span class="nt"&gt;INDEX&lt;/span&gt;    &lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;initandlisten&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; &lt;span class="nt"&gt;build&lt;/span&gt; &lt;span class="nt"&gt;index&lt;/span&gt; &lt;span class="nt"&gt;done&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;  &lt;span class="nt"&gt;scanned&lt;/span&gt; &lt;span class="nt"&gt;0&lt;/span&gt; &lt;span class="nt"&gt;total&lt;/span&gt; &lt;span class="nt"&gt;records&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt; &lt;span class="nt"&gt;0&lt;/span&gt; &lt;span class="nt"&gt;secs&lt;/span&gt;
 &lt;span class="nt"&gt;2016-12-01T10&lt;/span&gt;&lt;span class="nd"&gt;:56:56&lt;/span&gt;&lt;span class="nc"&gt;.505&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nt"&gt;0800&lt;/span&gt; &lt;span class="nt"&gt;I&lt;/span&gt; &lt;span class="nt"&gt;COMMAND&lt;/span&gt;  &lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;initandlisten&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; &lt;span class="nt"&gt;setting&lt;/span&gt; &lt;span class="nt"&gt;featureCompatibilityVersion&lt;/span&gt; &lt;span class="nt"&gt;to&lt;/span&gt; &lt;span class="nt"&gt;3&lt;/span&gt;&lt;span class="nc"&gt;.4&lt;/span&gt;
 &lt;span class="nt"&gt;2016-12-01T10&lt;/span&gt;&lt;span class="nd"&gt;:56:56&lt;/span&gt;&lt;span class="nc"&gt;.505&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nt"&gt;0800&lt;/span&gt; &lt;span class="nt"&gt;I&lt;/span&gt; &lt;span class="nt"&gt;NETWORK&lt;/span&gt;  &lt;span class="cp"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;thread1&lt;/span&gt;&lt;span class="cp"&gt;]&lt;/span&gt; &lt;span class="nt"&gt;waiting&lt;/span&gt; &lt;span class="nt"&gt;for&lt;/span&gt; &lt;span class="nt"&gt;connections&lt;/span&gt; &lt;span class="nt"&gt;on&lt;/span&gt; &lt;span class="nt"&gt;port&lt;/span&gt; &lt;span class="nt"&gt;27017&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;指定mongod路径启动
   使用mongod的绝对路径，启动&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;lt;path to binary&amp;gt;/mongod
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;指定数据仓库路径&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mongod --dbpath &amp;lt;path to data directory&amp;gt;
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;mongod 参数查询 mongod -h&lt;/p&gt;
-&lt;h4&gt;MongoDB使用&lt;/h4&gt;
+&lt;h4 id="mongodbshi-yong"&gt;MongoDB使用&lt;/h4&gt;
 &lt;p&gt;为了帮助使用MongoDB, MongoDB提供了各种驱动程序版本的&lt;a href="https://docs.mongodb.com/manual/#getting-started"&gt;入门指南&lt;/a&gt;
 在生产环境中部署MongoDB之前，请参考&lt;a href="https://docs.mongodb.com/manual/administration/production-notes/"&gt;Production Notes&lt;/a&gt;文档。
 要停止MongoDB，请在运行mongod实例的终端中按Control+C &lt;/p&gt;
@@ -82,19 +72,13 @@ MongoDB shell version v3.4.2
 connecting to: mongodb://127.0.0.1:27017
 MongoDB server version: 3.4.2
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;查询所有的数据库&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;show databases
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;查询结果&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;admin  0.000GB 不可用
 local  0.000GB 不可用
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;常用方法：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt; help
     db.help()                    help on db methods
@@ -112,7 +96,7 @@ local  0.000GB 不可用
     show users                   show users in current database
     show profile                 show most recent system.profile entries with time &amp;gt;= 1ms
     show logs                    show the accessible logger names
-    show log [name]              prints out the last segment of log in memory, &amp;#39;global&amp;#39; is default
+    show log [name]              prints out the last segment of log in memory, 'global' is default
     use &amp;lt;db_name&amp;gt;                set current database
     db.foo.find()                list objects in collection foo
     db.foo.find( { a : 1 } )     list objects in foo where a == 1
@@ -120,11 +104,9 @@ local  0.000GB 不可用
     DBQuery.shellBatchSize = x   set default number of items to display on shell
     exit                         quit the mongo shell
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;db常用方法：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;DB methods:&lt;/span&gt;
-&lt;span class="x"&gt;    db.adminCommand(nameOrDocument) - switches to &amp;#39;admin&amp;#39; db, and runs command [ just calls db.runCommand(...) ]&lt;/span&gt;
+&lt;span class="x"&gt;    db.adminCommand(nameOrDocument) - switches to 'admin' db, and runs command [ just calls db.runCommand(...) ]&lt;/span&gt;
 &lt;span class="x"&gt;    db.auth(username, password)&lt;/span&gt;
 &lt;span class="x"&gt;    db.cloneDatabase(fromhost)&lt;/span&gt;
 &lt;span class="x"&gt;    db.commandHelp(name) returns the help for the command&lt;/span&gt;
@@ -137,8 +119,8 @@ local  0.000GB 不可用
 &lt;span class="x"&gt;    db.eval() - deprecated&lt;/span&gt;
 &lt;span class="x"&gt;    db.fsyncLock() flush data to disk and lock server for backups&lt;/span&gt;
 &lt;span class="x"&gt;    db.fsyncUnlock() unlocks server following a db.fsyncLock()&lt;/span&gt;
-&lt;span class="x"&gt;    db.getCollection(cname) same as db[&amp;#39;cname&amp;#39;] or db.cname&lt;/span&gt;
-&lt;span class="x"&gt;    db.getCollectionInfos([filter]) - returns a list that contains the names and options of the db&amp;#39;s collections&lt;/span&gt;
+&lt;span class="x"&gt;    db.getCollection(cname) same as db['cname'] or db.cname&lt;/span&gt;
+&lt;span class="x"&gt;    db.getCollectionInfos([filter]) - returns a list that contains the names and options of the db's collections&lt;/span&gt;
 &lt;span class="x"&gt;    db.getCollectionNames()&lt;/span&gt;
 &lt;span class="x"&gt;    db.getLastError() - just returns the err msg string&lt;/span&gt;
 &lt;span class="x"&gt;    db.getLastErrorObj() - return full status object&lt;/span&gt;
@@ -152,7 +134,7 @@ local  0.000GB 不可用
 &lt;span class="x"&gt;    db.getReplicationInfo()&lt;/span&gt;
 &lt;span class="x"&gt;    db.getSiblingDB(name) get the db at the same server as this one&lt;/span&gt;
 &lt;span class="x"&gt;    db.getWriteConcern() - returns the write concern used for any operations on this db, inherited from server object if set&lt;/span&gt;
-&lt;span class="x"&gt;    db.hostInfo() get details about the server&amp;#39;s host&lt;/span&gt;
+&lt;span class="x"&gt;    db.hostInfo() get details about the server's host&lt;/span&gt;
 &lt;span class="x"&gt;    db.isMaster() check replica primary status&lt;/span&gt;
 &lt;span class="x"&gt;    db.killOp(opid) kills the current operation in the db&lt;/span&gt;
 &lt;span class="x"&gt;    db.listCommands() lists all the db commands&lt;/span&gt;
@@ -176,21 +158,19 @@ local  0.000GB 不可用
 &lt;span class="x"&gt;    db.stats()&lt;/span&gt;
 &lt;span class="x"&gt;    db.version() current version of the server&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-
-
 &lt;p&gt;指定数据库的集合进行操作、管理和监控
 DBCollection help
         db.mycoll.find().help() - show DBCursor help
-        db.mycoll.bulkWrite( operations, &lt;optional params&gt; ) - bulk execute write operations, optional parameters are: w, wtimeout, j
-        db.mycoll.count( query = {}, &lt;optional params&gt; ) - count the number of documents that matches the query, optional parameters are: limit, skip, hint, maxTimeMS
+        db.mycoll.bulkWrite( operations, &lt;optional params=""&gt; ) - bulk execute write operations, optional parameters are: w, wtimeout, j
+        db.mycoll.count( query = {}, &lt;optional params=""&gt; ) - count the number of documents that matches the query, optional parameters are: limit, skip, hint, maxTimeMS
         db.mycoll.copyTo(newColl) - duplicates collection by copying all documents to newColl; no indexes are copied.
         db.mycoll.convertToCapped(maxBytes) - calls {convertToCapped:'mycoll', size:maxBytes}} command
         db.mycoll.createIndex(keypattern[,options])
         db.mycoll.createIndexes([keypatterns], &lt;options&gt;)
         db.mycoll.dataSize()
-        db.mycoll.deleteOne( filter, &lt;optional params&gt; ) - delete first matching document, optional parameters are: w, wtimeout, j
-        db.mycoll.deleteMany( filter, &lt;optional params&gt; ) - delete all matching documents, optional parameters are: w, wtimeout, j
-        db.mycoll.distinct( key, query, &lt;optional params&gt; ) - e.g. db.mycoll.distinct( 'x' ), optional parameters are: maxTimeMS
+        db.mycoll.deleteOne( filter, &lt;optional params=""&gt; ) - delete first matching document, optional parameters are: w, wtimeout, j
+        db.mycoll.deleteMany( filter, &lt;optional params=""&gt; ) - delete all matching documents, optional parameters are: w, wtimeout, j
+        db.mycoll.distinct( key, query, &lt;optional params=""&gt; ) - e.g. db.mycoll.distinct( 'x' ), optional parameters are: maxTimeMS
         db.mycoll.drop() drop the collection
         db.mycoll.dropIndex(index) - e.g. db.mycoll.dropIndex( "indexName" ) or db.mycoll.dropIndex( { "indexKey" : 1 } )
         db.mycoll.dropIndexes()
@@ -204,37 +184,37 @@ DBCollection help
         db.mycoll.find(...).skip(n)
         db.mycoll.find(...).sort(...)
         db.mycoll.findOne([query], [fields], [options], [readConcern])
-        db.mycoll.findOneAndDelete( filter, &lt;optional params&gt; ) - delete first matching document, optional parameters are: projection, sort, maxTimeMS
-        db.mycoll.findOneAndReplace( filter, replacement, &lt;optional params&gt; ) - replace first matching document, optional parameters are: projection, sort, maxTimeMS, upsert, returnNewDocument
-        db.mycoll.findOneAndUpdate( filter, update, &lt;optional params&gt; ) - update first matching document, optional parameters are: projection, sort, maxTimeMS, upsert, returnNewDocument
+        db.mycoll.findOneAndDelete( filter, &lt;optional params=""&gt; ) - delete first matching document, optional parameters are: projection, sort, maxTimeMS
+        db.mycoll.findOneAndReplace( filter, replacement, &lt;optional params=""&gt; ) - replace first matching document, optional parameters are: projection, sort, maxTimeMS, upsert, returnNewDocument
+        db.mycoll.findOneAndUpdate( filter, update, &lt;optional params=""&gt; ) - update first matching document, optional parameters are: projection, sort, maxTimeMS, upsert, returnNewDocument
         db.mycoll.getDB() get DB object associated with collection
         db.mycoll.getPlanCache() get query plan cache associated with collection
         db.mycoll.getIndexes()
         db.mycoll.group( { key : ..., initial: ..., reduce : ...[, cond: ...] } )
         db.mycoll.insert(obj)
-        db.mycoll.insertOne( obj, &lt;optional params&gt; ) - insert a document, optional parameters are: w, wtimeout, j
-        db.mycoll.insertMany( [objects], &lt;optional params&gt; ) - insert multiple documents, optional parameters are: w, wtimeout, j
-        db.mycoll.mapReduce( mapFunction , reduceFunction , &lt;optional params&gt; )
-        db.mycoll.aggregate( [pipeline], &lt;optional params&gt; ) - performs an aggregation on a collection; returns a cursor
+        db.mycoll.insertOne( obj, &lt;optional params=""&gt; ) - insert a document, optional parameters are: w, wtimeout, j
+        db.mycoll.insertMany( [objects], &lt;optional params=""&gt; ) - insert multiple documents, optional parameters are: w, wtimeout, j
+        db.mycoll.mapReduce( mapFunction , reduceFunction , &lt;optional params=""&gt; )
+        db.mycoll.aggregate( [pipeline], &lt;optional params=""&gt; ) - performs an aggregation on a collection; returns a cursor
         db.mycoll.remove(query)
-        db.mycoll.replaceOne( filter, replacement, &lt;optional params&gt; ) - replace the first matching document, optional parameters are: upsert, w, wtimeout, j
-        db.mycoll.renameCollection( newName , &lt;dropTarget&gt; ) renames the collection.
+        db.mycoll.replaceOne( filter, replacement, &lt;optional params=""&gt; ) - replace the first matching document, optional parameters are: upsert, w, wtimeout, j
+        db.mycoll.renameCollection( newName , &lt;droptarget&gt; ) renames the collection.
         db.mycoll.runCommand( name , &lt;options&gt; ) runs a db command with the given name where the first param is the collection name
         db.mycoll.save(obj)
-        db.mycoll.stats({scale: N, indexDetails: true/false, indexDetailsKey: &lt;index key&gt;, indexDetailsName: &lt;index name&gt;})
+        db.mycoll.stats({scale: N, indexDetails: true/false, indexDetailsKey: &lt;index key=""&gt;, indexDetailsName: &lt;index name=""&gt;})
         db.mycoll.storageSize() - includes free space allocated to this collection
         db.mycoll.totalIndexSize() - size in bytes of all the indexes
         db.mycoll.totalSize() - storage allocated for all data and indexes
         db.mycoll.update( query, object[, upsert_bool, multi_bool] ) - instead of two flags, you can pass an object with fields: upsert, multi
-        db.mycoll.updateOne( filter, update, &lt;optional params&gt; ) - update the first matching document, optional parameters are: upsert, w, wtimeout, j
-        db.mycoll.updateMany( filter, update, &lt;optional params&gt; ) - update all matching documents, optional parameters are: upsert, w, wtimeout, j
+        db.mycoll.updateOne( filter, update, &lt;optional params=""&gt; ) - update the first matching document, optional parameters are: upsert, w, wtimeout, j
+        db.mycoll.updateMany( filter, update, &lt;optional params=""&gt; ) - update all matching documents, optional parameters are: upsert, w, wtimeout, j
         db.mycoll.validate( &lt;full&gt; ) - SLOW
         db.mycoll.getShardVersion() - only for use with sharding
         db.mycoll.getShardDistribution() - prints statistics about data distribution in the cluster
-        db.mycoll.getSplitKeysForChunks( &lt;maxChunkSize&gt; ) - calculates split points over all chunks and returns splitter function
+        db.mycoll.getSplitKeysForChunks( &lt;maxchunksize&gt; ) - calculates split points over all chunks and returns splitter function
         db.mycoll.getWriteConcern() - returns the write concern used for any operations on this collection, inherited from server/db if set
-        db.mycoll.setWriteConcern( &lt;write concern doc&gt; ) - sets the write concern for writes to the collection
-        db.mycoll.unsetWriteConcern( &lt;write concern doc&gt; ) - unsets the write concern for writes to the collection
+        db.mycoll.setWriteConcern( &lt;write concern="" doc=""&gt; ) - sets the write concern for writes to the collection
+        db.mycoll.unsetWriteConcern( &lt;write concern="" doc=""&gt; ) - unsets the write concern for writes to the collection
         db.mycoll.latencyStats() - display operation latency histograms for this collection
 sh.help()
         sh.addShard( host )                       server:port OR setname/server:port
@@ -256,7 +236,7 @@ sh.help()
         sh.stopBalancer()                         stops the balancer so chunks are not balanced automatically
         sh.disableAutoSplit()                   disable autoSplit on one collection
         sh.enableAutoSplit()                    re-eable autoSplit on one colleciton
-        sh.getShouldAutoSplit()                 returns whether autosplit is enabled&lt;/p&gt;
+        sh.getShouldAutoSplit()                 returns whether autosplit is enabled&lt;/write&gt;&lt;/write&gt;&lt;/maxchunksize&gt;&lt;/full&gt;&lt;/optional&gt;&lt;/optional&gt;&lt;/index&gt;&lt;/index&gt;&lt;/options&gt;&lt;/droptarget&gt;&lt;/optional&gt;&lt;/optional&gt;&lt;/optional&gt;&lt;/optional&gt;&lt;/optional&gt;&lt;/optional&gt;&lt;/optional&gt;&lt;/optional&gt;&lt;/optional&gt;&lt;/optional&gt;&lt;/optional&gt;&lt;/options&gt;&lt;/optional&gt;&lt;/optional&gt;&lt;/p&gt;
 &lt;p&gt;rs.help()
         rs.status()                                { replSetGetStatus : 1 } checks repl set status
         rs.initiate()                              { replSetInitiate : null } initiates set with default settings
@@ -278,6 +258,4 @@ sh.help()
     reconfiguration helpers disconnect from the database so the shell will display
     an error, even if the command succeeds.
 &lt;/pre&gt;&lt;/div&gt;
-
-
-&lt;p&gt;mongodb的基本操作下篇再进行说明。&lt;/p&gt;</summary><category term="mongodb"></category></entry></feed>
+&lt;p&gt;mongodb的基本操作下篇再进行说明。&lt;/p&gt;&lt;/body&gt;</summary><category term="mongodb"></category></entry></feed>

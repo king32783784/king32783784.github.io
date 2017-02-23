@@ -5,29 +5,31 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="keywords" content="unix编程" />
+        <meta name="author" content="李鹏" />
+        <meta name="keywords" content="Python-Two Sum" />
+        <meta name="description" content="问题描述 Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution, and you may not use the same element twice. Example: Given nums = [2, 7, 11, 15], target = 9 ..." />
 
 <!-- Open Graph tags -->
 <meta property="og:site_name" content="路漫求索"/>
     <meta property="og:type" content="article"/>
-    <meta property="og:title" content="selenium-Sample(三）"/>
-    <meta property="og:url" content="../2015/01/25/selenium/"/>
-    <meta property="og:description" content="示例５ 拖放drag和drop 代码： # -*- coding: utf-8 -*- import time import os from selenium import webdriver from selenium.webdriver.common.action_chains import ActionChains from selenium.webdriver.support.ui import Select from selenium.webdriver.common.keys import Keys # bugzilla address url = &#34;http://192.168.32.3/&#34; class Testdrog_drop(object): def __init__(self): self.driver ..."/>
-    <meta property="article:published_time" content="2015-01-25" />
-    <meta property="article:section" content="自动化测试-Selenium" />
-        <meta property="article:tag" content="Selenium" />
+    <meta property="og:title" content="leetcode - Two Sum"/>
+    <meta property="og:url" content="../../../../2015/12/01/python/"/>
+    <meta property="og:description" content="问题描述 Given an array of integers, return indices of the two numbers such that they add up to a specific target. You may assume that each input would have exactly one solution, and you may not use the same element twice. Example: Given nums = [2, 7, 11, 15], target = 9 ..."/>
+    <meta property="article:published_time" content="2015-12-01" />
+    <meta property="article:section" content="leetcode" />
+        <meta property="article:tag" content="Python-Two Sum" />
         <meta property="article:author" content="李鹏" />
         <meta property="og:image"
-              content="../favicon.png"/>
+              content="../../../../favicon.png"/>
 
-    <title>unix编程 - 路漫求索</title>
+    <title>leetcode - Two Sum - 路漫求索</title>
 
-        <link rel="stylesheet" href="../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
+        <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
 
-    <link href="../theme/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="../theme/css/pygments/colorful.css" rel="stylesheet" />
+    <link href="../../../../theme/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../../../../theme/css/pygments/colorful.css" rel="stylesheet" />
     
-    <link href="../theme/css/pelican-twitchy.min.css" rel="stylesheet" />
+    <link href="../../../../theme/css/pelican-twitchy.min.css" rel="stylesheet" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -37,7 +39,7 @@
     <![endif]-->
     
     <!-- Feeds -->
-        <link href="../feeds/atom.xml" type="application/atom+xml" rel="alternate"
+        <link href="../../../../feeds/atom.xml" type="application/atom+xml" rel="alternate"
               title="路漫求索 ATOM Feed" />
 </head>
 <body data-spy="scroll" data-target="#scrollspy">
@@ -46,13 +48,13 @@
         <div id="sidebar-wrapper-small" class="twitchy-background">
             <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
                 <li>
-        <a href=".." title="路漫求索" class="collapsed">
+        <a href="../../../.." title="路漫求索" class="collapsed">
             <span class="glyphicon glyphicon-home"></span>
         </a>
     </li>
                 <li class="nav-divider"></li>
                 <li>
-        <a href="../archives.html" title="最新文章" class="collapsed">
+        <a href="../../../../archives.html" title="最新文章" class="collapsed">
             <span class="glyphicon glyphicon-th-list"></span>
         </a>
     </li>
@@ -65,12 +67,12 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-share-small" class="collapse ">
                     <li>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=../2015/01/25/selenium/" title="Share via Facebook" target="popup">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2015/12/01/python/" title="Share via Facebook" target="popup">
                             <i class="fa fa-facebook-square padding-small"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="https://plus.google.com/share?url=../2015/01/25/selenium/" title="Share via Google+" target="popup">
+                        <a href="https://plus.google.com/share?url=../../../../2015/12/01/python/" title="Share via Google+" target="popup">
                             <i class="fa fa-google-plus padding-small"></i>
                         </a>
                     </li>
@@ -108,8 +110,8 @@
         <div id="sidebar-wrapper" class="twitchy-background">
             <ul id="accordion" class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="../">
-<img src="../sitelogo.png" width="200" alt="Sitelogo"/>                     </a>
+                    <a href="../../../../">
+<img src="../../../../sitelogo.png" width="200" alt="Sitelogo"/>                     </a>
                 </li>
                     <li class="nav-divider"></li>
                     <li>
@@ -118,39 +120,39 @@
                             最新文章
                         </a>
                     </li>
-                    <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse ">
+                    <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
-                            <a class="hide-overflow" href="../2017/02/20/python/" title="python实现awk域简单例子">
+                            <a class="hide-overflow" href="../../../../2017/02/20/python/" title="python实现awk域简单例子">
                                 <i class="fa fa-file-text padding-small"></i>
                                 python实现awk域简单例子
                             </a>
                         </li>
                         <li class="">
-                            <a class="hide-overflow" href="../2017/02/13/python/" title="类常用内置方法(二）">
+                            <a class="hide-overflow" href="../../../../2017/02/13/python/" title="类常用内置方法(二）">
                                 <i class="fa fa-file-text padding-small"></i>
                                 类常用内置方法(二）
                             </a>
                         </li>
                         <li class="">
-                            <a class="hide-overflow" href="../2017/01/23/python/" title="类常用内置方法">
+                            <a class="hide-overflow" href="../../../../2017/01/23/python/" title="类常用内置方法">
                                 <i class="fa fa-file-text padding-small"></i>
                                 类常用内置方法
                             </a>
                         </li>
                         <li class="">
-                            <a class="hide-overflow" href="../2017/01/15/编程语言-Python/" title="python metaclass(下）">
+                            <a class="hide-overflow" href="../../../../2017/01/15/编程语言-Python/" title="python metaclass(下）">
                                 <i class="fa fa-file-text padding-small"></i>
                                 python metaclass(下）
                             </a>
                         </li>
                         <li class="">
-                            <a class="hide-overflow" href="../2016/12/30/其他/" title="技术人员的发展之路">
+                            <a class="hide-overflow" href="../../../../2016/12/30/其他/" title="技术人员的发展之路">
                                 <i class="fa fa-file-text padding-small"></i>
                                 技术人员的发展之路
                             </a>
                         </li>
                     <li>
-                        <a href="../archives.html">
+                        <a href="../../../../archives.html">
                             <i class="fa fa-arrow-right padding-small"></i>
                             更多
                         </a>
@@ -165,13 +167,13 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-share" class="sidebar_submenu collapse ">
                     <li>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=../2015/01/25/selenium/" target="popup">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2015/12/01/python/" target="popup">
                             <i class="fa fa-facebook-square padding-small"></i>
                             Facebook
                         </a>
                     </li>
                     <li>
-                        <a href="https://plus.google.com/share?url=../2015/01/25/selenium/" target="popup">
+                        <a href="https://plus.google.com/share?url=../../../../2015/12/01/python/" target="popup">
                             <i class="fa fa-google-plus padding-small"></i>
                             Google+
                         </a>
@@ -220,43 +222,43 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-pages" class="sidebar_submenu collapse ">
                     <li>
-                        <a href="../pages/opensource.html">
+                        <a href="../../../../pages/opensource.html">
                             <i class="fa fa-file-text padding-small"></i>
                             开源项目
                         </a>
                     </li>
                     <li>
-                        <a href="../pages/links.html">
+                        <a href="../../../../pages/links.html">
                             <i class="fa fa-file-text padding-small"></i>
                             常用链接
                         </a>
                     </li>
                     <li>
-                        <a href="../pages/Reference material.html">
+                        <a href="../../../../pages/Reference material.html">
                             <i class="fa fa-file-text padding-small"></i>
                             参考资料
                         </a>
                     </li>
                     <li>
-                        <a href="../pages/todo list.html">
+                        <a href="../../../../pages/todo list.html">
                             <i class="fa fa-file-text padding-small"></i>
                             Todo List
                         </a>
                     </li>
                     <li>
-                        <a href="../pages/tools.html">
+                        <a href="../../../../pages/tools.html">
                             <i class="fa fa-file-text padding-small"></i>
                             工具集
                         </a>
                     </li>
                     <li class="active">
-                        <a href="../pages/aboutme.html">
+                        <a href="../../../../pages/aboutme.html">
                             <i class="fa fa-file-text padding-small"></i>
                             关于我
                         </a>
                     </li>
                     <li>
-                        <a href="../pages/doc.html">
+                        <a href="../../../../pages/doc.html">
                             <i class="fa fa-file-text padding-small"></i>
                             专题文档
                         </a>
@@ -272,105 +274,105 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-categories" class="sidebar_submenu collapse ">
                     <li >
-                        <a href="../category/zi-dong-hua-ce-shi-selenium.html">
+                        <a href="../../../../category/zi-dong-hua-ce-shi-selenium.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             自动化测试-Selenium
                             <span class="badge pull-right categorybadge">17</span>
                         </a>
                     </li>
                     <li >
-                        <a href="../category/zi-dong-hua-ce-shi-autotest.html">
+                        <a href="../../../../category/zi-dong-hua-ce-shi-autotest.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             自动化测试-Autotest
                             <span class="badge pull-right categorybadge">12</span>
                         </a>
                     </li>
                     <li >
-                        <a href="../category/bian-cheng-yu-yan-python.html">
+                        <a href="../../../../category/bian-cheng-yu-yan-python.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             编程语言-Python
                             <span class="badge pull-right categorybadge">11</span>
                         </a>
                     </li>
                     <li >
-                        <a href="../category/zi-dong-hua-ce-shi-ltp.html">
+                        <a href="../../../../category/zi-dong-hua-ce-shi-ltp.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             自动化测试-LTP
                             <span class="badge pull-right categorybadge">7</span>
                         </a>
                     </li>
                     <li >
-                        <a href="../category/xing-neng-ce-shi.html">
+                        <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
                     <li >
-                        <a href="../category/bian-cheng-yu-yan-c.html">
+                        <a href="../../../../category/bian-cheng-yu-yan-c.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             编程语言-C
                             <span class="badge pull-right categorybadge">3</span>
                         </a>
                     </li>
-                    <li >
-                        <a href="../category/leetcode.html">
+                    <li class="active">
+                        <a href="../../../../category/leetcode.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             leetcode
                             <span class="badge pull-right categorybadge">3</span>
                         </a>
                     </li>
                     <li >
-                        <a href="../category/linux.html">
+                        <a href="../../../../category/linux.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             Linux
                             <span class="badge pull-right categorybadge">3</span>
                         </a>
                     </li>
                     <li >
-                        <a href="../category/python-pyqt.html">
+                        <a href="../../../../category/python-pyqt.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             Python-pyqt
                             <span class="badge pull-right categorybadge">3</span>
                         </a>
                     </li>
                     <li >
-                        <a href="../category/qi-ta.html">
+                        <a href="../../../../category/qi-ta.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             其他
                             <span class="badge pull-right categorybadge">3</span>
                         </a>
                     </li>
                     <li >
-                        <a href="../category/zi-dong-hua-ce-shi-avocado.html">
+                        <a href="../../../../category/zi-dong-hua-ce-shi-avocado.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             自动化测试-Avocado
                             <span class="badge pull-right categorybadge">3</span>
                         </a>
                     </li>
                     <li >
-                        <a href="../category/dockerzhuan-ti.html">
+                        <a href="../../../../category/dockerzhuan-ti.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             Docker专题
                             <span class="badge pull-right categorybadge">2</span>
                         </a>
                     </li>
                     <li >
-                        <a href="../category/suan-fa.html">
+                        <a href="../../../../category/suan-fa.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             算法
                             <span class="badge pull-right categorybadge">2</span>
                         </a>
                     </li>
                     <li >
-                        <a href="../category/unixhuan-jing-bian-cheng.html">
+                        <a href="../../../../category/unixhuan-jing-bian-cheng.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             unix环境编程
                             <span class="badge pull-right categorybadge">2</span>
                         </a>
                     </li>
                     <li >
-                        <a href="../category/mongodb.html">
+                        <a href="../../../../category/mongodb.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             Mongodb
                             <span class="badge pull-right categorybadge">1</span>
@@ -391,29 +393,122 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
-<div class="row">
-    <div class="col-lg-9">
-        <header class="page-header">
-            <h1>Articles featuring unix编程</h1>
-        </header>
+<section id="content">
+    <article>
+        <div class="row">
+            <div class="col-lg-9">
+                <header class="page-header">
+                    <h1>
+                        <a href="../../../../2015/12/01/python/"
+                           rel="bookmark"
+                           title="Permalink to leetcode - Two Sum">
+                            leetcode - Two Sum
+                        </a>
+                        <small>
+<div class="post-info">
+    <div class="publish-info-block">
+        <small>
+            <span class="published">
+                <i class="fa fa-calendar padding-small"></i><time datetime="2015-12-01T00:00:00+08:00"> 2015-12-01 二</time>
+            </span>
+            <span class="category">
+                <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/leetcode.html">leetcode</a>
+            </span>
+            <span class="tags">
+                <i class="fa fa-tags padding-small"></i>
+                <a href="../../../../tag/python-two-sum.html">Python-Two Sum</a>            </span>
+        </small>
     </div>
-</div>
-<div class="row">
-    <div class="col-lg-9">
-            <article>
-                <h4>
-                    <time datetime="2009-10-12T00:00:00+08:00"> 2009-10-12 一</time>
-                    <a href="../2009/10/12/UNIX/">信号</a>
-                </h4>
-            </article>
-            <article>
-                <h4>
-                    <time datetime="2009-10-10T00:00:00+08:00"> 2009-10-10 六</time>
-                    <a href="../2009/10/10/UNIX/">原子操作</a>
-                </h4>
-            </article>
+</div><!-- /.post-info -->                        </small>
+                    </h1>
+                </header>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="entry-content">
+                    <body><h4 id="wen-ti-miao-shu">问题描述</h4>
+<p>Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
+<p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
+<p>Example:
+Given nums = [2, 7, 11, 15], target = 9,</p>
+<p>Because nums[0] + nums[1] = 2 + 7 = 9,
+return [0, 1]</p>
+<p>大体意思就是给出一个数组，数组中存在两个数的和为给出的目标和，数组中的数字只能用一次，给出符合要求数的索引值。</p>
+<h4 id="pythonshi-li">Python示例</h4>
+<p>示例一</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">Solution</span>(<span class="n">object</span>):
+
+    <span class="n">def</span> <span class="n">twoSum</span>(<span class="k">self</span>, <span class="n">nums</span>, <span class="n">target</span>):
+
+        <span class="s">"""</span>
+
+<span class="s">        :type nums: List[int]</span>
+
+<span class="s">        :type target: int</span>
+
+<span class="s">        :rtype: List[int]</span>
+
+<span class="s">        """</span>
+
+        <span class="k">if</span> <span class="n">len</span>(<span class="n">nums</span>) &lt; <span class="mi">2</span>:
+
+            <span class="k">return</span> <span class="nb">False</span>
+
+        <span class="k">for</span> <span class="n">firstindex</span>, <span class="n">firstnum</span> <span class="n">in</span> <span class="n">enumerate</span>(<span class="n">nums</span>):   <span class="c c-Singleline"># 遍历数组</span>
+
+            <span class="n">secondnum</span> = <span class="n">target</span> - <span class="n">firstnum</span>
+          <span class="c c-Singleline"># 求匹配的值</span>
+            <span class="n">nums</span>[<span class="n">firstindex</span>] = <span class="s">"a"</span>
+                 <span class="c c-Singleline"># 替换该值，避免影响获取匹配值的索引</span>
+            <span class="k">if</span> <span class="n">secondnum</span> <span class="n">in</span> <span class="n">nums:</span>
+                  <span class="c c-Singleline"># 判断数组中是否包含匹配值</span>
+                <span class="n">secondindex</span> = <span class="n">nums</span>.<span class="nb">index</span>(<span class="n">secondnum</span>)
+<span class="c c-Singleline"># 获取匹配值的索引</span>
+                <span class="k">return</span> [<span class="n">firstindex</span>, <span class="n">secondindex</span>]
+   <span class="c c-Singleline"># 返回坐标</span>
+</pre></div>
+<p>该示例运行leetcode的测试代码的时间为699 ms。</p>
+<p>替换对应数值，获取匹配值的索引，消耗了时间。</p>
+<p>示例二</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">Solution</span>(<span class="n">object</span>):
+
+    <span class="n">def</span> <span class="n">twoSum</span>(<span class="k">self</span>, <span class="n">nums</span>, <span class="n">target</span>):
+
+        <span class="n">dict</span> = {}                 <span class="c c-Singleline"># 字典保存对应值的索引</span>
+
+        <span class="k">for</span> <span class="n">i</span>, <span class="nb">value</span> <span class="n">in</span> <span class="n">enumerate</span>(<span class="n">nums</span>):
+</pre></div>
+<p># 遍历数组
+                if target-value in dict:
+      # 判断匹配值是否在字典中
+                    return (dict[target-value], i)
+  # 如果存在，返回字典中对应索引，和当前索引
+                dict[value] = i
+                     # 将当前值和对应索引保存到字典</p>
+<p>该示例运行leetcode的测试代码的时间为346ms。
+减少示例一替换和获取索引值的耗时。</p></body>
+                </div>
+                <footer class="text-right">
+                    <p>by 李鹏</p>
+                </footer>
+    <section id="comments" class="comments ">
+        <hr/>
+        <h2>Comments</h2>
+        <div id="disqus_thread"></div>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </section>
+            </div>
+    <div id="scrollspy">
+        <div class="col-lg-3 nav nav-stacked hidden-xs hidden-sm" data-spy="affix" data-offset-top="135">
+            <div id="toc"><ul><li><a class="toc-href" href="#" title="leetcode - Two Sum">leetcode - Two Sum</a><ul><li><a class="toc-href" href="#wen-ti-miao-shu" title="问题描述">问题描述</a></li><li><a class="toc-href" href="#pythonshi-li" title="Python示例">Python示例</a></li></ul></li></ul></div>
+        </div>
     </div>
-</div>
+        </div>
+    </article>
+</section>
 
 <!--"-->
 <footer>
@@ -433,11 +528,11 @@
     </div>
     <!-- /#wrapper -->
     <!-- jQuery Version 1.11.2 -->
-    <script src="../theme/js/jquery-1.11.2.min.js"></script>
+    <script src="../../../../theme/js/jquery-1.11.2.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
-    <script src="../theme/js/bootstrap.min.js"></script>
+    <script src="../../../../theme/js/bootstrap.min.js"></script>
     <!-- twitchy Script -->
-    <script src="../theme/js/pelican_twitchy.min.js"></script>
+    <script src="../../../../theme/js/pelican_twitchy.min.js"></script>
     <!-- Begin Cookie Consent https://silktide.com/tools/cookie-consent/ -->
     <script>
         window.cookieconsent_options = {
@@ -445,29 +540,32 @@
             learnMore: "More info",
             link: null,
             dismiss: "Got it!",
-            theme: "../theme/css/cookieconsent/dark-floating.css",
+            theme: "../../../../theme/css/cookieconsent/dark-floating.css",
         };
     </script>
-    <script src="../theme/js/cookieconsent.min.js"></script>
+    <script src="../../../../theme/js/cookieconsent.min.js"></script>
     <!-- End Cookie Consent -->
-<script>
-    function FadeInOnScroll(ObjectList){
-        ObjectList.each(function(i) {
-            var bottom_of_object = $(this).position().top + $(this).outerHeight();
-            var bottom_of_window = $(window).scrollTop() + $(window).height();
 
-            if( bottom_of_window > bottom_of_object ){
-                $(this).fadeTo(750,1);
-            }
-        });
-    }
+<!-- disqus -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'True'; // required: replace example with your forum shortname
 
-    articles = $("article").fadeTo(0, 0.05);
-    FadeInOnScroll(articles)
+            var disqus_identifier = 'python';
+        var disqus_url = '../../../../2015/12/01/python/';
 
-    $(window).scroll(function() {
-        FadeInOnScroll(articles)
-    });
+    var disqus_config = function () {
+        this.language = "zh";
+    };
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
 </script>
+<!-- /disqus -->
 </body>
 </html>
