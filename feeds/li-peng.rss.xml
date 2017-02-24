@@ -2,7 +2,7 @@
 <rss version="2.0"><channel><title>路漫求索</title><link>http://king32783784.github.io/</link><description>生活不止眼前的苟且，还有诗和远方 &lt;a href="pages/aboutme.html"&gt;More...&lt;/a&gt;</description><lastBuildDate>Thu, 23 Feb 2017 00:00:00 +0800</lastBuildDate><item><title>位操作</title><link>http://king32783784.github.io/2017/02/23/python/</link><description>&lt;p&gt;最近碰到一个问题，是取一个数的反数，所以整理了一下位操作。
 计算机系统中所有的数据都是以二进制的形式存储的。位运算其实就是直接对在内存中的二进制数据进行操作，因此数据处理会比较快。
 在实际编程中，如果能合理运用位操作，能提高运行效率，解决一些复杂问题。&lt;/p&gt;
-&lt;h4&gt;位操作基础&lt;/h4&gt;
+&lt;h3&gt;位操作基础&lt;/h3&gt;
 &lt;p&gt;基本的位操作符有与、或、异或、取反、左移、右移。运算规则如下：&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -45,13 +45,15 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;注意：
-1. 只有～为单目运算符，其他的为双目运算符
-2. 位操作只能作用于整型数据
-3. 位操作符的运算优先级比较低，因此使用时注意括号的添加
-4. 位算符可以复合操作，比如&amp;amp;=、|=、^=、&amp;lt;&amp;lt;=、&amp;gt;&amp;gt;=。&lt;/p&gt;
-&lt;h4&gt;常用位操作&lt;/h4&gt;
-&lt;h5&gt;1.判断奇偶&lt;/h5&gt;
+&lt;p&gt;注意：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;只有～为单目运算符，其他的为双目运算符&lt;/li&gt;
+&lt;li&gt;位操作只能作用于整型数据&lt;/li&gt;
+&lt;li&gt;位操作符的运算优先级比较低，因此使用时注意括号的添加&lt;/li&gt;
+&lt;li&gt;位算符可以复合操作，比如&amp;amp;=、|=、^=、&amp;lt;&amp;lt;=、&amp;gt;&amp;gt;=。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;常用位操作例子&lt;/h3&gt;
+&lt;h4&gt;1.判断奇偶&lt;/h4&gt;
 &lt;p&gt;显然的，最末位为0的为偶数，为1的为奇数。因此可以使用a &amp;amp; 1是否为0来判断，如果为0则表明为偶数，为1表明为奇数&lt;/p&gt;
 &lt;p&gt;下面的程序，将输出0到100之间的所有偶数&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
@@ -72,7 +74,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
-&lt;h5&gt;2.交换两数&lt;/h5&gt;
+&lt;h4&gt;2.交换两数&lt;/h4&gt;
 &lt;p&gt;一般的写法为，借助第三个变量来保存其中一个变量&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;def change(x,y):
     z=x
@@ -103,7 +105,7 @@ b=b^(a^b)=b^b^a=0^a。 b=a
 第一步 x^=y x = 0111 ^ 0101 = 1101 
 第二步 y^=x y = 0101 ^ 1101 = 0111; 这时y为0111即7，也就是x
 第三步 x^=y x = 1101 ^ 0111 = 0101; 这时x为0101即5，也就是y&lt;/p&gt;
-&lt;h5&gt;3.交换符号&lt;/h5&gt;
+&lt;h4&gt;3.交换符号&lt;/h4&gt;
 &lt;p&gt;交换符号，顾名思义，即为正变负。
 其实用普通方法也很简单：
 x=-x 例如 1 -1 -12 12 
@@ -112,10 +114,13 @@ x=-x 例如 1 -1 -12 12
 11110101(-11) 取反为0001010 加1 为00001011 即11
 00001011(11) 取反11110100 加1 为11110101 即-11
 正负切换，只需原数取反后加1&lt;/p&gt;
-&lt;p&gt;代码如下：
-    def signchange(x):
-        return ~x+1&lt;/p&gt;
-&lt;h5&gt;4.求绝对值&lt;/h5&gt;
+&lt;p&gt;代码如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;def signchange(x):
+    return ~x+1
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;4.求绝对值&lt;/h4&gt;
 &lt;p&gt;位操作可以用来求绝对值，负数可以取反后加1.和前面讲的一样
 如果32位有符号整型，右移31位得到最后一位符号位，如果为0，则为正数，如果为-1，为负数 正数直接返回，否则取反加1&lt;/p&gt;
 &lt;p&gt;代码如下：&lt;/p&gt;
@@ -135,7 +140,7 @@ x=-x 例如 1 -1 -12 12
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h5&gt;5.高低位交换&lt;/h5&gt;
+&lt;h4&gt;5.高低位交换&lt;/h4&gt;
 &lt;p&gt;比如一个16位的无符号整数，前8位可以作为“高位”，后8位可以为“低位”，将其高低互换。
 如34520:
 10000110 11011000
@@ -150,7 +155,7 @@ x=-x 例如 1 -1 -12 12
 
 
 &lt;p&gt;此处 python可能得到值不同，python默认为有符号数，且为64位&lt;/p&gt;
-&lt;h5&gt;6.二进制逆序&lt;/h5&gt;
+&lt;h4&gt;6.二进制逆序&lt;/h4&gt;
 &lt;p&gt;逆序就是将34520
 10000110 11011000变为
 00011011 01100001 &lt;/p&gt;
@@ -178,14 +183,17 @@ x=-x 例如 1 -1 -12 12
 00001000 10100000
 两则相或得到：
 01001001 11100100 这样就得到了奇偶位的数据交换&lt;/p&gt;
-&lt;p&gt;代码如下：
-    def getnum(x):
+&lt;p&gt;代码如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;def getnum(x):
     x = ((x&amp;amp;0XAAAA) &amp;gt;&amp;gt; 1) | ((x&amp;amp;0X5555) &amp;lt;&amp;lt;1);
     x = ((x&amp;amp;0XCCCC) &amp;gt;&amp;gt; 2) | ((x&amp;amp;0X3333) &amp;lt;&amp;lt;2);
     x = ((x&amp;amp;0XF0F0) &amp;gt;&amp;gt; 4) | ((x&amp;amp;0X0F0F) &amp;lt;&amp;lt;4);
     x = ((x&amp;amp;0XFF00) &amp;gt;&amp;gt; 8) | ((x&amp;amp;0X00FF) &amp;lt;&amp;lt;8);
-    return x&lt;/p&gt;
-&lt;h5&gt;7.二进制按位取反&lt;/h5&gt;
+    return x
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;7.二进制按位取反&lt;/h4&gt;
 &lt;p&gt;例如 5=101 变为010 2
 1=1 变为0 
 7=111 变为000
@@ -196,19 +204,25 @@ x=-x 例如 1 -1 -12 12
 获取原数的位数，如111可由1000 - 1 获取
 方法1
 1左移获得，1移位后右边补0
-代码如下：
-    def getnum(num):
-        i = 1
-        while i &amp;lt;= num:
-            i = i &amp;lt;&amp;lt; 1
-            print(i)
-        return (i - 1) ^ num&lt;/p&gt;
+代码如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;def getnum(num):
+    i = 1
+    while i &amp;lt;= num:
+        i = i &amp;lt;&amp;lt; 1
+        print(i)
+    return (i - 1) ^ num
+&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;p&gt;2.获取原数的位数，求相同位数的最大数
-代码如下：
-    def getnum(num):
-        n = int(math.log(num,2)) + 1
-        m = 2**n
-        return (m-1) ^ num&lt;/p&gt;
+代码如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;def getnum(num):
+    n = int(math.log(num,2)) + 1
+    m = 2**n
+    return (m-1) ^ num
+&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;h5&gt;8 二进制中１的个数&lt;/h5&gt;
 &lt;p&gt;统计二进制数中１的个数，这个方法比较多，可由转成字符进行统计。这里采用位操作的方法。
 下面还是以34520为例，进行分析
@@ -226,18 +240,31 @@ x=-x 例如 1 -1 -12 12
 　00 00 00 00 00 00 01 11
 　
 这方法的套路在于二进制无非０和１，第一步相当于分别把８组里面的１进行了统计，第二步又把４组里面的１进行了统计，然后2组，然后1组
-分组处理可以解决很多二进制问题。&lt;/p&gt;
+代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;def getsum(x):
+     x = ((x &amp;amp; 0xaaaa) &amp;gt;&amp;gt; 1) + (x &amp;amp; 0x5555)
+     x = ((x &amp;amp; 0xcccc) &amp;gt;&amp;gt; 2) + (x &amp;amp; 0x3333)
+     x = ((x &amp;amp; 0xf0f0) &amp;gt;&amp;gt; 4) + (x &amp;amp; 0x0f0f)
+     x = ((x &amp;amp; 0xff00) &amp;gt;&amp;gt; 8) + (x &amp;amp; 0x00ff)
+     return x
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;分组处理可以解决很多二进制问题。&lt;/p&gt;
 &lt;h5&gt;9.缺失的数字&lt;/h5&gt;
 &lt;p&gt;一组数字，大部分都是出现了偶数次，而缺失的数字出现了奇数次，现在要找出这个数。
 利用异或运算的两个特性，１．自己和自己异或为０（和０异或为本身）　２．异或满足交换率
 也就是将所有的数进行异或，成对的数就会变成０，最后就变成了一堆０和落单的数异或，也就找到了它&lt;/p&gt;
-&lt;p&gt;代码如下：
-    def getnum(numlist):
-        num=0
-        for i in numlist:
-            num ^= i
-        return num
-例如getnum([7,6,4,3,3,4,6,3,3,7,7])
+&lt;p&gt;代码如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;def getnum(numlist):
+    num=0
+    for i in numlist:
+        num ^= i
+    return num
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;例如getnum([7,6,4,3,3,4,6,3,3,7,7])
 将输出7&lt;/p&gt;
 &lt;p&gt;要是两个落单了呢
 比如[2,3,4,5,6,7,8,9,9,8,7,5,3,2]
@@ -255,24 +282,25 @@ x=-x 例如 1 -1 -12 12
 ９　1001 第二组
 这样 ２、３、６、７、７、３、２为１组　 4、５、８、９、９、５为２组
 这样每组分别异或就得到了6和４&lt;/p&gt;
-&lt;p&gt;代码：
-    def getdouble(numlist):
-        num = 0
-        for i in numlist:
-            num ^= i
-        n = int(math.log(num,2)) + 1
-        for j in range(n):
-            if((num &amp;gt;&amp;gt; j)&amp;amp;1 ==1):
-                break
-        list1=[]
-        list2=[]
-        for temp in numlist:
-            if ((temp &amp;gt;&amp;gt; j)&amp;amp;1 ==1):
-                list1.append(temp)
-            else:
-                list2.append(temp)
-        print getsingle(list1)
-        print getsingle(list2)&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Thu, 23 Feb 2017 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2017-02-23:2017/02/23/python/</guid><category>Python</category></item><item><title>python实现awk域简单例子</title><link>http://king32783784.github.io/2017/02/20/python/</link><description>&lt;h3&gt;问题&lt;/h3&gt;
+&lt;p&gt;代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;def getdouble(numlist):
+    num = 0
+    for i in numlist:
+        num ^= i
+    n = int(math.log(num,2)) + 1
+    for j in range(n):
+        if((num &amp;gt;&amp;gt; j)&amp;amp;1 ==1):
+            break
+    list1=[]
+    list2=[]
+    for temp in numlist:
+        if ((temp &amp;gt;&amp;gt; j)&amp;amp;1 ==1):
+            list1.append(temp)
+        else:
+            list2.append(temp)
+    print getsingle(list1)
+    print getsingle(list2)
+&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Thu, 23 Feb 2017 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2017-02-23:2017/02/23/python/</guid><category>Python</category></item><item><title>python实现awk域简单例子</title><link>http://king32783784.github.io/2017/02/20/python/</link><description>&lt;h3&gt;问题&lt;/h3&gt;
 &lt;p&gt;ltp功能验证测试的结果的文本（截取片段）格式为：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gh"&gt;Test Start Time: Tue Feb 14 15:47:55 2017&lt;/span&gt;
 &lt;span class="gh"&gt;-----------------------------------------&lt;/span&gt;

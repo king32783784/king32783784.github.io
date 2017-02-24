@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="李鹏" />
         <meta name="keywords" content="Python" />
-        <meta name="description" content="最近碰到一个问题，是取一个数的反数，所以整理了一下位操作。 计算机系统中所有的数据都是以二进制的形式存储的。位运算其实就是直接对在内存中的二进制数据进行操作，因此数据处理会比较快。 在实际编程中，如果能合理运用位操作，能提高运行效率，解决一些复杂问题。 位操作基础 基本的位操作符有与、或、异或、取反、左移、右移。运算规则如下： 符号 描述 运算规则 &amp; 与 两个位都为１，结果为１ 或 ^ 异或 两个位相同为0， 相异为1 ～ 取反 0变1， 1变0 &lt;&lt; 左移 各个二进制位全部左移若干位，高位丢弃，低位补0 &gt;&gt; 右移 各二进位全部右移若干位，对无符号数，高位补0， 有符号数，各编译器处理方法不一样，有的补符号位（算术右移），有的补0（逻辑右移） 注意： 1. 只有～为单目运算符，其他的为双目运算符 ..." />
+        <meta name="description" content="最近碰到一个问题，是取一个数的反数，所以整理了一下位操作。 计算机系统中所有的数据都是以二进制的形式存储的。位运算其实就是直接对在内存中的二进制数据进行操作，因此数据处理会比较快。 在实际编程中，如果能合理运用位操作，能提高运行效率，解决一些复杂问题。 位操作基础 基本的位操作符有与、或、异或、取反、左移、右移。运算规则如下： 符号 描述 运算规则 &amp; 与 两个位都为１，结果为１ 或 ^ 异或 两个位相同为0， 相异为1 ～ 取反 0变1， 1变0 &lt;&lt; 左移 各个二进制位全部左移若干位，高位丢弃，低位补0 &gt;&gt; 右移 各二进位全部右移若干位，对无符号数，高位补0， 有符号数，各编译器处理方法不一样，有的补符号位（算术右移），有的补0（逻辑右移） 注意： 只有～为单目运算符，其他的为双目运算符 位操作只能作用于整型数据 ..." />
 
 <!-- Open Graph tags -->
 <meta property="og:site_name" content="路漫求索"/>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="位操作"/>
     <meta property="og:url" content="../../../../2017/02/23/python/"/>
-    <meta property="og:description" content="最近碰到一个问题，是取一个数的反数，所以整理了一下位操作。 计算机系统中所有的数据都是以二进制的形式存储的。位运算其实就是直接对在内存中的二进制数据进行操作，因此数据处理会比较快。 在实际编程中，如果能合理运用位操作，能提高运行效率，解决一些复杂问题。 位操作基础 基本的位操作符有与、或、异或、取反、左移、右移。运算规则如下： 符号 描述 运算规则 &amp; 与 两个位都为１，结果为１ 或 ^ 异或 两个位相同为0， 相异为1 ～ 取反 0变1， 1变0 &lt;&lt; 左移 各个二进制位全部左移若干位，高位丢弃，低位补0 &gt;&gt; 右移 各二进位全部右移若干位，对无符号数，高位补0， 有符号数，各编译器处理方法不一样，有的补符号位（算术右移），有的补0（逻辑右移） 注意： 1. 只有～为单目运算符，其他的为双目运算符 ..."/>
+    <meta property="og:description" content="最近碰到一个问题，是取一个数的反数，所以整理了一下位操作。 计算机系统中所有的数据都是以二进制的形式存储的。位运算其实就是直接对在内存中的二进制数据进行操作，因此数据处理会比较快。 在实际编程中，如果能合理运用位操作，能提高运行效率，解决一些复杂问题。 位操作基础 基本的位操作符有与、或、异或、取反、左移、右移。运算规则如下： 符号 描述 运算规则 &amp; 与 两个位都为１，结果为１ 或 ^ 异或 两个位相同为0， 相异为1 ～ 取反 0变1， 1变0 &lt;&lt; 左移 各个二进制位全部左移若干位，高位丢弃，低位补0 &gt;&gt; 右移 各二进位全部右移若干位，对无符号数，高位补0， 有符号数，各编译器处理方法不一样，有的补符号位（算术右移），有的补0（逻辑右移） 注意： 只有～为单目运算符，其他的为双目运算符 位操作只能作用于整型数据 ..."/>
     <meta property="article:published_time" content="2017-02-23" />
     <meta property="article:section" content="编程语言-Python" />
         <meta property="article:tag" content="Python" />
@@ -430,7 +430,7 @@
                     <body><p>最近碰到一个问题，是取一个数的反数，所以整理了一下位操作。
 计算机系统中所有的数据都是以二进制的形式存储的。位运算其实就是直接对在内存中的二进制数据进行操作，因此数据处理会比较快。
 在实际编程中，如果能合理运用位操作，能提高运行效率，解决一些复杂问题。</p>
-<h4 id="wei-cao-zuo-ji-chu">位操作基础</h4>
+<h3 id="wei-cao-zuo-ji-chu">位操作基础</h3>
 <p>基本的位操作符有与、或、异或、取反、左移、右移。运算规则如下：</p>
 <table class="table table-hover table-striped">
 <thead>
@@ -473,13 +473,15 @@
 </tr>
 </tbody>
 </table>
-<p>注意：
-1. 只有～为单目运算符，其他的为双目运算符
-2. 位操作只能作用于整型数据
-3. 位操作符的运算优先级比较低，因此使用时注意括号的添加
-4. 位算符可以复合操作，比如&amp;=、|=、^=、&lt;&lt;=、&gt;&gt;=。</p>
-<h4 id="chang-yong-wei-cao-zuo">常用位操作</h4>
-<h5 id="1pan-duan-qi-ou">1.判断奇偶</h5>
+<p>注意：</p>
+<ol>
+<li>只有～为单目运算符，其他的为双目运算符</li>
+<li>位操作只能作用于整型数据</li>
+<li>位操作符的运算优先级比较低，因此使用时注意括号的添加</li>
+<li>位算符可以复合操作，比如&amp;=、|=、^=、&lt;&lt;=、&gt;&gt;=。</li>
+</ol>
+<h3 id="chang-yong-wei-cao-zuo-li-zi">常用位操作例子</h3>
+<h4 id="1pan-duan-qi-ou">1.判断奇偶</h4>
 <p>显然的，最末位为0的为偶数，为1的为奇数。因此可以使用a &amp; 1是否为0来判断，如果为0则表明为偶数，为1表明为奇数</p>
 <p>下面的程序，将输出0到100之间的所有偶数</p>
 <table class="table highlighttable table-striped table-hover"><tbody><tr><td class="linenos"><div class="linenodiv"><pre>1
@@ -499,7 +501,7 @@
 <span class="n">geteven</span><span class="p">()</span>
 </pre></div>
 </td></tr></tbody></table>
-<h5 id="2jiao-huan-liang-shu">2.交换两数</h5>
+<h4 id="2jiao-huan-liang-shu">2.交换两数</h4>
 <p>一般的写法为，借助第三个变量来保存其中一个变量</p>
 <div class="highlight"><pre><span></span>def change(x,y):
     z=x
@@ -526,7 +528,7 @@ b=b^(a^b)=b^b^a=0^a。 b=a
 第一步 x^=y x = 0111 ^ 0101 = 1101 
 第二步 y^=x y = 0101 ^ 1101 = 0111; 这时y为0111即7，也就是x
 第三步 x^=y x = 1101 ^ 0111 = 0101; 这时x为0101即5，也就是y</p>
-<h5 id="3jiao-huan-fu-hao">3.交换符号</h5>
+<h4 id="3jiao-huan-fu-hao">3.交换符号</h4>
 <p>交换符号，顾名思义，即为正变负。
 其实用普通方法也很简单：
 x=-x 例如 1 -1 -12 12 
@@ -535,10 +537,11 @@ x=-x 例如 1 -1 -12 12
 11110101(-11) 取反为0001010 加1 为00001011 即11
 00001011(11) 取反11110100 加1 为11110101 即-11
 正负切换，只需原数取反后加1</p>
-<p>代码如下：
-    def signchange(x):
-        return ~x+1</p>
-<h5 id="4qiu-jue-dui-zhi">4.求绝对值</h5>
+<p>代码如下：</p>
+<div class="highlight"><pre><span></span>def signchange(x):
+    return ~x+1
+</pre></div>
+<h4 id="4qiu-jue-dui-zhi">4.求绝对值</h4>
 <p>位操作可以用来求绝对值，负数可以取反后加1.和前面讲的一样
 如果32位有符号整型，右移31位得到最后一位符号位，如果为0，则为正数，如果为-1，为负数 正数直接返回，否则取反加1</p>
 <p>代码如下：</p>
@@ -554,7 +557,7 @@ x=-x 例如 1 -1 -12 12
     sign = x &gt;&gt; 31
     return (x^sign) - sign
 </pre></div>
-<h5 id="5gao-di-wei-jiao-huan">5.高低位交换</h5>
+<h4 id="5gao-di-wei-jiao-huan">5.高低位交换</h4>
 <p>比如一个16位的无符号整数，前8位可以作为“高位”，后8位可以为“低位”，将其高低互换。
 如34520:
 10000110 11011000
@@ -567,7 +570,7 @@ x=-x 例如 1 -1 -12 12
     return (x &gt;&gt; 8) | (x &lt;&lt; 8)
 </pre></div>
 <p>此处 python可能得到值不同，python默认为有符号数，且为64位</p>
-<h5 id="6er-jin-zhi-ni-xu">6.二进制逆序</h5>
+<h4 id="6er-jin-zhi-ni-xu">6.二进制逆序</h4>
 <p>逆序就是将34520
 10000110 11011000变为
 00011011 01100001 </p>
@@ -595,14 +598,15 @@ x=-x 例如 1 -1 -12 12
 00001000 10100000
 两则相或得到：
 01001001 11100100 这样就得到了奇偶位的数据交换</p>
-<p>代码如下：
-    def getnum(x):
+<p>代码如下：</p>
+<div class="highlight"><pre><span></span>def getnum(x):
     x = ((x&amp;0XAAAA) &gt;&gt; 1) | ((x&amp;0X5555) &lt;&lt;1);
     x = ((x&amp;0XCCCC) &gt;&gt; 2) | ((x&amp;0X3333) &lt;&lt;2);
     x = ((x&amp;0XF0F0) &gt;&gt; 4) | ((x&amp;0X0F0F) &lt;&lt;4);
     x = ((x&amp;0XFF00) &gt;&gt; 8) | ((x&amp;0X00FF) &lt;&lt;8);
-    return x</p>
-<h5 id="7er-jin-zhi-an-wei-qu-fan">7.二进制按位取反</h5>
+    return x
+</pre></div>
+<h4 id="7er-jin-zhi-an-wei-qu-fan">7.二进制按位取反</h4>
 <p>例如 5=101 变为010 2
 1=1 变为0 
 7=111 变为000
@@ -613,19 +617,21 @@ x=-x 例如 1 -1 -12 12
 获取原数的位数，如111可由1000 - 1 获取
 方法1
 1左移获得，1移位后右边补0
-代码如下：
-    def getnum(num):
-        i = 1
-        while i &lt;= num:
-            i = i &lt;&lt; 1
-            print(i)
-        return (i - 1) ^ num</p>
+代码如下：</p>
+<div class="highlight"><pre><span></span>def getnum(num):
+    i = 1
+    while i &lt;= num:
+        i = i &lt;&lt; 1
+        print(i)
+    return (i - 1) ^ num
+</pre></div>
 <p>2.获取原数的位数，求相同位数的最大数
-代码如下：
-    def getnum(num):
-        n = int(math.log(num,2)) + 1
-        m = 2**n
-        return (m-1) ^ num</p>
+代码如下：</p>
+<div class="highlight"><pre><span></span>def getnum(num):
+    n = int(math.log(num,2)) + 1
+    m = 2**n
+    return (m-1) ^ num
+</pre></div>
 <h5 id="8-er-jin-zhi-zhong-1de-ge-shu">8 二进制中１的个数</h5>
 <p>统计二进制数中１的个数，这个方法比较多，可由转成字符进行统计。这里采用位操作的方法。
 下面还是以34520为例，进行分析
@@ -643,18 +649,27 @@ x=-x 例如 1 -1 -12 12
 　00 00 00 00 00 00 01 11
 　
 这方法的套路在于二进制无非０和１，第一步相当于分别把８组里面的１进行了统计，第二步又把４组里面的１进行了统计，然后2组，然后1组
-分组处理可以解决很多二进制问题。</p>
+代码：</p>
+<div class="highlight"><pre><span></span>def getsum(x):
+     x = ((x &amp; 0xaaaa) &gt;&gt; 1) + (x &amp; 0x5555)
+     x = ((x &amp; 0xcccc) &gt;&gt; 2) + (x &amp; 0x3333)
+     x = ((x &amp; 0xf0f0) &gt;&gt; 4) + (x &amp; 0x0f0f)
+     x = ((x &amp; 0xff00) &gt;&gt; 8) + (x &amp; 0x00ff)
+     return x
+</pre></div>
+<p>分组处理可以解决很多二进制问题。</p>
 <h5 id="9que-shi-de-shu-zi">9.缺失的数字</h5>
 <p>一组数字，大部分都是出现了偶数次，而缺失的数字出现了奇数次，现在要找出这个数。
 利用异或运算的两个特性，１．自己和自己异或为０（和０异或为本身）　２．异或满足交换率
 也就是将所有的数进行异或，成对的数就会变成０，最后就变成了一堆０和落单的数异或，也就找到了它</p>
-<p>代码如下：
-    def getnum(numlist):
-        num=0
-        for i in numlist:
-            num ^= i
-        return num
-例如getnum([7,6,4,3,3,4,6,3,3,7,7])
+<p>代码如下：</p>
+<div class="highlight"><pre><span></span>def getnum(numlist):
+    num=0
+    for i in numlist:
+        num ^= i
+    return num
+</pre></div>
+<p>例如getnum([7,6,4,3,3,4,6,3,3,7,7])
 将输出7</p>
 <p>要是两个落单了呢
 比如[2,3,4,5,6,7,8,9,9,8,7,5,3,2]
@@ -672,24 +687,25 @@ x=-x 例如 1 -1 -12 12
 ９　1001 第二组
 这样 ２、３、６、７、７、３、２为１组　 4、５、８、９、９、５为２组
 这样每组分别异或就得到了6和４</p>
-<p>代码：
-    def getdouble(numlist):
-        num = 0
-        for i in numlist:
-            num ^= i
-        n = int(math.log(num,2)) + 1
-        for j in range(n):
-            if((num &gt;&gt; j)&amp;1 ==1):
-                break
-        list1=[]
-        list2=[]
-        for temp in numlist:
-            if ((temp &gt;&gt; j)&amp;1 ==1):
-                list1.append(temp)
-            else:
-                list2.append(temp)
-        print getsingle(list1)
-        print getsingle(list2)</p></body>
+<p>代码：</p>
+<div class="highlight"><pre><span></span>def getdouble(numlist):
+    num = 0
+    for i in numlist:
+        num ^= i
+    n = int(math.log(num,2)) + 1
+    for j in range(n):
+        if((num &gt;&gt; j)&amp;1 ==1):
+            break
+    list1=[]
+    list2=[]
+    for temp in numlist:
+        if ((temp &gt;&gt; j)&amp;1 ==1):
+            list1.append(temp)
+        else:
+            list2.append(temp)
+    print getsingle(list1)
+    print getsingle(list2)
+</pre></div></body>
                 </div>
                 <footer class="text-right">
                     <p>by 李鹏</p>
@@ -705,7 +721,7 @@ x=-x 例如 1 -1 -12 12
             </div>
     <div id="scrollspy">
         <div class="col-lg-3 nav nav-stacked hidden-xs hidden-sm" data-spy="affix" data-offset-top="135">
-            <div id="toc"><ul><li><a class="toc-href" href="#" title="位操作">位操作</a><ul><li><a class="toc-href" href="#wei-cao-zuo-ji-chu" title="位操作基础">位操作基础</a></li><li><a class="toc-href" href="#chang-yong-wei-cao-zuo" title="常用位操作">常用位操作</a><ul><li><a class="toc-href" href="#1pan-duan-qi-ou" title="1.判断奇偶">1.判断奇偶</a></li><li><a class="toc-href" href="#2jiao-huan-liang-shu" title="2.交换两数">2.交换两数</a></li><li><a class="toc-href" href="#3jiao-huan-fu-hao" title="3.交换符号">3.交换符号</a></li><li><a class="toc-href" href="#4qiu-jue-dui-zhi" title="4.求绝对值">4.求绝对值</a></li><li><a class="toc-href" href="#5gao-di-wei-jiao-huan" title="5.高低位交换">5.高低位交换</a></li><li><a class="toc-href" href="#6er-jin-zhi-ni-xu" title="6.二进制逆序">6.二进制逆序</a></li><li><a class="toc-href" href="#7er-jin-zhi-an-wei-qu-fan" title="7.二进制按位取反">7.二进制按位取反</a></li><li><a class="toc-href" href="#8-er-jin-zhi-zhong-1de-ge-shu" title="8 二进制中１的个数">8 二进制中１的个数</a></li><li><a class="toc-href" href="#9que-shi-de-shu-zi" title="9.缺失的数字">9.缺失的数字</a></li></ul></li></ul></li></ul></div>
+            <div id="toc"><ul><li><a class="toc-href" href="#" title="位操作">位操作</a><ul><li><a class="toc-href" href="#wei-cao-zuo-ji-chu" title="位操作基础">位操作基础</a></li><li><a class="toc-href" href="#chang-yong-wei-cao-zuo-li-zi" title="常用位操作例子">常用位操作例子</a><ul><li><a class="toc-href" href="#1pan-duan-qi-ou" title="1.判断奇偶">1.判断奇偶</a></li><li><a class="toc-href" href="#2jiao-huan-liang-shu" title="2.交换两数">2.交换两数</a></li><li><a class="toc-href" href="#3jiao-huan-fu-hao" title="3.交换符号">3.交换符号</a></li><li><a class="toc-href" href="#4qiu-jue-dui-zhi" title="4.求绝对值">4.求绝对值</a></li><li><a class="toc-href" href="#5gao-di-wei-jiao-huan" title="5.高低位交换">5.高低位交换</a></li><li><a class="toc-href" href="#6er-jin-zhi-ni-xu" title="6.二进制逆序">6.二进制逆序</a></li><li><a class="toc-href" href="#7er-jin-zhi-an-wei-qu-fan" title="7.二进制按位取反">7.二进制按位取反</a><ul><li><a class="toc-href" href="#8-er-jin-zhi-zhong-1de-ge-shu" title="8 二进制中１的个数">8 二进制中１的个数</a></li><li><a class="toc-href" href="#9que-shi-de-shu-zi" title="9.缺失的数字">9.缺失的数字</a></li></ul></li></ul></li></ul></li></ul></div>
         </div>
     </div>
         </div>
