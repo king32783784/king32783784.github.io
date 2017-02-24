@@ -7681,7 +7681,94 @@ test_shuffle (__main__.TestSequenceFunctions) ... ok
 
 
 &lt;p&gt;测试用例通过继承unittest.TestCase创建。测试用例中3个独立的测试函数以"test"为开头命名。通过使用这种命名方式，执行器可以知道哪些方法是测试方法。&lt;/p&gt;
-&lt;p&gt;3个测试方法同样调用assertEqual()函数来检查预期结果；调用assertTrue()函数来判断条件；调用assertRaises()函数来验证是否触发了预期的异常。这3个方法作为断言语句判断用例执行正确性，以便于执行器收集测试结果并产生测试报告。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 01 Jan 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-01-01:2016/01/01/python/</guid><category>Pyunit</category></item><item><title>leetcode - Palindrome Number &amp; Hamming Distance</title><link>http://king32783784.github.io/2015/12/03/python/</link><description>&lt;h3&gt;Palindrome Number&lt;/h3&gt;
+&lt;p&gt;3个测试方法同样调用assertEqual()函数来检查预期结果；调用assertTrue()函数来判断条件；调用assertRaises()函数来验证是否触发了预期的异常。这3个方法作为断言语句判断用例执行正确性，以便于执行器收集测试结果并产生测试报告。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 01 Jan 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-01-01:2016/01/01/python/</guid><category>Pyunit</category></item><item><title>leetcode - Number Complement</title><link>http://king32783784.github.io/2015/12/04/python/</link><description>&lt;h3&gt;Number Complement&lt;/h3&gt;
+&lt;p&gt;问题描述&lt;/p&gt;
+&lt;p&gt;Given a positive integer, output its complement number. The complement strategy is to flip the bits of its binary representation.&lt;/p&gt;
+&lt;p&gt;Note:
+The given integer is guaranteed to fit within the range of a 32-bit signed integer.
+You could assume no leading zero bit in the integer’s binary representation.&lt;/p&gt;
+&lt;p&gt;求一个32位无符号数的二进制的反数
+比如5 101 输出010 2&lt;/p&gt;
+&lt;p&gt;解决方法：&lt;/p&gt;
+&lt;p&gt;代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;Solution&lt;/span&gt;(&lt;span class="n"&gt;object&lt;/span&gt;):
+
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;findComplement&lt;/span&gt;(&lt;span class="k"&gt;self&lt;/span&gt;, &lt;span class="nb"&gt;num&lt;/span&gt;):
+
+        &lt;span class="s"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+&lt;span class="s"&gt;        :type num: int&lt;/span&gt;
+
+&lt;span class="s"&gt;        :rtype: int&lt;/span&gt;
+
+&lt;span class="s"&gt;        &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+        &lt;span class="n"&gt;n&lt;/span&gt; = &lt;span class="nb"&gt;int&lt;/span&gt;(&lt;span class="n"&gt;math&lt;/span&gt;.&lt;span class="nb"&gt;log&lt;/span&gt;(&lt;span class="nb"&gt;num&lt;/span&gt;,&lt;span class="mi"&gt;2&lt;/span&gt;)) + &lt;span class="mi"&gt;1&lt;/span&gt;
+
+        &lt;span class="sr"&gt;m = 2**n&lt;/span&gt;
+
+&lt;span class="sr"&gt;        return (m-1) ^ num&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;或&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;Solution&lt;/span&gt;(&lt;span class="n"&gt;object&lt;/span&gt;):
+
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;findComplement&lt;/span&gt;(&lt;span class="k"&gt;self&lt;/span&gt;, &lt;span class="nb"&gt;num&lt;/span&gt;):
+
+        &lt;span class="s"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+&lt;span class="s"&gt;        :type num: int&lt;/span&gt;
+
+&lt;span class="s"&gt;        :rtype: int&lt;/span&gt;
+
+&lt;span class="s"&gt;        &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+        &lt;span class="n"&gt;i&lt;/span&gt; = &lt;span class="mi"&gt;1&lt;/span&gt;
+
+        &lt;span class="k"&gt;while&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &amp;lt;= &lt;span class="n"&gt;num:&lt;/span&gt;
+
+            &lt;span class="n"&gt;i&lt;/span&gt; = &lt;span class="n"&gt;i&lt;/span&gt; &amp;lt;&amp;lt; &lt;span class="mi"&gt;1&lt;/span&gt;
+
+        &lt;span class="k"&gt;return&lt;/span&gt; (&lt;span class="n"&gt;i&lt;/span&gt; - &lt;span class="mi"&gt;1&lt;/span&gt;) ^ &lt;span class="nb"&gt;num&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;方法：101 与 111异或后为010  10001 与　11111 异或后为01110　与相同位数的全部为１的数异或即可得到对应的反数。该问题变为如何找到与原数位数相同，且每一位都为１的数。&lt;/p&gt;
+&lt;p&gt;方法一，找出原数的位数，相同位数最大数就是要找的数&lt;/p&gt;
+&lt;p&gt;如5 101 ３位，３位最大数为２**３-1　７(111)  &lt;/p&gt;
+&lt;p&gt;方法二，１移位得出&lt;/p&gt;
+&lt;p&gt;如５　１&amp;lt;&amp;lt;1 10(2) 10&amp;lt;&amp;lt;1 100(4) 100&amp;lt;1 1000(8) 减去１即为111&lt;/p&gt;
+&lt;h3&gt;Keyboard Row&lt;/h3&gt;
+&lt;p&gt;Given a List of words, return the words that can be typed using letters of alphabet on only one row's of American keyboard like the image below.
+Example 1:
+Input: ["Hello", "Alaska", "Dad", "Peace"]
+Output: ["Alaska", "Dad"]
+Note:
+You may use one character in the keyboard more than once.
+You may assume the input string will only contain letters of alphabet.&lt;/p&gt;
+&lt;p&gt;输入字符列表，找出字符串中字符只在键盘中一行的字符串。&lt;/p&gt;
+&lt;p&gt;解决方法：&lt;/p&gt;
+&lt;p&gt;遍历字符串列表，然后遍历每一行字符，判断每个字符串的字符是否在同一行，如果是保存。&lt;/p&gt;
+&lt;p&gt;代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;def findWord(words):
+    row1=&amp;quot;QqWwEeRrTtYyUuIiOoPp&amp;quot;
+    row2=&amp;quot;AaSsDdFfGgHhJjKkLl&amp;quot;
+    row3=&amp;quot;ZzXxCcVvBbNnMm&amp;quot;
+    rowlist=(row1, row2, row3)
+    List=[]
+    for word in words:
+        for row in rowlist:
+            Type=&amp;quot;T&amp;quot;
+            for i in word:
+                if i not in row:
+                    Type=&amp;quot;F&amp;quot;
+                    break
+            if Type == &amp;quot;T&amp;quot;:
+                List.append(word)
+                break
+    return List
+&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 04 Dec 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-12-04:2015/12/04/python/</guid><category>Python- Palindrome Number</category></item><item><title>leetcode - Palindrome Number &amp; Hamming Distance</title><link>http://king32783784.github.io/2015/12/03/python/</link><description>&lt;h3&gt;Palindrome Number&lt;/h3&gt;
 &lt;h4&gt;问题描述&lt;/h4&gt;
 &lt;p&gt;Determine whether an integer is a palindrome. Do this without extra space.
 判断一个整型数字是否为回文。并且不能再占用额外空间&lt;/p&gt;
