@@ -121,6 +121,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../2017/02/23/python/" title="位操作">
+                                <i class="fa fa-file-text padding-small"></i>
+                                位操作
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../2017/02/20/python/" title="python实现awk域简单例子">
                                 <i class="fa fa-file-text padding-small"></i>
                                 python实现awk域简单例子
@@ -142,12 +148,6 @@
                             <a class="hide-overflow" href="../2017/01/15/编程语言-Python/" title="python metaclass(下）">
                                 <i class="fa fa-file-text padding-small"></i>
                                 python metaclass(下）
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../2016/12/30/其他/" title="技术人员的发展之路">
-                                <i class="fa fa-file-text padding-small"></i>
-                                技术人员的发展之路
                             </a>
                         </li>
                     <li>
@@ -280,17 +280,17 @@
                         </a>
                     </li>
                     <li >
-                        <a href="../category/zi-dong-hua-ce-shi-autotest.html">
+                        <a href="../category/bian-cheng-yu-yan-python.html">
                             <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Autotest
+                            编程语言-Python
                             <span class="badge pull-right categorybadge">12</span>
                         </a>
                     </li>
                     <li >
-                        <a href="../category/bian-cheng-yu-yan-python.html">
+                        <a href="../category/zi-dong-hua-ce-shi-autotest.html">
                             <i class="fa fa-folder-open padding-small"></i>
-                            编程语言-Python
-                            <span class="badge pull-right categorybadge">11</span>
+                            自动化测试-Autotest
+                            <span class="badge pull-right categorybadge">12</span>
                         </a>
                     </li>
                     <li >
@@ -413,6 +413,76 @@
 </section>
 <div class="row">
     <div class="col-lg-9">
+            <article>
+                <h2>
+                    <a href="../2017/02/23/python/">位操作</a>
+<div class="post-info">
+    <div class="publish-info-block">
+        <small>
+            <span class="published">
+                <i class="fa fa-calendar padding-small"></i><time datetime="2017-02-23T00:00:00+08:00"> 2017-02-23 四</time>
+            </span>
+            <span class="category">
+                <i class="fa fa-folder-open padding-small"></i><a href="../category/bian-cheng-yu-yan-python.html">编程语言-Python</a>
+            </span>
+            <span class="tags">
+                <i class="fa fa-tags padding-small"></i>
+                <a href="../tag/python.html">Python</a>            </span>
+        </small>
+    </div>
+</div><!-- /.post-info -->                </h2>
+                <div class="summary">
+                    <body><p>最近碰到一个问题，是取一个数的反数，所以整理了一下位操作。
+计算机系统中所有的数据都是以二进制的形式存储的。位运算其实就是直接对在内存中的二进制数据进行操作，因此数据处理会比较快。
+在实际编程中，如果能合理运用位操作，能提高运行效率，解决一些复杂问题。</p>
+<h4 id="wei-cao-zuo-ji-chu">位操作基础</h4>
+<p>基本的位操作符有与、或、异或、取反、左移、右移。运算规则如下：</p>
+<table class="table table-hover table-striped">
+<thead>
+<tr>
+<th>符号</th>
+<th>描述</th>
+<th>运算规则</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&amp;</td>
+<td>与</td>
+<td>两个位都为１，结果为１</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>或</td>
+</tr>
+<tr>
+<td>^</td>
+<td>异或</td>
+<td>两个位相同为0， 相异为1</td>
+</tr>
+<tr>
+<td>～</td>
+<td>取反</td>
+<td>0变1， 1变0</td>
+</tr>
+<tr>
+<td>&lt;&lt;</td>
+<td>左移</td>
+<td>各个二进制位全部左移若干位，高位丢弃，低位补0</td>
+</tr>
+<tr>
+<td>&gt;&gt;</td>
+<td>右移</td>
+<td>各二进位全部右移若干位，对无符号数，高位补0， 有符号数，各编译器处理方法不一样，有的补符号位（算术右移），有的补0（逻辑右移）</td>
+</tr>
+</tbody>
+</table>
+<p>注意：
+1. 只有～为单目运算符，其他的为双目运算符 ...</p></body>
+                </div>
+            </article>
+            <hr/>
             <article>
                 <h2>
                     <a href="../2017/02/20/python/">python实现awk域简单例子</a>
@@ -629,32 +699,6 @@ def upper_attr(future_class_name, future_class_parents, future_class_attr)
     """返回一个类对象，将属性都转为大写形式”“”
     # 选择所有不以“__"的属性
     attrs = ((name, value) for name, value in future_class_attr.items() if not name.startswith('__ ...</pre></div></body>
-                </div>
-            </article>
-            <hr/>
-            <article>
-                <h2>
-                    <a href="../2016/12/30/其他/">技术人员的发展之路</a>
-<div class="post-info">
-    <div class="publish-info-block">
-        <small>
-            <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2016-12-30T00:00:00+08:00"> 2016-12-30 五</time>
-            </span>
-            <span class="category">
-                <i class="fa fa-folder-open padding-small"></i><a href="../category/qi-ta.html">其他</a>
-            </span>
-            <span class="tags">
-                <i class="fa fa-tags padding-small"></i>
-                <a href="../tag/qi-ta.html">其他</a>            </span>
-        </small>
-    </div>
-</div><!-- /.post-info -->                </h2>
-                <div class="summary">
-                    <body><p>2012年的时候写过一篇叫《程序算法与人生选择》的文章，我用算法来类比如何做选择，说白了就是怎么去计算，但是并没有讲程序员可以发展的方向有哪些。 所以，就算是有这些所谓的方法论，我们可能对自己的
-  发展还是会很纠结和无所事从，尤其是人到了30岁，这种彷徨和迷惑越来越重。虽然我之前也写过一篇《编程年龄和编程技能》的文章，但是还是有很多做技术的人对于自己能否在年纪大时还能去做技术感到没有信心。我猜测，这其中，最大的问题的是，目前从事技术工作的种种负面的经历（比如经常性的加班，被当成棋子或劳动力等等），让人完全看不到希望和前途，尤其是随着年纪越来越大，对未来的越来越没有信心。</p>
-<p>同时，也是因为在GIAC的大会被问到，程序员老了怎么办？而在年底这段时间，也和几个朋友在交流中不断地重复谈到个人发展的这个话题。我的人生过半，活到“不惑”的年纪，自然经常性的对什么事都会回头看看总结归纳，所以，在交谈过程中和交谈过后，自己也有一些思考想记录下来。因为我本人也是在这条路上的人，所以，谈不上给他人指导，我同样也是在瞎乱折腾同样每天在思考自己要去哪儿的“一尘世间迷途老生”。况且，我的经历和眼界非常有限，因此，下面的这些关于个人发展的文字和思考必然是受我的眼界和经历所局限的。也欢迎大家补充和指正。</p>
-<p>这些东西不一定对，也不一定就是全部 ...</p></body>
                 </div>
             </article>
         <div class="btn-more text-right">
