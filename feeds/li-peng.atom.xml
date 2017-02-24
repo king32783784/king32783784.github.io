@@ -14,32 +14,32 @@
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;&amp;amp;&lt;/td&gt;
+&lt;td&gt;'&amp;amp;'&lt;/td&gt;
 &lt;td&gt;与&lt;/td&gt;
 &lt;td&gt;两个位都为１，结果为１&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;'I'&lt;/td&gt;
 &lt;td&gt;或&lt;/td&gt;
+&lt;td&gt;两个位都为０，结果才为０（只要有1就为1）&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;^&lt;/td&gt;
+&lt;td&gt;'^'&lt;/td&gt;
 &lt;td&gt;异或&lt;/td&gt;
 &lt;td&gt;两个位相同为0， 相异为1&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;～&lt;/td&gt;
+&lt;td&gt;'～'&lt;/td&gt;
 &lt;td&gt;取反&lt;/td&gt;
 &lt;td&gt;0变1， 1变0&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&amp;lt;&amp;lt;&lt;/td&gt;
+&lt;td&gt;'&amp;lt;&amp;lt;'&lt;/td&gt;
 &lt;td&gt;左移&lt;/td&gt;
 &lt;td&gt;各个二进制位全部左移若干位，高位丢弃，低位补0&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&amp;gt;&amp;gt;&lt;/td&gt;
+&lt;td&gt;'&amp;gt;&amp;gt;'&lt;/td&gt;
 &lt;td&gt;右移&lt;/td&gt;
 &lt;td&gt;各二进位全部右移若干位，对无符号数，高位补0， 有符号数，各编译器处理方法不一样，有的补符号位（算术右移），有的补0（逻辑右移）&lt;/td&gt;
 &lt;/tr&gt;
@@ -223,7 +223,7 @@ x=-x 例如 1 -1 -12 12
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h5&gt;8 二进制中１的个数&lt;/h5&gt;
+&lt;h4&gt;8 二进制中１的个数&lt;/h4&gt;
 &lt;p&gt;统计二进制数中１的个数，这个方法比较多，可由转成字符进行统计。这里采用位操作的方法。
 下面还是以34520为例，进行分析
 １.２位一组高低位相加
@@ -251,7 +251,7 @@ x=-x 例如 1 -1 -12 12
 
 
 &lt;p&gt;分组处理可以解决很多二进制问题。&lt;/p&gt;
-&lt;h5&gt;9.缺失的数字&lt;/h5&gt;
+&lt;h4&gt;9.落单的数字&lt;/h4&gt;
 &lt;p&gt;一组数字，大部分都是出现了偶数次，而缺失的数字出现了奇数次，现在要找出这个数。
 利用异或运算的两个特性，１．自己和自己异或为０（和０异或为本身）　２．异或满足交换率
 也就是将所有的数进行异或，成对的数就会变成０，最后就变成了一堆０和落单的数异或，也就找到了它&lt;/p&gt;

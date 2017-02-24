@@ -447,41 +447,38 @@
 </thead>
 <tbody>
 <tr>
-<td>&amp;</td>
+<td>'&amp;'</td>
 <td>与</td>
 <td>两个位都为１，结果为１</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
+<td>'I'</td>
 <td>或</td>
+<td>两个位都为０，结果才为０（只要有1就为1）</td>
 </tr>
 <tr>
-<td>^</td>
+<td>'^'</td>
 <td>异或</td>
 <td>两个位相同为0， 相异为1</td>
 </tr>
 <tr>
-<td>～</td>
+<td>'～'</td>
 <td>取反</td>
 <td>0变1， 1变0</td>
 </tr>
 <tr>
-<td>&lt;&lt;</td>
+<td>'&lt;&lt;'</td>
 <td>左移</td>
 <td>各个二进制位全部左移若干位，高位丢弃，低位补0</td>
 </tr>
 <tr>
-<td>&gt;&gt;</td>
+<td>'&gt;&gt;'</td>
 <td>右移</td>
 <td>各二进位全部右移若干位，对无符号数，高位补0， 有符号数，各编译器处理方法不一样，有的补符号位（算术右移），有的补0（逻辑右移）</td>
 </tr>
 </tbody>
 </table>
-<p>注意：</p>
-<ol>
-<li>只有～为单目运算符，其他的为双目运算符</li>
-<li>位操作只能作用于整型数据 ...</li></ol></body>
+<p>注意 ...</p></body>
                 </div>
             </article>
             <hr/>
