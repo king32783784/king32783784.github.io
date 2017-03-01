@@ -6,23 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="李鹏" />
-        <meta name="keywords" content="Python" />
-        <meta name="description" content="最近碰到一个问题，是取一个数的反数，所以整理了一下位操作。 计算机系统中所有的数据都是以二进制的形式存储的。位运算其实就是直接对在内存中的二进制数据进行操作，因此数据处理会比较快。 在实际编程中，如果能合理运用位操作，能提高运行效率，解决一些复杂问题。 位操作基础 基本的位操作符有与、或、异或、取反、左移、右移。运算规则如下： 符号 描述 运算规则 &#39;&amp;&#39; 与 两个位都为１，结果为１ &#39;I&#39; 或 两个位都为０，结果才为０（只要有1就为1） &#39;^&#39; 异或 两个位相同为0， 相异为1 &#39;～&#39; 取反 0变1， 1变0 &#39;&lt;&lt;&#39; 左移 各个二进制位全部左移若干位，高位丢弃，低位补0 &#39;&gt;&gt;&#39; 右移 各二进位全部右移若干位，对无符号数，高位补0， 有符号数，各编译器处理方法不一样，有的补符号位（算术右移），有的补0（逻辑右移） 注意 ..." />
+        <meta name="keywords" content="ACC" />
+        <meta name="description" content="简介 ACC（Attributes Components Capability）是Google测试团队使用的一种建模方法，用来快速地建立产品的模型，以指导下一步的测试计划和设计。在Google内部，ACC得到较普遍的应用，一些工程师还开发了支持ACC模型的Web应用，并将其开源。 ACC的指导原则如下： 避免散漫的文字，使用简明的列表 不必推销，避免华丽的介绍 简洁 不要把不重要的、无法执行的东西放进测试计划 渐进式的描述 指导计划者的思路 最终结果应该是测试用例 ACC通过指导计划者依次考察产品的三个维度达成这个目标：描述产品目标的形容词和副词；确定产品各部分、各特性的名词；描述产品实际做什么的动词。测试需要完成的就是验证这些能力能够正常运作、产品各组件能满足应用的目标。 A代表特质 特质是系统的形容词，代表了产品的品质和特色，是区别于竞争对手的关键。 C代表组件 组件是系统的名词，在特质被识别之后确定。组件是构成待建系统的模块，是一个软件之所以如此的关键代码块。 C代表能力 能力是系统的动词，代表着系统在用户指令之下完成的动作。 示例一 参考《How Google Tests Software》中的Google+的例子 ..." />
 
 <!-- Open Graph tags -->
 <meta property="og:site_name" content="路漫求索"/>
     <meta property="og:type" content="article"/>
-    <meta property="og:title" content="位操作"/>
-    <meta property="og:url" content="../../../../2017/02/23/python/"/>
-    <meta property="og:description" content="最近碰到一个问题，是取一个数的反数，所以整理了一下位操作。 计算机系统中所有的数据都是以二进制的形式存储的。位运算其实就是直接对在内存中的二进制数据进行操作，因此数据处理会比较快。 在实际编程中，如果能合理运用位操作，能提高运行效率，解决一些复杂问题。 位操作基础 基本的位操作符有与、或、异或、取反、左移、右移。运算规则如下： 符号 描述 运算规则 &#39;&amp;&#39; 与 两个位都为１，结果为１ &#39;I&#39; 或 两个位都为０，结果才为０（只要有1就为1） &#39;^&#39; 异或 两个位相同为0， 相异为1 &#39;～&#39; 取反 0变1， 1变0 &#39;&lt;&lt;&#39; 左移 各个二进制位全部左移若干位，高位丢弃，低位补0 &#39;&gt;&gt;&#39; 右移 各二进位全部右移若干位，对无符号数，高位补0， 有符号数，各编译器处理方法不一样，有的补符号位（算术右移），有的补0（逻辑右移） 注意 ..."/>
-    <meta property="article:published_time" content="2017-02-23" />
-    <meta property="article:section" content="编程语言-Python" />
-        <meta property="article:tag" content="Python" />
+    <meta property="og:title" content="测试建模"/>
+    <meta property="og:url" content="../../../../2014/10/11/测试/"/>
+    <meta property="og:description" content="简介 ACC（Attributes Components Capability）是Google测试团队使用的一种建模方法，用来快速地建立产品的模型，以指导下一步的测试计划和设计。在Google内部，ACC得到较普遍的应用，一些工程师还开发了支持ACC模型的Web应用，并将其开源。 ACC的指导原则如下： 避免散漫的文字，使用简明的列表 不必推销，避免华丽的介绍 简洁 不要把不重要的、无法执行的东西放进测试计划 渐进式的描述 指导计划者的思路 最终结果应该是测试用例 ACC通过指导计划者依次考察产品的三个维度达成这个目标：描述产品目标的形容词和副词；确定产品各部分、各特性的名词；描述产品实际做什么的动词。测试需要完成的就是验证这些能力能够正常运作、产品各组件能满足应用的目标。 A代表特质 特质是系统的形容词，代表了产品的品质和特色，是区别于竞争对手的关键。 C代表组件 组件是系统的名词，在特质被识别之后确定。组件是构成待建系统的模块，是一个软件之所以如此的关键代码块。 C代表能力 能力是系统的动词，代表着系统在用户指令之下完成的动作。 示例一 参考《How Google Tests Software》中的Google+的例子 ..."/>
+    <meta property="article:published_time" content="2014-10-11" />
+    <meta property="article:section" content="测试" />
+        <meta property="article:tag" content="ACC" />
         <meta property="article:author" content="李鹏" />
         <meta property="og:image"
               content="../../../../favicon.png"/>
 
-    <title>位操作 - 路漫求索</title>
+    <title>测试建模 - 路漫求索</title>
 
         <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
 
@@ -67,12 +67,12 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-share-small" class="collapse ">
                     <li>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2017/02/23/python/" title="Share via Facebook" target="popup">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2014/10/11/测试/" title="Share via Facebook" target="popup">
                             <i class="fa fa-facebook-square padding-small"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="https://plus.google.com/share?url=../../../../2017/02/23/python/" title="Share via Google+" target="popup">
+                        <a href="https://plus.google.com/share?url=../../../../2014/10/11/测试/" title="Share via Google+" target="popup">
                             <i class="fa fa-google-plus padding-small"></i>
                         </a>
                     </li>
@@ -121,7 +121,7 @@
                         </a>
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
-                        <li class="active">
+                        <li class="">
                             <a class="hide-overflow" href="../../../../2017/02/23/python/" title="位操作">
                                 <i class="fa fa-file-text padding-small"></i>
                                 位操作
@@ -167,13 +167,13 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-share" class="sidebar_submenu collapse ">
                     <li>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2017/02/23/python/" target="popup">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2014/10/11/测试/" target="popup">
                             <i class="fa fa-facebook-square padding-small"></i>
                             Facebook
                         </a>
                     </li>
                     <li>
-                        <a href="https://plus.google.com/share?url=../../../../2017/02/23/python/" target="popup">
+                        <a href="https://plus.google.com/share?url=../../../../2014/10/11/测试/" target="popup">
                             <i class="fa fa-google-plus padding-small"></i>
                             Google+
                         </a>
@@ -280,7 +280,7 @@
                             <span class="badge pull-right categorybadge">17</span>
                         </a>
                     </li>
-                    <li class="active">
+                    <li >
                         <a href="../../../../category/bian-cheng-yu-yan-python.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             编程语言-Python
@@ -371,7 +371,7 @@
                             <span class="badge pull-right categorybadge">2</span>
                         </a>
                     </li>
-                    <li >
+                    <li class="active">
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -406,24 +406,24 @@
             <div class="col-lg-9">
                 <header class="page-header">
                     <h1>
-                        <a href="../../../../2017/02/23/python/"
+                        <a href="../../../../2014/10/11/测试/"
                            rel="bookmark"
-                           title="Permalink to 位操作">
-                            位操作
+                           title="Permalink to 测试建模">
+                            测试建模
                         </a>
                         <small>
 <div class="post-info">
     <div class="publish-info-block">
         <small>
             <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2017-02-23T00:00:00+08:00"> 2017-02-23 四</time>
+                <i class="fa fa-calendar padding-small"></i><time datetime="2014-10-11T00:00:00+08:00"> 2014-10-11 六</time>
             </span>
             <span class="category">
-                <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/bian-cheng-yu-yan-python.html">编程语言-Python</a>
+                <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/ce-shi.html">测试</a>
             </span>
             <span class="tags">
                 <i class="fa fa-tags padding-small"></i>
-                <a href="../../../../tag/python.html">Python</a>            </span>
+                <a href="../../../../tag/acc.html">ACC</a>            </span>
         </small>
     </div>
 </div><!-- /.post-info -->                        </small>
@@ -434,285 +434,385 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    <body><p>最近碰到一个问题，是取一个数的反数，所以整理了一下位操作。
-计算机系统中所有的数据都是以二进制的形式存储的。位运算其实就是直接对在内存中的二进制数据进行操作，因此数据处理会比较快。
-在实际编程中，如果能合理运用位操作，能提高运行效率，解决一些复杂问题。</p>
-<h3 id="wei-cao-zuo-ji-chu">位操作基础</h3>
-<p>基本的位操作符有与、或、异或、取反、左移、右移。运算规则如下：</p>
+                    <body><h3 id="jian-jie">简介</h3>
+<p>ACC（Attributes Components Capability）是Google测试团队使用的一种建模方法，用来快速地建立产品的模型，以指导下一步的测试计划和设计。在Google内部，ACC得到较普遍的应用，一些工程师还开发了支持ACC模型的Web应用，并将其开源。</p>
+<p>ACC的指导原则如下：</p>
+<ul>
+<li>避免散漫的文字，使用简明的列表</li>
+<li>不必推销，避免华丽的介绍</li>
+<li>简洁</li>
+<li>不要把不重要的、无法执行的东西放进测试计划</li>
+<li>渐进式的描述　</li>
+<li>指导计划者的思路</li>
+<li>最终结果应该是测试用例</li>
+</ul>
+<p>ACC通过指导计划者依次考察产品的三个维度达成这个目标：描述产品目标的形容词和副词；确定产品各部分、各特性的名词；描述产品实际做什么的动词。测试需要完成的就是验证这些能力能够正常运作、产品各组件能满足应用的目标。</p>
+<ul>
+<li>A代表特质</li>
+</ul>
+<p>特质是系统的形容词，代表了产品的品质和特色，是区别于竞争对手的关键。</p>
+<ul>
+<li>C代表组件</li>
+</ul>
+<p>组件是系统的名词，在特质被识别之后确定。组件是构成待建系统的模块，是一个软件之所以如此的关键代码块。</p>
+<ul>
+<li>C代表能力　</li>
+</ul>
+<p>能力是系统的动词，代表着系统在用户指令之下完成的动作。</p>
+<h3 id="shi-li-yi">示例一</h3>
+<p>参考《How Google　Tests Software》中的Google+的例子。</p>
+<p>Ｇoogle+的特质：</p>
+<ul>
+<li>Social（社交）：鼓励用户去分享信息和他们的状态</li>
+<li>Expressive（表现力）：用户可以运用各种功能去表达自我</li>
+<li>Easy（容易）：让用户以直观的方式做他们想做的事</li>
+<li>Relevant（相关）：只显示用户感兴趣的内容</li>
+<li>Extensible（可扩展）：能够与Google的已有功能、第三方网站和应用（Application）集成</li>
+<li>Private（隐私）：用户数据不会泄漏</li>
+</ul>
+<p>第二步，确定Google+的Components组件：</p>
+<ul>
+<li>Profile（个人资料）：用户的帐户信息和兴趣爱好</li>
+<li>People（人脉）：用户已经连接的好友</li>
+<li>Stream（信息流）：由帖子、评论、通知、照片等组成的有序的信息流</li>
+<li>Circles（圈子）：将好友分组，如把不同的好友归于“朋友”、“同事”等小组</li>
+<li>Notifications（通知）：当用户被帖子提到时，向他显示提示信息</li>
+<li>Hangouts（视频群聊）：视频对话的小组</li>
+<li>Posts（帖子）：用户和好友所发表的信息</li>
+<li>Comments（评论）：对帖子、照片、视频等的评论</li>
+<li>Photos（照片）：用户和好友所上传的照片</li>
+</ul>
+<p>组件可以看做功能列表的顶层元素，是产品核心功能的清单。《How Google Tests Software》建议Components列表要尽可能简单，10个Components很好，20个就太多了。其目的是重点考虑对产品、对用户最重要的功能与代码，并避免漫长的Components列表所导致的分析瘫痪。</p>
+<p>第三步是确定产品的Capabilities（能力）</p>
+<p>Google+的Capabilities矩阵如下：</p>
 <table class="table table-hover table-striped">
 <thead>
 <tr>
-<th>符号</th>
-<th>描述</th>
-<th>运算规则</th>
+<th></th>
+<th>社交</th>
+<th>表现力</th>
+<th>容易</th>
+<th>相关</th>
+<th>可扩展</th>
+<th>隐私</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>'&amp;'</td>
-<td>与</td>
-<td>两个位都为１，结果为１</td>
+<td>个人资料</td>
+<td>在好友中分享个人资料和兴趣爱好</td>
+<td>用户可以在网上表达自我</td>
+<td>很容易创建、更新、传播信息</td>
+<td></td>
+<td>向被批准的、拥有恰当访问权限的应用提供数据</td>
+<td>用户可以保密隐私信息 只向被批准、拥有恰当访问权限的应用提供信息</td>
 </tr>
 <tr>
-<td>'I'</td>
-<td>或</td>
-<td>两个位都为０，结果才为０（只要有1就为1）</td>
+<td>人脉</td>
+<td>用户能够连接他的朋友</td>
+<td>用户可以定制个人资料，使自己与众不同</td>
+<td>提供工具让管理好友变得轻松</td>
+<td>用户可以用相关性规则过滤好友</td>
+<td>向应用提供好友数据</td>
+<td>只向被批准、拥有恰当访问权限的应用提供信息</td>
 </tr>
 <tr>
-<td>'^'</td>
-<td>异或</td>
-<td>两个位相同为0， 相异为1</td>
+<td>信息流</td>
+<td>向用户提示其好友的更新</td>
+<td></td>
+<td></td>
+<td>用户可以根据兴趣过滤好友更新</td>
+<td>向应用提供信息流</td>
+<td></td>
 </tr>
 <tr>
-<td>'～'</td>
-<td>取反</td>
-<td>0变1， 1变0</td>
+<td>圈子</td>
+<td>将好友分组</td>
+<td>根据用户的语境创建新圈子</td>
+<td>鼓励创建和修改圈子</td>
+<td></td>
+<td>向应用提供圈子数据</td>
+<td></td>
 </tr>
 <tr>
-<td>'&lt;&lt;'</td>
-<td>左移</td>
-<td>各个二进制位全部左移若干位，高位丢弃，低位补0</td>
+<td>通知</td>
+<td></td>
+<td></td>
+<td>简明地展示通知</td>
+<td></td>
+<td>向应用提供通知数据</td>
+<td></td>
 </tr>
 <tr>
-<td>'&gt;&gt;'</td>
-<td>右移</td>
-<td>各二进位全部右移若干位，对无符号数，高位补0， 有符号数，各编译器处理方法不一样，有的补符号位（算术右移），有的补0（逻辑右移）</td>
+<td>视频群聊</td>
+<td>用户可以邀请他们的圈子加入群聊 用户可以公开其群聊 好友访问用户的信息流时，他们被告知群聊</td>
+<td>加入群聊前，用户可以预览自己的形象</td>
+<td>只要几次点击就可以创建并加入群聊 只要一次点击就可以关闭视频和音频输入 可将好友加入已有的群聊</td>
+<td></td>
+<td>用户可以在群聊中使用文字交流 YouTube视频可以加入群聊 在“设置”中可以配置群聊的硬件 没有摄像头的用户可以音频交谈</td>
+<td>只有被邀请的用户才能加入群聊 只有被邀请的用户才能收到群聊通知</td>
+</tr>
+<tr>
+<td>帖子</td>
+<td></td>
+<td>表达用户的想法</td>
+<td></td>
+<td></td>
+<td>向应用提供帖子数据</td>
+<td>帖子只向被批准用户公布</td>
+</tr>
+<tr>
+<td>评论</td>
+<td></td>
+<td>用评论表达用户的想法</td>
+<td></td>
+<td></td>
+<td>向应用提供评论数据</td>
+<td>评论只向被批准的用户公布</td>
+</tr>
+<tr>
+<td>照片</td>
+<td>用户可以分享他的照片</td>
+<td>用户能方便地上传照片 用户能方便的从其他来源导入照片</td>
+<td>与其他照片服务集成</td>
+<td>照片只向被批准的用户公布</td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<p>注意：</p>
-<ol>
-<li>只有～为单目运算符，其他的为双目运算符</li>
-<li>位操作只能作用于整型数据</li>
-<li>位操作符的运算优先级比较低，因此使用时注意括号的添加</li>
-<li>位算符可以复合操作，比如&amp;=、|=、^=、&lt;&lt;=、&gt;&gt;=。</li>
-</ol>
-<h3 id="chang-yong-wei-cao-zuo-li-zi">常用位操作例子</h3>
-<h4 id="1pan-duan-qi-ou">1.判断奇偶</h4>
-<p>显然的，最末位为0的为偶数，为1的为奇数。因此可以使用a &amp; 1是否为0来判断，如果为0则表明为偶数，为1表明为奇数</p>
-<p>下面的程序，将输出0到100之间的所有偶数</p>
-<table class="table highlighttable table-striped table-hover"><tbody><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
-<span class="c1"># *-* utf-8 *-*</span>
-
-<span class="k">def</span> <span class="nf">geteven</span><span class="p">():</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">i</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="ow">is</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">print</span> <span class="n">i</span>
-<span class="n">geteven</span><span class="p">()</span>
-</pre></div>
-</td></tr></tbody></table>
-<h4 id="2jiao-huan-liang-shu">2.交换两数</h4>
-<p>一般的写法为，借助第三个变量来保存其中一个变量</p>
-<div class="highlight"><pre><span></span>def change(x,y):
-    z=x
-    x=y
-    y=z
-    return x,y
-</pre></div>
-<p>使用位操作，可以不借助第三个变量</p>
-<p>首先 a^=b 即 a=(a^b)
-然后 b^=a 即b = b^a 将a替换为(a^b)得到 b=b^(a^b),由于^满足交换率，b^(a^b)=b^b^a 由于一个数和自己异或的结果为0，并且任何书和0异或都不会变。因此
-b=b^(a^b)=b^b^a=0^a。 b=a
-最后a^=b即 a=a^b 前面已得到a=(a^b), b=a 所以 a=a^b即a=(a^b)^a = a^a^b=0^b=b
-故代码还可以这样写</p>
-<div class="highlight"><pre><span></span>def change(x,y)
-    x^=y
-    y^=x
-    x^=y
-    return x,y
-</pre></div>
-<p>以具体的实例来说明一下：</p>
-<p>比如x=7 y=5
-7的二进制为 4+2+1 即0111
-5的二进制为 4+1   即0101
-第一步 x^=y x = 0111 ^ 0101 = 1101 
-第二步 y^=x y = 0101 ^ 1101 = 0111; 这时y为0111即7，也就是x
-第三步 x^=y x = 1101 ^ 0111 = 0101; 这时x为0101即5，也就是y</p>
-<h4 id="3jiao-huan-fu-hao">3.交换符号</h4>
-<p>交换符号，顾名思义，即为正变负。
-其实用普通方法也很简单：
-x=-x 例如 1 -1 -12 12 
-但通过位操作也很方便
-比如 -11
-11110101(-11) 取反为0001010 加1 为00001011 即11
-00001011(11) 取反11110100 加1 为11110101 即-11
-正负切换，只需原数取反后加1</p>
-<p>代码如下：</p>
-<div class="highlight"><pre><span></span>def signchange(x):
-    return ~x+1
-</pre></div>
-<h4 id="4qiu-jue-dui-zhi">4.求绝对值</h4>
-<p>位操作可以用来求绝对值，负数可以取反后加1.和前面讲的一样
-如果32位有符号整型，右移31位得到最后一位符号位，如果为0，则为正数，如果为-1，为负数 正数直接返回，否则取反加1</p>
-<p>代码如下：</p>
-<div class="highlight"><pre><span></span> def getabs(x):
-     sign = x &gt;&gt; 31
-     if sign is 0:
-         return x
-     else:
-         return ~x + 1
-</pre></div>
-<p>对于任何数，和0异或都会保存不变。与-1异或相当于取反。因此 x与sign异或后再减sign(sign要么为0，要么为-1，-sign要么减0或减-1等于+1）也可以得到绝对值，代码可以改为：</p>
-<div class="highlight"><pre><span></span>def getabs(x):
-    sign = x &gt;&gt; 31
-    return (x^sign) - sign
-</pre></div>
-<h4 id="5gao-di-wei-jiao-huan">5.高低位交换</h4>
-<p>比如一个16位的无符号整数，前8位可以作为“高位”，后8位可以为“低位”，将其高低互换。
-如34520:
-10000110 11011000
-变为
-11011000 10000110
-55430
-将10000110 11011000 右移8位，即得到00000000 10000110，左移8位得到，11011000 00000000，然后将两个数相或得到11011000 10000110 
-代码如下：</p>
-<div class="highlight"><pre><span></span>def changesite(x):
-    return (x &gt;&gt; 8) | (x &lt;&lt; 8)
-</pre></div>
-<p>此处 python可能得到值不同，python默认为有符号数，且为64位</p>
-<h4 id="6er-jin-zhi-ni-xu">6.二进制逆序</h4>
-<p>逆序就是将34520
-10000110 11011000变为
-00011011 01100001 </p>
-<p>类似于归并排序的分组处理，可以通过4步进行16位数据的二进制逆序：
-第1步：2位一组，每位高低交换：
-10000110 11011000
-01001001 11100100
-第2步：4位一组，每2位高低交换
-01001001 11100100
-00010110 10110001
-第3步：8位一组，每4位高低交换
-00010110 10110001
-01100001 00011011
-第4步，16位一组，8位高低交换
-01100001 00011011
-00011011 01100001
-这样就得到了二进制交换的目的</p>
-<p>第一步如何进行交换？</p>
-<p>先分别取其奇数位和偶数位，空位以0补位
-奇数位：10000010 10001000
-偶数为：00000100 01010000
-然后将奇数位右移1位得到
-01000001 01000100
-偶数位左移1位得到
-00001000 10100000
-两则相或得到：
-01001001 11100100 这样就得到了奇偶位的数据交换</p>
-<p>代码如下：</p>
-<div class="highlight"><pre><span></span>def getnum(x):
-    x = ((x&amp;0XAAAA) &gt;&gt; 1) | ((x&amp;0X5555) &lt;&lt;1);
-    x = ((x&amp;0XCCCC) &gt;&gt; 2) | ((x&amp;0X3333) &lt;&lt;2);
-    x = ((x&amp;0XF0F0) &gt;&gt; 4) | ((x&amp;0X0F0F) &lt;&lt;4);
-    x = ((x&amp;0XFF00) &gt;&gt; 8) | ((x&amp;0X00FF) &lt;&lt;8);
-    return x
-</pre></div>
-<h4 id="7er-jin-zhi-an-wei-qu-fan">7.二进制按位取反</h4>
-<p>例如 5=101 变为010 2
-1=1 变为0 
-7=111 变为000
-变化可以简单归结为1变0 0变1 
-异或的特点是相同为0，不同为1；如果和1相异或，1就会变成0，0就会变成1，也就是将原数的每位和1相异或就能得到对应的取反
-比如 101: 101 ^ 111 得到 010 111： 111^111得到000
-现在问题转为如何获取和原数相同的全数为1的数
-获取原数的位数，如111可由1000 - 1 获取
-方法1
-1左移获得，1移位后右边补0
-代码如下：</p>
-<div class="highlight"><pre><span></span>def getnum(num):
-    i = 1
-    while i &lt;= num:
-        i = i &lt;&lt; 1
-        print(i)
-    return (i - 1) ^ num
-</pre></div>
-<p>2.获取原数的位数，求相同位数的最大数
-代码如下：</p>
-<div class="highlight"><pre><span></span>def getnum(num):
-    n = int(math.log(num,2)) + 1
-    m = 2**n
-    return (m-1) ^ num
-</pre></div>
-<h4 id="8-er-jin-zhi-zhong-1de-ge-shu">8 二进制中１的个数</h4>
-<p>统计二进制数中１的个数，这个方法比较多，可由转成字符进行统计。这里采用位操作的方法。
-下面还是以34520为例，进行分析
-１.２位一组高低位相加
-　10 00 01 10 11 01 10 00
--&gt;01 00 01 01 10 01 01 00
-2.4位一组高低位相加
-  01 00 01 01 10 01 01 00
-  00 01 00 10 00 11 00 01
-3.8位一组高低位相加
-  00 01 00 10 00 11 00 01
-  00 00 00 11 00 00 01 00
-4.16位一组高低位相加
-　00 00 00 11 00 00 01 00
-　00 00 00 00 00 00 01 11
-　
-这方法的套路在于二进制无非０和１，第一步相当于分别把８组里面的１进行了统计，第二步又把４组里面的１进行了统计，然后2组，然后1组
-代码：</p>
-<div class="highlight"><pre><span></span>def getsum(x):
-     x = ((x &amp; 0xaaaa) &gt;&gt; 1) + (x &amp; 0x5555)
-     x = ((x &amp; 0xcccc) &gt;&gt; 2) + (x &amp; 0x3333)
-     x = ((x &amp; 0xf0f0) &gt;&gt; 4) + (x &amp; 0x0f0f)
-     x = ((x &amp; 0xff00) &gt;&gt; 8) + (x &amp; 0x00ff)
-     return x
-</pre></div>
-<p>分组处理可以解决很多二进制问题。</p>
-<h4 id="9luo-dan-de-shu-zi">9.落单的数字</h4>
-<p>一组数字，大部分都是出现了偶数次，而缺失的数字出现了奇数次，现在要找出这个数。
-利用异或运算的两个特性，１．自己和自己异或为０（和０异或为本身）　２．异或满足交换率
-也就是将所有的数进行异或，成对的数就会变成０，最后就变成了一堆０和落单的数异或，也就找到了它</p>
-<p>代码如下：</p>
-<div class="highlight"><pre><span></span>def getnum(numlist):
-    num=0
-    for i in numlist:
-        num ^= i
-    return num
-</pre></div>
-<p>例如getnum([7,6,4,3,3,4,6,3,3,7,7])
-将输出7</p>
-<p>要是两个落单了呢
-比如[2,3,4,5,6,7,8,9,9,8,7,5,3,2]
-如果按照上面的做法，最终得到的是两个落单数字的异或结果。
-如果将整组数分成两组，并且将两个落单的数分别分到两组中，两组分别异或就能把两个落单的数孤立出来。
-如何分组呢，相同的数在每个二进制上的位都相同，两个相同的数异或后，每位上都是０，而不同的数异或后至少有一位为１,我们就按这一位为０的分为１组，为１的分为１组
-例子中异或结果为6^4  0110^0100 为0010 也就是７和４在第１位不同，然后将整个数组按照第１位　１和０进行分组
-２　0010　第一组
-３　0011 第一组
-４　0100 第二组
-５　0101 第二组
-６　0110 第一组
-７　0111 第一组
-８　1000 第二组
-９　1001 第二组
-这样 ２、３、６、７、７、３、２为１组　 4、５、８、９、９、５为２组
-这样每组分别异或就得到了6和４</p>
-<p>代码：</p>
-<div class="highlight"><pre><span></span>def getdouble(numlist):
-    num = 0
-    for i in numlist:
-        num ^= i
-    n = int(math.log(num,2)) + 1
-    for j in range(n):
-        if((num &gt;&gt; j)&amp;1 ==1):
-            break
-    list1=[]
-    list2=[]
-    for temp in numlist:
-        if ((temp &gt;&gt; j)&amp;1 ==1):
-            list1.append(temp)
-        else:
-            list2.append(temp)
-    print getsingle(list1)
-    print getsingle(list2)
-</pre></div></body>
+<p>Capabilities通常是面向用户的（user-oriented），反映了用户视角的产品行为。测试人员也应该保持Capabilities矩阵的简洁，他们应该关注对用户而言最有价值、最有吸引力的能力，并在合适的抽象层次（right level of abstraction）记录Capabilities。最重要的是，Capabilities应该是可测的（testable），测试人员能够设计测试来检查产品实现了预期的Capabilities。</p>
+<p>有了Capabilities矩阵，测试团队就完成初始的测试计划。这就是前Google测试总监James Whittaker所说的10分钟测试计划（The Ten Minutes Test Plan）。其基本思路是专注于核心属性、核心功能和核心能力，而省略一切不必要的细节。之后，测试团队会利用矩阵去指导测试设计，通常矩阵中的一条Capability就是一个测试对象、测试策略或测试情景，而复杂的Capability会演化出更多的测试设计。</p>
+<p>总结来说，测试计划制定时可以参考ACC策略快速制定，在产品进行开发迭代时，再进行必要的调整和完善。</p>
+<h3 id="shi-li-er">示例二</h3>
+<p>如果Linux桌面系统按ACC建模，如何区分？</p>
+<p>Linux桌面系统的特质：</p>
+<ul>
+<li>易用性　良好的用户界面，包括图形用户界面、文本行界面</li>
+<li>安全性　多种安全措施，包括读写控制、审计跟踪、应用授权等</li>
+<li>可定制　可以根据应用场景进行定制</li>
+<li>易扩展　可以扩展丰富的应用</li>
+<li>兼容性　兼容多种硬件设备、基础软件</li>
+<li>支撑　　支持非法的系统调用、基础服务、基础库、开发组件等</li>
+</ul>
+<p>Linux桌面系统的顶层组，这里是组的分类，并不是组件的分类。linux系统组件过多，不再一一说明。</p>
+<ul>
+<li>安装程序 操作系统的安装程序</li>
+<li>firstboot　firstboot设置</li>
+<li>core组　核心组件</li>
+<li>framework组　框架组件</li>
+<li>KDE　桌面环境</li>
+<li>App　系统集成应用</li>
+<li>extra　系统扩展应用</li>
+</ul>
+<p>linux系统的组件过多，不再详细列出，举例说明。</p>
+<p>core组件包括kernel、gcc、bash、automake、make、xorg、syslinux、systemd、glibc...
+framework组件包括NetworkManager、QT、python、Perl、openvpn...
+KDE组件包括isoftapp、fcitx、kde-baseapps、kf5、kde-workspace、plasma、kwin、ark、dolphin、sddm...
+App组件包括chromium、bomi、isoft-safe-center、qt-creator、isoft-update...
+extra组件包括k3b、clouldmusic、bullet、opencv、golang...</p>
+<p>linux系统的Capabilities（能力）</p>
+<p>linux系统的能力矩阵，不再详细划分，这里只进行顶层分组进行简略划分。</p>
+<table class="table table-hover table-striped">
+<thead>
+<tr>
+<th></th>
+<th>易用性</th>
+<th>安全性</th>
+<th>可定制</th>
+<th>易扩展</th>
+<th>兼容性</th>
+<th>支撑</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>安装程序</td>
+<td>LiveCD、安装操作简便</td>
+<td></td>
+<td>分区数量、容量设置；</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>swap分区、文件系统类型、home分区设置；</td>
+<td>分区助手，还原、迁移助手</td>
+<td>UEFI、legacy、多系统、多硬盘、多种硬件平台(台式机、笔记本）</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>firstboot</td>
+<td>设置简便</td>
+<td></td>
+<td>定制语言、账户、登陆设置</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>core组</td>
+<td></td>
+<td>支持审计、读写控制</td>
+<td>各个组件可以进行裁剪和修改</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>framework组</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>KDE组</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>app</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>extra</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>组件太多，不再详细列出每个组件的能力。每个组件都可以再根据ACC进行测试建模。</p>
+<h3 id="shi-li-er_1">示例二</h3>
+<p>此处，linux的包含组件过多，需要进行拆分，分别进行ACC测试建模</p>
+<p>以普华应用商店为例</p>
+<p>普华应用商店特质：</p>
+<ul>
+<li>容易　应用软件安装简单，操作容易</li>
+<li>可扩展　可以进行软件种类的丰富</li>
+<li>相关　　展示linux桌面用户常用软件</li>
+<li>独立性　安装对应应用软件，不影响系统及其他软件</li>
+<li>完整性　应用软件安装包完整</li>
+</ul>
+<p>普华应用商店的组件：</p>
+<ul>
+<li>首页</li>
+<li>升级</li>
+<li>卸载</li>
+<li>软件分类</li>
+<li>软件介绍</li>
+<li>软件操作</li>
+<li>搜索</li>
+<li>设置</li>
+<li>软件包</li>
+</ul>
+<p>普华应用商店的能力矩阵：</p>
+<table class="table table-hover table-striped">
+<thead>
+<tr>
+<th></th>
+<th>容易</th>
+<th>可扩展</th>
+<th>相关</th>
+<th>独立性</th>
+<th>完整性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>首页</td>
+<td>打开简单；展示常用菜单</td>
+<td></td>
+<td>首页展示下载量大常用软件；首页新闻定期更新</td>
+<td></td>
+<td>显示完整，菜单功能正常</td>
+</tr>
+<tr>
+<td>升级</td>
+<td>直观显示可升级软件，支持一键升级、全部升级、软件选择性升级</td>
+<td></td>
+<td>只显示可升级软件</td>
+<td>软件升级，不影响其他功能或软件</td>
+<td>软件可正常升级，升级后不影响其他应用</td>
+</tr>
+<tr>
+<td>卸载</td>
+<td>直观显示可卸载软件，支持一键卸载、全部卸载、选择性卸载</td>
+<td></td>
+<td>只显示已安装软件</td>
+<td>软件卸载，不影响其他功能或软件</td>
+<td>软件卸载完整</td>
+</tr>
+<tr>
+<td>软件分类</td>
+<td>软件分类查看直观，分类清晰，支持按类全选，一键安装、选择性安装</td>
+<td>可以后台进行软件的增删</td>
+<td>分类准确，软件各组分类只包含本类相关软件</td>
+<td>同一软件只归属一个分类</td>
+<td>完整显示后台的软件分类</td>
+</tr>
+<tr>
+<td>软件介绍</td>
+<td>软件对应介绍页容易找到，介绍页包含软件的操作功能</td>
+<td>可以进行软件介绍的定制</td>
+<td>软件介绍内容和软件符合</td>
+<td>软件介绍页和软件一一对应，直接无干扰</td>
+<td>对软件介绍完整、准确，操作功能正常</td>
+</tr>
+<tr>
+<td>软件操作</td>
+<td>软件操作简单，安装、卸载、升级操作简单</td>
+<td></td>
+<td></td>
+<td>软件多种操作之间互不影响</td>
+<td></td>
+</tr>
+<tr>
+<td>搜索</td>
+<td>提供搜索框且容易找到，搜索简单便捷</td>
+<td></td>
+<td>搜索按照一定规则，并按用户搜索内容显示</td>
+<td></td>
+<td>完整显示用户查询条件下的内容</td>
+</tr>
+<tr>
+<td>设置</td>
+<td>设置菜单直观</td>
+<td></td>
+<td>只包含相关菜单</td>
+<td>设置项之间互不干扰</td>
+<td>功能设置准确，包含全部相关设置</td>
+</tr>
+<tr>
+<td>软件包</td>
+<td></td>
+<td></td>
+<td>软件包和软件分类中的软件菜单一一对应</td>
+<td>软件菜单和软件包相对独立</td>
+<td>软件包全部能够正确安装、卸载、升级且之间互不干扰</td>
+</tr>
+</tbody>
+</table>
+<p>总结：</p>
+<p>ACC测试建模至上而下，从产品的特质到组件，再到能力（功能）进行解析，可以快速、准确的生成一个产品测试计划。另外，对于比较大的系统产品，比如linux发行版，可以先进行大模块的划分，然后再进行各个组件的建模。像操作系统产品是多个组件或产品集成而来。</p></body>
                 </div>
                 <footer class="text-right">
                     <p>by 李鹏</p>
@@ -728,7 +828,7 @@ x=-x 例如 1 -1 -12 12
             </div>
     <div id="scrollspy">
         <div class="col-lg-3 nav nav-stacked hidden-xs hidden-sm" data-spy="affix" data-offset-top="135">
-            <div id="toc"><ul><li><a class="toc-href" href="#" title="位操作">位操作</a><ul><li><a class="toc-href" href="#wei-cao-zuo-ji-chu" title="位操作基础">位操作基础</a></li><li><a class="toc-href" href="#chang-yong-wei-cao-zuo-li-zi" title="常用位操作例子">常用位操作例子</a><ul><li><a class="toc-href" href="#1pan-duan-qi-ou" title="1.判断奇偶">1.判断奇偶</a></li><li><a class="toc-href" href="#2jiao-huan-liang-shu" title="2.交换两数">2.交换两数</a></li><li><a class="toc-href" href="#3jiao-huan-fu-hao" title="3.交换符号">3.交换符号</a></li><li><a class="toc-href" href="#4qiu-jue-dui-zhi" title="4.求绝对值">4.求绝对值</a></li><li><a class="toc-href" href="#5gao-di-wei-jiao-huan" title="5.高低位交换">5.高低位交换</a></li><li><a class="toc-href" href="#6er-jin-zhi-ni-xu" title="6.二进制逆序">6.二进制逆序</a></li><li><a class="toc-href" href="#7er-jin-zhi-an-wei-qu-fan" title="7.二进制按位取反">7.二进制按位取反</a></li><li><a class="toc-href" href="#8-er-jin-zhi-zhong-1de-ge-shu" title="8 二进制中１的个数">8 二进制中１的个数</a></li><li><a class="toc-href" href="#9luo-dan-de-shu-zi" title="9.落单的数字">9.落单的数字</a></li></ul></li></ul></li></ul></div>
+            <div id="toc"><ul><li><a class="toc-href" href="#" title="测试建模">测试建模</a><ul><li><a class="toc-href" href="#jian-jie" title="简介">简介</a></li><li><a class="toc-href" href="#shi-li-yi" title="示例一">示例一</a></li><li><a class="toc-href" href="#shi-li-er" title="示例二">示例二</a></li><li><a class="toc-href" href="#shi-li-er_1" title="示例二">示例二</a></li></ul></li></ul></div>
         </div>
     </div>
         </div>
@@ -776,8 +876,8 @@ x=-x 例如 1 -1 -12 12
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
     var disqus_shortname = 'True'; // required: replace example with your forum shortname
 
-            var disqus_identifier = 'python';
-        var disqus_url = '../../../../2017/02/23/python/';
+            var disqus_identifier = '测试';
+        var disqus_url = '../../../../2014/10/11/测试/';
 
     var disqus_config = function () {
         this.language = "zh";
