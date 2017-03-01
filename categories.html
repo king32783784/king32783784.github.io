@@ -11,12 +11,12 @@
 <!-- Open Graph tags -->
 <meta property="og:site_name" content="路漫求索"/>
     <meta property="og:type" content="article"/>
-    <meta property="og:title" content="selenium-Sample(三）"/>
-    <meta property="og:url" content="./2015/01/25/selenium/"/>
-    <meta property="og:description" content="示例５ 拖放drag和drop 代码： # -*- coding: utf-8 -*- import time import os from selenium import webdriver from selenium.webdriver.common.action_chains import ActionChains from selenium.webdriver.support.ui import Select from selenium.webdriver.common.keys import Keys # bugzilla address url = &#34;http://192.168.32.3/&#34; class Testdrog_drop(object): def __init__(self): self.driver ..."/>
-    <meta property="article:published_time" content="2015-01-25" />
-    <meta property="article:section" content="自动化测试-Selenium" />
-        <meta property="article:tag" content="Selenium" />
+    <meta property="og:title" content="测试风险识别"/>
+    <meta property="og:url" content="./2014/10/17/风险控制/"/>
+    <meta property="og:description" content="前言 Google所提供的开源Web应用可以分析项目信息，包括测试用例、代码变更、产品缺陷等，以确定Capabilities矩阵中的高风险区域。下图引用自James Whittaker在GTAC 2010的闭幕演讲的幻灯片，是Chrome OS的Capabilities矩阵的热点图（heap map）。图中绿色表示低风险区域，红色表示高风险区域，粉红色和橙色则表示风险居于前两者之间。测试人员可以根据热点图，更好地确定测试优先级，将有限的资源运用在最需要的地方。 风险分析 影响软件风险的因素有很多，试图精确、定量的计算风险可能比降低风险还有困难。但软件风险基本在于“失败频率”和“影响”两个重要因素。 比如： 影响 那些事件需要担心？ 一旦发生，对产品、公司、客户有多大影响？处理这些失败的成本多大？ 失败频率 那些区域容易出现问题？ 相同问题在持续构建时，是否重复出现？ 许多团队的风险分析依赖于测试人员的经验和猜测，Google的ACC工具则通过分析项目元素（测试用例、代码变更、产品缺陷等）来识别风险。这些被分析的元素位于HTSM-&gt;Project Environment，是项目环境的一部分 ..."/>
+    <meta property="article:published_time" content="2014-10-17" />
+    <meta property="article:section" content="测试" />
+        <meta property="article:tag" content="test" />
         <meta property="article:author" content="李鹏" />
         <meta property="og:image"
               content="./favicon.png"/>
@@ -66,12 +66,12 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-share-small" class="collapse ">
                     <li>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=./2015/01/25/selenium/" title="Share via Facebook" target="popup">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=./2014/10/17/风险控制/" title="Share via Facebook" target="popup">
                             <i class="fa fa-facebook-square padding-small"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="https://plus.google.com/share?url=./2015/01/25/selenium/" title="Share via Google+" target="popup">
+                        <a href="https://plus.google.com/share?url=./2014/10/17/风险控制/" title="Share via Google+" target="popup">
                             <i class="fa fa-google-plus padding-small"></i>
                         </a>
                     </li>
@@ -166,13 +166,13 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-share" class="sidebar_submenu collapse ">
                     <li>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=./2015/01/25/selenium/" target="popup">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=./2014/10/17/风险控制/" target="popup">
                             <i class="fa fa-facebook-square padding-small"></i>
                             Facebook
                         </a>
                     </li>
                     <li>
-                        <a href="https://plus.google.com/share?url=./2015/01/25/selenium/" target="popup">
+                        <a href="https://plus.google.com/share?url=./2014/10/17/风险控制/" target="popup">
                             <i class="fa fa-google-plus padding-small"></i>
                             Google+
                         </a>
@@ -350,6 +350,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="./category/ce-shi.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            测试
+                            <span class="badge pull-right categorybadge">2</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="./category/dockerzhuan-ti.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             Docker专题
@@ -368,13 +375,6 @@
                             <i class="fa fa-folder-open padding-small"></i>
                             unix环境编程
                             <span class="badge pull-right categorybadge">2</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="./category/ce-shi.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            测试
-                            <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
                     <li >
@@ -411,10 +411,10 @@
     <li><a href="./category/python-pyqt.html">Python-pyqt</a></li>
     <li><a href="./category/qi-ta.html">其他</a></li>
     <li><a href="./category/zi-dong-hua-ce-shi-avocado.html">自动化测试-Avocado</a></li>
+    <li><a href="./category/ce-shi.html">测试</a></li>
     <li><a href="./category/dockerzhuan-ti.html">Docker专题</a></li>
     <li><a href="./category/suan-fa.html">算法</a></li>
     <li><a href="./category/unixhuan-jing-bian-cheng.html">unix环境编程</a></li>
-    <li><a href="./category/ce-shi.html">测试</a></li>
     <li><a href="./category/mongodb.html">Mongodb</a></li>
 </ul>
 
