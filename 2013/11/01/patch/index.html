@@ -6,23 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="李鹏" />
-        <meta name="keywords" content="unix编程" />
-        <meta name="description" content="信号 我们运行如下命令，可看到Linux支持的信号列表： $ kill -l1) SIGHUP 2) SIGINT 3) SIGQUIT 4) SIGILL 5) SIGTRAP 6) SIGABRT 7) SIGBUS 8) SIGFPE 9) SIGKILL 10) SIGUSR1 11) SIGSEGV 12) SIGUSR213) SIGPIPE 14) SIGALRM 15) SIGTERM 17) SIGCHLD18) SIGCONT 19) SIGSTOP 20) SIGTSTP 21) SIGTTIN22) SIGTTOU 23) SIGURG 24) SIGXCPU 25) SIGXFSZ26) SIGVTALRM ..." />
+        <meta name="keywords" content="Linux" />
+        <meta name="description" content="如果hack了开源代码，为了方便分享（如提交Bug）或自己留存使用，一般都要制作一个补丁（Patch）。在从源码安装软件时，也难免要应用些别人做好的补丁。本文介绍如何制作和应用补丁。 制作补丁和打补丁分别需要用到diff和patch。 diff diff可以比较两个东西，并可同时记录下二者的区别。制作补丁时的一般用法和常见选项为： diff 【选项】 源文件（夹） 目的文件（夹） -r 递归。设置后diff会将两个不同版本源代码目录中的所有对应文件全部都进行一次比较，包括子目录文件。 -N 选项确保补丁文件将正确地处理已经创建或删除文件的情况。 -u 输出每个修改前后的3行，也可以用-u5等指定输出更多上下文。 -E, -b, -w, -B, --strip-trailing-cr 忽略各种空白，可参见文档，按需选用。 patch patch的作用则是将diff记录的结果（即补丁）应用到相应文件（夹）上。最常见的用法为： patch -pNUM &lt;patchfile&gt; -p Num 忽略几层文件夹 ..." />
 
 <!-- Open Graph tags -->
 <meta property="og:site_name" content="路漫求索"/>
     <meta property="og:type" content="article"/>
-    <meta property="og:title" content="信号"/>
-    <meta property="og:url" content="../../../../2009/10/12/UNIX/"/>
-    <meta property="og:description" content="信号 我们运行如下命令，可看到Linux支持的信号列表： $ kill -l1) SIGHUP 2) SIGINT 3) SIGQUIT 4) SIGILL 5) SIGTRAP 6) SIGABRT 7) SIGBUS 8) SIGFPE 9) SIGKILL 10) SIGUSR1 11) SIGSEGV 12) SIGUSR213) SIGPIPE 14) SIGALRM 15) SIGTERM 17) SIGCHLD18) SIGCONT 19) SIGSTOP 20) SIGTSTP 21) SIGTTIN22) SIGTTOU 23) SIGURG 24) SIGXCPU 25) SIGXFSZ26) SIGVTALRM ..."/>
-    <meta property="article:published_time" content="2009-10-12" />
-    <meta property="article:section" content="unix环境编程" />
-        <meta property="article:tag" content="unix编程" />
+    <meta property="og:title" content="diff 和 patch"/>
+    <meta property="og:url" content="../../../../2013/11/01/patch/"/>
+    <meta property="og:description" content="如果hack了开源代码，为了方便分享（如提交Bug）或自己留存使用，一般都要制作一个补丁（Patch）。在从源码安装软件时，也难免要应用些别人做好的补丁。本文介绍如何制作和应用补丁。 制作补丁和打补丁分别需要用到diff和patch。 diff diff可以比较两个东西，并可同时记录下二者的区别。制作补丁时的一般用法和常见选项为： diff 【选项】 源文件（夹） 目的文件（夹） -r 递归。设置后diff会将两个不同版本源代码目录中的所有对应文件全部都进行一次比较，包括子目录文件。 -N 选项确保补丁文件将正确地处理已经创建或删除文件的情况。 -u 输出每个修改前后的3行，也可以用-u5等指定输出更多上下文。 -E, -b, -w, -B, --strip-trailing-cr 忽略各种空白，可参见文档，按需选用。 patch patch的作用则是将diff记录的结果（即补丁）应用到相应文件（夹）上。最常见的用法为： patch -pNUM &lt;patchfile&gt; -p Num 忽略几层文件夹 ..."/>
+    <meta property="article:published_time" content="2013-11-01" />
+    <meta property="article:section" content="Linux" />
+        <meta property="article:tag" content="Linux" />
         <meta property="article:author" content="李鹏" />
         <meta property="og:image"
               content="../../../../favicon.png"/>
 
-    <title>信号 - 路漫求索</title>
+    <title>diff 和 patch - 路漫求索</title>
 
         <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
 
@@ -67,12 +67,12 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-share-small" class="collapse ">
                     <li>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2009/10/12/UNIX/" title="Share via Facebook" target="popup">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2013/11/01/patch/" title="Share via Facebook" target="popup">
                             <i class="fa fa-facebook-square padding-small"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="https://plus.google.com/share?url=../../../../2009/10/12/UNIX/" title="Share via Google+" target="popup">
+                        <a href="https://plus.google.com/share?url=../../../../2013/11/01/patch/" title="Share via Google+" target="popup">
                             <i class="fa fa-google-plus padding-small"></i>
                         </a>
                     </li>
@@ -167,13 +167,13 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-share" class="sidebar_submenu collapse ">
                     <li>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2009/10/12/UNIX/" target="popup">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2013/11/01/patch/" target="popup">
                             <i class="fa fa-facebook-square padding-small"></i>
                             Facebook
                         </a>
                     </li>
                     <li>
-                        <a href="https://plus.google.com/share?url=../../../../2009/10/12/UNIX/" target="popup">
+                        <a href="https://plus.google.com/share?url=../../../../2013/11/01/patch/" target="popup">
                             <i class="fa fa-google-plus padding-small"></i>
                             Google+
                         </a>
@@ -301,7 +301,7 @@
                             <span class="badge pull-right categorybadge">7</span>
                         </a>
                     </li>
-                    <li >
+                    <li class="active">
                         <a href="../../../../category/linux.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             Linux
@@ -371,7 +371,7 @@
                             <span class="badge pull-right categorybadge">2</span>
                         </a>
                     </li>
-                    <li class="active">
+                    <li >
                         <a href="../../../../category/unixhuan-jing-bian-cheng.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             unix环境编程
@@ -406,24 +406,24 @@
             <div class="col-lg-9">
                 <header class="page-header">
                     <h1>
-                        <a href="../../../../2009/10/12/UNIX/"
+                        <a href="../../../../2013/11/01/patch/"
                            rel="bookmark"
-                           title="Permalink to 信号">
-                            信号
+                           title="Permalink to diff 和 patch">
+                            diff 和 patch
                         </a>
                         <small>
 <div class="post-info">
     <div class="publish-info-block">
         <small>
             <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2009-10-12T00:00:00+08:00"> 2009-10-12 一</time>
+                <i class="fa fa-calendar padding-small"></i><time datetime="2013-11-01T00:00:00+08:00"> 2013-11-01 五</time>
             </span>
             <span class="category">
-                <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/unixhuan-jing-bian-cheng.html">unix环境编程</a>
+                <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/linux.html">Linux</a>
             </span>
             <span class="tags">
                 <i class="fa fa-tags padding-small"></i>
-                <a href="../../../../tag/unixbian-cheng.html">unix编程</a>            </span>
+                <a href="../../../../tag/linux.html">Linux</a>            </span>
         </small>
     </div>
 </div><!-- /.post-info -->                        </small>
@@ -434,101 +434,204 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    <body><p><strong>信号</strong></p>
-<p>我们运行如下命令，可看到Linux支持的信号列表：</p>
-<div class="highlight"><pre><span></span>$ <span class="nb">kill</span> -l1<span class="o">)</span> SIGHUP        2<span class="o">)</span> SIGINT        3<span class="o">)</span> SIGQUIT       4<span class="o">)</span> SIGILL 5<span class="o">)</span> SIGTRAP       6<span class="o">)</span> SIGABRT       7<span class="o">)</span> SIGBUS        8<span class="o">)</span> SIGFPE 9<span class="o">)</span> SIGKILL      10<span class="o">)</span> SIGUSR1      11<span class="o">)</span> SIGSEGV      12<span class="o">)</span> SIGUSR213<span class="o">)</span> SIGPIPE      14<span class="o">)</span> SIGALRM      15<span class="o">)</span> SIGTERM      17<span class="o">)</span> SIGCHLD18<span class="o">)</span> SIGCONT      19<span class="o">)</span> SIGSTOP      20<span class="o">)</span> SIGTSTP      21<span class="o">)</span> SIGTTIN22<span class="o">)</span> SIGTTOU      23<span class="o">)</span> SIGURG       24<span class="o">)</span> SIGXCPU      25<span class="o">)</span> SIGXFSZ26<span class="o">)</span> SIGVTALRM    27<span class="o">)</span> SIGPROF      28<span class="o">)</span> SIGWINCH     29<span class="o">)</span> SIGIO30<span class="o">)</span> SIGPWR       31<span class="o">)</span> SIGSYS       34<span class="o">)</span> SIGRTMIN     35<span class="o">)</span> SIGRTMIN+136<span class="o">)</span> SIGRTMIN+2   37<span class="o">)</span> SIGRTMIN+3   38<span class="o">)</span> SIGRTMIN+4   39<span class="o">)</span> SIGRTMIN+540<span class="o">)</span> SIGRTMIN+6   41<span class="o">)</span> SIGRTMIN+7   42<span class="o">)</span> SIGRTMIN+8   43<span class="o">)</span> SIGRTMIN+944<span class="o">)</span> SIGRTMIN+10 45<span class="o">)</span> SIGRTMIN+11 46<span class="o">)</span> SIGRTMIN+12 47<span class="o">)</span> SIGRTMIN+1348<span class="o">)</span> SIGRTMIN+14 49<span class="o">)</span> SIGRTMIN+15 50<span class="o">)</span> SIGRTMAX-14 51<span class="o">)</span> SIGRTMAX-1352<span class="o">)</span> SIGRTMAX-12 53<span class="o">)</span> SIGRTMAX-11 54<span class="o">)</span> SIGRTMAX-10 55<span class="o">)</span> SIGRTMAX-956<span class="o">)</span> SIGRTMAX-8   57<span class="o">)</span> SIGRTMAX-7   58<span class="o">)</span> SIGRTMAX-6   59<span class="o">)</span> SIGRTMAX-560<span class="o">)</span> SIGRTMAX-4   61<span class="o">)</span> SIGRTMAX-3   62<span class="o">)</span> SIGRTMAX-2   63<span class="o">)</span> SIGRTMAX-164<span class="o">)</span> SIGRTMAX
+                    <body><p>如果hack了开源代码，为了方便分享（如提交Bug）或自己留存使用，一般都要制作一个补丁（Patch）。在从源码安装软件时，也难免要应用些别人做好的补丁。本文介绍如何制作和应用补丁。</p>
+<p>制作补丁和打补丁分别需要用到diff和patch。</p>
+<h4 id="diff">diff</h4>
+<p>diff可以比较两个东西，并可同时记录下二者的区别。制作补丁时的一般用法和常见选项为：</p>
+<div class="highlight"><pre><span></span><span class="gh">diff 【选项】 源文件（夹） 目的文件（夹）</span>
+<span class="gd">-r</span>
+递归。设置后diff会将两个不同版本源代码目录中的所有对应文件全部都进行一次比较，包括子目录文件。
+<span class="gd">-N</span>
+选项确保补丁文件将正确地处理已经创建或删除文件的情况。
+<span class="gd">-u</span>
+输出每个修改前后的3行，也可以用-u5等指定输出更多上下文。
+<span class="gd">-E, -b, -w, -B, --strip-trailing-cr</span>
+忽略各种空白，可参见文档，按需选用。
 </pre></div>
-<p>列表中，编号为1 ~ 31的信号为传统UNIX支持的信号，是不可靠信号(非实时的)，编号为32 ~ 63的信号是后来扩充的，称做可靠信号(实时信号)。不可靠信号和可靠信号的区别在于前者不支持排队，可能会造成信号丢失，而后者不会。</p>
-<p>下面我们对编号小于SIGRTMIN的信号进行说明。</p>
-<p>1) SIGHUP</p>
-<p>本信号在用户终端连接(正常或非正常)结束时发出, 通常是在终端的控制进程结束时, 通知同一session内的各个作业, 这时它们与控制终端不再关联。</p>
-<p>登录Linux时，系统会分配给登录用户一个终端(Session)。在这个终端运行的所有程 序，包括前台进程组和后台进程组，一般都属于这个Session。当用户退出Linux登录时，前台进程组和后台有对终端输出的进程将会收到SIGHUP 信号。这个信号的默认操作为终止进程，因此前台进程组和后台有终端输出的进程就会中止。不过可以捕获这个信号，比如wget能捕获SIGHUP信号，并忽 略它，这样就算退出了Linux登录，wget也能继续下载。</p>
-<p>此外，对于与终端脱离关系的守护进程，这个信号用于通知它重新读取配置文件。</p>
-<p>2) SIGINT</p>
-<p>程序终止(interrupt)信号, 在用户键入INTR字符(通常是Ctrl-C)时发出，用于通知前台进程组终止进程。</p>
-<p>3) SIGQUIT</p>
-<p>和SIGINT类似, 但由QUIT字符(通常是Ctrl-)来控制. 进程在因收到SIGQUIT退出时会产生core文件, 在这个意义上类似于一个程序错误信号。</p>
-<p>4) SIGILL</p>
-<p>执行了非法指令. 通常是因为可执行文件本身出现错误, 或者试图执行数据段. 堆栈溢出时也有可能产生这个信号。</p>
-<p>5) SIGTRAP</p>
-<p>由断点指令或其它trap指令产生. 由debugger使用。</p>
-<p>6) SIGABRT</p>
-<p>调用abort函数生成的信号。</p>
-<p>7) SIGBUS</p>
-<p>非法地址, 包括内存地址对齐(alignment)出错。比如访问一个四个字长的整数, 但其地址不是4的倍数。它与SIGSEGV的区别在于后者是由于对合法存储地址的非法访问触发的(如访问不属于自己存储空间或只读存储空间)。</p>
-<p>8) SIGFPE</p>
-<p>在发生致命的算术运算错误时发出. 不仅包括浮点运算错误, 还包括溢出及除数为0等其它所有的算术的错误。</p>
-<p>9) SIGKILL</p>
-<p>用来立即结束程序的运行. 本信号不能被阻塞、处理和忽略。如果管理员发现某个进程终止不了，可尝试发送这个信号。</p>
-<p>10) SIGUSR1</p>
-<p>留给用户使用</p>
-<p>11) SIGSEGV</p>
-<p>试图访问未分配给自己的内存, 或试图往没有写权限的内存地址写数据.</p>
-<p>12) SIGUSR2</p>
-<p>留给用户使用</p>
-<p>13) SIGPIPE</p>
-<p>管道破裂。这个信号通常在进程间通信产生，比如采用FIFO(管道)通信的两个进程，读管道没打开或者意外终止就往管道写，写进程会收到SIGPIPE信号。此外用Socket通信的两个进程，写进程在写Socket的时候，读进程已经终止。</p>
-<p>14) SIGALRM</p>
-<p>时钟定时信号, 计算的是实际的时间或时钟时间. alarm函数使用该信号.</p>
-<p>15) SIGTERM</p>
-<p>程序结束(terminate)信号, 与SIGKILL不同的是该信号可以被阻塞和处理。通常用来要求程序自己正常退出，shell命令kill缺省产生这个信号。如果进程终止不了，我们才会尝试SIGKILL。</p>
-<p>17) SIGCHLD</p>
-<p>子进程结束时, 父进程会收到这个信号。</p>
-<p>如果父进程没有处理这个信号，也没有等待(wait)子进程，子进程虽然终止，但是还会在内核 进程表中占有表项，这时的子进程称为僵尸进程。这种情况我们应该避免(父进程或者忽略SIGCHILD信号，或者捕捉它，或者wait它派生的子进程，或 者父进程先终止，这时子进程的终止自动由init进程来接管)。</p>
-<p>18) SIGCONT</p>
-<p>让一个停止(stopped)的进程继续执行. 本信号不能被阻塞. 可以用一个handler来让程序在由stopped状态变为继续执行时完成特定的工作. 例如, 重新显示提示符</p>
-<p>19) SIGSTOP</p>
-<p>停止(stopped)进程的执行. 注意它和terminate以及interrupt的区别:该进程还未结束, 只是暂停执行. 本信号不能被阻塞, 处理或忽略.</p>
-<p>20) SIGTSTP</p>
-<p>停止进程的运行, 但该信号可以被处理和忽略. 用户键入SUSP字符时(通常是Ctrl-Z)发出这个信号</p>
-<p>21) SIGTTIN</p>
-<p>当后台作业要从用户终端读数据时, 该作业中的所有进程会收到SIGTTIN信号. 缺省时这些进程会停止执行.</p>
-<p>22) SIGTTOU</p>
-<p>类似于SIGTTIN, 但在写终端(或修改终端模式)时收到.</p>
-<p>23) SIGURG</p>
-<p>有"紧急"数据或out-of-band数据到达socket时产生.</p>
-<p>24) SIGXCPU</p>
-<p>超过CPU时间资源限制. 这个限制可以由getrlimit/setrlimit来读取/改变。</p>
-<p>25) SIGXFSZ</p>
-<p>当进程企图扩大文件以至于超过文件大小资源限制。</p>
-<p>26) SIGVTALRM</p>
-<p>虚拟时钟信号. 类似于SIGALRM, 但是计算的是该进程占用的CPU时间.</p>
-<p>27) SIGPROF</p>
-<p>类似于SIGALRM/SIGVTALRM, 但包括该进程用的CPU时间以及系统调用的时间.</p>
-<p>28) SIGWINCH</p>
-<p>窗口大小改变时发出.</p>
-<p>29) SIGIO</p>
-<p>文件描述符准备就绪, 可以开始进行输入/输出操作.</p>
-<p>30) SIGPWR</p>
-<p>Power failure</p>
-<p>31) SIGSYS</p>
-<p>非法的系统调用。</p>
-<p>在以上列出的信号中，程序不可捕获、阻塞或忽略的信号有：SIGKILL,SIGSTOP</p>
-<p>不能恢复至默认动作的信号有：SIGILL,SIGTRAP</p>
-<p>默认会导致进程流产的信号有：SIGABRT,SIGBUS,SIGFPE,SIGILL,SIGIOT,SIGQUIT,SIGSEGV,SIGTRAP,SIGXCPU,SIGXFSZ</p>
-<p>默认会导致进程退出的信号有：SIGALRM,SIGHUP,SIGINT,SIGKILL,SIGPIPE,SIGPOLL,SIGPROF,SIGSYS,SIGTERM,SIGUSR1,SIGUSR2,SIGVTALRM</p>
-<p>默认会导致进程停止的信号有：SIGSTOP,SIGTSTP,SIGTTIN,SIGTTOU</p>
-<p>默认进程忽略的信号有：SIGCHLD,SIGPWR,SIGURG,SIGWINCH</p>
-<p>此外，SIGIO在SVR4是退出，在4.3BSD中是忽略；SIGCONT在进程挂起时是继续，否则是忽略，不能被阻塞</p>
-<p>可靠信号与不可靠信号测试:</p>
-<div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;signal.h&gt;</span><span class="cp"></span>
-<span class="k">static</span> <span class="k">volatile</span> <span class="kt">int</span> <span class="n">signum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="kt">void</span> <span class="nf">sigme</span><span class="p">(</span><span class="kt">int</span> <span class="n">signo</span><span class="p">)</span>
-<span class="p">{</span>
-     <span class="n">printf</span><span class="p">(</span><span class="s">"signal received:%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">signum</span><span class="o">++</span><span class="p">);</span>
-     <span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
-<span class="p">}</span>
+<h4 id="patch">patch</h4>
+<p>patch的作用则是将diff记录的结果（即补丁）应用到相应文件（夹）上。最常见的用法为：</p>
+<div class="highlight"><pre><span></span>patch -pNUM &lt;patchfile&gt;
+-p Num
+忽略几层文件夹，随后详解。
+-E
+选项说明如果发现了空文件，那么就删除它
+-R
+取消打过的补丁。
+</pre></div>
+<p>为了解释 -p 参数，需要看看如下patch文件片段：</p>
+<div class="highlight"><pre><span></span><span class="gd">--- test1       2017-03-02 16:58:55.085518422 +0800</span>
+<span class="gi">+++ test2       2017-03-02 16:59:03.306461415 +0800</span>
+<span class="gu">@@ -1,5 +1,4 @@</span>
+<span class="gd">-test1</span>
+<span class="gd">-test1</span>
+<span class="gd">-test1</span>
+<span class="gd">-test1</span>
+<span class="gd">-</span>
+<span class="gi">+test2</span>
+<span class="gi">+test2</span>
+<span class="gi">+test2</span>
+<span class="gi">+test2</span>
+</pre></div>
+<h4 id="ying-yong">应用</h4>
+<p>利用以上命令，处理单个文件补丁的方法：</p>
+<h5 id="chan-sheng-bu-ding">产生补丁</h5>
+<div class="highlight"><pre><span></span><span class="gh">diff -uN from-file to-file &gt;to-file.patch</span>
+</pre></div>
+<h5 id="da-bu-ding">打补丁</h5>
+<div class="highlight"><pre><span></span>patch -p0 &lt; to-file.patch
+</pre></div>
+<h5 id="qu-xiao-bu-ding">取消补丁</h5>
+<div class="highlight"><pre><span></span>patch -RE -p0 &lt; to-file.patch
+</pre></div>
+<p>对整个文件夹打补丁的情况：</p>
+<h5 id="chan-sheng-bu-ding_1">产生补丁</h5>
+<div class="highlight"><pre><span></span><span class="gh">diff -uNr  from-docu  to-docu  &gt;to-docu.patch</span>
+</pre></div>
+<h5 id="da-bu-ding_1">打补丁</h5>
+<div class="highlight"><pre><span></span>cd to-docu
+patch -p1 &lt; to-docu.patch
+</pre></div>
+<h5 id="qu-xiao-bu-ding_1">取消补丁</h5>
+<div class="highlight"><pre><span></span>patch -R -p1 &lt;to-docu.patch
+</pre></div>
+<p>另外，使用版本控制工具时，可以直接用svn diff或git diff生成补丁文件。</p>
+<p>值得一提的是，由于应用补丁时的目标代码和生成补丁时的代码未必相同，打补丁操作可能失败。补丁失败的文件会以.rej结尾，下面命令可以找出所有rej文件：</p>
+<div class="highlight"><pre><span></span>find . -name '*.rej'
+</pre></div>
+<h4 id="patchwen-jian-gou-cheng_1">patch文件构成</h4>
+<p>补丁文件里到底存储了哪些信息呢？看看这个例子：</p>
+<div class="highlight"><pre><span></span><span class="gd">--- test0       2013-08-18 09:12:01.000000000 +0800</span>
+<span class="gi">+++ test1       2013-08-18 09:13:09.000000000 +0800</span>
+<span class="gu">@@ -1,3 +1,4 @@</span>
+<span class="gi">+222222</span>
+111111
+<span class="gd">-111111</span>
+<span class="gi">+222222</span>
+111111
+</pre></div>
+<h5 id="bu-ding-tou">补丁头</h5>
+<p>补丁头是分别由---/+++开头的两行，用来表示要打补丁的文件。---开头表示旧文件，+++开头表示新文件。
+一个补丁文件中的多个补丁
+一个补丁文件中可能包含以---/+++开头的很多节，每一节用来打一个补丁。所以在一个补丁文件中可以包含好多个补丁。</p>
+<h5 id="kuai">块</h5>
+<p>块是补丁中要修改的地方。它通常由一部分不用修改的东西开始和结束。他们只是用来表示要修改的位置。他们通常以@@开始，结束于另一个块的开始或者一个新的补丁头。</p>
+<p>块的缩进</p>
+<p>块会缩进一列，而这一列是用来表示这一行是要增加还是要删除的。
+块的第一列</p>
+<p>+号表示这一行是要加上的。-号表示这一行是要删除的。没有加号也没有减号表示这里只是引用的而不需要修改。</p>
+<h4 id="shi-li-fen-xi_1">实例分析</h4>
+<p>单文件补丁</p>
+<p>设当前目录有文件 test0：</p>
+<div class="highlight"><pre><span></span>111111
+111111
+111111
+</pre></div>
+<p>和文件test1：</p>
+<div class="highlight"><pre><span></span>222222
+111111
+222222
+111111
+</pre></div>
+<p>使用diff创建补丁test1.patch</p>
+<div class="highlight"><pre><span></span><span class="gh">diff -uN test0 test1 &gt; test1.patch</span>
+</pre></div>
+<p>因为是单个文件，故不需要 -r 选项。此命令得到如下补丁：</p>
+<div class="highlight"><pre><span></span><span class="gd">--- test0       2006-08-18 09:12:01.000000000 +0800</span>
+<span class="gi">+++ test1       2006-08-18 09:13:09.000000000 +0800</span>
+<span class="gu">@@ -1,3 +1,4 @@</span>
+<span class="gi">+222222</span>
+111111
+<span class="gd">-111111</span>
+<span class="gi">+222222</span>
+111111
+</pre></div>
+<p>要应用补丁，只需：</p>
+<div class="highlight"><pre><span></span>$ patch -p0 &lt; test1.patch
+patching file test0
+</pre></div>
+<p>此时test0就和test1一样了。</p>
+<p>如果要取消补丁做出的更改，恢复旧版本：</p>
+<div class="highlight"><pre><span></span>$ patch -RE -p0 &lt; test1.patch
+patching file test0
+</pre></div>
+<p>文件夹补丁
+设有如下环境：</p>
+<div class="highlight"><pre><span></span>--prj0/
+    test0
+    prj0name
+--prj1/
+    test1
+    prj1name
+</pre></div>
+<p>prj0/prj0name内容为如下三行：</p>
+<div class="highlight"><pre><span></span>--------
+prj0/prj0name
+--------
+</pre></div>
+<p>prj1/prj1name内容为如下三行：</p>
+<div class="highlight"><pre><span></span>--------
+prj1/prj1name
+--------
+</pre></div>
+<p>用 diff -uNr 创建补丁，</p>
+<div class="highlight"><pre><span></span><span class="gh">diff -uNr prj0 prj1 &gt; prj1.patch</span>
+</pre></div>
+<p>得到的patch文件为：</p>
+<div class="highlight"><pre><span></span><span class="gh">diff -uNr prj0/prj0name prj1/prj0name</span>
+<span class="gd">--- prj0/prj0name       2006-08-18 09:25:11.000000000 +0800</span>
+<span class="gi">+++ prj1/prj0name       1970-01-01 08:00:00.000000000 +0800</span>
+<span class="gu">@@ -1,3 +0,0 @@</span>
+<span class="gd">---------</span>
+<span class="gd">-prj0/prj0name</span>
+<span class="gd">---------</span>
+<span class="gh">diff -uNr prj0/prj1name prj1/prj1name</span>
+<span class="gd">--- prj0/prj1name       1970-01-01 08:00:00.000000000 +0800</span>
+<span class="gi">+++ prj1/prj1name       2006-08-18 09:26:36.000000000 +0800</span>
+<span class="gu">@@ -0,0 +1,3 @@</span>
+<span class="gi">+---------</span>
+<span class="gi">+prj1/prj1name</span>
+<span class="gi">+---------</span>
+<span class="gh">diff -uNr prj0/test0 prj1/test0</span>
+<span class="gd">--- prj0/test0  2006-08-18 09:23:53.000000000 +0800</span>
+<span class="gi">+++ prj1/test0  1970-01-01 08:00:00.000000000 +0800</span>
+<span class="gu">@@ -1,3 +0,0 @@</span>
+<span class="gd">-111111</span>
+<span class="gd">-111111</span>
+<span class="gd">-111111</span>
 
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
-<span class="p">{</span>
-     <span class="n">signal</span><span class="p">(</span><span class="n">SIGUSR1</span><span class="p">,</span> <span class="n">sigme</span><span class="p">);</span>
-     <span class="cm">/*signal(SIGRTMIN, sigme);*/</span>
-     <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
+<span class="gh">diff -uNr prj0/test1 prj1/test1</span>
+
+<span class="gd">--- prj0/test1  1970-01-01 08:00:00.000000000 +0800</span>
+<span class="gi">+++ prj1/test1  2006-08-18 09:26:00.000000000 +0800</span>
+<span class="gu">@@ -0,0 +1,4 @@</span>
+<span class="gi">+222222</span>
+<span class="gi">+111111</span>
+<span class="gi">+222222</span>
+<span class="gi">+111111</span>
 </pre></div>
-<p>在3秒内向这个程序发送SIGUSR1，只有第一个被接收到，而SIGRTMIN则不会有这样的问题。</p></body>
+<p>如果要应用此补丁，则：</p>
+<div class="highlight"><pre><span></span>$ ls
+prj0  prj1  prj1.patch
+$ <span class="nb">cd</span> prj0
+$ patch -p1 &lt; ../prj1.patch
+patching file prj0name
+patching file prj1name
+patching file test0
+patching file test1
+</pre></div>
+<p>此时可用ls看到打补丁后的结果：</p>
+<div class="highlight"><pre><span></span>$ ls
+prj1name  test1
+</pre></div>
+<p>类似的，如果要回滚补丁操作：</p>
+<div class="highlight"><pre><span></span>$ patch -R -p1 &lt; ../prj1.patch
+patching file prj0name
+patching file prj1name
+patching file test0
+patching file test1
+$ ls
+prj0name  test0
+</pre></div></body>
                 </div>
                 <footer class="text-right">
                     <p>by 李鹏</p>
@@ -542,6 +645,11 @@
         <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     </section>
             </div>
+    <div id="scrollspy">
+        <div class="col-lg-3 nav nav-stacked hidden-xs hidden-sm" data-spy="affix" data-offset-top="135">
+            <div id="toc"><ul><li><a class="toc-href" href="#" title="diff 和 patch">diff 和 patch</a><ul><li><a class="toc-href" href="#diff" title="diff">diff</a></li><li><a class="toc-href" href="#patch" title="patch">patch</a></li><li><a class="toc-href" href="#ying-yong" title="应用">应用</a><ul><li><a class="toc-href" href="#chan-sheng-bu-ding" title="产生补丁">产生补丁</a></li><li><a class="toc-href" href="#da-bu-ding" title="打补丁">打补丁</a></li><li><a class="toc-href" href="#qu-xiao-bu-ding" title="取消补丁">取消补丁</a></li><li><a class="toc-href" href="#chan-sheng-bu-ding_1" title="产生补丁">产生补丁</a></li><li><a class="toc-href" href="#da-bu-ding_1" title="打补丁">打补丁</a></li><li><a class="toc-href" href="#qu-xiao-bu-ding_1" title="取消补丁">取消补丁</a></li></ul></li><li><a class="toc-href" href="#patchwen-jian-gou-cheng_1" title="patch文件构成">patch文件构成</a><ul><li><a class="toc-href" href="#bu-ding-tou" title="补丁头">补丁头</a></li><li><a class="toc-href" href="#kuai" title="块">块</a></li></ul></li><li><a class="toc-href" href="#shi-li-fen-xi_1" title="实例分析">实例分析</a></li></ul></li></ul></div>
+        </div>
+    </div>
         </div>
     </article>
 </section>
@@ -587,8 +695,8 @@
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
     var disqus_shortname = 'True'; // required: replace example with your forum shortname
 
-            var disqus_identifier = 'UNIX';
-        var disqus_url = '../../../../2009/10/12/UNIX/';
+            var disqus_identifier = 'patch';
+        var disqus_url = '../../../../2013/11/01/patch/';
 
     var disqus_config = function () {
         this.language = "zh";
