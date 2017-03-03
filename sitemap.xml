@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://king32783784.github.io/</loc>
-<lastmod>2017-03-02T17:14:21-00:00</lastmod>
+<lastmod>2017-03-03T16:20:08-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>http://king32783784.github.io/archives.html</loc>
-<lastmod>2017-03-02T17:14:21-00:00</lastmod>
+<lastmod>2017-03-03T16:20:08-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>http://king32783784.github.io/tags.html</loc>
-<lastmod>2017-03-02T17:14:21-00:00</lastmod>
+<lastmod>2017-03-03T16:20:08-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>http://king32783784.github.io/categories.html</loc>
-<lastmod>2017-03-02T17:14:21-00:00</lastmod>
+<lastmod>2017-03-03T16:20:08-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
@@ -78,6 +78,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <lastmod>2016-12-21T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
+</url>
+
+<url>
+<loc>http://king32783784.github.io/2017/03/03/docker/</loc>
+<lastmod>2017-03-03T00:00:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
 </url>
 
 <url>
@@ -718,6 +725,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://king32783784.github.io/category/dockerzhuan-ti.html</loc>
+<lastmod>2017-03-03T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.6</priority>
+</url>
+
+<url>
 <loc>http://king32783784.github.io/category/python-pyqt.html</loc>
 <lastmod>2016-11-15T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -741,13 +755,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://king32783784.github.io/category/ce-shi.html</loc>
 <lastmod>2014-10-17T00:00:00+08:06</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.6</priority>
-</url>
-
-<url>
-<loc>http://king32783784.github.io/category/dockerzhuan-ti.html</loc>
-<lastmod>2016-08-12T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
@@ -837,6 +844,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://king32783784.github.io/tag/docker.html</loc>
+<lastmod>2017-03-03T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.6</priority>
+</url>
+
+<url>
 <loc>http://king32783784.github.io/tag/python-palindrome-number.html</loc>
 <lastmod>2015-12-04T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -860,13 +874,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://king32783784.github.io/tag/suan-fa.html</loc>
 <lastmod>2013-07-01T00:00:00+08:06</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.6</priority>
-</url>
-
-<url>
-<loc>http://king32783784.github.io/tag/docker.html</loc>
-<lastmod>2016-08-12T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
@@ -957,7 +964,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://king32783784.github.io/author/chen-hao.html</loc>
-<lastmod>2016-12-30T00:00:00+08:06</lastmod>
+<lastmod>2017-03-03T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>

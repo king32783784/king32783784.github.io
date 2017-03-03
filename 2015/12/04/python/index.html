@@ -122,6 +122,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../../../../2017/03/03/docker/" title="DOCKER基础技术：LINUX CGROUP(转载）">
+                                <i class="fa fa-file-text padding-small"></i>
+                                DOCKER基础技术：LINUX CGROUP(转载）
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../../../../2017/02/23/python/" title="位操作">
                                 <i class="fa fa-file-text padding-small"></i>
                                 位操作
@@ -143,12 +149,6 @@
                             <a class="hide-overflow" href="../../../../2017/01/23/python/" title="类常用内置方法">
                                 <i class="fa fa-file-text padding-small"></i>
                                 类常用内置方法
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../../../../2017/01/15/编程语言-Python/" title="python metaclass(下）">
-                                <i class="fa fa-file-text padding-small"></i>
-                                python metaclass(下）
                             </a>
                         </li>
                     <li>
@@ -330,6 +330,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/dockerzhuan-ti.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Docker专题
+                            <span class="badge pull-right categorybadge">3</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/python-pyqt.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             Python-pyqt
@@ -354,13 +361,6 @@
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
-                            <span class="badge pull-right categorybadge">2</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/dockerzhuan-ti.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            Docker专题
                             <span class="badge pull-right categorybadge">2</span>
                         </a>
                     </li>
@@ -517,6 +517,85 @@ You may assume the input string will only contain letters of alphabet.</p>
                 List.append(word)
                 break
     return List
+</pre></div>
+<h3 id="fizz-buzz">Fizz Buzz</h3>
+<p>Write a program that outputs the string representation of numbers from 1 to n.</p>
+<p>But for multiples of three it should output “Fizz” instead of the number and for the multiples of five output “Buzz”. For numbers which are multiples of both three and five output “FizzBuzz”.</p>
+<p>Example:</p>
+<p>n = 15,</p>
+<p>Return:
+[
+    "1",
+    "2",
+    "Fizz",
+    "4",
+    "Buzz",
+    "Fizz",
+    "7",
+    "8",
+    "Fizz",
+    "Buzz",
+    "11",
+    "Fizz",
+    "13",
+    "14",
+    "FizzBuzz"
+]</p>
+<p>输入一个数字，例如15，当为仅为3的倍数时输出Fizz,仅为5的倍数时为Buzz,当同时为3和5的倍数时为FizzBuzz</p>
+<p>解决方法：</p>
+<p>区别处理3种情况，3的倍数 5的倍数 15的倍数</p>
+<p>代码：</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">Solution</span>(<span class="n">object</span>):
+
+    <span class="n">def</span> <span class="n">fizzBuzz</span>(<span class="k">self</span>, <span class="n">n</span>):
+
+        <span class="s">"""</span>
+
+<span class="s">        :type n: int</span>
+
+<span class="s">        :rtype: List[str]</span>
+
+<span class="s">        """</span>
+
+        <span class="k">if</span> <span class="n">n</span> &lt;= <span class="mi">0</span>:
+
+            <span class="k">return</span> <span class="nb">False</span>
+
+        <span class="k">if</span> <span class="n">n</span> == <span class="mi">1</span>:
+
+            <span class="k">return</span> [<span class="s">"1"</span>]
+
+        <span class="k">if</span> <span class="n">n</span> == <span class="mi">2</span>:
+
+            <span class="k">return</span> [<span class="s">"1"</span>,<span class="s">"2"</span>]
+
+        <span class="n">finallist</span> = []
+
+        <span class="k">if</span> <span class="n">n</span> &gt;=<span class="mi">3</span>:
+
+            <span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="n">range</span>(<span class="n">n</span><span class="o">+</span><span class="mi">1</span>):
+
+                <span class="k">if</span> <span class="n">i</span> == <span class="mi">0</span>:
+
+                    <span class="nb">pass</span>
+
+                <span class="n">elif</span> <span class="n">i</span> % <span class="mi">15</span> == <span class="mi">0</span>:
+
+                    <span class="n">finallist</span>.<span class="n">append</span>(<span class="s">"FizzBuzz"</span>)
+
+                <span class="n">elif</span> <span class="n">i</span> % <span class="mi">3</span> == <span class="mi">0</span>:
+
+                    <span class="n">finallist</span>.<span class="n">append</span>(<span class="s">"Fizz"</span>)
+
+                <span class="n">elif</span> <span class="n">i</span> % <span class="mi">5</span> == <span class="mi">0</span>:
+
+                    <span class="n">finallist</span>.<span class="n">append</span>(<span class="s">"Buzz"</span>)
+
+                <span class="n">else:</span>
+
+                    <span class="n">finallist</span>.<span class="n">append</span>(<span class="n">str</span>(<span class="n">i</span>))
+
+            <span class="k">return</span> <span class="n">finallist</span>
 </pre></div></body>
                 </div>
                 <footer class="text-right">
@@ -533,7 +612,7 @@ You may assume the input string will only contain letters of alphabet.</p>
             </div>
     <div id="scrollspy">
         <div class="col-lg-3 nav nav-stacked hidden-xs hidden-sm" data-spy="affix" data-offset-top="135">
-            <div id="toc"><ul><li><a class="toc-href" href="#" title="leetcode - Number Complement">leetcode - Number Complement</a><ul><li><a class="toc-href" href="#number-complement" title="Number Complement">Number Complement</a></li><li><a class="toc-href" href="#keyboard-row" title="Keyboard Row">Keyboard Row</a></li></ul></li></ul></div>
+            <div id="toc"><ul><li><a class="toc-href" href="#" title="leetcode - Number Complement">leetcode - Number Complement</a><ul><li><a class="toc-href" href="#number-complement" title="Number Complement">Number Complement</a></li><li><a class="toc-href" href="#keyboard-row" title="Keyboard Row">Keyboard Row</a></li><li><a class="toc-href" href="#fizz-buzz" title="Fizz Buzz">Fizz Buzz</a></li></ul></li></ul></div>
         </div>
     </div>
         </div>

@@ -11,13 +11,13 @@
 <!-- Open Graph tags -->
 <meta property="og:site_name" content="路漫求索"/>
     <meta property="og:type" content="article"/>
-    <meta property="og:title" content="测试风险识别"/>
-    <meta property="og:url" content="../2014/10/17/风险控制/"/>
-    <meta property="og:description" content="前言 Google所提供的开源Web应用可以分析项目信息，包括测试用例、代码变更、产品缺陷等，以确定Capabilities矩阵中的高风险区域。下图引用自James Whittaker在GTAC 2010的闭幕演讲的幻灯片，是Chrome OS的Capabilities矩阵的热点图（heap map）。图中绿色表示低风险区域，红色表示高风险区域，粉红色和橙色则表示风险居于前两者之间。测试人员可以根据热点图，更好地确定测试优先级，将有限的资源运用在最需要的地方。 风险分析 影响软件风险的因素有很多，试图精确、定量的计算风险可能比降低风险还有困难。但软件风险基本在于“失败频率”和“影响”两个重要因素。 比如： 影响 那些事件需要担心？ 一旦发生，对产品、公司、客户有多大影响？处理这些失败的成本多大？ 失败频率 那些区域容易出现问题？ 相同问题在持续构建时，是否重复出现？ 许多团队的风险分析依赖于测试人员的经验和猜测，Google的ACC工具则通过分析项目元素（测试用例、代码变更、产品缺陷等）来识别风险。这些被分析的元素位于HTSM-&gt;Project Environment，是项目环境的一部分 ..."/>
-    <meta property="article:published_time" content="2014-10-17" />
-    <meta property="article:section" content="测试" />
-        <meta property="article:tag" content="test" />
-        <meta property="article:author" content="李鹏" />
+    <meta property="og:title" content="DOCKER基础技术：LINUX CGROUP(转载）"/>
+    <meta property="og:url" content="../2017/03/03/docker/"/>
+    <meta property="og:description" content="前面，我们介绍了Linux Namespace，但是Namespace解决的问题主要是环境隔离的问题，这只是虚拟化中最最基础的一步，我们还需要解决对计算机资源使用上的隔离。也就是说，虽然你通过Namespace把我Jail到一个特定的环境中去了，但是我在其中的进程使用用CPU、内存、磁盘等这些计算资源其实还是可以随心所欲的。所以，我们希望对进程进行资源利用上的限制或控制。这就是Linux CGroup出来了的原因。 Linux CGroup全称Linux Control Group， 是Linux内核的一个功能，用来限制，控制与分离一个进程组群的资源（如CPU、内存、磁盘输入输出等）。这个项目最早是由Google的工程师在2006年发起（主要是Paul Menage和Rohit Seth），最早的名称为进程容器（process containers）。在2007年时，因为在Linux内核中，容器（container）这个名词太过广泛，为避免混乱，被重命名为cgroup，并且被合并到2.6.24版的内核中去。然后，其它开始了他的发展。 Linux CGroupCgroup 可​​​让​​​您​​​为 ..."/>
+    <meta property="article:published_time" content="2017-03-03" />
+    <meta property="article:section" content="Docker专题" />
+        <meta property="article:tag" content="docker" />
+        <meta property="article:author" content="陈皓" />
         <meta property="og:image"
               content="../favicon.png"/>
 
@@ -66,12 +66,12 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-share-small" class="collapse ">
                     <li>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=../2014/10/17/风险控制/" title="Share via Facebook" target="popup">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=../2017/03/03/docker/" title="Share via Facebook" target="popup">
                             <i class="fa fa-facebook-square padding-small"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="https://plus.google.com/share?url=../2014/10/17/风险控制/" title="Share via Google+" target="popup">
+                        <a href="https://plus.google.com/share?url=../2017/03/03/docker/" title="Share via Google+" target="popup">
                             <i class="fa fa-google-plus padding-small"></i>
                         </a>
                     </li>
@@ -120,6 +120,12 @@
                         </a>
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse ">
+                        <li class="active">
+                            <a class="hide-overflow" href="../2017/03/03/docker/" title="DOCKER基础技术：LINUX CGROUP(转载）">
+                                <i class="fa fa-file-text padding-small"></i>
+                                DOCKER基础技术：LINUX CGROUP(转载）
+                            </a>
+                        </li>
                         <li class="">
                             <a class="hide-overflow" href="../2017/02/23/python/" title="位操作">
                                 <i class="fa fa-file-text padding-small"></i>
@@ -144,12 +150,6 @@
                                 类常用内置方法
                             </a>
                         </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../2017/01/15/编程语言-Python/" title="python metaclass(下）">
-                                <i class="fa fa-file-text padding-small"></i>
-                                python metaclass(下）
-                            </a>
-                        </li>
                     <li>
                         <a href="../archives.html">
                             <i class="fa fa-arrow-right padding-small"></i>
@@ -166,13 +166,13 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-share" class="sidebar_submenu collapse ">
                     <li>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=../2014/10/17/风险控制/" target="popup">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=../2017/03/03/docker/" target="popup">
                             <i class="fa fa-facebook-square padding-small"></i>
                             Facebook
                         </a>
                     </li>
                     <li>
-                        <a href="https://plus.google.com/share?url=../2014/10/17/风险控制/" target="popup">
+                        <a href="https://plus.google.com/share?url=../2017/03/03/docker/" target="popup">
                             <i class="fa fa-google-plus padding-small"></i>
                             Google+
                         </a>
@@ -328,6 +328,13 @@
                             <span class="badge pull-right categorybadge">3</span>
                         </a>
                     </li>
+                    <li class="active">
+                        <a href="../category/dockerzhuan-ti.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Docker专题
+                            <span class="badge pull-right categorybadge">3</span>
+                        </a>
+                    </li>
                     <li >
                         <a href="../category/python-pyqt.html">
                             <i class="fa fa-folder-open padding-small"></i>
@@ -353,13 +360,6 @@
                         <a href="../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
-                            <span class="badge pull-right categorybadge">2</span>
-                        </a>
-                    </li>
-                    <li class="active">
-                        <a href="../category/dockerzhuan-ti.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            Docker专题
                             <span class="badge pull-right categorybadge">2</span>
                         </a>
                     </li>
@@ -408,6 +408,12 @@
 </div>
 <div class="row">
     <div class="col-lg-9">
+            <article>
+                <h4>
+                    <time datetime="2017-03-03T00:00:00+08:00"> 2017-03-03 五</time>
+                    <a href="../2017/03/03/docker/">DOCKER基础技术：LINUX CGROUP(转载）</a>
+                </h4>
+            </article>
             <article>
                 <h4>
                     <time datetime="2016-08-12T00:00:00+08:00"> 2016-08-12 五</time>
