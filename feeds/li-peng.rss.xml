@@ -2911,7 +2911,7 @@ Empty &lt;span class="nb"&gt;test&lt;/span&gt; ID. A &lt;span class="nb"&gt;test
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +
@@ -3191,7 +3191,7 @@ JOB HTML   : /home/&amp;lt;user&amp;gt;/avocado/job-results/job-&amp;lt;date&amp
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +
@@ -14406,7 +14406,748 @@ Top:&lt;/p&gt;
 &lt;p&gt;压力测试是一种破坏性的测试，即系统在非正常的、超负荷的条件下的运行情况 。用来评估在超越最大负载的情况下系统将如何运行，是系统在正常的情况下对某种负载强度的承受能力的考验 。&lt;/p&gt;
 &lt;p&gt;为什么要进行压力测试？&lt;/p&gt;
 &lt;p&gt;通常我们用压力测试来判断系统的稳定性和可靠性。&lt;/p&gt;
-&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 12 Sep 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2014-09-12:2014/09/12/ltp/</guid><category>LTP</category></item><item><title>Reboot test脚本</title><link>http://king32783784.github.io/2014/03/01/stablity/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;为了验证操作系统启动的稳定性，需要进行500次启动测试，便写了脚本实现。&lt;/p&gt;
+&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 12 Sep 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2014-09-12:2014/09/12/ltp/</guid><category>LTP</category></item><item><title>Python-Tips(四）</title><link>http://king32783784.github.io/2014/05/06/python/</link><description>&lt;/head&gt;&lt;body&gt;&lt;h2 id="tips19"&gt;Tips19&lt;/h2&gt;
+&lt;h3 id="fei-bo-na-qi-sheng-cheng-qi"&gt;斐波那契生成器&lt;/h3&gt;
+&lt;p&gt;每个数字都是前两个数字的和&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;def fib(max):
+    a, b = 0, 1
+    while a &amp;lt; max:
+        yield a　　　　# a是当前序列的数字，因此对它进行yield，yield命令的意思是这不是一个普通的函数。它是一次生成一个值的特殊类型函数。可以将其视为可恢复函数。调用该函数将返回一个可用于生成连　　续x值的生成器【Generator】　　
+        a,b = b, a+b   # b是序列中下一个数字，因此将它赋值给a，但同时计算下一个值(a+b)并将其赋值给b以供稍后使用
+for n in fib(1000):
+    print(n, end=' ')
+
+0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="fu-shu-gui-ze-sheng-cheng-qi"&gt;复数规则生成器&lt;/h3&gt;
+&lt;p&gt;英文单词复数形式&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;re&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;build_math_and_appll_function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pattern&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;search&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;matches_rule&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;word&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;re&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;search&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pattern&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;word&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;apply_rule&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;word&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;re&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sub&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;search&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;word&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;matches_rule&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;apply_rule&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;rules&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rules_filename&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;          &lt;span class="c1"&gt;# rules()是按照需求连续生成匹配和应用函数的生成器&lt;/span&gt;
+    &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rules_filename&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;encoding&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'utf-8'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;pattern_file&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;pattern_file&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;pattern&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;search&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;replace&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="k"&gt;yield&lt;/span&gt;
+        &lt;span class="n"&gt;build_math_and_appll_function&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pattern&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;search&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;plural&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;noun&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;rules_filename&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'plural5-rules.txt'&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;matches_rule&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;apply_rule&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;rules&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rules_filename&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;&lt;span class="err"&gt;　&lt;/span&gt;&lt;span class="c1"&gt;# rules是生成器，可直接for循环使用&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;matches_rule&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;noun&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;apply_rule&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;noun&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="ne"&gt;ValueError&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'no matching rule for {0}'&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;noun&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="fei-bo-na-qi-die-dai-qi"&gt;斐波那契迭代器&lt;/h3&gt;
+&lt;p&gt;迭代器就是一个定义了__iter__()方法的类。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;Fib&lt;/span&gt;(&lt;span class="n"&gt;object&lt;/span&gt;):
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;__init__&lt;/span&gt;(&lt;span class="k"&gt;self&lt;/span&gt;, &lt;span class="nb"&gt;max&lt;/span&gt;):
+        &lt;span class="k"&gt;self&lt;/span&gt;.&lt;span class="nb"&gt;max&lt;/span&gt; = &lt;span class="nb"&gt;max&lt;/span&gt;
+
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;__iter__&lt;/span&gt;(&lt;span class="k"&gt;self&lt;/span&gt;): &lt;span class="c c-Singleline"&gt;# 调用iter(fib)时，__iter__()就会被调用&lt;/span&gt;
+        &lt;span class="k"&gt;self&lt;/span&gt;.&lt;span class="n"&gt;a&lt;/span&gt; = &lt;span class="mi"&gt;0&lt;/span&gt;
+        &lt;span class="k"&gt;self&lt;/span&gt;.&lt;span class="n"&gt;b&lt;/span&gt; = &lt;span class="mi"&gt;1&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="k"&gt;self&lt;/span&gt;
+
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;__next__&lt;/span&gt;(&lt;span class="k"&gt;self&lt;/span&gt;):　&lt;span class="c c-Singleline"&gt;# 当有人在迭代器实例中调用next()方法时，__next__()会自动调用&lt;/span&gt;
+        &lt;span class="n"&gt;fib&lt;/span&gt; = &lt;span class="k"&gt;self&lt;/span&gt;.&lt;span class="n"&gt;a&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;fib&lt;/span&gt; &amp;gt; &lt;span class="k"&gt;self&lt;/span&gt;.&lt;span class="o"&gt;max&lt;/span&gt;:
+            &lt;span class="n"&gt;raise&lt;/span&gt; &lt;span class="n"&gt;StopIteration&lt;/span&gt;　&lt;span class="c c-Singleline"&gt;# 给调用者发送迭代用完的信号&lt;/span&gt;
+        &lt;span class="k"&gt;self&lt;/span&gt;.&lt;span class="n"&gt;a&lt;/span&gt;, &lt;span class="k"&gt;self&lt;/span&gt;.&lt;span class="n"&gt;b&lt;/span&gt; = &lt;span class="k"&gt;self&lt;/span&gt;.&lt;span class="n"&gt;b&lt;/span&gt;, &lt;span class="k"&gt;self&lt;/span&gt;.&lt;span class="n"&gt;a&lt;/span&gt; + &lt;span class="k"&gt;self&lt;/span&gt;.&lt;span class="n"&gt;b&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;fib&lt;/span&gt;
+
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;Fib&lt;/span&gt;(&lt;span class="mi"&gt;1000&lt;/span&gt;):
+    &lt;span class="nb"&gt;print&lt;/span&gt; (&lt;span class="n"&gt;n&lt;/span&gt;, &lt;span class="nb"&gt;end&lt;/span&gt;=&lt;span class="s"&gt;' '&lt;/span&gt;)
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;for 循环调用iter(fib_inst),它返回迭代器，叫fib_iter.在这，fib_inst== fib_inst,因为__iter__()方法返回self.for 循环调用next(fib_iter),调用fib_iter对象的__next__()方法，产生下一个计算并返回值。当抛出StopIteration时，for循环将接收该异常并退出。&lt;/p&gt;
+&lt;h3 id="fu-shu-gui-ze-die-dai-qi-qi"&gt;复数规则迭代器器&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;iter(f) 调用f.__iter__
+next(f) 调用f.__next__
+
+class LazyRules:
+    rules_filename = 'plural6-rules.txt'
+    def __init__(self):
+        self.pattern_file = open(self.rules_filename, encoding='utf-8') # 实例化LazyRules时，打开文件
+        self.cache = []　　　＃　打开文件之后，初始化缓存
+
+    def __iter__(self):　　　　# 调用iter(rules)时，__iter__方法会自动调用
+        self.cache_index = 0
+        return self　　　　　　# 每个__iter__方法都需要返回一个迭代器，返回self
+
+    def __next__(self):　　　　# 调用__next__方法，next(rules)会跟着被调用
+        self.cache_index += 1
+        if len(self.cache) &amp;gt;= self.cache_index:
+            return self.cache[self.cache_index - 1]
+        if self.pattern_file.closed:
+            raise StopIteration
+
+        line = self.pattern_file.readline()
+        if not line:
+            self.pattern_file.close()
+            raise StopIteration
+
+        pattern, search, replace = line.split(None, 3)
+        funcs = build_math_and_appll_function(
+            pattern, search, replace)
+        self.cache.append(funcs)　　# 在返回匹配和应用功能之前（保存在元组funcs中）
+        return funcs
+    rules = LazyRules()
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="gao-ji-die-dai-qi"&gt;高级迭代器&lt;/h3&gt;
+&lt;p&gt;例如，解决字母算术谜题。&lt;/p&gt;
+&lt;p&gt;HAWAII+IDAHO+IOWA+OHIO==STATES&lt;/p&gt;
+&lt;p&gt;510199+98153+9301+3593==621246&lt;/p&gt;
+&lt;p&gt;H=5 A=1 W=0 I=9 D=8 O=3 S=6 T=2 E=4&lt;/p&gt;
+&lt;p&gt;示例代码&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;re&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;iterools&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;solve&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;puzzle&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;words&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;re&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;findall&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'[A-Z]+'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;puzzle&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;upper&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+    &lt;span class="n"&gt;unique_characters&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;''&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;words&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;unique_characters&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'Too many letters'&lt;/span&gt;
+    &lt;span class="n"&gt;first_letters&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;word&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;word&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;words&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;first_letters&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;sorted_characters&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;''&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;first_letters&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="s1"&gt;''&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;unique_characters&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;first_letters&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;characters&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;tuple&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;ord&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;sorted_characters&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;digits&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;tuple&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;ord&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;c&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="s1"&gt;'0123456789'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;zero&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;digits&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;guess&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;itertools&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;permutaitons&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;digits&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;characters&lt;/span&gt;&lt;span class="p"&gt;)):&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;zero&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;guess&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+            &lt;span class="n"&gt;equation&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;puzzle&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;translate&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;dict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;zip&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;characters&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;guess&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;eval&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;equation&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+                &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;equation&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;'__main__'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;puzzle&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:]:&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;puzzle&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;solution&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;solve&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;puzzle&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;solution&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;solution&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;运行结果&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;[root@isoft_lp 0306]# python3 alphametics.py "HAWAII + IDAHO + IOWA + OHIO == STATES"
+
+HAWAII + IDAHO + IOWA + OHIO == STATES                                                                                                               
+510199 + 98153 + 9301 + 3593 == 621246
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;解决这个问题，首先要找到谜题中所有的[A-Z]字母&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;re.findall('[0-9]+', '16 2-by-4s in rows of 8')  # 找到字符串中的数字
+
+re.findall('[A-Z]+', 'SEND + MORE == MONEY')　　# 找到字符串中的字母
+
+re.findall(' s.*? s', "The sixth sick sheikh's is sixth sheep's sick.") # 先匹配一个空格，后跟s 然后任意字符然后空格s;重叠的匹配只返回前一个
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;在序列中需找不同的元素&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;集合使得在序列中查找不同的元素变得容易。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt; a_list = ['The', 'sixth', 'sick', "sheik's", 'sixth', "sheep's", 'sick']
+&amp;gt; set(a_list)
+{"sheik's", 'sick', 'The', "sheep's", 'sixth'}　# set()函数将字符串列表转为集合（去掉重复，且无序）
+&amp;gt; a_string = 'EAST IS EAST'
+&amp;gt; set(a_string)
+{'E', ' ', 'I', 'S', 'T', 'A'}　　　　# set()函数可以将字符串转为集合
+&amp;gt; words = ['SEND', 'MORE', 'MONEY']
+&amp;gt; ''.join(words)
+'SENDMOREMONEY'　　# ''.join(words)将字符串列表拼接成一个字符串
+&amp;gt; set(''.join(words))
+{'D', 'E', 'M', 'Y', 'S', 'R', 'O', 'N'} # 先拼接字符串，先后转为集合（去掉重复的字母）
+&amp;gt; unique_characters = set(''.join(words)) # 找到了题目提供不同字符的集合
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;断言&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;python中assert语句用作断言。例如&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;assert 1 + 1 == 2  # True
+assert 1 + 1 == 3  # AssertionError
+assert len(unique_characters) &amp;lt;= 10, 'Too many letters' # 出现AssertionError，打印"Too many letters"因为数字只有０－９ 10个数字，如果字母大于10,肯定是无解的
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;生成器表达式&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt; unique_characters = { 'E', 'D', 'M', 'O', 'N', 'S', 'R', 'Y'}
+&amp;gt; gen = (ord(c) for c in unique_characters)  # 生成器表达式类似一个yield值的匿名函数
+&amp;gt; gen　　# 生成器表达式返回迭代器
+&amp;lt;generator object &amp;lt;genexpr&amp;gt; at 0x7f74c9f02938&amp;gt;　
+&amp;gt; next(gen)       # 调用next(gen)返回迭代器的下一个值
+68
+&amp;gt; next(gen)    
+69
+&amp;gt; tuple(ord(c) for c in unique_characters) # 将生成器表达式ord(c) for c in unique_characters传递给tiple()，生成一个元组
+(68, 69, 77, 89, 82, 83, 79, 78)
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;使用生成器表达式取代列表解析可以同时节省cpu和内存，如果构造一个列表的目的仅仅是传递给别的函数（比如传递给tuple或set()),推荐使用生成器表达式替代&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;生成器函数&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;def ord_map(a_string):
+    for c in a_string:
+        yield ord(c)
+gen = ord_map(unique_characters)
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;生成器表达式功能相同，但更紧凑&lt;/p&gt;
+&lt;h3 id="ji-suan-pai-lie"&gt;计算排列&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;itertools&lt;/span&gt;&lt;span class="err"&gt;　　&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;perms&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;itertools&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;permutations&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;　&lt;/span&gt;&lt;span class="c1"&gt;# permutations()函数接受一个序列(3个元素的列表，和排列的元素的数目）函数返回一个迭代器，可以在for循环使用它&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;perms&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;　　&lt;/span&gt;&lt;span class="c1"&gt;# [1,2,3]取２个的第一个排列是（１，2)&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;perms&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;perms&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;           &lt;span class="c1"&gt;# 排列是有序的&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;perms&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;perms&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;perms&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;next&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;perms&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;Traceback&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;most&lt;/span&gt; &lt;span class="n"&gt;recent&lt;/span&gt; &lt;span class="n"&gt;call&lt;/span&gt; &lt;span class="n"&gt;last&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+  &lt;span class="n"&gt;File&lt;/span&gt; &lt;span class="s2"&gt;"&amp;lt;stdin&amp;gt;"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;module&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="ne"&gt;StopIteration&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;permutaitons()函数可以接受任何序列，甚至是字符串。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;perms = itertools.permutations('ABC', 3)　# 字符串'ABC'和列表['A','B','C']是等价的
+&amp;gt; for string in perms:
+...     print(string)
+...
+
+('A', 'B', 'C')
+('A', 'C', 'B')
+('B', 'A', 'C')
+('B', 'C', 'A')
+('C', 'A', 'B')
+('C', 'B', 'A')
+&amp;gt; list(itertools.permutations('ABC', 3))　# permutaitons()函数总是返回迭代器，将这个迭代器传给内建list()函数接收排列
+[('A', 'B', 'C'), ('A', 'C', 'B'), ('B', 'A', 'C'), ('B', 'C', 'A'), ('C', 'A', 'B'), ('C', 'B', 'A')]
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="itertoolsmo-kuai-zhong-qi-ta-you-yi-si-de-fang-fa"&gt;itertools模块中其他有意思的方法&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt; list(itertools.product('ABC', '123'))　# itertools.product()函数返回包含两个序列的笛卡尔乘积的迭代器
+[('A', '1'), ('A', '2'), ('A', '3'), ('B', '1'), ('B', '2'), ('B', '3'), ('C', '1'), ('C', '2'), ('C', '3')]
+&amp;gt; list(itertools.combinations('ABC', 2)) # itertools.combinations()函数返回包含给定序列的给定长度的所有组合的迭代器
+[('A', 'B'), ('A', 'C'), ('B', 'C')]
+&amp;gt; names = list(open('favorite-people.text', encoding='utf-8'))　# 这个表达式将文本内容以一行一行组成的列表返回
+&amp;gt; names
+['Dora\n', 'Ethan\n', 'Wesley\n', 'John\n', 'Anne\n', 'Mike\n', 'Chris\n', 'Sarah\n', 'Alex\n', 'Lizzie\n']
+&amp;gt; names = [name.rstrip() for name in names]　# 通过rstrip字符串方法移除每行的空白
+&amp;gt; names
+['Dora', 'Ethan', 'Wesley', 'John', 'Anne', 'Mike', 'Chris', 'Sarah', 'Alex', 'Lizzie']
+&amp;gt; names=sorted(names)　# 进行排列
+&amp;gt; names
+['Alex', 'Anne', 'Chris', 'Dora', 'Ethan', 'John', 'Lizzie', 'Mike', 'Sarah', 'Wesley']
+&amp;gt; names = sorted(names, key=len)　# 通过key参数定义排序规则
+&amp;gt; names
+['Alex', 'Anne', 'Dora', 'John', 'Mike', 'Chris', 'Ethan', 'Sarah', 'Lizzie', 'Wesley']
+&amp;gt; groups = itertools.groupby(names, len)　# 接收一个序列和一个key函数，返回一个生成二元组的迭代器，每个二元组包含key_functoion(each item)的结果和另一个包含着所有共享key结果的元素的迭代器
+&amp;gt; groups
+&amp;lt;itertools.groupby object at 0x7f6788c8da48&amp;gt;
+&amp;gt; list(groups)
+[(4, &amp;lt;itertools._grouper object at 0x7f6788c86da0&amp;gt;), (5, &amp;lt;itertools._grouper object at 0x7f6788c86dd8&amp;gt;), (6, &amp;lt;itertools._grouper object at 0x7f6788c86e10&amp;gt;)]　# 调用list()函数会耗尽这个迭代器，将迭代器中所以元素生成了list。迭代器一但使用，就无法重新开始
+&amp;gt; groups = itertools.groupby(names, len)　# 重新生成迭代器,会分别生成４个字母的迭代器，５个字母的迭代器，６个字母的迭代器
+&amp;gt; for name_length, name_iter in groups:　
+...     print('Names with {0:d} letters:'.format(name_length))
+...     for name in name_iter:
+...         print(name)
+... 　# 
+Names with 4 letters:
+Alex
+Anne
+Dora
+John
+Mike
+Names with 5 letters:
+Chris
+Ethan
+Sarah
+Names with 6 letters:
+Lizzie
+Wesley
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;itertools.groupby()只有当输入序列已经按分组函数排过序才能正常工作。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt; list(range(0,3))
+[0, 1, 2]
+&amp;gt; list(range(10,13))
+[10, 11, 12]
+&amp;gt; list(itertools.chain(range(0,3), range(10,13)))　# itertools.chain()函数接受两个迭代器，返回一个迭代器，它接受任何数目的迭代器，并把他们按传入顺序串在一起
+[0, 1, 2, 10, 11, 12]
+&amp;gt; list(zip(range(0,3), range(10,13)))　# zip函数：接收任何数目的序列，然后返回一个迭代器，其第一个元素是每个序列的第一个元素组成的数组，以此类推
+[(0, 10), (1, 11), (2, 12)]
+&amp;gt; list(zip(range(0,3), range(10,14)))　# zip在到达最短序列结尾的时候停止。
+[(0, 10), (1, 11), (2, 12)]
+&amp;gt; list(itertools.zip_longest(range(0,3), range(10,14)))# itertools.zip_longest()函数到达最长的序列的结尾时停止，空的填入None
+[(0, 10), (1, 11), (2, 12), (None, 13)]
+&amp;gt; characters = ('S', 'M', 'E', 'D', 'O', 'N', 'R', 'Y')
+&amp;gt; guess = ('1', '2', '0', '3', '4', '5', '6', '7')
+&amp;gt; tuple(zip(characters, guess)) #  zip将字母列表，数字列表对应生成一组组字母数字对
+(('S', '1'), ('M', '2'), ('E', '0'), ('D', '3'), ('O', '4'), ('N', '5'), ('R', '6'), ('Y', '7'))
+&amp;gt; dict(zip(characters, guess))　# 将字母列表、数字列表生成对应键值对的字典
+{'S': '1', 'E': '0', 'N': '5', 'D': '3', 'O': '4', 'Y': '7', 'R': '6', 'M': '2'}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;算术谜题解决方法使用这个方法对每一个可能的解法创建一个将谜题中字母映射到解法中的数字的字典&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;characters = tuple(ord(c) for c in sorted_characters)
+digits = tuple(ord(c) for c in '0123456789')
+...
+for guess in iteratools.permutations(digits, len*characters)):
+    ...
+    equation = puzzle.translate(dict(zip(characters, guess)))
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="translatefang-fa"&gt;translate方法&lt;/h3&gt;
+&lt;p&gt;python字符串方法有很多。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt; translation_table = {ord('A'): ord('O')}　# 字符串翻译从一个转换表开始，转换表是将一个字符映射到另一个字符的字典(一个字节映射到另一个）
+&amp;gt; translation_table　# python3字节是整型数，ord()函数返回字符的ASCII码。
+{65: 79}
+&amp;gt; 'MARK'.translate(translation_table)# 一个字符串的translate()方法接收一个转换表，并用它来转换该字符串。
+'MORK'
+&amp;gt; characters = tuple(ord(c) for c in 'SMEDONRY')# 使用生成器表达式，可以快速的计算字符串每个字符的字节值
+&amp;gt; characters
+(83, 77, 69, 68, 79, 78, 82, 89)
+&amp;gt; guess = tuple(ord(c) for c in '91570682')# 使用另一个生成器表达式，快速的计算出字符串中每个数字的字节值，计算结果guess，正好是alphametics.solve()函数中iteratools.permutations()函数返回值的格式
+&amp;gt; guess
+(57, 49, 53, 55, 48, 54, 56, 50)
+&amp;gt; translation_table = dict(zip(characters, guess))#通过characters和guesszipping出来的元素对序列构造出的字典作为转换表，正是alphametics.solve()在for循环里面干的事情
+&amp;gt; translation_table
+{82: 56, 83: 57, 68: 55, 69: 53, 89: 50, 77: 49, 78: 54, 79: 48}
+&amp;gt; 'SEND + MORE == MONEY'.translate(translation_table)# 最后我们将转换表传递给原始字符串的translate（）方法。将字符串中的每个字母转换为相应的数字（基于characters中字母和guess中的数字）
+'9567 + 1085 == 10652'
+&amp;gt; eval('9567 + 1085 == 10652')
+True
+&amp;gt; eval('"A" + "B"')
+'AB'
+&amp;gt; eval('"MARK".translate({65:79})')
+'MORK'
+&amp;gt; eval('"AAAAA".count("A")')
+5
+&amp;gt; eval('["*"] * 5')
+['*', '*', '*', '*', '*']
+&amp;gt; x=5
+&amp;gt; eval("x * 5")
+25
+&amp;gt; eval("pow(x,2)")
+25
+&amp;gt; import math
+&amp;gt; eval("math.sqrt(x)")
+2.23606797749979
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;eval()接受的表达式可以引用evel()之外定义的全局变量，以及函数、模块&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;subprocess&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;eval&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"subprocess.getoutput('ls ~')"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="s1"&gt;'abc.xml&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;AndroidStudioProjects&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;avocado&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;cpu.cfs_quota_us~&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;Desktop&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;Documents&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;install.txt&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;Linux-version-test-result-201701181301.tar.gz&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;rpmbuild&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;test_brain&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;test.brain&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;test.log&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;下载'&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;subprocess模块允许执行任何shell命令并以字符串形式获得输出&lt;/p&gt;
+&lt;p&gt;总的来说，这个程序通过暴力解决字母数字算术谜题，通过穷举所有可能。&lt;/p&gt;
+&lt;p&gt;１通过re.findall()函数找到谜题中所有的字母&lt;/p&gt;
+&lt;p&gt;2.使用集合和set()函数找到谜题出现的所有不同的字母&lt;/p&gt;
+&lt;p&gt;3.使用assert语句检查是否有超过１０个不同的字母，超过则无解&lt;/p&gt;
+&lt;p&gt;4.通过一个生成器对象将字符转换成对应的ascii码值&lt;/p&gt;
+&lt;p&gt;5.使用itertools.permutations()函数计算所有可能的解法&lt;/p&gt;
+&lt;p&gt;6.使用translate()字符串方法将所有可能的解转换成python表达式&lt;/p&gt;
+&lt;p&gt;7.使用eval()函数通过求值python表达式来检验解法&lt;/p&gt;
+&lt;p&gt;8.返回第一个求值结果为True的解法&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Tue, 06 May 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2014-05-06:2014/05/06/python/</guid><category>Python-Tips</category></item><item><title>Python-Tips(三）</title><link>http://king32783784.github.io/2014/05/05/python/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;strong&gt;Tips15&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;python中所有正则表达式相关功能都包含在re模块中&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;^匹配字符串开始　$匹配字符串结尾&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;re模块最基本的方法是search()函数&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;pattern = '^M?M?M?&lt;span class="math"&gt;\('  # ^表示从字符串开头匹配　M?重复３次，匹配0-3次Ｍ字符，\)&lt;/span&gt;　匹配字符传结束　？表示匹配是可选的&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;pattern = '^M?M?M?(CM|CD|D?C?C?C?)$' # "|"表示是可选的，一旦CM匹配成功，后面的均被忽略&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;{N,M} {1,4} 匹配１到４个前面的模式　
+  pattern = '^M{0,3}&lt;span class="math"&gt;\(' 和前面的 '^M?^M?^m?\)&lt;/span&gt;'等同&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;python允许使用松散正则表达式。特点：空白符被忽略。空格、制表符和回车不会被匹配，匹配时需要加转义字符“\"
+  注释信息被忽略，＃开头的注释被忽略
+　例如：
+　pattern = '''
+　    ^ 　　　                           # 字符开始
+　    Ｍ{0,3}                           # 0-3个Ｍ
+     (CM|CD|D?C{0,3})                  # CM 或CD 或D?0-3个C(可选）
+      $                                # 字符结束&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;\d匹配所有0-9的数字 \D匹配除了数字外的所有字符&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;\d{3}  # 匹配３个数字&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;phonePattern = re.compile(r'^(\d{3})\D+(\d{3})\D+(\d{4})\D+(\D+(\d+)$')&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;(\d{3})  3个数字的分组　\D+　\D匹配数字以外的字符，　+一个或多个&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;phonePattern = re.compile(r'^(\d{3}\D&lt;em&gt;(\d{3})\D&lt;/em&gt;(\d{4})\D&lt;em&gt;(\d&lt;/em&gt;)$') +换成了*&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;phonePattern = re.compile(r'^\D&lt;em&gt;(\d{3})\D&lt;/em&gt;(\d{3})\D&lt;em&gt;(\d{4})\D&lt;/em&gt;(\d*)$)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果不明确字符串开始的地方：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;phonePattern = re.compile(r'(\d{3})\D*(\d{3})\D*(\d{4})\D*(\d*)$')
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;松散正则表达式会清晰一点：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;phonePattern = re.compile(r'''
+    (\d{3})    # 先匹配３个数字（如８００）
+    \D*        # 这个区域是任意非数字的字符如（"-")
+    (\d{3})     # 匹配三个数字如（555)
+    \D*        #任意非数字的字符
+    (\d{4})    # 匹配４个数字如（1212)
+    \D*        # 任意非数字的字符
+    (\d*)      # 任何数字字符
+    $          # 字符结束
+    ''', re.VERBOSE)
+
+例如　phone.Pattern.search('work 1-(800) 555.1212 #1234').groups()
+('800','555','1212','1234')
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Tips16&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;\b 匹配一个单词边界&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;x? 匹配可选的x字符（匹配０个或１个x字符）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;x* 匹配０个或多个x字符&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;x+ 匹配１个或多个x   x{n,m} 匹配n-m个x  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;(a|b|c) 匹配人一个a或b或c&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;(x)　这是一个组，会记忆匹配到的字符串&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Tips17&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;[sxz] “s、x或z"其中一个&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;^ 非，　[^abc] 除了a、b、c以外的字符&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;re.sub()函数执行基于正则表达式的字符串替换，　如re.sub('y$', 'ies', noun)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Tips18&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;在动态函数中使用外部参数值的技术称为闭合 [closures]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;yield命令不是一个普通的函数。它是一次生成一个值的特殊类型函数。可以将其视为可恢复函数。调用该函数将返回一个可用于生成连续x值的生成器【Generator】
+yield 的作用就是把一个函数变成一个 generator，带有 yield 的函数不再是一个普通函数，Python 解释器会将其视为一个 generator，调用 fab(5) 不会执行 fab 函数，而是返回一个 iterable 对象！在 for 循环执行时，每次循环都会执行 fab 函数内部的代码，执行到 yield b 时，fab 函数就返回一个迭代值，下次迭代时，代码从 yield b 的下一条语句继续执行，而函数的本地变量看起来和上次中断执行前是完全一样的，于是函数继续执行，直到再次遇到 yield。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 05 May 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2014-05-05:2014/05/05/python/</guid><category>Python-Tips</category></item><item><title>Python-Tips(二）</title><link>http://king32783784.github.io/2014/05/03/python/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;strong&gt;Tips11&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;字典是无序的键值对, {};dict["键"]="值",反之不成立&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;字典中可以任意扩展，但键是唯一的；对字典中的键重新赋值，新值会替代旧值；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;字典的值可以为任何数据类型。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;类似列表、集合，len()将返回字典中键的数量&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;in 判断指定的键是否在字典中&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;空字典为假，非空为真；None是一个特殊常量，是一个空值。None不等同于0; None为假，not None为真&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Tips12&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;遍历一个序列时，使用enumerate()函数可以同时得到索引和对应的值。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;同时遍历两个或更多的序列，使用zip()函数可以成对读取元素.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;要反向遍历一个序列，首先正向生成这个序列，然后调用 reversed() 函数。 for i in reversed(xrange(1,10,2))&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;要按排序顺序循环一个序列，请使用sorted()函数，返回一个新的排序的列表，同时保留源不变。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;basket = ['apple', 'orange', 'apple', 'pear', 'orange', 'banana']
+for f in sorted(set(basket)):
+...     print f&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;遍历字典时，使用iteritems()方法可以同时得到键和对应的值&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Tips13&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;OS模块包含非常多的函数用于操作系统的api&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;os.getcwd()函数获取当前目录。os.chdir()改变当前工作目录　&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;os.path模块包含了操作文件名和目录名的函数&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;os.path.join()可以用于构造路径，os.path.join("/home", "isoft_lp")；os.path.expanduser()
+用来将包含~符号（表示当前用户Home目录）的路径扩展为完整的路径　os.path.expanduser('~')&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;split函数分割一个完整路径并返回目录和文件名，os.path.splitext()函数分割一个文件名，返回文件名和扩展名，os.path.splitext("hello.py"),返回"hello"和".py"&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;glob模块是获得目录内容的一个模块，可以使用shell风格的通配符；glob模块接收一个通配符并返回匹配的文件和路径。如glob.glob("*.py")&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;os.stat()函数返回一个包含多种文件元信息的对象，包括以下信息（posix.stat_result(st_mode=33261, st_ino=2952447, st_dev=2061, st_nlink=1, st_uid=0, st_gid=0, st_size=1911, st_atime=1488354105, st_mtime=1484125146, st_ctime=1484125146)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;time是时间相关的模块，time.localtime()可以将纪元时间转为通用格式时间。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;os.path.realpath()函数可以获得文件的绝对路径&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;列表解析可以过滤列表，生成比原列表短的结果列表如过滤当前目录容量大于1000的文件&lt;/p&gt;
+&lt;p&gt;[f for f in glob.glob('*.py') if os.stat(f).st_size &amp;gt; 1000]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;字典解析和列表解析类似，生成字典。例如：&lt;/p&gt;
+&lt;p&gt;metadata_dict = {f:os.stat(f) for f in glob.glob('*.py')}&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;交换字典的键和值：&lt;/p&gt;
+&lt;p&gt;{value:key for key, value in a_dict.items()}&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;集合的解析方法和字典类似，不同的地方是结合只有值，没有键值对，例如
+　　a = {0,1,2}
+　　{x ** 2 for x in a}，集合元素求平方
+　　{x for x in a if x % 2 == 0}&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Tips14&lt;/strong&gt; &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;unicode编码使用4字节的数字来表达每个字母、符号或文字。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;python３支持把值格式化成字符串。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;splitlines()方法以多行字符串作为输入，返回一个字符串组成的列表，列表的元素即为原来的单行字符串。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;lower（）方法把大写转为小写，upper()小写转换为大写&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;count()方法对字符串找那个指定的子串进行计数；split()方法使用一个参数，即指定的分隔符，然后根据分隔符将字符串分割为字符串列表。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;字符串分片跟列表的分片原理是一样的，可以指定索引值进行分片。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;字节即字节；字符是一种抽象。一个不可变的unicode编码的字符序列叫做string. 一串０到255之间的数字组成的序列叫bytes对象。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;python2中.py文件默认的编码方式为ASCII, Python3编码默认为utf-8;一般字符编码的重载声明:# -&lt;em&gt;- coding: utf-8 -&lt;/em&gt;-&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sat, 03 May 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2014-05-03:2014/05/03/python/</guid><category>Python-Tips</category></item><item><title>Python-Tips(一）</title><link>http://king32783784.github.io/2014/05/01/python/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;strong&gt;Tips01&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;通过使用sys.path.insert(0,new_path)，你可以插入一个新的目录到sys.path列表的第一项，从而使其出现在Python搜索路径的开头。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Tips02&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Python中一切皆对象，字符串、列表、函数、类、类的实例、模块等都是对象。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Tips03&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Python使用try...except块来处理异常&lt;/p&gt;
+&lt;p&gt;try:
+     import hello
+except ImportError:
+     print("hello")&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Tips04&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Python 中所有东西都是区分大小写&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Tips05&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Python 重要的内置数据类型包括布尔型、数值型、字符型、字节、列表、元组、集合、字典；模块、函数、类、方法、文件&lt;/li&gt;
+&lt;li&gt;可以用type查看类型&lt;/li&gt;
+&lt;li&gt;isinstance() 判断是否为给定类型，如isinstance(1, int)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Tips06&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;/运算符执行浮点除法（python3中）&lt;/li&gt;
+&lt;li&gt;// 运算符执行古怪的整数除法,用之前最好先判断&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Tips07&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Python 支持大部分数学运算，但需要导入对应模块&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Tips08&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;列表是以类的形式实现的，列表支持多种方法进行操作，如append(),extend(), insert()&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;append()的参数可以是任何类型的数据，追加到原列表，extend()，参数必须是列表，类似于两个列表的拼接&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;count返回列表中元素出现次数， index()返回列表元素的索引（同样元素多个的情况下，只返回第一个元素）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;列表中不会存在空隙。del用于进行索引删除，remove用于元素删除（多个同样删除第一个）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;pop()删除列表中最后的元素，并返回所删除的值，pop[弹出]删除并返回指定位置的值&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;空列表为假，非空为真&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;enumerate()函数可以同时得到索引和对应的值&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Tips09&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;元组不可变的列表；元素用()闭合，列表为[]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;元组切片和列表一样，切片可以得到新的元组&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;不可变更的特点，元组不支持append、insert、remove、pop等方法&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;元组比列表快；可以对数据进行“写保护”，元组可以作为字典键（不可变）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;元组可以转换为列表-list()，列表也可以转换成元组-tuple() 转换：生成对应的元组或列表&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;空元组为加，非空为真；单元素元组，单元数后加","，如a=(1) a为int型；a=(1,) a为tuple&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;元组可以一次赋多个值，如a=(1,2,3) x,y,z = a x=1,y=2,z=3 内建的range()函数构造了一个整数序列,如x,y,x = range(3) &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Tips10&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;集合可以包含任何元素的数据，{}&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用set函数，将列表创建为集合，集合是无序的;用set()可以创建空集合，a=set(),因为{}是一个字典&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;add()方法可以扩展集合，接收任何参数（但集合是唯一值的，相同值只能有一份）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;update()方法效果是合并两个集合&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;discard()删除集合的元素（接受一个单值作为参数）；remove（）类似，但remove删除元素不存在时会触发KeyError&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;pop()方法从集合删除元素，并返回对应值，集合是无序的，所以只能随机弹出;空集合弹出会触发KeyError&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;clear()方法可以将集合清空&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;in:判断是否集合是否存在该元素；　union()合并两个集合；　intersection()返回两个集合的交集；difference()返回两个集合的补集（a出现，b没有）；　symmetric_difference()返回只在其中一个集合出现的元素; &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;issubset()判断是否为子集，issuperset()判断是否为超集&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;和列表、元组一样，空集合为假，非空为真&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Thu, 01 May 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2014-05-01:2014/05/01/python/</guid><category>Python-Tips</category></item><item><title>Reboot test脚本</title><link>http://king32783784.github.io/2014/03/01/stablity/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;为了验证操作系统启动的稳定性，需要进行500次启动测试，便写了脚本实现。&lt;/p&gt;
 &lt;p&gt;脚本如下：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;HOME=`pwd`&lt;/span&gt;
 &lt;span class="x"&gt;sleep 15&lt;/span&gt;
@@ -15022,7 +15763,7 @@ libpng-devel &amp;gt;= 1.0.20 zlib
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +
@@ -17201,7 +17942,7 @@ root@mng l_mpi_p_3.1.038]# ./install.sh
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +
