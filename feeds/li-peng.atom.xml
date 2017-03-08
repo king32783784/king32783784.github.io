@@ -14406,7 +14406,102 @@ Top:&lt;/p&gt;
 &lt;p&gt;压力测试是一种破坏性的测试，即系统在非正常的、超负荷的条件下的运行情况 。用来评估在超越最大负载的情况下系统将如何运行，是系统在正常的情况下对某种负载强度的承受能力的考验 。&lt;/p&gt;
 &lt;p&gt;为什么要进行压力测试？&lt;/p&gt;
 &lt;p&gt;通常我们用压力测试来判断系统的稳定性和可靠性。&lt;/p&gt;
-&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</summary><category term="LTP"></category></entry><entry><title>Python-Tips(五）</title><link href="http://king32783784.github.io/2014/05/07/python/" rel="alternate"></link><published>2014-05-07T00:00:00+08:00</published><author><name>李鹏</name></author><id>tag:king32783784.github.io,2014-05-07:2014/05/07/python/</id><summary type="html">&lt;/head&gt;&lt;body&gt;&lt;h3 id="tips-20"&gt;Tips 20&lt;/h3&gt;
+&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</summary><category term="LTP"></category></entry><entry><title>Python-Tips(六）</title><link href="http://king32783784.github.io/2014/05/10/python/" rel="alternate"></link><published>2014-05-10T00:00:00+08:00</published><author><name>李鹏</name></author><id>tag:king32783784.github.io,2014-05-10:2014/05/10/python/</id><summary type="html">&lt;/head&gt;&lt;body&gt;&lt;h3 id="tips-21"&gt;Tips 21&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;重构&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;前面将了测试驱动开发，但就算尽全力编写的单元测试，仍然会遇到错误。仍然会有考虑不全面的测试用例。
+比如前面的实现的转换数字的程序，如果输入空字符，会触发InvalidRomanNumeralError例外。
+在出现错误后，应该在修复前写出一个导致该失败情形的测试用例。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;FromRomanBadInput&lt;/span&gt;(&lt;span class="n"&gt;unittest&lt;/span&gt;.&lt;span class="n"&gt;TestCase&lt;/span&gt;):
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;testBlank&lt;/span&gt;(&lt;span class="k"&gt;self&lt;/span&gt;):
+        &lt;span class="s"&gt;'''from_roman should fail with blank string'''&lt;/span&gt;
+        &lt;span class="k"&gt;self&lt;/span&gt;.&lt;span class="n"&gt;assertRaises&lt;/span&gt;(&lt;span class="n"&gt;roman2&lt;/span&gt;.&lt;span class="n"&gt;InvalidRomanNumeralError&lt;/span&gt;, &lt;span class="n"&gt;roman2&lt;/span&gt;.&lt;span class="n"&gt;form_roman&lt;/span&gt;, &lt;span class="s"&gt;''&lt;/span&gt;)
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;执行测试用例会失败，现在可以修复这个bug。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;if not s:
+    raise InvalidRomanNumberalError('Input can not be blank')
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;然后测试成功&lt;/p&gt;
+&lt;p&gt;正常情况下，罗马数字中任何一个字符在同一行中不得重复出现三次以上，但通过一行4个Ｍ字符来代表4000,这样就可以把数字范围才能够１..3999转为１..4999．先修改测试用例
+增加 (4000, 'MMMM'), (4500, 'MMMMD'),(4888, 'MMMMDCCCLXXXVIII), (4999, 'MMMMCMXCIX')
+过大值测试由4000转为5000,太多重复数字测试'MMMM'被定为符合要求的罗马数字，所以'MMMM'改为'MMMMM',范围测试的１-3999,改为１-4999
+测试失败
+因为一些新需求导致失败的测试用例，现在就需要对实现进行修改。
+首先判断是否合法的罗马数字的匹配规则要修改
+M{0,4}对4000+数字的支持
+对数字判断的范围改为(0&amp;lt;n&amp;lt;5000)
+到底这样修改，符合要求吗？光说不行啊，还得测试才能确保。测试最终通过，说明我们的修改是有效的&lt;/p&gt;
+&lt;p&gt;需求变了，实现跟着变了，但改变实现后，影响之前的功能吗？新功能实现成功吗？完整的单元测试的好处就是明确的告诉你修改是否成功，是否对之前的功能有影响。&lt;/p&gt;
+&lt;p&gt;重构是修改可运行的代码，使其表现更好。更佳可以是性能更好，占用内存更少，占用更少的空间，更加简洁、增加更多功能，代码可读性更高。如果代码存在完整的单元测试的前提下，你才能毫无顾忌的去修改去重构，不然心里没底啊。&lt;/p&gt;
+&lt;p&gt;原来代码中的正则表达式看起来可读性不高，可以用个查询表替换，但是替换之后功能会不会有影响？别怕，我们已经实现了相应的单元测试。&lt;/p&gt;
+&lt;p&gt;现在可以大胆去修改实现&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;OutOfRangeError&lt;/span&gt;(&lt;span class="n"&gt;ValueError&lt;/span&gt;): &lt;span class="nb"&gt;pass&lt;/span&gt;
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;NotIntegerError&lt;/span&gt;(&lt;span class="n"&gt;ValueError&lt;/span&gt;): &lt;span class="nb"&gt;pass&lt;/span&gt;
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;InvalidRomanNumeralError&lt;/span&gt;(&lt;span class="n"&gt;ValueError&lt;/span&gt;): &lt;span class="nb"&gt;pass&lt;/span&gt;
+
+&lt;span class="n"&gt;roman_numeral_map&lt;/span&gt; = ((&lt;span class="s"&gt;'M'&lt;/span&gt;,  &lt;span class="mi"&gt;1000&lt;/span&gt;),
+                 (&lt;span class="s"&gt;'CM'&lt;/span&gt;, &lt;span class="mi"&gt;900&lt;/span&gt;),
+                 (&lt;span class="s"&gt;'D'&lt;/span&gt;,  &lt;span class="mi"&gt;500&lt;/span&gt;),
+                 (&lt;span class="s"&gt;'CD'&lt;/span&gt;, &lt;span class="mi"&gt;400&lt;/span&gt;),
+                 (&lt;span class="s"&gt;'C'&lt;/span&gt;,  &lt;span class="mi"&gt;100&lt;/span&gt;),
+                 (&lt;span class="s"&gt;'XC'&lt;/span&gt;, &lt;span class="mi"&gt;90&lt;/span&gt;),
+                 (&lt;span class="s"&gt;'L'&lt;/span&gt;,  &lt;span class="mi"&gt;50&lt;/span&gt;),
+                 (&lt;span class="s"&gt;'XL'&lt;/span&gt;, &lt;span class="mi"&gt;40&lt;/span&gt;),
+                 (&lt;span class="s"&gt;'X'&lt;/span&gt;,  &lt;span class="mi"&gt;10&lt;/span&gt;),
+                 (&lt;span class="s"&gt;'IX'&lt;/span&gt;, &lt;span class="mi"&gt;9&lt;/span&gt;),
+                 (&lt;span class="s"&gt;'V'&lt;/span&gt;,  &lt;span class="mi"&gt;5&lt;/span&gt;),
+                 (&lt;span class="s"&gt;'IV'&lt;/span&gt;, &lt;span class="mi"&gt;4&lt;/span&gt;),
+                 (&lt;span class="s"&gt;'I'&lt;/span&gt;,  &lt;span class="mi"&gt;1&lt;/span&gt;))
+
+&lt;span class="n"&gt;to_roman_table&lt;/span&gt; = [ &lt;span class="n"&gt;None&lt;/span&gt; ]
+&lt;span class="n"&gt;from_roman_table&lt;/span&gt; = {}
+
+&lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;to_roman&lt;/span&gt;(&lt;span class="n"&gt;n&lt;/span&gt;):
+    &lt;span class="s"&gt;'''convert integer to Roman numeral'''&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;not&lt;/span&gt; (&lt;span class="mi"&gt;0&lt;/span&gt; &amp;lt; &lt;span class="n"&gt;n&lt;/span&gt; &amp;lt; &lt;span class="mi"&gt;5000&lt;/span&gt;):
+        &lt;span class="n"&gt;raise&lt;/span&gt; &lt;span class="n"&gt;OutOfRangeError&lt;/span&gt;(&lt;span class="s"&gt;'number out of range (must be 1..4999)'&lt;/span&gt;)
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;(&lt;span class="n"&gt;n&lt;/span&gt;) != &lt;span class="n"&gt;n:&lt;/span&gt;
+        &lt;span class="n"&gt;raise&lt;/span&gt; &lt;span class="n"&gt;NotIntegerError&lt;/span&gt;(&lt;span class="s"&gt;'non-integers can not be converted'&lt;/span&gt;)
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;to_roman_table&lt;/span&gt;[&lt;span class="n"&gt;n&lt;/span&gt;]
+
+&lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;from_roman&lt;/span&gt;(&lt;span class="o"&gt;s&lt;/span&gt;):
+    &lt;span class="s"&gt;'''convert Roman numeral to integer'''&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;not&lt;/span&gt; &lt;span class="n"&gt;isinstance&lt;/span&gt;(&lt;span class="o"&gt;s&lt;/span&gt;, &lt;span class="n"&gt;str&lt;/span&gt;):
+        &lt;span class="n"&gt;raise&lt;/span&gt; &lt;span class="n"&gt;InvalidRomanNumeralError&lt;/span&gt;(&lt;span class="s"&gt;'Input must be a string'&lt;/span&gt;)
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;not&lt;/span&gt; &lt;span class="o"&gt;s&lt;/span&gt;:
+        &lt;span class="n"&gt;raise&lt;/span&gt; &lt;span class="n"&gt;InvalidRomanNumeralError&lt;/span&gt;(&lt;span class="s"&gt;'Input can not be blank'&lt;/span&gt;)
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;s&lt;/span&gt; &lt;span class="nb"&gt;not&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;from_roman_table:&lt;/span&gt;
+        &lt;span class="n"&gt;raise&lt;/span&gt; &lt;span class="n"&gt;InvalidRomanNumeralError&lt;/span&gt;(&lt;span class="s"&gt;'Invalid Roman numeral: {0}'&lt;/span&gt;.&lt;span class="n"&gt;format&lt;/span&gt;(&lt;span class="o"&gt;s&lt;/span&gt;))
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;from_roman_table&lt;/span&gt;[&lt;span class="o"&gt;s&lt;/span&gt;]
+
+&lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;build_lookup_tables&lt;/span&gt;():
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;to_roman&lt;/span&gt;(&lt;span class="n"&gt;n&lt;/span&gt;):
+        &lt;span class="n"&gt;result&lt;/span&gt; = &lt;span class="s"&gt;''&lt;/span&gt;
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;numeral&lt;/span&gt;, &lt;span class="n"&gt;integer&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;roman_numeral_map:&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &amp;gt;= &lt;span class="n"&gt;integer:&lt;/span&gt;
+                &lt;span class="n"&gt;result&lt;/span&gt; = &lt;span class="n"&gt;numeral&lt;/span&gt;
+                &lt;span class="n"&gt;n&lt;/span&gt; -= &lt;span class="n"&gt;integer&lt;/span&gt;
+                &lt;span class="k"&gt;break&lt;/span&gt;
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt; &amp;gt; &lt;span class="mi"&gt;0&lt;/span&gt;:
+            &lt;span class="n"&gt;result&lt;/span&gt; += &lt;span class="n"&gt;to_roman_table&lt;/span&gt;[&lt;span class="n"&gt;n&lt;/span&gt;]
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;result&lt;/span&gt;
+
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;integer&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;range&lt;/span&gt;(&lt;span class="mi"&gt;1&lt;/span&gt;, &lt;span class="mi"&gt;5000&lt;/span&gt;):
+        &lt;span class="n"&gt;roman_numeral&lt;/span&gt; = &lt;span class="n"&gt;to_roman&lt;/span&gt;(&lt;span class="n"&gt;integer&lt;/span&gt;)
+        &lt;span class="n"&gt;to_roman_table&lt;/span&gt;.&lt;span class="n"&gt;append&lt;/span&gt;(&lt;span class="n"&gt;roman_numeral&lt;/span&gt;) &lt;span class="c c-Singleline"&gt;# 1-5000的罗马数字列表&lt;/span&gt;
+        &lt;span class="n"&gt;from_roman_table&lt;/span&gt;[&lt;span class="n"&gt;roman_numeral&lt;/span&gt;] = &lt;span class="n"&gt;integer&lt;/span&gt;　＃ &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;5000&lt;/span&gt;&lt;span class="n"&gt;罗马数字和阿拉伯数字的字典&lt;/span&gt;
+
+&lt;span class="n"&gt;build_lookup_tables&lt;/span&gt;()
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;修改完成好，再次执行单元测试，测试通过，说明虽然实现变了，但功能依旧能保证。&lt;/p&gt;
+&lt;p&gt;单元测试是一个威力巨大的概念，如果实施的好，可以降低维护成本，提高项目的灵活性。但编写良好的测试用例非常艰难。很多语言都有自己的单元测试框架，但框架直接的共同点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;设计测试用例是具体、自动且独立的工作&lt;/li&gt;
+&lt;li&gt;在编写被测代码之前编写测试用例（测试驱动开发）&lt;/li&gt;
+&lt;li&gt;编写用于检查好输入并验证正确结果的测试&lt;/li&gt;
+&lt;li&gt;编写用于检查坏输入并做出正确失败响应的测试&lt;/li&gt;
+&lt;li&gt;编写并更新测试用例反映新需求&lt;/li&gt;
+&lt;li&gt;重构以提升性能、可扩展性、可读性、可维护性及补充特性&lt;/li&gt;
+&lt;/ul&gt;</summary><category term="Python-Tips"></category></entry><entry><title>Python-Tips(五）</title><link href="http://king32783784.github.io/2014/05/07/python/" rel="alternate"></link><published>2014-05-07T00:00:00+08:00</published><author><name>李鹏</name></author><id>tag:king32783784.github.io,2014-05-07:2014/05/07/python/</id><summary type="html">&lt;/head&gt;&lt;body&gt;&lt;h3 id="tips-20"&gt;Tips 20&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;TDD／单元测试&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;例子要求
 1.只有一种正确的途径用阿拉伯数字表示罗马数字。
