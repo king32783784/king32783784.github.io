@@ -273,18 +273,18 @@
                     </a>
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-categories" class="sidebar_submenu collapse ">
+                    <li class="active">
+                        <a href="../../../../category/bian-cheng-yu-yan-python.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            编程语言-Python
+                            <span class="badge pull-right categorybadge">17</span>
+                        </a>
+                    </li>
                     <li >
                         <a href="../../../../category/zi-dong-hua-ce-shi-selenium.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             自动化测试-Selenium
                             <span class="badge pull-right categorybadge">17</span>
-                        </a>
-                    </li>
-                    <li class="active">
-                        <a href="../../../../category/bian-cheng-yu-yan-python.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            编程语言-Python
-                            <span class="badge pull-right categorybadge">16</span>
                         </a>
                     </li>
                     <li >
@@ -532,28 +532,27 @@ class LazyRules:
 <p>H=5 A=1 W=0 I=9 D=8 O=3 S=6 T=2 E=4</p>
 <p>示例代码</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">import</span> <span class="nn">iterools</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
 
 <span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="n">puzzle</span><span class="p">):</span>
-    <span class="n">words</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">'[A-Z]+'</span><span class="p">,</span> <span class="n">puzzle</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
-    <span class="n">unique_characters</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s1">''</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">words</span><span class="p">))</span>
-    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">unique_characters</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">'Too many letters'</span>
-    <span class="n">first_letters</span> <span class="o">=</span> <span class="p">{</span><span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">}</span>
-    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">first_letters</span><span class="p">)</span>
-    <span class="n">sorted_characters</span> <span class="o">=</span> <span class="s1">''</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">first_letters</span><span class="p">)</span> <span class="o">+</span> <span class="s1">''</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">unique_characters</span> <span class="o">-</span> <span class="n">first_letters</span><span class="p">)</span>
-    <span class="n">characters</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">sorted_characters</span><span class="p">)</span>
-    <span class="n">digits</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="s1">'0123456789'</span><span class="p">)</span>
-    <span class="n">zero</span> <span class="o">=</span> <span class="n">digits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="k">for</span> <span class="n">guess</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">permutaitons</span><span class="p">(</span><span class="n">digits</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">characters</span><span class="p">)):</span>
-        <span class="k">if</span> <span class="n">zero</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">guess</span><span class="p">[:</span><span class="n">n</span><span class="p">]:</span>
-            <span class="n">equation</span> <span class="o">=</span> <span class="n">puzzle</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">characters</span><span class="p">,</span> <span class="n">guess</span><span class="p">)))</span>
-            <span class="k">if</span> <span class="nb">eval</span><span class="p">(</span><span class="n">equation</span><span class="p">):</span>
+    <span class="n">words</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">'[A-Z]+'</span><span class="p">,</span> <span class="n">puzzle</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span> <span class="c1"># 找到字符串，形成字符串列表</span>
+    <span class="n">unique_characters</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s1">''</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">words</span><span class="p">))</span> <span class="c1"># 通过集合唯一性，找到字母的集合</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">unique_characters</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">'Too many letters'</span> <span class="c1"># 判断字母的种类是否大于10</span>
+    <span class="n">first_letters</span> <span class="o">=</span> <span class="p">{</span><span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">}</span> <span class="c1"># 获取每个字符串的首字母　</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">first_letters</span><span class="p">)</span> <span class="c1"># 字符串数量</span>
+    <span class="n">sorted_characters</span> <span class="o">=</span> <span class="s1">''</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">first_letters</span><span class="p">)</span> <span class="o">+</span> <span class="s1">''</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">unique_characters</span> <span class="o">-</span> <span class="n">first_letters</span><span class="p">)</span> <span class="c1">#首字符在前的，有序字符串</span>
+    <span class="n">characters</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">sorted_characters</span><span class="p">)</span> <span class="c1"># 获取字母的对应的字节值列表</span>
+    <span class="n">digits</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="s1">'0123456789'</span><span class="p">)</span> <span class="c1"># 计算0-9数字的字节值生成元组</span>
+    <span class="n">zero</span> <span class="o">=</span> <span class="n">digits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># 0的字节值</span>
+    <span class="k">for</span> <span class="n">guess</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">permutations</span><span class="p">(</span><span class="n">digits</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">characters</span><span class="p">)):</span> <span class="c1"># 通过迭代器取出指定数目的&gt;有序组合</span>
+        <span class="k">if</span> <span class="n">zero</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">guess</span><span class="p">[:</span><span class="n">n</span><span class="p">]:</span>  <span class="c1"># 判断是否存在０</span>
+            <span class="n">equation</span> <span class="o">=</span> <span class="n">puzzle</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">characters</span><span class="p">,</span> <span class="n">guess</span><span class="p">)))</span><span class="c1"># 先将characters和guess&gt;元素对构造出作为转换表的字典，然后通过translate,将字符串中的每个字母转换为相应的数字）</span>
+            <span class="k">if</span> <span class="nb">eval</span><span class="p">(</span><span class="n">equation</span><span class="p">):</span> <span class="c1"># 判断equation是否成立</span>
                 <span class="k">return</span> <span class="n">equation</span>
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">sys</span>
     <span class="k">for</span> <span class="n">puzzle</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
-        <span class="k">print</span><span class="p">(</span><span class="n">puzzle</span><span class="p">)</span>
         <span class="n">solution</span> <span class="o">=</span> <span class="n">solve</span><span class="p">(</span><span class="n">puzzle</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">solution</span><span class="p">:</span>
             <span class="k">print</span><span class="p">(</span><span class="n">solution</span><span class="p">)</span>
