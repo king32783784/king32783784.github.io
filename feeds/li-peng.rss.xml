@@ -14406,7 +14406,330 @@ Top:&lt;/p&gt;
 &lt;p&gt;压力测试是一种破坏性的测试，即系统在非正常的、超负荷的条件下的运行情况 。用来评估在超越最大负载的情况下系统将如何运行，是系统在正常的情况下对某种负载强度的承受能力的考验 。&lt;/p&gt;
 &lt;p&gt;为什么要进行压力测试？&lt;/p&gt;
 &lt;p&gt;通常我们用压力测试来判断系统的稳定性和可靠性。&lt;/p&gt;
-&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 12 Sep 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2014-09-12:2014/09/12/ltp/</guid><category>LTP</category></item><item><title>Python-Tips(七）</title><link>http://king32783784.github.io/2014/05/13/python/</link><description>&lt;/head&gt;&lt;body&gt;&lt;h3 id="tips-22"&gt;Tips 22&lt;/h3&gt;
+&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 12 Sep 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2014-09-12:2014/09/12/ltp/</guid><category>LTP</category></item><item><title>Python-Tips(八)</title><link>http://king32783784.github.io/2014/05/22/python/</link><description>&lt;/head&gt;&lt;body&gt;&lt;h3 id="tips-24"&gt;Tips 24&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;序列化对象&lt;/strong&gt;&lt;/p&gt;
+&lt;h4 id="pickle"&gt;pickle&lt;/h4&gt;
+&lt;p&gt;序列化的概念很贱，内存里面的数据，想保存下来。下次使用时，又能容易恢复，而且不想使用大型的数据库。这种情况下，pickle模块是理想的，它是python标准库的一部分，所以总是可用的。它的大部分和python解释器本身一样是用C编写的，可用存储任意复杂的python数据结构。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;python支持的原生类型:布尔，整数，浮点数，复数，字符串，字符数组，None&lt;/li&gt;
+&lt;li&gt;列表，元组，字典和集合&lt;/li&gt;
+&lt;li&gt;列表，元组，字典和集合嵌套列表，元组，字典和集合（直到python支持最大的递归层数）&lt;/li&gt;
+&lt;li&gt;函数，类，和类的实例&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;保存数据到文件&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; entry
+{'article_link': 'http://diveintomark.org/archives/2009/03/27/dive-into-history-2009-edition', 'published': True, 'published_date': time.struct_time(tm_year=2009, tm_mon=3, tm_mday=27, tm_hour=22, tm_min=20, tm_sec=42, tm_wday=4, tm_yday=86, tm_isdst=-1), 'internal_id': b'\xde\xd5\xb4\xf8', 'tags': ('diveintopython', 'docbook', 'html'), 'comments_link': None, 'title': 'Dive into history, 2009 edition'}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;定义了一个包含多个数据格式的字典&lt;/p&gt;
+&lt;p&gt;保存数据&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pickle&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'entry.pickle'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'wb'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="c1"&gt;# open打开一个文件，文件模式'wb'&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;     &lt;span class="n"&gt;pickle&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dump&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;entry&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# pickle模块的dump()函数接收一个可序列化的python数据结构。使用pickle协议将其序列化为二进制，保存到entry.pickle&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;pickle协议是python特定的。该协议也在修改变化，最新的协议是二进制格式的，所以使用时注意其版本变化&lt;/p&gt;
+&lt;p&gt;读取数据&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; with open('entry.pickle', 'rb') as f: # with语句，二进制模式打开entry.pickle文件
+...     entrya = pickle.load(f)   # pickle.load()函数接收一个流对象，从文件读取序列化后的数据，创建一个新的python对象
+... 
+&amp;gt;&amp;gt;&amp;gt; entrya # 和前面的entry内容一样
+{'published_date': time.struct_time(tm_year=2009, tm_mon=3, tm_mday=27, tm_hour=22, tm_min=20, tm_sec=42, tm_wday=4, tm_yday=86, tm_isdst=-1), 'comments_link': None, 'title': 'Dive into history, 2009 edition', 'article_link': 'http://diveintomark.org/archives/2009/03/27/dive-into-history-2009-edition', 'internal_id': b'\xde\xd5\xb4\xf8', 'published': True, 'tags': ('diveintopython', 'docbook', 'html')}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;pickle.dump()/pickle.load()循环的结果是一个和原始数据结构等同的新的数据结构&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; with open('entry.pickle', 'rb') as f:
+...     entryb = pickle.load(f)
+... 
+&amp;gt;&amp;gt;&amp;gt; entryb == entry # 另外读取的entryb和之前的entry相等
+True 
+&amp;gt;&amp;gt;&amp;gt; entryb is entry # 虽然相等，但不是一个
+False
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;保存到内存&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; b = pickle.dumps(entry) # 这里是dumps
+&amp;gt;&amp;gt;&amp;gt; type(b)   # 保存的是二进制数据格式
+&amp;lt;class 'bytes'&amp;gt;
+&amp;gt;&amp;gt;&amp;gt; entry3 = pickle.loads(b) # 接收包含序列化后的数据bytes对象
+&amp;gt;&amp;gt;&amp;gt; entry3 == entry
+True
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;pickle&lt;/strong&gt;文件调试&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pickletools&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'entry.pickle'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'rb'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;     &lt;span class="n"&gt;pickletools&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dis&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt; 
+    &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; \&lt;span class="n"&gt;x80&lt;/span&gt; &lt;span class="n"&gt;PROTO&lt;/span&gt;      &lt;span class="mi"&gt;3&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="n"&gt;protocol&lt;/span&gt; &lt;span class="n"&gt;among&lt;/span&gt; &lt;span class="n"&gt;opcodes&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;  &lt;span class="c1"&gt;# 显示了pickle协议的版本号&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id="json"&gt;JSON&lt;/h4&gt;
+&lt;p&gt;pickle序列化数据是python特定的，但json是可以跨语言使用的。&lt;/p&gt;
+&lt;p&gt;json是基于文本的，不是二进制。json值是大小写敏感的。由于是文本格式的，存在空白的问题。json允许在值之间有任意数目的空白（空格，跳格，回车，换行）。空白是无关紧要的，可以根据需要添加任意的空白。python的josn模块在编码时支持pretty-printing选项
+json同样要注意编码格式&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;保存数据&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;json看起来想在javascript手工定义的数据结构。支持js中eval()函数来解码json序列化的数据。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;basic_entry&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;'tags'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'diveintopython'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'docbook'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'html'&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="s1"&gt;'id'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;256&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'comments_link'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'published'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'title'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'Dive into history, 2009 edition'&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;json&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'basic.json'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'w'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;encoding&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'utf-8'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="c1"&gt;# json是文本格式，所以w打开即可&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;     &lt;span class="n"&gt;json&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dump&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;basic_entry&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# 同pickle一样，json定义了dump()函数，接收一个流对象和一个可写的流对象。然后写入&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;json是文本格式，所以可是用cat查看一下其内容&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; with open('basic-pretty.json', mode='w', encoding='utf-8') as f:
+...     json.dump(basic_entry, f, indent=2) # indent参数指定空格数量进行缩进嵌套保存数据
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;读取数据&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;类似pickle模块，json模块有一个load()函数接受一个流对象，从中读取JSON编码过的数据，并且创建该JSON数据结构的python对象的镜像&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; with open('basic.json', 'r', encoding='utf-8') as f:
+...     entry = json.load(f)
+... 
+&amp;gt;&amp;gt;&amp;gt; entry
+{'tags': ['diveintopython', 'docbook', 'html'], 'id': 256, 'comments_link': None, 'published': True, 'title': 'Dive into history, 2009 edition'}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Python中还有其他一些序列化对象的如dbm、shelve等等&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Thu, 22 May 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2014-05-22:2014/05/22/python/</guid><category>Python-Tips</category></item><item><title>Python-Tips(七）</title><link>http://king32783784.github.io/2014/05/18/python/</link><description>&lt;/head&gt;&lt;body&gt;&lt;h3 id="tips-23"&gt;Tips 23&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;XML&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;XML是一种描述层次结构话数据的方法。XML文档包含由起始和结束标签分割的一个或多个元素。下面这个就是个简单的XML文件：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;foo&amp;gt;&lt;/span&gt;     # 这是foo元素的起始标签
+&lt;span class="nt"&gt;&amp;lt;/foo&amp;gt;&lt;/span&gt;　　# 这是foo元素对应的结束标签
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;元素可以嵌套到任意层次&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;foo&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;bar&amp;gt;&lt;/span&gt; &lt;span class="nt"&gt;&amp;lt;/bar&amp;gt;&lt;/span&gt;  # 可以作为foo元素的子元素
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;/p&gt;
+XML文档中第一个元素叫做根元素，每份XML文档只能有一个根元素。以下就不是一个xml文档。
+　　&lt;foo&gt;&lt;/foo&gt;
+&lt;bar&gt;&lt;/bar&gt;　# 两个根元素
+元素可以有其属性，类似字典的键值对。属性由空格分割列举在元素的起始标签中。一个元素中属性名不恩能够重复，属性值必须用括号包括起来，单引号或双引号都可以。
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;foo&lt;/span&gt; &lt;span class="na"&gt;lang=&lt;/span&gt;&lt;span class="s"&gt;'en'&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt; # foo元素有一个叫做lang的属性，属性值为'en'
+  &lt;span class="nt"&gt;&amp;lt;bar&lt;/span&gt; &lt;span class="na"&gt;id=&lt;/span&gt;&lt;span class="s"&gt;'papayawhip'&lt;/span&gt; &lt;span class="na"&gt;lang=&lt;/span&gt;&lt;span class="s"&gt;"fr"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/bar&amp;gt;&lt;/span&gt;　# bar元素分别两个属性,id和lang，每个属性都有对应值，每个元素具有独立的属性集
+&lt;span class="nt"&gt;&amp;lt;/foo&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;如果元素存在多个属性，书写的顺序不重要。元素的属性都是无序的键值对集，和字典类似。元素的个数是没有限制的。
+元素可以有其文本内容
+    &lt;foo lang="en"&gt;
+    　&lt;bar ...')并非在测试是否find()方法找到匹配项，而是在判断元素是否包含子元素。想要判断是否包含要查找的子元素，需要使用if="" element.find('...')="" is="" lang="fr&amp;gt;PapayaWhip&amp;lt;/bar&amp;gt;
+    &amp;lt;/foo&amp;gt;
+如果和开头那个啥都没有，较空元素。空元素的简洁表示：&amp;lt;foo/&amp;gt;
+和python函数可以在不同模块中声明一样，可以在不同命名空间中声明XML元素。XML文档的命名空间看起来像URL.可以通过xmlns来定义默认命名空间。命名空间声明和元素属性类似，但作用不同。&amp;lt;/p&amp;gt;
+&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre&amp;gt;&amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;feed&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;na&amp;quot;&amp;gt;xmlns=&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s&amp;quot;&amp;gt;'http://www.w3.org/2005/Atom'&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;gt;&amp;lt;/span&amp;gt; # feed元素处于命名空间&amp;quot;http://www..../Atom' 
+  &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;title&amp;gt;&amp;lt;/span&amp;gt;dive into mark&amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;/title&amp;gt;&amp;lt;/span&amp;gt;  #title元素的命名空间也是，命名空间会作用到子元素
+&amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;/feed&amp;gt;&amp;lt;/span&amp;gt;
+&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;
+
+
+&amp;lt;p&amp;gt;还可以通过xmlns:prefix声明定义一个命名空间并取名为prefix.然后该命名空间的每个元素都必须显式的调用这个前缀。&amp;lt;/p&amp;gt;
+&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre&amp;gt;&amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;atom:feed&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;na&amp;quot;&amp;gt;xmlns:atom=&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s&amp;quot;&amp;gt;'http://www.w3.org/2005/Atom'&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;gt;&amp;lt;/span&amp;gt; # feed元素属于命名空间http.../Atom
+　　&amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;atom:title&amp;gt;&amp;lt;/span&amp;gt; dive into mark &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;/atom:title&amp;gt;&amp;lt;/span&amp;gt; # title元素也是
+&amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;atom:feed&amp;gt;&amp;lt;/span&amp;gt;
+&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;
+
+
+&amp;lt;p&amp;gt;对于XML解析器而言，以上两种方式是一样的。命名空间 + 元素名 = XML标识　前缀是用来引用命名空间的，所以对应解析器来说，这些前缀(atom:）无关紧要。名字空间、元素名、属性、元素的文本内容相同的情况下，xml文档相同。&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;在根元素之前，加上字符编码信息（无处不在啊）&amp;lt;/p&amp;gt;
+&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre&amp;gt;&amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;cp&amp;quot;&amp;gt;&amp;lt;?xml version='1.0' encoding='utf-8'?&amp;gt;&amp;lt;/span&amp;gt;
+&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;
+
+
+&amp;lt;p&amp;gt;&amp;lt;strong&amp;gt;Atom结构&amp;lt;/strong&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;每个Atom订阅都共享一个根元素：即在命名空间http://www.w3.org/2005/Atom中的元素feed&amp;lt;/p&amp;gt;
+&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre&amp;gt;&amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;feed&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;na&amp;quot;&amp;gt;xmlns=&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s&amp;quot;&amp;gt;'http://www.w3.org/2005/Atom'&amp;lt;/span&amp;gt;  &amp;lt;span class=&amp;quot;err&amp;quot;&amp;gt;#&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;err&amp;quot;&amp;gt;表示命名空间Atom&amp;lt;/span&amp;gt;
+   &amp;lt;span class=&amp;quot;na&amp;quot;&amp;gt;xml:lang=&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s&amp;quot;&amp;gt;'en'&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;gt;&amp;lt;/span&amp;gt;    # 用来声明元素及子元素使用的语言 
+  &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;title&amp;gt;&amp;lt;/span&amp;gt; dive into mark &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;/title&amp;gt;&amp;lt;/span&amp;gt; # 表题
+  &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;subtitle&amp;gt;&amp;lt;/span&amp;gt; currently between addictions&amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;/subtitle&amp;gt;&amp;lt;/span&amp;gt;# 子标题
+  &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;id&amp;gt;&amp;lt;/span&amp;gt; tag:diveintomark.org,2001-07-29:/&amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;/id&amp;gt;&amp;lt;/span&amp;gt;　# 全局唯一标识符
+  &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;updated&amp;gt;&amp;lt;/span&amp;gt;2009-03-27T21:56:07Z&amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;/updated&amp;gt;&amp;lt;/span&amp;gt;
+  &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;link&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;na&amp;quot;&amp;gt;rel=&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s&amp;quot;&amp;gt;'alternate'&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;na&amp;quot;&amp;gt;type=&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s&amp;quot;&amp;gt;'text/html'&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;na&amp;quot;&amp;gt;href=&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s&amp;quot;&amp;gt;'http://diveintomark.org/'&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;/&amp;gt;&amp;lt;/span&amp;gt;　#link3个属性
+
+&amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;entry&amp;gt;&amp;lt;/span&amp;gt;
+  &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;author&amp;gt;&amp;lt;/span&amp;gt; # 作者
+    &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;name&amp;gt;&amp;lt;/span&amp;gt;Mark&amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;/name&amp;gt;&amp;lt;/span&amp;gt;
+    &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;uri&amp;gt;&amp;lt;/span&amp;gt;http://diveintomark.org/&amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;/uri&amp;gt;&amp;lt;/span&amp;gt;
+  &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;/author&amp;gt;&amp;lt;/span&amp;gt;
+  &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;title&amp;gt;&amp;lt;/span&amp;gt;Dive into history, 2009 edition&amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;/title&amp;gt;&amp;lt;/span&amp;gt;                           # 标题
+  &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;link&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;na&amp;quot;&amp;gt;rel=&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s&amp;quot;&amp;gt;'alternate'&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;na&amp;quot;&amp;gt;type=&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s&amp;quot;&amp;gt;'text/html'&amp;lt;/span&amp;gt;                                   &amp;lt;span class=&amp;quot;err&amp;quot;&amp;gt;#&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;err&amp;quot;&amp;gt;文章链接&amp;lt;/span&amp;gt; 
+    &amp;lt;span class=&amp;quot;na&amp;quot;&amp;gt;href=&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s&amp;quot;&amp;gt;'http://diveintomark.org/archives/2009/03/27/dive-into-history-2009-edition'&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;/&amp;gt;&amp;lt;/span&amp;gt;
+  &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;id&amp;gt;&amp;lt;/span&amp;gt;tag:diveintomark.org,2009-03-27:/archives/20090327172042&amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;/id&amp;gt;&amp;lt;/span&amp;gt;        #标识符
+  &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;updated&amp;gt;&amp;lt;/span&amp;gt;2009-03-27T21:56:07Z&amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;/updated&amp;gt;&amp;lt;/span&amp;gt;                                  # 日期
+  &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;published&amp;gt;&amp;lt;/span&amp;gt;2009-03-27T17:20:42Z&amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;/published&amp;gt;&amp;lt;/span&amp;gt;        
+  &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;category&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;na&amp;quot;&amp;gt;scheme=&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s&amp;quot;&amp;gt;'http://diveintomark.org'&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;na&amp;quot;&amp;gt;term=&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s&amp;quot;&amp;gt;'diveintopython'&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;/&amp;gt;&amp;lt;/span&amp;gt;       # 类别
+  &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;category&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;na&amp;quot;&amp;gt;scheme=&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s&amp;quot;&amp;gt;'http://diveintomark.org'&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;na&amp;quot;&amp;gt;term=&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s&amp;quot;&amp;gt;'docbook'&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;/&amp;gt;&amp;lt;/span&amp;gt;
+  &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;category&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;na&amp;quot;&amp;gt;scheme=&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s&amp;quot;&amp;gt;'http://diveintomark.org'&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;na&amp;quot;&amp;gt;term=&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s&amp;quot;&amp;gt;'html'&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;/&amp;gt;&amp;lt;/span&amp;gt;
+  &amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;summary&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;na&amp;quot;&amp;gt;type=&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s&amp;quot;&amp;gt;'html'&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;gt;&amp;lt;/span&amp;gt;Putting an entire chapter on one page sounds        # 简介
+    bloated, but consider this &amp;lt;span class=&amp;quot;ni&amp;quot;&amp;gt;&amp;amp;amp;&amp;lt;/span&amp;gt;mdash; my longest chapter so far
+    would be 75 printed pages, and it loads in under 5 seconds&amp;lt;span class=&amp;quot;ni&amp;quot;&amp;gt;&amp;amp;amp;&amp;lt;/span&amp;gt;hellip;
+    On dialup.&amp;lt;span class=&amp;quot;nt&amp;quot;&amp;gt;&amp;lt;/summary&amp;gt;&amp;lt;/span&amp;gt;
+&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;
+
+
+&amp;lt;p&amp;gt;&amp;lt;/entry&amp;gt;                    &amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;strong&amp;gt;解析XML&amp;lt;/strong&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;接下来才是重点，不然啰嗦那么多干嘛&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;python可以使用几种不同的方式解析XML文档。它包含DOM和SAX解析器。这里讲一下ElementTree和库上边。&amp;lt;/p&amp;gt;
+&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre&amp;gt;&amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;kn&amp;quot;&amp;gt;import&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nn&amp;quot;&amp;gt;xml.etree.ElementTree&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;kn&amp;quot;&amp;gt;as&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;nn&amp;quot;&amp;gt;etree&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;c1&amp;quot;&amp;gt;# ElementTree属于Python标准库的一部分，位置为xml.etree.ElementTree&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;tree&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;=&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;etree&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;.&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;parse&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;(&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;s1&amp;quot;&amp;gt;'feed.xml'&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;)&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;c1&amp;quot;&amp;gt;# parse函数是ElementTree库的主要入口,使用文件名或流对象作为参数,parse()函数会解析完整的文档。如果内存资源紧张，可以增量式解析&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;root&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;=&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;tree&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;.&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;getroot&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;p&amp;quot;&amp;gt;()&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;c1&amp;quot;&amp;gt;# parse函数会返回一个能代表整篇文档的对象，这不是根元素，获取根元素可以调用getroot()方法&amp;lt;/span&amp;gt;
+&amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;root&amp;lt;/span&amp;gt; 
+&amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;&amp;lt;&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;Element&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;s1&amp;quot;&amp;gt;'{http://www.w3.org/2005/Atom}feed'&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;n&amp;quot;&amp;gt;at&amp;lt;/span&amp;gt; &amp;lt;span class=&amp;quot;mh&amp;quot;&amp;gt;0x7f61dc975ae8&amp;lt;/span&amp;gt;&amp;lt;span class=&amp;quot;o&amp;quot;&amp;gt;&amp;gt;&amp;lt;/span&amp;gt;
+&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;
+
+
+&amp;lt;p&amp;gt;ElementTree使用{namespace}localname来表达XML元素&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;strong&amp;gt;元素即列表&amp;lt;/strong&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;在ElementTree API中，元素的行为就像列表一样。列表中的项即该元素的子元素&amp;lt;/p&amp;gt;
+&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre&amp;gt;&amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;&amp;gt;&amp;gt;&amp;gt; root.tag    # 根元素如下
+'{http://www.w3.org/2005/Atom}feed'
+&amp;gt;&amp;gt;&amp;gt; len(root) # 根元素的长度即为子元素的数量
+8
+&amp;gt;&amp;gt;&amp;gt; for child in root: # 我们可以像使用迭代器（列表）一样遍历其子元素
+...     print(child)
+... 
+&amp;lt;Element '{http://www.w3.org/2005/Atom}title' at 0x7fc09da09408&amp;gt;
+&amp;lt;Element '{http://www.w3.org/2005/Atom}subtitle' at 0x7fc09da09458&amp;gt;
+&amp;lt;Element '{http://www.w3.org/2005/Atom}id' at 0x7fc09da09548&amp;gt;
+&amp;lt;Element '{http://www.w3.org/2005/Atom}updated' at 0x7fc09da09598&amp;gt;
+&amp;lt;Element '{http://www.w3.org/2005/Atom}link' at 0x7fc09da09638&amp;gt;
+&amp;lt;Element '{http://www.w3.org/2005/Atom}entry' at 0x7fc09da09688&amp;gt;
+&amp;lt;Element '{http://www.w3.org/2005/Atom}entry' at 0x7fc09da09b38&amp;gt;
+&amp;lt;Element '{http://www.w3.org/2005/Atom}entry' at 0x7fc09da09ef8&amp;gt;
+从输出看到，根元素共8个子元素，所有feed级的元数据(title,subtitle,id,updated,link,entrya)
+&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;
+
+
+&amp;lt;p&amp;gt;该列表只包括了直接的子元素，子元素如果有其自身的子元素，是不包含在这，他们包含在各自的子元素的列表中。&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;strong&amp;gt;属性即字典&amp;lt;/strong&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;XML不只是元素的集合；每一个元素还有其属性集。一旦获取某个元素的引用，我们可以像操作字典一样来获取其属性&amp;lt;/p&amp;gt;
+&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre&amp;gt;&amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;&amp;gt;&amp;gt;&amp;gt; root.attrib # attrib是一个代表元素属性的字典，该部分的xml内容： &amp;lt;feed xmlns='http://www.w3.org/2005/Atom' xml:lang='en'&amp;gt;，前缀xml:指示一个内置的名字空间，每个XML不需声明便可使用
+{'{http://www.w3.org/XML/1998/namespace}lang': 'en'}
+&amp;gt;&amp;gt;&amp;gt; root[4] # 第五个子元素即子元素link
+&amp;lt;Element '{http://www.w3.org/2005/Atom}link' at 0x7fc09da09638&amp;gt;
+&amp;gt;&amp;gt;&amp;gt; root[4].attrib # link元素的属性字典
+{'href': 'http://diveintomark.org/', 'type': 'text/html', 'rel': 'alternate'}
+&amp;gt;&amp;gt;&amp;gt; root[3] # 第4个子元素updated
+&amp;lt;Element '{http://www.w3.org/2005/Atom}updated' at 0x7fc09da09598&amp;gt;
+&amp;gt;&amp;gt;&amp;gt; root[3].attrib # updated没有属性，所以是个空字典
+{}
+&amp;gt;&amp;gt;&amp;gt; root[4].attrib['href'] # 和字典操作一样，获取对应的属性值
+'http://diveintomark.org/'
+&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;
+
+
+&amp;lt;p&amp;gt;&amp;lt;strong&amp;gt;XML查找结点&amp;lt;/strong&amp;gt;&amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;许多情况下，我们需要找到XML中特点的元素。&amp;lt;/p&amp;gt;
+&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre&amp;gt;&amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;&amp;gt;&amp;gt;&amp;gt; root.findall('{http://www.w3.org/2005/Atom}entry') # findall()方法可以查找匹配的子元素
+[&amp;lt;Element '{http://www.w3.org/2005/Atom}entry' at 0x7fc09da09688&amp;gt;, &amp;lt;Element '{http://www.w3.org/2005/Atom}entry' at 0x7fc09da09b38&amp;gt;, &amp;lt;Element '{http://www.w3.org/2005/Atom}entry' at 0x7fc09da09ef8&amp;gt;]
+&amp;gt;&amp;gt;&amp;gt; root.tag
+'{http://www.w3.org/2005/Atom}feed'
+&amp;gt;&amp;gt;&amp;gt; root.findall('{http://www.w3.org/2005/Atom}feed') # 每个元素都有findall()方法，但查询只会搜索其子元素，根元素feed中不存在feed的子元素，所以为空列表
+[]
+&amp;gt;&amp;gt;&amp;gt; root.findall('{http://www.w3.org/2005/Atom}author') # author虽然有，但它是entry的子元素
+[]
+&amp;gt;&amp;gt;&amp;gt; tree.findall('{http://www.w3.org/2005/Atom}entry') # 对象tree(etree.parse()返回值)中一些方法是根元素方法的镜像，和tree.getroot().findall()返回值一样
+[&amp;lt;Element '{http://www.w3.org/2005/Atom}entry' at 0x7fc09da09688&amp;gt;, &amp;lt;Element '{http://www.w3.org/2005/Atom}entry' at 0x7fc09da09b38&amp;gt;, &amp;lt;Element '{http://www.w3.org/2005/Atom}entry' at 0x7fc09da09ef8&amp;gt;]
+&amp;gt;&amp;gt;&amp;gt; tree.findall('{http://www.w3.org/2005/Atom}author') # 和tree.getroot().findall结果一样
+[]
+&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;
+
+
+&amp;lt;p&amp;gt;findall()匹配所有元素，find()方法只返回第一个匹配元素&amp;lt;/p&amp;gt;
+&amp;lt;div class=&amp;quot;highlight&amp;quot;&amp;gt;&amp;lt;pre&amp;gt;&amp;lt;span&amp;gt;&amp;lt;/span&amp;gt;&amp;gt;&amp;gt;&amp;gt; entries = tree.findall('{http://www.w3.org/2005/Atom}entry')# 查找元素赋给entries
+&amp;gt;&amp;gt;&amp;gt; len(entries)
+3
+&amp;gt;&amp;gt;&amp;gt; title_element = entries[0].find('{http://www.w3.org/2005/Atom}title') # find()方法使用ElementTree作为参数,返回第一个匹配的元素
+&amp;gt;&amp;gt;&amp;gt; title_element.text
+'Dive into history, 2009 edition'
+&amp;gt;&amp;gt;&amp;gt; foo_element = entries[0].find('{http://www.w3.org/2005/Atom}foo')
+&amp;gt;&amp;gt;&amp;gt; foo_element
+&amp;gt;&amp;gt;&amp;gt; type(foo_element) # entries[0]没有foo元素，返回None
+&amp;lt;class 'NoneType'&amp;gt;
+&amp;lt;/pre&amp;gt;&amp;lt;/div&amp;gt;
+
+
+&amp;lt;p&amp;gt;ElementTree元素对象如果不包含子元素，其值被认为False(即len(element)为0).if element.find(" none&lt;="" not="" p=""&gt;
+&lt;/bar&gt;&lt;/foo&gt;&lt;/p&gt;&lt;p&gt;可以在所以派生元素中搜索，即任意嵌套层次的子元素、孙子元素...&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; all_links = tree.findall('.//{http://www.w3.org/2005/Atom}link') # .//指在任意嵌套层次查找
+&amp;gt;&amp;gt;&amp;gt; all_links
+[&amp;lt;Element '{http://www.w3.org/2005/Atom}link' at 0x7fc09da09638&amp;gt;, &amp;lt;Element '{http://www.w3.org/2005/Atom}link' at 0x7fc09da098b8&amp;gt;, &amp;lt;Element '{http://www.w3.org/2005/Atom}link' at 0x7fc09da09d18&amp;gt;, &amp;lt;Element '{http://www.w3.org/2005/Atom}link' at 0x7fc09da0c098&amp;gt;]
+&amp;gt;&amp;gt;&amp;gt; all_links[0].attrib # 直接子元素的link
+{'href': 'http://diveintomark.org/', 'type': 'text/html', 'rel': 'alternate'}
+&amp;gt;&amp;gt;&amp;gt; all_links[1].attrib # 子元素entry子元素link
+{'href': 'http://diveintomark.org/archives/2009/03/27/dive-into-history-2009-edition', 'type': 'text/html', 'rel': 'alternate'}                                                           
+&amp;gt;&amp;gt;&amp;gt; all_links[2].attrib                                                                     
+{'href': 'http://diveintomark.org/archives/2009/03/21/accessibility-is-a-harsh-mistress', 'type': 'text/html', 'rel': 'alternate'}                                                        
+&amp;gt;&amp;gt;&amp;gt; all_links[3].attrib
+{'href': 'http://diveintomark.org/archives/2008/12/18/give-part-1-container-formats', 'type': 'text/html', 'rel': 'alternate'}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;ElementTree的findall()方法是其一个非常强大的特性,但它的查询方式有些出乎意料，“有限的XPath支持"  XPath是一种用于查询XML文档的W3C标准。另外一个第三方库对ElementTree的API进行了扩展，提供了对XPath的全面支持。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;LXML&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;lxml是一个开源的第三方库，以流行的libxml2解析器为基础开发。它提供了对XPath1.0的全面支持。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;lxml&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;etree&lt;/span&gt; &lt;span class="c1"&gt;# 导入lxml，和ElementTree提供相同的API&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;tree&lt;/span&gt;  &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;etree&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'feed.xml'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# parse函数和ElementTree&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;root&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tree&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getroot&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="c1"&gt;# 相同&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;findall&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'{http://www.w3.org/2005/Atom}entry'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# 相同&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Element&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;w3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;2005&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Atom&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="n"&gt;entry&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="mh"&gt;0x7fc09da04b48&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Element&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;w3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;2005&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Atom&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="n"&gt;entry&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="mh"&gt;0x7fc09da04a08&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Element&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;w3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;2005&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Atom&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="n"&gt;entry&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="mh"&gt;0x7fc09bd92ec8&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;对应大型的xml文件，lxml明显比内置的ElementTree快了许多。如果现在只用到了ElementTree的API，并且想要使用最快的实现，可以尝试导入lxml。&lt;/p&gt;
+&lt;p&gt;比如
+    try:
+        from lxml import etree
+    except ImportError:
+        import xml.etree.ElementTree as etree
+这种方法同样适用于其他备选模块的方法&lt;/p&gt;
+&lt;p&gt;lxml不只是一个更快速的ElementTree,它的findall()方法能够支持更加复杂的表达式。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;lxml.etree&lt;/span&gt; &lt;span class="c1"&gt;# 直接导入了lxml.etree，强调这些特性只限于lxml&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;tree&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;lxml&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;etree&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'feed.xml'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;tree&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;findall&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'.//{http://www.w3.org/2005/Atom}*[@href]'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="c1"&gt;# 查找整个文档范围内搜索命名空间Atom中具有href属性的元素 {http://www.w3.org/2005/Atom}指示"搜索范围仅在命名空间Atom中。”*表示“任意本地名的元素”[@href]表示含有href属性“&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Element&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;w3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;2005&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Atom&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="n"&gt;link&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="mh"&gt;0x7fc09bd99088&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Element&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;w3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;2005&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Atom&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="n"&gt;link&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="mh"&gt;0x7fc09bd99108&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Element&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;w3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;2005&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Atom&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="n"&gt;link&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="mh"&gt;0x7fc09bd990c8&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Element&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;w3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;2005&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Atom&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="n"&gt;link&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="mh"&gt;0x7fc09bd92f08&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;tree&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;findall&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;".//{http://www.w3.org/2005/Atom}*[@href='http://diveintomark.org/']"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# 查找所有包含href属性并且值为"http://diveintomark.org/"的Atom元素&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Element&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;w3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;2005&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Atom&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="n"&gt;link&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="mh"&gt;0x7fc09bd99088&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;NS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'{http://www.w3.org/2005/Atom}'&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;tree&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;findall&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'.//{NS}author[{NS}uri]'&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;NS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;NS&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="c1"&gt;#搜索命名空间Atom中包含uri元素作为子元素的author元素。该语句只返回第一个和第二个entry元素中的author元素，最后的entry元素没有uri &lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Element&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;w3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;2005&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Atom&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="n"&gt;author&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="mh"&gt;0x7fc09bd991c8&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Element&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;w3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;2005&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Atom&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="n"&gt;author&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="mh"&gt;0x7fc09bd99048&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;lxml集成了对任意XPath1.0表达式的支持&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;lxml.etree&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;tree&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;lxml&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;etree&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'feed.xml'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;NSMAP&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="s1"&gt;'atom'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'http://www.w3.org/2005/Atom'&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="c1"&gt;# 要查询命名空间的元素，定义一个命名空间前缀映射。&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;entries&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tree&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;xpath&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;".//atom:category[@term='accessibility']/.."&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;namespaces&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;NSMAP&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;#  XPath查询请求。这个XPath表达式目的在于搜索category元素，并且该元素包含值为accessibility的term属性”/.."意思是返回找到的category元素的父元素。这条语句会找到所有包含&amp;lt;category term = 'accessibility'&amp;gt;作为子元素的条目&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;entries&lt;/span&gt; &lt;span class="c1"&gt;# xpath()函数返回一个ElementTree对象列表&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Element&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;w3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;2005&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Atom&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="n"&gt;entry&lt;/span&gt; &lt;span class="n"&gt;at&lt;/span&gt; &lt;span class="mh"&gt;0x7fc09bd99188&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; 
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;entry&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;entries&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;entry&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;xpath&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'./atom:title/text()'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;namespaces&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;NSMAP&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# XPath表达式并总是返回一个元素列表。一个解析了的xml文档的DOM模型并不包含元素；只包含结点。结点可以是元素，属性，甚至是文本内容。XPath查询的结果是一个结点列表。当前查询返回一个文本结点列表：title元素(atom:title)的文本内容（text()),并且title元素必须是当前元素的子元素(./)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;生成XML&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;python同样可以创建xml文档&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;xml.etree.ElementTree&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;etree&lt;/span&gt; 
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;new_feed&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;etree&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Element&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'{http://www.w3.org/2005/Atom}feed'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="c1"&gt;# 实例化Element类创建一个新元素。将元素的名字(命名空间+本地名)作为参数。&lt;/span&gt;
+&lt;span class="n"&gt;attrib&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;'{http://www.w3.org/XML/1998/namespace}lang'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;'en'&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt; &lt;span class="c1"&gt;# 将属性名和值构成的字典传递给attrib参数&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;etree&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tostring&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;new_feed&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; 
+&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="s1"&gt;'&amp;lt;ns0:feed xmlns:ns0="http://www.w3.org/2005/Atom" xml:lang="en" /&amp;gt;'&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'Accessibility is a harsh mistress'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;内置的ElementTree库没有提供细粒度地对序列化时命名空间内元素的控制，但是lxml有这样的功能。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;lxml.etree&lt;/span&gt; 
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;NSMAP&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'http://www.w3.org/2005/Atom'&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="c1"&gt;# 首先，定义一个用于命名空间映射的字典对象,使用None前缀来定义默认的命名空间&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;new_feed&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;lxml&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;etree&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Element&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'feed'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;nsmap&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;NSMAP&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# 我们创建元素的时候，给lxml专有的nsmap参数传值，并且lxml会参照我们定义的命名空间前缀&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lxml&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;etree&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tounicode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;new_feed&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;feed&lt;/span&gt; &lt;span class="n"&gt;xmlns&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"http://www.w3.org/2005/Atom"&lt;/span&gt;&lt;span class="o"&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;new_feed&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'{http://www.w3.org/XML/1998/namespace}lang'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'en'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="c1"&gt;# 使用set方法随时给元素添加所需属性&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lxml&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;etree&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tounicode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;new_feed&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;feed&lt;/span&gt; &lt;span class="n"&gt;xmlns&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"http://www.w3.org/2005/Atom"&lt;/span&gt; &lt;span class="n"&gt;xml&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;lang&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"en"&lt;/span&gt;&lt;span class="o"&gt;/&amp;gt;&lt;/span&gt;
+
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;title&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;lxml&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;etree&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SubElement&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;new_feed&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'title'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;attrib&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;'type'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s1"&gt;'html'&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt; &lt;span class="c1"&gt;# 给已有元素创建子元素，实例化SubElement类，两个参数，父元素(new_feed)和子元素的名字&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lxml&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;etree&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tounicode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;new_feed&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="err"&gt;；&lt;/span&gt;&lt;span class="c1"&gt;# 传递属性字典进去&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;feed&lt;/span&gt; &lt;span class="n"&gt;xmlns&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"http://www.w3.org/2005/Atom"&lt;/span&gt; &lt;span class="n"&gt;xml&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;lang&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"en"&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt; &lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"html"&lt;/span&gt;&lt;span class="o"&gt;/&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;feed&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'dive into &amp;amp;hellip;'&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lxml&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;etree&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tounicode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;new_feed&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;feed&lt;/span&gt; &lt;span class="n"&gt;xmlns&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"http://www.w3.org/2005/Atom"&lt;/span&gt; &lt;span class="n"&gt;xml&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;lang&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"en"&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt; &lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"html"&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;dive&lt;/span&gt; &lt;span class="n"&gt;into&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;amp&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="n"&gt;hellip&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;feed&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="c1"&gt;# 新创建title元素在Atom命名空间中，并作为子元素插入到feed元素中。设定元素的文本内容，只需设定其.text属性；当前title元素序列化时就使用了其文本内容，任何包含&amp;lt;或则&amp;amp;符号的内容在序列化时都需要转义&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lxml&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;etree&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;tounicode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;new_feed&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;pretty_print&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;feed&lt;/span&gt; &lt;span class="n"&gt;xmlns&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"http://www.w3.org/2005/Atom"&lt;/span&gt; &lt;span class="n"&gt;xml&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;lang&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"en"&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt; &lt;span class="nb"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"html"&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;dive&lt;/span&gt; &lt;span class="n"&gt;into&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;amp&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="n"&gt;hellip&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;lt;/&lt;/span&gt;&lt;span class="n"&gt;feed&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;
+&lt;span class="s2"&gt;"pretty_print=True,"&lt;/span&gt;&lt;span class="err"&gt;会在每个结束的末尾或含义子元素但没有文本内容的末尾添加换行符&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;解析损坏的XML&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;不再说明了，尽量保证xml格式符合标准吧&lt;/p&gt;&lt;p&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sun, 18 May 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2014-05-18:2014/05/18/python/</guid><category>Python-Tips</category></item><item><title>Python-Tips(七）</title><link>http://king32783784.github.io/2014/05/13/python/</link><description>&lt;/head&gt;&lt;body&gt;&lt;h3 id="tips-22"&gt;Tips 22&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;文件操作&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;读取文件之前，需要打开，打开文件比较简单：&lt;/p&gt;
 &lt;p&gt;a_file = open('roman2.py', encoding='utf-8')&lt;/p&gt;
