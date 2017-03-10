@@ -14406,7 +14406,327 @@ Top:&lt;/p&gt;
 &lt;p&gt;压力测试是一种破坏性的测试，即系统在非正常的、超负荷的条件下的运行情况 。用来评估在超越最大负载的情况下系统将如何运行，是系统在正常的情况下对某种负载强度的承受能力的考验 。&lt;/p&gt;
 &lt;p&gt;为什么要进行压力测试？&lt;/p&gt;
 &lt;p&gt;通常我们用压力测试来判断系统的稳定性和可靠性。&lt;/p&gt;
-&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 12 Sep 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2014-09-12:2014/09/12/ltp/</guid><category>LTP</category></item><item><title>Python-Tips(八)</title><link>http://king32783784.github.io/2014/05/22/python/</link><description>&lt;/head&gt;&lt;body&gt;&lt;h3 id="tips-24"&gt;Tips 24&lt;/h3&gt;
+&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 12 Sep 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2014-09-12:2014/09/12/ltp/</guid><category>LTP</category></item><item><title>Python-Tips(九)</title><link>http://king32783784.github.io/2014/05/24/python/</link><description>&lt;/head&gt;&lt;body&gt;&lt;h3 id="tips-25"&gt;Tips 25&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;HTTP WEB&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;http web服务是指以编程的方式直接使用HTTP操作从远程服务器发送和接收数据。如果从服务器获取数据使用HTTP GET;如果向服务器上传数据使用HTTP POST.一些高级的HTTP Web服务 API允许使用HTTP put 和HTTP delete创建、修改和删除数据。数据格式同常是xml或json，可以实现创建好并静态的存储下来，或则由服务器端脚本动态生成，并且所有主要原因都包含http库用于下载数据。调试也比较方便，http web服务中每一个资源都有一个唯一的地址(以url的形式存在),可以在浏览器中加载并立即看到原始的数据。&lt;/p&gt;
+&lt;p&gt;python3的htpp.client是实现http协议的底层库
+urllib.request建立在http.client之上的抽象层。它为访问http和ftp服务器提供了标准的API，可以自动跟随http重定向，并且处理了一些常见形式的http认证。&lt;/p&gt;
+&lt;p&gt;建议使用httplib2,一个第三方的开源库，它比http.client更完整的实现了http协议，又比urllb.request提供了更好的抽象&lt;/p&gt;
+&lt;h4 id="http"&gt;HTTP&lt;/h4&gt;
+&lt;p&gt;首先得了解http的特点。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;缓存&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;网络访问代价还是比较大，即使在最快的宽带连接上，延迟（从发送请求到开始响应获得数据所花费的时间）仍然很高。路由器的异常，被丢包，中间代理商被工具攻击等等，这些你无法改变。因此，http在设计时就考虑到了缓存。有这么一类设备（ 缓存代理服务器）,它们能起作用，因为缓存是内建在http协议中的。&lt;/p&gt;
+&lt;p&gt;当你下载一个图片是，服务器返回包含了以下http头：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;HTTP/1.1 200 OK
+Date: Sun, 31 May 2009 17:14:04 GMT
+Server: Apache
+Last-Modified: Fri, 22 Aug 2008 04:28:16 GMT
+ETag: "3075-ddc8d800"
+Accept-Ranges: bytes
+Content-Length: 12405
+Cache-Control: max-age=31536000, public
+Expires: Mon, 31 May 2010 17:14:04 GMT
+Connection: close
+Content-Type: image/jpeg
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Cache-Control和Expires头告诉浏览器(以及任何处于你和服务器之间的缓存代理服务器）这张图片可以缓存长达一年。如果你浏览器从本地缓存删除了这张图片，http头通知这个数据被公共缓存代理服务器缓存(Cache-Control头中 public关键字说明这一点)。当你再次请求下载这个图片时，如果其他的缓存服务器有这张图片，会截取你的请求，返回给你这张图片，如果都没有，就会发出网络请求从远程服务器下载这张图片。当每个角色都按协议来做时，http缓存才能发挥作用。
+python标准库中的http库不支持缓存，但httplib2支持&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;最后修改时间&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;web上的数据可能从不改变，或许总是在变，或则两则之间。http对于这个问题也有对应的解决方案。当你第一次请求数据时，服务器返回一个last-modified头。
+如果再次请求同一资源时，可以在请求发送If-Modified-Since头，其值为你上一次返回的时间。如果数据发送过变化，服务器会忽略If-Modified-Since并返回新数据和200状态码。否则会服务器会发回HTTP304状态码，它的意思你请求的时间没变化，不用发给你啦。
+python的http库不支持最好修改时间, 但httplib2支持&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;ETAGS&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;ETag是另一个和最后修改时间达到同样目的的方法。使用ETag时，服务器返回数据的同在ETag头里面返回一个哈希码(如何生成取决于服务器，要求是数据变时哈希码跟着变）。当你再次请求相同数据时，你在If-None-Match放入ETag值，如果服务器比对一下，发现一样，就会返回304状态码。
+同样python的http库不支持ETag,httplib2支持&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;压缩&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;http_web服务一般都是在来回运输文本数据。可能是XML、JSON或则就是纯文本，不管是啥压缩之后体积就会小，传输就会快。http支持多种压缩算法，最常见的就是gzip和deflate。当你请求资源时，可以包含Accept-encoding头，里面列出你支持的压缩算法。如果服务器也只支持这种算法，就会返回对应格式的压缩数据。
+python http不支持压缩，httplib2支持&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;重定向&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;好的url不会变化，但是有很多url会变，比如网站调整了，扩展了等等。每一次向服务器请求时，服务器都会在响应中包含一个状态码。200：就是一切正常 404：就是找不到页面 300系列：就是某种形式的重定向。最常见的就是302和301. 302：临时重定向 资源暂时不在；301：永久重定向，但都会在Location头里给出新的地址。urllib.request模块从服务器获得重定向码时会自动重定向，但他不会反馈，所以每次都需要重定向。而httplib2会永久重定向，它会在本地记录这些重定向，下次发送请求时会自动重写为重定向后的url.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;避免通过http重复获取数据&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;如果你想通过http下载一个资源。
+    &amp;gt;&amp;gt;&amp;gt; a_url = 'http://diveintopython3.org/examples/feed.xml'
+    &amp;gt;&amp;gt;&amp;gt; data = urllib.request.urlopen(a_url).read()  # python通过http下载非常简单。urllib.request模块有一个方便的函数urlopen()，它接收获取页面的地址，然后返回一个类文件对象。然后调用其read()方法就可以获得网页全部内容。
+    &amp;gt;&amp;gt;&amp;gt; type(data)                                 &lt;br/&gt;
+&lt;class 'bytes'=""&gt; # urlopen().read()方法返回bytes对象而不是字符串。字符只是字节的抽象
+    &amp;gt;&amp;gt;&amp;gt; print(data)
+    &amp;lt;?xml version='1.0' encoding='utf-8'?&amp;gt;
+    &lt;feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom"&gt;
+&lt;title&gt;dive into mark&lt;/title&gt;
+&lt;subtitle&gt;currently between addictions&lt;/subtitle&gt;
+&lt;id&gt;tag:diveintomark.org,2001-07-29:/&lt;/id&gt;
+&lt;updated&gt;2009-03-27T21:56:07Z&lt;/updated&gt;
+&lt;link href="http://diveintomark.org/" rel="alternate" type="text/html"/&gt;
+      …
+如果只是一次下载，这样确实没有问题，但如果定期访问web服务的时候（比如每隔1小时请求一下这个供稿)，这样做就显得简单粗暴了。
+为啥说简单粗暴呢，我们打开python的http库的调试功能，看看什么东西被发送到线路上。
+    &amp;gt;&amp;gt;&amp;gt; from http.client import HTTPConnection # 从http.client导入HTTPConnection类
+    &amp;gt;&amp;gt;&amp;gt; HTTPConnection.debuglevel = 1    # 打开调试
+然后再次执行向服务器请求数据，你会看到urlopen()请求了未压缩的数据，所以比较低效。&lt;/feed&gt;&lt;/class&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;HTTPLIB2&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;httplib2&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;h&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;httplib2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Http&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'.cache'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# httplib2的主要接口是Http对象。创建时需要传入一个目录名。&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'http://diveintopython3.org/examples/feed.xml'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="c1"&gt;#调用http对象的request方法就可以获取数据。&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;status&lt;/span&gt; &lt;span class="c1"&gt;# request()方法返回两个值，一个是httplib2.Response对象，包含了服务器返回的所有http头，另一个是status&lt;/span&gt;
+&lt;span class="mi"&gt;200&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="mi"&gt;52&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="err"&gt;　　&lt;/span&gt;&lt;span class="c1"&gt;# content变量包含了返回的数据&lt;/span&gt;
+&lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="s2"&gt;"&amp;lt;?xml version='1.0' encoding='utf-8'?&amp;gt;&lt;/span&gt;&lt;span class="se"&gt;\r\n&lt;/span&gt;&lt;span class="s2"&gt;&amp;lt;feed xmlns="&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="mi"&gt;3070&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;httplib2返回是字节而不是字符。可以根据需要进行转换。&lt;/p&gt;
+&lt;p&gt;处理缓存&lt;/p&gt;
+&lt;p&gt;前面我们说应该在创建httplib2.Http对象时提供一个目录名，就是为了缓存。
+当你再次发出相同的请求时，就会发现比之前快了很多。让我们打开调试功能看一下&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;httplib2&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;httplib2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;debuglevel&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="c1"&gt;# 打开调试功能&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;h&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;httplib2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Http&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'.cache'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;response2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;content2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'http://www.vimlinux.com/feeds/atom.xml'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# 线路上啥都没返回&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;response2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;status&lt;/span&gt;
+&lt;span class="mi"&gt;200&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;response2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fromcache&lt;/span&gt; &lt;span class="c1"&gt;# 显示是cache获取的数据&lt;/span&gt;
+&lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;如果想要打开httplib2的调试开关，需要设置一个模块级的常量(httplib2.debuglevel),然后再创建httplib2.Http对象。关闭是同样要设置。
+现在数据缓存着，但你想跳过缓存重新获取。应该使用http的特性来保证你的请求能够到达远程服务器，因为这其中还有多级缓存要跳过。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; response2, content2 = h.request('http://www.vimlinux.com/feeds/atom.xml', headers={'cache-control':'no-cache'}) # httplib2允许添加任意的http头部，此次添加no-cache为了跳过缓存
+connect: (www.vimlinux.com, 80) ************
+send: 'GET /feeds/atom.xml HTTP/1.1\r\nHost: www.vimlinux.com\r\nuser-agent: Python-httplib2/0.10.3 (gzip)\r\naccept-encoding: gzip, deflate\r\ncache-control: no-cache\r\n\r\n'
+reply: 'HTTP/1.1 200 OK\r\n'
+header: Server: GitHub.com
+header: Content-Type: application/xml
+header: Last-Modified: Thu, 09 Mar 2017 07:40:35 GMT
+header: Access-Control-Allow-Origin: *
+header: Expires: Thu, 09 Mar 2017 08:44:14 GMT
+header: Cache-Control: max-age=600
+header: Content-Encoding: gzip
+header: X-GitHub-Request-Id: C15C:2A686:36787E9:4761B30:58C11385
+header: Content-Length: 2422597
+header: Accept-Ranges: bytes
+header: Date: Thu, 09 Mar 2017 09:29:38 GMT
+header: Via: 1.1 varnish
+header: Age: 0
+header: Connection: keep-alive
+header: X-Served-By: cache-nrt6131-NRT
+header: X-Cache: MISS
+header: X-Cache-Hits: 0
+header: X-Timer: S1489051777.946283,VS0,VE181
+header: Vary: Accept-Encoding
+header: X-Fastly-Request-ID: 62146dd2576ae50f0f43f9f9117e4b618c0cdb54
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;# 初始化一个网络请求，并且加入了一个no-cache的头　
+    &amp;gt;&amp;gt;&amp;gt; response2.status
+    200　　# 请求成功。服务器返回了一个新的数据，并更新了本地缓存
+    &amp;gt;&amp;gt;&amp;gt; response2.fromcache
+    False                                                                                      &lt;br/&gt;
+    &amp;gt;&amp;gt;&amp;gt; print(dict(response2.items())
+    ... )
+    {'content-length': '22385455', 'via': '1.1 varnish', 'vary': 'Accept-Encoding', 'x-cache-hits': '0', 'cache-control': 'max-age=600', 'status': '200', 'x-served-by': 'cache-nrt6131-NRT', 'x-cache': 'MISS', 'x-github-request-id': 'C15C:2A686:36787E9:4761B30:58C11385', 'accept-ranges': 'bytes', 'expires': 'Thu, 09 Mar 2017 08:44:14 GMT', 'last-modified': 'Thu, 09 Mar 2017 07:40:35 GMT', '-content-encoding': 'gzip', 'date': 'Thu, 09 Mar 2017 09:29:38 GMT', 'access-control-allow-origin': '*', 'content-location': 'http://www.vimlinux.com/feeds/atom.xml', 'age': '0', 'x-timer': 'S1489051777.946283,VS0,VE181', 'server': 'GitHub.com', 'connection': 'keep-alive', 'x-fastly-request-id': '62146dd2576ae50f0f43f9f9117e4b618c0cdb54', 'content-type': 'application/xml'}
+    &amp;gt;&amp;gt;&amp;gt; 
+http缓存设计为尽量最大化的缓存命中率和最小化的网络访问。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;HTTPLIB2如何处理LAST-MODIFFIED和ETAG头&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Cache-Control和Expires缓存头被称为新鲜度指标。它们通过只缓存，除非缓存过期，不然不会产生任何的网络活动（除非显示的要求跳过缓存）&lt;/p&gt;
+&lt;p&gt;如果数据可能已改变，但缓存不知道呢？Http因此定义了Last-Modified和Etag头。如果本地缓存不再是最新的数据，客户端请求时可以发送Last-Modified和Etag头进行验证数据是否改变。如果没有改变，服务器会返回304状态码，但不返回数据。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;httplib2&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;httplib2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;debuglevel&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;h&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;httplib2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Http&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'.cache'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'http://diveintopython3.org/'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# 第一次请求该页面，httplib2在请求时发出较少的头，没啥要处理的&lt;/span&gt;
+&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;diveintopython3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;80&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;send&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="s1"&gt;'GET / HTTP/1.1&lt;/span&gt;
+&lt;span class="n"&gt;Host&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;diveintopython3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;
+&lt;span class="n"&gt;accept&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;encoding&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;deflate&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;gzip&lt;/span&gt;
+&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;agent&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Python&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;httplib2&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;Rev&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;259&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;
+&lt;span class="n"&gt;reply&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'HTTP/1.1 200 OK'&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;dict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;()))&lt;/span&gt;&lt;span class="err"&gt;　&lt;/span&gt;&lt;span class="c1"&gt;# 响应包含多个http头，但没有缓存信息，但包含了ETag和Last-Modified头&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;'-content-encoding'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'gzip'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s1"&gt;'accept-ranges'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'bytes'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s1"&gt;'connection'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'close'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s1"&gt;'content-length'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'6657'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s1"&gt;'content-location'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'http://diveintopython3.org/'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s1"&gt;'content-type'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'text/html'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s1"&gt;'date'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'Tue, 02 Jun 2009 03:26:54 GMT'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s1"&gt;'etag'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'"7f806d-1a01-9fb97900"'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s1"&gt;'last-modified'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'Tue, 02 Jun 2009 02:51:48 GMT'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s1"&gt;'server'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'Apache'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s1"&gt;'status'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'200'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s1"&gt;'vary'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'Accept-Encoding,User-Agent'&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;                                                  
+&lt;span class="mi"&gt;6657&lt;/span&gt;
+
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'http://diveintopython3.org/'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="c1"&gt;# 再次请求这个页面&lt;/span&gt;
+&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;diveintopython3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;80&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;send&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="s1"&gt;'GET / HTTP/1.1&lt;/span&gt;
+&lt;span class="n"&gt;Host&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;diveintopython3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;none&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;match&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"7f806d-1a01-9fb97900"&lt;/span&gt;&lt;span class="err"&gt;　&lt;/span&gt;&lt;span class="c1"&gt;# httplib2将Etag validator通过if-none-match头发送回服务器&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;modified&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;since&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Tue&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mo"&gt;02&lt;/span&gt; &lt;span class="n"&gt;Jun&lt;/span&gt; &lt;span class="mi"&gt;2009&lt;/span&gt; &lt;span class="mo"&gt;02&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;51&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;48&lt;/span&gt; &lt;span class="n"&gt;GMT&lt;/span&gt; &lt;span class="c1"&gt;# httplib2将Last-Modified validator通过if-modfied-since发送回服务器&lt;/span&gt;
+&lt;span class="n"&gt;accept&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;encoding&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;deflate&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;gzip&lt;/span&gt;
+&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;agent&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Python&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;httplib2&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;Rev&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;259&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;
+&lt;span class="n"&gt;reply&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'HTTP/1.1 304 Not Modified'&lt;/span&gt;  &lt;span class="c1"&gt;# 服务器查看这些验证器，查看请求的页面，然后判断出页面在上次请求之后没有变化，返回304状态码&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fromcache&lt;/span&gt;  &lt;span class="c1"&gt;# 客户端httplib2检查到304,所以从缓存加载页面内容&lt;/span&gt;
+&lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;status&lt;/span&gt; &lt;span class="c1"&gt;# response.status 返回缓存的状态码，没有返回304&lt;/span&gt;
+&lt;span class="mi"&gt;200&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dict&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'status'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="c1"&gt;# 服务器返回的状态码(304)可以从response.dict里找到&lt;/span&gt;
+&lt;span class="s1"&gt;'304'&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# 数据仍然保存在content变量&lt;/span&gt;
+&lt;span class="mi"&gt;6657&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;HTTP2LIB处理压缩&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;http2lib支持deflate或gzip格式。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;&amp;gt;&amp;gt;&amp;gt; response, content = h.request('http://diveintopython3.org/')&lt;/span&gt;
+&lt;span class="x"&gt;connect: (diveintopython3.org, 80)&lt;/span&gt;
+&lt;span class="x"&gt;send: b'GET / HTTP/1.1&lt;/span&gt;
+&lt;span class="x"&gt;Host: diveintopython3.org&lt;/span&gt;
+&lt;span class="x"&gt;accept-encoding: deflate, gzip &lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; 每次httplib2发送请求，都包含了accept-encoding头来告诉服务器它能处理的deflate或gzip压缩&lt;/span&gt;
+&lt;span class="x"&gt;user-agent: Python-httplib2/&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;Rev&lt;/span&gt;&lt;span class="x"&gt;: 259 &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="x"&gt;'&lt;/span&gt;
+&lt;span class="x"&gt;reply: 'HTTP/1.1 200 OK'&lt;/span&gt;
+&lt;span class="x"&gt;&amp;gt;&amp;gt;&amp;gt; print(dict(response.items()))&lt;/span&gt;
+&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="x"&gt;'-content-encoding': 'gzip',   &lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; 服务器返回了gzip压缩格式的数据&lt;/span&gt;
+&lt;span class="x"&gt; 'accept-ranges': 'bytes',&lt;/span&gt;
+&lt;span class="x"&gt; 'connection': 'close',&lt;/span&gt;
+&lt;span class="x"&gt; 'content-length': '6657',&lt;/span&gt;
+&lt;span class="x"&gt; 'content-location': 'http://diveintopython3.org/',&lt;/span&gt;
+&lt;span class="x"&gt; 'content-type': 'text/html',&lt;/span&gt;
+&lt;span class="x"&gt; 'date': 'Tue, 02 Jun 2009 03:26:54 GMT',&lt;/span&gt;
+&lt;span class="x"&gt; 'etag': '"7f806d-1a01-9fb97900"',&lt;/span&gt;
+&lt;span class="x"&gt; 'last-modified': 'Tue, 02 Jun 2009 02:51:48 GMT',&lt;/span&gt;
+&lt;span class="x"&gt; 'server': 'Apache',&lt;/span&gt;
+&lt;span class="x"&gt; 'status': '304',&lt;/span&gt;
+&lt;span class="x"&gt; 'vary': 'Accept-Encoding,User-Agent'}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;HTTPLIB2处理重定向&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;httplib2&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;httplib2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;debuglevel&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;h&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;httplib2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Http&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'.cache'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'http://diveintopython3.org/examples/feed-302.xml'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# 这个url没有feed,但设置让服务器发出一个正确的重定向&lt;/span&gt;
+&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;diveintopython3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;80&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;send&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="s1"&gt;'GET /examples/feed-302.xml HTTP/1.1 　# 请求&lt;/span&gt;
+&lt;span class="n"&gt;Host&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;diveintopython3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;
+&lt;span class="n"&gt;accept&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;encoding&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;deflate&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;gzip&lt;/span&gt;
+&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;agent&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Python&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;httplib2&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;Rev&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;259&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;
+&lt;span class="n"&gt;reply&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'HTTP/1.1 302 Found'&lt;/span&gt; &lt;span class="c1"&gt;# 响应包含了一个Location头给出实际的URL&lt;/span&gt;
+&lt;span class="n"&gt;send&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="s1"&gt;'GET /examples/feed.xml HTTP/1.1 # httplib2立即跟随重定向，发出一个新的Location（包含正确的地址）&lt;/span&gt;
+&lt;span class="n"&gt;Host&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;diveintopython3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;
+&lt;span class="n"&gt;accept&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;encoding&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;deflate&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;gzip&lt;/span&gt;
+&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;agent&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Python&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;httplib2&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;Rev&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;259&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;
+&lt;span class="n"&gt;reply&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'HTTP/1.1 200 OK'&lt;/span&gt;
+
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;response&lt;/span&gt;   &lt;span class="c1"&gt;# 调用request()方法返回的respnse是最终URL的响应&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;'status'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'200'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s1"&gt;'content-length'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'3070'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s1"&gt;'content-location'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'http://diveintopython3.org/examples/feed.xml'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="c1"&gt;# httplib2会将最终的URL以content-localton加入到response字典&lt;/span&gt;
+ &lt;span class="s1"&gt;'accept-ranges'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'bytes'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s1"&gt;'expires'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'Thu, 04 Jun 2009 02:21:41 GMT'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s1"&gt;'vary'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'Accept-Encoding'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s1"&gt;'server'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'Apache'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s1"&gt;'last-modified'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'Wed, 03 Jun 2009 02:20:15 GMT'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s1"&gt;'connection'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'close'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s1"&gt;'-content-encoding'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'gzip'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="err"&gt;　　&lt;/span&gt;
+ &lt;span class="s1"&gt;'etag'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'"bfe-4cbbf5c0"'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s1"&gt;'cache-control'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'max-age=86400'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  
+ &lt;span class="s1"&gt;'date'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'Wed, 03 Jun 2009 02:21:41 GMT'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="s1"&gt;'content-type'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'application/xml'&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;你得到的response给了你最终URL的相关信息，如果希望那些最后重定向到最终URL中间的URL的信息呢？&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;&amp;gt;&amp;gt;&amp;gt; response.previous &lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; response.previous 属性持有前一个响应对象的引用&lt;/span&gt;
+&lt;span class="err"&gt;{&lt;/span&gt;&lt;span class="x"&gt;'status': '302',&lt;/span&gt;
+&lt;span class="x"&gt; 'content-length': '228',&lt;/span&gt;
+&lt;span class="x"&gt; 'content-location': 'http://diveintopython3.org/examples/feed-302.xml',&lt;/span&gt;
+&lt;span class="x"&gt; 'expires': 'Thu, 04 Jun 2009 02:21:41 GMT',&lt;/span&gt;
+&lt;span class="x"&gt; 'server': 'Apache',&lt;/span&gt;
+&lt;span class="x"&gt; 'connection': 'close',&lt;/span&gt;
+&lt;span class="x"&gt; 'location': 'http://diveintopython3.org/examples/feed.xml',&lt;/span&gt;
+&lt;span class="x"&gt; 'cache-control': 'max-age=86400',&lt;/span&gt;
+&lt;span class="x"&gt; 'date': 'Wed, 03 Jun 2009 02:21:41 GMT',&lt;/span&gt;
+&lt;span class="x"&gt; 'content-type': 'text/html; charset=iso-8859-1'}&lt;/span&gt;
+&lt;span class="x"&gt;&amp;gt;&amp;gt;&amp;gt; type(response)  &lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; response和response.previous都是httplib2.Response对象&lt;/span&gt;
+&lt;span class="x"&gt;&amp;lt;class 'httplib2.Response'&amp;gt;&lt;/span&gt;
+&lt;span class="x"&gt;&amp;gt;&amp;gt;&amp;gt; type(response.previous)&lt;/span&gt;
+&lt;span class="x"&gt;&amp;lt;class 'httplib2.Response'&amp;gt;&lt;/span&gt;
+&lt;span class="x"&gt;&amp;gt;&amp;gt;&amp;gt; response.previous.previous  &lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; 如果重定向多次，该方法可以追溯&lt;/span&gt;
+&lt;span class="x"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class="x"&gt;&amp;gt;&amp;gt;&amp;gt; response2, content2 = h.request('http://diveintopython3.org/examples/feed-302.xml')  &lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; 同一个URL,同一个httplib2.Http对象&lt;/span&gt;
+&lt;span class="x"&gt;connect: (diveintopython3.org, 80)&lt;/span&gt;
+&lt;span class="x"&gt;send: b'GET /examples/feed-302.xml HTTP/1.1 &lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; 302影响没有缓存，所以httplib2对同一个URL再一次发送请求&lt;/span&gt;
+&lt;span class="x"&gt;Host: diveintopython3.org&lt;/span&gt;
+&lt;span class="x"&gt;accept-encoding: deflate, gzip&lt;/span&gt;
+&lt;span class="x"&gt;user-agent: Python-httplib2/&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;Rev&lt;/span&gt;&lt;span class="x"&gt;: 259 &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="x"&gt;'&lt;/span&gt;
+&lt;span class="x"&gt;reply: 'HTTP/1.1 302 Found' &lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; 再一次，返回302.但是没有继续进行。一旦httplib2收到302Found状态码，再发送新的请求前检查都缓存数据仍然可用&lt;/span&gt;
+&lt;span class="x"&gt;&amp;gt;&amp;gt;&amp;gt; content2 == content &lt;/span&gt;
+&lt;span class="x"&gt;True&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;永久重定向&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;&amp;gt;&amp;gt;&amp;gt; response, content = h.request('http://diveintopython3.org/examples/feed-301.xml') &lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; 请求一个不存在的URL,设置服务器执行一个永久重定向到正确URL&lt;/span&gt;
+&lt;span class="x"&gt;connect: (diveintopython3.org, 80)&lt;/span&gt;
+&lt;span class="x"&gt;send: b'GET /examples/feed-301.xml HTTP/1.1&lt;/span&gt;
+&lt;span class="x"&gt;Host: diveintopython3.org&lt;/span&gt;
+&lt;span class="x"&gt;accept-encoding: deflate, gzip&lt;/span&gt;
+&lt;span class="x"&gt;user-agent: Python-httplib2/&lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;Rev&lt;/span&gt;&lt;span class="x"&gt;: 259 &lt;/span&gt;&lt;span class="p"&gt;$&lt;/span&gt;&lt;span class="x"&gt;'&lt;/span&gt;
+&lt;span class="x"&gt;reply: 'HTTP/1.1 301 Moved Permanently' &lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; 状态码301,但是再次注意什么没发生，因为本地已缓存&lt;/span&gt;
+&lt;span class="x"&gt;&amp;gt;&amp;gt;&amp;gt; response.fromcache          　&lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; httplib2跟随重定向到缓存里&lt;/span&gt;
+&lt;span class="x"&gt;True&lt;/span&gt;
+
+
+&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; continued from the previous example&lt;/span&gt;
+&lt;span class="x"&gt;&amp;gt;&amp;gt;&amp;gt; response2, content2 = h.request('http://diveintopython3.org/examples/feed-301.xml') &lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; 这是临时和永久重定向的区别：一旦httplib2跟随了一个永久的重定向，后续的都会到定向的URL&lt;/span&gt;
+&lt;span class="x"&gt;&amp;gt;&amp;gt;&amp;gt; response2.fromcache                                                                 &lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="x"&gt; 数据从本地缓存获取&lt;/span&gt;
+&lt;span class="x"&gt;True&lt;/span&gt;
+&lt;span class="x"&gt;&amp;gt;&amp;gt;&amp;gt; content2 == content&lt;/span&gt;
+&lt;span class="x"&gt;True&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;HTTP GET之外&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;HTTP web服务不限于GET请求。当你要修改服务器上的数据时，就需要POST请求。再发布前，需要进行身份的验证，httplib2支持SSL和HTTP Basic Authentication.
+POST请求和GET请求不同，因为它包含payload，是你要发送到服务器的数据。这个API方法必须的参数是status,并且它应该是URL编码的。这是一种简单的序列化格式，将一组键值对转换为一个字符串。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;urllib.parse&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;urlencode&lt;/span&gt; &lt;span class="c1"&gt;# Python带有一个工具函数用于URL编码一个字典:urllib.parse.urlencode()&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;'status'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'Test update from Python 3'&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="c1"&gt;# 这是Identi.ca API所期望的字典。包含一个键，status, 对应值是状态更新的文本&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;urlencode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# URL编码之后的字符串的样子。这就是会通过线路发送到Identi.ca API服务器的HTTP POST请求的负荷&lt;/span&gt;
+&lt;span class="s1"&gt;'status=Test+update+from+Python+3'&lt;/span&gt;
+
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;urllib.parse&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;urlencode&lt;/span&gt; 
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;httplib2&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;httplib2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;debuglevel&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;h&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;httplib2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Http&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'.cache'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;'status'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'Test update from Python 3'&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_credentials&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'diveintomark'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'MY_SECRET_PASSWORD'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'identi.ca'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# httplib2处理认证的方法，add_credentials()方法记录你的用户名和密码。当httplib2试图执行请求的时候，服务会返回一个401 Unauthorized状态码，并且列出所有它支持的认证方法(WWW-Authenticate头).httplib2会自动构造Authorization头并且重新请求该URL&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;resp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'https://identi.ca/api/statuses/update.xml'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;     &lt;span class="s1"&gt;'POST'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;         &lt;span class="c1"&gt;# 请求的类型POST&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;     &lt;span class="n"&gt;urlencode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="c1"&gt;# 发送到服务器的负荷,包含状态消息的URL编码过的字典&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;     &lt;span class="n"&gt;headers&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;'Content-Type'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'application/x-www-form-urlencoded'&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;&lt;span class="err"&gt;　&lt;/span&gt;&lt;span class="c1"&gt;#　最后告诉服务器负荷是URL编码过的数据&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;add_credentials()方法的第三个参数是该证书有效的域名。你应该总是指定这个参数，如果忽略了，并且之后重用这个httplib2.Http对象访问另一个需要认证的站点，可能会导致httplib2将一个站点的用户名密码泄露给其他站点。&lt;/p&gt;
+&lt;p&gt;发送到线路上的数据：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;send&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="s1"&gt;'POST /api/statuses/update.xml HTTP/1.1&lt;/span&gt;
+&lt;span class="s1"&gt;Host: identi.ca&lt;/span&gt;
+&lt;span class="s1"&gt;Accept-Encoding: identity&lt;/span&gt;
+&lt;span class="s1"&gt;Content-Length: 32&lt;/span&gt;
+&lt;span class="s1"&gt;content-type: application/x-www-form-urlencoded&lt;/span&gt;
+&lt;span class="s1"&gt;user-agent: Python-httplib2/$Rev: 259 $&lt;/span&gt;
+
+&lt;span class="s1"&gt;status=Test+update+from+Python+3'&lt;/span&gt;
+&lt;span class="n"&gt;reply&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'HTTP/1.1 401 Unauthorized'&lt;/span&gt;  &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;第一个请求，服务器以&lt;/span&gt;&lt;span class="mi"&gt;401&lt;/span&gt; &lt;span class="n"&gt;Unauthorized&lt;/span&gt;&lt;span class="err"&gt;状态码返回。&lt;/span&gt;&lt;span class="n"&gt;httplib2&lt;/span&gt;&lt;span class="err"&gt;从不主动发送认证头，触发服务器明确的要求。&lt;/span&gt;
+&lt;span class="n"&gt;send&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt;&lt;span class="s1"&gt;'POST /api/statuses/update.xml HTTP/1.1　# httplib2马上转个身，发出第二次相同的URL&lt;/span&gt;
+&lt;span class="s1"&gt;Host: identi.ca&lt;/span&gt;
+&lt;span class="s1"&gt;Accept-Encoding: identity&lt;/span&gt;
+&lt;span class="s1"&gt;Content-Length: 32&lt;/span&gt;
+&lt;span class="s1"&gt;content-type: application/x-www-form-urlencoded&lt;/span&gt;
+&lt;span class="s1"&gt;authorization: Basic SECRET_HASH_CONSTRUCTED_BY_HTTPLIB2 # 包含了你通过add_credentials()方法加入的用户名和密码&lt;/span&gt;
+&lt;span class="s1"&gt;user-agent: Python-httplib2/$Rev: 259 $&lt;/span&gt;
+
+&lt;span class="s1"&gt;status=Test+update+from+Python+3'&lt;/span&gt;
+&lt;span class="n"&gt;reply&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;'HTTP/1.1 200 OK'&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;请求成功后服务器返回什么？这个完全由web服务API决定。在一些协议里面(像Atom Publishing Protocol)，服务器会返回201 Created状态码，并通过Location提供新创建的资源的地址。Identi.ca返回200 OK和一个包含新创建资源信息的XML文档。&lt;/p&gt;
+&lt;p&gt;HTTP并不限于GET和POST，还能处理一些其他的web事务&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;xml.etree&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ElementTree&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;etree&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;tree&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;etree&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fromstring&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# 服务器返回的是XML&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;status_id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tree&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;findtext&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'id'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;　&lt;/span&gt;&lt;span class="c1"&gt;# findtext()方法找到对应表达式的第一个实例并抽取它的文本内容&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;status_id&lt;/span&gt;
+&lt;span class="s1"&gt;'5131472'&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'https://identi.ca/api/statuses/destroy/{0}.xml'&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;status_id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c1"&gt;# 基于id元素的文本内容，我们构造出一个url用于删除刚发布的状态消息&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;resp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;deleted_content&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;h&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'DELETE'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="err"&gt;　&lt;/span&gt;&lt;span class="c1"&gt;# 要删除一条消息，只需对该URL执行一个HTTP DELETE请求即可&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;python的网络功能还是比较强大的，以后再分享python网络爬虫。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sat, 24 May 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2014-05-24:2014/05/24/python/</guid><category>Python-Tips</category></item><item><title>Python-Tips(八)</title><link>http://king32783784.github.io/2014/05/22/python/</link><description>&lt;/head&gt;&lt;body&gt;&lt;h3 id="tips-24"&gt;Tips 24&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;序列化对象&lt;/strong&gt;&lt;/p&gt;
 &lt;h4 id="pickle"&gt;pickle&lt;/h4&gt;
 &lt;p&gt;序列化的概念很简单，内存里面的数据，想保存下来。下次使用时，又能容易恢复，而且不想使用大型的数据库。这种情况下，pickle模块是理想的，它是python标准库的一部分，所以总是可用的。它的大部分和python解释器本身一样是用C编写的，可用存储任意复杂的python数据结构。&lt;/p&gt;
