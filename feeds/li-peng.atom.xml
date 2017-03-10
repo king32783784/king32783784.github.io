@@ -14409,7 +14409,7 @@ Top:&lt;/p&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</summary><category term="LTP"></category></entry><entry><title>Python-Tips(八)</title><link href="http://king32783784.github.io/2014/05/22/python/" rel="alternate"></link><published>2014-05-22T00:00:00+08:00</published><author><name>李鹏</name></author><id>tag:king32783784.github.io,2014-05-22:2014/05/22/python/</id><summary type="html">&lt;/head&gt;&lt;body&gt;&lt;h3 id="tips-24"&gt;Tips 24&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;序列化对象&lt;/strong&gt;&lt;/p&gt;
 &lt;h4 id="pickle"&gt;pickle&lt;/h4&gt;
-&lt;p&gt;序列化的概念很贱，内存里面的数据，想保存下来。下次使用时，又能容易恢复，而且不想使用大型的数据库。这种情况下，pickle模块是理想的，它是python标准库的一部分，所以总是可用的。它的大部分和python解释器本身一样是用C编写的，可用存储任意复杂的python数据结构。&lt;/p&gt;
+&lt;p&gt;序列化的概念很简单，内存里面的数据，想保存下来。下次使用时，又能容易恢复，而且不想使用大型的数据库。这种情况下，pickle模块是理想的，它是python标准库的一部分，所以总是可用的。它的大部分和python解释器本身一样是用C编写的，可用存储任意复杂的python数据结构。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;python支持的原生类型:布尔，整数，浮点数，复数，字符串，字符数组，None&lt;/li&gt;
 &lt;li&gt;列表，元组，字典和集合&lt;/li&gt;
