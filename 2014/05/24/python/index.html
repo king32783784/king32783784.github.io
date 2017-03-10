@@ -472,25 +472,27 @@ python http不支持压缩，httplib2支持</p>
 <p><strong>重定向</strong></p>
 <p>好的url不会变化，但是有很多url会变，比如网站调整了，扩展了等等。每一次向服务器请求时，服务器都会在响应中包含一个状态码。200：就是一切正常 404：就是找不到页面 300系列：就是某种形式的重定向。最常见的就是302和301. 302：临时重定向 资源暂时不在；301：永久重定向，但都会在Location头里给出新的地址。urllib.request模块从服务器获得重定向码时会自动重定向，但他不会反馈，所以每次都需要重定向。而httplib2会永久重定向，它会在本地记录这些重定向，下次发送请求时会自动重写为重定向后的url.</p>
 <p><strong>避免通过http重复获取数据</strong></p>
-<p>如果你想通过http下载一个资源。
-    &gt;&gt;&gt; a_url = 'http://diveintopython3.org/examples/feed.xml'
-    &gt;&gt;&gt; data = urllib.request.urlopen(a_url).read()  # python通过http下载非常简单。urllib.request模块有一个方便的函数urlopen()，它接收获取页面的地址，然后返回一个类文件对象。然后调用其read()方法就可以获得网页全部内容。
-    &gt;&gt;&gt; type(data)                                 <br/>
-<class 'bytes'=""> # urlopen().read()方法返回bytes对象而不是字符串。字符只是字节的抽象
-    &gt;&gt;&gt; print(data)
-    &lt;?xml version='1.0' encoding='utf-8'?&gt;
-    <feed xml:lang="en" xmlns="http://www.w3.org/2005/Atom">
-<title>dive into mark</title>
-<subtitle>currently between addictions</subtitle>
-<id>tag:diveintomark.org,2001-07-29:/</id>
-<updated>2009-03-27T21:56:07Z</updated>
-<link href="http://diveintomark.org/" rel="alternate" type="text/html"/>
-      …
-如果只是一次下载，这样确实没有问题，但如果定期访问web服务的时候（比如每隔1小时请求一下这个供稿)，这样做就显得简单粗暴了。
-为啥说简单粗暴呢，我们打开python的http库的调试功能，看看什么东西被发送到线路上。
-    &gt;&gt;&gt; from http.client import HTTPConnection # 从http.client导入HTTPConnection类
-    &gt;&gt;&gt; HTTPConnection.debuglevel = 1    # 打开调试
-然后再次执行向服务器请求数据，你会看到urlopen()请求了未压缩的数据，所以比较低效。</feed></class></p>
+<p>如果你想通过http下载一个资源。</p>
+<div class="highlight"><pre><span></span>&gt;&gt;&gt; a_url = 'http://diveintopython3.org/examples/feed.xml'
+&gt;&gt;&gt; data = urllib.request.urlopen(a_url).read()  # python通过http下载非常简单。urllib.request模块有一个方便的函数urlopen()，它接收获取页面的地址，然后返回一个类文件对象。然后调用其read()方法就可以获得网页全部内容。
+&gt;&gt;&gt; type(data)                                   
+<span class="nt">&lt;class</span> <span class="err">'bytes'</span><span class="nt">&gt;</span> # urlopen().read()方法返回bytes对象而不是字符串。字符只是字节的抽象
+&gt;&gt;&gt; print(data)
+<span class="cp">&lt;?xml version='1.0' encoding='utf-8'?&gt;</span>
+<span class="nt">&lt;feed</span> <span class="na">xmlns=</span><span class="s">'http://www.w3.org/2005/Atom'</span> <span class="na">xml:lang=</span><span class="s">'en'</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;title&gt;</span>dive into mark<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">&lt;subtitle&gt;</span>currently between addictions<span class="nt">&lt;/subtitle&gt;</span>
+  <span class="nt">&lt;id&gt;</span>tag:diveintomark.org,2001-07-29:/<span class="nt">&lt;/id&gt;</span>
+  <span class="nt">&lt;updated&gt;</span>2009-03-27T21:56:07Z<span class="nt">&lt;/updated&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">'alternate'</span> <span class="na">type=</span><span class="s">'text/html'</span> <span class="na">href=</span><span class="s">'http://diveintomark.org/'</span><span class="nt">/&gt;</span>
+  …
+</pre></div>
+<p>如果只是一次下载，这样确实没有问题，但如果定期访问web服务的时候（比如每隔1小时请求一下这个供稿)，这样做就显得简单粗暴了。
+为啥说简单粗暴呢，我们打开python的http库的调试功能，看看什么东西被发送到线路上。</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">http.client</span> <span class="kn">import</span> <span class="n">HTTPConnection</span> <span class="c1"># 从http.client导入HTTPConnection类</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">HTTPConnection</span><span class="o">.</span><span class="n">debuglevel</span> <span class="o">=</span> <span class="mi">1</span>    <span class="c1"># 打开调试</span>
+</pre></div>
+<p>然后再次执行向服务器请求数据，你会看到urlopen()请求了未压缩的数据，所以比较低效。</p>
 <p><strong>HTTPLIB2</strong></p>
 <div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">httplib2</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">h</span> <span class="o">=</span> <span class="n">httplib2</span><span class="o">.</span><span class="n">Http</span><span class="p">(</span><span class="s1">'.cache'</span><span class="p">)</span> <span class="c1"># httplib2的主要接口是Http对象。创建时需要传入一个目录名。</span>
@@ -542,16 +544,17 @@ header: X-Timer: S1489051777.946283,VS0,VE181
 header: Vary: Accept-Encoding
 header: X-Fastly-Request-ID: 62146dd2576ae50f0f43f9f9117e4b618c0cdb54
 </pre></div>
-<p># 初始化一个网络请求，并且加入了一个no-cache的头　
-    &gt;&gt;&gt; response2.status
-    200　　# 请求成功。服务器返回了一个新的数据，并更新了本地缓存
-    &gt;&gt;&gt; response2.fromcache
-    False                                                                                      <br/>
-    &gt;&gt;&gt; print(dict(response2.items())
-    ... )
-    {'content-length': '22385455', 'via': '1.1 varnish', 'vary': 'Accept-Encoding', 'x-cache-hits': '0', 'cache-control': 'max-age=600', 'status': '200', 'x-served-by': 'cache-nrt6131-NRT', 'x-cache': 'MISS', 'x-github-request-id': 'C15C:2A686:36787E9:4761B30:58C11385', 'accept-ranges': 'bytes', 'expires': 'Thu, 09 Mar 2017 08:44:14 GMT', 'last-modified': 'Thu, 09 Mar 2017 07:40:35 GMT', '-content-encoding': 'gzip', 'date': 'Thu, 09 Mar 2017 09:29:38 GMT', 'access-control-allow-origin': '*', 'content-location': 'http://www.vimlinux.com/feeds/atom.xml', 'age': '0', 'x-timer': 'S1489051777.946283,VS0,VE181', 'server': 'GitHub.com', 'connection': 'keep-alive', 'x-fastly-request-id': '62146dd2576ae50f0f43f9f9117e4b618c0cdb54', 'content-type': 'application/xml'}
-    &gt;&gt;&gt; 
-http缓存设计为尽量最大化的缓存命中率和最小化的网络访问。</p>
+<p># 初始化一个网络请求，并且加入了一个no-cache的头　</p>
+<div class="highlight"><pre><span></span>&gt;&gt;&gt; response2.status
+200　　# 请求成功。服务器返回了一个新的数据，并更新了本地缓存
+&gt;&gt;&gt; response2.fromcache
+False                                                                                        
+&gt;&gt;&gt; print(dict(response2.items())
+... )
+{'content-length': '22385455', 'via': '1.1 varnish', 'vary': 'Accept-Encoding', 'x-cache-hits': '0', 'cache-control': 'max-age=600', 'status': '200', 'x-served-by': 'cache-nrt6131-NRT', 'x-cache': 'MISS', 'x-github-request-id': 'C15C:2A686:36787E9:4761B30:58C11385', 'accept-ranges': 'bytes', 'expires': 'Thu, 09 Mar 2017 08:44:14 GMT', 'last-modified': 'Thu, 09 Mar 2017 07:40:35 GMT', '-content-encoding': 'gzip', 'date': 'Thu, 09 Mar 2017 09:29:38 GMT', 'access-control-allow-origin': '*', 'content-location': 'http://www.vimlinux.com/feeds/atom.xml', 'age': '0', 'x-timer': 'S1489051777.946283,VS0,VE181', 'server': 'GitHub.com', 'connection': 'keep-alive', 'x-fastly-request-id': '62146dd2576ae50f0f43f9f9117e4b618c0cdb54', 'content-type': 'application/xml'}
+&gt;&gt;&gt;
+</pre></div>
+<p>http缓存设计为尽量最大化的缓存命中率和最小化的网络访问。</p>
 <p><strong>HTTPLIB2如何处理LAST-MODIFFIED和ETAG头</strong></p>
 <p>Cache-Control和Expires缓存头被称为新鲜度指标。它们通过只缓存，除非缓存过期，不然不会产生任何的网络活动（除非显示的要求跳过缓存）</p>
 <p>如果数据可能已改变，但缓存不知道呢？Http因此定义了Last-Modified和Etag头。如果本地缓存不再是最新的数据，客户端请求时可以发送Last-Modified和Etag头进行验证数据是否改变。如果没有改变，服务器会返回304状态码，但不返回数据。</p>
