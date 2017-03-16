@@ -6,23 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="李鹏" />
-        <meta name="keywords" content="Selenium" />
-        <meta name="description" content="该topic将开始学习selenium的使用。主要内容如下 1.安装 2.入门 3.导航 4.元素定位 5.等待 6.页面对象 7.WebDriver API 8.常见问题 安装 简介 Selenium＆python提供了使用Selenium WebDriver编写功能／通过性测试的ＡＰＩ。通过Selenium Python API可以直观的使用Selenium的功能。 Selenium&amp;python提供了直观的ＡＰＩ访问Selenium WebDrivers如firefox、ie、chrome、Remote等。目前支撑的python版本为2.7\3.2及以上。 本文只涉及Selenium 2 WebDriver.Selenium1没有覆盖。 下载Selenium python支持包 可以在PyPI page for selenium package ..." />
+        <meta name="keywords" content="Python-tips" />
+        <meta name="description" content="Tips 28 python类中包含很多特殊方法，这些方法让类用起来如同序列、字典、函数、迭代器，甚至像个数字。 基础知识 最常见的就是__init__()。 序号 目的 代码 python内部调用 1 初始化一个实例 x = MyClass() x.__init__() 2 字符串的“官方”表现形式 repr(x) x.__repr__() 3 字符串的“非正式&#34;值 str(x) x.__str__() 4 字节数组的”非正式“值 bytes(x) x.__bytes__() 5 格式化字符串的值 format(x, format_spec) x ..." />
 
 <!-- Open Graph tags -->
 <meta property="og:site_name" content="路漫求索"/>
     <meta property="og:type" content="article"/>
-    <meta property="og:title" content="selenium-基本介绍"/>
-    <meta property="og:url" content="../../../../2015/01/13/selenium/"/>
-    <meta property="og:description" content="该topic将开始学习selenium的使用。主要内容如下 1.安装 2.入门 3.导航 4.元素定位 5.等待 6.页面对象 7.WebDriver API 8.常见问题 安装 简介 Selenium＆python提供了使用Selenium WebDriver编写功能／通过性测试的ＡＰＩ。通过Selenium Python API可以直观的使用Selenium的功能。 Selenium&amp;python提供了直观的ＡＰＩ访问Selenium WebDrivers如firefox、ie、chrome、Remote等。目前支撑的python版本为2.7\3.2及以上。 本文只涉及Selenium 2 WebDriver.Selenium1没有覆盖。 下载Selenium python支持包 可以在PyPI page for selenium package ..."/>
-    <meta property="article:published_time" content="2015-01-13" />
-    <meta property="article:section" content="自动化测试-Selenium" />
-        <meta property="article:tag" content="Selenium" />
+    <meta property="og:title" content="Python-Tips(十三)"/>
+    <meta property="og:url" content="../../../../2014/05/31/python/"/>
+    <meta property="og:description" content="Tips 28 python类中包含很多特殊方法，这些方法让类用起来如同序列、字典、函数、迭代器，甚至像个数字。 基础知识 最常见的就是__init__()。 序号 目的 代码 python内部调用 1 初始化一个实例 x = MyClass() x.__init__() 2 字符串的“官方”表现形式 repr(x) x.__repr__() 3 字符串的“非正式&#34;值 str(x) x.__str__() 4 字节数组的”非正式“值 bytes(x) x.__bytes__() 5 格式化字符串的值 format(x, format_spec) x ..."/>
+    <meta property="article:published_time" content="2014-05-31" />
+    <meta property="article:section" content="编程语言-Python" />
+        <meta property="article:tag" content="Python-tips" />
         <meta property="article:author" content="李鹏" />
         <meta property="og:image"
               content="../../../../favicon.png"/>
 
-    <title>selenium-基本介绍 - 路漫求索</title>
+    <title>Python-Tips(十三) - 路漫求索</title>
 
         <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
 
@@ -67,12 +67,12 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-share-small" class="collapse ">
                     <li>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2015/01/13/selenium/" title="Share via Facebook" target="popup">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2014/05/31/python/" title="Share via Facebook" target="popup">
                             <i class="fa fa-facebook-square padding-small"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="https://plus.google.com/share?url=../../../../2015/01/13/selenium/" title="Share via Google+" target="popup">
+                        <a href="https://plus.google.com/share?url=../../../../2014/05/31/python/" title="Share via Google+" target="popup">
                             <i class="fa fa-google-plus padding-small"></i>
                         </a>
                     </li>
@@ -167,13 +167,13 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-share" class="sidebar_submenu collapse ">
                     <li>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2015/01/13/selenium/" target="popup">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2014/05/31/python/" target="popup">
                             <i class="fa fa-facebook-square padding-small"></i>
                             Facebook
                         </a>
                     </li>
                     <li>
-                        <a href="https://plus.google.com/share?url=../../../../2015/01/13/selenium/" target="popup">
+                        <a href="https://plus.google.com/share?url=../../../../2014/05/31/python/" target="popup">
                             <i class="fa fa-google-plus padding-small"></i>
                             Google+
                         </a>
@@ -273,14 +273,14 @@
                     </a>
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-categories" class="sidebar_submenu collapse ">
-                    <li >
+                    <li class="active">
                         <a href="../../../../category/bian-cheng-yu-yan-python.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             编程语言-Python
                             <span class="badge pull-right categorybadge">26</span>
                         </a>
                     </li>
-                    <li class="active">
+                    <li >
                         <a href="../../../../category/zi-dong-hua-ce-shi-selenium.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             自动化测试-Selenium
@@ -406,24 +406,24 @@
             <div class="col-lg-9">
                 <header class="page-header">
                     <h1>
-                        <a href="../../../../2015/01/13/selenium/"
+                        <a href="../../../../2014/05/31/python/"
                            rel="bookmark"
-                           title="Permalink to selenium-基本介绍">
-                            selenium-基本介绍
+                           title="Permalink to Python-Tips(十三)">
+                            Python-Tips(十三)
                         </a>
                         <small>
 <div class="post-info">
     <div class="publish-info-block">
         <small>
             <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2015-01-13T00:00:00+08:00"> 2015-01-13 二</time>
+                <i class="fa fa-calendar padding-small"></i><time datetime="2014-05-31T00:00:00+08:00"> 2014-05-31 六</time>
             </span>
             <span class="category">
-                <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/zi-dong-hua-ce-shi-selenium.html">自动化测试-Selenium</a>
+                <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/bian-cheng-yu-yan-python.html">编程语言-Python</a>
             </span>
             <span class="tags">
                 <i class="fa fa-tags padding-small"></i>
-                <a href="../../../../tag/selenium.html">Selenium</a>            </span>
+                <a href="../../../../tag/python-tips.html">Python-tips</a>            </span>
         </small>
     </div>
 </div><!-- /.post-info -->                        </small>
@@ -434,44 +434,577 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    <body><p>该topic将开始学习selenium的使用。主要内容如下</p>
-<ul>
-<li>1.安装</li>
-<li>2.入门</li>
-<li>3.导航</li>
-<li>4.元素定位</li>
-<li>5.等待</li>
-<li>6.页面对象</li>
-<li>7.WebDriver API</li>
-<li>8.常见问题</li>
-</ul>
-<h3 id="an-zhuang">安装</h3>
-<h4 id="jian-jie">简介</h4>
-<p>Selenium＆python提供了使用Selenium WebDriver编写功能／通过性测试的ＡＰＩ。通过Selenium Python API可以直观的使用Selenium的功能。
-Selenium&amp;python提供了直观的ＡＰＩ访问Selenium WebDrivers如firefox、ie、chrome、Remote等。目前支撑的python版本为2.7\3.2及以上。
-本文只涉及Selenium 2 WebDriver.Selenium1没有覆盖。</p>
-<h4 id="xia-zai-selenium-pythonzhi-chi-bao">下载Selenium python支持包</h4>
-<p>可以在<a href="https://pypi.python.org/pypi/selenium">PyPI page for selenium package</a>下载Selenium python支持包。更好的方式是通过pip去安装，在python3.5已集成进标准库: </p>
-<div class="highlight"><pre><span></span>pip install selenium
+                    <body><h3 id="tips-28">Tips 28</h3>
+<p>python类中包含很多特殊方法，这些方法让类用起来如同序列、字典、函数、迭代器，甚至像个数字。</p>
+<h4 id="ji-chu-zhi-shi">基础知识</h4>
+<p>最常见的就是__init__()。</p>
+<table class="table table-hover table-striped">
+<thead>
+<tr>
+<th>序号</th>
+<th>目的</th>
+<th>代码</th>
+<th>python内部调用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>初始化一个实例</td>
+<td>x = MyClass()</td>
+<td>x.__init__()</td>
+</tr>
+<tr>
+<td>2</td>
+<td>字符串的“官方”表现形式</td>
+<td>repr(x)</td>
+<td>x.__repr__()</td>
+</tr>
+<tr>
+<td>3</td>
+<td>字符串的“非正式"值</td>
+<td>str(x)</td>
+<td>x.__str__()</td>
+</tr>
+<tr>
+<td>4</td>
+<td>字节数组的”非正式“值</td>
+<td>bytes(x)</td>
+<td>x.__bytes__()</td>
+</tr>
+<tr>
+<td>5</td>
+<td>格式化字符串的值</td>
+<td>format(x, format_spec)</td>
+<td>x.__format__(format_spec)</td>
+</tr>
+</tbody>
+</table>
+<p>1.对__init__()方法调用发生在实例被创建之后。如果要控制实际创建进程，请使用__new__方法。
+2.__repr__()方法返回的字符串为合法的python表达式
+3.在调用print(x)的同时调用了__str__()方法</p>
+<h4 id="xing-wei-fang-shi-he-die-dai-qi-lei-si-de-lei">行为方式和迭代器类似的类</h4>
+<table class="table table-hover table-striped">
+<thead>
+<tr>
+<th>序号</th>
+<th>目的</th>
+<th>编写的代码</th>
+<th>python的实际调用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>遍历每个序列</td>
+<td>iter(seq)</td>
+<td>seq.__iter__()</td>
+</tr>
+<tr>
+<td>2</td>
+<td>迭代器取下一个值</td>
+<td>next(seq)</td>
+<td>seq.__next__()</td>
+</tr>
+<tr>
+<td>3</td>
+<td>按逆序创建一个迭代器</td>
+<td>reversed(seq)</td>
+<td>seq.__reversed__()</td>
+</tr>
+</tbody>
+</table>
+<p>1.无论何时创建迭代器都将调用__iter__()方法。这是用初始值对迭代器进行初始化的绝佳之处。
+2.无论何时从迭代器中获取下一个值都将调用__next__()方法。
+3.__reversed__()方法并不常用。它以一个现有序列为参数，并将该序列中所有元素从尾到头以逆序生成一个新的迭代器。</p>
+<h4 id="shu-xing">属性</h4>
+<table class="table table-hover table-striped">
+<thead>
+<tr>
+<th>序号</th>
+<th>目的</th>
+<th>编写的代码</th>
+<th>python 实际调用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>获取一个属性</td>
+<td>x.my_property</td>
+<td>x.__getattribute__('my_property')</td>
+</tr>
+<tr>
+<td>2</td>
+<td>获取一个属性（备用)</td>
+<td>x.my_property</td>
+<td>x.__getattr__('my_property')</td>
+</tr>
+<tr>
+<td>3</td>
+<td>设置某属性</td>
+<td>x.my_property = value</td>
+<td>x.__setattr__('my_property', value)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>删除某属性</td>
+<td>del x.myproperty</td>
+<td>x.__delattr__('my_property')</td>
+</tr>
+<tr>
+<td>5</td>
+<td>列出所有属性和方法</td>
+<td>dir(x)</td>
+<td>x.__dir__()</td>
+</tr>
+</tbody>
+</table>
+<p>1.如果类定义了__getattribute__()方法，在每次引用属性或方法名称时python都调用它（特殊方法名称除外，因为会导致无限循环）
+2.如果类定义了__getattr__()方法，python在正常位置查询属性时才会调用。
+3.无论何时给属性赋值，都会调用__setattr__()
+4.删除属性时，会调用__delattr__()
+5.如果定义了__getattr__()或__getattribute__()，__dir__()方法将会非常有用</p>
+<p>__getattr__()和__getattribute__()方法的区别非常细微，但非常重要。</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">Dynamo:</span>
+    <span class="n">def</span> <span class="n">__getattr__</span>(<span class="k">self</span>, <span class="nb">key</span>):
+        <span class="k">if</span> <span class="nb">key</span> == <span class="s">'color'</span>:
+            <span class="k">return</span> <span class="s">'PapayaWhip'</span> <span class="c c-Singleline"># 属性名称以字符串的形式传入__getattr()__方法</span>
+        <span class="n">else:</span>　　　　　　　　<span class="c c-Singleline"># 如果属性名称未知，触发异常</span>
+            <span class="n">raise</span> <span class="n">AttributeError</span>
+&gt;&gt;&gt; <span class="n">dyn</span> = <span class="n">Dynamo</span>()
+&gt;&gt;&gt; <span class="n">dyn</span>.<span class="n">color</span>  <span class="c c-Singleline"># dyn没有名为color的属性，获取时将调用__getattr__()</span>
+ <span class="s">'PapayaWhip'</span>
+&gt;&gt;&gt; <span class="n">dyn</span>.<span class="n">color</span> = <span class="s">'LemonChiffon'</span> <span class="c c-Singleline"># 显示的设置了color属性后，不再调用__getattr__方法。</span>
+&gt;&gt;&gt; <span class="n">dyn</span>.<span class="n">color</span>
+ <span class="s">'LemonChiffon'</span>
 </pre></div>
-<p>可以考虑使用<a href="www.virtualenv.org">virtualenv</a>创建的独立python环境。Python 3.5的<a href="https://docs.python.org/3.5/using/scripts.html#scripts-pyvenv">pyvenv</a>和virtualenv类似。</p>
-<h4 id="zhen-dui-windowshuan-jing-de-shuo-ming">针对windows环境的说明</h4>
-<ul>
-<li>1.安装python 3.5 </li>
-<li>2.在cmd.exe命令行下，使用pip命令安装
-    C:\Python35\scripts\pip.exe install selenium</li>
-</ul>
-<p>这样就可以运行python脚本，例如一个脚本放到C:\my_selenium_script.py,可以这样执行：</p>
-<div class="highlight"><pre><span></span>C:\Python35\python.exe C:\my_selenium_script.py
+<p>另一方面，__getattribute__()方法是直接的，无条件的。</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">SuperDynamo:</span>
+    <span class="n">def</span> <span class="n">__getattribute__</span>(<span class="k">self</span>, <span class="nb">key</span>):
+        <span class="k">if</span> <span class="nb">key</span> == <span class="s">'color'</span>:
+            <span class="k">return</span> <span class="s">'PapayaWhip'</span>
+        <span class="n">else:</span>
+            <span class="n">raise</span> <span class="n">AttributeError</span>
+&gt;&gt;&gt; <span class="n">dyn</span> = <span class="n">SuperDynamo</span>()
+&gt;&gt;&gt; <span class="n">dyn</span>.<span class="n">color</span> <span class="c c-Singleline"># 直接调用__getattribute__()，返回color</span>
+ <span class="s">'PapayaWhip'</span>
+&gt;&gt;&gt; <span class="n">dyn</span>.<span class="n">color</span> = <span class="s">'LemonChiffon'</span>
+&gt;&gt;&gt; <span class="n">dyn</span>.<span class="n">color</span>  <span class="c c-Singleline"># 虽然显示的设置了color属性，但仍然会调用__getattribute__()</span>
+ <span class="s">'PapayaWhip'</span>
 </pre></div>
-<h4 id="xia-zai-selenium-server">下载Selenium server</h4>
-<p>Selenium server是一个Java程序。建议使用JRE1.6或以上版本运行Selenium server.
-可以从<a href="seleniumhq.org/download/">下载</a>下载Selenium server2.x,文件名类似selenium-server-standalone-2.x.x.jar.
-在此之前，确认系统中已经安装了ＪＲＥ。
-如果java支持，可以通过下面命令来启动Selenium server:
-    java -jar selenium-server-standalone-2.x.x.jar</p>
-<p>Top<a href="">^</a></p>
-<p>下一篇<a href="https://king32783784.github.io/2015/01/14/selenium/">selenium-专题２&gt;&gt;&gt;</a></p></body>
+<p>如果定义了类的__getattribute__()方法，你可能还想定义一个__setattr__()方法，需要两则之间进行协同，以跟踪属性的值。
+必须特别小心__getattribute__()方法，因为python在查找类的方法名称时也将对其进行调用</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">Rastan:</span>
+    <span class="n">def</span> <span class="n">__getattribute__</span>(<span class="k">self</span>, <span class="nb">key</span>):
+        <span class="n">raise</span> <span class="n">AttributeError</span>  <span class="c c-Singleline"># 定义了一个总是触发异常的__getattribute__方法</span>
+
+    <span class="n">def</span> <span class="n">swim</span>(<span class="k">self</span>)：
+        <span class="nb">pass</span>
+
+&gt;&gt;&gt; <span class="n">hero</span> = <span class="n">Rastan</span>()
+&gt;&gt;&gt; <span class="n">hero</span>.<span class="n">swim</span>() <span class="c c-Singleline"># 调用hero.swim()时，python将在Rastan类查找swim()方法。该查找将执行整个__getattribute__()方法，因为所有的属性和方法查找都通过__getattribute__()方法。</span>
+<span class="n">Traceback</span> (<span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="k">last</span>):
+<span class="n">File</span> <span class="s">"&lt;stdin&gt;"</span>, <span class="n">line</span> <span class="mi">1</span>, <span class="n">in</span> <span class="s">&lt;module&gt;</span>
+<span class="n">File</span> <span class="s">"&lt;stdin&gt;"</span>, <span class="n">line</span> <span class="mi">3</span>, <span class="n">in</span> <span class="n">__getattribute__</span>
+<span class="n">AttributeError</span>
+</pre></div>
+<h4 id="xing-wei-fang-shi-he-han-shu-lei-si-de-lei">行为方式和函数类似的类</h4>
+<p>可以让类的实例变得可调用-就想函数可以调用一样-通过定义__call__()方法</p>
+<table class="table table-hover table-striped">
+<thead>
+<tr>
+<th>序号</th>
+<th>目的</th>
+<th>编写代码</th>
+<th>Python实际调用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>像调用函数一样使用实例</td>
+<td>my_instance()</td>
+<td>my_instance.__call__()</td>
+</tr>
+</tbody>
+</table>
+<h4 id="xing-wei-he-xu-lie-lei-si-de-lei">行为和序列类似的类</h4>
+<p>如果类作为一系列值的容器出现，可以通过下面方法，让其的行为方式和序列类似。</p>
+<table class="table table-hover table-striped">
+<thead>
+<tr>
+<th>目的</th>
+<th>代码</th>
+<th>python实际调用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>序列的长度</td>
+<td>len(seq)</td>
+<td>seq.__len__()</td>
+</tr>
+<tr>
+<td>判断序列是否包含指定的值</td>
+<td>x in seq</td>
+<td>seq.__contains__(x)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="xing-wei-he-zi-dian-lei-si-de-lei">行为和字典类似的类</h4>
+<p>类可以像字典一样根据键来返回值</p>
+<table class="table table-hover table-striped">
+<thead>
+<tr>
+<th>目的</th>
+<th>代码</th>
+<th>python实际调用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>通过键来获取值</td>
+<td>x[key]</td>
+<td>x.__getitem__(key)</td>
+</tr>
+<tr>
+<td>通过键来设置值</td>
+<td>x[key] = value</td>
+<td>x.__setitem__(key, value)</td>
+</tr>
+<tr>
+<td>删除一个键值对</td>
+<td>del x[key]</td>
+<td>x.__delitem__(key)</td>
+</tr>
+<tr>
+<td>为缺失键提供默认值</td>
+<td>x[nonexistent_key]</td>
+<td>x.__missing__(nonexistent_key)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="xing-wei-he-shu-zhi-lei-si-de-lei">行为和数值类似的类</h4>
+<p>使用适当的特殊方法，可以将类的行为定义为与数字相仿。也就是说，可以进行相加、相减、及其他运算，Fraction类就实现了这些特殊方法：</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">fractions</span> <span class="kn">import</span> <span class="n">Fraction</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="o">/</span><span class="mi">3</span>
+<span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">)</span>
+</pre></div>
+<p>| 目的 | 编写的代码 |  python实际调用 |
+| 加法 | x + y      | x.__add__(y) |
+| 减法 | x - y      | x.__sub__(y) |
+| 乘法 | x * y      | x.__mul__(y) |
+| 除法 | x / y      | x.__truediv__(y) |
+| 地板除 | x//y     | x.__fooldiv__(y) |
+| 取余 | x % y      | x.__mod__(y) |
+| 地板除&amp;取余 | divmod(x,y) | x.__divmod__(y)|
+| 乘幂 | x ** y | x.__pow__(y) |
+| 左移位 | x &lt;&lt; y | x.__lshift__(y) |
+| 右移位 | x &gt;&gt; y | x.__rshift__(y) |
+| 按位与 | x &amp; y | x.__and__(y) |
+| 按位异或 | x^y | x.__xor__(y) |
+| 按位或 | x | y | x.__or__(y) |</p>
+<p>前面是第一个的操作数调用对应函数，第二个操作数作为参数，下面的特殊方法集合，是第二个操作数调用方法，第一个操作数作为参数。</p>
+<p>| 目的  |  代码    | python 调用 |
+| +    | x + y     | y.__radd__(x) |
+| -    | x - y     | y.__rsub__(x) |
+| *    | x * y     | y.__rmul__(x) |
+| /    | x / y     | y.__rturediv__(x) |
+| //   | x // y    | y.__rfloordiv__(x) |
+| %    | x % y     | y.__rmod__(x) |
+|// &amp; % | divmod(x,y) | y.__rdivmod__(x) |
+| <strong>   |   x </strong> y |  y.__rpow__(x) |
+| &lt;&lt; | x &lt;&lt; y | y.__rlshift__(x) |
+| &gt;&gt; | x &gt;&gt; y | y.__rrshift__(x) |
+| &amp; | x &amp; y | y.__rand__(x)|
+| ^ | x ^ y | y.__rxor__(x) |
+| 或 | x or y | y.__ror__(x) |</p>
+<p>如果原地操作呢？x += 3</p>
+<p>| 代码 | python实际调用 |
+| x += y | x.__iadd__(y) |
+| x -= y | x.__isub__(y) |
+| x *= y | x.__imul__(y) |
+| x /= y | x.__iturediv__(y) |
+| x //= y | x.__ifloordiv__(y) |
+| x %= y | x.__imod__(y) |
+| x **= y | x.__ipow__(y) |
+| x &lt;&lt;= y | x.__ilshift__(y) |
+| x &gt;&gt;= y | x.__irshift__(y) | 
+| x &amp;= y | x.__iland__(y) |
+| x ^= y | x.__ixor__(y) |
+| x |= y | x.__ior__(y) |</p>
+<p>还有一些一元运算符，可以对“类-数字”对象自己执行。</p>
+<table class="table table-hover table-striped">
+<thead>
+<tr>
+<th>目的</th>
+<th>代码</th>
+<th>python实际调用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>正数</td>
+<td>+x</td>
+<td>x.__pos__()</td>
+</tr>
+<tr>
+<td>绝对值</td>
+<td>abs(x)</td>
+<td>x.__abs__()</td>
+</tr>
+<tr>
+<td>取反</td>
+<td>~x</td>
+<td>x.__invert__()</td>
+</tr>
+<tr>
+<td>复数</td>
+<td>complex(x)</td>
+<td>x.__complex__()</td>
+</tr>
+<tr>
+<td>整数转换</td>
+<td>int(x)</td>
+<td>x.__int__()</td>
+</tr>
+<tr>
+<td>浮点数</td>
+<td>float(x)</td>
+<td>x.__float__()</td>
+</tr>
+<tr>
+<td>四舍五入整数</td>
+<td>round(x)</td>
+<td>x.__round__()</td>
+</tr>
+<tr>
+<td>四舍五入至n位小数</td>
+<td>round(x, n)</td>
+<td>x.__round__(n)</td>
+</tr>
+<tr>
+<td>&gt;= x的最小整数</td>
+<td>math.ceil(x)</td>
+<td>x.__ceil__()</td>
+</tr>
+<tr>
+<td>&lt;= x的最大整数</td>
+<td>math.floor(x)</td>
+<td>x.__floor__()</td>
+</tr>
+<tr>
+<td>对x朝向０取整</td>
+<td>math.trunc(x)</td>
+<td>x.__trunc__()</td>
+</tr>
+<tr>
+<td>作为索引的数字</td>
+<td>a_list[x]</td>
+<td>a_list[x.__index__()]</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ke-bi-jiao-de-lei">可比较的类</h4>
+<p>许多数据类型都可以进行比较，可以使用以下特殊方法来实现。</p>
+<table class="table table-hover table-striped">
+<thead>
+<tr>
+<th>目的</th>
+<th>代码实现</th>
+<th>python实际调用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>相等</td>
+<td>x == y</td>
+<td>x.__eq__(y)</td>
+</tr>
+<tr>
+<td>不相等</td>
+<td>x!= y</td>
+<td>x.__ne__(y)</td>
+</tr>
+<tr>
+<td>小于</td>
+<td>x &lt; y</td>
+<td>x.__lt__(y)</td>
+</tr>
+<tr>
+<td>小于或等于</td>
+<td>x &lt;= y</td>
+<td>x.__le__(y)</td>
+</tr>
+<tr>
+<td>大于</td>
+<td>x&gt;y</td>
+<td>x.__gt__(y)</td>
+</tr>
+<tr>
+<td>大于或等于</td>
+<td>x &gt;= y</td>
+<td>x.__ge__(y)</td>
+</tr>
+<tr>
+<td>布尔上下文环境的真值</td>
+<td>if x :</td>
+<td>x.__bool__()</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ke-xu-lie-hua-de-lei">可序列化的类</h4>
+<p>python支持任意对象的可序列化和反序列化。</p>
+<table class="table table-hover table-striped">
+<thead>
+<tr>
+<th>目的</th>
+<th>代码</th>
+<th>python实际调用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>自定义对象的复制</td>
+<td>copy.copy(x)</td>
+<td>x.__copy__()</td>
+</tr>
+<tr>
+<td>自定义对象的深度复制</td>
+<td>copy.deepcopy(x)</td>
+<td>x.__deepcopy__()</td>
+</tr>
+<tr>
+<td>在pickling之前获取对象的状态</td>
+<td>pickle.dump(x, file)</td>
+<td>x.__getstate__()</td>
+</tr>
+<tr>
+<td>序列化某对象</td>
+<td>pickle.dump(x, file)</td>
+<td>x.__reduce__()</td>
+</tr>
+<tr>
+<td>序列化某对象(新pickling协议)</td>
+<td>pickle.dump(x,file, protocol_version)</td>
+<td>x.__reduce_ex__(protocol_verion)</td>
+</tr>
+<tr>
+<td>控制unpickling过程中对象的创建方式</td>
+<td>x = pickle.load(file)</td>
+<td>x.__getnewargs__()</td>
+</tr>
+<tr>
+<td>在unpickling之后还原对象的状态</td>
+<td>x = pickle.load(file)</td>
+<td>x.__setstate__()</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ke-zai-withyu-kuai-zhong-shi-yong-de-lei">可在WITH语块中使用的类</h4>
+<p>with语块定义了运行时刻上下文环境；在执行with语句时将“进入”该上下文环境，而执行该语块中的最后一条语句将“退出"该上下文环境。</p>
+<table class="table table-hover table-striped">
+<thead>
+<tr>
+<th>目的</th>
+<th>代码</th>
+<th>python实际调用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>进入with语块时进行一些特别操作</td>
+<td>with x：</td>
+<td>x.__enter__()</td>
+</tr>
+<tr>
+<td>在退出with语块时进行一些特别操作</td>
+<td>with x:</td>
+<td>x.__exit__()</td>
+</tr>
+</tbody>
+</table>
+<p>以下是with　file习惯用法的运作方式：</p>
+<div class="highlight"><pre><span></span>def _checkClosed(self, msg=None):
+    if self.closed:
+        raise ValueError('I/O operation on closed file.'
+                          if msg is None else msg)
+def __enter__(self):
+    self._checkClosed()
+    return self
+
+def __exit__(self, *args):
+    self.close()
+
+该文件对象同时定义了一个__enter__()和一个__exit__()方法。该__enter__()方法检查文件是否处于打开状态；如果没有,_checkClosed方法触发一个例外
+__enter__方法将始终返回self，这是with语块将用于调用属性和方法的对象。
+</pre></div>
+<p>在with语块结束后，文件对象将自动关闭</p>
+<h4 id="qi-ta">其他</h4>
+<p>如果知道自己在做什么，几乎可以完全控制类是如何比较的、属性如何定义，以及类的子类是何种类型。</p>
+<table class="table table-hover table-striped">
+<thead>
+<tr>
+<th>目的</th>
+<th>代码</th>
+<th>python实际调用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>类构造器</td>
+<td>x=MyClass()</td>
+<td>x.__new__()</td>
+</tr>
+<tr>
+<td>类析构器</td>
+<td>del x</td>
+<td>x.__del__()</td>
+</tr>
+<tr>
+<td>只定义特定集合的某些特性</td>
+<td></td>
+<td>x.__slots__()</td>
+</tr>
+<tr>
+<td>自定义散列值</td>
+<td>hash(x)</td>
+<td>x.__hash__()</td>
+</tr>
+<tr>
+<td>获取某个属性的值</td>
+<td>x.color</td>
+<td>type(x).__dict__['color'].__get__(x,type(x))</td>
+</tr>
+<tr>
+<td>设置某个属性的值</td>
+<td>x.color = 'PapayWhip'</td>
+<td>type(x).__dict__['color'].__set__(x, 'PapayaWhip')</td>
+</tr>
+<tr>
+<td>删除某个属性</td>
+<td>del x.color</td>
+<td>type(x).__dict__['color'].__del__(x)</td>
+</tr>
+<tr>
+<td>控制某个对象是否该对象的实例</td>
+<td>isinstance(x, MyClass)</td>
+<td>MyClass.__instancecheck__(x)</td>
+</tr>
+<tr>
+<td>控制某个类是否是该类的子类</td>
+<td>issubclass(C,MyClass)</td>
+<td>MyClass.__subclasscheck__(C)</td>
+</tr>
+<tr>
+<td>控制某个类是否是该抽象基类的子类</td>
+<td>issubclass(C, MyABC)</td>
+<td>MyABC.__subclasshook__(C)</td>
+</tr>
+</tbody>
+</table></body>
                 </div>
                 <footer class="text-right">
                     <p>by 李鹏</p>
@@ -487,7 +1020,7 @@ Selenium&amp;python提供了直观的ＡＰＩ访问Selenium WebDrivers如firefo
             </div>
     <div id="scrollspy">
         <div class="col-lg-3 nav nav-stacked hidden-xs hidden-sm" data-spy="affix" data-offset-top="135">
-            <div id="toc"><ul><li><a class="toc-href" href="#" title="selenium-基本介绍">selenium-基本介绍</a><ul><li><a class="toc-href" href="#an-zhuang" title="安装">安装</a><ul><li><a class="toc-href" href="#jian-jie" title="简介">简介</a></li><li><a class="toc-href" href="#xia-zai-selenium-pythonzhi-chi-bao" title="下载Selenium python支持包">下载Selenium python支持包</a></li><li><a class="toc-href" href="#zhen-dui-windowshuan-jing-de-shuo-ming" title="针对windows环境的说明">针对windows环境的说明</a></li><li><a class="toc-href" href="#xia-zai-selenium-server" title="下载Selenium server">下载Selenium server</a></li></ul></li></ul></li></ul></div>
+            <div id="toc"><ul><li><a class="toc-href" href="#" title="Python-Tips(十三)">Python-Tips(十三)</a><ul><li><a class="toc-href" href="#tips-28" title="Tips 28">Tips 28</a><ul><li><a class="toc-href" href="#ji-chu-zhi-shi" title="基础知识">基础知识</a></li><li><a class="toc-href" href="#xing-wei-fang-shi-he-die-dai-qi-lei-si-de-lei" title="行为方式和迭代器类似的类">行为方式和迭代器类似的类</a></li><li><a class="toc-href" href="#shu-xing" title="属性">属性</a></li><li><a class="toc-href" href="#xing-wei-fang-shi-he-han-shu-lei-si-de-lei" title="行为方式和函数类似的类">行为方式和函数类似的类</a></li><li><a class="toc-href" href="#xing-wei-he-xu-lie-lei-si-de-lei" title="行为和序列类似的类">行为和序列类似的类</a></li><li><a class="toc-href" href="#xing-wei-he-zi-dian-lei-si-de-lei" title="行为和字典类似的类">行为和字典类似的类</a></li><li><a class="toc-href" href="#xing-wei-he-shu-zhi-lei-si-de-lei" title="行为和数值类似的类">行为和数值类似的类</a></li><li><a class="toc-href" href="#ke-bi-jiao-de-lei" title="可比较的类">可比较的类</a></li><li><a class="toc-href" href="#ke-xu-lie-hua-de-lei" title="可序列化的类">可序列化的类</a></li><li><a class="toc-href" href="#ke-zai-withyu-kuai-zhong-shi-yong-de-lei" title="可在WITH语块中使用的类">可在WITH语块中使用的类</a></li><li><a class="toc-href" href="#qi-ta" title="其他">其他</a></li></ul></li></ul></li></ul></div>
         </div>
     </div>
         </div>
@@ -535,8 +1068,8 @@ Selenium&amp;python提供了直观的ＡＰＩ访问Selenium WebDrivers如firefo
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
     var disqus_shortname = 'True'; // required: replace example with your forum shortname
 
-            var disqus_identifier = 'selenium';
-        var disqus_url = '../../../../2015/01/13/selenium/';
+            var disqus_identifier = 'python';
+        var disqus_url = '../../../../2014/05/31/python/';
 
     var disqus_config = function () {
         this.language = "zh";

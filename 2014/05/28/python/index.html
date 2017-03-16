@@ -6,23 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="李鹏" />
-        <meta name="keywords" content="Selenium" />
-        <meta name="description" content="该topic将开始学习selenium的使用。主要内容如下 1.安装 2.入门 3.导航 4.元素定位 5.等待 6.页面对象 7.WebDriver API 8.常见问题 安装 简介 Selenium＆python提供了使用Selenium WebDriver编写功能／通过性测试的ＡＰＩ。通过Selenium Python API可以直观的使用Selenium的功能。 Selenium&amp;python提供了直观的ＡＰＩ访问Selenium WebDrivers如firefox、ie、chrome、Remote等。目前支撑的python版本为2.7\3.2及以上。 本文只涉及Selenium 2 WebDriver.Selenium1没有覆盖。 下载Selenium python支持包 可以在PyPI page for selenium package ..." />
+        <meta name="keywords" content="Python-tips" />
+        <meta name="description" content="Tips 27 本文继续上一个tips，python2与python3的差异。 RAW_INPUT()和INPUT() python2有两个全局函数，用在命令行请求用户输入。第一个叫input()，它等待用户输入一个python表达式(然后返回结果)。第二个叫做raw_input(),用户输入什么他就返回什么。python3 通过input替代了他们。 python2 python3 备注 raw_input() input input替代了raw_input raw_input(&#39;prompt&#39;) input(&#39;prompt&#39;) python3仍然支持提示符参数 input() eval(input)) 函数属性FUNC_* python2,函数的代码可用访问到函数本身的特殊属性。python3为了一致性，这些特殊属性被重命名了。 python2 python3 备注 a_function.func_name a_function.__name__ __name__属性包含了函数的名字 a_function.func_doc a_function.__doc__ __doc__包含了函数源代码定义的文档字符串 a_function.func_defaults a_function ..." />
 
 <!-- Open Graph tags -->
 <meta property="og:site_name" content="路漫求索"/>
     <meta property="og:type" content="article"/>
-    <meta property="og:title" content="selenium-基本介绍"/>
-    <meta property="og:url" content="../../../../2015/01/13/selenium/"/>
-    <meta property="og:description" content="该topic将开始学习selenium的使用。主要内容如下 1.安装 2.入门 3.导航 4.元素定位 5.等待 6.页面对象 7.WebDriver API 8.常见问题 安装 简介 Selenium＆python提供了使用Selenium WebDriver编写功能／通过性测试的ＡＰＩ。通过Selenium Python API可以直观的使用Selenium的功能。 Selenium&amp;python提供了直观的ＡＰＩ访问Selenium WebDrivers如firefox、ie、chrome、Remote等。目前支撑的python版本为2.7\3.2及以上。 本文只涉及Selenium 2 WebDriver.Selenium1没有覆盖。 下载Selenium python支持包 可以在PyPI page for selenium package ..."/>
-    <meta property="article:published_time" content="2015-01-13" />
-    <meta property="article:section" content="自动化测试-Selenium" />
-        <meta property="article:tag" content="Selenium" />
+    <meta property="og:title" content="Python-Tips(十二)"/>
+    <meta property="og:url" content="../../../../2014/05/28/python/"/>
+    <meta property="og:description" content="Tips 27 本文继续上一个tips，python2与python3的差异。 RAW_INPUT()和INPUT() python2有两个全局函数，用在命令行请求用户输入。第一个叫input()，它等待用户输入一个python表达式(然后返回结果)。第二个叫做raw_input(),用户输入什么他就返回什么。python3 通过input替代了他们。 python2 python3 备注 raw_input() input input替代了raw_input raw_input(&#39;prompt&#39;) input(&#39;prompt&#39;) python3仍然支持提示符参数 input() eval(input)) 函数属性FUNC_* python2,函数的代码可用访问到函数本身的特殊属性。python3为了一致性，这些特殊属性被重命名了。 python2 python3 备注 a_function.func_name a_function.__name__ __name__属性包含了函数的名字 a_function.func_doc a_function.__doc__ __doc__包含了函数源代码定义的文档字符串 a_function.func_defaults a_function ..."/>
+    <meta property="article:published_time" content="2014-05-28" />
+    <meta property="article:section" content="编程语言-Python" />
+        <meta property="article:tag" content="Python-tips" />
         <meta property="article:author" content="李鹏" />
         <meta property="og:image"
               content="../../../../favicon.png"/>
 
-    <title>selenium-基本介绍 - 路漫求索</title>
+    <title>Python-Tips(十二) - 路漫求索</title>
 
         <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
 
@@ -67,12 +67,12 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-share-small" class="collapse ">
                     <li>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2015/01/13/selenium/" title="Share via Facebook" target="popup">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2014/05/28/python/" title="Share via Facebook" target="popup">
                             <i class="fa fa-facebook-square padding-small"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="https://plus.google.com/share?url=../../../../2015/01/13/selenium/" title="Share via Google+" target="popup">
+                        <a href="https://plus.google.com/share?url=../../../../2014/05/28/python/" title="Share via Google+" target="popup">
                             <i class="fa fa-google-plus padding-small"></i>
                         </a>
                     </li>
@@ -167,13 +167,13 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-share" class="sidebar_submenu collapse ">
                     <li>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2015/01/13/selenium/" target="popup">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2014/05/28/python/" target="popup">
                             <i class="fa fa-facebook-square padding-small"></i>
                             Facebook
                         </a>
                     </li>
                     <li>
-                        <a href="https://plus.google.com/share?url=../../../../2015/01/13/selenium/" target="popup">
+                        <a href="https://plus.google.com/share?url=../../../../2014/05/28/python/" target="popup">
                             <i class="fa fa-google-plus padding-small"></i>
                             Google+
                         </a>
@@ -273,14 +273,14 @@
                     </a>
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-categories" class="sidebar_submenu collapse ">
-                    <li >
+                    <li class="active">
                         <a href="../../../../category/bian-cheng-yu-yan-python.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             编程语言-Python
                             <span class="badge pull-right categorybadge">26</span>
                         </a>
                     </li>
-                    <li class="active">
+                    <li >
                         <a href="../../../../category/zi-dong-hua-ce-shi-selenium.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             自动化测试-Selenium
@@ -406,24 +406,24 @@
             <div class="col-lg-9">
                 <header class="page-header">
                     <h1>
-                        <a href="../../../../2015/01/13/selenium/"
+                        <a href="../../../../2014/05/28/python/"
                            rel="bookmark"
-                           title="Permalink to selenium-基本介绍">
-                            selenium-基本介绍
+                           title="Permalink to Python-Tips(十二)">
+                            Python-Tips(十二)
                         </a>
                         <small>
 <div class="post-info">
     <div class="publish-info-block">
         <small>
             <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2015-01-13T00:00:00+08:00"> 2015-01-13 二</time>
+                <i class="fa fa-calendar padding-small"></i><time datetime="2014-05-28T00:00:00+08:00"> 2014-05-28 三</time>
             </span>
             <span class="category">
-                <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/zi-dong-hua-ce-shi-selenium.html">自动化测试-Selenium</a>
+                <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/bian-cheng-yu-yan-python.html">编程语言-Python</a>
             </span>
             <span class="tags">
                 <i class="fa fa-tags padding-small"></i>
-                <a href="../../../../tag/selenium.html">Selenium</a>            </span>
+                <a href="../../../../tag/python-tips.html">Python-tips</a>            </span>
         </small>
     </div>
 </div><!-- /.post-info -->                        </small>
@@ -434,44 +434,377 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    <body><p>该topic将开始学习selenium的使用。主要内容如下</p>
-<ul>
-<li>1.安装</li>
-<li>2.入门</li>
-<li>3.导航</li>
-<li>4.元素定位</li>
-<li>5.等待</li>
-<li>6.页面对象</li>
-<li>7.WebDriver API</li>
-<li>8.常见问题</li>
-</ul>
-<h3 id="an-zhuang">安装</h3>
-<h4 id="jian-jie">简介</h4>
-<p>Selenium＆python提供了使用Selenium WebDriver编写功能／通过性测试的ＡＰＩ。通过Selenium Python API可以直观的使用Selenium的功能。
-Selenium&amp;python提供了直观的ＡＰＩ访问Selenium WebDrivers如firefox、ie、chrome、Remote等。目前支撑的python版本为2.7\3.2及以上。
-本文只涉及Selenium 2 WebDriver.Selenium1没有覆盖。</p>
-<h4 id="xia-zai-selenium-pythonzhi-chi-bao">下载Selenium python支持包</h4>
-<p>可以在<a href="https://pypi.python.org/pypi/selenium">PyPI page for selenium package</a>下载Selenium python支持包。更好的方式是通过pip去安装，在python3.5已集成进标准库: </p>
-<div class="highlight"><pre><span></span>pip install selenium
+                    <body><h3 id="tips-27">Tips 27</h3>
+<p>本文继续上一个tips，python2与python3的差异。</p>
+<h4 id="raw_inputhe-input">RAW_INPUT()和INPUT()</h4>
+<p>python2有两个全局函数，用在命令行请求用户输入。第一个叫input()，它等待用户输入一个python表达式(然后返回结果)。第二个叫做raw_input(),用户输入什么他就返回什么。python3 通过input替代了他们。</p>
+<table class="table table-hover table-striped">
+<thead>
+<tr>
+<th>python2</th>
+<th>python3</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>raw_input()</td>
+<td>input</td>
+<td>input替代了raw_input</td>
+</tr>
+<tr>
+<td>raw_input('prompt')</td>
+<td>input('prompt')</td>
+<td>python3仍然支持提示符参数</td>
+</tr>
+<tr>
+<td>input()</td>
+<td>eval(input))</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="han-shu-shu-xing-func_">函数属性FUNC_*</h4>
+<p>python2,函数的代码可用访问到函数本身的特殊属性。python3为了一致性，这些特殊属性被重命名了。</p>
+<table class="table table-hover table-striped">
+<thead>
+<tr>
+<th>python2</th>
+<th>python3</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a_function.func_name</td>
+<td>a_function.__name__</td>
+<td>__name__属性包含了函数的名字</td>
+</tr>
+<tr>
+<td>a_function.func_doc</td>
+<td>a_function.__doc__</td>
+<td>__doc__包含了函数源代码定义的文档字符串</td>
+</tr>
+<tr>
+<td>a_function.func_defaults</td>
+<td>a_function.__defaults__</td>
+<td>是一个保存参数默认值的元组</td>
+</tr>
+<tr>
+<td>a_function.func_dict</td>
+<td>a_function.__dict__</td>
+<td>__dict__属性是一个支持任意函数属性的名字空间</td>
+</tr>
+<tr>
+<td>a_function.func_closure</td>
+<td>a_function.__closure__</td>
+<td>__closure__属性是由cell对象组成的元组，包含了函数对自由变量的绑定</td>
+</tr>
+<tr>
+<td>a_function.func_globals</td>
+<td>a_function.__globals__</td>
+<td>是对模块全局名字空间的引用</td>
+</tr>
+<tr>
+<td>a_function.func_code</td>
+<td>a_function.__code__</td>
+<td>是一个代码对象，表示编译后的函数体</td>
+</tr>
+</tbody>
+</table>
+<h4 id="iofang-fa-xreadlines">I/O方法XREADLINES()</h4>
+<p>python2中，文件对象有一个xreadlines()方法，返回一个迭代器，一次读取文件的一行。这在for循环中尤其实用。python3中，xreadlines()方法不再可用。</p>
+<h4 id="lambdahan-shu">lambda函数</h4>
+<p>在python2中，可以定义匿名函数lambda函数，通过指定作为参数的元组的元素个数，使这个函数实际上能够接收多个参数。python2的解释器把这个元组"解开“成命名参数，然后可以在lambda函数里引用它们。在python3中仍然可以传递一个元组为lambda函数的参数。但是python解释器不会把它当成解析成命名参数。需要通过位置索引来引用每个参数。</p>
+<table class="table table-hover table-striped">
+<thead>
+<tr>
+<th>python2</th>
+<th>python3</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lambda (x,): x + f(x)</td>
+<td>lambda x1 : x1[0] + f(x1[0])</td>
+<td>注１</td>
+</tr>
+<tr>
+<td>lambda (x,y): x + f(y)</td>
+<td>lambda x_y : x_y[0] + f(x_y[1])</td>
+<td>注２</td>
+</tr>
+<tr>
+<td>lambda (x,(y,z)): x + y + z</td>
+<td>lambda x_y_z: x_y_z[0] + x_y_z[1][0]+ x_y_z[1][1]</td>
+<td>注３</td>
+</tr>
+<tr>
+<td>lambda x,y,z: x+y+z</td>
+<td>unchanged</td>
+<td>注４</td>
+</tr>
+</tbody>
+</table>
+<p>注１：如果定义了一个lambda函数，使用包含一个元素的元组作为参数，python3中，会被转换成一个包含到x1[0]的引用的lambda函数。x1是2to3脚本基于原来元组里的命名参数自动生成的。</p>
+<p>注２：使用含有两个元素的元组(x,y)作为参数的lambda函数被转换为x_y,它有两个位置参数，即x_y[0]和x_y[1]</p>
+<p>注３：2to3脚本可以处理使用嵌套命名参数的元组作为参数的lambda函数。产生的结果有点晦涩，但python3下和python2的效果是一样的。</p>
+<p>注４：可以定义使用多个参数的lambda函数。语法在python3同样有效</p>
+<h4 id="te-shu-de-fang-fa-shu-xing">特殊的方法属性</h4>
+<p>在python2里，类方法可以访问到定义他们的类对象,也能访问方法对象本身。im_self是类的实例对象；im_func是函数对象，im_class是类本身。在python3里，这些属性被重命名，以遵循其他属性的命名约定。</p>
+<table class="table table-hover table-striped">
+<thead>
+<tr>
+<th>python2</th>
+<th>python3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>aClassInstance.aClassMethod.im_func</td>
+<td>aClassInstance.aClassMethod.__func__</td>
+</tr>
+<tr>
+<td>aClassInstance.aClassMethod.im_self</td>
+<td>aClassInstance.aClassMethod.__self__</td>
+</tr>
+<tr>
+<td>aClassInstance.aClassMethod.im_class</td>
+<td>aClassInstance.aClassMethod.__self__.__class__</td>
+</tr>
+</tbody>
+</table>
+<h4 id="__nonzero__te-shu-fang-fa">__NONZERO__特殊方法</h4>
+<p>在python2里，可以创建自己的类，并使他们能够在布尔上下文中使用。举例来说，可以实例化这个类，并把这个实例对象用在一个if语句中。为了实现这个目的，可以定义一个特别的__nonzero__()方法，它的返回值为True或False,当实例对象处在布尔上下文中的时候这个方法就会被调用。在python3中，仍然可以完成同样的功能，但这个特殊方法的名字改为了__bool__()</p>
+<p>比如python2中</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">A:</span>
+    <span class="n">def</span> <span class="n">__nonzero__</span>(<span class="k">self</span>):
+        <span class="nb">pass</span>
 </pre></div>
-<p>可以考虑使用<a href="www.virtualenv.org">virtualenv</a>创建的独立python环境。Python 3.5的<a href="https://docs.python.org/3.5/using/scripts.html#scripts-pyvenv">pyvenv</a>和virtualenv类似。</p>
-<h4 id="zhen-dui-windowshuan-jing-de-shuo-ming">针对windows环境的说明</h4>
-<ul>
-<li>1.安装python 3.5 </li>
-<li>2.在cmd.exe命令行下，使用pip命令安装
-    C:\Python35\scripts\pip.exe install selenium</li>
-</ul>
-<p>这样就可以运行python脚本，例如一个脚本放到C:\my_selenium_script.py,可以这样执行：</p>
-<div class="highlight"><pre><span></span>C:\Python35\python.exe C:\my_selenium_script.py
+<p>python3中改为：
+　
+    class A:
+        def <strong>bool</strong>(self)：
+            pass</p>
+<p>在布尔上下文使用一个类对象时，python3会调用__bool__().</p>
+<p>python2中:</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">A:</span>
+    <span class="n">def</span> <span class="n">__nonzero__</span>(<span class="k">self</span>, <span class="o">x</span>, <span class="n">y</span>):
+         <span class="nb">pass</span>
 </pre></div>
-<h4 id="xia-zai-selenium-server">下载Selenium server</h4>
-<p>Selenium server是一个Java程序。建议使用JRE1.6或以上版本运行Selenium server.
-可以从<a href="seleniumhq.org/download/">下载</a>下载Selenium server2.x,文件名类似selenium-server-standalone-2.x.x.jar.
-在此之前，确认系统中已经安装了ＪＲＥ。
-如果java支持，可以通过下面命令来启动Selenium server:
-    java -jar selenium-server-standalone-2.x.x.jar</p>
-<p>Top<a href="">^</a></p>
-<p>下一篇<a href="https://king32783784.github.io/2015/01/14/selenium/">selenium-专题２&gt;&gt;&gt;</a></p></body>
+<p>这种情况python3中不做改变，使用两个参数的__nonzero__()方法，2to3脚本会假设你定义的这个方法有其他用处，不做修改。</p>
+<h4 id="ba-jin-zhi-lei-xing">八进制类型</h4>
+<p>python2和python3，定义八进制数的语法有轻微的改变</p>
+<table class="table table-hover table-striped">
+<thead>
+<tr>
+<th>python2</th>
+<th>python3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x= 0755</td>
+<td>x = 0o755</td>
+</tr>
+</tbody>
+</table>
+<h4 id="sysmaxint">SYS.MAXINT</h4>
+<p>python3中长整型和整型被整合到一起，sys.maxint常量不再精确。但是因为这个值用于检查特定平台，所以被python3保留，重命名为sys.maxsize.</p>
+<h4 id="quan-ju-han-shu-callable">全局函数CALLABLE()</h4>
+<p>python２里，可以使用全局函数callable()来检查一个对象是否可调用，在python3中，这个全局函数被取消了，为了检查一个对象是否可调用，可以检查其特殊方法__call__()的存在性。</p>
+<table class="table table-hover table-striped">
+<thead>
+<tr>
+<th>python2</th>
+<th>python3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>callable(anthing)</td>
+<td>hasattr(anything, '__call__')</td>
+</tr>
+</tbody>
+</table>
+<h4 id="quan-ju-han-shu-zip">全局函数ZIP()</h4>
+<p>在python2，zip()可以使用任意多个序列作为参数，它返回一个由元组构成的列表。第一个元组包含了每个序列的第一个元素，第二个元组包含了每个序列的第二个元素，依次递推。在python３中返回一个迭代器，而非列表。</p>
+<table class="table table-hover table-striped">
+<thead>
+<tr>
+<th>python2</th>
+<th>python3</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>zip(a,b,c)</td>
+<td>list(zip(a,b,c)</td>
+<td>python3中可以通过list函数遍历zip()返回的迭代器，形成列表返回</td>
+</tr>
+<tr>
+<td>d.join(zip(a,b,c))</td>
+<td>no change</td>
+<td>在已经会遍历所有元素的上下文环境里，zip()本身返回的迭代器能够正常工作，2to3脚本检测到后，不再修改</td>
+</tr>
+</tbody>
+</table>
+<h4 id="standarderroryi-chang">STANDARDERROR异常</h4>
+<p>python2中，StandardError是除了StopIteration,GeneratorExit,KeyboardInterrupt, SystemExit之外所有其他内置异常的基类。python3中StandardError已经被取消了，使用Exception取代。</p>
+<h4 id="typesmo-kuai-zhong-de-chang-liang">TYPES模块中的常量</h4>
+<p>types模块里各种各样的常量能够帮助你决定一个对象的类型。在python2里，它包含了代表所有基本数据类型的常量，如dict和int。在python3里，这些常量被取消了，只需使用基础类型的名字来替代。</p>
+<table class="table table-hover table-striped">
+<thead>
+<tr>
+<th>python2</th>
+<th>python3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>types.UnicodeType</td>
+<td>str</td>
+</tr>
+<tr>
+<td>types.StringType</td>
+<td>bytes</td>
+</tr>
+<tr>
+<td>types.DictType</td>
+<td>dict</td>
+</tr>
+<tr>
+<td>types.IntType</td>
+<td>int</td>
+</tr>
+<tr>
+<td>types.LongType</td>
+<td>int</td>
+</tr>
+<tr>
+<td>types.ListType</td>
+<td>list</td>
+</tr>
+<tr>
+<td>types.NoneType</td>
+<td>type(None</td>
+</tr>
+<tr>
+<td>types.BooleanType</td>
+<td>bool</td>
+</tr>
+<tr>
+<td>types.BufferType</td>
+<td>memoryview</td>
+</tr>
+<tr>
+<td>types.ClassType</td>
+<td>type</td>
+</tr>
+<tr>
+<td>types.ComplexType</td>
+<td>complex</td>
+</tr>
+<tr>
+<td>types.EllipsisType</td>
+<td>type(Ellipsis)</td>
+</tr>
+<tr>
+<td>types.FloatType</td>
+<td>float</td>
+</tr>
+<tr>
+<td>types.ObjectType</td>
+<td>object</td>
+</tr>
+<tr>
+<td>types.NotImplementedType</td>
+<td>type(NotImplemented)</td>
+</tr>
+<tr>
+<td>types.SliceType</td>
+<td>slice</td>
+</tr>
+<tr>
+<td>types.TupleType</td>
+<td>tuple</td>
+</tr>
+<tr>
+<td>types.TypeType</td>
+<td>type</td>
+</tr>
+<tr>
+<td>types.XRangeType</td>
+<td>range</td>
+</tr>
+</tbody>
+</table>
+<h4 id="quan-ju-han-shu-isinstance">全局函数ISINSTANCE()</h4>
+<p>isinstance()函数检查一个对象是否是一个特定类(class)或类型(type)的实例。在python2，可以传递一个由类型构成的元组给isinstance(),如果该对象是元组里的任意一种类型，函数返回True. 在python3,依然可以这样做。</p>
+<table class="table table-hover table-striped">
+<thead>
+<tr>
+<th>python2</th>
+<th>python3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>isinstance(x, (int, float, int))</td>
+<td>isinstance(x, (int, float))</td>
+</tr>
+</tbody>
+</table>
+<h4 id="itertoolsmo-kuai">ITERTOOLS模块</h4>
+<p>python2.3引入itertools模块，定义了zip(),map(),filter()的变体，这个变体返回的是迭代器，而非列表。在python3,这些函数返回的本身就是迭代器，所有这些变体函数就取消了。</p>
+<h4 id="sysexc_typesysexc_valuesysexc_traceback">SYS.EXC_TYPE,SYS.EXC_VALUE,SYS.EXC_TRACEBACK</h4>
+<p>处理异常的时候，在sys模块里有三个你可以访问的变量：sys.exc_type, sys.exc_value, sys.exc_traceback. python3中这三个变量不再存在，使用sys.exc_info替代。</p>
+<h4 id="dui-yuan-zu-de-lie-biao-jie-xi">对元组的列表解析</h4>
+<p>python2，如果需要编写一个遍历元组的列表解析，不需要在元组值周围加上括号。在python3里，这些括号是必需的。</p>
+<table class="table table-hover table-striped">
+<thead>
+<tr>
+<th>python2</th>
+<th>python3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[ i for i in 1, 2]</td>
+<td>[i for i in (1,2)]</td>
+</tr>
+</tbody>
+</table>
+<h4 id="yuan-lei">元类</h4>
+<p>在python2里，可以通过在类的声明中定义metaclass参数，或者定义一个特殊的类级别(class-level)__metaclass__属性，来创建元类。python3中，__metaclass__属性被取消了。</p>
+<table class="table table-hover table-striped">
+<thead>
+<tr>
+<th>python2</th>
+<th>python3</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>class C(metaclass=PapayaMeta): pass</td>
+<td>unchanged</td>
+<td></td>
+</tr>
+<tr>
+<td>class Whip: __metaclass__ = PapayMeta</td>
+<td>class Whip(metaclass=PapayaMeta): pass</td>
+<td></td>
+</tr>
+<tr>
+<td>class C(Whipper, Beater): __metaclass__ = PapayaMeta</td>
+<td>class C(Whipper, Beater, metaclass=PapayMeta): pass</td>
+<td></td>
+</tr>
+</tbody>
+</table></body>
                 </div>
                 <footer class="text-right">
                     <p>by 李鹏</p>
@@ -487,7 +820,7 @@ Selenium&amp;python提供了直观的ＡＰＩ访问Selenium WebDrivers如firefo
             </div>
     <div id="scrollspy">
         <div class="col-lg-3 nav nav-stacked hidden-xs hidden-sm" data-spy="affix" data-offset-top="135">
-            <div id="toc"><ul><li><a class="toc-href" href="#" title="selenium-基本介绍">selenium-基本介绍</a><ul><li><a class="toc-href" href="#an-zhuang" title="安装">安装</a><ul><li><a class="toc-href" href="#jian-jie" title="简介">简介</a></li><li><a class="toc-href" href="#xia-zai-selenium-pythonzhi-chi-bao" title="下载Selenium python支持包">下载Selenium python支持包</a></li><li><a class="toc-href" href="#zhen-dui-windowshuan-jing-de-shuo-ming" title="针对windows环境的说明">针对windows环境的说明</a></li><li><a class="toc-href" href="#xia-zai-selenium-server" title="下载Selenium server">下载Selenium server</a></li></ul></li></ul></li></ul></div>
+            <div id="toc"><ul><li><a class="toc-href" href="#" title="Python-Tips(十二)">Python-Tips(十二)</a><ul><li><a class="toc-href" href="#tips-27" title="Tips 27">Tips 27</a><ul><li><a class="toc-href" href="#raw_inputhe-input" title="RAW_INPUT()和INPUT()">RAW_INPUT()和INPUT()</a></li><li><a class="toc-href" href="#han-shu-shu-xing-func_" title="函数属性FUNC_*">函数属性FUNC_*</a></li><li><a class="toc-href" href="#iofang-fa-xreadlines" title="I/O方法XREADLINES()">I/O方法XREADLINES()</a></li><li><a class="toc-href" href="#lambdahan-shu" title="lambda函数">lambda函数</a></li><li><a class="toc-href" href="#te-shu-de-fang-fa-shu-xing" title="特殊的方法属性">特殊的方法属性</a></li><li><a class="toc-href" href="#__nonzero__te-shu-fang-fa" title="__NONZERO__特殊方法">__NONZERO__特殊方法</a></li><li><a class="toc-href" href="#ba-jin-zhi-lei-xing" title="八进制类型">八进制类型</a></li><li><a class="toc-href" href="#sysmaxint" title="SYS.MAXINT">SYS.MAXINT</a></li><li><a class="toc-href" href="#quan-ju-han-shu-callable" title="全局函数CALLABLE()">全局函数CALLABLE()</a></li><li><a class="toc-href" href="#quan-ju-han-shu-zip" title="全局函数ZIP()">全局函数ZIP()</a></li><li><a class="toc-href" href="#standarderroryi-chang" title="STANDARDERROR异常">STANDARDERROR异常</a></li><li><a class="toc-href" href="#typesmo-kuai-zhong-de-chang-liang" title="TYPES模块中的常量">TYPES模块中的常量</a></li><li><a class="toc-href" href="#quan-ju-han-shu-isinstance" title="全局函数ISINSTANCE()">全局函数ISINSTANCE()</a></li><li><a class="toc-href" href="#itertoolsmo-kuai" title="ITERTOOLS模块">ITERTOOLS模块</a></li><li><a class="toc-href" href="#sysexc_typesysexc_valuesysexc_traceback" title="SYS.EXC_TYPE,SYS.EXC_VALUE,SYS.EXC_TRACEBACK">SYS.EXC_TYPE,SYS.EXC_VALUE,SYS.EXC_TRACEBACK</a></li><li><a class="toc-href" href="#dui-yuan-zu-de-lie-biao-jie-xi" title="对元组的列表解析">对元组的列表解析</a></li><li><a class="toc-href" href="#yuan-lei" title="元类">元类</a></li></ul></li></ul></li></ul></div>
         </div>
     </div>
         </div>
@@ -535,8 +868,8 @@ Selenium&amp;python提供了直观的ＡＰＩ访问Selenium WebDrivers如firefo
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
     var disqus_shortname = 'True'; // required: replace example with your forum shortname
 
-            var disqus_identifier = 'selenium';
-        var disqus_url = '../../../../2015/01/13/selenium/';
+            var disqus_identifier = 'python';
+        var disqus_url = '../../../../2014/05/28/python/';
 
     var disqus_config = function () {
         this.language = "zh";

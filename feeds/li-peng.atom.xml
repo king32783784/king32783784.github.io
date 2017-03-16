@@ -2911,7 +2911,7 @@ Empty &lt;span class="nb"&gt;test&lt;/span&gt; ID. A &lt;span class="nb"&gt;test
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +
@@ -3191,7 +3191,7 @@ JOB HTML   : /home/&amp;lt;user&amp;gt;/avocado/job-results/job-&amp;lt;date&amp
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +
@@ -14406,7 +14406,947 @@ Top:&lt;/p&gt;
 &lt;p&gt;压力测试是一种破坏性的测试，即系统在非正常的、超负荷的条件下的运行情况 。用来评估在超越最大负载的情况下系统将如何运行，是系统在正常的情况下对某种负载强度的承受能力的考验 。&lt;/p&gt;
 &lt;p&gt;为什么要进行压力测试？&lt;/p&gt;
 &lt;p&gt;通常我们用压力测试来判断系统的稳定性和可靠性。&lt;/p&gt;
-&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</summary><category term="LTP"></category></entry><entry><title>Python-Tips(十一)</title><link href="http://king32783784.github.io/2014/05/27/python/" rel="alternate"></link><published>2014-05-27T00:00:00+08:00</published><author><name>李鹏</name></author><id>tag:king32783784.github.io,2014-05-27:2014/05/27/python/</id><summary type="html">&lt;/head&gt;&lt;body&gt;&lt;h3 id="tips-27"&gt;Tips 27&lt;/h3&gt;
+&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</summary><category term="LTP"></category></entry><entry><title>Python-Tips(十三)</title><link href="http://king32783784.github.io/2014/05/31/python/" rel="alternate"></link><published>2014-05-31T00:00:00+08:00</published><author><name>李鹏</name></author><id>tag:king32783784.github.io,2014-05-31:2014/05/31/python/</id><summary type="html">&lt;/head&gt;&lt;body&gt;&lt;h3 id="tips-28"&gt;Tips 28&lt;/h3&gt;
+&lt;p&gt;python类中包含很多特殊方法，这些方法让类用起来如同序列、字典、函数、迭代器，甚至像个数字。&lt;/p&gt;
+&lt;h4 id="ji-chu-zhi-shi"&gt;基础知识&lt;/h4&gt;
+&lt;p&gt;最常见的就是__init__()。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;序号&lt;/th&gt;
+&lt;th&gt;目的&lt;/th&gt;
+&lt;th&gt;代码&lt;/th&gt;
+&lt;th&gt;python内部调用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;初始化一个实例&lt;/td&gt;
+&lt;td&gt;x = MyClass()&lt;/td&gt;
+&lt;td&gt;x.__init__()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;字符串的“官方”表现形式&lt;/td&gt;
+&lt;td&gt;repr(x)&lt;/td&gt;
+&lt;td&gt;x.__repr__()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;字符串的“非正式"值&lt;/td&gt;
+&lt;td&gt;str(x)&lt;/td&gt;
+&lt;td&gt;x.__str__()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;字节数组的”非正式“值&lt;/td&gt;
+&lt;td&gt;bytes(x)&lt;/td&gt;
+&lt;td&gt;x.__bytes__()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;格式化字符串的值&lt;/td&gt;
+&lt;td&gt;format(x, format_spec)&lt;/td&gt;
+&lt;td&gt;x.__format__(format_spec)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;1.对__init__()方法调用发生在实例被创建之后。如果要控制实际创建进程，请使用__new__方法。
+2.__repr__()方法返回的字符串为合法的python表达式
+3.在调用print(x)的同时调用了__str__()方法&lt;/p&gt;
+&lt;h4 id="xing-wei-fang-shi-he-die-dai-qi-lei-si-de-lei"&gt;行为方式和迭代器类似的类&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;序号&lt;/th&gt;
+&lt;th&gt;目的&lt;/th&gt;
+&lt;th&gt;编写的代码&lt;/th&gt;
+&lt;th&gt;python的实际调用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;遍历每个序列&lt;/td&gt;
+&lt;td&gt;iter(seq)&lt;/td&gt;
+&lt;td&gt;seq.__iter__()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;迭代器取下一个值&lt;/td&gt;
+&lt;td&gt;next(seq)&lt;/td&gt;
+&lt;td&gt;seq.__next__()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;按逆序创建一个迭代器&lt;/td&gt;
+&lt;td&gt;reversed(seq)&lt;/td&gt;
+&lt;td&gt;seq.__reversed__()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;1.无论何时创建迭代器都将调用__iter__()方法。这是用初始值对迭代器进行初始化的绝佳之处。
+2.无论何时从迭代器中获取下一个值都将调用__next__()方法。
+3.__reversed__()方法并不常用。它以一个现有序列为参数，并将该序列中所有元素从尾到头以逆序生成一个新的迭代器。&lt;/p&gt;
+&lt;h4 id="shu-xing"&gt;属性&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;序号&lt;/th&gt;
+&lt;th&gt;目的&lt;/th&gt;
+&lt;th&gt;编写的代码&lt;/th&gt;
+&lt;th&gt;python 实际调用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;获取一个属性&lt;/td&gt;
+&lt;td&gt;x.my_property&lt;/td&gt;
+&lt;td&gt;x.__getattribute__('my_property')&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;获取一个属性（备用)&lt;/td&gt;
+&lt;td&gt;x.my_property&lt;/td&gt;
+&lt;td&gt;x.__getattr__('my_property')&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;设置某属性&lt;/td&gt;
+&lt;td&gt;x.my_property = value&lt;/td&gt;
+&lt;td&gt;x.__setattr__('my_property', value)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;删除某属性&lt;/td&gt;
+&lt;td&gt;del x.myproperty&lt;/td&gt;
+&lt;td&gt;x.__delattr__('my_property')&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;列出所有属性和方法&lt;/td&gt;
+&lt;td&gt;dir(x)&lt;/td&gt;
+&lt;td&gt;x.__dir__()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;1.如果类定义了__getattribute__()方法，在每次引用属性或方法名称时python都调用它（特殊方法名称除外，因为会导致无限循环）
+2.如果类定义了__getattr__()方法，python在正常位置查询属性时才会调用。
+3.无论何时给属性赋值，都会调用__setattr__()
+4.删除属性时，会调用__delattr__()
+5.如果定义了__getattr__()或__getattribute__()，__dir__()方法将会非常有用&lt;/p&gt;
+&lt;p&gt;__getattr__()和__getattribute__()方法的区别非常细微，但非常重要。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;Dynamo:&lt;/span&gt;
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;__getattr__&lt;/span&gt;(&lt;span class="k"&gt;self&lt;/span&gt;, &lt;span class="nb"&gt;key&lt;/span&gt;):
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;key&lt;/span&gt; == &lt;span class="s"&gt;'color'&lt;/span&gt;:
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s"&gt;'PapayaWhip'&lt;/span&gt; &lt;span class="c c-Singleline"&gt;# 属性名称以字符串的形式传入__getattr()__方法&lt;/span&gt;
+        &lt;span class="n"&gt;else:&lt;/span&gt;　　　　　　　　&lt;span class="c c-Singleline"&gt;# 如果属性名称未知，触发异常&lt;/span&gt;
+            &lt;span class="n"&gt;raise&lt;/span&gt; &lt;span class="n"&gt;AttributeError&lt;/span&gt;
+&amp;gt;&amp;gt;&amp;gt; &lt;span class="n"&gt;dyn&lt;/span&gt; = &lt;span class="n"&gt;Dynamo&lt;/span&gt;()
+&amp;gt;&amp;gt;&amp;gt; &lt;span class="n"&gt;dyn&lt;/span&gt;.&lt;span class="n"&gt;color&lt;/span&gt;  &lt;span class="c c-Singleline"&gt;# dyn没有名为color的属性，获取时将调用__getattr__()&lt;/span&gt;
+ &lt;span class="s"&gt;'PapayaWhip'&lt;/span&gt;
+&amp;gt;&amp;gt;&amp;gt; &lt;span class="n"&gt;dyn&lt;/span&gt;.&lt;span class="n"&gt;color&lt;/span&gt; = &lt;span class="s"&gt;'LemonChiffon'&lt;/span&gt; &lt;span class="c c-Singleline"&gt;# 显示的设置了color属性后，不再调用__getattr__方法。&lt;/span&gt;
+&amp;gt;&amp;gt;&amp;gt; &lt;span class="n"&gt;dyn&lt;/span&gt;.&lt;span class="n"&gt;color&lt;/span&gt;
+ &lt;span class="s"&gt;'LemonChiffon'&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;另一方面，__getattribute__()方法是直接的，无条件的。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;SuperDynamo:&lt;/span&gt;
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;__getattribute__&lt;/span&gt;(&lt;span class="k"&gt;self&lt;/span&gt;, &lt;span class="nb"&gt;key&lt;/span&gt;):
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;key&lt;/span&gt; == &lt;span class="s"&gt;'color'&lt;/span&gt;:
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s"&gt;'PapayaWhip'&lt;/span&gt;
+        &lt;span class="n"&gt;else:&lt;/span&gt;
+            &lt;span class="n"&gt;raise&lt;/span&gt; &lt;span class="n"&gt;AttributeError&lt;/span&gt;
+&amp;gt;&amp;gt;&amp;gt; &lt;span class="n"&gt;dyn&lt;/span&gt; = &lt;span class="n"&gt;SuperDynamo&lt;/span&gt;()
+&amp;gt;&amp;gt;&amp;gt; &lt;span class="n"&gt;dyn&lt;/span&gt;.&lt;span class="n"&gt;color&lt;/span&gt; &lt;span class="c c-Singleline"&gt;# 直接调用__getattribute__()，返回color&lt;/span&gt;
+ &lt;span class="s"&gt;'PapayaWhip'&lt;/span&gt;
+&amp;gt;&amp;gt;&amp;gt; &lt;span class="n"&gt;dyn&lt;/span&gt;.&lt;span class="n"&gt;color&lt;/span&gt; = &lt;span class="s"&gt;'LemonChiffon'&lt;/span&gt;
+&amp;gt;&amp;gt;&amp;gt; &lt;span class="n"&gt;dyn&lt;/span&gt;.&lt;span class="n"&gt;color&lt;/span&gt;  &lt;span class="c c-Singleline"&gt;# 虽然显示的设置了color属性，但仍然会调用__getattribute__()&lt;/span&gt;
+ &lt;span class="s"&gt;'PapayaWhip'&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;如果定义了类的__getattribute__()方法，你可能还想定义一个__setattr__()方法，需要两则之间进行协同，以跟踪属性的值。
+必须特别小心__getattribute__()方法，因为python在查找类的方法名称时也将对其进行调用&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;Rastan:&lt;/span&gt;
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;__getattribute__&lt;/span&gt;(&lt;span class="k"&gt;self&lt;/span&gt;, &lt;span class="nb"&gt;key&lt;/span&gt;):
+        &lt;span class="n"&gt;raise&lt;/span&gt; &lt;span class="n"&gt;AttributeError&lt;/span&gt;  &lt;span class="c c-Singleline"&gt;# 定义了一个总是触发异常的__getattribute__方法&lt;/span&gt;
+
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;swim&lt;/span&gt;(&lt;span class="k"&gt;self&lt;/span&gt;)：
+        &lt;span class="nb"&gt;pass&lt;/span&gt;
+
+&amp;gt;&amp;gt;&amp;gt; &lt;span class="n"&gt;hero&lt;/span&gt; = &lt;span class="n"&gt;Rastan&lt;/span&gt;()
+&amp;gt;&amp;gt;&amp;gt; &lt;span class="n"&gt;hero&lt;/span&gt;.&lt;span class="n"&gt;swim&lt;/span&gt;() &lt;span class="c c-Singleline"&gt;# 调用hero.swim()时，python将在Rastan类查找swim()方法。该查找将执行整个__getattribute__()方法，因为所有的属性和方法查找都通过__getattribute__()方法。&lt;/span&gt;
+&lt;span class="n"&gt;Traceback&lt;/span&gt; (&lt;span class="n"&gt;most&lt;/span&gt; &lt;span class="n"&gt;recent&lt;/span&gt; &lt;span class="n"&gt;call&lt;/span&gt; &lt;span class="k"&gt;last&lt;/span&gt;):
+&lt;span class="n"&gt;File&lt;/span&gt; &lt;span class="s"&gt;"&amp;lt;stdin&amp;gt;"&lt;/span&gt;, &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;, &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="s"&gt;&amp;lt;module&amp;gt;&lt;/span&gt;
+&lt;span class="n"&gt;File&lt;/span&gt; &lt;span class="s"&gt;"&amp;lt;stdin&amp;gt;"&lt;/span&gt;, &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;, &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;__getattribute__&lt;/span&gt;
+&lt;span class="n"&gt;AttributeError&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h4 id="xing-wei-fang-shi-he-han-shu-lei-si-de-lei"&gt;行为方式和函数类似的类&lt;/h4&gt;
+&lt;p&gt;可以让类的实例变得可调用-就想函数可以调用一样-通过定义__call__()方法&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;序号&lt;/th&gt;
+&lt;th&gt;目的&lt;/th&gt;
+&lt;th&gt;编写代码&lt;/th&gt;
+&lt;th&gt;Python实际调用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;像调用函数一样使用实例&lt;/td&gt;
+&lt;td&gt;my_instance()&lt;/td&gt;
+&lt;td&gt;my_instance.__call__()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id="xing-wei-he-xu-lie-lei-si-de-lei"&gt;行为和序列类似的类&lt;/h4&gt;
+&lt;p&gt;如果类作为一系列值的容器出现，可以通过下面方法，让其的行为方式和序列类似。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;目的&lt;/th&gt;
+&lt;th&gt;代码&lt;/th&gt;
+&lt;th&gt;python实际调用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;序列的长度&lt;/td&gt;
+&lt;td&gt;len(seq)&lt;/td&gt;
+&lt;td&gt;seq.__len__()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;判断序列是否包含指定的值&lt;/td&gt;
+&lt;td&gt;x in seq&lt;/td&gt;
+&lt;td&gt;seq.__contains__(x)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id="xing-wei-he-zi-dian-lei-si-de-lei"&gt;行为和字典类似的类&lt;/h4&gt;
+&lt;p&gt;类可以像字典一样根据键来返回值&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;目的&lt;/th&gt;
+&lt;th&gt;代码&lt;/th&gt;
+&lt;th&gt;python实际调用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;通过键来获取值&lt;/td&gt;
+&lt;td&gt;x[key]&lt;/td&gt;
+&lt;td&gt;x.__getitem__(key)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;通过键来设置值&lt;/td&gt;
+&lt;td&gt;x[key] = value&lt;/td&gt;
+&lt;td&gt;x.__setitem__(key, value)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;删除一个键值对&lt;/td&gt;
+&lt;td&gt;del x[key]&lt;/td&gt;
+&lt;td&gt;x.__delitem__(key)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;为缺失键提供默认值&lt;/td&gt;
+&lt;td&gt;x[nonexistent_key]&lt;/td&gt;
+&lt;td&gt;x.__missing__(nonexistent_key)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id="xing-wei-he-shu-zhi-lei-si-de-lei"&gt;行为和数值类似的类&lt;/h4&gt;
+&lt;p&gt;使用适当的特殊方法，可以将类的行为定义为与数字相仿。也就是说，可以进行相加、相减、及其他运算，Fraction类就实现了这些特殊方法：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;fractions&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Fraction&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Fraction&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;
+&lt;span class="n"&gt;Fraction&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;9&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;| 目的 | 编写的代码 |  python实际调用 |
+| 加法 | x + y      | x.__add__(y) |
+| 减法 | x - y      | x.__sub__(y) |
+| 乘法 | x * y      | x.__mul__(y) |
+| 除法 | x / y      | x.__truediv__(y) |
+| 地板除 | x//y     | x.__fooldiv__(y) |
+| 取余 | x % y      | x.__mod__(y) |
+| 地板除&amp;amp;取余 | divmod(x,y) | x.__divmod__(y)|
+| 乘幂 | x ** y | x.__pow__(y) |
+| 左移位 | x &amp;lt;&amp;lt; y | x.__lshift__(y) |
+| 右移位 | x &amp;gt;&amp;gt; y | x.__rshift__(y) |
+| 按位与 | x &amp;amp; y | x.__and__(y) |
+| 按位异或 | x^y | x.__xor__(y) |
+| 按位或 | x | y | x.__or__(y) |&lt;/p&gt;
+&lt;p&gt;前面是第一个的操作数调用对应函数，第二个操作数作为参数，下面的特殊方法集合，是第二个操作数调用方法，第一个操作数作为参数。&lt;/p&gt;
+&lt;p&gt;| 目的  |  代码    | python 调用 |
+| +    | x + y     | y.__radd__(x) |
+| -    | x - y     | y.__rsub__(x) |
+| *    | x * y     | y.__rmul__(x) |
+| /    | x / y     | y.__rturediv__(x) |
+| //   | x // y    | y.__rfloordiv__(x) |
+| %    | x % y     | y.__rmod__(x) |
+|// &amp;amp; % | divmod(x,y) | y.__rdivmod__(x) |
+| &lt;strong&gt;   |   x &lt;/strong&gt; y |  y.__rpow__(x) |
+| &amp;lt;&amp;lt; | x &amp;lt;&amp;lt; y | y.__rlshift__(x) |
+| &amp;gt;&amp;gt; | x &amp;gt;&amp;gt; y | y.__rrshift__(x) |
+| &amp;amp; | x &amp;amp; y | y.__rand__(x)|
+| ^ | x ^ y | y.__rxor__(x) |
+| 或 | x or y | y.__ror__(x) |&lt;/p&gt;
+&lt;p&gt;如果原地操作呢？x += 3&lt;/p&gt;
+&lt;p&gt;| 代码 | python实际调用 |
+| x += y | x.__iadd__(y) |
+| x -= y | x.__isub__(y) |
+| x *= y | x.__imul__(y) |
+| x /= y | x.__iturediv__(y) |
+| x //= y | x.__ifloordiv__(y) |
+| x %= y | x.__imod__(y) |
+| x **= y | x.__ipow__(y) |
+| x &amp;lt;&amp;lt;= y | x.__ilshift__(y) |
+| x &amp;gt;&amp;gt;= y | x.__irshift__(y) | 
+| x &amp;amp;= y | x.__iland__(y) |
+| x ^= y | x.__ixor__(y) |
+| x |= y | x.__ior__(y) |&lt;/p&gt;
+&lt;p&gt;还有一些一元运算符，可以对“类-数字”对象自己执行。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;目的&lt;/th&gt;
+&lt;th&gt;代码&lt;/th&gt;
+&lt;th&gt;python实际调用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;正数&lt;/td&gt;
+&lt;td&gt;+x&lt;/td&gt;
+&lt;td&gt;x.__pos__()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;绝对值&lt;/td&gt;
+&lt;td&gt;abs(x)&lt;/td&gt;
+&lt;td&gt;x.__abs__()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;取反&lt;/td&gt;
+&lt;td&gt;~x&lt;/td&gt;
+&lt;td&gt;x.__invert__()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;复数&lt;/td&gt;
+&lt;td&gt;complex(x)&lt;/td&gt;
+&lt;td&gt;x.__complex__()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;整数转换&lt;/td&gt;
+&lt;td&gt;int(x)&lt;/td&gt;
+&lt;td&gt;x.__int__()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;浮点数&lt;/td&gt;
+&lt;td&gt;float(x)&lt;/td&gt;
+&lt;td&gt;x.__float__()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;四舍五入整数&lt;/td&gt;
+&lt;td&gt;round(x)&lt;/td&gt;
+&lt;td&gt;x.__round__()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;四舍五入至n位小数&lt;/td&gt;
+&lt;td&gt;round(x, n)&lt;/td&gt;
+&lt;td&gt;x.__round__(n)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;gt;= x的最小整数&lt;/td&gt;
+&lt;td&gt;math.ceil(x)&lt;/td&gt;
+&lt;td&gt;x.__ceil__()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;lt;= x的最大整数&lt;/td&gt;
+&lt;td&gt;math.floor(x)&lt;/td&gt;
+&lt;td&gt;x.__floor__()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;对x朝向０取整&lt;/td&gt;
+&lt;td&gt;math.trunc(x)&lt;/td&gt;
+&lt;td&gt;x.__trunc__()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;作为索引的数字&lt;/td&gt;
+&lt;td&gt;a_list[x]&lt;/td&gt;
+&lt;td&gt;a_list[x.__index__()]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id="ke-bi-jiao-de-lei"&gt;可比较的类&lt;/h4&gt;
+&lt;p&gt;许多数据类型都可以进行比较，可以使用以下特殊方法来实现。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;目的&lt;/th&gt;
+&lt;th&gt;代码实现&lt;/th&gt;
+&lt;th&gt;python实际调用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;相等&lt;/td&gt;
+&lt;td&gt;x == y&lt;/td&gt;
+&lt;td&gt;x.__eq__(y)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;不相等&lt;/td&gt;
+&lt;td&gt;x!= y&lt;/td&gt;
+&lt;td&gt;x.__ne__(y)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;小于&lt;/td&gt;
+&lt;td&gt;x &amp;lt; y&lt;/td&gt;
+&lt;td&gt;x.__lt__(y)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;小于或等于&lt;/td&gt;
+&lt;td&gt;x &amp;lt;= y&lt;/td&gt;
+&lt;td&gt;x.__le__(y)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;大于&lt;/td&gt;
+&lt;td&gt;x&amp;gt;y&lt;/td&gt;
+&lt;td&gt;x.__gt__(y)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;大于或等于&lt;/td&gt;
+&lt;td&gt;x &amp;gt;= y&lt;/td&gt;
+&lt;td&gt;x.__ge__(y)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;布尔上下文环境的真值&lt;/td&gt;
+&lt;td&gt;if x :&lt;/td&gt;
+&lt;td&gt;x.__bool__()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id="ke-xu-lie-hua-de-lei"&gt;可序列化的类&lt;/h4&gt;
+&lt;p&gt;python支持任意对象的可序列化和反序列化。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;目的&lt;/th&gt;
+&lt;th&gt;代码&lt;/th&gt;
+&lt;th&gt;python实际调用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;自定义对象的复制&lt;/td&gt;
+&lt;td&gt;copy.copy(x)&lt;/td&gt;
+&lt;td&gt;x.__copy__()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;自定义对象的深度复制&lt;/td&gt;
+&lt;td&gt;copy.deepcopy(x)&lt;/td&gt;
+&lt;td&gt;x.__deepcopy__()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;在pickling之前获取对象的状态&lt;/td&gt;
+&lt;td&gt;pickle.dump(x, file)&lt;/td&gt;
+&lt;td&gt;x.__getstate__()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;序列化某对象&lt;/td&gt;
+&lt;td&gt;pickle.dump(x, file)&lt;/td&gt;
+&lt;td&gt;x.__reduce__()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;序列化某对象(新pickling协议)&lt;/td&gt;
+&lt;td&gt;pickle.dump(x,file, protocol_version)&lt;/td&gt;
+&lt;td&gt;x.__reduce_ex__(protocol_verion)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;控制unpickling过程中对象的创建方式&lt;/td&gt;
+&lt;td&gt;x = pickle.load(file)&lt;/td&gt;
+&lt;td&gt;x.__getnewargs__()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;在unpickling之后还原对象的状态&lt;/td&gt;
+&lt;td&gt;x = pickle.load(file)&lt;/td&gt;
+&lt;td&gt;x.__setstate__()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id="ke-zai-withyu-kuai-zhong-shi-yong-de-lei"&gt;可在WITH语块中使用的类&lt;/h4&gt;
+&lt;p&gt;with语块定义了运行时刻上下文环境；在执行with语句时将“进入”该上下文环境，而执行该语块中的最后一条语句将“退出"该上下文环境。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;目的&lt;/th&gt;
+&lt;th&gt;代码&lt;/th&gt;
+&lt;th&gt;python实际调用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;进入with语块时进行一些特别操作&lt;/td&gt;
+&lt;td&gt;with x：&lt;/td&gt;
+&lt;td&gt;x.__enter__()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;在退出with语块时进行一些特别操作&lt;/td&gt;
+&lt;td&gt;with x:&lt;/td&gt;
+&lt;td&gt;x.__exit__()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;以下是with　file习惯用法的运作方式：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;def _checkClosed(self, msg=None):
+    if self.closed:
+        raise ValueError('I/O operation on closed file.'
+                          if msg is None else msg)
+def __enter__(self):
+    self._checkClosed()
+    return self
+
+def __exit__(self, *args):
+    self.close()
+
+该文件对象同时定义了一个__enter__()和一个__exit__()方法。该__enter__()方法检查文件是否处于打开状态；如果没有,_checkClosed方法触发一个例外
+__enter__方法将始终返回self，这是with语块将用于调用属性和方法的对象。
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;在with语块结束后，文件对象将自动关闭&lt;/p&gt;
+&lt;h4 id="qi-ta"&gt;其他&lt;/h4&gt;
+&lt;p&gt;如果知道自己在做什么，几乎可以完全控制类是如何比较的、属性如何定义，以及类的子类是何种类型。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;目的&lt;/th&gt;
+&lt;th&gt;代码&lt;/th&gt;
+&lt;th&gt;python实际调用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;类构造器&lt;/td&gt;
+&lt;td&gt;x=MyClass()&lt;/td&gt;
+&lt;td&gt;x.__new__()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;类析构器&lt;/td&gt;
+&lt;td&gt;del x&lt;/td&gt;
+&lt;td&gt;x.__del__()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;只定义特定集合的某些特性&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;x.__slots__()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;自定义散列值&lt;/td&gt;
+&lt;td&gt;hash(x)&lt;/td&gt;
+&lt;td&gt;x.__hash__()&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;获取某个属性的值&lt;/td&gt;
+&lt;td&gt;x.color&lt;/td&gt;
+&lt;td&gt;type(x).__dict__['color'].__get__(x,type(x))&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;设置某个属性的值&lt;/td&gt;
+&lt;td&gt;x.color = 'PapayWhip'&lt;/td&gt;
+&lt;td&gt;type(x).__dict__['color'].__set__(x, 'PapayaWhip')&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;删除某个属性&lt;/td&gt;
+&lt;td&gt;del x.color&lt;/td&gt;
+&lt;td&gt;type(x).__dict__['color'].__del__(x)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;控制某个对象是否该对象的实例&lt;/td&gt;
+&lt;td&gt;isinstance(x, MyClass)&lt;/td&gt;
+&lt;td&gt;MyClass.__instancecheck__(x)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;控制某个类是否是该类的子类&lt;/td&gt;
+&lt;td&gt;issubclass(C,MyClass)&lt;/td&gt;
+&lt;td&gt;MyClass.__subclasscheck__(C)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;控制某个类是否是该抽象基类的子类&lt;/td&gt;
+&lt;td&gt;issubclass(C, MyABC)&lt;/td&gt;
+&lt;td&gt;MyABC.__subclasshook__(C)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</summary><category term="Python-tips"></category></entry><entry><title>Python-Tips(十二)</title><link href="http://king32783784.github.io/2014/05/28/python/" rel="alternate"></link><published>2014-05-28T00:00:00+08:00</published><author><name>李鹏</name></author><id>tag:king32783784.github.io,2014-05-28:2014/05/28/python/</id><summary type="html">&lt;/head&gt;&lt;body&gt;&lt;h3 id="tips-27"&gt;Tips 27&lt;/h3&gt;
+&lt;p&gt;本文继续上一个tips，python2与python3的差异。&lt;/p&gt;
+&lt;h4 id="raw_inputhe-input"&gt;RAW_INPUT()和INPUT()&lt;/h4&gt;
+&lt;p&gt;python2有两个全局函数，用在命令行请求用户输入。第一个叫input()，它等待用户输入一个python表达式(然后返回结果)。第二个叫做raw_input(),用户输入什么他就返回什么。python3 通过input替代了他们。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;python2&lt;/th&gt;
+&lt;th&gt;python3&lt;/th&gt;
+&lt;th&gt;备注&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;raw_input()&lt;/td&gt;
+&lt;td&gt;input&lt;/td&gt;
+&lt;td&gt;input替代了raw_input&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;raw_input('prompt')&lt;/td&gt;
+&lt;td&gt;input('prompt')&lt;/td&gt;
+&lt;td&gt;python3仍然支持提示符参数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;input()&lt;/td&gt;
+&lt;td&gt;eval(input))&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id="han-shu-shu-xing-func_"&gt;函数属性FUNC_*&lt;/h4&gt;
+&lt;p&gt;python2,函数的代码可用访问到函数本身的特殊属性。python3为了一致性，这些特殊属性被重命名了。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;python2&lt;/th&gt;
+&lt;th&gt;python3&lt;/th&gt;
+&lt;th&gt;备注&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;a_function.func_name&lt;/td&gt;
+&lt;td&gt;a_function.__name__&lt;/td&gt;
+&lt;td&gt;__name__属性包含了函数的名字&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;a_function.func_doc&lt;/td&gt;
+&lt;td&gt;a_function.__doc__&lt;/td&gt;
+&lt;td&gt;__doc__包含了函数源代码定义的文档字符串&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;a_function.func_defaults&lt;/td&gt;
+&lt;td&gt;a_function.__defaults__&lt;/td&gt;
+&lt;td&gt;是一个保存参数默认值的元组&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;a_function.func_dict&lt;/td&gt;
+&lt;td&gt;a_function.__dict__&lt;/td&gt;
+&lt;td&gt;__dict__属性是一个支持任意函数属性的名字空间&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;a_function.func_closure&lt;/td&gt;
+&lt;td&gt;a_function.__closure__&lt;/td&gt;
+&lt;td&gt;__closure__属性是由cell对象组成的元组，包含了函数对自由变量的绑定&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;a_function.func_globals&lt;/td&gt;
+&lt;td&gt;a_function.__globals__&lt;/td&gt;
+&lt;td&gt;是对模块全局名字空间的引用&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;a_function.func_code&lt;/td&gt;
+&lt;td&gt;a_function.__code__&lt;/td&gt;
+&lt;td&gt;是一个代码对象，表示编译后的函数体&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id="iofang-fa-xreadlines"&gt;I/O方法XREADLINES()&lt;/h4&gt;
+&lt;p&gt;python2中，文件对象有一个xreadlines()方法，返回一个迭代器，一次读取文件的一行。这在for循环中尤其实用。python3中，xreadlines()方法不再可用。&lt;/p&gt;
+&lt;h4 id="lambdahan-shu"&gt;lambda函数&lt;/h4&gt;
+&lt;p&gt;在python2中，可以定义匿名函数lambda函数，通过指定作为参数的元组的元素个数，使这个函数实际上能够接收多个参数。python2的解释器把这个元组"解开“成命名参数，然后可以在lambda函数里引用它们。在python3中仍然可以传递一个元组为lambda函数的参数。但是python解释器不会把它当成解析成命名参数。需要通过位置索引来引用每个参数。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;python2&lt;/th&gt;
+&lt;th&gt;python3&lt;/th&gt;
+&lt;th&gt;备注&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;lambda (x,): x + f(x)&lt;/td&gt;
+&lt;td&gt;lambda x1 : x1[0] + f(x1[0])&lt;/td&gt;
+&lt;td&gt;注１&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;lambda (x,y): x + f(y)&lt;/td&gt;
+&lt;td&gt;lambda x_y : x_y[0] + f(x_y[1])&lt;/td&gt;
+&lt;td&gt;注２&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;lambda (x,(y,z)): x + y + z&lt;/td&gt;
+&lt;td&gt;lambda x_y_z: x_y_z[0] + x_y_z[1][0]+ x_y_z[1][1]&lt;/td&gt;
+&lt;td&gt;注３&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;lambda x,y,z: x+y+z&lt;/td&gt;
+&lt;td&gt;unchanged&lt;/td&gt;
+&lt;td&gt;注４&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;注１：如果定义了一个lambda函数，使用包含一个元素的元组作为参数，python3中，会被转换成一个包含到x1[0]的引用的lambda函数。x1是2to3脚本基于原来元组里的命名参数自动生成的。&lt;/p&gt;
+&lt;p&gt;注２：使用含有两个元素的元组(x,y)作为参数的lambda函数被转换为x_y,它有两个位置参数，即x_y[0]和x_y[1]&lt;/p&gt;
+&lt;p&gt;注３：2to3脚本可以处理使用嵌套命名参数的元组作为参数的lambda函数。产生的结果有点晦涩，但python3下和python2的效果是一样的。&lt;/p&gt;
+&lt;p&gt;注４：可以定义使用多个参数的lambda函数。语法在python3同样有效&lt;/p&gt;
+&lt;h4 id="te-shu-de-fang-fa-shu-xing"&gt;特殊的方法属性&lt;/h4&gt;
+&lt;p&gt;在python2里，类方法可以访问到定义他们的类对象,也能访问方法对象本身。im_self是类的实例对象；im_func是函数对象，im_class是类本身。在python3里，这些属性被重命名，以遵循其他属性的命名约定。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;python2&lt;/th&gt;
+&lt;th&gt;python3&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;aClassInstance.aClassMethod.im_func&lt;/td&gt;
+&lt;td&gt;aClassInstance.aClassMethod.__func__&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;aClassInstance.aClassMethod.im_self&lt;/td&gt;
+&lt;td&gt;aClassInstance.aClassMethod.__self__&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;aClassInstance.aClassMethod.im_class&lt;/td&gt;
+&lt;td&gt;aClassInstance.aClassMethod.__self__.__class__&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id="__nonzero__te-shu-fang-fa"&gt;__NONZERO__特殊方法&lt;/h4&gt;
+&lt;p&gt;在python2里，可以创建自己的类，并使他们能够在布尔上下文中使用。举例来说，可以实例化这个类，并把这个实例对象用在一个if语句中。为了实现这个目的，可以定义一个特别的__nonzero__()方法，它的返回值为True或False,当实例对象处在布尔上下文中的时候这个方法就会被调用。在python3中，仍然可以完成同样的功能，但这个特殊方法的名字改为了__bool__()&lt;/p&gt;
+&lt;p&gt;比如python2中&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;A:&lt;/span&gt;
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;__nonzero__&lt;/span&gt;(&lt;span class="k"&gt;self&lt;/span&gt;):
+        &lt;span class="nb"&gt;pass&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;python3中改为：
+　
+    class A:
+        def &lt;strong&gt;bool&lt;/strong&gt;(self)：
+            pass&lt;/p&gt;
+&lt;p&gt;在布尔上下文使用一个类对象时，python3会调用__bool__().&lt;/p&gt;
+&lt;p&gt;python2中:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;A:&lt;/span&gt;
+    &lt;span class="n"&gt;def&lt;/span&gt; &lt;span class="n"&gt;__nonzero__&lt;/span&gt;(&lt;span class="k"&gt;self&lt;/span&gt;, &lt;span class="o"&gt;x&lt;/span&gt;, &lt;span class="n"&gt;y&lt;/span&gt;):
+         &lt;span class="nb"&gt;pass&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这种情况python3中不做改变，使用两个参数的__nonzero__()方法，2to3脚本会假设你定义的这个方法有其他用处，不做修改。&lt;/p&gt;
+&lt;h4 id="ba-jin-zhi-lei-xing"&gt;八进制类型&lt;/h4&gt;
+&lt;p&gt;python2和python3，定义八进制数的语法有轻微的改变&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;python2&lt;/th&gt;
+&lt;th&gt;python3&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;x= 0755&lt;/td&gt;
+&lt;td&gt;x = 0o755&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id="sysmaxint"&gt;SYS.MAXINT&lt;/h4&gt;
+&lt;p&gt;python3中长整型和整型被整合到一起，sys.maxint常量不再精确。但是因为这个值用于检查特定平台，所以被python3保留，重命名为sys.maxsize.&lt;/p&gt;
+&lt;h4 id="quan-ju-han-shu-callable"&gt;全局函数CALLABLE()&lt;/h4&gt;
+&lt;p&gt;python２里，可以使用全局函数callable()来检查一个对象是否可调用，在python3中，这个全局函数被取消了，为了检查一个对象是否可调用，可以检查其特殊方法__call__()的存在性。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;python2&lt;/th&gt;
+&lt;th&gt;python3&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;callable(anthing)&lt;/td&gt;
+&lt;td&gt;hasattr(anything, '__call__')&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id="quan-ju-han-shu-zip"&gt;全局函数ZIP()&lt;/h4&gt;
+&lt;p&gt;在python2，zip()可以使用任意多个序列作为参数，它返回一个由元组构成的列表。第一个元组包含了每个序列的第一个元素，第二个元组包含了每个序列的第二个元素，依次递推。在python３中返回一个迭代器，而非列表。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;python2&lt;/th&gt;
+&lt;th&gt;python3&lt;/th&gt;
+&lt;th&gt;note&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;zip(a,b,c)&lt;/td&gt;
+&lt;td&gt;list(zip(a,b,c)&lt;/td&gt;
+&lt;td&gt;python3中可以通过list函数遍历zip()返回的迭代器，形成列表返回&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;d.join(zip(a,b,c))&lt;/td&gt;
+&lt;td&gt;no change&lt;/td&gt;
+&lt;td&gt;在已经会遍历所有元素的上下文环境里，zip()本身返回的迭代器能够正常工作，2to3脚本检测到后，不再修改&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id="standarderroryi-chang"&gt;STANDARDERROR异常&lt;/h4&gt;
+&lt;p&gt;python2中，StandardError是除了StopIteration,GeneratorExit,KeyboardInterrupt, SystemExit之外所有其他内置异常的基类。python3中StandardError已经被取消了，使用Exception取代。&lt;/p&gt;
+&lt;h4 id="typesmo-kuai-zhong-de-chang-liang"&gt;TYPES模块中的常量&lt;/h4&gt;
+&lt;p&gt;types模块里各种各样的常量能够帮助你决定一个对象的类型。在python2里，它包含了代表所有基本数据类型的常量，如dict和int。在python3里，这些常量被取消了，只需使用基础类型的名字来替代。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;python2&lt;/th&gt;
+&lt;th&gt;python3&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;types.UnicodeType&lt;/td&gt;
+&lt;td&gt;str&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;types.StringType&lt;/td&gt;
+&lt;td&gt;bytes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;types.DictType&lt;/td&gt;
+&lt;td&gt;dict&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;types.IntType&lt;/td&gt;
+&lt;td&gt;int&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;types.LongType&lt;/td&gt;
+&lt;td&gt;int&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;types.ListType&lt;/td&gt;
+&lt;td&gt;list&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;types.NoneType&lt;/td&gt;
+&lt;td&gt;type(None&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;types.BooleanType&lt;/td&gt;
+&lt;td&gt;bool&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;types.BufferType&lt;/td&gt;
+&lt;td&gt;memoryview&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;types.ClassType&lt;/td&gt;
+&lt;td&gt;type&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;types.ComplexType&lt;/td&gt;
+&lt;td&gt;complex&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;types.EllipsisType&lt;/td&gt;
+&lt;td&gt;type(Ellipsis)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;types.FloatType&lt;/td&gt;
+&lt;td&gt;float&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;types.ObjectType&lt;/td&gt;
+&lt;td&gt;object&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;types.NotImplementedType&lt;/td&gt;
+&lt;td&gt;type(NotImplemented)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;types.SliceType&lt;/td&gt;
+&lt;td&gt;slice&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;types.TupleType&lt;/td&gt;
+&lt;td&gt;tuple&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;types.TypeType&lt;/td&gt;
+&lt;td&gt;type&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;types.XRangeType&lt;/td&gt;
+&lt;td&gt;range&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id="quan-ju-han-shu-isinstance"&gt;全局函数ISINSTANCE()&lt;/h4&gt;
+&lt;p&gt;isinstance()函数检查一个对象是否是一个特定类(class)或类型(type)的实例。在python2，可以传递一个由类型构成的元组给isinstance(),如果该对象是元组里的任意一种类型，函数返回True. 在python3,依然可以这样做。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;python2&lt;/th&gt;
+&lt;th&gt;python3&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;isinstance(x, (int, float, int))&lt;/td&gt;
+&lt;td&gt;isinstance(x, (int, float))&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id="itertoolsmo-kuai"&gt;ITERTOOLS模块&lt;/h4&gt;
+&lt;p&gt;python2.3引入itertools模块，定义了zip(),map(),filter()的变体，这个变体返回的是迭代器，而非列表。在python3,这些函数返回的本身就是迭代器，所有这些变体函数就取消了。&lt;/p&gt;
+&lt;h4 id="sysexc_typesysexc_valuesysexc_traceback"&gt;SYS.EXC_TYPE,SYS.EXC_VALUE,SYS.EXC_TRACEBACK&lt;/h4&gt;
+&lt;p&gt;处理异常的时候，在sys模块里有三个你可以访问的变量：sys.exc_type, sys.exc_value, sys.exc_traceback. python3中这三个变量不再存在，使用sys.exc_info替代。&lt;/p&gt;
+&lt;h4 id="dui-yuan-zu-de-lie-biao-jie-xi"&gt;对元组的列表解析&lt;/h4&gt;
+&lt;p&gt;python2，如果需要编写一个遍历元组的列表解析，不需要在元组值周围加上括号。在python3里，这些括号是必需的。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;python2&lt;/th&gt;
+&lt;th&gt;python3&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;[ i for i in 1, 2]&lt;/td&gt;
+&lt;td&gt;[i for i in (1,2)]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 id="yuan-lei"&gt;元类&lt;/h4&gt;
+&lt;p&gt;在python2里，可以通过在类的声明中定义metaclass参数，或者定义一个特殊的类级别(class-level)__metaclass__属性，来创建元类。python3中，__metaclass__属性被取消了。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;python2&lt;/th&gt;
+&lt;th&gt;python3&lt;/th&gt;
+&lt;th&gt;note&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;class C(metaclass=PapayaMeta): pass&lt;/td&gt;
+&lt;td&gt;unchanged&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;class Whip: __metaclass__ = PapayMeta&lt;/td&gt;
+&lt;td&gt;class Whip(metaclass=PapayaMeta): pass&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;class C(Whipper, Beater): __metaclass__ = PapayaMeta&lt;/td&gt;
+&lt;td&gt;class C(Whipper, Beater, metaclass=PapayMeta): pass&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</summary><category term="Python-tips"></category></entry><entry><title>Python-Tips(十一)</title><link href="http://king32783784.github.io/2014/05/27/python/" rel="alternate"></link><published>2014-05-27T00:00:00+08:00</published><author><name>李鹏</name></author><id>tag:king32783784.github.io,2014-05-27:2014/05/27/python/</id><summary type="html">&lt;/head&gt;&lt;body&gt;&lt;h3 id="tips-27"&gt;Tips 27&lt;/h3&gt;
 &lt;p&gt;几乎所有的python2程序都需要一些修改才能正常的运行在python3的环境下。为了简化这个转换过程，Python3自带了一个2to3的实用脚本.这个脚本会将python2程序源文件作为输入，然后自动转换到python３．但并不是所有内容都可以自动转换。&lt;/p&gt;
 &lt;h4 id="printyu-ju"&gt;print语句&lt;/h4&gt;
 &lt;p&gt;python2中print是一个语句，不论想输出什么，直接放到print关键字后面即可。python3里，print()是一个函数，像其他函数一样，print()需要你将要输出的东西作为参数传给它。&lt;/p&gt;
@@ -16851,7 +17791,7 @@ yield 的作用就是把一个函数变成一个 generator，带有 yield 的函
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +
@@ -17743,7 +18683,7 @@ libpng-devel &amp;gt;= 1.0.20 zlib
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +
@@ -19922,7 +20862,7 @@ root@mng l_mpi_p_3.1.038]# ./install.sh
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +
