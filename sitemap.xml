@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://king32783784.github.io/</loc>
-<lastmod>2017-03-17T08:59:31-00:00</lastmod>
+<lastmod>2017-03-20T08:10:11-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>http://king32783784.github.io/archives.html</loc>
-<lastmod>2017-03-17T08:59:31-00:00</lastmod>
+<lastmod>2017-03-20T08:10:11-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>http://king32783784.github.io/tags.html</loc>
-<lastmod>2017-03-17T08:59:31-00:00</lastmod>
+<lastmod>2017-03-20T08:10:11-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>http://king32783784.github.io/categories.html</loc>
-<lastmod>2017-03-17T08:59:31-00:00</lastmod>
+<lastmod>2017-03-20T08:10:11-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
@@ -564,6 +564,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://king32783784.github.io/2014/06/01/http/</loc>
+<lastmod>2014-06-01T00:00:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://king32783784.github.io/2014/05/31/python/</loc>
 <lastmod>2014-05-31T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
@@ -732,6 +739,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://king32783784.github.io/2011/11/01/Tool/</loc>
+<lastmod>2011-11-01T00:00:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://king32783784.github.io/2011/08/15/C/</loc>
 <lastmod>2011-08-15T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
@@ -879,8 +893,22 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://king32783784.github.io/category/gong-ju.html</loc>
+<lastmod>2011-11-01T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.6</priority>
+</url>
+
+<url>
 <loc>http://king32783784.github.io/category/mongodb.html</loc>
 <lastmod>2016-12-01T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.6</priority>
+</url>
+
+<url>
+<loc>http://king32783784.github.io/category/web.html</loc>
+<lastmod>2014-06-01T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
@@ -1019,6 +1047,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://king32783784.github.io/tag/web.html</loc>
+<lastmod>2014-06-01T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.6</priority>
+</url>
+
+<url>
 <loc>http://king32783784.github.io/tag/python-howtos.html</loc>
 <lastmod>2016-03-11T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -1077,6 +1112,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://king32783784.github.io/tag/lian-ji.html</loc>
 <lastmod>2012-01-01T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.6</priority>
+</url>
+
+<url>
+<loc>http://king32783784.github.io/tag/wireshark.html</loc>
+<lastmod>2011-11-01T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>

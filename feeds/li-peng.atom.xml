@@ -2911,7 +2911,7 @@ Empty &lt;span class="nb"&gt;test&lt;/span&gt; ID. A &lt;span class="nb"&gt;test
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +
@@ -3191,7 +3191,7 @@ JOB HTML   : /home/&amp;lt;user&amp;gt;/avocado/job-results/job-&amp;lt;date&amp
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +
@@ -12455,7 +12455,7 @@ clear_button = driver.find_element_by_xpath("//form[@id='loginForm']/input[4]")
 &lt;/ul&gt;
 &lt;p&gt;上面的例子基本覆盖了基本用法，如果想了解更多，可以参考一下链接：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href="http://www.w3schools.com/xsl/xpath_intro.asp"&gt;W3Schools Xpath Tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.whoishostingthis.com/resources/xslt/"&gt;W3Schools Xpath Tutorial&lt;/a&gt; (Thanks Jennifer for the original link invalid reminder.It's updated now)&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://www.w3.org/TR/xpath/"&gt;W3C Xpath Recommendition&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://www.zvon.org/comp/r/tut-XPath_1.html"&gt;XPath Tutorial&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -14406,7 +14406,161 @@ Top:&lt;/p&gt;
 &lt;p&gt;压力测试是一种破坏性的测试，即系统在非正常的、超负荷的条件下的运行情况 。用来评估在超越最大负载的情况下系统将如何运行，是系统在正常的情况下对某种负载强度的承受能力的考验 。&lt;/p&gt;
 &lt;p&gt;为什么要进行压力测试？&lt;/p&gt;
 &lt;p&gt;通常我们用压力测试来判断系统的稳定性和可靠性。&lt;/p&gt;
-&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</summary><category term="LTP"></category></entry><entry><title>Python-Tips(十三)</title><link href="http://king32783784.github.io/2014/05/31/python/" rel="alternate"></link><published>2014-05-31T00:00:00+08:00</published><author><name>李鹏</name></author><id>tag:king32783784.github.io,2014-05-31:2014/05/31/python/</id><summary type="html">&lt;/head&gt;&lt;body&gt;&lt;h3 id="tips-28"&gt;Tips 28&lt;/h3&gt;
+&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</summary><category term="LTP"></category></entry><entry><title>http协议</title><link href="http://king32783784.github.io/2014/06/01/http/" rel="alternate"></link><published>2014-06-01T00:00:00+08:00</published><author><name>李鹏</name></author><id>tag:king32783784.github.io,2014-06-01:2014/06/01/http/</id><summary type="html">&lt;/head&gt;&lt;body&gt;&lt;h3 id="qian-yan"&gt;前言&lt;/h3&gt;
+&lt;p&gt;协议指计算机通信网络中两台计算机之前通信共同遵守的约定或规则。http协议就是通信协议的一种，它允许将超文本标记语言(html)文档从web服务器传送到客户端的浏览器。&lt;/p&gt;
+&lt;h3 id="webfu-wu-qi-liu-lan-qi-dai-li-fu-wu-qi"&gt;Web服务器、浏览器、代理服务器&lt;/h3&gt;
+&lt;p&gt;打开浏览器，输入URL，就能看到指定的网页。后台是怎么实现的呢？
+当我们输入URL后，浏览器通过网络给web服务发送了一个Request, web服务器接收到Request后，进行响应，生成Response,然后返回给浏览器，浏览器解析Response中的HTML，然后展示出来。我们就看到了指定网页
+现在这个过程基本上都要经过代理服务器，如CDN反向代理。
+代理服务器就是网络信息的中转站，是为了提高访问速度、突破限制（GWV）、私藏身份。&lt;/p&gt;
+&lt;h3 id="url"&gt;URL&lt;/h3&gt;
+&lt;p&gt;URL(Uniform Resource Locator)地址用于描述一个网络上的资源，基本格式如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;schema://host[:port#]/path/.../[?query-string][#anchor]
+&lt;/pre&gt;&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;scheme   指定底层使用的协议（如：http https ftp smb)&lt;/li&gt;
+&lt;li&gt;host     HTTP服务器的ip地址或域名（www.vimlinux.com)&lt;/li&gt;
+&lt;li&gt;port#    HTTP服务器的默认端口是80， 这种情况下可以省略，如果使用了其他端口，需要指明如8080&lt;/li&gt;
+&lt;li&gt;path     访问资源的路径&lt;/li&gt;
+&lt;li&gt;query-string 发送给http服务器的数据&lt;/li&gt;
+&lt;li&gt;anchor   锚点&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;URL例子：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;http://www.vimlinux.com/sj/test/test.aspx?name=sviergn&amp;amp;x=true#stuff
+
+Schema:                 http
+host:                   www.mywebsite.com
+path:                   /sj/test/test.aspx
+Query String:           name=sviergn&amp;amp;x=true
+anchor:                 stuff
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="httpxie-yi-shi-wu-zhuang-tai-de"&gt;HTTP协议是无状态的&lt;/h3&gt;
+&lt;p&gt;http协议是无状态的，同一个客户端的多次请求直接是没有对应关系的，http服务器并不知道多次请求来自同一客户端,为了解决这个问题，web程序引入了cookie机制来维护状态。&lt;/p&gt;
+&lt;p&gt;现在的html不再是单纯的文本，而是包含图片、js等，所以浏览器再获取一个完整网页时，一般需要发送多次Request.
+第一次浏览器会接收到一个框架，分析之后发现还有好多文件，然后再次request,等所有文件下载成功后，就显示出来了（显示时，其实一下大的文件仍在加载）&lt;/p&gt;
+&lt;h3 id="httpxiao-xi-de-jie-gou"&gt;HTTP消息的结构&lt;/h3&gt;
+&lt;p&gt;Request消息分为3个部分，第一部分叫Request line,第二部分叫Request header, 第三部分是body, header和body之间有个空行。&lt;/p&gt;
+&lt;p&gt;如
+    METHOD /path-to-resource HTTP/Version-number
+    Header-Name-1: value
+    Header-Name-2: value&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Optional request body
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;第一行中的Method表示请求方法，比如"POST", "GET", path-to-resource表示请求的资源， Http/Version-number表示协议的版本号
+ 当使用的是"GET"方法的时候，body是为空的
+ 比如我们打开这个网站首页的的request如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;GET http://www.cnblogs.com/ HTTP/1.1
+Host: www.cnblogs.com
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id="get-he-postfang-fa-de-qu-bie"&gt;Get 和 Post方法的区别&lt;/h3&gt;
+&lt;p&gt;Http协议定义了很多与服务器交互的方法，最基本的４种，分别为GET,POST,PUT,DELETE.一个URL地址用于描述一个网络上的资源，而HTTP中的GET,POST,PUT,DELETE就对应这个资源的查，改，增，删4个操作。最常见的就是GET和POST了。GET一般用于获取／查询资源信息，而POST一般用于更新资源信息。&lt;/p&gt;
+&lt;p&gt;区别在于：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;GET提交的数据会放在URL之后，以?分割URL和传输数据，参数之间以&amp;amp;相连，如EditPosts.aspx?name=test1&amp;amp;id=123456. POST方法是把提交的数据放在HTTP包的Body中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;GET提交的数据大小有限制（浏览器对URL的长度有限制),而POST方法提交的数据没有限制。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;GET方式需要使用Request.QueryString来取得变量的值，而POST方式通过Request.Form来获取变量的值&lt;/li&gt;
+&lt;li&gt;GET方式提交数据，会带来安全问题，比如一个登录页面，通过GET方式提交数据时，用户名和密码将出现在URL上，如果页面可以被缓存或则其他人可以访问这台机器，就可以从历史记录获得该用户的账号和密码。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="zhuang-tai-ma"&gt;状态码&lt;/h3&gt;
+&lt;p&gt;Response消息中的第一行叫状态行，由HTTP协议版本号，状态码，状态消息三部分组成。
+状态码用来告诉http客户端，http服务器是否产生了预期的Response.
+http/1.1定义了５类状态码，状态码由三位数字组成，第一个数字定义了响应的类别。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1xx 提示信息- 表示请求已被成功接收，继续处理&lt;/li&gt;
+&lt;li&gt;2xx 成功－表示请求已被成功接收，理解，接受&lt;/li&gt;
+&lt;li&gt;3xx 重定向－要完成请求必须进行更进一步的处理&lt;/li&gt;
+&lt;li&gt;4xx 客户端错误－请求有语法错误或请求无法实现&lt;/li&gt;
+&lt;li&gt;5xx 服务器端错误－服务器未能实现合法的请求&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;常见的状态码：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;200 OK : 表明请求被成功完成，所请求的资源发送回客户端&lt;/li&gt;
+&lt;li&gt;302 Found: 重定向，新的URL会在response中的Location返回，浏览器会自动使用新的URL发出新的Request&lt;/li&gt;
+&lt;li&gt;304 Not Modified　代表缓存未过期，可以继续使用&lt;/li&gt;
+&lt;li&gt;400 Bad Request 客户端请求与语法错误，不能被服务器所理解&lt;/li&gt;
+&lt;li&gt;403 Forbidden 服务器收到请求，但拒绝提供服务&lt;/li&gt;
+&lt;li&gt;404 Not Found 请求资源不存在&lt;/li&gt;
+&lt;li&gt;500 Internal Server Error 服务器发送了不可预期的错误&lt;/li&gt;
+&lt;li&gt;503 Server Unavailable 服务器当前不能处理客户端请求，一段时间后恢复&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="http-request-header"&gt;HTTP Request Header&lt;/h3&gt;
+&lt;p&gt;header有很多。
+&lt;strong&gt;Cache&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;If-Modified-Since&lt;/p&gt;
+&lt;p&gt;把浏览器端缓存页面的最后修改时间发送给服务器，服务器会把这个时间和服务器文件的最后修改时间进行比对，如果时间一致，就返回304(本地缓存没过期），直接使用本地缓存文件。如果时间不一致，就会返回200和新的文件内容。客户端接收到后，会更新本地的缓存。&lt;/p&gt;
+&lt;p&gt;IF-None-Match&lt;/p&gt;
+&lt;p&gt;If-None-Match和ETag一起工作，工作原理是在HTTP Response中添加ETag信息。当用户再次请求资源时，将在HTTP Request中加入If-None-Match信息(ETag的值）。如果服务器验证资源的ETag没有改变（该资源没有更新),将返回一个304状态告诉客户端使用本地缓存文件。否则将返回200状态码和新的资源及ETag.&lt;/p&gt;
+&lt;p&gt;Pragma&lt;/p&gt;
+&lt;p&gt;防止页面被缓存，在HTTP/1.1，它和Cache-Control:no-cache作用一样。注意：在HTTP/1.0版本中，只实现了Pragema:no-cache,没有实现Cache-Control&lt;/p&gt;
+&lt;p&gt;Cache-Control&lt;/p&gt;
+&lt;p&gt;用来指定Response-Request遵循的缓存机制。各个指令含义如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Cache-Control:Public 可以被任何缓存所缓存&lt;/li&gt;
+&lt;li&gt;Cache-Control:Private 内容只缓存到私有缓存中&lt;/li&gt;
+&lt;li&gt;Cache-Control: no-cache 所有内容不会被缓存&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Client&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Accept&lt;/p&gt;
+&lt;p&gt;浏览器可接受的媒体类型。例如Accept:text/html 代表浏览器接受服务器返回的类型为text/html.如果服务器无法返回text/html类型的数据，服务器应该返回一个406错误（non acceptable)
+通配符*代表任意类型&lt;/p&gt;
+&lt;p&gt;Accept-Encoding:&lt;/p&gt;
+&lt;p&gt;浏览器声明自己接受的压缩算法，是否支持压缩，支持什么类型的（gzip,deflate)
+例如 Accept-Encoding: gzip, deflate&lt;/p&gt;
+&lt;p&gt;Accept-Language:&lt;/p&gt;
+&lt;p&gt;浏览器声明自己接受的语言&lt;/p&gt;
+&lt;p&gt;User-Agent&lt;/p&gt;
+&lt;p&gt;客户端使用的操作系统和浏览器版本信息&lt;/p&gt;
+&lt;p&gt;Accept-Charset&lt;/p&gt;
+&lt;p&gt;浏览器声明自己接受的字符集类型&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Cookie/Login&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Cookie&lt;/p&gt;
+&lt;p&gt;包含cookie值&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Entity&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Content-Length&lt;/p&gt;
+&lt;p&gt;表明发送给HTTP服务器数据的长度&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Miscellaneous&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Referer:&lt;/p&gt;
+&lt;p&gt;提供Request的上下文信息&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Transport&lt;/strong&gt; &lt;/p&gt;
+&lt;p&gt;Connection&lt;/p&gt;
+&lt;p&gt;Connection:keep-alive 当一个网页加载完成后，客户端与服务端之间用于传输HTTP数据的TCP连接保持，如果客户端再次访问服务端，仍继续使用这一条连接。&lt;/p&gt;
+&lt;p&gt;Connection:close 代表一个Request完成后，客户端和服务器之间用于传输HTTP数据的TCP连接会关闭，当客户端再次发送Request,需要重新建立TCP连接。&lt;/p&gt;
+&lt;p&gt;Host&lt;/p&gt;
+&lt;p&gt;请求报头主要用于指定被请求资源的Internet主机和端口号，它通常从HTTP URL中提取出来的。&lt;/p&gt;
+&lt;h3 id="http-response-header"&gt;HTTP Response Header&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Cache&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Date: 生成消息的具体时间和日期
+Expires: 浏览器会在指定过期时间内使用本地缓存
+Vary:  Accept-Encoding&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Cookie/Login&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;P3P: 用于跨域设置Cookie,解决iframe跨域访问cookie的问题
+Set-Cookie: 用于把cookie发送到客户端浏览器，每一个写入cookie都会生成一个Set-Cookie&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Entity&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;ETag: 和If-None-Match配合使用&lt;/p&gt;
+&lt;p&gt;Last-Modified: 用于指示资源的最后修改日期和时间&lt;/p&gt;
+&lt;p&gt;Content-Type: 表明服务端响应的对象类型和字符集
+例如：
+    Content-Type: text/html; charset=utf-8
+    Content-Type:text/html;charset=GB2312
+    Content-Type: image/jpeg&lt;/p&gt;
+&lt;p&gt;Content-Length:指明实体正文的长度，以字节方式存储的十进制数字表示。在数据下行的过程中，Content-Length的方式预先在服务器中缓存数据，然后把数据一起发给客户端。&lt;/p&gt;
+&lt;p&gt;Content-Encoding: 表明返回数据的压缩算法&lt;/p&gt;
+&lt;p&gt;Content-Language: 表明返回数据的语言&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Miscellaneous&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Server:指明HTTP服务器的软件信息&lt;/p&gt;
+&lt;p&gt;X-AspNet-Version:header表明net版本&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Transport&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;connection:
+例如：　Connection: keep-alive   当一个网页打开完成后，客户端和服务器之间用于传输HTTP数据的TCP连接不会关闭，如果客户端再次访问这个服务器上的网页，会继续使用这一条已经建立的连接&lt;/p&gt;
+&lt;p&gt;例如：  Connection: close  代表一个Request完成后，客户端和服务器之间用于传输HTTP数据的TCP连接会关闭， 当客户端再次发送Request，需要重新建立TCP连接。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Location&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Location&lt;/p&gt;
+&lt;p&gt;作用：用于重定向一个新的位置, 包含新的URL地址&lt;/p&gt;
+&lt;p&gt;实例请看304状态实例&lt;/p&gt;</summary><category term="web"></category></entry><entry><title>Python-Tips(十三)</title><link href="http://king32783784.github.io/2014/05/31/python/" rel="alternate"></link><published>2014-05-31T00:00:00+08:00</published><author><name>李鹏</name></author><id>tag:king32783784.github.io,2014-05-31:2014/05/31/python/</id><summary type="html">&lt;/head&gt;&lt;body&gt;&lt;h3 id="tips-28"&gt;Tips 28&lt;/h3&gt;
 &lt;p&gt;python类中包含很多特殊方法，这些方法让类用起来如同序列、字典、函数、迭代器，甚至像个数字。&lt;/p&gt;
 &lt;h4 id="ji-chu-zhi-shi"&gt;基础知识&lt;/h4&gt;
 &lt;p&gt;最常见的就是__init__()。&lt;/p&gt;
@@ -17791,7 +17945,7 @@ yield 的作用就是把一个函数变成一个 generator，带有 yield 的函
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +
@@ -18683,7 +18837,7 @@ libpng-devel &amp;gt;= 1.0.20 zlib
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +
@@ -20862,7 +21016,7 @@ root@mng l_mpi_p_3.1.038]# ./install.sh
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +
@@ -21121,7 +21275,36 @@ void va_end(va_list ap);
 &lt;p&gt;for(p =fmt;&lt;em&gt;p;p++),p初始为&lt;/em&gt;fmt ,即指向ap前一个参数,通过对p的循环实现ap指针遍历省略的参数表.&lt;/p&gt;
 &lt;p&gt;就有了下面的switch,来讨论可能出现的参数.&lt;/p&gt;
 &lt;p&gt;最后通过va_end(ap),将ap指向NULL.避免出现异常.注意:，应该养成，关闭指针的习惯.&lt;/p&gt;
-&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</summary><category term="C"></category></entry><entry><title>C-宏定义</title><link href="http://king32783784.github.io/2011/08/15/C/" rel="alternate"></link><published>2011-08-15T00:00:00+08:00</published><author><name>李鹏</name></author><id>tag:king32783784.github.io,2011-08-15:2011/08/15/C/</id><summary type="html">&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;strong&gt;1.简单的宏定义&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</summary><category term="C"></category></entry><entry><title>wireshark使用指南</title><link href="http://king32783784.github.io/2011/11/01/Tool/" rel="alternate"></link><published>2011-11-01T00:00:00+08:00</published><author><name>李鹏</name></author><id>tag:king32783784.github.io,2011-11-01:2011/11/01/Tool/</id><summary type="html">&lt;/head&gt;&lt;body&gt;&lt;h3 id="gong-ju-an-zhuang"&gt;工具安装&lt;/h3&gt;
+&lt;p&gt;大部分linux系统都有对应的软件包，直接按照软件安装即可。
+比如： yum install wireshark&lt;/p&gt;
+&lt;h3 id="zhua-qu-bao-wen"&gt;抓取报文&lt;/h3&gt;
+&lt;p&gt;启动Wireshark并且在接口列表中选择接口名，然后开始在此接口上抓包。&lt;/p&gt;
+&lt;p&gt;&lt;img height="280" src="https://raw.githubusercontent.com/king32783784/king32783784.github.io/master/tmpfile/wireshark01.png" width="420"/&gt;&lt;/p&gt;
+&lt;p&gt;例如，在捕获筛选器选择enp1s0.
+点击enp1s0后，就可以看到实时的接收的报文。
+上端面板每一行对应一个网络报文，默认显示报文接收时间（相对开始抓取的时间点），源和目标IP地址，使用协议和报文相关信息。点击某一行可以在下面两个窗口看到更多信息。“+”图标显示报文里面每一层的详细信息。底端窗口同时以十六进制和ASCII码的方式列出报文内容。&lt;/p&gt;
+&lt;p&gt;&lt;img height="280" src="https://raw.githubusercontent.com/king32783784/king32783784.github.io/master/tmpfile/wireshark02.png" width="420"/&gt;&lt;/p&gt;
+&lt;p&gt;需要停止的时候，点击左上角的停止按键。
+色彩标识：
+进行到这里已经看到报文以绿色，蓝色，黑色显示出来。Wireshark通过颜色让各种流量的报文一目了然。比如默认绿色是TCP报文，深蓝色是DNS，浅蓝是UDP，黑色标识出有问题的TCP报文——比如乱序报文。&lt;/p&gt;
+&lt;p&gt;&lt;img height="280" src="https://raw.githubusercontent.com/king32783784/king32783784.github.io/master/tmpfile/wireshark03.png" width="420"/&gt;&lt;/p&gt;
+&lt;h3 id="bao-wen-yang-ben"&gt;报文样本&lt;/h3&gt;
+&lt;p&gt;打开一个抓取文件相当简单，在主界面上点击Open并浏览文件即可。也可以在Wireshark里保存自己的抓包文件并稍后打开&lt;/p&gt;
+&lt;h3 id="guo-lu-bao-wen"&gt;过滤报文&lt;/h3&gt;
+&lt;p&gt;如果正在尝试分析问题，比如打电话的时候某一程序发送的报文，可以关闭所有其他使用网络的应用来减少流量。但还是可能有大批报文需要筛选，这时要用到Wireshark过滤器。&lt;/p&gt;
+&lt;p&gt;最基本的方式就是在窗口顶端过滤栏输入并点击Apply（或按下回车）。例如，输入“dns”就会只看到DNS报文。输入的时候，Wireshark会帮助自动完成过滤条件&lt;/p&gt;
+&lt;p&gt;&lt;img height="280" src="https://raw.githubusercontent.com/king32783784/king32783784.github.io/master/tmpfile/wireshark04.png" width="420"/&gt;&lt;/p&gt;
+&lt;p&gt;也可以点击分析菜单选择显示筛选器来创建新的过滤条件。&lt;/p&gt;
+&lt;p&gt;&lt;img height="280" src="https://raw.githubusercontent.com/king32783784/king32783784.github.io/master/tmpfile/wireshark05.png" width="420"/&gt;&lt;/p&gt;
+&lt;p&gt;另一件很有趣的事情是你可以右键报文并选择Follow TCP Stream。
+你会看到在服务器和目标端之间的全部会话。&lt;/p&gt;
+&lt;p&gt;&lt;img height="280" src="https://raw.githubusercontent.com/king32783784/king32783784.github.io/master/tmpfile/wireshark06.png" width="420"/&gt;&lt;/p&gt;
+&lt;p&gt;关闭窗口之后，你会发现过滤条件自动被引用了——Wireshark显示构成会话的报文。&lt;/p&gt;
+&lt;h3 id="jian-cha-bao-wen"&gt;检查报文&lt;/h3&gt;
+&lt;p&gt;选中一条报文，就可以深入挖掘它的内容了。&lt;/p&gt;
+&lt;p&gt;也可以在这里创建过滤条件——只需右键细节并使用Apply as Filter子菜单，就可以根据此细节创建过滤条件。&lt;/p&gt;
+&lt;p&gt;&lt;img height="280" src="https://raw.githubusercontent.com/king32783784/king32783784.github.io/master/tmpfile/wireshark07.png" width="420"/&gt;&lt;/p&gt;</summary><category term="wireshark"></category></entry><entry><title>C-宏定义</title><link href="http://king32783784.github.io/2011/08/15/C/" rel="alternate"></link><published>2011-08-15T00:00:00+08:00</published><author><name>李鹏</name></author><id>tag:king32783784.github.io,2011-08-15:2011/08/15/C/</id><summary type="html">&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;strong&gt;1.简单的宏定义&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;#define MAXTIME 1000
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;简单的MATIME定义好了，它代表1000，如果在程序中写：&lt;/p&gt;
