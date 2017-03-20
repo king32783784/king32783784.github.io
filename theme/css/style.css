@@ -405,10 +405,11 @@ h2.title {
 	line-height: normal;
 	font-size: 9px;
 	text-transform: uppercase;
-	text-align: center;
+	text-align: right;
 	color: #69635E;
 }
 
 #footer a {
 	color: #474440;
 }
+
