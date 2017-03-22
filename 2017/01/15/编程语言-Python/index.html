@@ -448,7 +448,7 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    </head><body><h3 id="zi-ding-yi-yuan-lei">自定义元类</h3>
+                    <body><h3 id="zi-ding-yi-yuan-lei">自定义元类</h3>
 <p>元类的主要目的就是为了当创建类时能够自动地改变类。通常，你会为API做这样的事情，你希望可以创建符合当前上下文的类。假想一个很傻的例子，你决定在你的模块里所有的类的属性都应该是大写形式。有好几种方法可以办到，但其中一种就是通过在模块级别设定__metaclass__。采用这种方法，这个模块中的所有类都会通过这个元类来创建，我们只需要告诉元类把所有的属性都改成大写形式就万事大吉了。</p>
 <p>幸运的是，__metaclass__实际上可以被任意调用，它并不需要是一个正式的类（我知道，某些名字里带有‘class’的东西并不需要是一个class，画画图理解下，这很有帮助）。所以，我们这里就先以一个简单的函数作为例子开始。</p>
 <div class="highlight"><pre><span></span># 元类会自动将你通常传给“type"的参数作为自己的参数传入
@@ -568,7 +568,7 @@ print guy.age
 <p>当你需要动态修改类时，最好使用上面的两种技术。当然，绝大部分情况下是不需要动态修改类的。</p>
 <p>《完》</p>
 <p>上一篇<a href="https://king32783784.github.io/2015/10/03/python/">python metaclass(上)</a></p>
-<p><img class="img-responsive" height="320" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/WBB0EXYSWE.jpg" width="540"/></p>
+<p><img class="img-responsive" height="320" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/WBB0EXYSWE.jpg" width="540"/></p></body>
                 </div>
                 <footer class="text-right">
                     <p>by 李鹏</p>

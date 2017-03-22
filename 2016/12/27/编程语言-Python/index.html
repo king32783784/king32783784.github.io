@@ -448,7 +448,7 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    </head><body><p>本文对shelve模块进行说明。</p>
+                    <body><p>本文对shelve模块进行说明。</p>
 <p>shelve模块实现了对任意可被pickle的python对象进行持久存储，并提供了类字典的API使用。</p>
 <p><img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/4C0XUNHJ7C.jpg" width="420"/></p>
 <h3 id="jian-jie">简介</h3>
@@ -533,7 +533,7 @@ $ python shelve_writeback.py
 <p>虽然使用writeback模式可用减少出错几率，也能更加透明化对象的持久性。但是，不是每种情况都要使用writeback模式。原因看到前面的示例，应该能猜到。当shelf打开时，缓存就要占用额外的内存。
 并且，当shelf关闭时，同样会对缓存中的对象再次写回数据库，增加了开销。即使没有进行改变，仍然会进行数据写回。比较好的方式是，确认需要写入数据时，再设置writeback,读数据时设置只读或默认即可。</p>
 <h3 id="zhi-ding-shelflei-xing">指定shelf类型</h3>
-<p>上面的例子全部使用默认的shelf实现。使用shelve.open()直接代替一种shelf实现，是常见用法, 尤其是在不关心用哪种数据库存储数据的时候. 然而, 有时常会关心它. 如果是在这种情况下, 通常就会直接使用DbfilenameShelf或者BsdDbShelf, 更或者是通过Shelf的子类来解决问题.</p>
+<p>上面的例子全部使用默认的shelf实现。使用shelve.open()直接代替一种shelf实现，是常见用法, 尤其是在不关心用哪种数据库存储数据的时候. 然而, 有时常会关心它. 如果是在这种情况下, 通常就会直接使用DbfilenameShelf或者BsdDbShelf, 更或者是通过Shelf的子类来解决问题.</p></body>
                 </div>
                 <footer class="text-right">
                     <p>by 李鹏</p>

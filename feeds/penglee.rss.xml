@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>路漫求索</title><link>http://king32783784.github.io/</link><description>生活不止眼前的苟且，还有诗和远方 &lt;a href="pages/aboutme.html"&gt;More...&lt;/a&gt;</description><lastBuildDate>Thu, 01 Dec 2016 00:00:00 +0800</lastBuildDate><item><title>Mongodb-linux安装</title><link>http://king32783784.github.io/2016/12/01/mongodb/</link><description>&lt;p&gt;MongoDB是由c++编写，是一个基于分布式文件存储的开源数据库系统。数据结构由键值对组成，类似于json对象。&lt;/p&gt;
+<rss version="2.0"><channel><title>路漫求索</title><link>http://king32783784.github.io/</link><description>生活不止眼前的苟且，还有诗和远方 &lt;a href="pages/aboutme.html"&gt;More...&lt;/a&gt;</description><lastBuildDate>Thu, 01 Dec 2016 00:00:00 +0800</lastBuildDate><item><title>Mongodb-linux安装</title><link>http://king32783784.github.io/2016/12/01/mongodb/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;MongoDB是由c++编写，是一个基于分布式文件存储的开源数据库系统。数据结构由键值对组成，类似于json对象。&lt;/p&gt;
 &lt;p&gt;Mongodb支持Red Hat、SUSE、Amazon、Ubuntu、Debian系统的安装包直接安装。公司自己的操作系统不在这个范围内，所以需要通过Tarball安装。Tarball安装支持除了前面列举的
 linux系统之外的安装。注意，如果是前面列举的操作系统之一，就不要再采用这种方式安装了。&lt;/p&gt;
 &lt;h4 id="an-zhuang-mongodb-she-qu-ban-ben"&gt;安装MongoDB 社区版本&lt;/h4&gt;
