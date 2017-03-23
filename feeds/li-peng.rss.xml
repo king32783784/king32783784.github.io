@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>路漫求索</title><link>http://king32783784.github.io/</link><description>生活不止眼前的苟且，还有诗和远方 &lt;a href="pages/aboutme.html"&gt;More...&lt;/a&gt;</description><lastBuildDate>Fri, 03 Mar 2017 00:00:00 +0800</lastBuildDate><item><title>Itest测试工具介绍</title><link>http://king32783784.github.io/2017/03/03/itest/</link><description>&lt;/head&gt;&lt;body&gt;&lt;h3 id="ji-ben-jie-shao"&gt;基本介绍&lt;/h3&gt;
+<rss version="2.0"><channel><title>路漫求索</title><link>http://king32783784.github.io/</link><description>生活不止眼前的苟且，还有诗和远方 &lt;a href="pages/aboutme.html"&gt;More...&lt;/a&gt;</description><lastBuildDate>Wed, 22 Mar 2017 00:00:00 +0800</lastBuildDate><item><title>Itest测试工具介绍</title><link>http://king32783784.github.io/2017/03/22/itest/</link><description>&lt;/head&gt;&lt;body&gt;&lt;h3 id="ji-ben-jie-shao"&gt;基本介绍&lt;/h3&gt;
 &lt;p&gt;本文介绍了itest(自研测试工具）的制作目的、测试范围、常用功能、测试方法。该工具目前处于开发阶段，仍有部分功能未实现，存在一些稳定性、兼容性的问题。&lt;/p&gt;
 &lt;h3 id="zhi-zuo-mu-de"&gt;制作目的&lt;/h3&gt;
 &lt;p&gt;进行linux系统测试时，需要进行系统信息抓取、功能性测试、性能测试、稳定性测试。其中信息抓取、性能测试、稳定性测试大部分情况下需要进行多轮次的测试。比如系统信息抓取包含系统软硬件信息的多个方面如 cpu信息、gcc信息等等；性能测试包括cpu、内存、内核等等；稳定性测试包括io、多线程、图形、内核等等；功能测试包括内核系统调用、常用服务/命令（主要包括目前自动化实现的部分）。这些可以自动化实现的测试，之前我们多多少少的都做了一些测试脚本进行了实现，itest制作的目的是为了整合这些测试，并且提供一个简单操作的GUI界面。主界面如下&lt;/p&gt;
@@ -46,7 +46,7 @@
 &lt;p&gt;目前该工具已在桌面4.0系列的产品进行了测试验证，其他产品暂未进行兼容测试。该工具后台主要由python实现，前端由pyqt实现。对系统的主要依赖包括pyqt(UI界面）、pandoc（报告制作）、selenium（浏览器测试）等模块。测试时依赖网络(部分测试工具需要进行依赖包的安装，测试工具的下载）。&lt;/p&gt;
 &lt;p&gt;项目地址：&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.com/king32783784/itest"&gt;itest&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/king32783784/itest/issues"&gt;已知bug&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 03 Mar 2017 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2017-03-03:2017/03/03/itest/</guid><category>itest</category></item><item><title>位操作</title><link>http://king32783784.github.io/2017/02/23/python/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;最近碰到一个问题，是取一个数的反数，所以整理了一下位操作。
+&lt;p&gt;&lt;a href="https://github.com/king32783784/itest/issues"&gt;已知bug&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Wed, 22 Mar 2017 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2017-03-22:2017/03/22/itest/</guid><category>itest</category></item><item><title>位操作</title><link>http://king32783784.github.io/2017/02/23/python/</link><description>&lt;/head&gt;&lt;body&gt;&lt;p&gt;最近碰到一个问题，是取一个数的反数，所以整理了一下位操作。
 计算机系统中所有的数据都是以二进制的形式存储的。位运算其实就是直接对在内存中的二进制数据进行操作，因此数据处理会比较快。
 在实际编程中，如果能合理运用位操作，能提高运行效率，解决一些复杂问题。&lt;/p&gt;
 &lt;h3 id="wei-cao-zuo-ji-chu"&gt;位操作基础&lt;/h3&gt;

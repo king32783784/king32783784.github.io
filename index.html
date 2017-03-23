@@ -120,16 +120,16 @@
                         </a>
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
+                        <li class="">
+                            <a class="hide-overflow" href="./2017/03/22/itest/" title="Itest测试工具介绍">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Itest测试工具介绍
+                            </a>
+                        </li>
                         <li class="active">
                             <a class="hide-overflow" href="./2017/03/03/docker/" title="DOCKER基础技术：LINUX CGROUP(转载）">
                                 <i class="fa fa-file-text padding-small"></i>
                                 DOCKER基础技术：LINUX CGROUP(转载）
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="./2017/03/03/itest/" title="Itest测试工具介绍">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Itest测试工具介绍
                             </a>
                         </li>
                         <li class="">
@@ -436,37 +436,12 @@
     <div class="col-lg-9">
             <article>
                 <h2>
-                    <a href="./2017/03/03/docker/">DOCKER基础技术：LINUX CGROUP(转载）</a>
+                    <a href="./2017/03/22/itest/">Itest测试工具介绍</a>
 <div class="post-info">
     <div class="publish-info-block">
         <small>
             <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2017-03-03T00:00:00+08:00"> 2017-03-03 五</time>
-            </span>
-            <span class="category">
-                <i class="fa fa-folder-open padding-small"></i><a href="./category/dockerzhuan-ti.html">Docker专题</a>
-            </span>
-            <span class="tags">
-                <i class="fa fa-tags padding-small"></i>
-                <a href="./tag/docker.html">docker</a>            </span>
-        </small>
-    </div>
-</div><!-- /.post-info -->                </h2>
-                <div class="summary">
-                    <body><p>前面，我们介绍了Linux Namespace，但是Namespace解决的问题主要是环境隔离的问题，这只是虚拟化中最最基础的一步，我们还需要解决对计算机资源使用上的隔离。也就是说，虽然你通过Namespace把我Jail到一个特定的环境中去了，但是我在其中的进程使用用CPU、内存、磁盘等这些计算资源其实还是可以随心所欲的。所以，我们希望对进程进行资源利用上的限制或控制。这就是Linux CGroup出来了的原因。</p>
-<p>Linux CGroup全称Linux Control Group， 是Linux内核的一个功能，用来限制，控制与分离一个进程组群的资源（如CPU、内存、磁盘输入输出等）。这个项目最早是由Google的工程师在2006年发起（主要是Paul Menage和Rohit Seth），最早的名称为进程容器（process containers）。在2007年时，因为在Linux内核中，容器（container）这个名词太过广泛，为避免混乱，被重命名为cgroup，并且被合并到2.6.24版的内核中去。然后，其它开始了他的发展。
-Linux CGroupCgroup 可​​​让​​​您​​​为 ...</p></body>
-                </div>
-            </article>
-            <hr/>
-            <article>
-                <h2>
-                    <a href="./2017/03/03/itest/">Itest测试工具介绍</a>
-<div class="post-info">
-    <div class="publish-info-block">
-        <small>
-            <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2017-03-03T00:00:00+08:00"> 2017-03-03 五</time>
+                <i class="fa fa-calendar padding-small"></i><time datetime="2017-03-22T00:00:00+08:00"> 2017-03-22 三</time>
             </span>
             <span class="category">
                 <i class="fa fa-folder-open padding-small"></i><a href="./category/gong-ju.html">工具</a>
@@ -487,6 +462,31 @@ Linux CGroupCgroup 可​​​让​​​您​​​为 ...</p></body>
 <ul>
 <li>
 <p>系统信息抓取 包括：硬件信息抓取和系统核心组件信息抓取。硬件信息主要包括：处理器、主板、BIOS、内存、北桥 ...</p></li></ul></body>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2>
+                    <a href="./2017/03/03/docker/">DOCKER基础技术：LINUX CGROUP(转载）</a>
+<div class="post-info">
+    <div class="publish-info-block">
+        <small>
+            <span class="published">
+                <i class="fa fa-calendar padding-small"></i><time datetime="2017-03-03T00:00:00+08:00"> 2017-03-03 五</time>
+            </span>
+            <span class="category">
+                <i class="fa fa-folder-open padding-small"></i><a href="./category/dockerzhuan-ti.html">Docker专题</a>
+            </span>
+            <span class="tags">
+                <i class="fa fa-tags padding-small"></i>
+                <a href="./tag/docker.html">docker</a>            </span>
+        </small>
+    </div>
+</div><!-- /.post-info -->                </h2>
+                <div class="summary">
+                    <body><p>前面，我们介绍了Linux Namespace，但是Namespace解决的问题主要是环境隔离的问题，这只是虚拟化中最最基础的一步，我们还需要解决对计算机资源使用上的隔离。也就是说，虽然你通过Namespace把我Jail到一个特定的环境中去了，但是我在其中的进程使用用CPU、内存、磁盘等这些计算资源其实还是可以随心所欲的。所以，我们希望对进程进行资源利用上的限制或控制。这就是Linux CGroup出来了的原因。</p>
+<p>Linux CGroup全称Linux Control Group， 是Linux内核的一个功能，用来限制，控制与分离一个进程组群的资源（如CPU、内存、磁盘输入输出等）。这个项目最早是由Google的工程师在2006年发起（主要是Paul Menage和Rohit Seth），最早的名称为进程容器（process containers）。在2007年时，因为在Linux内核中，容器（container）这个名词太过广泛，为避免混乱，被重命名为cgroup，并且被合并到2.6.24版的内核中去。然后，其它开始了他的发展。
+Linux CGroupCgroup 可​​​让​​​您​​​为 ...</p></body>
                 </div>
             </article>
             <hr/>

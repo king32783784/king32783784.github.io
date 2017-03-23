@@ -6,23 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="李鹏" />
-        <meta name="keywords" content="autotest" />
-        <meta name="description" content="Autotest是一个开源的自动化测试框架.设计目的是为了测试Linux内核,同样可以用来检查新的硬件,虚拟化测试以及linux平台用户空间程序.它遵循GPL协议,并有大量的开发组织成员,其中包括像谷歌,IBM,红帽等. Avocado,是Autotest开发组,开发的下一代的自动化测试框架.详细信息参考Avocado,后续有时间会再对Avocado进行介绍. 本专题主要介绍以下内容: * 基本信息 * 客户端介绍 * 服务端介绍 * 前端介绍 * 系统管理 * 调度模块 * 如何开发 本文主要介绍关于Autotest的一些基本信息.主要内容: * Autotest主要结构 Autotest项目主页:Autotest Github: Github Autotest主要结构 下图是Autotest框架简化图: Web接口和命令行接口 Web接口和命令行接口是相辅相成的方式去连接Autotest并创建job.这两则具有相同的功能,意在方便用户.你可以用这些接口做以下事情: * 管理jobs,如创建,监控,中止等 * 管理客户端 * 查看测试结果 前端会通过向mysql数据库中创建记录的方式将jobs插入服务端. 服务端 服务端主要包括3个部分: 一个Mysql数据库,该数据库保存了所有的job,客户端(测试物理机 ..." />
+        <meta name="keywords" content="itest" />
+        <meta name="description" content="基本介绍 本文介绍了itest(自研测试工具）的制作目的、测试范围、常用功能、测试方法。该工具目前处于开发阶段，仍有部分功能未实现，存在一些稳定性、兼容性的问题。 制作目的 进行linux系统测试时，需要进行系统信息抓取、功能性测试、性能测试、稳定性测试。其中信息抓取、性能测试、稳定性测试大部分情况下需要进行多轮次的测试。比如系统信息抓取包含系统软硬件信息的多个方面如 cpu信息、gcc信息等等；性能测试包括cpu、内存、内核等等；稳定性测试包括io、多线程、图形、内核等等；功能测试包括内核系统调用、常用服务/命令（主要包括目前自动化实现的部分）。这些可以自动化实现的测试，之前我们多多少少的都做了一些测试脚本进行了实现，itest制作的目的是为了整合这些测试，并且提供一个简单操作的GUI界面。主界面如下 测试范围 itest目前支持的测试包括： 系统信息抓取 包括：硬件信息抓取和系统核心组件信息抓取。硬件信息主要包括：处理器、主板、BIOS、内存、北桥 ..." />
 
 <!-- Open Graph tags -->
 <meta property="og:site_name" content="路漫求索"/>
     <meta property="og:type" content="article"/>
-    <meta property="og:title" content="Autotest-summary"/>
-    <meta property="og:url" content="../../../../2015/08/12/Autotest01/"/>
-    <meta property="og:description" content="Autotest是一个开源的自动化测试框架.设计目的是为了测试Linux内核,同样可以用来检查新的硬件,虚拟化测试以及linux平台用户空间程序.它遵循GPL协议,并有大量的开发组织成员,其中包括像谷歌,IBM,红帽等. Avocado,是Autotest开发组,开发的下一代的自动化测试框架.详细信息参考Avocado,后续有时间会再对Avocado进行介绍. 本专题主要介绍以下内容: * 基本信息 * 客户端介绍 * 服务端介绍 * 前端介绍 * 系统管理 * 调度模块 * 如何开发 本文主要介绍关于Autotest的一些基本信息.主要内容: * Autotest主要结构 Autotest项目主页:Autotest Github: Github Autotest主要结构 下图是Autotest框架简化图: Web接口和命令行接口 Web接口和命令行接口是相辅相成的方式去连接Autotest并创建job.这两则具有相同的功能,意在方便用户.你可以用这些接口做以下事情: * 管理jobs,如创建,监控,中止等 * 管理客户端 * 查看测试结果 前端会通过向mysql数据库中创建记录的方式将jobs插入服务端. 服务端 服务端主要包括3个部分: 一个Mysql数据库,该数据库保存了所有的job,客户端(测试物理机 ..."/>
-    <meta property="article:published_time" content="2015-08-12" />
-    <meta property="article:section" content="自动化测试-Autotest" />
-        <meta property="article:tag" content="autotest" />
+    <meta property="og:title" content="Itest测试工具介绍"/>
+    <meta property="og:url" content="../../../../2017/03/22/itest/"/>
+    <meta property="og:description" content="基本介绍 本文介绍了itest(自研测试工具）的制作目的、测试范围、常用功能、测试方法。该工具目前处于开发阶段，仍有部分功能未实现，存在一些稳定性、兼容性的问题。 制作目的 进行linux系统测试时，需要进行系统信息抓取、功能性测试、性能测试、稳定性测试。其中信息抓取、性能测试、稳定性测试大部分情况下需要进行多轮次的测试。比如系统信息抓取包含系统软硬件信息的多个方面如 cpu信息、gcc信息等等；性能测试包括cpu、内存、内核等等；稳定性测试包括io、多线程、图形、内核等等；功能测试包括内核系统调用、常用服务/命令（主要包括目前自动化实现的部分）。这些可以自动化实现的测试，之前我们多多少少的都做了一些测试脚本进行了实现，itest制作的目的是为了整合这些测试，并且提供一个简单操作的GUI界面。主界面如下 测试范围 itest目前支持的测试包括： 系统信息抓取 包括：硬件信息抓取和系统核心组件信息抓取。硬件信息主要包括：处理器、主板、BIOS、内存、北桥 ..."/>
+    <meta property="article:published_time" content="2017-03-22" />
+    <meta property="article:section" content="工具" />
+        <meta property="article:tag" content="itest" />
         <meta property="article:author" content="李鹏" />
         <meta property="og:image"
               content="../../../../favicon.png"/>
 
-    <title>Autotest-summary - 路漫求索</title>
+    <title>Itest测试工具介绍 - 路漫求索</title>
 
         <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
 
@@ -67,12 +67,12 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-share-small" class="collapse ">
                     <li>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2015/08/12/Autotest01/" title="Share via Facebook" target="popup">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2017/03/22/itest/" title="Share via Facebook" target="popup">
                             <i class="fa fa-facebook-square padding-small"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="https://plus.google.com/share?url=../../../../2015/08/12/Autotest01/" title="Share via Google+" target="popup">
+                        <a href="https://plus.google.com/share?url=../../../../2017/03/22/itest/" title="Share via Google+" target="popup">
                             <i class="fa fa-google-plus padding-small"></i>
                         </a>
                     </li>
@@ -121,7 +121,7 @@
                         </a>
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
-                        <li class="">
+                        <li class="active">
                             <a class="hide-overflow" href="../../../../2017/03/22/itest/" title="Itest测试工具介绍">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Itest测试工具介绍
@@ -167,13 +167,13 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-share" class="sidebar_submenu collapse ">
                     <li>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2015/08/12/Autotest01/" target="popup">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2017/03/22/itest/" target="popup">
                             <i class="fa fa-facebook-square padding-small"></i>
                             Facebook
                         </a>
                     </li>
                     <li>
-                        <a href="https://plus.google.com/share?url=../../../../2015/08/12/Autotest01/" target="popup">
+                        <a href="https://plus.google.com/share?url=../../../../2017/03/22/itest/" target="popup">
                             <i class="fa fa-google-plus padding-small"></i>
                             Google+
                         </a>
@@ -287,7 +287,7 @@
                             <span class="badge pull-right categorybadge">17</span>
                         </a>
                     </li>
-                    <li class="active">
+                    <li >
                         <a href="../../../../category/zi-dong-hua-ce-shi-autotest.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             自动化测试-Autotest
@@ -364,7 +364,7 @@
                             <span class="badge pull-right categorybadge">2</span>
                         </a>
                     </li>
-                    <li >
+                    <li class="active">
                         <a href="../../../../category/gong-ju.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             工具
@@ -420,24 +420,24 @@
             <div class="col-lg-9">
                 <header class="page-header">
                     <h1>
-                        <a href="../../../../2015/08/12/Autotest01/"
+                        <a href="../../../../2017/03/22/itest/"
                            rel="bookmark"
-                           title="Permalink to Autotest-summary">
-                            Autotest-summary
+                           title="Permalink to Itest测试工具介绍">
+                            Itest测试工具介绍
                         </a>
                         <small>
 <div class="post-info">
     <div class="publish-info-block">
         <small>
             <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2015-08-12T00:00:00+08:00"> 2015-08-12 三</time>
+                <i class="fa fa-calendar padding-small"></i><time datetime="2017-03-22T00:00:00+08:00"> 2017-03-22 三</time>
             </span>
             <span class="category">
-                <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/zi-dong-hua-ce-shi-autotest.html">自动化测试-Autotest</a>
+                <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/gong-ju.html">工具</a>
             </span>
             <span class="tags">
                 <i class="fa fa-tags padding-small"></i>
-                <a href="../../../../tag/autotest.html">autotest</a>            </span>
+                <a href="../../../../tag/itest.html">itest</a>            </span>
         </small>
     </div>
 </div><!-- /.post-info -->                        </small>
@@ -448,78 +448,54 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
-<p>Autotest是一个开源的自动化测试框架.设计目的是为了测试Linux内核,同样可以用来检查新的硬件,虚拟化测试以及linux平台用户空间程序.它遵循GPL协议,并有大量的开发组织成员,其中包括像谷歌,IBM,红帽等.
-Avocado,是Autotest开发组,开发的下一代的自动化测试框架.详细信息参考<a href="http://avocado-framework.github.io/">Avocado</a>,后续有时间会再对Avocado进行介绍.
-本专题主要介绍以下内容:</p>
-<div class="highlight"><pre><span></span>* 基本信息
-* 客户端介绍
-* 服务端介绍
-* 前端介绍
-* 系统管理
-* 调度模块
-* 如何开发
-</pre></div>
-<p>本文主要介绍关于Autotest的一些基本信息.主要内容:</p>
-<div class="highlight"><pre><span></span>* Autotest主要结构
-</pre></div>
-<p>Autotest项目主页:<a href="http://autotest.github.io/">Autotest</a></p>
-<p>Github: <a href="https://github.com/autotest/autotest">Github</a></p>
-<h2 id="autotestzhu-yao-jie-gou">Autotest主要结构</h2>
-<p>下图是Autotest框架简化图:</p>
-<p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/Autotest1.png?raw=true" width="480"/></p>
-<h3 id="webjie-kou-he-ming-ling-xing-jie-kou">Web接口和命令行接口</h3>
-<p>Web接口和命令行接口是相辅相成的方式去连接Autotest并创建job.这两则具有相同的功能,意在方便用户.你可以用这些接口做以下事情:</p>
-<div class="highlight"><pre><span></span>* 管理jobs,如创建,监控,中止等
-* 管理客户端
-* 查看测试结果
-</pre></div>
-<p>前端会通过向mysql数据库中创建记录的方式将jobs插入服务端.</p>
-<h3 id="fu-wu-duan">服务端</h3>
-<p>服务端主要包括3个部分:</p>
+                    <body><h3 id="ji-ben-jie-shao">基本介绍</h3>
+<p>本文介绍了itest(自研测试工具）的制作目的、测试范围、常用功能、测试方法。该工具目前处于开发阶段，仍有部分功能未实现，存在一些稳定性、兼容性的问题。</p>
+<h3 id="zhi-zuo-mu-de">制作目的</h3>
+<p>进行linux系统测试时，需要进行系统信息抓取、功能性测试、性能测试、稳定性测试。其中信息抓取、性能测试、稳定性测试大部分情况下需要进行多轮次的测试。比如系统信息抓取包含系统软硬件信息的多个方面如 cpu信息、gcc信息等等；性能测试包括cpu、内存、内核等等；稳定性测试包括io、多线程、图形、内核等等；功能测试包括内核系统调用、常用服务/命令（主要包括目前自动化实现的部分）。这些可以自动化实现的测试，之前我们多多少少的都做了一些测试脚本进行了实现，itest制作的目的是为了整合这些测试，并且提供一个简单操作的GUI界面。主界面如下</p>
+<h3 id="ce-shi-fan-wei">测试范围</h3>
+<p>itest目前支持的测试包括：</p>
 <ul>
-<li>一个Mysql数据库,该数据库保存了所有的job,客户端(测试物理机),用户,测试项目等信息</li>
-<li>调度程序(monitor_db),从数据库中选择jobs 运行.它对数据库的操作,主要是为了启动autoserv进程去调用服务请求.<ul>
-<li>通常一台测试机一个调度进程</li>
-<li>客户机端的jobs是异步的(设置客户端机变为可用)</li>
-<li>服务器端的jobs是同步的(它启动前要等待所有客户端机)</li>
-</ul>
+<li>
+<p>系统信息抓取 包括：硬件信息抓取和系统核心组件信息抓取。硬件信息主要包括：处理器、主板、BIOS、内存、北桥、南桥、显卡、网卡、无线网卡、SATA、硬盘、光驱、RAID、蓝牙、USB设备、键鼠等；核心组件信息包括：系统版本、内核版本、文件系统、GCC、GLIBC、桌面管理器、QT、XORG、MESA、Java、浏览器、北桥驱动、南桥驱动、显卡驱动、网卡驱动、声卡驱动、RAID卡驱动等信息。</p>
 </li>
-<li>Autoserv: 服务端通过autoserv程序管理客户端,每个运行的job都会有一个autoserv进程.每个autoserv进程:<ul>
-<li>控制和监控一个或多个客户端</li>
-<li>确认客户端是否工作正常,如果确认失败,会尝试修复.</li>
-<li>管理job的执行</li>
-<li>在开始测试前,更新客户端的autotest程序.(如新增了测试项)</li>
-</ul>
+<li>
+<p>功能测试 目前只支持ltp内核功能测试。</p>
+</li>
+<li>
+<p>性能测试，包括：CPU运算（支持sysbench)、MEM操作（支持sysbench、stream）、I/0操作（支持iozone)、线程管理（支持pingpong )、系统基准(支持unixbench)、内核（支持lmbench）、浏览器（支持css、acid、V8、octane、html、dromaeo）、JAVA(支持specjvm)、2D（支持 x11perf、qtperf)、3D（gerars、GLmark）、网络(涉及两台机器，暂不支持）。</p>
+</li>
+<li>
+<p>压力测试,包括：系统压力测试、处理器压力测试、内存压力测试、多线程压力测试、IO压力测试、2D压力测试、3D压力测试。</p>
 </li>
 </ul>
-<p>另外,mysql数据库可用部署在不同的机器上进行调度,虽然有一定的调度负载,但每个可用管理几千个客户端.所以没必要部署在不同机器上.</p>
-<h3 id="ke-hu-duan">客户端</h3>
-<p>启动一个job后,client端做了大部分的工作.它的调用方式有:</p>
-<div class="highlight"><pre><span></span>手动执行:通过client/autotest-local &lt;control_file_name&gt;命令启动
-通过服务端调用
-</pre></div>
-<p>一个典型的工作流程如下:</p>
-<p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/Autotest2.png?raw=true" width="480"/></p>
-<p><strong>简要说明</strong></p>
-<p>用户创建job(可以通过web端或命令行)或自动事件触发;将job信息记录插入前端数据库;调度器(monitor_db)将job匹配到空闲机器;调度器创建autoserv进程启动job;Autoserv确认客户端或修复;Autoserv在测试机器上安装或更新autotest客户端;Autoserv监控客户端状态,监视问题;
-客户机器触发autotest客户端执行测试(已开发测试项目)-运行control文件-log模块记录测试信息-setup-执行测试-测试结果文件由autoserv回收;分析机器新的job;log结果信息处理;</p>
-<p><strong>结果目录</strong>:按照一定格式结果目录</p>
-<p><strong>结果数据库</strong>:一个简单的数据库保存每个测试的job信息 测试结果 性能指标等</p>
-<p>随着前面的介绍,下图是更容易理解的基本框架图:</p>
-<p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/Autotest3.png?raw=true" width="480"/></p>
-<p><strong>简要说明:</strong>
-Autotest通过 Web 前端或者命令行工具提交测试任务， Autotest Server 通过调度器将任务分发到不同的 Client（测试机）， Client 端任务执行完之后，再将结果返回到结果分析后端，Web 前端与命令行接口即可查看测试结果
-.
-主要构成部分：</p>
-<ul>
-<li>Local：在测试机Client上执行测试的引擎</li>
-<li>Remote：从Server端推送测试代码到客户测试机，触发测试执行，监控测试状态，并且把测试结果从测试机反馈到服务器。</li>
-<li>Scheduler：根据用户输入分配测试任务，为每个任务创建服务进程，存储结果到测试数据库</li>
-<li>Frontends：允许用户运行作业并且方便地使测试结果可视化。</li>
-</ul>
-<p>Top<a href="">^</a></p>
-<p>下一篇<a href="https://king32783784.github.io/2015/08/13/autotest02/">Autotest：Autotest-Local&gt;&gt;&gt;</a></p></body>
+<h3 id="itestchang-yong-gong-neng">itest常用功能</h3>
+<p>itest 常用功能包括测试工具存放定制、邮件订阅结果功能、测试项目选择、测试项目参数指定、测试结果查看、测试报告查看、测试报告制作、系统资源监控、测试日志查看等。下面分别介绍这些功能。</p>
+<p>主界面如下图：</p>
+<p><img class="img-responsive" height="320" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/itest-main.png?raw=true" width="480"/></p>
+<p>测试工具存放定制指的是，itest本身只是一个测试框架，并不包含测试过程中涉及的测试工具如iozone，这些工具是独立的。这就存在一个工具获取方式的问题，itest支持远程获取和本地目录两种形式，设置界面如下：</p>
+<p><img class="img-responsive" height="320" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/itest-seting.png?raw=true" width="480"/></p>
+<p>邮件订阅功能，性能测试和稳定性测试大部分需要较长的时间，而且都是无人值守的测试。为了实现第一时间掌握测试结果的需求，考虑实现邮件订阅功能，将需要了解测试结果人员的邮件添加到邮件订阅列表，测试完成后，itest会自动将测试报告以邮件的形式发送给订阅者，设置界面如下：</p>
+<p><img class="img-responsive" height="320" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/itest-mail.png?raw=true" width="480"/></p>
+<p>测试项目选择，itest可以根据自己的测试需求，选择对应的测试项目，如只进行性能测试中的cpu性能测试，只需勾选对应测试项目即可。如下图</p>
+<p><img class="img-responsive" height="320" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/itest-itemcheck.png?raw=true" width="480"/></p>
+<p>部分测试项目包含多个测试工具或测试点，可以根据需要进行定制，如下图：</p>
+<p><img class="img-responsive" height="320" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/itest-itemset.png?raw=true" width="480"/></p>
+<p>具体的测试项目同样支持测试参数的指定，如iozone,需要设置测试文件大小、测试模式、测试块大小、测试次数、测试线程数数等参数，设置方法如下图：</p>
+<p><img class="img-responsive" height="320" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/itest-item.png?raw=true" width="480"/></p>
+<p>测试结果查看，测试完成后，可以进行测试结果的查看，如选择cpu性能测试中的sysbench进行测试，测试完成后，点击查看结果，会打开对应的结果管理器，结果如下图</p>
+<p><img class="img-responsive" height="320" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/itest-result?raw=true" width="480"/></p>
+<p>测试报告查看，如果进行了多次测试并且保存了多个测试报告，itest提供测试报告的查阅功能，如下图：</p>
+<p><img class="img-responsive" height="320" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/itest-resultsearch.png?raw=true" width="480"/></p>
+<p>测试报告制作，itest可以进行多次测试结果或不同系统测试结果进行对比测试报告的制作，计划支持的报告格式为html和xls，目前仅集成了html格式的报告，如下图：</p>
+<p><img class="img-responsive" height="320" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/itest-mkresult.png?raw=true" width="480"/></p>
+<p>系统资源监控，itest支持系统资源的实时监控，目前支持监控项目包括cpu负载、内存负载、SWAP负载、网络负载。在主界面点击查看负载，即可打开负载监视器，如下图:</p>
+<p><img class="img-responsive" height="320" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/itest-load.png?raw=true" width="480"/></p>
+<p>其他功能，界面中包含了一个测试任务执行的进度条，可以初步判断测试执行的进行，一个测试日志显示窗口，该测试日志显示当前测试的项目和已经完成的测试项目。设计包括测试详细日志的查看功能，目前未实现。</p>
+<p>工具其他说明</p>
+<p>目前该工具已在桌面4.0系列的产品进行了测试验证，其他产品暂未进行兼容测试。该工具后台主要由python实现，前端由pyqt实现。对系统的主要依赖包括pyqt(UI界面）、pandoc（报告制作）、selenium（浏览器测试）等模块。测试时依赖网络(部分测试工具需要进行依赖包的安装，测试工具的下载）。</p>
+<p>项目地址：</p>
+<p><a href="https://github.com/king32783784/itest">itest</a></p>
+<p><a href="https://github.com/king32783784/itest/issues">已知bug</a></p></body>
                 </div>
                 <footer class="text-right">
                     <p>by 李鹏</p>
@@ -630,7 +606,7 @@ Autotest通过 Web 前端或者命令行工具提交测试任务， Autotest Ser
             </div>
     <div id="scrollspy">
         <div class="col-lg-3 nav nav-stacked hidden-xs hidden-sm" data-spy="affix" data-offset-top="135">
-            <div id="toc"><ul><li><a class="toc-href" href="#" title="Autotest-summary">Autotest-summary</a><ul><li><a class="toc-href" href="#autotestzhu-yao-jie-gou" title="Autotest主要结构">Autotest主要结构</a><ul><li><a class="toc-href" href="#webjie-kou-he-ming-ling-xing-jie-kou" title="Web接口和命令行接口">Web接口和命令行接口</a></li><li><a class="toc-href" href="#fu-wu-duan" title="服务端">服务端</a></li><li><a class="toc-href" href="#ke-hu-duan" title="客户端">客户端</a></li></ul></li></ul></li></ul></div>
+            <div id="toc"><ul><li><a class="toc-href" href="#" title="Itest测试工具介绍">Itest测试工具介绍</a><ul><li><a class="toc-href" href="#ji-ben-jie-shao" title="基本介绍">基本介绍</a></li><li><a class="toc-href" href="#zhi-zuo-mu-de" title="制作目的">制作目的</a></li><li><a class="toc-href" href="#ce-shi-fan-wei" title="测试范围">测试范围</a></li><li><a class="toc-href" href="#itestchang-yong-gong-neng" title="itest常用功能">itest常用功能</a></li></ul></li></ul></div>
         </div>
     </div>
         </div>
