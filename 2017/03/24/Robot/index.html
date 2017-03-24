@@ -547,11 +547,11 @@ Report:  /home/isoft_lp/Github/Testtool/QuickStartGuide/report.html
 <ul>
 <li>report.html  测试报告</li>
 </ul>
-<p>图一</p>
+<p><img class="img-responsive" height="240" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/rf-qsreport.png?raw=true" width="320"/></p>
 <ul>
 <li>log.html 详细测试执行日志</li>
 </ul>
-<p>图二</p>
+<p><img class="img-responsive" height="240" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/rf-qsresult.png?raw=true" width="320"/></p>
 <ul>
 <li>out.xml 机器可读的xml格式结果</li>
 </ul>
@@ -873,7 +873,7 @@ Library       lib/LoginLibray.py</p>
 </tr>
 <tr>
 <td>\${DATABASE FILE}</td>
-<td>\<span class="math">\(\{TEMPDIR\}\\)</span>{/}robotframework-quickstart-db.txt</td>
+<td>\<span class="math">\(\{TEMPDIR\}\\\)</span>{/}robotframework-quickstart-db.txt</td>
 </tr>
 <tr>
 <td></td>
@@ -892,7 +892,7 @@ Library       lib/LoginLibray.py</p>
 <p>变量还可以在命令行指定，如果测试需要在不同的环境中执行，这非常有用。比如：</p>
 <div class="highlight"><pre><span></span>robot --variable USERNAME:johndoe --variable PASSWORD:J0hnD0e QuickStart.rst
 </pre></div>
-<p>除了用户定义的变量外，还有一些内置的变量始终可用。这些变量包括上面例子使用的<span _="/" class="math">\({TEMPDIR}和\)</span>。</p>
+<p>除了用户定义的变量外，还有一些内置的变量始终可用。这些变量包括上面例子使用的\<span class="math">\(\{TEMPDIR\}和\\)</span>{/}。</p>
 <h4 id="shi-yong-bian-liang">使用变量</h4>
 <p>变量可以在测试数据的大部分地方使用。它们最常用作关键字的参数，如以下测试用例所示。来自关键字的返回值也可以分配给变量，可以作为以后使用。例如，以下数据库包含user关键字将数据库内容设置为${database}变量，然后使用BuiltIn关键字Should Contain来验证内容。库和用户关键字都可以返回值。</p>
 <p>测试用例</p>
