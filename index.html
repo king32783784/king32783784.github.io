@@ -121,6 +121,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="./2017/03/24/Robot/" title="Robot Framework快速入门">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework快速入门
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="./2017/03/22/itest/" title="Itest测试工具介绍">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Itest测试工具介绍
@@ -142,12 +148,6 @@
                             <a class="hide-overflow" href="./2017/03/03/docker/" title="DOCKER基础技术：LINUX CGROUP(转载）">
                                 <i class="fa fa-file-text padding-small"></i>
                                 DOCKER基础技术：LINUX CGROUP(转载）
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="./2017/02/23/python/" title="位操作">
-                                <i class="fa fa-file-text padding-small"></i>
-                                位操作
                             </a>
                         </li>
                     <li>
@@ -398,6 +398,13 @@
                             <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
+                    <li >
+                        <a href="./category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
                 </ul></li>
                 
             </ul>
@@ -434,6 +441,41 @@
 </section>
 <div class="row">
     <div class="col-lg-9">
+            <article>
+                <h2>
+                    <a href="./2017/03/24/Robot/">Robot Framework快速入门</a>
+<div class="post-info">
+    <div class="publish-info-block">
+        <small>
+            <span class="published">
+                <i class="fa fa-calendar padding-small"></i><time datetime="2017-03-24T00:00:00+08:00"> 2017-03-24 五</time>
+            </span>
+            <span class="category">
+                <i class="fa fa-folder-open padding-small"></i><a href="./category/zi-dong-hua-ce-shi-robot.html">自动化测试-Robot</a>
+            </span>
+            <span class="tags">
+                <i class="fa fa-tags padding-small"></i>
+                <a href="./tag/framework.html">Framework</a>            </span>
+        </small>
+    </div>
+</div><!-- /.post-info -->                </h2>
+                <div class="summary">
+                    <body><h3 id="guan-yu">关于</h3>
+<p>本文主要介绍了Robot Framework的重要组件。可以快速浏览该文和相关示例来了解该框架。该框架重要的特性，本文都会涉及。本文主要翻译于RF官方快速文档及个人理解。</p>
+<h3 id="rfgai-shu">RF概述</h3>
+<p>RF框架是用于验收测试和验收测试驱动开发（ATDD)的通用开源测试框架。它具备易于使用的表格测试数据语法，并且使用关键字驱动测试的方法。它的测试功能可以通过使用python或java实现的测试库来进行扩展，用户可以使用用于创建测试用例的相同语法从现有的关键字创建新的更高级别的关键字。</p>
+<p>RF框架独立于操作系统和应用程序。核心框架是使用python实现的，可以在jython(JVM)和IronPython(.NET)上运行。该框架具有丰富的生态系统，包括作为单独项目开发的各种通用测试库和工具。</p>
+<p>关于RF和其生态系统的更多信息，参阅<a href="http://robotframework.org">http://robotframework.org</a>.后续，本站也会进行更详细的梳理。</p>
+<h3 id="ying-yong-yan-shi">应用演示</h3>
+<p>本文的应用示例程序是传统登录示例的一个变体：它是基于一个命令行的python编写的身份验证服务器。该应用程序允许用户做以下三件事：
+ * 创建一个有效密码的账号
+ * 使用有效的用户名和密码登陆
+ * 更改现有账号的密码</p>
+<p>应用程序本身在sut/login.py文件中，可以使用命令python sut/login.py执行。尝试使用不存在的用户账号或密码无效登录会导致相同的错误信息：</p>
+<div class="highlight"><pre><span></span>&gt; python sut/login.py ...</pre></div></body>
+                </div>
+            </article>
+            <hr/>
             <article>
                 <h2>
                     <a href="./2017/03/22/itest/">Itest测试工具介绍</a>
@@ -555,75 +597,6 @@
                     <body><p>前面，我们介绍了Linux Namespace，但是Namespace解决的问题主要是环境隔离的问题，这只是虚拟化中最最基础的一步，我们还需要解决对计算机资源使用上的隔离。也就是说，虽然你通过Namespace把我Jail到一个特定的环境中去了，但是我在其中的进程使用用CPU、内存、磁盘等这些计算资源其实还是可以随心所欲的。所以，我们希望对进程进行资源利用上的限制或控制。这就是Linux CGroup出来了的原因。</p>
 <p>Linux CGroup全称Linux Control Group， 是Linux内核的一个功能，用来限制，控制与分离一个进程组群的资源（如CPU、内存、磁盘输入输出等）。这个项目最早是由Google的工程师在2006年发起（主要是Paul Menage和Rohit Seth），最早的名称为进程容器（process containers）。在2007年时，因为在Linux内核中，容器（container）这个名词太过广泛，为避免混乱，被重命名为cgroup，并且被合并到2.6.24版的内核中去。然后，其它开始了他的发展。
 Linux CGroupCgroup 可​​​让​​​您​​​为 ...</p></body>
-                </div>
-            </article>
-            <hr/>
-            <article>
-                <h2>
-                    <a href="./2017/02/23/python/">位操作</a>
-<div class="post-info">
-    <div class="publish-info-block">
-        <small>
-            <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2017-02-23T00:00:00+08:00"> 2017-02-23 四</time>
-            </span>
-            <span class="category">
-                <i class="fa fa-folder-open padding-small"></i><a href="./category/bian-cheng-yu-yan-python.html">编程语言-Python</a>
-            </span>
-            <span class="tags">
-                <i class="fa fa-tags padding-small"></i>
-                <a href="./tag/python.html">Python</a>            </span>
-        </small>
-    </div>
-</div><!-- /.post-info -->                </h2>
-                <div class="summary">
-                    <body><p>最近碰到一个问题，是取一个数的反数，所以整理了一下位操作。
-计算机系统中所有的数据都是以二进制的形式存储的。位运算其实就是直接对在内存中的二进制数据进行操作，因此数据处理会比较快。
-在实际编程中，如果能合理运用位操作，能提高运行效率，解决一些复杂问题。</p>
-<h3 id="wei-cao-zuo-ji-chu">位操作基础</h3>
-<p>基本的位操作符有与、或、异或、取反、左移、右移。运算规则如下：</p>
-<table class="table table-hover table-striped">
-<thead>
-<tr>
-<th>符号</th>
-<th>描述</th>
-<th>运算规则</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>'&amp;'</td>
-<td>与</td>
-<td>两个位都为１，结果为１</td>
-</tr>
-<tr>
-<td>'I'</td>
-<td>或</td>
-<td>两个位都为０，结果才为０（只要有1就为1）</td>
-</tr>
-<tr>
-<td>'^'</td>
-<td>异或</td>
-<td>两个位相同为0， 相异为1</td>
-</tr>
-<tr>
-<td>'～'</td>
-<td>取反</td>
-<td>0变1， 1变0</td>
-</tr>
-<tr>
-<td>'&lt;&lt;'</td>
-<td>左移</td>
-<td>各个二进制位全部左移若干位，高位丢弃，低位补0</td>
-</tr>
-<tr>
-<td>'&gt;&gt;'</td>
-<td>右移</td>
-<td>各二进位全部右移若干位，对无符号数，高位补0， 有符号数，各编译器处理方法不一样，有的补符号位（算术右移），有的补0（逻辑右移）</td>
-</tr>
-</tbody>
-</table>
-<p>注意 ...</p></body>
                 </div>
             </article>
         <div class="btn-more text-right">
