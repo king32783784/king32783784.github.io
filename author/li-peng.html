@@ -121,6 +121,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../2017/03/30/Robot/" title="Robot Framework 用户手册(一)">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework 用户手册(一)
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../2017/03/24/Robot/" title="Robot Framework快速入门">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework快速入门
@@ -142,12 +148,6 @@
                             <a class="hide-overflow" href="../2017/03/10/测试/" title="测试分类">
                                 <i class="fa fa-file-text padding-small"></i>
                                 测试分类
-                            </a>
-                        </li>
-                        <li class="active">
-                            <a class="hide-overflow" href="../2017/03/03/docker/" title="DOCKER基础技术：LINUX CGROUP(转载）">
-                                <i class="fa fa-file-text padding-small"></i>
-                                DOCKER基础技术：LINUX CGROUP(转载）
                             </a>
                         </li>
                     <li>
@@ -385,6 +385,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
+                            <span class="badge pull-right categorybadge">2</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../category/mongodb.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             Mongodb
@@ -395,13 +402,6 @@
                         <a href="../category/web.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             Web
-                            <span class="badge pull-right categorybadge">1</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
@@ -441,6 +441,51 @@
 </section>
 <div class="row">
     <div class="col-lg-9">
+            <article>
+                <h2>
+                    <a href="../2017/03/30/Robot/">Robot Framework 用户手册(一)</a>
+<div class="post-info">
+    <div class="publish-info-block">
+        <small>
+            <span class="published">
+                <i class="fa fa-calendar padding-small"></i><time datetime="2017-03-30T00:00:00+08:00"> 2017-03-30 四</time>
+            </span>
+            <span class="category">
+                <i class="fa fa-folder-open padding-small"></i><a href="../category/zi-dong-hua-ce-shi-robot.html">自动化测试-Robot</a>
+            </span>
+            <span class="tags">
+                <i class="fa fa-tags padding-small"></i>
+                <a href="../tag/framework.html">Framework</a>            </span>
+        </small>
+    </div>
+</div><!-- /.post-info -->                </h2>
+                <div class="summary">
+                    <body><p>以下内容主要参考RobotFramework官方用户手册文档。</p>
+<h3 id="jie-shao">介绍</h3>
+<p>RF框架是用于验收测试和验收测试驱动开发（ATDD)的通用开源测试框架。它具备易于使用的表格测试数据语法，并且使用关键字驱动测试的方法。它的测试功能可以通过使用python或java实现的测试库来进行扩展，用户可以使用用于创建测试用例的相同语法从现有的关键字创建新的更高级别的关键字。</p>
+<p>RF框架独立于操作系统和应用程序。核心框架是使用python实现的，可以在jython(JVM)和IronPython(.NET)上运行。该框架具有丰富的生态系统，包括作为单独项目开发的各种通用测试库和工具。</p>
+<p>关于RF和其生态系统的更多信息，参阅http://robotframework.org.</p>
+<h4 id="wei-shi-yao-xuan-ze-robot-framework">为什么选择robot framework？</h4>
+<ul>
+<li>支持使用简单的表格语法，采用统一的方式创建测试用例；</li>
+<li>支持从现有关键字创建可重用的高级关键字；</li>
+<li>提供了易于阅读的结果报告和html格式的日志；</li>
+<li>独立的平台和应用程序；</li>
+<li>提供一个简单测试库API,支持使用python或java语言自定义测试库；</li>
+<li>提供用于集成到现有基础框架（持续集成系统）中的命令行界面和基于xml的输出文件；</li>
+<li>提供selenium web测试、Java测试、多线程运行、Telnet、ssh等支持；</li>
+<li>支持创建数据驱动的测试用例；</li>
+<li>内置了对变量的支持，特别适用于不同环境下的测试；</li>
+<li>支持标签分类和选择性执行测试用例;</li>
+<li>实现与源代码控制的轻松集成： 测试套件只是可以使用生产代码进行版本化的文件和目录</li>
+<li>提供测试用例和测试套件级setup和teardown</li>
+<li>模块化的结构支持为应用程序不同接口创建测试</li>
+</ul>
+<h4 id="gao-ji-jia-gou">高级架构</h4>
+<p>Robot ...</p></body>
+                </div>
+            </article>
+            <hr/>
             <article>
                 <h2>
                     <a href="../2017/03/24/Robot/">Robot Framework快速入门</a>
@@ -572,31 +617,6 @@
   单元测试是由程序员自己来完成，最终受益的也是程序员自己。可以这么说，程序员有责任编写功能代码，同时也就有责任为自己的代码编写单元测试。执行单元测试，就是为了证明这段代码的行为和我们期望的一致。</p>
 <h3 id="ji-cheng-ce-shi-integrationtesting">集成测试（IntegrationTesting）</h3>
 <p>集成测试，也叫组装测试或联合测试，是单元测试的逻辑扩展。在单元测试的基础上，将所有模块按照设计要求（如根据结构图）组装成为子系统或系统，进行集成测试 ...</p></body>
-                </div>
-            </article>
-            <hr/>
-            <article>
-                <h2>
-                    <a href="../2017/03/03/docker/">DOCKER基础技术：LINUX CGROUP(转载）</a>
-<div class="post-info">
-    <div class="publish-info-block">
-        <small>
-            <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2017-03-03T00:00:00+08:00"> 2017-03-03 五</time>
-            </span>
-            <span class="category">
-                <i class="fa fa-folder-open padding-small"></i><a href="../category/dockerzhuan-ti.html">Docker专题</a>
-            </span>
-            <span class="tags">
-                <i class="fa fa-tags padding-small"></i>
-                <a href="../tag/docker.html">docker</a>            </span>
-        </small>
-    </div>
-</div><!-- /.post-info -->                </h2>
-                <div class="summary">
-                    <body><p>前面，我们介绍了Linux Namespace，但是Namespace解决的问题主要是环境隔离的问题，这只是虚拟化中最最基础的一步，我们还需要解决对计算机资源使用上的隔离。也就是说，虽然你通过Namespace把我Jail到一个特定的环境中去了，但是我在其中的进程使用用CPU、内存、磁盘等这些计算资源其实还是可以随心所欲的。所以，我们希望对进程进行资源利用上的限制或控制。这就是Linux CGroup出来了的原因。</p>
-<p>Linux CGroup全称Linux Control Group， 是Linux内核的一个功能，用来限制，控制与分离一个进程组群的资源（如CPU、内存、磁盘输入输出等）。这个项目最早是由Google的工程师在2006年发起（主要是Paul Menage和Rohit Seth），最早的名称为进程容器（process containers）。在2007年时，因为在Linux内核中，容器（container）这个名词太过广泛，为避免混乱，被重命名为cgroup，并且被合并到2.6.24版的内核中去。然后，其它开始了他的发展。
-Linux CGroupCgroup 可​​​让​​​您​​​为 ...</p></body>
                 </div>
             </article>
         <div class="btn-more text-right">

@@ -1,5 +1,470 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>路漫求索</title><link href="http://king32783784.github.io/" rel="alternate"></link><link href="http://king32783784.github.io/feeds/li-peng.atom.xml" rel="self"></link><id>http://king32783784.github.io/</id><updated>2017-03-24T00:00:00+08:00</updated><entry><title>Robot Framework快速入门</title><link href="http://king32783784.github.io/2017/03/24/Robot/" rel="alternate"></link><published>2017-03-24T00:00:00+08:00</published><author><name>李鹏</name></author><id>tag:king32783784.github.io,2017-03-24:2017/03/24/Robot/</id><summary type="html">&lt;/head&gt;&lt;body&gt;&lt;h3 id="guan-yu"&gt;关于&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>路漫求索</title><link href="http://king32783784.github.io/" rel="alternate"></link><link href="http://king32783784.github.io/feeds/li-peng.atom.xml" rel="self"></link><id>http://king32783784.github.io/</id><updated>2017-03-30T00:00:00+08:00</updated><entry><title>Robot Framework 用户手册(一)</title><link href="http://king32783784.github.io/2017/03/30/Robot/" rel="alternate"></link><published>2017-03-30T00:00:00+08:00</published><author><name>李鹏</name></author><id>tag:king32783784.github.io,2017-03-30:2017/03/30/Robot/</id><summary type="html">&lt;/head&gt;&lt;body&gt;&lt;p&gt;以下内容主要参考RobotFramework官方用户手册文档。&lt;/p&gt;
+&lt;h3 id="jie-shao"&gt;介绍&lt;/h3&gt;
+&lt;p&gt;RF框架是用于验收测试和验收测试驱动开发（ATDD)的通用开源测试框架。它具备易于使用的表格测试数据语法，并且使用关键字驱动测试的方法。它的测试功能可以通过使用python或java实现的测试库来进行扩展，用户可以使用用于创建测试用例的相同语法从现有的关键字创建新的更高级别的关键字。&lt;/p&gt;
+&lt;p&gt;RF框架独立于操作系统和应用程序。核心框架是使用python实现的，可以在jython(JVM)和IronPython(.NET)上运行。该框架具有丰富的生态系统，包括作为单独项目开发的各种通用测试库和工具。&lt;/p&gt;
+&lt;p&gt;关于RF和其生态系统的更多信息，参阅http://robotframework.org.&lt;/p&gt;
+&lt;h4 id="wei-shi-yao-xuan-ze-robot-framework"&gt;为什么选择robot framework？&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;支持使用简单的表格语法，采用统一的方式创建测试用例；&lt;/li&gt;
+&lt;li&gt;支持从现有关键字创建可重用的高级关键字；&lt;/li&gt;
+&lt;li&gt;提供了易于阅读的结果报告和html格式的日志；&lt;/li&gt;
+&lt;li&gt;独立的平台和应用程序；&lt;/li&gt;
+&lt;li&gt;提供一个简单测试库API,支持使用python或java语言自定义测试库；&lt;/li&gt;
+&lt;li&gt;提供用于集成到现有基础框架（持续集成系统）中的命令行界面和基于xml的输出文件；&lt;/li&gt;
+&lt;li&gt;提供selenium web测试、Java测试、多线程运行、Telnet、ssh等支持；&lt;/li&gt;
+&lt;li&gt;支持创建数据驱动的测试用例；&lt;/li&gt;
+&lt;li&gt;内置了对变量的支持，特别适用于不同环境下的测试；&lt;/li&gt;
+&lt;li&gt;支持标签分类和选择性执行测试用例;&lt;/li&gt;
+&lt;li&gt;实现与源代码控制的轻松集成： 测试套件只是可以使用生产代码进行版本化的文件和目录&lt;/li&gt;
+&lt;li&gt;提供测试用例和测试套件级setup和teardown&lt;/li&gt;
+&lt;li&gt;模块化的结构支持为应用程序不同接口创建测试&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="gao-ji-jia-gou"&gt;高级架构&lt;/h4&gt;
+&lt;p&gt;Robot Framework是一种通用的，应用程序和技术独立的框架。它具有高度模块化的架构：&lt;/p&gt;
+&lt;p&gt;&lt;img height="240" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/architecture.png?raw=true" width="320"/&gt;&lt;/p&gt;
+&lt;p&gt;测试数据是简单、易于编辑的表格格式。Robot Framework启动后，处理测试数据，执行测试并且生成测试log和报告。底层的核心框架不需要清除任何具体测试的内容，与之交互的辅助工作均由测试库完成。库可以直接使用应用程序接口或使用较低级别的测试工具作为驱动程序。&lt;/p&gt;
+&lt;h3 id="an-zhuang-shuo-ming_1"&gt;安装说明&lt;/h3&gt;
+&lt;p&gt;Robot Framework由python实现，并支持Jython,IronPython和PyPY，所以在安装之前，确认系统支持以上解释器的任一一个。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;pip安装：pip instal robotframework &lt;/li&gt;
+&lt;li&gt;源码安装：通过从PyPI下载源代码并提取源代码，或通过克隆GitHub仓库来获取源代码，然后进行编译安装&lt;/li&gt;
+&lt;li&gt;JAR版本：　如果使用Jython运行测试就足够了，最简单的方法是从Maven中心下载独立的robotframework- &lt;version&gt; .jar 。 JAR分发包含Jython和Robot Framework，因此只需要安装Java 。
+具体的安装方式不再说明，可以参考对应的文档。&lt;/version&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="chuang-jian-ce-shi-shu-ju"&gt;创建测试数据&lt;/h3&gt;
+&lt;h4 id="wen-jian-he-mu-lu"&gt;文件和目录&lt;/h4&gt;
+&lt;p&gt;安排测试用例的目录结构如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;测试用例在测试用例文件中创建&lt;/li&gt;
+&lt;li&gt;测试用例文件自动创建一个包含测试用例的测试套件&lt;/li&gt;
+&lt;li&gt;包含测试用例文件的目录形成一个更高级别的测试套件。这样的测试套件目录可以把测试用例文件创建的套件作为其子测试套件。&lt;/li&gt;
+&lt;li&gt;测试套件目录可以包含其他测试套件目录，并且层次结构可以根据需要深入嵌套。&lt;/li&gt;
+&lt;li&gt;测试套件目录可以有一个特殊的初始化文件。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;除此之外，还有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;测试库包含最底层的关键字&lt;/li&gt;
+&lt;li&gt;具有变量和高级别的用户关键字的资源文件&lt;/li&gt;
+&lt;li&gt;变量文件提供比资源文件更灵活的变量创建方法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="zhi-chi-de-wen-jian-ge-shi"&gt;支持的文件格式&lt;/h4&gt;
+&lt;p&gt;RF测试数据以表格格式定义，使用超文本标记语言(html),制表符分隔值(TSV), 纯文本或reStructureText格式。具体使用哪种格式取决于上下文，但如果没有特殊要求，建议使用纯文本格式。&lt;/p&gt;
+&lt;p&gt;RF根据文件扩展名为测试数据文件选择一个解析器。扩展名不区分大小写，将.html,.htm和.xhtml识别为HTML,.tsv识别为TSV,.txt和.robot识别为纯文本，.rst和.rest识别为reStructuredText.&lt;/p&gt;
+&lt;h5 id="htmlge-shi"&gt;HTML格式&lt;/h5&gt;
+&lt;p&gt;HTML文件支持格式化和表格周围的自由文本。 这使得可以在测试用例文件中添加附加信息，并允许创建看起来像正式测试规范的测试用例文件。 HTML格式的主要问题是使用普通文本编辑器编辑这些文件并不容易。另一个问题是HTML版本兼容问题，除对实际测试数据的更改之外，还包含html的语法差异。&lt;/p&gt;
+&lt;p&gt;在html文件中，测试数据在单独的表中定义。RF根据第一个单元格中的文本识别这些测试数据表，表之外的内容均被忽略。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Setting&lt;/th&gt;
+&lt;th&gt;Value&lt;/th&gt;
+&lt;th&gt;Value&lt;/th&gt;
+&lt;th&gt;Value&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Library&lt;/td&gt;
+&lt;td&gt;OperatingSystem&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Variable&lt;/th&gt;
+&lt;th&gt;Value&lt;/th&gt;
+&lt;th&gt;Value&lt;/th&gt;
+&lt;th&gt;Value&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;${MESSAGE}&lt;/td&gt;
+&lt;td&gt;Hello, world!&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Test Case&lt;/th&gt;
+&lt;th&gt;Action&lt;/th&gt;
+&lt;th&gt;Argument&lt;/th&gt;
+&lt;th&gt;Argument&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;My Test&lt;/td&gt;
+&lt;td&gt;[Documentation]&lt;/td&gt;
+&lt;td&gt;Example test&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;Log&lt;/td&gt;
+&lt;td&gt;${MESSAGE}&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;My Keyword&lt;/td&gt;
+&lt;td&gt;/tmp&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Another Test&lt;/td&gt;
+&lt;td&gt;Should Be Equal&lt;/td&gt;
+&lt;td&gt;${MESSAGE}&lt;/td&gt;
+&lt;td&gt;Hello, world!&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Keyword&lt;/th&gt;
+&lt;th&gt;Action&lt;/th&gt;
+&lt;th&gt;Argument&lt;/th&gt;
+&lt;th&gt;Argument&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;My Keyword&lt;/td&gt;
+&lt;td&gt;[Arguments]&lt;/td&gt;
+&lt;td&gt;${path}&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;Directory Should Exist&lt;/td&gt;
+&lt;td&gt;${path}&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;编辑数据&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;HTML格式的数据可以使用任何编辑器进行修改，最好使用图形的编辑器，因为可以看到表格。RIDE可以读写HTML文件，但它存在丢失除了表格之外内容的问题。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;编码和实体引用&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;支持html实体引用。另外，可以使用任何编码，假设它在数据文件中被指定。 正常的HTML文件必须使用META元素，如下例所示：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;XHTML文件需要使用XML前导码，如：
+　
+    &amp;lt;?xml version="1.0" encoding="Big5"?&amp;gt;&lt;/p&gt;
+&lt;p&gt;如果编码没有指定，RF默认使用ISO-8859-1。&lt;/p&gt;
+&lt;h4 id="tsvge-shi_1"&gt;TSV格式&lt;/h4&gt;
+&lt;p&gt;TSV文件可以在电子表格程序中编辑，且语法简单。可以使用正常的文本编辑器编辑，并且在版本控制中支持良好，纯文本格式更适合。
+TSV格式可以用于RF的测试数据，与HTML相同，TSV文件中，所有数据都在一张大表中。测试数据从一个或多个星号(*)中识别,后跟正常表名和可选的关闭星号。和HTML忽略第一个表之外的内容类似，TSV忽略第一个表识别前的所有内容。&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;*Setting*&lt;/th&gt;
+&lt;th&gt;*Value*&lt;/th&gt;
+&lt;th&gt;*Value*&lt;/th&gt;
+&lt;th&gt;*Value*&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Libary&lt;/td&gt;
+&lt;td&gt;OperatingSystem&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;*Variable*&lt;/td&gt;
+&lt;td&gt;*Value*&lt;/td&gt;
+&lt;td&gt;*Value*&lt;/td&gt;
+&lt;td&gt;*Value*&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;${MESSAGE}&lt;/td&gt;
+&lt;td&gt;Hello,wold!&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;*Test Case*&lt;/td&gt;
+&lt;td&gt;*Action*&lt;/td&gt;
+&lt;td&gt;*Argument*&lt;/td&gt;
+&lt;td&gt;*Argument*&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;My Test&lt;/td&gt;
+&lt;td&gt;[Documentation]&lt;/td&gt;
+&lt;td&gt;Example test&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;Log&lt;/td&gt;
+&lt;td&gt;${MESSAGE}&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;My Keyword&lt;/td&gt;
+&lt;td&gt;/tmp&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Another Test&lt;/td&gt;
+&lt;td&gt;Should Be Equal&lt;/td&gt;
+&lt;td&gt;${MESSAGE}&lt;/td&gt;
+&lt;td&gt;Hello, world!&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;*Keyword*&lt;/td&gt;
+&lt;td&gt;*Action*&lt;/td&gt;
+&lt;td&gt;*Argument*&lt;/td&gt;
+&lt;td&gt;*Argument*&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;My Keyword&lt;/td&gt;
+&lt;td&gt;[Arguments]&lt;/td&gt;
+&lt;td&gt;${path}&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;Directory Should Exist&lt;/td&gt;
+&lt;td&gt;${path}&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;编辑测试数据&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;可以在任何电子表格程序（如Microsoft Excel）中创建和编辑TSV文件。 保存文件时选择标签分隔格式，并记住将文件扩展名设置为.tsv 。 关闭所有自动更正并配置工具以将文件中的所有值视为纯文本也是一个好主意。&lt;/p&gt;
+&lt;p&gt;使用任何文本编辑器，TSV文件相对易于编辑，特别是如果编辑器支持从空格中分离选项卡。 RIDE也支持TSV格式。&lt;/p&gt;
+&lt;p&gt;Robot Framework通过首先将所有内容分成行，然后根据表格字符将行分解为单元格来解析TSV数据。 电子表格程序有时用引号围住单元格（例如， "my value" ），而Robot Framework会删除它们。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;编码&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;TSV文件使用UTF-8编码.&lt;/p&gt;
+&lt;h4 id="chun-wen-ben-ge-shi"&gt;纯文本格式&lt;/h4&gt;
+&lt;p&gt;纯文本格式易于编辑，而且版本控制方面处理也比较好，因此是RF中最为常用的数据格式。&lt;/p&gt;
+&lt;p&gt;纯文本格式技术上和TSV格式类似，但是单元格直接的分隔符不同。TSV格式使用选项卡，但纯文本格式，使用两个或更多空格或|包围的管道符合分隔。&lt;/p&gt;
+&lt;p&gt;测试数据表必须在TSV格式之前的名称前必须有一个或多个星号。否则，表头中的星号和空格会被忽略，例如，***Setting***和*Settings工作方式相同。与TSV格式类似，第一个表之前的所有内容将被忽略。&lt;/p&gt;
+&lt;p&gt;在纯文本文件中，选项卡将自动转换为两个空格。这允许使用单个选项卡作为分离器，类似于TSV格式。但注意，在纯文本格式中，多个选项卡被认为是单个分隔符，而在TSV格式中，每个选项卡都将是一个分隔符。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;空格分隔格式&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;只要存在至少两个空格，用作分隔符的空格数可以有所不同，因此可以很好地对齐数据。 这对于在文本编辑器中编辑TSV格式是一个明显的好处，因为TSV无法控制对齐。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;*** Settings ***
+Library     OperatingSystem
+
+*** Variables ***
+&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;MESSAGE&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;  Hello, world!
+
+*** Test Cases ***
+My Test
+    [Documentation]    Example test
+    Log    &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;MESSAGE&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
+    My Keyword    /tmp
+
+Another Test
+    Should Be Equal    &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;MESSAGE&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;    Hello, world!
+
+*** Keywords ***
+My Keyword
+    [Arguments] &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
+    Directory Should Exist &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;因为空格用作分隔符，所有空单元格必须使用${EMPTY}变量或单个反斜杠进行转义。否则处理空格与其他测试数据不同，因为前导，后跟和连续空格必须始终被转义。
+建议在关键字和参数之间使用４个空格&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;管道和空格分隔格式&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;空格分隔格式的最大问题是，视觉分离关键字表单参数处理比较棘手，特别是关键字需要很多参数和参数中包含空格。这种情况下，管道和空格分隔的变体就可以很好的解决这个问题，它可以使得单元格边界更可见。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;| *Setting*  |     *Value*     |
+| Library    | OperatingSystem |
+
+| *Variable* |     *Value*     |
+| &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;MESSAGE&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt; | Hello, world!   |
+
+| *Test Case*  | *Action*        | *Argument*   |
+| My Test      | [Documentation] | Example test |
+|              | Log             | &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;MESSAGE&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;   |
+|              | My Keyword      | /tmp         |
+| Another Test | Should Be Equal | &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;MESSAGE&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;   | Hello, world!
+
+| *Keyword*  |
+| My Keyword | [Arguments] | &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
+|            | Directory Should Exist | &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;很像markdown的表格语法。&lt;/p&gt;
+&lt;p&gt;纯文本文件可以包含空格和空格和管道分隔格式的测试数据，但是单行必须始终使用相同的分隔符。 管道和空间分隔的管线由强制引导管道识别，但管道末端的管道是可选的。 管道两侧必须至少有一个空间（除了在开始和结束之外），但是如果使数据更加清晰，则不需要对齐管道。&lt;/p&gt;
+&lt;p&gt;当使用管道和空格分隔的格式时，不需要转义空单元格（除了空单元格之外 ）。 唯一需要考虑的是，实际测试数据中空格包围的可能管道必须使用反斜杠进行转义：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;| *** Test Cases *** |                 |                 |                      |
+| Escaping Pipe      | &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="nb"&gt;file&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt; = | Execute Command | ls -1 *.txt \| wc -l |
+|                    | Should Be Equal | &lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="nb"&gt;file&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;   | 42                   |
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;编辑和编码&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;纯文本和html及TSV之间最大的优点是使用普通文本编辑器进行编辑非常简单。
+类似TSV测试数据，纯文本使用UTF-8编码。&lt;/p&gt;
+&lt;p&gt;从Robot Framework 2.7.6开始，除了普通的.txt扩展名之外，还可以使用特殊的.robot扩展名保存纯文本测试数据文件。 新的扩展使得更容易将测试数据文件与其他纯文本文件区分开来。&lt;/p&gt;
+&lt;h4 id="restructuredtextde-ge-shi"&gt;reStructuredText的格式&lt;/h4&gt;
+&lt;p&gt;reStructuredText的（REST）是通常用于Python项目（包括Python本身，以及本用户指南）的文档中的一个易于阅读纯文本标记语法。reST文档最常编译成HTML，也支持其他输出格式。&lt;/p&gt;
+&lt;p&gt;使用rest格式可以使用简单的文本编辑编辑，支持比较工具和源代码控制系统。具体应用时，结合了很多的纯文本和HTML格式的特点。&lt;/p&gt;
+&lt;p&gt;RF使用reST文件，有两种方式来定义测试数据，要么使用代码块，要么使用纯文本格式。
+使用rest文件，需要python的docutils模块。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;使用代码块&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;reST文档可以把代码示例包含在代码块宏。当这些文件被翻译成HTML或其他格式的代码时，可以用Pygments实现语法高亮。标准的reST代码块已开始使用code指令，但是Sphinx使用code-block或sourcecode替代。编程语言的名称在代码块中作为指令的参数。例如，下面的代码块包含了python和RF：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;..&lt;/span&gt; &lt;span class="ow"&gt;code&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt; python
+    def example_keyword():
+        print 'Hello, world!'
+
+&lt;span class="p"&gt;..&lt;/span&gt; &lt;span class="ow"&gt;code&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt; &lt;span class="k"&gt;robotframework&lt;/span&gt;
+
+    &lt;span class="gh"&gt;*** Test Case ***&lt;/span&gt;&lt;span class="p"&gt;&lt;/span&gt;
+    &lt;span class="gu"&gt;Example Test&lt;/span&gt;&lt;span class="p"&gt;&lt;/span&gt;
+    &lt;span class="p"&gt;    &lt;/span&gt;&lt;span class="nf"&gt;Example Keyword&lt;/span&gt;&lt;span class="p"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;当RF解析reSt文件时，首先搜索code,code-block或sourcecode中包含RF的测试数据块。如果找到代码块，它们包含的数据被写入到内存中的文件执行，代码块外的数据忽略。
+代码块中的测试数据必须使用被定义的纯文本格式。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gh"&gt;Example&lt;/span&gt;
+&lt;span class="gh"&gt;-------&lt;/span&gt;
+This text is outside code blocks and thus ignored.
+&lt;span class="p"&gt;..&lt;/span&gt; &lt;span class="ow"&gt;code&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt; robotframework
+    &lt;span class="gs"&gt;*** Settings **&lt;/span&gt;*
+    Libary    OperatingSystem
+
+    &lt;span class="gs"&gt;*** Variables **&lt;/span&gt;*
+    ${MESSAGE}    Hello, world
+
+    &lt;span class="gs"&gt;*** Test Cases **&lt;/span&gt;*
+    My Test
+        [Documentation]    Example test
+        Log    ${MESSAGE}
+        My Keyword    /tmp
+
+Another Test
+    Should Be Equal    ${MESSAGE}    Hello, world!
+
+Also this text is outside code blocks and ignored. Above block used
+the space separated plain text format and the block below uses the pipe
+separated variant.
+
+&lt;span class="p"&gt;..&lt;/span&gt; &lt;span class="ow"&gt;code&lt;/span&gt;&lt;span class="p"&gt;::&lt;/span&gt; robotframework
+
+&lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="gs"&gt;*** Keyword **&lt;/span&gt;*  |                        |         |
+&lt;span class="o"&gt;|&lt;/span&gt; My Keyword       | [Arguments]            | ${path} |
+&lt;span class="o"&gt;|&lt;/span&gt;                  | Directory Should Exist | ${path} |
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;转义使用反斜杠字符在这种格式正常工作。没有双转义是需要使用REST表时一样。2.8.2版本之后支持代码块的功能。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;使用表格&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;如果reST文档包含RF测试数据没有代码块，包含了类似html格式的表格数据。这种情况下，RF将当做html文档进行处理。&lt;/p&gt;
+&lt;p&gt;RF确定测试的数据表中第一个单元格的文本，其余的内容被忽略。如下面数据：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gh"&gt;Example&lt;/span&gt;
+&lt;span class="gh"&gt;-------&lt;/span&gt;
+
+This text is outside tables and thus ignored.
+
+============  ================  =======  =======
+  Setting          Value         Value    Value
+============  ================  =======  =======
+Library       OperatingSystem
+============  ================  =======  =======
+
+
+============  ================  =======  =======
+  Variable         Value         Value    Value
+============  ================  =======  =======
+${MESSAGE}    Hello, world!
+============  ================  =======  =======
+
+
+=============  ==================  ============  =============
+  Test Case          Action          Argument      Argument
+=============  ==================  ============  =============
+My Test        [Documentation]     Example test
+\              Log                 ${MESSAGE}
+\              My Keyword          /tmp
+\
+Another Test   Should Be Equal     ${MESSAGE}    Hello, world!
+=============  ==================  ============  =============
+
+Also this text is outside tables and ignored. Above tables are created
+using the simple table syntax and the table below uses the grid table
+approach.
+
++-------------+------------------------+------------+------------+
+&lt;span class="o"&gt;|&lt;/span&gt;   Keyword   |         Action         |  Argument  |  Argument  |
++-------------+------------------------+------------+------------+
+&lt;span class="o"&gt;|&lt;/span&gt; My Keyword  | [Arguments]            | ${path}    |            |
++-------------+------------------------+------------+------------+
+&lt;span class="o"&gt;|&lt;/span&gt;             | Directory Should Exist | ${path}    |            |
++-------------+------------------------+------------+------------+
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;在简单的表格的第一列空单元格需要进行转义。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;编辑和编码&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;reSt格式的文档中测试数据可以用任何文本编辑器进行编辑，并且很多编辑也提供了自动语法高亮显示它。但reST格式不支持通过RIDE编辑。&lt;/p&gt;
+&lt;p&gt;RF需要使用UTF-8编码来保存含非ASCII字符的reST文件。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;REST中源文件的语法错误&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;如果reStructuredText文档语法不正确（格式不正确的表为例），解析时会失败，并且找不到测试用例。当执行单一的reST文件时，RF会在终端显示错误。当执行一个目录，解析错误通常会被忽略。&lt;/p&gt;
+&lt;p&gt;从机器人框架2.9.2开始，SEVERE级以下的错误，为避免对非标准指令和其他标记的影响被忽略。这样会掩盖真正的错误，但他们可以在正常处理文件时看到。&lt;/p&gt;</summary><category term="Framework"></category></entry><entry><title>Robot Framework快速入门</title><link href="http://king32783784.github.io/2017/03/24/Robot/" rel="alternate"></link><published>2017-03-24T00:00:00+08:00</published><author><name>李鹏</name></author><id>tag:king32783784.github.io,2017-03-24:2017/03/24/Robot/</id><summary type="html">&lt;/head&gt;&lt;body&gt;&lt;h3 id="guan-yu"&gt;关于&lt;/h3&gt;
 &lt;p&gt;本文主要介绍了Robot Framework的重要组件。可以快速浏览该文和相关示例来了解该框架。该框架重要的特性，本文都会涉及。本文主要翻译于RF官方快速文档及个人理解。&lt;/p&gt;
 &lt;h3 id="rfgai-shu"&gt;RF概述&lt;/h3&gt;
 &lt;p&gt;RF框架是用于验收测试和验收测试驱动开发（ATDD)的通用开源测试框架。它具备易于使用的表格测试数据语法，并且使用关键字驱动测试的方法。它的测试功能可以通过使用python或java实现的测试库来进行扩展，用户可以使用用于创建测试用例的相同语法从现有的关键字创建新的更高级别的关键字。&lt;/p&gt;
