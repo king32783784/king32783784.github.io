@@ -121,6 +121,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../2017/04/01/Robot/" title="Robot Framework 用户手册(三)">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework 用户手册(三)
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../2017/03/31/Robot/" title="Robot Framework 用户手册(二)">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework 用户手册(二)
@@ -142,12 +148,6 @@
                             <a class="hide-overflow" href="../2017/03/22/itest/" title="Itest测试工具介绍">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Itest测试工具介绍
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../2017/03/11/测试/" title="测试的行业危机">
-                                <i class="fa fa-file-text padding-small"></i>
-                                测试的行业危机
                             </a>
                         </li>
                     <li>
@@ -336,6 +336,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
+                            <span class="badge pull-right categorybadge">4</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../category/bian-cheng-yu-yan-c.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             编程语言-C
@@ -360,13 +367,6 @@
                         <a href="../category/zi-dong-hua-ce-shi-avocado.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             自动化测试-Avocado
-                            <span class="badge pull-right categorybadge">3</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">3</span>
                         </a>
                     </li>
@@ -441,6 +441,47 @@
 </section>
 <div class="row">
     <div class="col-lg-9">
+            <article>
+                <h2>
+                    <a href="../2017/04/01/Robot/">Robot Framework 用户手册(三)</a>
+<div class="post-info">
+    <div class="publish-info-block">
+        <small>
+            <span class="published">
+                <i class="fa fa-calendar padding-small"></i><time datetime="2017-04-01T00:00:00+08:00"> 2017-04-01 六</time>
+            </span>
+            <span class="category">
+                <i class="fa fa-folder-open padding-small"></i><a href="../category/zi-dong-hua-ce-shi-robot.html">自动化测试-Robot</a>
+            </span>
+            <span class="tags">
+                <i class="fa fa-tags padding-small"></i>
+                <a href="../tag/framework.html">Framework</a>            </span>
+        </small>
+    </div>
+</div><!-- /.post-info -->                </h2>
+                <div class="summary">
+                    <body><h2 id="22-chuang-jian-ce-shi-yong-li">2.2 创建测试用例</h2>
+<h3 id="221-ce-shi-yong-li-yu-fa">2.2.1  测试用例语法</h3>
+<h4 id="ji-ben-yu-fa">基本语法</h4>
+<p>测试用例是使用可用的关键字构造的测试用例表。关键字可以从测试库或资源文件中导入，或则通过测试用例的关键字表本身创建。</p>
+<p>测试用例表第一列包含了测试用例的名称。一个测试用例的开始是从包含测试用例名词的这一行到下一个用
+例名称或表格的结束。在表头和第一个测试直接包含其他内容是错误的。</p>
+<p>第二列通常是关键字名称。这种规则的例外是设置关键字的返回值，在第二个或后续的列可能会包含变量
+名和关键字跟随其后。在这两种用例中，列的内容包含的可能是参数或是特定的关键字。</p>
+<div class="highlight"><pre><span></span>*** Test Cases ***
+Valid Login
+    Open Login Page
+    Input Username    demo
+    Input Password    mode
+    Submit Credentials 
+    Welcome Page Should Be Open
+
+Setting Variables
+    Do Something    first argument    second argument 
+    <span class="cp">${</span><span class="n">value ...</span></pre></div></body>
+                </div>
+            </article>
+            <hr/>
             <article>
                 <h2>
                     <a href="../2017/03/31/Robot/">Robot Framework 用户手册(二)</a>
@@ -606,42 +647,6 @@
 <ul>
 <li>
 <p>系统信息抓取 包括：硬件信息抓取和系统核心组件信息抓取。硬件信息主要包括：处理器、主板、BIOS、内存、北桥 ...</p></li></ul></body>
-                </div>
-            </article>
-            <hr/>
-            <article>
-                <h2>
-                    <a href="../2017/03/11/测试/">测试的行业危机 <转></a>
-<div class="post-info">
-    <div class="publish-info-block">
-        <small>
-            <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2017-03-11T00:00:00+08:00"> 2017-03-11 六</time>
-            </span>
-            <span class="category">
-                <i class="fa fa-folder-open padding-small"></i><a href="../category/ce-shi.html">测试</a>
-            </span>
-            <span class="tags">
-                <i class="fa fa-tags padding-small"></i>
-                <a href="../tag/ce-shi.html">测试</a>            </span>
-        </small>
-    </div>
-</div><!-- /.post-info -->                </h2>
-                <div class="summary">
-                    <body><p>经常看到网上时不时吵起“测试人员如何转产品”、“QA的长期职业规划”等文章，对于QA工程师而言，貌似都是老生常谈的内容了。原本抱着在某个“特殊时刻”（马桶上）消磨时光的心态点开了这篇文章，居然在如此“恶劣”的环境下用时15min耐心看完了之后，又返回电脑前默默把它左击放入收藏夹。</p>
-<p>到底这篇文章讲了什么呢？快收起小马步，听听华为资深测试专家怎么看待测试的行业危机：</p>
-<p>入职华为以来，一直做的是测试工作，这种危机感在近几年愈发强烈，一直想总结一下，但又担心总结不好，动摇军心。但该面对的早晚要面对，需改变的也要尽早改变，一定要有革自己命的勇气。</p>
-<h3 id="wei-ji-de-yu-zhao">危机的预兆</h3>
-<p>举两个测试行业危机的例子：</p>
-<ul>
-<li>
-<p>一个是外部例子。近期参加了几个测试行业交流，测试技术分享方面并没有什么新的发展，还是自动化、APP 测试能力技术分享。业界的测试专家也普遍进入一个迷茫期，很多测试专家转型敏捷教练、DevOps 流程专家。和几个专家聊了一下，也普遍感觉近几年业界对测试的关注已经逐步偏弱。</p>
-</li>
-<li>
-<p>另外一个是内部的例子。华为 2017 年应届生招聘已经启动，在启动材料中，明确说明华为已经取消了软件测试工程师的岗位，HR 认为现在的软件需要全栈工程师，开发工程师也需要具备自测的能力。</p>
-</li>
-</ul>
-<h3 id="wei-ji-chan-sheng-de-yuan-yin">危机产生的原因 ...</h3></body>
                 </div>
             </article>
         <div class="btn-more text-right">
