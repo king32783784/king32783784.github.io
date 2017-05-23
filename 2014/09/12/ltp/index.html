@@ -122,6 +122,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework 用户手册(四)
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../../../../2017/04/01/Robot/" title="Robot Framework 用户手册(三)">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework 用户手册(三)
@@ -143,12 +149,6 @@
                             <a class="hide-overflow" href="../../../../2017/03/24/Robot/" title="Robot Framework快速入门">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework快速入门
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../../../../2017/03/22/itest/" title="Itest测试工具介绍">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Itest测试工具介绍
                             </a>
                         </li>
                     <li>
@@ -309,6 +309,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
+                            <span class="badge pull-right categorybadge">5</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -333,13 +340,6 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
-                            <span class="badge pull-right categorybadge">4</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -513,11 +513,11 @@ fs-suite01 ltp-pan -e -a fs-suite01.zoo -n fs-suite01 -f runtest/fs
 </pre></div>
 <p><strong>测试例子</strong>
 运行一个测试基本方式是:</p>
-<div class="highlight"><pre><span></span>$ ltp-pan -a ltp.zoo -n tutor sleep 4
+<div class="highlight"><pre><span></span>$ ltp-pan -a ltp.zoo -n tutor sleep <span class="m">4</span>
 
 <span class="o">&lt;&lt;&lt;</span>test_start&gt;&gt;&gt;
 
-<span class="nv">tag</span><span class="o">=</span>cmdln <span class="nv">stime</span><span class="o">=</span>971450564
+<span class="nv">tag</span><span class="o">=</span>cmdln <span class="nv">stime</span><span class="o">=</span><span class="m">971450564</span>
 
 <span class="nv">cmdline</span><span class="o">=</span><span class="s2">"sleep 4"</span>
 
@@ -531,8 +531,8 @@ fs-suite01 ltp-pan -e -a fs-suite01.zoo -n fs-suite01 -f runtest/fs
 
 <span class="o">&lt;&lt;&lt;</span>execution_status&gt;&gt;&gt;
 
-<span class="nv">duration</span><span class="o">=</span><span class="m">103341903</span> <span class="nv">termination_type</span><span class="o">=</span>exited <span class="nv">termination_id</span><span class="o">=</span>0
-<span class="nv">corefile</span><span class="o">=</span>no <span class="nv">cutime</span><span class="o">=</span><span class="m">0</span> <span class="nv">cstime</span><span class="o">=</span>0
+<span class="nv">duration</span><span class="o">=</span><span class="m">103341903</span> <span class="nv">termination_type</span><span class="o">=</span>exited <span class="nv">termination_id</span><span class="o">=</span><span class="m">0</span>
+<span class="nv">corefile</span><span class="o">=</span>no <span class="nv">cutime</span><span class="o">=</span><span class="m">0</span> <span class="nv">cstime</span><span class="o">=</span><span class="m">0</span>
 
 <span class="o">&lt;&lt;&lt;</span>test_end&gt;&gt;&gt;
 
@@ -548,11 +548,11 @@ $
 这个例子展示ltp-pan两个参数,一个活动文件,一个test tag. "sleep 4"测试程序及ltp-pan要执行的参数.这个测试会得到标记“cmdln”。 LTP-run将随机运行一个测试，最终被cmdln，因为指定了唯一测试.
 在活动文件,ltp.zoo,ltp-pan写入pid,testlog,运行测试部分命令行.当test tag运行完成,ltp-pan会标记一个"#",代表它可以执行.这时,你能看到cmdln和tutor,如果测试机挡住,你可以读这些文件查找哪个测试导致的.</p>
 <p>同时运行一个测试多次.</p>
-<div class="highlight"><pre><span></span>$ ltp-pan -a ltp.zoo -n tutor -x <span class="m">3</span> -s <span class="m">3</span> -O /tmp sleep 1
+<div class="highlight"><pre><span></span>$ ltp-pan -a ltp.zoo -n tutor -x <span class="m">3</span> -s <span class="m">3</span> -O /tmp sleep <span class="m">1</span>
 
 <span class="o">&lt;&lt;&lt;</span>test_start&gt;&gt;&gt;
 
-<span class="nv">tag</span><span class="o">=</span>cmdln <span class="nv">stime</span><span class="o">=</span>971465653
+<span class="nv">tag</span><span class="o">=</span>cmdln <span class="nv">stime</span><span class="o">=</span><span class="m">971465653</span>
 
 <span class="nv">cmdline</span><span class="o">=</span><span class="s2">"sleep 1"</span>
 
@@ -568,16 +568,16 @@ $
 
 <span class="o">&lt;&lt;&lt;</span>execution_status&gt;&gt;&gt;
 
-<span class="nv">duration</span><span class="o">=</span><span class="m">103326814</span> <span class="nv">termination_type</span><span class="o">=</span>exited <span class="nv">termination_id</span><span class="o">=</span>0
+<span class="nv">duration</span><span class="o">=</span><span class="m">103326814</span> <span class="nv">termination_type</span><span class="o">=</span>exited <span class="nv">termination_id</span><span class="o">=</span><span class="m">0</span>
 <span class="nv">corefile</span><span class="o">=</span>no
 
-<span class="nv">cutime</span><span class="o">=</span><span class="m">1</span> <span class="nv">cstime</span><span class="o">=</span>0
+<span class="nv">cutime</span><span class="o">=</span><span class="m">1</span> <span class="nv">cstime</span><span class="o">=</span><span class="m">0</span>
 
 <span class="o">&lt;&lt;&lt;</span>test_end&gt;&gt;&gt;
 
 <span class="o">&lt;&lt;&lt;</span>test_start&gt;&gt;&gt;
 
-<span class="nv">tag</span><span class="o">=</span>cmdln <span class="nv">stime</span><span class="o">=</span>971465653
+<span class="nv">tag</span><span class="o">=</span>cmdln <span class="nv">stime</span><span class="o">=</span><span class="m">971465653</span>
 
 <span class="nv">cmdline</span><span class="o">=</span><span class="s2">"sleep 1"</span>
 
@@ -593,16 +593,16 @@ $
 
 <span class="o">&lt;&lt;&lt;</span>execution_status&gt;&gt;&gt;
 
-<span class="nv">duration</span><span class="o">=</span><span class="m">103326814</span> <span class="nv">termination_type</span><span class="o">=</span>exited <span class="nv">termination_id</span><span class="o">=</span>0
+<span class="nv">duration</span><span class="o">=</span><span class="m">103326814</span> <span class="nv">termination_type</span><span class="o">=</span>exited <span class="nv">termination_id</span><span class="o">=</span><span class="m">0</span>
 <span class="nv">corefile</span><span class="o">=</span>no
 
-<span class="nv">cutime</span><span class="o">=</span><span class="m">0</span> <span class="nv">cstime</span><span class="o">=</span>1
+<span class="nv">cutime</span><span class="o">=</span><span class="m">0</span> <span class="nv">cstime</span><span class="o">=</span><span class="m">1</span>
 
 <span class="o">&lt;&lt;&lt;</span>test_end&gt;&gt;&gt;
 
 <span class="o">&lt;&lt;&lt;</span>test_start&gt;&gt;&gt;
 
-<span class="nv">tag</span><span class="o">=</span>cmdln <span class="nv">stime</span><span class="o">=</span>971465653
+<span class="nv">tag</span><span class="o">=</span>cmdln <span class="nv">stime</span><span class="o">=</span><span class="m">971465653</span>
 
 <span class="nv">cmdline</span><span class="o">=</span><span class="s2">"sleep 1"</span>
 
@@ -618,10 +618,10 @@ $
 
 <span class="o">&lt;&lt;&lt;</span>execution_status&gt;&gt;&gt;
 
-<span class="nv">duration</span><span class="o">=</span><span class="m">103326814</span> <span class="nv">termination_type</span><span class="o">=</span>exited <span class="nv">termination_id</span><span class="o">=</span>0
+<span class="nv">duration</span><span class="o">=</span><span class="m">103326814</span> <span class="nv">termination_type</span><span class="o">=</span>exited <span class="nv">termination_id</span><span class="o">=</span><span class="m">0</span>
 <span class="nv">corefile</span><span class="o">=</span>no
 
-<span class="nv">cutime</span><span class="o">=</span><span class="m">0</span> <span class="nv">cstime</span><span class="o">=</span>0
+<span class="nv">cutime</span><span class="o">=</span><span class="m">0</span> <span class="nv">cstime</span><span class="o">=</span><span class="m">0</span>
 
 <span class="o">&lt;&lt;&lt;</span>test_end&gt;&gt;&gt;
 </pre></div>

@@ -122,6 +122,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework 用户手册(四)
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../../../../2017/04/01/Robot/" title="Robot Framework 用户手册(三)">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework 用户手册(三)
@@ -143,12 +149,6 @@
                             <a class="hide-overflow" href="../../../../2017/03/24/Robot/" title="Robot Framework快速入门">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework快速入门
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../../../../2017/03/22/itest/" title="Itest测试工具介绍">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Itest测试工具介绍
                             </a>
                         </li>
                     <li>
@@ -309,6 +309,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
+                            <span class="badge pull-right categorybadge">5</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -333,13 +340,6 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
-                            <span class="badge pull-right categorybadge">4</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -502,12 +502,12 @@ linux系统之外的安装。注意，如果是前面列举的操作系统之一
 <div class="highlight"><pre><span></span>mongod
 </pre></div>
 <p>启动log片段：</p>
-<div class="highlight"><pre><span></span><span class="nt">2016-12-01T10</span><span class="nd">:56:56</span><span class="nc">.238</span><span class="o">+</span><span class="nt">0800</span> <span class="nt">I</span> <span class="nt">FTDC</span>     <span class="cp">[</span><span class="nx">initandlisten</span><span class="cp">]</span> <span class="nt">Initializing</span> <span class="nt">full-time</span> <span class="nt">diagnostic</span> <span class="nt">data</span> <span class="nt">capture</span> <span class="nt">with</span> <span class="nt">directory</span> <span class="s1">'/data/db/diagnostic.data'</span>
-<span class="nt">2016-12-01T10</span><span class="nd">:56:56</span><span class="nc">.504</span><span class="o">+</span><span class="nt">0800</span> <span class="nt">I</span> <span class="nt">INDEX</span>    <span class="cp">[</span><span class="nx">initandlisten</span><span class="cp">]</span> <span class="nt">build</span> <span class="nt">index</span> <span class="nt">on</span><span class="o">:</span> <span class="nt">admin</span><span class="nc">.system.version</span> <span class="nt">properties</span><span class="o">:</span> <span class="p">{</span> <span class="n">v</span><span class="o">:</span> <span class="m">2</span><span class="o">,</span> <span class="n">key</span><span class="o">:</span> <span class="err">{</span> <span class="n">version</span><span class="o">:</span> <span class="m">1</span> <span class="p">}</span><span class="o">,</span> <span class="nt">name</span><span class="o">:</span> <span class="s2">"incompatible_with_version_32"</span><span class="o">,</span> <span class="nt">ns</span><span class="o">:</span> <span class="s2">"admin.system.version"</span> <span class="err">}</span>
-<span class="nt">2016-12-01T10</span><span class="nd">:56:56</span><span class="nc">.504</span><span class="o">+</span><span class="nt">0800</span> <span class="nt">I</span> <span class="nt">INDEX</span>    <span class="cp">[</span><span class="nx">initandlisten</span><span class="cp">]</span>          <span class="nt">building</span> <span class="nt">index</span> <span class="nt">using</span> <span class="nt">bulk</span> <span class="nt">method</span><span class="o">;</span> <span class="nt">build</span> <span class="nt">may</span> <span class="nt">temporarily</span> <span class="nt">use</span> <span class="nt">up</span> <span class="nt">to</span> <span class="nt">500</span> <span class="nt">megabytes</span> <span class="nt">of</span> <span class="nt">RAM</span>
-<span class="nt">2016-12-01T10</span><span class="nd">:56:56</span><span class="nc">.504</span><span class="o">+</span><span class="nt">0800</span> <span class="nt">I</span> <span class="nt">INDEX</span>    <span class="cp">[</span><span class="nx">initandlisten</span><span class="cp">]</span> <span class="nt">build</span> <span class="nt">index</span> <span class="nt">done</span><span class="o">.</span>  <span class="nt">scanned</span> <span class="nt">0</span> <span class="nt">total</span> <span class="nt">records</span><span class="o">.</span> <span class="nt">0</span> <span class="nt">secs</span>
-<span class="nt">2016-12-01T10</span><span class="nd">:56:56</span><span class="nc">.505</span><span class="o">+</span><span class="nt">0800</span> <span class="nt">I</span> <span class="nt">COMMAND</span>  <span class="cp">[</span><span class="nx">initandlisten</span><span class="cp">]</span> <span class="nt">setting</span> <span class="nt">featureCompatibilityVersion</span> <span class="nt">to</span> <span class="nt">3</span><span class="nc">.4</span>
-<span class="nt">2016-12-01T10</span><span class="nd">:56:56</span><span class="nc">.505</span><span class="o">+</span><span class="nt">0800</span> <span class="nt">I</span> <span class="nt">NETWORK</span>  <span class="cp">[</span><span class="nx">thread1</span><span class="cp">]</span> <span class="nt">waiting</span> <span class="nt">for</span> <span class="nt">connections</span> <span class="nt">on</span> <span class="nt">port</span> <span class="nt">27017</span>
+<div class="highlight"><pre><span></span><span class="nt">2016-12-01T10</span><span class="p">:</span><span class="nd">56</span><span class="p">:</span><span class="nd">56</span><span class="p">.</span><span class="nc">238</span><span class="o">+</span><span class="nt">0800</span> <span class="nt">I</span> <span class="nt">FTDC</span>     <span class="cp">[</span><span class="nx">initandlisten</span><span class="cp">]</span> <span class="nt">Initializing</span> <span class="nt">full-time</span> <span class="nt">diagnostic</span> <span class="nt">data</span> <span class="nt">capture</span> <span class="nt">with</span> <span class="nt">directory</span> <span class="s1">'/data/db/diagnostic.data'</span>
+<span class="nt">2016-12-01T10</span><span class="p">:</span><span class="nd">56</span><span class="p">:</span><span class="nd">56</span><span class="p">.</span><span class="nc">504</span><span class="o">+</span><span class="nt">0800</span> <span class="nt">I</span> <span class="nt">INDEX</span>    <span class="cp">[</span><span class="nx">initandlisten</span><span class="cp">]</span> <span class="nt">build</span> <span class="nt">index</span> <span class="nt">on</span><span class="o">:</span> <span class="nt">admin</span><span class="p">.</span><span class="nc">system</span><span class="p">.</span><span class="nc">version</span> <span class="nt">properties</span><span class="o">:</span> <span class="p">{</span> <span class="n">v</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">key</span><span class="o">:</span> <span class="err">{</span> <span class="n">version</span><span class="o">:</span> <span class="mi">1</span> <span class="p">}</span><span class="o">,</span> <span class="nt">name</span><span class="o">:</span> <span class="s2">"incompatible_with_version_32"</span><span class="o">,</span> <span class="nt">ns</span><span class="o">:</span> <span class="s2">"admin.system.version"</span> <span class="err">}</span>
+<span class="nt">2016-12-01T10</span><span class="p">:</span><span class="nd">56</span><span class="p">:</span><span class="nd">56</span><span class="p">.</span><span class="nc">504</span><span class="o">+</span><span class="nt">0800</span> <span class="nt">I</span> <span class="nt">INDEX</span>    <span class="cp">[</span><span class="nx">initandlisten</span><span class="cp">]</span>          <span class="nt">building</span> <span class="nt">index</span> <span class="nt">using</span> <span class="nt">bulk</span> <span class="nt">method</span><span class="o">;</span> <span class="nt">build</span> <span class="nt">may</span> <span class="nt">temporarily</span> <span class="nt">use</span> <span class="nt">up</span> <span class="nt">to</span> <span class="nt">500</span> <span class="nt">megabytes</span> <span class="nt">of</span> <span class="nt">RAM</span>
+<span class="nt">2016-12-01T10</span><span class="p">:</span><span class="nd">56</span><span class="p">:</span><span class="nd">56</span><span class="p">.</span><span class="nc">504</span><span class="o">+</span><span class="nt">0800</span> <span class="nt">I</span> <span class="nt">INDEX</span>    <span class="cp">[</span><span class="nx">initandlisten</span><span class="cp">]</span> <span class="nt">build</span> <span class="nt">index</span> <span class="nt">done</span><span class="o">.</span>  <span class="nt">scanned</span> <span class="nt">0</span> <span class="nt">total</span> <span class="nt">records</span><span class="o">.</span> <span class="nt">0</span> <span class="nt">secs</span>
+<span class="nt">2016-12-01T10</span><span class="p">:</span><span class="nd">56</span><span class="p">:</span><span class="nd">56</span><span class="p">.</span><span class="nc">505</span><span class="o">+</span><span class="nt">0800</span> <span class="nt">I</span> <span class="nt">COMMAND</span>  <span class="cp">[</span><span class="nx">initandlisten</span><span class="cp">]</span> <span class="nt">setting</span> <span class="nt">featureCompatibilityVersion</span> <span class="nt">to</span> <span class="nt">3</span><span class="p">.</span><span class="nc">4</span>
+<span class="nt">2016-12-01T10</span><span class="p">:</span><span class="nd">56</span><span class="p">:</span><span class="nd">56</span><span class="p">.</span><span class="nc">505</span><span class="o">+</span><span class="nt">0800</span> <span class="nt">I</span> <span class="nt">NETWORK</span>  <span class="cp">[</span><span class="nx">thread1</span><span class="cp">]</span> <span class="nt">waiting</span> <span class="nt">for</span> <span class="nt">connections</span> <span class="nt">on</span> <span class="nt">port</span> <span class="nt">27017</span>
 </pre></div>
 <p>指定mongod路径启动
   使用mongod的绝对路径，启动</p>
@@ -561,58 +561,58 @@ local  0.000GB 不可用
     exit                         quit the mongo shell
 </pre></div>
 <p>db常用方法：</p>
-<div class="highlight"><pre><span></span><span class="x">DB methods:</span>
-<span class="x">    db.adminCommand(nameOrDocument) - switches to 'admin' db, and runs command [ just calls db.runCommand(...) ]</span>
-<span class="x">    db.auth(username, password)</span>
-<span class="x">    db.cloneDatabase(fromhost)</span>
-<span class="x">    db.commandHelp(name) returns the help for the command</span>
-<span class="x">    db.copyDatabase(fromdb, todb, fromhost)</span>
-<span class="x">    db.createCollection(name, </span><span class="err">{</span><span class="x"> size : ..., capped : ..., max : ... } )</span>
-<span class="x">    db.createView(name, viewOn, [ </span><span class="err">{</span><span class="x"> </span><span class="p">$</span><span class="nv">operator</span><span class="x">: </span><span class="err">{</span><span class="x">...}}, ... ], </span><span class="err">{</span><span class="x"> viewOptions } )</span>
-<span class="x">    db.createUser(userDocument)</span>
-<span class="x">    db.currentOp() displays currently executing operations in the db</span>
-<span class="x">    db.dropDatabase()</span>
-<span class="x">    db.eval() - deprecated</span>
-<span class="x">    db.fsyncLock() flush data to disk and lock server for backups</span>
-<span class="x">    db.fsyncUnlock() unlocks server following a db.fsyncLock()</span>
-<span class="x">    db.getCollection(cname) same as db['cname'] or db.cname</span>
-<span class="x">    db.getCollectionInfos([filter]) - returns a list that contains the names and options of the db's collections</span>
-<span class="x">    db.getCollectionNames()</span>
-<span class="x">    db.getLastError() - just returns the err msg string</span>
-<span class="x">    db.getLastErrorObj() - return full status object</span>
-<span class="x">    db.getLogComponents()</span>
-<span class="x">    db.getMongo() get the server connection object</span>
-<span class="x">    db.getMongo().setSlaveOk() allow queries on a replication slave server</span>
-<span class="x">    db.getName()</span>
-<span class="x">    db.getPrevError()</span>
-<span class="x">    db.getProfilingLevel() - deprecated</span>
-<span class="x">    db.getProfilingStatus() - returns if profiling is on and slow threshold</span>
-<span class="x">    db.getReplicationInfo()</span>
-<span class="x">    db.getSiblingDB(name) get the db at the same server as this one</span>
-<span class="x">    db.getWriteConcern() - returns the write concern used for any operations on this db, inherited from server object if set</span>
-<span class="x">    db.hostInfo() get details about the server's host</span>
-<span class="x">    db.isMaster() check replica primary status</span>
-<span class="x">    db.killOp(opid) kills the current operation in the db</span>
-<span class="x">    db.listCommands() lists all the db commands</span>
-<span class="x">    db.loadServerScripts() loads all the scripts in db.system.js</span>
-<span class="x">    db.logout()</span>
-<span class="x">    db.printCollectionStats()</span>
-<span class="x">    db.printReplicationInfo()</span>
-<span class="x">    db.printShardingStatus()</span>
-<span class="x">    db.printSlaveReplicationInfo()</span>
-<span class="x">    db.dropUser(username)</span>
-<span class="x">    db.repairDatabase()</span>
-<span class="x">    db.resetError()</span>
-<span class="x">    db.runCommand(cmdObj) run a database command.  if cmdObj is a string, turns it into </span><span class="err">{</span><span class="x"> cmdObj : 1 }</span>
-<span class="x">    db.serverStatus()</span>
-<span class="x">    db.setLogLevel(level,&lt;component&gt;)</span>
-<span class="x">    db.setProfilingLevel(level,&lt;slowms&gt;) 0=off 1=slow 2=all</span>
-<span class="x">    db.setWriteConcern( &lt;write concern doc&gt; ) - sets the write concern for writes to the db</span>
-<span class="x">    db.unsetWriteConcern( &lt;write concern doc&gt; ) - unsets the write concern for writes to the db</span>
-<span class="x">    db.setVerboseShell(flag) display extra information in shell output</span>
-<span class="x">    db.shutdownServer()</span>
-<span class="x">    db.stats()</span>
-<span class="x">    db.version() current version of the server</span>
+<div class="highlight"><pre><span></span>DB methods:
+    db.adminCommand(nameOrDocument) - switches to 'admin' db, and runs command [ just calls db.runCommand(...) ]
+    db.auth(username, password)
+    db.cloneDatabase(fromhost)
+    db.commandHelp(name) returns the help for the command
+    db.copyDatabase(fromdb, todb, fromhost)
+    db.createCollection(name, { size : ..., capped : ..., max : ... } )
+    db.createView(name, viewOn, [ { $operator: {...}}, ... ], { viewOptions } )
+    db.createUser(userDocument)
+    db.currentOp() displays currently executing operations in the db
+    db.dropDatabase()
+    db.eval() - deprecated
+    db.fsyncLock() flush data to disk and lock server for backups
+    db.fsyncUnlock() unlocks server following a db.fsyncLock()
+    db.getCollection(cname) same as db['cname'] or db.cname
+    db.getCollectionInfos([filter]) - returns a list that contains the names and options of the db's collections
+    db.getCollectionNames()
+    db.getLastError() - just returns the err msg string
+    db.getLastErrorObj() - return full status object
+    db.getLogComponents()
+    db.getMongo() get the server connection object
+    db.getMongo().setSlaveOk() allow queries on a replication slave server
+    db.getName()
+    db.getPrevError()
+    db.getProfilingLevel() - deprecated
+    db.getProfilingStatus() - returns if profiling is on and slow threshold
+    db.getReplicationInfo()
+    db.getSiblingDB(name) get the db at the same server as this one
+    db.getWriteConcern() - returns the write concern used for any operations on this db, inherited from server object if set
+    db.hostInfo() get details about the server's host
+    db.isMaster() check replica primary status
+    db.killOp(opid) kills the current operation in the db
+    db.listCommands() lists all the db commands
+    db.loadServerScripts() loads all the scripts in db.system.js
+    db.logout()
+    db.printCollectionStats()
+    db.printReplicationInfo()
+    db.printShardingStatus()
+    db.printSlaveReplicationInfo()
+    db.dropUser(username)
+    db.repairDatabase()
+    db.resetError()
+    db.runCommand(cmdObj) run a database command.  if cmdObj is a string, turns it into { cmdObj : 1 }
+    db.serverStatus()
+    db.setLogLevel(level,&lt;component&gt;)
+    db.setProfilingLevel(level,&lt;slowms&gt;) 0=off 1=slow 2=all
+    db.setWriteConcern( &lt;write concern doc&gt; ) - sets the write concern for writes to the db
+    db.unsetWriteConcern( &lt;write concern doc&gt; ) - unsets the write concern for writes to the db
+    db.setVerboseShell(flag) display extra information in shell output
+    db.shutdownServer()
+    db.stats()
+    db.version() current version of the server
 </pre></div>
 <p>指定数据库的集合进行操作、管理和监控
 DBCollection help

@@ -122,6 +122,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework 用户手册(四)
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../../../../2017/04/01/Robot/" title="Robot Framework 用户手册(三)">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework 用户手册(三)
@@ -143,12 +149,6 @@
                             <a class="hide-overflow" href="../../../../2017/03/24/Robot/" title="Robot Framework快速入门">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework快速入门
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../../../../2017/03/22/itest/" title="Itest测试工具介绍">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Itest测试工具介绍
                             </a>
                         </li>
                     <li>
@@ -309,6 +309,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
+                            <span class="badge pull-right categorybadge">5</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -333,13 +340,6 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
-                            <span class="badge pull-right categorybadge">4</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -521,12 +521,12 @@ self.params.get("sleep_length", default=1)
 <div class="highlight"><pre><span></span>$ avocado run sleeptest.py --mux-yaml examples/tests/sleeptest.py.date/sleeptest.yaml
 JOB ID     : d565e8dec576d6040f894841f32a836c751f968f
 JOB LOG    : <span class="nv">$HOME</span>/avocado/job-results/job-2014-08-12T15.44-d565e8de/job.log
-TESTS      : 3
-<span class="o">(</span>1/3<span class="o">)</span> sleeptest.py:SleepTest.test<span class="p">;</span>1: PASS <span class="o">(</span>0.50 s<span class="o">)</span>
-<span class="o">(</span>2/3<span class="o">)</span> sleeptest.py:SleepTest.test<span class="p">;</span>2: PASS <span class="o">(</span>1.00 s<span class="o">)</span>
-<span class="o">(</span>3/3<span class="o">)</span> sleeptest.py:SleepTest.test<span class="p">;</span>3: PASS <span class="o">(</span>5.00 s<span class="o">)</span>
-RESULTS    : PASS <span class="m">3</span> <span class="p">|</span> ERROR <span class="m">0</span> <span class="p">|</span> FAIL <span class="m">0</span> <span class="p">|</span> SKIP <span class="m">0</span> <span class="p">|</span> WARN <span class="m">0</span> <span class="p">|</span> INTERRUPT 0
-TESTS TIME : 6.50 s
+TESTS      : <span class="m">3</span>
+<span class="o">(</span><span class="m">1</span>/3<span class="o">)</span> sleeptest.py:SleepTest.test<span class="p">;</span><span class="m">1</span>: PASS <span class="o">(</span><span class="m">0</span>.50 s<span class="o">)</span>
+<span class="o">(</span><span class="m">2</span>/3<span class="o">)</span> sleeptest.py:SleepTest.test<span class="p">;</span><span class="m">2</span>: PASS <span class="o">(</span><span class="m">1</span>.00 s<span class="o">)</span>
+<span class="o">(</span><span class="m">3</span>/3<span class="o">)</span> sleeptest.py:SleepTest.test<span class="p">;</span><span class="m">3</span>: PASS <span class="o">(</span><span class="m">5</span>.00 s<span class="o">)</span>
+RESULTS    : PASS <span class="m">3</span> <span class="p">|</span> ERROR <span class="m">0</span> <span class="p">|</span> FAIL <span class="m">0</span> <span class="p">|</span> SKIP <span class="m">0</span> <span class="p">|</span> WARN <span class="m">0</span> <span class="p">|</span> INTERRUPT <span class="m">0</span>
+TESTS TIME : <span class="m">6</span>.50 s
 JOB HTML   : <span class="nv">$HOME</span>/avocado/job-results/job-2014-08-12T15.44-d565e8de/html/results.html
 </pre></div>
 <p>The --mux-yaml accepts either only <span class="math">\(FILE_LOCATION or $INJECT_TO:\)</span>FILE_LOCATION. As explained in Test variants - Mux without any path the content gets injected into /run in order to be in the default relative path location. The <span class="math">\(INJECT_TO can be either relative path, then it’s injected into /run/\)</span>INJECT_TO location, or absolute path (starting with '/'), then it’s injected directly into the specified path and it’s up to the test/framework developer to get the value from this location (using path or adding the path to mux-path). To understand the difference execute those commands:</p>
@@ -626,17 +626,17 @@ Empty <span class="nb">test</span> ID. A <span class="nb">test</span> path or <s
 <p>这样，除了所有其他日志文件通常生成，会有另一个名为日志文件progress.INFO在作业结果目录。 在测试运行期间，可以观察进度：</p>
 <div class="highlight"><pre><span></span>$ tail -f ~/avocado/job-results/latest/progress.INFO
 
-10:36:59 INFO <span class="p">|</span> 1-plant.py:Plant.test_plant_organic: preparing soil on row 0
-10:36:59 INFO <span class="p">|</span> 1-plant.py:Plant.test_plant_organic: preparing soil on row 1
-10:36:59 INFO <span class="p">|</span> 1-plant.py:Plant.test_plant_organic: preparing soil on row 2
-10:36:59 INFO <span class="p">|</span> 1-plant.py:Plant.test_plant_organic: letting soil rest before throwing seeds
-10:37:01 INFO <span class="p">|</span> 1-plant.py:Plant.test_plant_organic: throwing seeds on row 0
-10:37:01 INFO <span class="p">|</span> 1-plant.py:Plant.test_plant_organic: throwing seeds on row 1
-10:37:01 INFO <span class="p">|</span> 1-plant.py:Plant.test_plant_organic: throwing seeds on row 2
-10:37:01 INFO <span class="p">|</span> 1-plant.py:Plant.test_plant_organic: waiting <span class="k">for</span> Avocados to grow
-10:37:06 INFO <span class="p">|</span> 1-plant.py:Plant.test_plant_organic: harvesting organic avocados on row 0
-10:37:06 INFO <span class="p">|</span> 1-plant.py:Plant.test_plant_organic: harvesting organic avocados on row 1
-10:37:06 INFO <span class="p">|</span> 1-plant.py:Plant.test_plant_organic: harvesting organic avocados on row 2
+<span class="m">10</span>:36:59 INFO <span class="p">|</span> <span class="m">1</span>-plant.py:Plant.test_plant_organic: preparing soil on row <span class="m">0</span>
+<span class="m">10</span>:36:59 INFO <span class="p">|</span> <span class="m">1</span>-plant.py:Plant.test_plant_organic: preparing soil on row <span class="m">1</span>
+<span class="m">10</span>:36:59 INFO <span class="p">|</span> <span class="m">1</span>-plant.py:Plant.test_plant_organic: preparing soil on row <span class="m">2</span>
+<span class="m">10</span>:36:59 INFO <span class="p">|</span> <span class="m">1</span>-plant.py:Plant.test_plant_organic: letting soil rest before throwing seeds
+<span class="m">10</span>:37:01 INFO <span class="p">|</span> <span class="m">1</span>-plant.py:Plant.test_plant_organic: throwing seeds on row <span class="m">0</span>
+<span class="m">10</span>:37:01 INFO <span class="p">|</span> <span class="m">1</span>-plant.py:Plant.test_plant_organic: throwing seeds on row <span class="m">1</span>
+<span class="m">10</span>:37:01 INFO <span class="p">|</span> <span class="m">1</span>-plant.py:Plant.test_plant_organic: throwing seeds on row <span class="m">2</span>
+<span class="m">10</span>:37:01 INFO <span class="p">|</span> <span class="m">1</span>-plant.py:Plant.test_plant_organic: waiting <span class="k">for</span> Avocados to grow
+<span class="m">10</span>:37:06 INFO <span class="p">|</span> <span class="m">1</span>-plant.py:Plant.test_plant_organic: harvesting organic avocados on row <span class="m">0</span>
+<span class="m">10</span>:37:06 INFO <span class="p">|</span> <span class="m">1</span>-plant.py:Plant.test_plant_organic: harvesting organic avocados on row <span class="m">1</span>
+<span class="m">10</span>:37:06 INFO <span class="p">|</span> <span class="m">1</span>-plant.py:Plant.test_plant_organic: harvesting organic avocados on row <span class="m">2</span>
 </pre></div>
 <p>同一个progress日志记录器，可以在多个测试方法和在多个测试模块一起使用。 在给出的示例中，测试名称用于给出额外的上下文。</p>
 <p>&lt;未完待续&gt;</p>
@@ -661,7 +661,7 @@ Empty <span class="nb">test</span> ID. A <span class="nb">test</span> path or <s
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +

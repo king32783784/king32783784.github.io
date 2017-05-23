@@ -122,6 +122,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework 用户手册(四)
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../../../../2017/04/01/Robot/" title="Robot Framework 用户手册(三)">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework 用户手册(三)
@@ -143,12 +149,6 @@
                             <a class="hide-overflow" href="../../../../2017/03/24/Robot/" title="Robot Framework快速入门">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework快速入门
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../../../../2017/03/22/itest/" title="Itest测试工具介绍">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Itest测试工具介绍
                             </a>
                         </li>
                     <li>
@@ -309,6 +309,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
+                            <span class="badge pull-right categorybadge">5</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -333,13 +340,6 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
-                            <span class="badge pull-right categorybadge">4</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -471,7 +471,7 @@
 
 <span class="k">class</span> <span class="nc">Testdrog_drop</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Firefox</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">getpage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -486,7 +486,7 @@
         <span class="n">actions</span><span class="o">.</span><span class="n">click</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
         <span class="n">actions</span><span class="o">.</span><span class="n">perform</span><span class="p">()</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
     <span class="n">testdrop</span> <span class="o">=</span> <span class="n">Testdrog_drop</span><span class="p">()</span>
     <span class="n">testdrop</span><span class="o">.</span><span class="n">getpage</span><span class="p">()</span>
 </pre></div>
@@ -537,7 +537,7 @@ action_chains.drag_and_drop(element, target).perform()　#执行拖放
 
 <span class="k">class</span> <span class="nc">Testdrog_drop</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Firefox</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">getpage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -548,7 +548,7 @@ action_chains.drag_and_drop(element, target).perform()　#执行拖放
         <span class="n">alert</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span><span class="err">　　＃确定警告对话框</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
     <span class="n">testdrop</span> <span class="o">=</span> <span class="n">Testdrog_drop</span><span class="p">()</span>
     <span class="n">testdrop</span><span class="o">.</span><span class="n">getpage</span><span class="p">()</span>
 </pre></div>
@@ -567,7 +567,7 @@ action_chains.drag_and_drop(element, target).perform()　#执行拖放
 
 <span class="k">class</span> <span class="nc">TestHistory</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Firefox</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">getpage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -581,7 +581,7 @@ action_chains.drag_and_drop(element, target).perform()　#执行拖放
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">forward</span><span class="p">()</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
     <span class="n">testhistory</span> <span class="o">=</span> <span class="n">TestHistory</span><span class="p">()</span>
     <span class="n">testhistory</span><span class="o">.</span><span class="n">testhistory</span><span class="p">()</span>
 </pre></div>
@@ -596,7 +596,7 @@ action_chains.drag_and_drop(element, target).perform()　#执行拖放
 
 <span class="k">class</span> <span class="nc">TestCookie</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span> <span class="o">=</span> <span class="n">webdriver</span><span class="o">.</span><span class="n">Firefox</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">getcookie</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -613,7 +613,7 @@ action_chains.drag_and_drop(element, target).perform()　#执行拖放
         <span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
 
-<span class="k">if</span> <span class="n">__name__</span>  <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span>  <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
     <span class="n">testcookie</span> <span class="o">=</span> <span class="n">TestCookie</span><span class="p">()</span>
     <span class="n">testcookie</span><span class="o">.</span><span class="n">addcookie</span><span class="p">()</span>
 </pre></div>

@@ -122,6 +122,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework 用户手册(四)
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../../../../2017/04/01/Robot/" title="Robot Framework 用户手册(三)">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework 用户手册(三)
@@ -143,12 +149,6 @@
                             <a class="hide-overflow" href="../../../../2017/03/24/Robot/" title="Robot Framework快速入门">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework快速入门
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../../../../2017/03/22/itest/" title="Itest测试工具介绍">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Itest测试工具介绍
                             </a>
                         </li>
                     <li>
@@ -309,6 +309,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
+                            <span class="badge pull-right categorybadge">5</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -333,13 +340,6 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
-                            <span class="badge pull-right categorybadge">4</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -457,59 +457,59 @@
                 <div class="entry-content">
                     <body><p>为了验证操作系统启动的稳定性，需要进行500次启动测试，便写了脚本实现。</p>
 <p>脚本如下：</p>
-<div class="highlight"><pre><span></span><span class="x">HOME=`pwd`</span>
-<span class="x">sleep 15</span>
-<span class="x">desktop_x86_4x()</span><span class="err">{</span><span class="x"></span>
-<span class="x">if [ ! -f /etc/reboot.sh ];then</span>
-<span class="x">    cp -rf </span><span class="p">$</span><span class="nv">HOME</span><span class="x">/reboot.sh /etc/</span>
-<span class="x">fi</span>
-<span class="x">if grep "reboot.sh" /etc/profile &gt; /dev/null;</span>
-<span class="x">then</span>
-<span class="x">   break;</span>
-<span class="x">else</span>
-<span class="x">   echo "/bin/sh /etc/reboot.sh &amp;" &gt;&gt; /etc/profile</span>
-<span class="x">fi</span>
-<span class="x">if id rebootuser &gt; /dev/null 2&gt;&amp;1; then</span>
-<span class="x">break</span>
-<span class="x">else</span>
-<span class="x">useradd rebootuser</span>
-<span class="x">passwd rebootuser &lt;&lt; TEST</span>
-<span class="x">abc123</span>
-<span class="x">abc123</span>
-<span class="x">TEST</span>
-<span class="x">echo "[Autologin]" &gt;&gt; /etc/sddm.conf</span>
-<span class="x">echo "Session=plasma.desktop" &gt;&gt; /etc/sddm.conf</span>
-<span class="x">echo "User=rebootuser" &gt;&gt; /etc/sddm.conf</span>
-<span class="x">fi</span>
-<span class="x">}</span>
+<div class="highlight"><pre><span></span>HOME=`pwd`
+sleep 15
+desktop_x86_4x(){
+if [ ! -f /etc/reboot.sh ];then
+    cp -rf $HOME/reboot.sh /etc/
+fi
+if grep "reboot.sh" /etc/profile &gt; /dev/null;
+then
+   break;
+else
+   echo "/bin/sh /etc/reboot.sh &amp;" &gt;&gt; /etc/profile
+fi
+if id rebootuser &gt; /dev/null 2&gt;&amp;1; then
+break
+else
+useradd rebootuser
+passwd rebootuser &lt;&lt; TEST
+abc123
+abc123
+TEST
+echo "[Autologin]" &gt;&gt; /etc/sddm.conf
+echo "Session=plasma.desktop" &gt;&gt; /etc/sddm.conf
+echo "User=rebootuser" &gt;&gt; /etc/sddm.conf
+fi
+}
 
-<span class="x">if id rebootuser &gt; /dev/null 2&gt;&amp;1; then</span>
-<span class="x">    break</span>
-<span class="x">else</span>
-<span class="x">    desktop_x86_4x</span>
-<span class="x">fi</span>
+if id rebootuser &gt; /dev/null 2&gt;&amp;1; then
+    break
+else
+    desktop_x86_4x
+fi
 
-<span class="x">if [ ! -f /etc/tmpbash ];then</span>
-<span class="x">    echo </span><span class="p">$</span><span class="x">1 &gt;&gt; /etc/tmpbash</span>
-<span class="x">fi</span>
+if [ ! -f /etc/tmpbash ];then
+    echo $1 &gt;&gt; /etc/tmpbash
+fi
 
-<span class="x">if [ ! -f /home/rebootuser/reboot.log ]; then</span>
-<span class="x">    echo "Total=</span><span class="p">$</span><span class="x">1 , Times=0 , start at `date`" &gt;&gt; /home/rebootuser/reboot.log</span>
-<span class="x">    chmod 777 /home/rebootuser/reboot.log</span>
-<span class="x">fi</span>
+if [ ! -f /home/rebootuser/reboot.log ]; then
+    echo "Total=$1 , Times=0 , start at `date`" &gt;&gt; /home/rebootuser/reboot.log
+    chmod 777 /home/rebootuser/reboot.log
+fi
 
-<span class="x">times=`cat /etc/tmpbash`</span>
+times=`cat /etc/tmpbash`
 
-<span class="x">n=`cat /home/rebootuser/reboot.log | awk -F, '</span><span class="err">{</span><span class="x">print </span><span class="p">$</span><span class="x">2}' | awk -F= '</span><span class="err">{</span><span class="x">print </span><span class="p">$</span><span class="x">2}' | tail -1`</span>
-<span class="x">if (( </span><span class="p">$</span><span class="nv">n</span><span class="x"> &lt; </span><span class="p">$</span><span class="nv">times</span><span class="x"> ));then</span>
-<span class="x">    N=</span><span class="p">$(($</span><span class="nv">n</span> <span class="err">+</span> <span class="m">1</span><span class="p">))</span><span class="x"></span>
-<span class="x">    echo " Total=</span><span class="p">$</span><span class="nv">times</span><span class="x"> , Times=</span><span class="p">$</span><span class="nv">N</span><span class="x"> , reboot at `date`" &gt;&gt; /home/rebootuser/reboot.log</span>
-<span class="x">    sleep 60</span>
-<span class="x">    reboot</span>
-<span class="x">else</span>
-<span class="x">    rm /etc/reboot.sh</span>
-<span class="x">    sed -i '</span><span class="p">$</span><span class="nv">d</span><span class="x">' /etc/profile</span>
-<span class="x">fi</span>
+n=`cat /home/rebootuser/reboot.log | awk -F, '{print $2}' | awk -F= '{print $2}' | tail -1`
+if (( $n &lt; $times ));then
+    N=$(($n + 1))
+    echo " Total=$times , Times=$N , reboot at `date`" &gt;&gt; /home/rebootuser/reboot.log
+    sleep 60
+    reboot
+else
+    rm /etc/reboot.sh
+    sed -i '$d' /etc/profile
+fi
 </pre></div></body>
                 </div>
                 <footer class="text-right">

@@ -122,6 +122,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework 用户手册(四)
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../../../../2017/04/01/Robot/" title="Robot Framework 用户手册(三)">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework 用户手册(三)
@@ -143,12 +149,6 @@
                             <a class="hide-overflow" href="../../../../2017/03/24/Robot/" title="Robot Framework快速入门">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework快速入门
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../../../../2017/03/22/itest/" title="Itest测试工具介绍">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Itest测试工具介绍
                             </a>
                         </li>
                     <li>
@@ -309,6 +309,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
+                            <span class="badge pull-right categorybadge">5</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -333,13 +340,6 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
-                            <span class="badge pull-right categorybadge">4</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -569,13 +569,13 @@
 <div class="highlight"><pre><span></span>id = models.AutoField(primary_key=True)
 </pre></div>
 <p>Django里可以这样定义枚举型数据：</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">Person</span>(<span class="n">models</span>.<span class="n">Model</span>):  
-    <span class="n">GENDER_CHOICES</span> = (  
-        (<span class="n">u'M'</span>, <span class="n">u'Male'</span>),  
-        (<span class="n">u'F'</span>, <span class="n">u'Female'</span>),  
-    )  
-    <span class="nb">name</span> = <span class="n">models</span>.<span class="n">CharField</span>(<span class="n">max_length</span>=<span class="mi">60</span>)  
-    <span class="n">gender</span> = <span class="n">models</span>.<span class="n">CharField</span>(<span class="n">max_length</span>=<span class="mi">2</span>, <span class="n">choices</span>=<span class="n">GENDER_CHOICES</span>)
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Person</span><span class="p">(</span><span class="nx">models</span><span class="p">.</span><span class="nx">Model</span><span class="p">)</span><span class="o">:</span>  
+    <span class="nx">GENDER_CHOICES</span> <span class="o">=</span> <span class="p">(</span>  
+        <span class="p">(</span><span class="nx">u</span><span class="s1">'M'</span><span class="p">,</span> <span class="nx">u</span><span class="s1">'Male'</span><span class="p">),</span>  
+        <span class="p">(</span><span class="nx">u</span><span class="s1">'F'</span><span class="p">,</span> <span class="nx">u</span><span class="s1">'Female'</span><span class="p">),</span>  
+    <span class="p">)</span>  
+    <span class="nx">name</span> <span class="o">=</span> <span class="nx">models</span><span class="p">.</span><span class="nx">CharField</span><span class="p">(</span><span class="nx">max_length</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>  
+    <span class="nx">gender</span> <span class="o">=</span> <span class="nx">models</span><span class="p">.</span><span class="nx">CharField</span><span class="p">(</span><span class="nx">max_length</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nx">choices</span><span class="o">=</span><span class="nx">GENDER_CHOICES</span><span class="p">)</span>
 </pre></div>
 <p>对于关联关系，在做列的映射定义时可以这么写：</p>
 <div class="highlight"><pre><span></span>poll = models.ForeignKey(Poll)  
@@ -588,14 +588,14 @@ place = models.OneToOneField(Place")
 &gt;&gt;&gt; p.save()
 </pre></div>
 <p>Django会通过查询对象的主键是否存在来决定该UPDATE还是INSERT，当然你也可以强制框架执行某种操作。如果你不满意框架自带的方法，可以重写它：</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">Blog</span>(<span class="n">models</span>.<span class="n">Model</span>):  
-    <span class="nb">name</span> = <span class="n">models</span>.<span class="n">CharField</span>(<span class="n">max_length</span>=<span class="mi">100</span>)  
-    <span class="n">tagline</span> = <span class="n">models</span>.<span class="n">TextField</span>()
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Blog</span><span class="p">(</span><span class="nx">models</span><span class="p">.</span><span class="nx">Model</span><span class="p">)</span><span class="o">:</span>  
+    <span class="nx">name</span> <span class="o">=</span> <span class="nx">models</span><span class="p">.</span><span class="nx">CharField</span><span class="p">(</span><span class="nx">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>  
+    <span class="nx">tagline</span> <span class="o">=</span> <span class="nx">models</span><span class="p">.</span><span class="nx">TextField</span><span class="p">()</span>
 
-    <span class="n">def</span> <span class="n">save</span>(<span class="k">self</span>, *<span class="n">args</span>, **<span class="n">kwargs</span>):  
-        <span class="n">do_something</span>()  
-        <span class="n">super</span>(<span class="n">Blog</span>, <span class="k">self</span>).<span class="n">save</span>(*<span class="n">args</span>, **<span class="n">kwargs</span>) <span class="c c-Singleline"># Call the "real" save() method.  </span>
-        <span class="n">do_something_else</span>()
+    <span class="nx">def</span> <span class="nx">save</span><span class="p">(</span><span class="nx">self</span><span class="p">,</span> <span class="o">*</span><span class="nx">args</span><span class="p">,</span> <span class="o">**</span><span class="nx">kwargs</span><span class="p">)</span><span class="o">:</span>  
+        <span class="nx">do_something</span><span class="p">()</span>  
+        <span class="kr">super</span><span class="p">(</span><span class="nx">Blog</span><span class="p">,</span> <span class="nx">self</span><span class="p">).</span><span class="nx">save</span><span class="p">(</span><span class="o">*</span><span class="nx">args</span><span class="p">,</span> <span class="o">**</span><span class="nx">kwargs</span><span class="p">)</span> <span class="err">#</span> <span class="nx">Call</span> <span class="nx">the</span> <span class="s2">"real"</span> <span class="nx">save</span><span class="p">()</span> <span class="nx">method</span><span class="p">.</span>  
+        <span class="nx">do_something_else</span><span class="p">()</span>
 </pre></div>
 <p>发现没，Django里存取数据不需要那种session，最讨厌Hibernate里的session了，总是报“Session Closed”错误……</p>
 <p>Python还有一个独立的ORM框架——SQLAlchemy。功能更强大，支持的数据库也比Django自带的ORM工具要多。它有两种建立实体类的方法。</p>

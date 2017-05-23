@@ -122,6 +122,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework 用户手册(四)
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../../../../2017/04/01/Robot/" title="Robot Framework 用户手册(三)">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework 用户手册(三)
@@ -143,12 +149,6 @@
                             <a class="hide-overflow" href="../../../../2017/03/24/Robot/" title="Robot Framework快速入门">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework快速入门
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../../../../2017/03/22/itest/" title="Itest测试工具介绍">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Itest测试工具介绍
                             </a>
                         </li>
                     <li>
@@ -309,6 +309,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
+                            <span class="badge pull-right categorybadge">5</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -333,13 +340,6 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
-                            <span class="badge pull-right categorybadge">4</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -465,44 +465,44 @@ You could assume no leading zero bit in the integer’s binary representation.</
 比如5 101 输出010 2</p>
 <p>解决方法：</p>
 <p>代码：</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">Solution</span>(<span class="n">object</span>):
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Solution</span><span class="p">(</span><span class="nx">object</span><span class="p">)</span><span class="o">:</span>
 
-    <span class="n">def</span> <span class="n">findComplement</span>(<span class="k">self</span>, <span class="nb">num</span>):
+    <span class="nx">def</span> <span class="nx">findComplement</span><span class="p">(</span><span class="nx">self</span><span class="p">,</span> <span class="nx">num</span><span class="p">)</span><span class="o">:</span>
 
-        <span class="s">"""</span>
+        <span class="s2">"""</span>
 
-<span class="s">        :type num: int</span>
+<span class="s2">        :type num: int</span>
 
-<span class="s">        :rtype: int</span>
+<span class="s2">        :rtype: int</span>
 
-<span class="s">        """</span>
+<span class="s2">        """</span>
 
-        <span class="n">n</span> = <span class="nb">int</span>(<span class="n">math</span>.<span class="nb">log</span>(<span class="nb">num</span>,<span class="mi">2</span>)) + <span class="mi">1</span>
+        <span class="nx">n</span> <span class="o">=</span> <span class="kr">int</span><span class="p">(</span><span class="nx">math</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span>
 
-        <span class="sr">m = 2**n</span>
+        <span class="nx">m</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="nx">n</span>
 
-<span class="sr">        return (m-1) ^ num</span>
+        <span class="k">return</span> <span class="p">(</span><span class="nx">m</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">^</span> <span class="nx">num</span>
 </pre></div>
 <p>或</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">Solution</span>(<span class="n">object</span>):
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Solution</span><span class="p">(</span><span class="nx">object</span><span class="p">)</span><span class="o">:</span>
 
-    <span class="n">def</span> <span class="n">findComplement</span>(<span class="k">self</span>, <span class="nb">num</span>):
+    <span class="nx">def</span> <span class="nx">findComplement</span><span class="p">(</span><span class="nx">self</span><span class="p">,</span> <span class="nx">num</span><span class="p">)</span><span class="o">:</span>
 
-        <span class="s">"""</span>
+        <span class="s2">"""</span>
 
-<span class="s">        :type num: int</span>
+<span class="s2">        :type num: int</span>
 
-<span class="s">        :rtype: int</span>
+<span class="s2">        :rtype: int</span>
 
-<span class="s">        """</span>
+<span class="s2">        """</span>
 
-        <span class="n">i</span> = <span class="mi">1</span>
+        <span class="nx">i</span> <span class="o">=</span> <span class="mi">1</span>
 
-        <span class="k">while</span> <span class="n">i</span> &lt;= <span class="n">num:</span>
+        <span class="k">while</span> <span class="nx">i</span> <span class="o">&lt;=</span> <span class="nx">num</span>:
 
-            <span class="n">i</span> = <span class="n">i</span> &lt;&lt; <span class="mi">1</span>
+            <span class="kt">i</span> <span class="o">=</span> <span class="nx">i</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span>
 
-        <span class="k">return</span> (<span class="n">i</span> - <span class="mi">1</span>) ^ <span class="nb">num</span>
+        <span class="k">return</span> <span class="p">(</span><span class="nx">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">^</span> <span class="nx">num</span>
 </pre></div>
 <p>方法：101 与 111异或后为010  10001 与　11111 异或后为01110　与相同位数的全部为１的数异或即可得到对应的反数。该问题变为如何找到与原数位数相同，且每一位都为１的数。</p>
 <p>方法一，找出原数的位数，相同位数最大数就是要找的数</p>
@@ -566,57 +566,57 @@ You may assume the input string will only contain letters of alphabet.</p>
 <p>解决方法：</p>
 <p>区别处理3种情况，3的倍数 5的倍数 15的倍数</p>
 <p>代码：</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">Solution</span>(<span class="n">object</span>):
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Solution</span><span class="p">(</span><span class="nx">object</span><span class="p">)</span><span class="o">:</span>
 
-    <span class="n">def</span> <span class="n">fizzBuzz</span>(<span class="k">self</span>, <span class="n">n</span>):
+    <span class="nx">def</span> <span class="nx">fizzBuzz</span><span class="p">(</span><span class="nx">self</span><span class="p">,</span> <span class="nx">n</span><span class="p">)</span><span class="o">:</span>
 
-        <span class="s">"""</span>
+        <span class="s2">"""</span>
 
-<span class="s">        :type n: int</span>
+<span class="s2">        :type n: int</span>
 
-<span class="s">        :rtype: List[str]</span>
+<span class="s2">        :rtype: List[str]</span>
 
-<span class="s">        """</span>
+<span class="s2">        """</span>
 
-        <span class="k">if</span> <span class="n">n</span> &lt;= <span class="mi">0</span>:
+        <span class="k">if</span> <span class="nx">n</span> <span class="o">&lt;=</span> <span class="nx">0</span>:
 
-            <span class="k">return</span> <span class="nb">False</span>
+            <span class="kt">return</span> <span class="nx">False</span>
 
-        <span class="k">if</span> <span class="n">n</span> == <span class="mi">1</span>:
+        <span class="k">if</span> <span class="nx">n</span> <span class="o">==</span> <span class="nx">1</span>:
 
-            <span class="k">return</span> [<span class="s">"1"</span>]
+            <span class="kt">return</span> <span class="p">[</span><span class="s2">"1"</span><span class="p">]</span>
 
-        <span class="k">if</span> <span class="n">n</span> == <span class="mi">2</span>:
+        <span class="k">if</span> <span class="nx">n</span> <span class="o">==</span> <span class="nx">2</span>:
 
-            <span class="k">return</span> [<span class="s">"1"</span>,<span class="s">"2"</span>]
+            <span class="kt">return</span> <span class="p">[</span><span class="s2">"1"</span><span class="p">,</span><span class="s2">"2"</span><span class="p">]</span>
 
-        <span class="n">finallist</span> = []
+        <span class="nx">finallist</span> <span class="o">=</span> <span class="p">[]</span>
 
-        <span class="k">if</span> <span class="n">n</span> &gt;=<span class="mi">3</span>:
+        <span class="k">if</span> <span class="nx">n</span> <span class="o">&gt;=</span><span class="nx">3</span>:
 
-            <span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="n">range</span>(<span class="n">n</span><span class="o">+</span><span class="mi">1</span>):
+            <span class="kt">for</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">range</span><span class="p">(</span><span class="nx">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">:</span>
 
-                <span class="k">if</span> <span class="n">i</span> == <span class="mi">0</span>:
+                <span class="k">if</span> <span class="nx">i</span> <span class="o">==</span> <span class="nx">0</span>:
 
-                    <span class="nb">pass</span>
+                    <span class="kt">pass</span>
 
-                <span class="n">elif</span> <span class="n">i</span> % <span class="mi">15</span> == <span class="mi">0</span>:
+                <span class="nx">elif</span> <span class="nx">i</span> <span class="o">%</span> <span class="mi">15</span> <span class="o">==</span> <span class="nx">0</span>:
 
-                    <span class="n">finallist</span>.<span class="n">append</span>(<span class="s">"FizzBuzz"</span>)
+                    <span class="kt">finallist.append</span><span class="p">(</span><span class="s2">"FizzBuzz"</span><span class="p">)</span>
 
-                <span class="n">elif</span> <span class="n">i</span> % <span class="mi">3</span> == <span class="mi">0</span>:
+                <span class="nx">elif</span> <span class="nx">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="nx">0</span>:
 
-                    <span class="n">finallist</span>.<span class="n">append</span>(<span class="s">"Fizz"</span>)
+                    <span class="kt">finallist.append</span><span class="p">(</span><span class="s2">"Fizz"</span><span class="p">)</span>
 
-                <span class="n">elif</span> <span class="n">i</span> % <span class="mi">5</span> == <span class="mi">0</span>:
+                <span class="nx">elif</span> <span class="nx">i</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="nx">0</span>:
 
-                    <span class="n">finallist</span>.<span class="n">append</span>(<span class="s">"Buzz"</span>)
+                    <span class="kt">finallist.append</span><span class="p">(</span><span class="s2">"Buzz"</span><span class="p">)</span>
 
-                <span class="n">else:</span>
+                <span class="k">else</span><span class="o">:</span>
 
-                    <span class="n">finallist</span>.<span class="n">append</span>(<span class="n">str</span>(<span class="n">i</span>))
+                    <span class="nx">finallist</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">str</span><span class="p">(</span><span class="nx">i</span><span class="p">))</span>
 
-            <span class="k">return</span> <span class="n">finallist</span>
+            <span class="k">return</span> <span class="nx">finallist</span>
 </pre></div></body>
                 </div>
                 <footer class="text-right">

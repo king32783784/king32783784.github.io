@@ -122,6 +122,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework 用户手册(四)
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../../../../2017/04/01/Robot/" title="Robot Framework 用户手册(三)">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework 用户手册(三)
@@ -143,12 +149,6 @@
                             <a class="hide-overflow" href="../../../../2017/03/24/Robot/" title="Robot Framework快速入门">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework快速入门
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../../../../2017/03/22/itest/" title="Itest测试工具介绍">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Itest测试工具介绍
                             </a>
                         </li>
                     <li>
@@ -309,6 +309,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
+                            <span class="badge pull-right categorybadge">5</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -333,13 +340,6 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
-                            <span class="badge pull-right categorybadge">4</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -525,10 +525,10 @@ sudo python setup.py install
 <div class="highlight"><pre><span></span>$ avocado run /bin/true
 JOB ID    : 381b849a62784228d2fd208d929cc49f310412dc
 JOB LOG   : <span class="nv">$HOME</span>/avocado/job-results/job-2014-08-12T15.39-381b849a/job.log
-TESTS     : 1
-<span class="o">(</span>1/1<span class="o">)</span> /bin/true: PASS <span class="o">(</span>0.01 s<span class="o">)</span>
-RESULTS    : PASS <span class="m">1</span> <span class="p">|</span> ERROR <span class="m">0</span> <span class="p">|</span> FAIL <span class="m">0</span> <span class="p">|</span> SKIP <span class="m">0</span> <span class="p">|</span> WARN <span class="m">0</span> <span class="p">|</span> INTERRUPT 0
-TESTS TIME : 0.01 s
+TESTS     : <span class="m">1</span>
+<span class="o">(</span><span class="m">1</span>/1<span class="o">)</span> /bin/true: PASS <span class="o">(</span><span class="m">0</span>.01 s<span class="o">)</span>
+RESULTS    : PASS <span class="m">1</span> <span class="p">|</span> ERROR <span class="m">0</span> <span class="p">|</span> FAIL <span class="m">0</span> <span class="p">|</span> SKIP <span class="m">0</span> <span class="p">|</span> WARN <span class="m">0</span> <span class="p">|</span> INTERRUPT <span class="m">0</span>
+TESTS TIME : <span class="m">0</span>.01 s
 JOB HTML  : <span class="nv">$HOME</span>/avocado/job-results/job-2014-08-12T15.39-381b849a/html/results.html
 </pre></div>
 <p>可以看到，我们把/bin/true作为一个测试运行，并记录了测试过程。这是一个简单的例子，这是支持测试的一种类型。<a href="http://avocado-framework.readthedocs.io/en/43.0/ReferenceGuide.html#test-types">Test Types</a>了解更多的测试类型。</p>
@@ -583,10 +583,10 @@ Type       file
 NOT_A_TEST examples/gdb-prerun-scripts/README
 NOT_A_TEST examples/gdb-prerun-scripts/pass-sigusr1
 
-SIMPLE: 0
-INSTRUMENTED: 0
-MISSING: 0
-NOT_A_TEST: 2
+SIMPLE: <span class="m">0</span>
+INSTRUMENTED: <span class="m">0</span>
+MISSING: <span class="m">0</span>
+NOT_A_TEST: <span class="m">2</span>
 </pre></div>
 <h3 id="3bian-xie-yi-ge-jian-dan-de-ce-shi_1">3.编写一个简单的测试</h3>
 <p>下面是一个<span id="avocado04">simple</span>测试的简单示例：</p>
@@ -600,16 +600,16 @@ $ chmod +x /tmp/simple_test.sh
 <div class="highlight"><pre><span></span>$ avocado run failtest.py sleeptest.py synctest.py failtest.py synctest.py /tmp/simple_test.sh
 JOB ID    : 86911e49b5f2c36caeea41307cee4fecdcdfa121
 JOB LOG   : <span class="nv">$HOME</span>/avocado/job-results/job-2014-08-12T15.42-86911e49/job.log
-TESTS     : 6
- <span class="o">(</span>1/6<span class="o">)</span> failtest.py:FailTest.test: FAIL <span class="o">(</span>0.00 s<span class="o">)</span>
- <span class="o">(</span>2/6<span class="o">)</span> sleeptest.py:SleepTest.test: PASS <span class="o">(</span>1.00 s<span class="o">)</span>
- <span class="o">(</span>3/6<span class="o">)</span> synctest.py:SyncTest.test: PASS <span class="o">(</span>2.43 s<span class="o">)</span>
- <span class="o">(</span>4/6<span class="o">)</span> failtest.py:FailTest.test: FAIL <span class="o">(</span>0.00 s<span class="o">)</span>
- <span class="o">(</span>5/6<span class="o">)</span> synctest.py:SyncTest.test: PASS <span class="o">(</span>2.44 s<span class="o">)</span>
- <span class="o">(</span>6/6<span class="o">)</span> /bin/true: PASS <span class="o">(</span>0.00 s<span class="o">)</span>
- <span class="o">(</span>6/6<span class="o">)</span> /tmp/simple_test.sh.1: PASS <span class="o">(</span>0.02 s<span class="o">)</span>
-RESULTS    : PASS <span class="m">2</span> <span class="p">|</span> ERROR <span class="m">2</span> <span class="p">|</span> FAIL <span class="m">2</span> <span class="p">|</span> SKIP <span class="m">0</span> <span class="p">|</span> WARN <span class="m">0</span> <span class="p">|</span> INTERRUPT 0
-TESTS TIME : 5.88 s
+TESTS     : <span class="m">6</span>
+ <span class="o">(</span><span class="m">1</span>/6<span class="o">)</span> failtest.py:FailTest.test: FAIL <span class="o">(</span><span class="m">0</span>.00 s<span class="o">)</span>
+ <span class="o">(</span><span class="m">2</span>/6<span class="o">)</span> sleeptest.py:SleepTest.test: PASS <span class="o">(</span><span class="m">1</span>.00 s<span class="o">)</span>
+ <span class="o">(</span><span class="m">3</span>/6<span class="o">)</span> synctest.py:SyncTest.test: PASS <span class="o">(</span><span class="m">2</span>.43 s<span class="o">)</span>
+ <span class="o">(</span><span class="m">4</span>/6<span class="o">)</span> failtest.py:FailTest.test: FAIL <span class="o">(</span><span class="m">0</span>.00 s<span class="o">)</span>
+ <span class="o">(</span><span class="m">5</span>/6<span class="o">)</span> synctest.py:SyncTest.test: PASS <span class="o">(</span><span class="m">2</span>.44 s<span class="o">)</span>
+ <span class="o">(</span><span class="m">6</span>/6<span class="o">)</span> /bin/true: PASS <span class="o">(</span><span class="m">0</span>.00 s<span class="o">)</span>
+ <span class="o">(</span><span class="m">6</span>/6<span class="o">)</span> /tmp/simple_test.sh.1: PASS <span class="o">(</span><span class="m">0</span>.02 s<span class="o">)</span>
+RESULTS    : PASS <span class="m">2</span> <span class="p">|</span> ERROR <span class="m">2</span> <span class="p">|</span> FAIL <span class="m">2</span> <span class="p">|</span> SKIP <span class="m">0</span> <span class="p">|</span> WARN <span class="m">0</span> <span class="p">|</span> INTERRUPT <span class="m">0</span>
+TESTS TIME : <span class="m">5</span>.88 s
 JOB HTML  : <span class="nv">$HOME</span>/avocado/job-results/job-2014-08-12T15.42-86911e49/html/results.html
 </pre></div>
 <h3 id="5chu-xian-failhou-zhong-duan-ce-shi">5.出现fail后中断测试</h3>
@@ -617,19 +617,19 @@ JOB HTML  : <span class="nv">$HOME</span>/avocado/job-results/job-2014-08-12T15.
 <div class="highlight"><pre><span></span>$ avocado run --failfast on /bin/true /bin/false /bin/true /bin/true
 JOB ID     : eaf51b8c7d6be966bdf5562c9611b1ec2db3f68a
 JOB LOG    : <span class="nv">$HOME</span>/avocado/job-results/job-2016-07-19T09.43-eaf51b8/job.log
-TESTS      : 4
- <span class="o">(</span>1/4<span class="o">)</span> /bin/true: PASS <span class="o">(</span>0.01 s<span class="o">)</span>
- <span class="o">(</span>2/4<span class="o">)</span> /bin/false: FAIL <span class="o">(</span>0.01 s<span class="o">)</span>
+TESTS      : <span class="m">4</span>
+ <span class="o">(</span><span class="m">1</span>/4<span class="o">)</span> /bin/true: PASS <span class="o">(</span><span class="m">0</span>.01 s<span class="o">)</span>
+ <span class="o">(</span><span class="m">2</span>/4<span class="o">)</span> /bin/false: FAIL <span class="o">(</span><span class="m">0</span>.01 s<span class="o">)</span>
  Interrupting job <span class="o">(</span>failfast<span class="o">)</span>.
- RESULTS    : PASS <span class="m">1</span> <span class="p">|</span> ERROR <span class="m">0</span> <span class="p">|</span> FAIL <span class="m">1</span> <span class="p">|</span> SKIP <span class="m">2</span> <span class="p">|</span> WARN <span class="m">0</span> <span class="p">|</span> INTERRUPT 0
- TESTS TIME : 0.02 s
+ RESULTS    : PASS <span class="m">1</span> <span class="p">|</span> ERROR <span class="m">0</span> <span class="p">|</span> FAIL <span class="m">1</span> <span class="p">|</span> SKIP <span class="m">2</span> <span class="p">|</span> WARN <span class="m">0</span> <span class="p">|</span> INTERRUPT <span class="m">0</span>
+ TESTS TIME : <span class="m">0</span>.02 s
  JOB HTML   : /home/apahim/avocado/job-results/job-2016-07-19T09.43-eaf51b8/html/results.html
 </pre></div>
 <h3 id="6tong-guo-wai-bu-runner-yun-xing-ce-shi">6.通过外部Runner 运行测试</h3>
 <p><span id="avocado07">大</span>部软件都存在自己的测试集。通常包括一个定制的runner,它可以找到并运行自己的测试。</p>
 <p>Avocado能支持运行这些测试，而且可以支持生成不同格式的结果，收集系统信息以及这些测试（Avocado的sysinfo功能）等等。</p>
 <p>大部分方式如下：</p>
-<div class="highlight"><pre><span></span><span class="p">$</span><span class="nv">avocado</span><span class="x"> run --external -runner=/path/to/external_runner foo bar baz</span>
+<div class="highlight"><pre><span></span>$avocado run --external -runner=/path/to/external_runner foo bar baz
 </pre></div>
 <p>这个例子，avocado会产生foo bar baz的测试结果。实际结果将来源于执行 /path/to/external_runner foo /path/to/external_runner bar和/path/to/external_runner baz</p>
 <p>另一种方式展示这一特性，就是思考“外部runner"可以是解释器和可以解释执行任何测试。UNIXshell,/bin/sh就可以被当做外部执行引擎，而且shell脚本就可以当成它的测试：</p>
@@ -638,11 +638,11 @@ $ <span class="nb">echo</span> <span class="s2">"exit 1"</span> &gt; /tmp/fail
 $ avocado run --external-runner<span class="o">=</span>/bin/sh /tmp/pass /tmp/fail
 JOB ID     : 4a2a1d259690cc7b226e33facdde4f628ab30741
 JOB LOG    : /home/&lt;user&gt;/avocado/job-results/job-&lt;date&gt;-&lt;shortid&gt;/job.log
-TESTS      : 2
- <span class="o">(</span>1/2<span class="o">)</span> /tmp/pass: PASS <span class="o">(</span>0.01 s<span class="o">)</span>
- <span class="o">(</span>2/2<span class="o">)</span> /tmp/fail: FAIL <span class="o">(</span>0.01 s<span class="o">)</span>
-RESULTS    : PASS <span class="m">1</span> <span class="p">|</span> ERROR <span class="m">0</span> <span class="p">|</span> FAIL <span class="m">1</span> <span class="p">|</span> SKIP <span class="m">0</span> <span class="p">|</span> WARN <span class="m">0</span> <span class="p">|</span> INTERRUPT 0
-TESTS TIME : 0.01 s
+TESTS      : <span class="m">2</span>
+ <span class="o">(</span><span class="m">1</span>/2<span class="o">)</span> /tmp/pass: PASS <span class="o">(</span><span class="m">0</span>.01 s<span class="o">)</span>
+ <span class="o">(</span><span class="m">2</span>/2<span class="o">)</span> /tmp/fail: FAIL <span class="o">(</span><span class="m">0</span>.01 s<span class="o">)</span>
+RESULTS    : PASS <span class="m">1</span> <span class="p">|</span> ERROR <span class="m">0</span> <span class="p">|</span> FAIL <span class="m">1</span> <span class="p">|</span> SKIP <span class="m">0</span> <span class="p">|</span> WARN <span class="m">0</span> <span class="p">|</span> INTERRUPT <span class="m">0</span>
+TESTS TIME : <span class="m">0</span>.01 s
 JOB HTML   : /home/&lt;user&gt;/avocado/job-results/job-&lt;date&gt;-&lt;shortid&gt;/html/results.html
 </pre></div>
 <p>这个例子很明显，可以通过给/tmp/pass和/tmp/fail ，shell“shebangs”（＃！/ bin / sh）来实现，使它们可执行（chmod + x / tmp / pass / tmp / ，并将其作为“简单”测试运行。</p>
@@ -651,11 +651,11 @@ JOB HTML   : /home/&lt;user&gt;/avocado/job-results/job-&lt;date&gt;-&lt;shortid
                                    http://remote-avocado-server:9405/jobs/
 JOB ID     : 56016a1ffffaba02492fdbd5662ac0b958f51e11
 JOB LOG    : /home/&lt;user&gt;/avocado/job-results/job-&lt;date&gt;-&lt;shortid&gt;/job.log
-TESTS      : 2
-<span class="o">(</span>1/2<span class="o">)</span> http://local-avocado-server:9405/jobs/: PASS <span class="o">(</span>0.02 s<span class="o">)</span>
-<span class="o">(</span>2/2<span class="o">)</span> http://remote-avocado-server:9405/jobs/: FAIL <span class="o">(</span>3.02 s<span class="o">)</span>
-RESULTS    : PASS <span class="m">1</span> <span class="p">|</span> ERROR <span class="m">0</span> <span class="p">|</span> FAIL <span class="m">1</span> <span class="p">|</span> SKIP <span class="m">0</span> <span class="p">|</span> WARN <span class="m">0</span> <span class="p">|</span> INTERRUPT 0
-TESTS TIME : 3.04 s
+TESTS      : <span class="m">2</span>
+<span class="o">(</span><span class="m">1</span>/2<span class="o">)</span> http://local-avocado-server:9405/jobs/: PASS <span class="o">(</span><span class="m">0</span>.02 s<span class="o">)</span>
+<span class="o">(</span><span class="m">2</span>/2<span class="o">)</span> http://remote-avocado-server:9405/jobs/: FAIL <span class="o">(</span><span class="m">3</span>.02 s<span class="o">)</span>
+RESULTS    : PASS <span class="m">1</span> <span class="p">|</span> ERROR <span class="m">0</span> <span class="p">|</span> FAIL <span class="m">1</span> <span class="p">|</span> SKIP <span class="m">0</span> <span class="p">|</span> WARN <span class="m">0</span> <span class="p">|</span> INTERRUPT <span class="m">0</span>
+TESTS TIME : <span class="m">3</span>.04 s
 JOB HTML   : /home/&lt;user&gt;/avocado/job-results/job-&lt;date&gt;-&lt;shortid&gt;/html/results.html
 </pre></div>
 <p>这个例子是把”/bin/curl“当做"external test runner".</p>
@@ -663,20 +663,20 @@ JOB HTML   : /home/&lt;user&gt;/avocado/job-results/job-&lt;date&gt;-&lt;shortid
 <p><span id="avocado08">当</span>开发一个新的测试时，经常做的就是查看一个测试job的运行日志。
 为了实现这个目的， 可以通过 avocado --show test run ... 或 avocado run --show-job-log ...</p>
 <p>例如：</p>
-<div class="highlight"><pre><span></span><span class="p">$</span><span class="nv">avocado</span><span class="x"> --show test run examples/tests/sleeptest.py</span>
-<span class="x">...</span>
-<span class="x">Job ID: f9ea1742134e5352dec82335af584d1f151d4b85</span>
+<div class="highlight"><pre><span></span>$avocado --show test run examples/tests/sleeptest.py
+...
+Job ID: f9ea1742134e5352dec82335af584d1f151d4b85
 
-<span class="x">START 1-sleeptest.py:SleepTest.test</span>
+START 1-sleeptest.py:SleepTest.test
 
-<span class="x">PARAMS (key=timeout, path=*, default=None) =&gt; None</span>
-<span class="x">PARAMS (key=sleep_length, path=*, default=1) =&gt; 1</span>
-<span class="x">Sleeping for 1.00 seconds</span>
-<span class="x">PASS 1-sleeptest.py:SleepTest.test</span>
+PARAMS (key=timeout, path=*, default=None) =&gt; None
+PARAMS (key=sleep_length, path=*, default=1) =&gt; 1
+Sleeping for 1.00 seconds
+PASS 1-sleeptest.py:SleepTest.test
 
-<span class="x">Test results available in </span><span class="p">$</span><span class="nv">HOME</span><span class="x">/avocado/job-results/job-2015-06-02T10.45-f9ea174</span>
+Test results available in $HOME/avocado/job-results/job-2015-06-02T10.45-f9ea174
 
-<span class="x">UI输出被抑制，只显示作业日志，这使得它成为测试开发和调试的有用功能。</span>
+UI输出被抑制，只显示作业日志，这使得它成为测试开发和调试的有用功能。
 </pre></div>
 <p><img class="img-responsive" height="280" src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/8N5QJCOLP7.jpg" width="420"/></p>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
@@ -699,7 +699,7 @@ JOB HTML   : /home/&lt;user&gt;/avocado/job-results/job-&lt;date&gt;-&lt;shortid
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +

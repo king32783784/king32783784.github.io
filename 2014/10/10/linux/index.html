@@ -122,6 +122,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework 用户手册(四)
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../../../../2017/04/01/Robot/" title="Robot Framework 用户手册(三)">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework 用户手册(三)
@@ -143,12 +149,6 @@
                             <a class="hide-overflow" href="../../../../2017/03/24/Robot/" title="Robot Framework快速入门">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework快速入门
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../../../../2017/03/22/itest/" title="Itest测试工具介绍">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Itest测试工具介绍
                             </a>
                         </li>
                     <li>
@@ -309,6 +309,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
+                            <span class="badge pull-right categorybadge">5</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -333,13 +340,6 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
-                            <span class="badge pull-right categorybadge">4</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -536,9 +536,9 @@ C语言实现，定位和路由模拟。twolf来自TimberWolfSC定位和全局�
 <p>482.sphinx3：C语言实现。Sphinx-3一种语音识别软件。</p>
 <h3 id="er-gong-ju-an-zhuang_2">二、工具安装</h3>
 <h4 id="1biao-zhun-an-zhuang-fang-shi">1.标准安装方式</h4>
-<div class="highlight"><pre><span></span><span class="p">$</span><span class="nv">mount</span><span class="x"> -t iso9660 -o ro,exec /dev/cdrom /mnt</span>
-<span class="p">$</span><span class="nv">cd</span><span class="x"> /mnt</span>
-<span class="p">$</span><span class="x">./install.sh</span>
+<div class="highlight"><pre><span></span>$mount -t iso9660 -o ro,exec /dev/cdrom /mnt
+$cd /mnt
+$./install.sh
 </pre></div>
 <p>可以指定安装目录如：</p>
 <div class="highlight"><pre><span></span>$./install.sh -d  /home/cpu2006
@@ -552,18 +552,18 @@ yes
 <h4 id="2tong-guo-an-zhuang-wan-cheng-de-ruan-jian-jin-xing-ce-shi">2.通过安装完成的软件进行测试</h4>
 <p>先准备相关测试文件，如：cpu2006-20141030.tar。
 解压文件：</p>
-<div class="highlight"><pre><span></span><span class="p">$</span><span class="nv">tar</span><span class="x"> xf cpu2006-20141030.tar</span>
+<div class="highlight"><pre><span></span>$tar xf cpu2006-20141030.tar
 </pre></div>
 <p>进入安装目录：</p>
-<div class="highlight"><pre><span></span><span class="p">$</span><span class="nv">cd</span><span class="x"> cpu2006v99/（根据实际路径）</span>
+<div class="highlight"><pre><span></span>$cd cpu2006v99/（根据实际路径）
 </pre></div>
 <p>导入测试工具：</p>
 <div class="highlight"><pre><span></span>$.  shrc
 </pre></div>
 <p>注意：输入时，圆点与shrc之间至少一个空格，该命令开始导入SPEC CPU2006程序。
 修改测试文件绝对路径：</p>
-<div class="highlight"><pre><span></span><span class="p">$</span><span class="nv">bin</span><span class="x">/relocate</span>
-<span class="x">显示“Top of SPEC benchmark tree is '/cpu2006v99'”</span>
+<div class="highlight"><pre><span></span>$bin/relocate
+显示“Top of SPEC benchmark tree is '/cpu2006v99'”
 </pre></div>
 <h4 id="3yun-xing-ce-shi">3.运行测试</h4>
 <p>根据需求，进行参数选择，开始运行测试脚本：
@@ -843,15 +843,15 @@ IRIX:
 ulimit -s 128000; CFLAGS="-c99 -D_FILE_OFFSET_BITS=64" MD5CFLAGS="-O2" PERLFLAGS="-Doptimize=-O3 -Uloclib -Dlibpth=/usr/lib32" XZFLAGS="--disable-assembler --disable-shared" XZCFLAGS="-O1" ./buildtools
 </pre></div>
 <p>建立完成之后，确认是否成功的方法：</p>
-<div class="highlight"><pre><span></span><span class="x">cd </span><span class="p">$</span><span class="nv">SPEC</span><span class="x"> (Unix)</span>
-<span class="x">.  shrc</span>
-<span class="x">或 runspec -V</span>
-<span class="x">或specmake -v</span>
-<span class="x">specxz -h</span>
-<span class="x">specperl -v</span>
-<span class="x">specdiff –h</span>
-<span class="x">runspec -h</span>
-<span class="x">specinvoke -h</span>
+<div class="highlight"><pre><span></span>cd $SPEC (Unix)
+.  shrc
+或 runspec -V
+或specmake -v
+specxz -h
+specperl -v
+specdiff –h
+runspec -h
+specinvoke -h
 </pre></div>
 <p>工具编译完成之后，需要对工具进行打包</p>
 <div class="highlight"><pre><span></span>packagetools &lt;archname&gt;

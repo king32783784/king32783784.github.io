@@ -122,6 +122,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework 用户手册(四)
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../../../../2017/04/01/Robot/" title="Robot Framework 用户手册(三)">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework 用户手册(三)
@@ -143,12 +149,6 @@
                             <a class="hide-overflow" href="../../../../2017/03/24/Robot/" title="Robot Framework快速入门">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework快速入门
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../../../../2017/03/22/itest/" title="Itest测试工具介绍">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Itest测试工具介绍
                             </a>
                         </li>
                     <li>
@@ -309,6 +309,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
+                            <span class="badge pull-right categorybadge">5</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -333,13 +340,6 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
-                            <span class="badge pull-right categorybadge">4</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -465,11 +465,11 @@
 <div class="highlight"><pre><span></span><span class="nt">&lt;foo&gt;</span>
   <span class="nt">&lt;bar&gt;</span> <span class="nt">&lt;/bar&gt;</span>  # 可以作为foo元素的子元素
 </pre></div>
-<p></p>
+<p>
 XML文档中第一个元素叫做根元素，每份XML文档只能有一个根元素。以下就不是一个xml文档。
 　　<foo></foo>
 <bar></bar>　# 两个根元素
-元素可以有其属性，类似字典的键值对。属性由空格分割列举在元素的起始标签中。一个元素中属性名不恩能够重复，属性值必须用括号包括起来，单引号或双引号都可以。
+元素可以有其属性，类似字典的键值对。属性由空格分割列举在元素的起始标签中。一个元素中属性名不恩能够重复，属性值必须用括号包括起来，单引号或双引号都可以。</p>
 <div class="highlight"><pre><span></span><span class="nt">&lt;foo</span> <span class="na">lang=</span><span class="s">'en'</span><span class="nt">&gt;</span> # foo元素有一个叫做lang的属性，属性值为'en'
   <span class="nt">&lt;bar</span> <span class="na">id=</span><span class="s">'papayawhip'</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;&lt;/bar&gt;</span>　# bar元素分别两个属性,id和lang，每个属性都有对应值，每个元素具有独立的属性集
 <span class="nt">&lt;/foo&gt;</span>
@@ -671,7 +671,7 @@ XML文档中第一个元素叫做根元素，每份XML文档只能有一个根�
 <span class="o">&gt;&gt;&gt;</span> <span class="n">new_feed</span> <span class="o">=</span> <span class="n">etree</span><span class="o">.</span><span class="n">Element</span><span class="p">(</span><span class="s1">'{http://www.w3.org/2005/Atom}feed'</span><span class="p">,</span> <span class="c1"># 实例化Element类创建一个新元素。将元素的名字(命名空间+本地名)作为参数。</span>
 <span class="n">attrib</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'{http://www.w3.org/XML/1998/namespace}lang'</span><span class="p">:</span><span class="s1">'en'</span><span class="p">})</span> <span class="c1"># 将属性名和值构成的字典传递给attrib参数</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">etree</span><span class="o">.</span><span class="n">tostring</span><span class="p">(</span><span class="n">new_feed</span><span class="p">))</span> 
-<span class="n">b</span><span class="s1">'&lt;ns0:feed xmlns:ns0="http://www.w3.org/2005/Atom" xml:lang="en" /&gt;'</span>
+<span class="sa">b</span><span class="s1">'&lt;ns0:feed xmlns:ns0="http://www.w3.org/2005/Atom" xml:lang="en" /&gt;'</span>
 <span class="p">[</span><span class="s1">'Accessibility is a harsh mistress'</span><span class="p">]</span>
 </pre></div>
 <p>内置的ElementTree库没有提供细粒度地对序列化时命名空间内元素的控制，但是lxml有这样的功能。</p>
@@ -699,7 +699,7 @@ XML文档中第一个元素叫做根元素，每份XML文档只能有一个根�
 <span class="s2">"pretty_print=True,"</span><span class="err">会在每个结束的末尾或含义子元素但没有文本内容的末尾添加换行符</span>
 </pre></div>
 <p><strong>解析损坏的XML</strong></p>
-<p>不再说明了，尽量保证xml格式符合标准吧</p><p></p></body>
+<p>不再说明了，尽量保证xml格式符合标准吧</p></body>
                 </div>
                 <footer class="text-right">
                     <p>by 李鹏</p>

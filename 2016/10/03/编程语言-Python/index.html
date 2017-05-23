@@ -122,6 +122,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework 用户手册(四)
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../../../../2017/04/01/Robot/" title="Robot Framework 用户手册(三)">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework 用户手册(三)
@@ -143,12 +149,6 @@
                             <a class="hide-overflow" href="../../../../2017/03/24/Robot/" title="Robot Framework快速入门">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework快速入门
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../../../../2017/03/22/itest/" title="Itest测试工具介绍">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Itest测试工具介绍
                             </a>
                         </li>
                     <li>
@@ -309,6 +309,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
+                            <span class="badge pull-right categorybadge">5</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -333,13 +340,6 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
-                            <span class="badge pull-right categorybadge">4</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -627,14 +627,14 @@ __class__属性来看到这一点。Python中所有的东西，注意，我是�
 <p>因此元类就是创建类这种对象的东西，如果你喜欢的话，可以把元类称作“类工厂”（不要和工厂类搞混就好） type就是Python内建元类，当然，你也可以创建自己的元类。</p>
 <h3 id="__metaclass__shu-xing">__metaclass__属性</h3>
 <p>你可以在写一个类的时候为其添加__metaclass__属性。</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">Foo</span>(<span class="n">object</span>):
-    <span class="n">__metaclass__</span> = <span class="n">something</span>...
-[..]
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Foo</span><span class="p">(</span><span class="nx">object</span><span class="p">)</span><span class="o">:</span>
+    <span class="nx">__metaclass__</span> <span class="o">=</span> <span class="nx">something</span><span class="p">...</span>
+<span class="p">[..]</span>
 </pre></div>
 <p>如果这么做了，python就会用元类来创建类Foo. 这里面有些技巧，首先写下class Foo(object),但是类对象Foo还没有在内存中创建。Python会在类的定义中寻找__metaclass__属性，如果找到了，
 python就会用它来创建类Foo,如果没有找到，就会用内建的type来创建这个类。把下面的这段话反复读几次，当你写下如下代码时：</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">Foo</span>(<span class="n">Bar</span>):
-    <span class="nb">pass</span>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Foo</span><span class="p">(</span><span class="nx">Bar</span><span class="p">)</span><span class="o">:</span>
+    <span class="nx">pass</span>
 </pre></div>
 <p>Python 做了如下操作：</p>
 <p>Foo中有__metaclass__有这个属性吗？ 如果是，Python会在内存中通过__metaclass__创建一个名字为Foo的类对象（我说的是类对象，不是类实例哈）。如果Python没有找到__metaclass__，它会

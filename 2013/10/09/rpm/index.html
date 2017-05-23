@@ -122,6 +122,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework 用户手册(四)
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../../../../2017/04/01/Robot/" title="Robot Framework 用户手册(三)">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework 用户手册(三)
@@ -143,12 +149,6 @@
                             <a class="hide-overflow" href="../../../../2017/03/24/Robot/" title="Robot Framework快速入门">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework快速入门
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../../../../2017/03/22/itest/" title="Itest测试工具介绍">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Itest测试工具介绍
                             </a>
                         </li>
                     <li>
@@ -309,6 +309,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
+                            <span class="badge pull-right categorybadge">5</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -333,13 +340,6 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
-                            <span class="badge pull-right categorybadge">4</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -554,7 +554,7 @@ libpng-devel &gt;= 1.0.20 zlib
 <p>%configure 这个不是关键字，而是rpm定义的标准宏命令。意思是执行源代码的configure配置
 在/usr/src/asianux/BUILD/%{name}-%{version}目录中进行 ，使用标准写法，会引用/usr/lib/rpm/marcros中定义的参数。
 另一种不标准的写法是，可参考源码中的参数自定义，例如：</p>
-<div class="highlight"><pre><span></span><span class="x">CFLAGS="</span><span class="p">$</span><span class="nv">RPM_OPT_FLAGS</span><span class="x">" CXXFLAGS="</span><span class="p">$</span><span class="nv">RPM_OPT_FLAGS</span><span class="x">" ./configure --prefix=%</span><span class="err">{</span><span class="x">_prefix}</span>
+<div class="highlight"><pre><span></span>CFLAGS="$RPM_OPT_FLAGS" CXXFLAGS="$RPM_OPT_FLAGS" ./configure --prefix=%{_prefix}
 </pre></div>
 <p>在/usr/src/asianux/BUILD/%{name}-%{version}目录中进行make的工作 ，常见写法：</p>
 <div class="highlight"><pre><span></span>make %{?_smp_mflags} OPTIMIZE="%{optflags}"
@@ -565,19 +565,19 @@ libpng-devel &gt;= 1.0.20 zlib
 <p>在/usr/src/asianux/BUILD/%{name}-%{version}目录中进行make install的操作。这个很重要，因为如果这里的路径不对的话，则下面%file中寻找文件的时候就会失败。 
 常见内容有：
 %makeinstall 这不是关键字，而是rpm定义的标准宏命令。也可以使用非标准写法：</p>
-<div class="highlight"><pre><span></span><span class="x">make DESTDIR=</span><span class="p">$</span><span class="nv">RPM_BUILD_ROOT</span><span class="x"> install</span>
+<div class="highlight"><pre><span></span>make DESTDIR=$RPM_BUILD_ROOT install
 </pre></div>
 <p>或 </p>
-<div class="highlight"><pre><span></span><span class="x">make prefix=</span><span class="p">$</span><span class="nv">RPM_BUILD_ROOT</span><span class="x"> install</span>
+<div class="highlight"><pre><span></span>make prefix=$RPM_BUILD_ROOT install
 </pre></div>
 <p>需要说明的是，这里的%install主要就是为了后面的%file服务的。所以，还可以使用常规的系统命令：</p>
-<div class="highlight"><pre><span></span><span class="x">install -d </span><span class="p">$</span><span class="nv">RPM_BUILD_ROOT</span><span class="x">/</span>
-<span class="x">cp -a * </span><span class="p">$</span><span class="nv">RPM_BUILD_ROOT</span><span class="x">/</span>
+<div class="highlight"><pre><span></span>install -d $RPM_BUILD_ROOT/
+cp -a * $RPM_BUILD_ROOT/
 </pre></div>
 <p>%clean 清理临时文件
 通常内容为：</p>
-<div class="highlight"><pre><span></span><span class="x">[ "</span><span class="p">$</span><span class="nv">RPM_BUILD_ROOT</span><span class="x">" != "/" ] &amp;&amp; rm -rf "</span><span class="p">$</span><span class="nv">RPM_BUILD_ROOT</span><span class="x">"</span>
-<span class="x">rm -rf </span><span class="p">$</span><span class="nv">RPM_BUILD_DIR</span><span class="x">/%</span><span class="err">{</span><span class="x">name}-%</span><span class="err">{</span><span class="x">version}</span>
+<div class="highlight"><pre><span></span>[ "$RPM_BUILD_ROOT" != "/" ] &amp;&amp; rm -rf "$RPM_BUILD_ROOT"
+rm -rf $RPM_BUILD_DIR/%{name}-%{version}
 </pre></div>
 <p>※注意区分<span class="math">\(RPM_BUILD_ROOT和\)</span>RPM_BUILD_DIR：</p>
 <p>$RPM_BUILD_ROOT是指开头定义的BuildRoot，</p>
@@ -692,7 +692,7 @@ libpng-devel &gt;= 1.0.20 zlib
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +

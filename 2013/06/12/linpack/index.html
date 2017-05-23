@@ -122,6 +122,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework 用户手册(四)
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../../../../2017/04/01/Robot/" title="Robot Framework 用户手册(三)">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework 用户手册(三)
@@ -143,12 +149,6 @@
                             <a class="hide-overflow" href="../../../../2017/03/24/Robot/" title="Robot Framework快速入门">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework快速入门
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../../../../2017/03/22/itest/" title="Itest测试工具介绍">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Itest测试工具介绍
                             </a>
                         </li>
                     <li>
@@ -309,6 +309,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
+                            <span class="badge pull-right categorybadge">5</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -333,13 +340,6 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
-                            <span class="badge pull-right categorybadge">4</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -487,17 +487,17 @@
 # make install
 </pre></div>
 <h5 id="12-gotoblas-2an-zhuang">1.2 GotoBlas 2安装</h5>
-<div class="highlight"><pre><span></span><span class="cp">#</span><span class="nf">wget</span><span class="x"> https://www.tacc.utexas.edu/documents/1084364/1087496/GotoBLAS2-1.13.tar.gz/b58aeb8c-9d8d-4ec2-b5f1-5a5843b4d47b</span>
-<span class="cp">#</span><span class="nf">make</span><span class="x"> TARGET=NEHALEM</span>
+<div class="highlight"><pre><span></span>#wget https://www.tacc.utexas.edu/documents/1084364/1087496/GotoBLAS2-1.13.tar.gz/b58aeb8c-9d8d-4ec2-b5f1-5a5843b4d47b
+#make TARGET=NEHALEM
 
-<span class="x">For PPC</span>
-<span class="cp">#</span><span class="nf">vi</span><span class="x"> cpuid_power.c </span>
-<span class="x">if (!strncasecmp(p, "POWER6", 6)) return CPUTYPE_POWER6;</span>
-<span class="x">POWER6改为POWER8</span>
-<span class="x">POWER6与POWER8存在差异，部分参数可能需要调整</span>
+For PPC
+#vi cpuid_power.c 
+if (!strncasecmp(p, "POWER6", 6)) return CPUTYPE_POWER6;
+POWER6改为POWER8
+POWER6与POWER8存在差异，部分参数可能需要调整
 
-<span class="x">安装过程中需要lapack-3.1.1.tgz，如果测试机没有外网，请手动下载后放到</span><span class="p">$</span><span class="nv">HOME</span><span class="x">目录</span>
-<span class="cp">#</span><span class="nf">make</span><span class="x"> TARGET=POWER BINARY=64</span>
+安装过程中需要lapack-3.1.1.tgz，如果测试机没有外网，请手动下载后放到$HOME目录
+#make TARGET=POWER BINARY=64
 </pre></div>
 <h5 id="13-hplan-zhuang">1.3 HPL安装</h5>
 <div class="highlight"><pre><span></span>#wget http://www.netlib.org/benchmark/hpl/hpl-2.1.tar.gz
@@ -897,7 +897,7 @@ root@mng l_mpi_p_3.1.038]# ./install.sh
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +

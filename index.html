@@ -121,6 +121,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="./2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework 用户手册(四)
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="./2017/04/01/Robot/" title="Robot Framework 用户手册(三)">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework 用户手册(三)
@@ -142,12 +148,6 @@
                             <a class="hide-overflow" href="./2017/03/24/Robot/" title="Robot Framework快速入门">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework快速入门
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="./2017/03/22/itest/" title="Itest测试工具介绍">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Itest测试工具介绍
                             </a>
                         </li>
                     <li>
@@ -308,6 +308,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="./category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
+                            <span class="badge pull-right categorybadge">5</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="./category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -332,13 +339,6 @@
                         <a href="./category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
-                            <span class="badge pull-right categorybadge">4</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="./category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -441,6 +441,50 @@
 </section>
 <div class="row">
     <div class="col-lg-9">
+            <article>
+                <h2>
+                    <a href="./2017/04/03/Robot/">Robot Framework 用户手册(四)</a>
+<div class="post-info">
+    <div class="publish-info-block">
+        <small>
+            <span class="published">
+                <i class="fa fa-calendar padding-small"></i><time datetime="2017-04-03T00:00:00+08:00"> 2017-04-03 一</time>
+            </span>
+            <span class="category">
+                <i class="fa fa-folder-open padding-small"></i><a href="./category/zi-dong-hua-ce-shi-robot.html">自动化测试-Robot</a>
+            </span>
+            <span class="tags">
+                <i class="fa fa-tags padding-small"></i>
+                <a href="./tag/framework.html">Framework</a>            </span>
+        </small>
+    </div>
+</div><!-- /.post-info -->                </h2>
+                <div class="summary">
+                    <body><h3 id="23-chuang-jian-ce-shi-tao-jian">2.3 创建测试套件</h3>
+<p>RF可以在测试用例文件中保存，这些测试文件可以组织成测试目录。这些测试文件和目录可以创建分层次的测试套件结构。</p>
+<h4 id="231-ce-shi-yong-li-wen-jian">2.3.1 测试用例文件</h4>
+<p>RF在测试用例文件中通过测试用例表格创建测试用例。测试用例文件会从它本身包含的测试用例中自动创建测试用例套件。测试用例文件中包含的测试用例理论上没有上限，但建议最好不要超过10个，除非用例是只包含一个单独的高级关键字的数据驱动测试方法。</p>
+<p>下面测试表的设置方法适用于测试集：</p>
+<ul>
+<li>
+<p>文档</p>
+<p>用于指定测试套件文档</p>
+</li>
+<li>
+<p>元数据</p>
+<p>用于设置自由套件元数据作为名称-值对</p>
+</li>
+<li>
+<p>套件Setup, 套件Teardown</p>
+<p>指定套件setup和teardown</p>
+</li>
+</ul>
+<h4 id="232-ce-shi-tao-jian-mu-lu">2.3.2 测试套件目录</h4>
+<div class="highlight"><pre><span></span>测试用例文件可以组织成目录，这些目录用来创建更高级别的测试套件。测试集创建不能包含其他测试用例目录，但可以包含其他测试集中的用例。
+</pre></div></body>
+                </div>
+            </article>
+            <hr/>
             <article>
                 <h2>
                     <a href="./2017/04/01/Robot/">Robot Framework 用户手册(三)</a>
@@ -616,37 +660,6 @@ Setting Variables
  * 更改现有账号的密码</p>
 <p>应用程序本身在sut/login.py文件中，可以使用命令python sut/login.py执行。尝试使用不存在的用户账号或密码无效登录会导致相同的错误信息：</p>
 <div class="highlight"><pre><span></span>&gt; python sut/login.py ...</pre></div></body>
-                </div>
-            </article>
-            <hr/>
-            <article>
-                <h2>
-                    <a href="./2017/03/22/itest/">Itest测试工具介绍</a>
-<div class="post-info">
-    <div class="publish-info-block">
-        <small>
-            <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2017-03-22T00:00:00+08:00"> 2017-03-22 三</time>
-            </span>
-            <span class="category">
-                <i class="fa fa-folder-open padding-small"></i><a href="./category/gong-ju.html">工具</a>
-            </span>
-            <span class="tags">
-                <i class="fa fa-tags padding-small"></i>
-                <a href="./tag/itest.html">itest</a>            </span>
-        </small>
-    </div>
-</div><!-- /.post-info -->                </h2>
-                <div class="summary">
-                    <body><h3 id="ji-ben-jie-shao">基本介绍</h3>
-<p>本文介绍了itest(自研测试工具）的制作目的、测试范围、常用功能、测试方法。该工具目前处于开发阶段，仍有部分功能未实现，存在一些稳定性、兼容性的问题。</p>
-<h3 id="zhi-zuo-mu-de">制作目的</h3>
-<p>进行linux系统测试时，需要进行系统信息抓取、功能性测试、性能测试、稳定性测试。其中信息抓取、性能测试、稳定性测试大部分情况下需要进行多轮次的测试。比如系统信息抓取包含系统软硬件信息的多个方面如 cpu信息、gcc信息等等；性能测试包括cpu、内存、内核等等；稳定性测试包括io、多线程、图形、内核等等；功能测试包括内核系统调用、常用服务/命令（主要包括目前自动化实现的部分）。这些可以自动化实现的测试，之前我们多多少少的都做了一些测试脚本进行了实现，itest制作的目的是为了整合这些测试，并且提供一个简单操作的GUI界面。主界面如下</p>
-<h3 id="ce-shi-fan-wei">测试范围</h3>
-<p>itest目前支持的测试包括：</p>
-<ul>
-<li>
-<p>系统信息抓取 包括：硬件信息抓取和系统核心组件信息抓取。硬件信息主要包括：处理器、主板、BIOS、内存、北桥 ...</p></li></ul></body>
                 </div>
             </article>
         <div class="btn-more text-right">

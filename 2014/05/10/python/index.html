@@ -122,6 +122,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework 用户手册(四)
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../../../../2017/04/01/Robot/" title="Robot Framework 用户手册(三)">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework 用户手册(三)
@@ -143,12 +149,6 @@
                             <a class="hide-overflow" href="../../../../2017/03/24/Robot/" title="Robot Framework快速入门">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework快速入门
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../../../../2017/03/22/itest/" title="Itest测试工具介绍">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Itest测试工具介绍
                             </a>
                         </li>
                     <li>
@@ -309,6 +309,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
+                            <span class="badge pull-right categorybadge">5</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -333,13 +340,6 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
-                            <span class="badge pull-right categorybadge">4</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -460,10 +460,10 @@
 <p>前面将了测试驱动开发，但就算尽全力编写的单元测试，仍然会遇到错误。仍然会有考虑不全面的测试用例。
 比如前面的实现的转换数字的程序，如果输入空字符，会触发InvalidRomanNumeralError例外。
 在出现错误后，应该在修复前写出一个导致该失败情形的测试用例。</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">FromRomanBadInput</span>(<span class="n">unittest</span>.<span class="n">TestCase</span>):
-    <span class="n">def</span> <span class="n">testBlank</span>(<span class="k">self</span>):
-        <span class="s">'''from_roman should fail with blank string'''</span>
-        <span class="k">self</span>.<span class="n">assertRaises</span>(<span class="n">roman2</span>.<span class="n">InvalidRomanNumeralError</span>, <span class="n">roman2</span>.<span class="n">form_roman</span>, <span class="s">''</span>)
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">FromRomanBadInput</span><span class="p">(</span><span class="nx">unittest</span><span class="p">.</span><span class="nx">TestCase</span><span class="p">)</span><span class="o">:</span>
+    <span class="nx">def</span> <span class="nx">testBlank</span><span class="p">(</span><span class="nx">self</span><span class="p">)</span><span class="o">:</span>
+        <span class="s1">'''from_roman should fail with blank string'''</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">assertRaises</span><span class="p">(</span><span class="nx">roman2</span><span class="p">.</span><span class="nx">InvalidRomanNumeralError</span><span class="p">,</span> <span class="nx">roman2</span><span class="p">.</span><span class="nx">form_roman</span><span class="p">,</span> <span class="s1">''</span><span class="p">)</span>
 </pre></div>
 <p>执行测试用例会失败，现在可以修复这个bug。</p>
 <div class="highlight"><pre><span></span>if not s:
@@ -483,63 +483,63 @@ M{0,4}对4000+数字的支持
 <p>重构是修改可运行的代码，使其表现更好。更佳可以是性能更好，占用内存更少，占用更少的空间，更加简洁、增加更多功能，代码可读性更高。如果代码存在完整的单元测试的前提下，你才能毫无顾忌的去修改去重构，不然心里没底啊。</p>
 <p>原来代码中的正则表达式看起来可读性不高，可以用个查询表替换，但是替换之后功能会不会有影响？别怕，我们已经实现了相应的单元测试。</p>
 <p>现在可以大胆去修改实现</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">OutOfRangeError</span>(<span class="n">ValueError</span>): <span class="nb">pass</span>
-<span class="k">class</span> <span class="n">NotIntegerError</span>(<span class="n">ValueError</span>): <span class="nb">pass</span>
-<span class="k">class</span> <span class="n">InvalidRomanNumeralError</span>(<span class="n">ValueError</span>): <span class="nb">pass</span>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">OutOfRangeError</span><span class="p">(</span><span class="nx">ValueError</span><span class="p">)</span><span class="o">:</span> <span class="nx">pass</span>
+<span class="kr">class</span> <span class="nx">NotIntegerError</span><span class="p">(</span><span class="nx">ValueError</span><span class="p">)</span><span class="o">:</span> <span class="nx">pass</span>
+<span class="kr">class</span> <span class="nx">InvalidRomanNumeralError</span><span class="p">(</span><span class="nx">ValueError</span><span class="p">)</span><span class="o">:</span> <span class="nx">pass</span>
 
-<span class="n">roman_numeral_map</span> = ((<span class="s">'M'</span>,  <span class="mi">1000</span>),
-                 (<span class="s">'CM'</span>, <span class="mi">900</span>),
-                 (<span class="s">'D'</span>,  <span class="mi">500</span>),
-                 (<span class="s">'CD'</span>, <span class="mi">400</span>),
-                 (<span class="s">'C'</span>,  <span class="mi">100</span>),
-                 (<span class="s">'XC'</span>, <span class="mi">90</span>),
-                 (<span class="s">'L'</span>,  <span class="mi">50</span>),
-                 (<span class="s">'XL'</span>, <span class="mi">40</span>),
-                 (<span class="s">'X'</span>,  <span class="mi">10</span>),
-                 (<span class="s">'IX'</span>, <span class="mi">9</span>),
-                 (<span class="s">'V'</span>,  <span class="mi">5</span>),
-                 (<span class="s">'IV'</span>, <span class="mi">4</span>),
-                 (<span class="s">'I'</span>,  <span class="mi">1</span>))
+<span class="nx">roman_numeral_map</span> <span class="o">=</span> <span class="p">((</span><span class="s1">'M'</span><span class="p">,</span>  <span class="mi">1000</span><span class="p">),</span>
+                 <span class="p">(</span><span class="s1">'CM'</span><span class="p">,</span> <span class="mi">900</span><span class="p">),</span>
+                 <span class="p">(</span><span class="s1">'D'</span><span class="p">,</span>  <span class="mi">500</span><span class="p">),</span>
+                 <span class="p">(</span><span class="s1">'CD'</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
+                 <span class="p">(</span><span class="s1">'C'</span><span class="p">,</span>  <span class="mi">100</span><span class="p">),</span>
+                 <span class="p">(</span><span class="s1">'XC'</span><span class="p">,</span> <span class="mi">90</span><span class="p">),</span>
+                 <span class="p">(</span><span class="s1">'L'</span><span class="p">,</span>  <span class="mi">50</span><span class="p">),</span>
+                 <span class="p">(</span><span class="s1">'XL'</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span>
+                 <span class="p">(</span><span class="s1">'X'</span><span class="p">,</span>  <span class="mi">10</span><span class="p">),</span>
+                 <span class="p">(</span><span class="s1">'IX'</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span>
+                 <span class="p">(</span><span class="s1">'V'</span><span class="p">,</span>  <span class="mi">5</span><span class="p">),</span>
+                 <span class="p">(</span><span class="s1">'IV'</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+                 <span class="p">(</span><span class="s1">'I'</span><span class="p">,</span>  <span class="mi">1</span><span class="p">))</span>
 
-<span class="n">to_roman_table</span> = [ <span class="n">None</span> ]
-<span class="n">from_roman_table</span> = {}
+<span class="nx">to_roman_table</span> <span class="o">=</span> <span class="p">[</span> <span class="nx">None</span> <span class="p">]</span>
+<span class="nx">from_roman_table</span> <span class="o">=</span> <span class="p">{}</span>
 
-<span class="n">def</span> <span class="n">to_roman</span>(<span class="n">n</span>):
-    <span class="s">'''convert integer to Roman numeral'''</span>
-    <span class="k">if</span> <span class="nb">not</span> (<span class="mi">0</span> &lt; <span class="n">n</span> &lt; <span class="mi">5000</span>):
-        <span class="n">raise</span> <span class="n">OutOfRangeError</span>(<span class="s">'number out of range (must be 1..4999)'</span>)
-    <span class="k">if</span> <span class="nb">int</span>(<span class="n">n</span>) != <span class="n">n:</span>
-        <span class="n">raise</span> <span class="n">NotIntegerError</span>(<span class="s">'non-integers can not be converted'</span>)
-    <span class="k">return</span> <span class="n">to_roman_table</span>[<span class="n">n</span>]
+<span class="nx">def</span> <span class="nx">to_roman</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span><span class="o">:</span>
+    <span class="s1">'''convert integer to Roman numeral'''</span>
+    <span class="k">if</span> <span class="nx">not</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;</span> <span class="nx">n</span> <span class="o">&lt;</span> <span class="mi">5000</span><span class="p">)</span><span class="o">:</span>
+        <span class="nx">raise</span> <span class="nx">OutOfRangeError</span><span class="p">(</span><span class="s1">'number out of range (must be 1..4999)'</span><span class="p">)</span>
+    <span class="k">if</span> <span class="kr">int</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="o">!=</span> <span class="nx">n</span>:
+        <span class="kt">raise</span> <span class="nx">NotIntegerError</span><span class="p">(</span><span class="s1">'non-integers can not be converted'</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nx">to_roman_table</span><span class="p">[</span><span class="nx">n</span><span class="p">]</span>
 
-<span class="n">def</span> <span class="n">from_roman</span>(<span class="o">s</span>):
-    <span class="s">'''convert Roman numeral to integer'''</span>
-    <span class="k">if</span> <span class="nb">not</span> <span class="n">isinstance</span>(<span class="o">s</span>, <span class="n">str</span>):
-        <span class="n">raise</span> <span class="n">InvalidRomanNumeralError</span>(<span class="s">'Input must be a string'</span>)
-    <span class="k">if</span> <span class="nb">not</span> <span class="o">s</span>:
-        <span class="n">raise</span> <span class="n">InvalidRomanNumeralError</span>(<span class="s">'Input can not be blank'</span>)
-    <span class="k">if</span> <span class="o">s</span> <span class="nb">not</span> <span class="n">in</span> <span class="n">from_roman_table:</span>
-        <span class="n">raise</span> <span class="n">InvalidRomanNumeralError</span>(<span class="s">'Invalid Roman numeral: {0}'</span>.<span class="n">format</span>(<span class="o">s</span>))
-    <span class="k">return</span> <span class="n">from_roman_table</span>[<span class="o">s</span>]
+<span class="nx">def</span> <span class="nx">from_roman</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span><span class="o">:</span>
+    <span class="s1">'''convert Roman numeral to integer'''</span>
+    <span class="k">if</span> <span class="nx">not</span> <span class="nx">isinstance</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span> <span class="nx">str</span><span class="p">)</span><span class="o">:</span>
+        <span class="nx">raise</span> <span class="nx">InvalidRomanNumeralError</span><span class="p">(</span><span class="s1">'Input must be a string'</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">not</span> <span class="nx">s</span>:
+        <span class="kt">raise</span> <span class="nx">InvalidRomanNumeralError</span><span class="p">(</span><span class="s1">'Input can not be blank'</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">s</span> <span class="nx">not</span> <span class="k">in</span> <span class="nx">from_roman_table</span>:
+        <span class="kt">raise</span> <span class="nx">InvalidRomanNumeralError</span><span class="p">(</span><span class="s1">'Invalid Roman numeral: {0}'</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="nx">s</span><span class="p">))</span>
+    <span class="k">return</span> <span class="nx">from_roman_table</span><span class="p">[</span><span class="nx">s</span><span class="p">]</span>
 
-<span class="n">def</span> <span class="n">build_lookup_tables</span>():
-    <span class="n">def</span> <span class="n">to_roman</span>(<span class="n">n</span>):
-        <span class="n">result</span> = <span class="s">''</span>
-        <span class="k">for</span> <span class="n">numeral</span>, <span class="n">integer</span> <span class="n">in</span> <span class="n">roman_numeral_map:</span>
-            <span class="k">if</span> <span class="n">n</span> &gt;= <span class="n">integer:</span>
-                <span class="n">result</span> = <span class="n">numeral</span>
-                <span class="n">n</span> -= <span class="n">integer</span>
+<span class="nx">def</span> <span class="nx">build_lookup_tables</span><span class="p">()</span><span class="o">:</span>
+    <span class="nx">def</span> <span class="nx">to_roman</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span><span class="o">:</span>
+        <span class="nx">result</span> <span class="o">=</span> <span class="s1">''</span>
+        <span class="k">for</span> <span class="nx">numeral</span><span class="p">,</span> <span class="nx">integer</span> <span class="k">in</span> <span class="nx">roman_numeral_map</span>:
+            <span class="kt">if</span> <span class="nx">n</span> <span class="o">&gt;=</span> <span class="nx">integer</span>:
+                <span class="kt">result</span> <span class="o">=</span> <span class="nx">numeral</span>
+                <span class="nx">n</span> <span class="o">-=</span> <span class="nx">integer</span>
                 <span class="k">break</span>
-        <span class="k">if</span> <span class="n">n</span> &gt; <span class="mi">0</span>:
-            <span class="n">result</span> += <span class="n">to_roman_table</span>[<span class="n">n</span>]
-        <span class="k">return</span> <span class="n">result</span>
+        <span class="k">if</span> <span class="nx">n</span> <span class="o">&gt;</span> <span class="nx">0</span>:
+            <span class="kt">result</span> <span class="o">+=</span> <span class="nx">to_roman_table</span><span class="p">[</span><span class="nx">n</span><span class="p">]</span>
+        <span class="k">return</span> <span class="nx">result</span>
 
-    <span class="k">for</span> <span class="n">integer</span> <span class="n">in</span> <span class="n">range</span>(<span class="mi">1</span>, <span class="mi">5000</span>):
-        <span class="n">roman_numeral</span> = <span class="n">to_roman</span>(<span class="n">integer</span>)
-        <span class="n">to_roman_table</span>.<span class="n">append</span>(<span class="n">roman_numeral</span>) <span class="c c-Singleline"># 1-5000的罗马数字列表</span>
-        <span class="n">from_roman_table</span>[<span class="n">roman_numeral</span>] = <span class="n">integer</span>　＃ <span class="mi">1</span><span class="o">-</span><span class="mi">5000</span><span class="n">罗马数字和阿拉伯数字的字典</span>
+    <span class="k">for</span> <span class="nx">integer</span> <span class="k">in</span> <span class="nx">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5000</span><span class="p">)</span><span class="o">:</span>
+        <span class="nx">roman_numeral</span> <span class="o">=</span> <span class="nx">to_roman</span><span class="p">(</span><span class="nx">integer</span><span class="p">)</span>
+        <span class="nx">to_roman_table</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">roman_numeral</span><span class="p">)</span> <span class="err">#</span> <span class="mi">1</span><span class="o">-</span><span class="mi">5000</span><span class="err">的罗马数字列表</span>
+        <span class="nx">from_roman_table</span><span class="p">[</span><span class="nx">roman_numeral</span><span class="p">]</span> <span class="o">=</span> <span class="nx">integer</span><span class="err">　＃</span> <span class="mi">1</span><span class="o">-</span><span class="mi">5000</span><span class="err">罗马数字和阿拉伯数字的字典</span>
 
-<span class="n">build_lookup_tables</span>()
+<span class="nx">build_lookup_tables</span><span class="p">()</span>
 </pre></div>
 <p>修改完成好，再次执行单元测试，测试通过，说明虽然实现变了，但功能依旧能保证。</p>
 <p>单元测试是一个威力巨大的概念，如果实施的好，可以降低维护成本，提高项目的灵活性。但编写良好的测试用例非常艰难。很多语言都有自己的单元测试框架，但框架直接的共同点：</p>

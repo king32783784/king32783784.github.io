@@ -122,6 +122,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework 用户手册(四)
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../../../../2017/04/01/Robot/" title="Robot Framework 用户手册(三)">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework 用户手册(三)
@@ -143,12 +149,6 @@
                             <a class="hide-overflow" href="../../../../2017/03/24/Robot/" title="Robot Framework快速入门">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework快速入门
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../../../../2017/03/22/itest/" title="Itest测试工具介绍">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Itest测试工具介绍
                             </a>
                         </li>
                     <li>
@@ -309,6 +309,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
+                            <span class="badge pull-right categorybadge">5</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -333,13 +340,6 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
-                            <span class="badge pull-right categorybadge">4</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -556,7 +556,7 @@
 <span class="c1"># Filename: class_init.py</span>
 
 <span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
 
     <span class="k">def</span> <span class="nf">sayHi</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -614,52 +614,52 @@ myclass = MyClass(<em>args, </em>*kwargs)</p>
 <p>事实上如果(新式)类中没有重写__new__()方法，即在定义新式类时没有重新定义__new__()时，python默认是调用该类的直接父类的__new__()方法来构造该类的实例，如果该类的父类也没有重写__new__(),
 那么将一直按此规矩追溯至object的__new__()方法，因为object是所有的新式类的基类。</p>
 <p>而如果新式类中重写了__new__()方法，那么你可以自由选择任意一个其他的新式类(必定要是新式类，只有新式类有__new__(),因为新式类都是object的后代，经典类则没有__new__()方法来制造实例，包括这个新式类的所有前代类和后代类，只要他们不会造成递归死循环。具体看以下代码解释：</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">Foo</span>(<span class="n">object</span>):
-    <span class="n">def</span> <span class="n">__init__</span>(<span class="k">self</span>, *<span class="n">args</span>, **<span class="n">kwargs</span>):
-        ...
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Foo</span><span class="p">(</span><span class="nx">object</span><span class="p">)</span><span class="o">:</span>
+    <span class="nx">def</span> <span class="nx">__init__</span><span class="p">(</span><span class="nx">self</span><span class="p">,</span> <span class="o">*</span><span class="nx">args</span><span class="p">,</span> <span class="o">**</span><span class="nx">kwargs</span><span class="p">)</span><span class="o">:</span>
+        <span class="p">...</span>
 
-    <span class="n">def</span> <span class="n">__new__</span>(<span class="n">cls</span>, *<span class="n">args</span>, **<span class="n">kwargs</span>):
-        <span class="k">return</span> <span class="n">object</span>.<span class="n">__new__</span>(<span class="n">cls</span>, *<span class="n">args</span>, **<span class="n">kwargs</span>)
+    <span class="nx">def</span> <span class="nx">__new__</span><span class="p">(</span><span class="nx">cls</span><span class="p">,</span> <span class="o">*</span><span class="nx">args</span><span class="p">,</span> <span class="o">**</span><span class="nx">kwargs</span><span class="p">)</span><span class="o">:</span>
+        <span class="k">return</span> <span class="nx">object</span><span class="p">.</span><span class="nx">__new__</span><span class="p">(</span><span class="nx">cls</span><span class="p">,</span> <span class="o">*</span><span class="nx">args</span><span class="p">,</span> <span class="o">**</span><span class="nx">kwargs</span><span class="p">)</span>
 
-<span class="c c-Singleline"># 以上return等同于</span>
-<span class="c c-Singleline"># return object.__new__(Foo, *args, **kwargs)</span>
-<span class="c c-Singleline"># return Stranger.__new__(cls, *args, **kwargs)</span>
-<span class="c c-Singleline"># return Child.__new__(cls, *args, **kwargs)</span>
+<span class="err">#</span> <span class="err">以上</span><span class="k">return</span><span class="err">等同于</span>
+<span class="err">#</span> <span class="k">return</span> <span class="nx">object</span><span class="p">.</span><span class="nx">__new__</span><span class="p">(</span><span class="nx">Foo</span><span class="p">,</span> <span class="o">*</span><span class="nx">args</span><span class="p">,</span> <span class="o">**</span><span class="nx">kwargs</span><span class="p">)</span>
+<span class="err">#</span> <span class="k">return</span> <span class="nx">Stranger</span><span class="p">.</span><span class="nx">__new__</span><span class="p">(</span><span class="nx">cls</span><span class="p">,</span> <span class="o">*</span><span class="nx">args</span><span class="p">,</span> <span class="o">**</span><span class="nx">kwargs</span><span class="p">)</span>
+<span class="err">#</span> <span class="k">return</span> <span class="nx">Child</span><span class="p">.</span><span class="nx">__new__</span><span class="p">(</span><span class="nx">cls</span><span class="p">,</span> <span class="o">*</span><span class="nx">args</span><span class="p">,</span> <span class="o">**</span><span class="nx">kwargs</span><span class="p">)</span>
 
-<span class="k">class</span> <span class="n">Child</span>(<span class="n">Foo</span>):
-    <span class="n">def</span> <span class="n">__new__</span>(<span class="n">cls</span>, *<span class="n">args</span>, **<span class="n">kwargs</span>):
-        <span class="k">return</span> <span class="n">object</span>.<span class="n">__new__</span>(<span class="n">cls</span>, *<span class="n">args</span>, **<span class="n">kwargs</span>)
+<span class="kr">class</span> <span class="nx">Child</span><span class="p">(</span><span class="nx">Foo</span><span class="p">)</span><span class="o">:</span>
+    <span class="nx">def</span> <span class="nx">__new__</span><span class="p">(</span><span class="nx">cls</span><span class="p">,</span> <span class="o">*</span><span class="nx">args</span><span class="p">,</span> <span class="o">**</span><span class="nx">kwargs</span><span class="p">)</span><span class="o">:</span>
+        <span class="k">return</span> <span class="nx">object</span><span class="p">.</span><span class="nx">__new__</span><span class="p">(</span><span class="nx">cls</span><span class="p">,</span> <span class="o">*</span><span class="nx">args</span><span class="p">,</span> <span class="o">**</span><span class="nx">kwargs</span><span class="p">)</span>
 
-<span class="c c-Singleline"># 如果child中没有重新定义__new__()方法，那么会自动调用其父类的__new__()方法来制造实例，即Foo.__new__(cls, *args, **kwargs)</span>
-<span class="c c-Singleline"># 在任何新式类的__new__()方法，不能调用自身的__new__()来制造实例，因为这会造成死循环。因此必须避免类似一下的写法：</span>
-<span class="c c-Singleline"># 在Foo中避免：return Foo.__new__(cls, *args, **kwargs)或return cls.__new__(cls, *args, **kwargs). Child同理。</span>
-<span class="c c-Singleline"># 在object或者没有血缘关系的新式类的__new__()是安全的，但是如果是在继承关系的两个类之间，应避免互调造成死循环，例如：（Foo)return Child.__new__(cls), (Child)return Foo.__new__(cls).</span>
+<span class="err">#</span> <span class="err">如果</span><span class="nx">child</span><span class="err">中没有重新定义</span><span class="nx">__new__</span><span class="p">()</span><span class="err">方法，那么会自动调用其父类的</span><span class="nx">__new__</span><span class="p">()</span><span class="err">方法来制造实例，即</span><span class="nx">Foo</span><span class="p">.</span><span class="nx">__new__</span><span class="p">(</span><span class="nx">cls</span><span class="p">,</span> <span class="o">*</span><span class="nx">args</span><span class="p">,</span> <span class="o">**</span><span class="nx">kwargs</span><span class="p">)</span>
+<span class="err">#</span> <span class="err">在任何新式类的</span><span class="nx">__new__</span><span class="p">()</span><span class="err">方法，不能调用自身的</span><span class="nx">__new__</span><span class="p">()</span><span class="err">来制造实例，因为这会造成死循环。因此必须避免类似一下的写法：</span>
+<span class="err">#</span> <span class="err">在</span><span class="nx">Foo</span><span class="err">中避免：</span><span class="k">return</span> <span class="nx">Foo</span><span class="p">.</span><span class="nx">__new__</span><span class="p">(</span><span class="nx">cls</span><span class="p">,</span> <span class="o">*</span><span class="nx">args</span><span class="p">,</span> <span class="o">**</span><span class="nx">kwargs</span><span class="p">)</span><span class="err">或</span><span class="k">return</span> <span class="nx">cls</span><span class="p">.</span><span class="nx">__new__</span><span class="p">(</span><span class="nx">cls</span><span class="p">,</span> <span class="o">*</span><span class="nx">args</span><span class="p">,</span> <span class="o">**</span><span class="nx">kwargs</span><span class="p">).</span> <span class="nx">Child</span><span class="err">同理。</span>
+<span class="err">#</span> <span class="err">在</span><span class="nx">object</span><span class="err">或者没有血缘关系的新式类的</span><span class="nx">__new__</span><span class="p">()</span><span class="err">是安全的，但是如果是在继承关系的两个类之间，应避免互调造成死循环，例如：（</span><span class="nx">Foo</span><span class="p">)</span><span class="k">return</span> <span class="nx">Child</span><span class="p">.</span><span class="nx">__new__</span><span class="p">(</span><span class="nx">cls</span><span class="p">),</span> <span class="p">(</span><span class="nx">Child</span><span class="p">)</span><span class="k">return</span> <span class="nx">Foo</span><span class="p">.</span><span class="nx">__new__</span><span class="p">(</span><span class="nx">cls</span><span class="p">).</span>
 
-<span class="k">class</span> <span class="n">Stranger</span>(<span class="n">object</span>):
-   ...
-<span class="c c-Singleline"># 在制造Stranger实例时，会自动调用object.__new__(cls)</span>
+<span class="kr">class</span> <span class="nx">Stranger</span><span class="p">(</span><span class="nx">object</span><span class="p">)</span><span class="o">:</span>
+   <span class="p">...</span>
+<span class="err">#</span> <span class="err">在制造</span><span class="nx">Stranger</span><span class="err">实例时，会自动调用</span><span class="nx">object</span><span class="p">.</span><span class="nx">__new__</span><span class="p">(</span><span class="nx">cls</span><span class="p">)</span>
 </pre></div>
 <ul>
 <li>通常来说，新式类开始实例化时， <strong>new</strong>()方法会返回cls(cls指代当前类）的实例，然后该类的__init__()方法作为构造方法会接收这个实例(即self)作为自己的第一个参数，然后依次传入__new__方法中
  接收的位置参数和命名参数。</li>
 </ul>
 <p>注意： 如果__new__()没有返回cls(即当前类）的实例，那么当前类的__init__()方法是不会被调用的。如果__new__()返回其他类(新式类或经典类均可)的实例，那么只会调用被返回的那个类的构造方法。</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">Foo</span>(<span class="n">object</span>):
-    <span class="n">def</span> <span class="n">__init__</span>(<span class="k">self</span>, *<span class="n">args</span>, **<span class="n">kwargs</span>):
-        ...
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Foo</span><span class="p">(</span><span class="nx">object</span><span class="p">)</span><span class="o">:</span>
+    <span class="nx">def</span> <span class="nx">__init__</span><span class="p">(</span><span class="nx">self</span><span class="p">,</span> <span class="o">*</span><span class="nx">args</span><span class="p">,</span> <span class="o">**</span><span class="nx">kwargs</span><span class="p">)</span><span class="o">:</span>
+        <span class="p">...</span>
 
-    <span class="n">def</span> <span class="n">__new__</span>(<span class="n">cls</span>, *<span class="n">args</span>, **<span class="n">kwargs</span>):
-        <span class="k">return</span> <span class="n">object</span>.<span class="n">__new__</span>(<span class="n">Stranger</span>, *<span class="n">args</span>, **<span class="n">kwargs</span>)
+    <span class="nx">def</span> <span class="nx">__new__</span><span class="p">(</span><span class="nx">cls</span><span class="p">,</span> <span class="o">*</span><span class="nx">args</span><span class="p">,</span> <span class="o">**</span><span class="nx">kwargs</span><span class="p">)</span><span class="o">:</span>
+        <span class="k">return</span> <span class="nx">object</span><span class="p">.</span><span class="nx">__new__</span><span class="p">(</span><span class="nx">Stranger</span><span class="p">,</span> <span class="o">*</span><span class="nx">args</span><span class="p">,</span> <span class="o">**</span><span class="nx">kwargs</span><span class="p">)</span>
 
-<span class="k">class</span> <span class="n">Stranger</span>(<span class="n">object</span>):
-   ...
+<span class="kr">class</span> <span class="nx">Stranger</span><span class="p">(</span><span class="nx">object</span><span class="p">)</span><span class="o">:</span>
+   <span class="p">...</span>
 
-<span class="n">foo</span> = <span class="n">Foo</span>()
-<span class="nb">print</span> <span class="n">type</span>(<span class="n">foo</span>)
+<span class="nx">foo</span> <span class="o">=</span> <span class="nx">Foo</span><span class="p">()</span>
+<span class="nx">print</span> <span class="nx">type</span><span class="p">(</span><span class="nx">foo</span><span class="p">)</span>
 
-<span class="c c-Singleline"># 打印结果显示foo其实是Stranger类的实例</span>
-<span class="c c-Singleline"># 因此可以这么描述__new__()和__init__()的区别，在新式类中__new__()方法才是真正的实例化方法，为类提供外壳制作出实例框架，然后调用该框架内的构造方法__init__()使其丰满。</span>
-<span class="c c-Singleline"># 如果以建房子做比喻， __new__方法负责开发地皮，打下地基，并将原料存放在工地。而__init__()方法负责从工地取材料建造出地皮开发招标书中规定的大楼，__init__()负责大楼的详细设计建造，装修使其可交付给客户。</span>
+<span class="err">#</span> <span class="err">打印结果显示</span><span class="nx">foo</span><span class="err">其实是</span><span class="nx">Stranger</span><span class="err">类的实例</span>
+<span class="err">#</span> <span class="err">因此可以这么描述</span><span class="nx">__new__</span><span class="p">()</span><span class="err">和</span><span class="nx">__init__</span><span class="p">()</span><span class="err">的区别，在新式类中</span><span class="nx">__new__</span><span class="p">()</span><span class="err">方法才是真正的实例化方法，为类提供外壳制作出实例框架，然后调用该框架内的构造方法</span><span class="nx">__init__</span><span class="p">()</span><span class="err">使其丰满。</span>
+<span class="err">#</span> <span class="err">如果以建房子做比喻，</span> <span class="nx">__new__</span><span class="err">方法负责开发地皮，打下地基，并将原料存放在工地。而</span><span class="nx">__init__</span><span class="p">()</span><span class="err">方法负责从工地取材料建造出地皮开发招标书中规定的大楼，</span><span class="nx">__init__</span><span class="p">()</span><span class="err">负责大楼的详细设计建造，装修使其可交付给客户。</span>
 </pre></div></body>
                 </div>
                 <footer class="text-right">

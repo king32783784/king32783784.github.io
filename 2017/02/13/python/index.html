@@ -122,6 +122,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework 用户手册(四)
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../../../../2017/04/01/Robot/" title="Robot Framework 用户手册(三)">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework 用户手册(三)
@@ -143,12 +149,6 @@
                             <a class="hide-overflow" href="../../../../2017/03/24/Robot/" title="Robot Framework快速入门">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework快速入门
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../../../../2017/03/22/itest/" title="Itest测试工具介绍">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Itest测试工具介绍
                             </a>
                         </li>
                     <li>
@@ -309,6 +309,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
+                            <span class="badge pull-right categorybadge">5</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -333,13 +340,6 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
-                            <span class="badge pull-right categorybadge">4</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -565,21 +565,21 @@
 <span class="c1"># -*-coding:UTF-8-*-*</span>
 
 <span class="k">class</span> <span class="nc">Fruit</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">"red"</span><span class="p">,</span> <span class="n">price</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">"red"</span><span class="p">,</span> <span class="n">price</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__color</span> <span class="o">=</span> <span class="n">color</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__price</span> <span class="o">=</span> <span class="n">price</span>
 
-    <span class="k">def</span> <span class="nf">__getattribute__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span> <span class="c1"># 获取属性的方法</span>
-        <span class="k">return</span> <span class="nb">object</span><span class="o">.</span><span class="n">__getattribute__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__getattribute__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span> <span class="c1"># 获取属性的方法</span>
+        <span class="k">return</span> <span class="nb">object</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__dict__</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+    <span class="k">def</span> <span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">'__main__":</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__":</span>
     <span class="n">fruit</span> <span class="o">=</span> <span class="n">Fruit</span><span class="p">(</span><span class="s2">"blue"</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-    <span class="k">print</span> <span class="n">fruit</span><span class="o">.</span><span class="n">__dict__</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"_Fruit_color"</span><span class="p">)</span> <span class="c1"># 获取color属性</span>
-    <span class="n">fruit</span><span class="o">.</span><span class="n">__dict__</span><span class="p">[</span><span class="s2">"_Fruit__price"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
-    <span class="k">print</span> <span class="n">fruit</span><span class="o">.</span><span class="n">__dict__</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"_Fruit__price"</span><span class="p">)</span> <span class="c1"># 获取price属性</span>
+    <span class="k">print</span> <span class="n">fruit</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"_Fruit_color"</span><span class="p">)</span> <span class="c1"># 获取color属性</span>
+    <span class="n">fruit</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s2">"_Fruit__price"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="k">print</span> <span class="n">fruit</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"_Fruit__price"</span><span class="p">)</span> <span class="c1"># 获取price属性</span>
 </pre></div>
 </td></tr></tbody></table>
 <h4 id="getitem"><strong>getitem</strong>():</h4>
@@ -599,10 +599,10 @@
 12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
 <span class="c1"># -*- coding: UTF-8 -*-</span>
 <span class="k">class</span> <span class="nc">FruitShop</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>  <span class="c1"># 获取水果店的水果</span>
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>  <span class="c1"># 获取水果店的水果</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fruits</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
     <span class="n">shop</span> <span class="o">=</span> <span class="n">FruitShop</span><span class="p">()</span>
     <span class="n">shop</span><span class="o">.</span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"apple"</span><span class="p">,</span> <span class="s2">"banana"</span><span class="p">]</span>
     <span class="k">print</span> <span class="n">shop</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -628,10 +628,10 @@
 <span class="c1"># -*-coding: UTF-8 -*-</span>
 <span class="k">class</span> <span class="nc">Fruit</span><span class="p">:</span>
     <span class="sd">'''Fruit类'''</span>  <span class="c1"># 为Fruit类</span>
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># 定义对象的字符串表示</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__doc__</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># 定义对象的字符串表示</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__doc__</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">'__main__":</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__":</span>
     <span class="n">fruit</span> <span class="o">=</span> <span class="n">Fruit</span><span class="p">()</span>
     <span class="k">print</span> <span class="nb">str</span><span class="p">(</span><span class="n">fruit</span><span class="p">)</span>   <span class="c1"># 调用内置函数str()出发__str__()方法， 输出结果为：Fruit类</span>
     <span class="k">print</span> <span class="n">fruit</span>        <span class="c1"># 直接输出对象fruit, 返回__str__()方法的值， 输出结果为：Fruit类</span>
@@ -660,12 +660,12 @@
 <span class="k">class</span> <span class="nc">Fruit</span><span class="p">:</span>
 
     <span class="k">class</span> <span class="nc">Growth</span><span class="p">:</span>    <span class="c1"># 内部类</span>
-        <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
             <span class="k">print</span> <span class="s2">"grow..."</span>
 
     <span class="n">grow</span> <span class="o">=</span> <span class="n">Growth</span><span class="p">()</span>  <span class="c1"># 调用Growth(), 此时将类Growth作为函数返回，即为外部类Fruit定义方法 grow(),grow()将执行__call__()内的代码</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
     <span class="n">fruit</span> <span class="o">=</span> <span class="n">Fruit</span><span class="p">()</span>
     <span class="n">fruit</span><span class="o">.</span><span class="n">grow</span><span class="p">()</span>  <span class="c1"># 输出结果： grow...</span>
     <span class="n">Fruit</span><span class="o">.</span><span class="n">grow</span><span class="p">()</span>  <span class="c1"># 输出结果： grow...</span>

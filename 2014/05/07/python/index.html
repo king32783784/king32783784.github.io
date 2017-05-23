@@ -122,6 +122,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework 用户手册(四)
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../../../../2017/04/01/Robot/" title="Robot Framework 用户手册(三)">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework 用户手册(三)
@@ -143,12 +149,6 @@
                             <a class="hide-overflow" href="../../../../2017/03/24/Robot/" title="Robot Framework快速入门">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework快速入门
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../../../../2017/03/22/itest/" title="Itest测试工具介绍">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Itest测试工具介绍
                             </a>
                         </li>
                     <li>
@@ -309,6 +309,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
+                            <span class="badge pull-right categorybadge">5</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -333,13 +340,6 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
-                            <span class="badge pull-right categorybadge">4</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -532,7 +532,7 @@
             <span class="n">result</span> <span class="o">=</span> <span class="n">roman1</span><span class="o">.</span><span class="n">to_roman</span><span class="p">(</span><span class="n">integer</span><span class="p">)</span><span class="err">　</span><span class="c1"># 这里调用了roman1中的to_roman()方法，这里roman1仍未编写，但此处已定义了其接口</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">numeral</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span><span class="err">　</span><span class="c1"># 假设to_roman()方法已经正确定义，正确调用，成功实现并返回了一个值，这里判断返回值是否正确，TestCase类提供assertEqual方法检查两个值是否相对。如果返回值与预期值相同，则会正常退出，也就通过了测试</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
     <span class="n">unittest</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>
 </pre></div>
 <p>roman1.py</p>
@@ -588,11 +588,11 @@ def to_roman(n):
 比如输入4000,程序返回了MMMM,和预期不符，而且不是一个正确的罗马数
 当to_roman()应该抛出一个OutOfRangeError异常</p>
 <p>测试代码如下：</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">ToRomanBadInput</span>(<span class="n">unittest</span>.<span class="n">TestCase</span>):
-    <span class="n">def</span> <span class="n">test_too_large</span>(<span class="k">self</span>):
-        <span class="s">'''to_roman should fail with large input'''</span>
-        <span class="k">self</span>.<span class="n">assertRaise</span>(<span class="n">roman2</span>.<span class="n">OutOfRangeErr</span>, <span class="n">roman2</span>.<span class="n">to_roman</span>, <span class="mi">4000</span>)
-    <span class="n">该测试方法需要以下</span>：<span class="n">期望的异常</span>，<span class="n">要测试的方法及传入给方法的参数</span>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">ToRomanBadInput</span><span class="p">(</span><span class="nx">unittest</span><span class="p">.</span><span class="nx">TestCase</span><span class="p">)</span><span class="o">:</span>
+    <span class="nx">def</span> <span class="nx">test_too_large</span><span class="p">(</span><span class="nx">self</span><span class="p">)</span><span class="o">:</span>
+        <span class="s1">'''to_roman should fail with large input'''</span>
+        <span class="nx">self</span><span class="p">.</span><span class="nx">assertRaise</span><span class="p">(</span><span class="nx">roman2</span><span class="p">.</span><span class="nx">OutOfRangeErr</span><span class="p">,</span> <span class="nx">roman2</span><span class="p">.</span><span class="nx">to_roman</span><span class="p">,</span> <span class="mi">4000</span><span class="p">)</span>
+    <span class="err">该测试方法需要以下：期望的异常，要测试的方法及传入给方法的参数</span>
 </pre></div>
 <p>最后一行，这里没有直接调用to_roman()，也不需要手动检查它抛出的异常类型（通过一个try...except块包装），　这些assertRaises方法都完成了。
 我们要做的事情只有，告诉assertRaise所期望的异常类型(roman2.OutOfRangeErr),被测方法(to_roman()),以及方法的参数(4000).assertEqual方法负责调用to_roman()和检查方法抛出roman2.OutOfRangeError异常。这里只是把to_roman方法以参数传递，没有调用被测方法，也不是被测方法作为一个字符串名字传递进去。</p>
@@ -618,8 +618,8 @@ FAILED (errors=1)
 </pre></div>
 <p>测试本身是失败，但这里是报错了，提示没有OutOfRangeError
 在测试模块添加</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">OutOfRangeError</span>(<span class="n">ValueError</span>):
-    <span class="nb">pass</span>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">OutOfRangeError</span><span class="p">(</span><span class="nx">ValueError</span><span class="p">)</span><span class="o">:</span>
+    <span class="nx">pass</span>
 </pre></div>
 <p>异常也是类，越界是值错误的一种，因此继承ValueError</p>
 <p>再次执行，仍然失败，但没有出错，意味者用例执行成功了。
@@ -675,7 +675,7 @@ def test_negative(self):
     self.assertRaises(roman2.NotIntegerError, roman2.to_roman, 0.5)
 </pre></div>
 <p>执行测试，缺少NotIntegerError,需要在roman2模块中进行定义，和前面一样</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">NotINtergerError</span>(<span class="n">ValueError</span>):<span class="n">pass</span>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">NotINtergerError</span><span class="p">(</span><span class="nx">ValueError</span><span class="p">)</span><span class="o">:</span><span class="nx">pass</span>
 </pre></div>
 <p>再次执行测试，不出所料，提示未触发异常，因为roman2没有进行判断，实现该判断：</p>
 <div class="highlight"><pre><span></span>if not isinstance(n, int):

@@ -122,6 +122,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework 用户手册(四)
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../../../../2017/04/01/Robot/" title="Robot Framework 用户手册(三)">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework 用户手册(三)
@@ -143,12 +149,6 @@
                             <a class="hide-overflow" href="../../../../2017/03/24/Robot/" title="Robot Framework快速入门">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework快速入门
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../../../../2017/03/22/itest/" title="Itest测试工具介绍">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Itest测试工具介绍
                             </a>
                         </li>
                     <li>
@@ -309,6 +309,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
+                            <span class="badge pull-right categorybadge">5</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -333,13 +340,6 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
-                            <span class="badge pull-right categorybadge">4</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -482,7 +482,7 @@ print(existing)  # 打印s['key1'],会得到刚才存储的数据
 <p>执行结果：</p>
 <div class="highlight"><pre><span></span>$ python shelve_create.py
 $ python shelve_existing.py
-<span class="o">{</span><span class="s1">'int'</span>: 10, <span class="s1">'float'</span>: 9.5, <span class="s1">'string'</span>: <span class="s1">'Sample data'</span><span class="o">}</span>
+<span class="o">{</span><span class="s1">'int'</span>: <span class="m">10</span>, <span class="s1">'float'</span>: <span class="m">9</span>.5, <span class="s1">'string'</span>: <span class="s1">'Sample data'</span><span class="o">}</span>
 </pre></div>
 <p>dbm模块不支持多个应用同时写入同一数据库，如果客户端或程序不会修改shelf,请指定shelve以只读方式打开数据库。</p>
 <div class="highlight"><pre><span></span>s = shelve.open('test_shelf.db', flag='r')   # 打开时指定flag＝‘r'，只读模式打开
@@ -512,8 +512,8 @@ finally:
 <p>在这个例子中，没有对字典的关键字key1的内容进行存储，虽然打开时设置了writeback,因此重新打开shelf时，key1内容没有改变。</p>
 <div class="highlight"><pre><span></span>$ python shelve_create.py
 $ python shelve_withoutwriteback.py
-<span class="o">{</span><span class="s1">'int'</span>: 10, <span class="s1">'float'</span>: 9.5, <span class="s1">'string'</span>: <span class="s1">'Sample data'</span><span class="o">}</span>
-<span class="o">{</span><span class="s1">'int'</span>: 10, <span class="s1">'float'</span>: 9.5, <span class="s1">'string'</span>: <span class="s1">'Sample data'</span><span class="o">}</span>
+<span class="o">{</span><span class="s1">'int'</span>: <span class="m">10</span>, <span class="s1">'float'</span>: <span class="m">9</span>.5, <span class="s1">'string'</span>: <span class="s1">'Sample data'</span><span class="o">}</span>
+<span class="o">{</span><span class="s1">'int'</span>: <span class="m">10</span>, <span class="s1">'float'</span>: <span class="m">9</span>.5, <span class="s1">'string'</span>: <span class="s1">'Sample data'</span><span class="o">}</span>
 </pre></div>
 <p>为了自动捕捉存储在shelf中的可变对象所发生的改变，需改变前设置writeback可用.writeback标志导致shelf使用一缓存来记住从数据库中调出的所有对象。当shelf关闭的时候，每一个缓存中的对象也重新写回数据库。</p>
 <div class="highlight"><pre><span></span>s = shelve.open('test_shelf.db', writeback=True)
@@ -533,9 +533,9 @@ finally:
 <p>执行结果：</p>
 <div class="highlight"><pre><span></span>$ python shelve_create.py
 $ python shelve_writeback.py
-<span class="o">{</span><span class="s1">'int'</span>: 10, <span class="s1">'float'</span>: 9.5, <span class="s1">'string'</span>: <span class="s1">'Sample data'</span><span class="o">}</span>
-<span class="o">{</span><span class="s1">'int'</span>: 10, <span class="s1">'new_value'</span>: <span class="s1">'this was not here before'</span>, <span class="s1">'float'</span>: 9.5, <span class="s1">'string'</span>: <span class="s1">'Sample data'</span><span class="o">}</span>
-<span class="o">{</span><span class="s1">'int'</span>: 10, <span class="s1">'new_value'</span>: <span class="s1">'this was not here before'</span>, <span class="s1">'float'</span>: 9.5, <span class="s1">'string'</span>: <span class="s1">'Sample data'</span><span class="o">}</span>
+<span class="o">{</span><span class="s1">'int'</span>: <span class="m">10</span>, <span class="s1">'float'</span>: <span class="m">9</span>.5, <span class="s1">'string'</span>: <span class="s1">'Sample data'</span><span class="o">}</span>
+<span class="o">{</span><span class="s1">'int'</span>: <span class="m">10</span>, <span class="s1">'new_value'</span>: <span class="s1">'this was not here before'</span>, <span class="s1">'float'</span>: <span class="m">9</span>.5, <span class="s1">'string'</span>: <span class="s1">'Sample data'</span><span class="o">}</span>
+<span class="o">{</span><span class="s1">'int'</span>: <span class="m">10</span>, <span class="s1">'new_value'</span>: <span class="s1">'this was not here before'</span>, <span class="s1">'float'</span>: <span class="m">9</span>.5, <span class="s1">'string'</span>: <span class="s1">'Sample data'</span><span class="o">}</span>
 </pre></div>
 <p>虽然使用writeback模式可用减少出错几率，也能更加透明化对象的持久性。但是，不是每种情况都要使用writeback模式。原因看到前面的示例，应该能猜到。当shelf打开时，缓存就要占用额外的内存。
 并且，当shelf关闭时，同样会对缓存中的对象再次写回数据库，增加了开销。即使没有进行改变，仍然会进行数据写回。比较好的方式是，确认需要写入数据时，再设置writeback,读数据时设置只读或默认即可。</p>

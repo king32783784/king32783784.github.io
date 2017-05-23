@@ -122,6 +122,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework 用户手册(四)
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../../../../2017/04/01/Robot/" title="Robot Framework 用户手册(三)">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework 用户手册(三)
@@ -143,12 +149,6 @@
                             <a class="hide-overflow" href="../../../../2017/03/24/Robot/" title="Robot Framework快速入门">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework快速入门
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../../../../2017/03/22/itest/" title="Itest测试工具介绍">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Itest测试工具介绍
                             </a>
                         </li>
                     <li>
@@ -309,6 +309,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
+                            <span class="badge pull-right categorybadge">5</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -333,13 +340,6 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
-                            <span class="badge pull-right categorybadge">4</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -732,84 +732,84 @@ LD_LIBRARY_PATH=. ./main
 </pre></div>
 <p>程序分析：</p>
 <p>创建用到的临时文件</p>
-<div class="highlight"><pre><span></span><span class="x">LIST="file1.in file2.in file3.in file4.in file5.in file6.in file7.in file8.in file9.in file10.in"</span>
-<span class="x">LIST="</span><span class="p">$</span><span class="nv">LIST</span><span class="x"> </span><span class="p">$</span><span class="nv">LIST</span><span class="x"> </span><span class="p">$</span><span class="nv">LIST</span><span class="x"> </span><span class="p">$</span><span class="nv">LIST</span><span class="x"> </span><span class="p">$</span><span class="nv">LIST</span><span class="x"> </span><span class="p">$</span><span class="nv">LIST</span><span class="x"> </span><span class="p">$</span><span class="nv">LIST</span><span class="x"> </span><span class="p">$</span><span class="nv">LIST</span><span class="x"> </span><span class="p">$</span><span class="nv">LIST</span><span class="x"> </span><span class="p">$</span><span class="nv">LIST</span><span class="x">"</span>
+<div class="highlight"><pre><span></span>LIST="file1.in file2.in file3.in file4.in file5.in file6.in file7.in file8.in file9.in file10.in"
+LIST="$LIST $LIST $LIST $LIST $LIST $LIST $LIST $LIST $LIST $LIST"
 
-<span class="cp">#</span><span class="nf">Setup</span><span class="x"> function</span>
+#Setup function
 
-<span class="x">setup()</span><span class="err">{</span><span class="x"></span>
-<span class="x">    for i in </span><span class="p">$</span><span class="nv">LIST</span><span class="x">;do</span>
-<span class="x">        touch </span><span class="p">$</span><span class="nv">i</span><span class="x"></span>
-<span class="x">    done</span>
-<span class="x">}</span>
+setup(){
+    for i in $LIST;do
+        touch $i
+    done
+}
 </pre></div>
 <p>结果判定，判断子case的返回值是否为０，TCRESULT为标志位，初始值为０，出错TCRESULT置为１，不同测试内容分别返回不同的编号。</p>
-<div class="highlight"><pre><span></span><span class="cp">#</span><span class="nf">Cleanup</span><span class="x"> funciton</span>
-<span class="x">cleanup()</span><span class="err">{</span><span class="x"></span>
-<span class="x">    if [ </span><span class="p">$</span><span class="nv">TCRESULT</span><span class="x"> = 0 ];then</span>
-<span class="x">        echo "-----------ar command passed the system test --------"</span>
-<span class="x">        exit 0</span>
-<span class="x">    else</span>
-<span class="x">        echo "-----------ar command failed the system test --------"</span>
-<span class="x">        exit 1</span>
-<span class="x">    fi</span>
-<span class="x">}</span>
+<div class="highlight"><pre><span></span>#Cleanup funciton
+cleanup(){
+    if [ $TCRESULT = 0 ];then
+        echo "-----------ar command passed the system test --------"
+        exit 0
+    else
+        echo "-----------ar command failed the system test --------"
+        exit 1
+    fi
+}
 
-<span class="x">crtest() </span><span class="err">{</span><span class="x"></span>
-<span class="x">    if [ </span><span class="p">$</span><span class="x">? -ne 0]</span>
-<span class="x">    then</span>
-<span class="x">        TCRESULT=1</span>
-<span class="x">        echo "FAIL - could not create lib.a"</span>
-<span class="x">        cleanup</span>
-<span class="x">    fi</span>
-<span class="x">    }</span>
+crtest() {
+    if [ $? -ne 0]
+    then
+        TCRESULT=1
+        echo "FAIL - could not create lib.a"
+        cleanup
+    fi
+    }
 
-<span class="x">ttest() </span><span class="err">{</span><span class="x"></span>
-<span class="x">if [ </span><span class="p">$</span><span class="x">? -ne 0 ]</span>
-<span class="x">then</span>
-<span class="x">    TCRESULT=1</span>
-<span class="x">    echo "FAIL - could not output table from lib.a to lib.a.stdout"</span>
-<span class="x">    cleanup</span>
-<span class="x">fi</span>
-<span class="x">}</span>
+ttest() {
+if [ $? -ne 0 ]
+then
+    TCRESULT=1
+    echo "FAIL - could not output table from lib.a to lib.a.stdout"
+    cleanup
+fi
+}
 
-<span class="x">rtest() </span><span class="err">{</span><span class="x"></span>
-<span class="x">    if [ </span><span class="p">$</span><span class="x">? -ne 0 ]</span>
-<span class="x">    then</span>
-<span class="x">        TCRESULT=1</span>
-<span class="x">        echo "FAIL - could not add file into lib.a"</span>
-<span class="x">        cleanup</span>
-<span class="x">    fi</span>
-<span class="x">}</span>
+rtest() {
+    if [ $? -ne 0 ]
+    then
+        TCRESULT=1
+        echo "FAIL - could not add file into lib.a"
+        cleanup
+    fi
+}
 
-<span class="x">mtest() </span><span class="err">{</span><span class="x"></span>
-<span class="x">    if [ </span><span class="p">$</span><span class="x">? -ne 0 ]</span>
-<span class="x">    then</span>
-<span class="x">        TCRESULT=1</span>
-<span class="x">        echo "FAIL - could not move file into lib.a"</span>
-<span class="x">        cleanup</span>
-<span class="x">    fi</span>
-<span class="x">}</span>
+mtest() {
+    if [ $? -ne 0 ]
+    then
+        TCRESULT=1
+        echo "FAIL - could not move file into lib.a"
+        cleanup
+    fi
+}
 </pre></div>
 <p>通过结果判定的设置来看，主要验证ar命令的库的创建、库列表信息导出、往库中添加文件、移除库中的文件。</p>
 <p>测试代码片段：</p>
 <p>标志“a"：在 PositionName 参数标识的现有文件后安置指定的文件。</p>
-<div class="highlight"><pre><span></span><span class="x">ar -cr </span><span class="p">$</span><span class="nv">TCtmp</span><span class="x">/lib.a file1.in file3.in</span>
-<span class="x">crtest</span>
+<div class="highlight"><pre><span></span>ar -cr $TCtmp/lib.a file1.in file3.in
+crtest
 
-<span class="x">ar -ra file1.in </span><span class="p">$</span><span class="nv">TCtmp</span><span class="x">/lib.a file2.in</span>
-<span class="x">rtest</span>
+ar -ra file1.in $TCtmp/lib.a file2.in
+rtest
 
-<span class="x">ar -t </span><span class="p">$</span><span class="nv">TCtmp</span><span class="x">/lib.a &gt; </span><span class="p">$</span><span class="nv">TCtmp</span><span class="x">/lib.a.stdout</span>
-<span class="x">tttest</span>
+ar -t $TCtmp/lib.a &gt; $TCtmp/lib.a.stdout
+tttest
 
-<span class="x">if diff -b </span><span class="p">$</span><span class="nv">TCtmp</span><span class="x">/lib.a.exp </span><span class="p">$</span><span class="nv">TCtmp</span><span class="x">/lib.a.stdout &gt; /dev/null 2&gt;&amp;1</span>
-<span class="x">then</span>
-<span class="x">    echo "-)1"</span>
-<span class="x">else</span>
-<span class="x">    TCRESULT=1</span>
-<span class="x">    echo "FAIL -ar with -a option does not place file after "posname"</span>
-<span class="x">fi</span>
+if diff -b $TCtmp/lib.a.exp $TCtmp/lib.a.stdout &gt; /dev/null 2&gt;&amp;1
+then
+    echo "-)1"
+else
+    TCRESULT=1
+    echo "FAIL -ar with -a option does not place file after "posname"
+fi
 </pre></div>
 <p>具体测试内容列表：</p>
 <p>（１）The 'a' flag causes files to be placed after 'posname'.</p>

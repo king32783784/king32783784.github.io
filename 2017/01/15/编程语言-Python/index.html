@@ -122,6 +122,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework 用户手册(四)
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../../../../2017/04/01/Robot/" title="Robot Framework 用户手册(三)">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework 用户手册(三)
@@ -143,12 +149,6 @@
                             <a class="hide-overflow" href="../../../../2017/03/24/Robot/" title="Robot Framework快速入门">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework快速入门
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../../../../2017/03/22/itest/" title="Itest测试工具介绍">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Itest测试工具介绍
                             </a>
                         </li>
                     <li>
@@ -309,6 +309,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
+                            <span class="badge pull-right categorybadge">5</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -333,13 +340,6 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
-                            <span class="badge pull-right categorybadge">4</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -458,76 +458,76 @@
                     <body><h3 id="zi-ding-yi-yuan-lei">自定义元类</h3>
 <p>元类的主要目的就是为了当创建类时能够自动地改变类。通常，你会为API做这样的事情，你希望可以创建符合当前上下文的类。假想一个很傻的例子，你决定在你的模块里所有的类的属性都应该是大写形式。有好几种方法可以办到，但其中一种就是通过在模块级别设定__metaclass__。采用这种方法，这个模块中的所有类都会通过这个元类来创建，我们只需要告诉元类把所有的属性都改成大写形式就万事大吉了。</p>
 <p>幸运的是，__metaclass__实际上可以被任意调用，它并不需要是一个正式的类（我知道，某些名字里带有‘class’的东西并不需要是一个class，画画图理解下，这很有帮助）。所以，我们这里就先以一个简单的函数作为例子开始。</p>
-<div class="highlight"><pre><span></span># 元类会自动将你通常传给“type"的参数作为自己的参数传入
-def upper_attr(future_class_name, future_class_parents, future_class_attr)
-    """返回一个类对象，将属性都转为大写形式”“”
-    # 选择所有不以“__"的属性
-    attrs = ((name, value) for name, value in future_class_attr.items() if not name.startswith('__'))
+<div class="highlight"><pre><span></span><span class="err">#</span> <span class="err">元类会自动将你通常传给“</span><span class="nx">type</span><span class="s2">"的参数作为自己的参数传入</span>
+<span class="s2">def upper_attr(future_class_name, future_class_parents, future_class_attr)</span>
+<span class="s2">    """</span><span class="err">返回一个类对象，将属性都转为大写形式”“”</span>
+    <span class="err">#</span> <span class="err">选择所有不以“</span><span class="nx">__</span><span class="s2">"的属性</span>
+<span class="s2">    attrs = ((name, value) for name, value in future_class_attr.items() if not name.startswith('__'))</span>
 
-# 将他们转为大写形式
-uppercase_attr = dict((name.upper(), value) for name, value in attrs)
+<span class="s2"># 将他们转为大写形式</span>
+<span class="s2">uppercase_attr = dict((name.upper(), value) for name, value in attrs)</span>
 
-# 通过type来做类对象的创建
-return type(future_class_name, future_class_parents, uppercase_attr)
+<span class="s2"># 通过type来做类对象的创建</span>
+<span class="s2">return type(future_class_name, future_class_parents, uppercase_attr)</span>
 
-__metaclass__ = upper_attr # 这会作用到这个模块所有的类
+<span class="s2">__metaclass__ = upper_attr # 这会作用到这个模块所有的类</span>
 
-class Foo(object):
-    # 我们可以只在这里定义__mataclass__,这样就只会作用于这个类中
-    bar = 'bip"
-print hasattr(Foo, 'bar')
-# 输出 False
-print hasattr(Foo, 'BAR')
-# 输出 True
-f = Foo()
-print f.BAR
-# 打印"bip"
+<span class="s2">class Foo(object):</span>
+<span class="s2">    # 我们可以只在这里定义__mataclass__,这样就只会作用于这个类中</span>
+<span class="s2">    bar = 'bip"</span>
+<span class="nx">print</span> <span class="nx">hasattr</span><span class="p">(</span><span class="nx">Foo</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">)</span>
+<span class="err">#</span> <span class="err">输出</span> <span class="nx">False</span>
+<span class="nx">print</span> <span class="nx">hasattr</span><span class="p">(</span><span class="nx">Foo</span><span class="p">,</span> <span class="s1">'BAR'</span><span class="p">)</span>
+<span class="err">#</span> <span class="err">输出</span> <span class="nx">True</span>
+<span class="nx">f</span> <span class="o">=</span> <span class="nx">Foo</span><span class="p">()</span>
+<span class="nx">print</span> <span class="nx">f</span><span class="p">.</span><span class="nx">BAR</span>
+<span class="err">#</span> <span class="err">打印</span><span class="s2">"bip"</span>
 </pre></div>
 <p>下面是用一个真正的class作为元类。</p>
-<div class="highlight"><pre><span></span><span class="c c-Singleline"># 记住， ‘type'实际上是一个类， 就像‘str'和’int'一样</span>
-<span class="c c-Singleline"># 所以，可以从type继承</span>
-<span class="k">class</span> <span class="n">UpperAttrMetaClass</span>(<span class="n">type</span>):
-    <span class="c c-Singleline"># __new__是在__init__之前被调用的特殊方法</span>
-    <span class="c c-Singleline"># __new__是用来创建对象并返回的方法</span>
-    <span class="c c-Singleline"># 而__init__只是用来将传入的参数初始化给对象</span>
-    <span class="c c-Singleline"># __new__很少用到，除非你希望能够控制对象的创建</span>
-    <span class="c c-Singleline"># 这里创建的对象是类，我嫩希望能够自定义它， 所以我们这里改写__new__</span>
-    <span class="c c-Singleline"># 如果你希望的话，可以在__init__中做些事情</span>
-    <span class="c c-Singleline"># 还有一些高级的用法会涉及到改写__call__特殊方法，但是我们这里不用</span>
+<div class="highlight"><pre><span></span><span class="err">#</span> <span class="err">记住，</span> <span class="err">‘</span><span class="nx">type</span><span class="s1">'实际上是一个类， 就像‘str'</span><span class="err">和’</span><span class="kr">int</span><span class="s1">'一样</span>
+<span class="s1"># 所以，可以从type继承</span>
+<span class="s1">class UpperAttrMetaClass(type):</span>
+<span class="s1">    # __new__是在__init__之前被调用的特殊方法</span>
+<span class="s1">    # __new__是用来创建对象并返回的方法</span>
+<span class="s1">    # 而__init__只是用来将传入的参数初始化给对象</span>
+<span class="s1">    # __new__很少用到，除非你希望能够控制对象的创建</span>
+<span class="s1">    # 这里创建的对象是类，我嫩希望能够自定义它， 所以我们这里改写__new__</span>
+<span class="s1">    # 如果你希望的话，可以在__init__中做些事情</span>
+<span class="s1">    # 还有一些高级的用法会涉及到改写__call__特殊方法，但是我们这里不用</span>
 
-    <span class="n">def</span> <span class="n">__new__</span>(<span class="n">upperattr_metaclass</span>, <span class="n">future_class_name</span>,
-                <span class="n">future_class_parents</span>, <span class="n">future_class_attr</span>):
-        <span class="n">attrs</span> = ((<span class="nb">name</span>, <span class="nb">value</span>) <span class="k">for</span> <span class="nb">name</span>, <span class="nb">value</span> <span class="n">in</span> <span class="n">future_class_attr</span>.<span class="n">items</span>() <span class="k">if</span> <span class="nb">not</span> <span class="nb">name</span>.<span class="n">startswith</span>(<span class="s">'__'</span>))
-        <span class="n">uppercase_attr</span> = <span class="n">dict</span>((<span class="nb">name</span>.<span class="n">upper</span>(), <span class="nb">value</span>) <span class="k">for</span> <span class="nb">name</span>, <span class="nb">value</span> <span class="n">in</span> <span class="n">attrs</span>)
-        <span class="k">return</span> <span class="n">type</span>(<span class="n">future_class_name</span>, <span class="n">future_class_parents</span>, <span class="n">uppercase_attr</span>)
+<span class="s1">    def __new__(upperattr_metaclass, future_class_name,</span>
+<span class="s1">                future_class_parents, future_class_attr):</span>
+<span class="s1">        attrs = ((name, value) for name, value in future_class_attr.items() if not name.startswith('</span><span class="nx">__</span><span class="err">'</span><span class="p">))</span>
+        <span class="nx">uppercase_attr</span> <span class="o">=</span> <span class="nx">dict</span><span class="p">((</span><span class="nx">name</span><span class="p">.</span><span class="nx">upper</span><span class="p">(),</span> <span class="nx">value</span><span class="p">)</span> <span class="k">for</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">value</span> <span class="k">in</span> <span class="nx">attrs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nx">type</span><span class="p">(</span><span class="nx">future_class_name</span><span class="p">,</span> <span class="nx">future_class_parents</span><span class="p">,</span> <span class="nx">uppercase_attr</span><span class="p">)</span>
 </pre></div>
 <p>但是这种方法其实不是oop。我们直接调用了type, 而且我们没有改写父类的__new__方法。 现在我们这样处理：</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">upperattr_metaclass</span>(<span class="n">type</span>):
-    <span class="n">def</span> <span class="n">__new__</span>(<span class="n">upperattr_metaclass</span>, <span class="n">future_class_name</span>,
-                <span class="n">future_class_parents</span>, <span class="n">future_class_attr</span>):
-        <span class="n">attrs</span> = ((<span class="nb">name</span>, <span class="nb">value</span>) <span class="k">for</span> <span class="nb">name</span>, <span class="nb">value</span> <span class="n">in</span> <span class="n">future_class_attr</span>.<span class="n">items</span>() 
-                  <span class="k">if</span> <span class="nb">not</span> <span class="nb">name</span>.<span class="n">startswith</span>(<span class="s">'__'</span>)
-        <span class="n">uppercase_attr</span> = <span class="n">dict</span>((<span class="nb">name</span>.<span class="n">upper</span>(), <span class="nb">value</span>) <span class="k">for</span> <span class="nb">name</span>, <span class="nb">value</span> <span class="n">in</span> <span class="n">attrs</span>)
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">upperattr_metaclass</span><span class="p">(</span><span class="nx">type</span><span class="p">)</span><span class="o">:</span>
+    <span class="nx">def</span> <span class="nx">__new__</span><span class="p">(</span><span class="nx">upperattr_metaclass</span><span class="p">,</span> <span class="nx">future_class_name</span><span class="p">,</span>
+                <span class="nx">future_class_parents</span><span class="p">,</span> <span class="nx">future_class_attr</span><span class="p">)</span><span class="o">:</span>
+        <span class="nx">attrs</span> <span class="o">=</span> <span class="p">((</span><span class="nx">name</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="k">for</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">value</span> <span class="k">in</span> <span class="nx">future_class_attr</span><span class="p">.</span><span class="nx">items</span><span class="p">()</span> 
+                  <span class="k">if</span> <span class="nx">not</span> <span class="nx">name</span><span class="p">.</span><span class="nx">startswith</span><span class="p">(</span><span class="s1">'__'</span><span class="p">)</span>
+        <span class="nx">uppercase_attr</span> <span class="o">=</span> <span class="nx">dict</span><span class="p">((</span><span class="nx">name</span><span class="p">.</span><span class="nx">upper</span><span class="p">(),</span> <span class="nx">value</span><span class="p">)</span> <span class="k">for</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">value</span> <span class="k">in</span> <span class="nx">attrs</span><span class="p">)</span>
 
-        <span class="c c-Singleline"># 复用type.__new__方法</span>
-        <span class="c c-Singleline"># 这就是OOP编程</span>
-        <span class="k">return</span> <span class="n">type</span>.<span class="n">__new__</span>(<span class="n">upperattr_metaclass</span>, <span class="n">futurn_class_name</span>, 
-                            <span class="n">future_class_parents</span>, <span class="n">uppercase_attr</span>)
+        <span class="err">#</span> <span class="err">复用</span><span class="nx">type</span><span class="p">.</span><span class="nx">__new__</span><span class="err">方法</span>
+        <span class="err">#</span> <span class="err">这就是</span><span class="nx">OOP</span><span class="err">编程</span>
+        <span class="k">return</span> <span class="nx">type</span><span class="p">.</span><span class="nx">__new__</span><span class="p">(</span><span class="nx">upperattr_metaclass</span><span class="p">,</span> <span class="nx">futurn_class_name</span><span class="p">,</span> 
+                            <span class="nx">future_class_parents</span><span class="p">,</span> <span class="nx">uppercase_attr</span><span class="p">)</span>
 </pre></div>
 <p>你可能已经注意到了有个额外的参数upperattr_metaclass, 这并没有什么特别的。类方法的第一个参数总是表示当前的实例， 就像在普通的类方法中的self参数一样。当然，为了清晰起见，
 这里的名字我起的比较长。但是就像self一样，所有的参数都有他们的传统的名称。因此在一个真实产品中的一个元类应该像这样：</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">UpperAttrMetaclass</span>(<span class="n">type</span>):
-    <span class="n">def</span> <span class="n">__new__</span>(<span class="n">cls</span>, <span class="nb">name</span>, <span class="n">bases</span>, <span class="n">dct</span>):
-        <span class="n">attrs</span> = ((<span class="nb">name</span>, <span class="nb">value</span>) <span class="k">for</span> <span class="nb">name</span>, <span class="nb">value</span> <span class="n">in</span> <span class="n">dct</span>.<span class="n">items</span>() <span class="k">if</span> <span class="nb">not</span> <span class="nb">name</span>.<span class="n">startswith</span>(<span class="s">'__'</span>)
-        <span class="n">uppercase_attr</span> = <span class="n">dict</span>((<span class="nb">name</span>.<span class="n">upper</span>(), <span class="nb">value</span>) <span class="k">for</span> <span class="nb">name</span>, <span class="nb">value</span> <span class="n">in</span> <span class="n">attrs</span>)
-        <span class="k">return</span> <span class="n">type</span>.<span class="n">__new__</span>(<span class="n">cls</span>, <span class="nb">name</span>, <span class="n">bases</span>, <span class="n">uppercase_attr</span>)
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">UpperAttrMetaclass</span><span class="p">(</span><span class="nx">type</span><span class="p">)</span><span class="o">:</span>
+    <span class="nx">def</span> <span class="nx">__new__</span><span class="p">(</span><span class="nx">cls</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">bases</span><span class="p">,</span> <span class="nx">dct</span><span class="p">)</span><span class="o">:</span>
+        <span class="nx">attrs</span> <span class="o">=</span> <span class="p">((</span><span class="nx">name</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="k">for</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">value</span> <span class="k">in</span> <span class="nx">dct</span><span class="p">.</span><span class="nx">items</span><span class="p">()</span> <span class="k">if</span> <span class="nx">not</span> <span class="nx">name</span><span class="p">.</span><span class="nx">startswith</span><span class="p">(</span><span class="s1">'__'</span><span class="p">)</span>
+        <span class="nx">uppercase_attr</span> <span class="o">=</span> <span class="nx">dict</span><span class="p">((</span><span class="nx">name</span><span class="p">.</span><span class="nx">upper</span><span class="p">(),</span> <span class="nx">value</span><span class="p">)</span> <span class="k">for</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">value</span> <span class="k">in</span> <span class="nx">attrs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nx">type</span><span class="p">.</span><span class="nx">__new__</span><span class="p">(</span><span class="nx">cls</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">bases</span><span class="p">,</span> <span class="nx">uppercase_attr</span><span class="p">)</span>
 </pre></div>
 <p>如果使用super方法的话，我们还可以使它变得更清晰一些，这会缓解继承（是的，你可以拥有元类，从元类继承，从type继承）</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">UpperAttrMetaclass</span>(<span class="n">type</span>):
-    <span class="n">def</span> <span class="n">__new__</span>(<span class="n">cls</span>, <span class="nb">name</span>, <span class="n">bases</span>, <span class="n">dct</span>):
-        <span class="n">attrs</span> = ((<span class="nb">name</span>, <span class="nb">value</span>) <span class="k">for</span> <span class="nb">name</span>, <span class="nb">value</span> <span class="n">in</span> <span class="n">dct</span>.<span class="n">items</span>() <span class="k">if</span> <span class="nb">not</span> <span class="nb">name</span>.<span class="n">startswith</span>(<span class="s">'__'</span>)
-        <span class="n">uppercase_attr</span> = <span class="n">dict</span>((<span class="nb">name</span>.<span class="n">upper</span>(), <span class="nb">value</span>) <span class="k">for</span> <span class="nb">name</span>, <span class="nb">value</span> <span class="n">in</span> <span class="n">attrs</span>)
-        <span class="k">return</span> <span class="n">supper</span>(<span class="n">UpperAttrMetaclass</span>, <span class="n">cls</span>).<span class="n">__new__</span>(<span class="n">cls</span>, <span class="nb">name</span>, <span class="n">bases</span>, <span class="n">uppercase_attr</span>)
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">UpperAttrMetaclass</span><span class="p">(</span><span class="nx">type</span><span class="p">)</span><span class="o">:</span>
+    <span class="nx">def</span> <span class="nx">__new__</span><span class="p">(</span><span class="nx">cls</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">bases</span><span class="p">,</span> <span class="nx">dct</span><span class="p">)</span><span class="o">:</span>
+        <span class="nx">attrs</span> <span class="o">=</span> <span class="p">((</span><span class="nx">name</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="k">for</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">value</span> <span class="k">in</span> <span class="nx">dct</span><span class="p">.</span><span class="nx">items</span><span class="p">()</span> <span class="k">if</span> <span class="nx">not</span> <span class="nx">name</span><span class="p">.</span><span class="nx">startswith</span><span class="p">(</span><span class="s1">'__'</span><span class="p">)</span>
+        <span class="nx">uppercase_attr</span> <span class="o">=</span> <span class="nx">dict</span><span class="p">((</span><span class="nx">name</span><span class="p">.</span><span class="nx">upper</span><span class="p">(),</span> <span class="nx">value</span><span class="p">)</span> <span class="k">for</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">value</span> <span class="k">in</span> <span class="nx">attrs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nx">supper</span><span class="p">(</span><span class="nx">UpperAttrMetaclass</span><span class="p">,</span> <span class="nx">cls</span><span class="p">).</span><span class="nx">__new__</span><span class="p">(</span><span class="nx">cls</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">bases</span><span class="p">,</span> <span class="nx">uppercase_attr</span><span class="p">)</span>
 </pre></div>
 <p>就是这样，除此之外，关于元类真的没有别的可说的了。使用到元类的代码比较复杂，这背后的原因并不是因为元类本身，而是因为你通常会使用元类去做一些晦涩的事情，依赖于自身，
 控制继承等等。确实，用元类搞些”黑魔法“是特别有用的，因而会搞出复杂的东西来。但就元类本身而言，其实是很简单的：</p>
@@ -550,9 +550,9 @@ print f.BAR
 <div class="highlight"><pre><span></span>“元类就是深度的魔法，99%的用户应该根本不必为此操心。如果你想搞清楚究竟是否需要用到元类，那么你就不需要它。那些实际用到元类的人都非常清楚地知道他们需要做什么，而且根本不需要解释为什么要用元类。”  —— Python界的领袖 Tim Peters
 </pre></div>
 <p>元类的主要用途是创建API。一个典型的例子是Django ORM. 它允许你像这样定义：</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">Person</span>(<span class="n">models</span>.<span class="n">Model</span>):
-    <span class="nb">name</span> = <span class="n">models</span>.<span class="n">CharField</span>(<span class="n">max_length</span>=<span class="mi">30</span>)
-    <span class="n">age</span> = <span class="n">models</span>.<span class="n">IntegerField</span>()
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Person</span><span class="p">(</span><span class="nx">models</span><span class="p">.</span><span class="nx">Model</span><span class="p">)</span><span class="o">:</span>
+    <span class="nx">name</span> <span class="o">=</span> <span class="nx">models</span><span class="p">.</span><span class="nx">CharField</span><span class="p">(</span><span class="nx">max_length</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+    <span class="nx">age</span> <span class="o">=</span> <span class="nx">models</span><span class="p">.</span><span class="nx">IntegerField</span><span class="p">()</span>
 </pre></div>
 <p>但是如果你像这样做的话：</p>
 <div class="highlight"><pre><span></span>guy = Person(name='bob', age='35')

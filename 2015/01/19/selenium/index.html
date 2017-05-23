@@ -122,6 +122,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework 用户手册(四)
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../../../../2017/04/01/Robot/" title="Robot Framework 用户手册(三)">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework 用户手册(三)
@@ -143,12 +149,6 @@
                             <a class="hide-overflow" href="../../../../2017/03/24/Robot/" title="Robot Framework快速入门">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework快速入门
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../../../../2017/03/22/itest/" title="Itest测试工具介绍">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Itest测试工具介绍
                             </a>
                         </li>
                     <li>
@@ -309,6 +309,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
+                            <span class="badge pull-right categorybadge">5</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -333,13 +340,6 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
-                            <span class="badge pull-right categorybadge">4</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -605,113 +605,113 @@ stacktrace=None)</p>
 <p>Webdriver　基本异常</p>
 <h3 id="dong-zuo-lian_1">动作链</h3>
 <p>该动作链实施，</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">selenium</span>.<span class="n">webdriver</span>.<span class="n">common</span>.<span class="n">action_chains</span>.<span class="n">ActionChains</span>(<span class="n">driver</span>)
-    <span class="n">Base:object</span>
-    <span class="n">ActionChains是底层自动化交互</span>，<span class="n">比如鼠标移动</span>，<span class="n">鼠标按键操作</span>，<span class="n">按键和上下文交互菜单</span>。<span class="n">可以用来做一些负责的动作比如悬停和拖放等</span>。
-    <span class="n">生成用户操作</span>
-    <span class="n">当你调用ActionChains</span> <span class="n">类的一些方法实现动作</span>，<span class="n">这些动作可以存储到ActionChains类中</span>。<span class="n">当你调用perform</span>(),<span class="n">这些事件会顺序发射执行</span>。
-    <span class="n">action_chains可以在链模式中使用</span>：
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">selenium</span><span class="p">.</span><span class="nx">webdriver</span><span class="p">.</span><span class="nx">common</span><span class="p">.</span><span class="nx">action_chains</span><span class="p">.</span><span class="nx">ActionChains</span><span class="p">(</span><span class="nx">driver</span><span class="p">)</span>
+    <span class="nx">Base</span>:<span class="kt">object</span>
+    <span class="nx">ActionChains</span><span class="err">是底层自动化交互，比如鼠标移动，鼠标按键操作，按键和上下文交互菜单。可以用来做一些负责的动作比如悬停和拖放等。</span>
+    <span class="err">生成用户操作</span>
+    <span class="err">当你调用</span><span class="nx">ActionChains</span> <span class="err">类的一些方法实现动作，这些动作可以存储到</span><span class="nx">ActionChains</span><span class="err">类中。当你调用</span><span class="nx">perform</span><span class="p">(),</span><span class="err">这些事件会顺序发射执行。</span>
+    <span class="nx">action_chains</span><span class="err">可以在链模式中使用：</span>
 
-        <span class="n">menu</span> = <span class="n">driver</span>.<span class="n">find_element_by_css_selector</span>(<span class="s">".nav"</span>)
-        <span class="n">hidden_submenu</span> = <span class="n">driver</span>.<span class="n">find_element_by_css_selector</span>(<span class="s">".new #submen1"</span>)
-    　　　　
-        <span class="n">action_chains</span>(<span class="n">driver</span>).<span class="n">move_to_element</span>(<span class="n">menu</span>).<span class="n">click</span>(<span class="n">hidden_submenu</span>).<span class="n">perform</span>()
-    　　　　
-    <span class="n">或动作一个接一个顺序执行</span>：
-    　　<span class="n">menu</span> = <span class="n">driver</span>.<span class="n">find_element_by_css_selector</span>(<span class="s">".nav"</span>)
-    　　<span class="n">hidden_submenu</span> = <span class="n">driver</span>.<span class="n">find_element_by_css_selector</span>(<span class="s">".nav #submenu1"</span>)
-    　　
-    　　<span class="n">actions</span> = <span class="n">ActionChains</span>(<span class="n">driver</span>)
-    　　<span class="n">actions</span>.<span class="n">move_to_elment</span>(<span class="n">menu</span>)
-    　　<span class="n">actions</span>.<span class="n">click</span>(<span class="n">hidden_submenu</span>)
-    　　<span class="n">actions</span>.<span class="n">perform</span>()
-    　　
-    <span class="n">无论哪种方式</span>，<span class="n">这些动作都会顺序调用执行</span>。
+        <span class="nx">menu</span> <span class="o">=</span> <span class="nx">driver</span><span class="p">.</span><span class="nx">find_element_by_css_selector</span><span class="p">(</span><span class="s2">".nav"</span><span class="p">)</span>
+        <span class="nx">hidden_submenu</span> <span class="o">=</span> <span class="nx">driver</span><span class="p">.</span><span class="nx">find_element_by_css_selector</span><span class="p">(</span><span class="s2">".new #submen1"</span><span class="p">)</span>
+    <span class="err">　　　　</span>
+        <span class="nx">action_chains</span><span class="p">(</span><span class="nx">driver</span><span class="p">).</span><span class="nx">move_to_element</span><span class="p">(</span><span class="nx">menu</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="nx">hidden_submenu</span><span class="p">).</span><span class="nx">perform</span><span class="p">()</span>
+    <span class="err">　　　　</span>
+    <span class="err">或动作一个接一个顺序执行：</span>
+    <span class="err">　　</span><span class="nx">menu</span> <span class="o">=</span> <span class="nx">driver</span><span class="p">.</span><span class="nx">find_element_by_css_selector</span><span class="p">(</span><span class="s2">".nav"</span><span class="p">)</span>
+    <span class="err">　　</span><span class="nx">hidden_submenu</span> <span class="o">=</span> <span class="nx">driver</span><span class="p">.</span><span class="nx">find_element_by_css_selector</span><span class="p">(</span><span class="s2">".nav #submenu1"</span><span class="p">)</span>
+    <span class="err">　　</span>
+    <span class="err">　　</span><span class="nx">actions</span> <span class="o">=</span> <span class="nx">ActionChains</span><span class="p">(</span><span class="nx">driver</span><span class="p">)</span>
+    <span class="err">　　</span><span class="nx">actions</span><span class="p">.</span><span class="nx">move_to_elment</span><span class="p">(</span><span class="nx">menu</span><span class="p">)</span>
+    <span class="err">　　</span><span class="nx">actions</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="nx">hidden_submenu</span><span class="p">)</span>
+    <span class="err">　　</span><span class="nx">actions</span><span class="p">.</span><span class="nx">perform</span><span class="p">()</span>
+    <span class="err">　　</span>
+    <span class="err">无论哪种方式，这些动作都会顺序调用执行。</span>
 
-    <span class="n">click</span>(<span class="n">on_element</span>=<span class="n">None</span>)
-        <span class="n">点击一个元素</span>
+    <span class="nx">click</span><span class="p">(</span><span class="nx">on_element</span><span class="o">=</span><span class="nx">None</span><span class="p">)</span>
+        <span class="err">点击一个元素</span>
 
-        <span class="n">Args:</span> * <span class="n">on_element:</span> <span class="n">鼠标点击元素</span>，<span class="n">如果没有</span>，<span class="n">点击当前鼠标的位置</span>。
+        <span class="nx">Args</span><span class="o">:</span> <span class="o">*</span> <span class="nx">on_element</span><span class="o">:</span> <span class="err">鼠标点击元素，如果没有，点击当前鼠标的位置。</span>
 
-    <span class="n">click_and_hold</span>(<span class="n">on_elememt</span>=<span class="n">None</span>)
-        <span class="n">按住在元素上按住鼠标左键</span>
-        <span class="n">Args:</span> * <span class="n">on_element:</span> <span class="n">鼠标点击元素</span>，<span class="n">没有</span>，<span class="n">点击当前鼠标的位置</span>
+    <span class="nx">click_and_hold</span><span class="p">(</span><span class="nx">on_elememt</span><span class="o">=</span><span class="nx">None</span><span class="p">)</span>
+        <span class="err">按住在元素上按住鼠标左键</span>
+        <span class="nx">Args</span><span class="o">:</span> <span class="o">*</span> <span class="nx">on_element</span><span class="o">:</span> <span class="err">鼠标点击元素，没有，点击当前鼠标的位置</span>
 
-    <span class="n">context_click</span>(<span class="n">on_element</span>=<span class="n">None</span>)
+    <span class="nx">context_click</span><span class="p">(</span><span class="nx">on_element</span><span class="o">=</span><span class="nx">None</span><span class="p">)</span>
 
-        <span class="n">在元素上右击</span>
-        <span class="n">Args:</span> * <span class="n">on_element:</span> <span class="n">上下文点击该元素</span>，<span class="n">如果没有</span>，<span class="n">点击鼠标当前的位置</span>
+        <span class="err">在元素上右击</span>
+        <span class="nx">Args</span><span class="o">:</span> <span class="o">*</span> <span class="nx">on_element</span><span class="o">:</span> <span class="err">上下文点击该元素，如果没有，点击鼠标当前的位置</span>
 
-    <span class="n">double_click</span>(<span class="n">on_element</span>=<span class="n">None</span>)
+    <span class="nx">double_click</span><span class="p">(</span><span class="nx">on_element</span><span class="o">=</span><span class="nx">None</span><span class="p">)</span>
 
-        <span class="n">双击元素</span>
-        <span class="n">Args:</span> * <span class="n">on_element:</span> <span class="n">双击该元素</span>，<span class="n">如果</span>，<span class="n">双击鼠标当前的位置</span>
+        <span class="err">双击元素</span>
+        <span class="nx">Args</span><span class="o">:</span> <span class="o">*</span> <span class="nx">on_element</span><span class="o">:</span> <span class="err">双击该元素，如果，双击鼠标当前的位置</span>
 
-    <span class="n">drag_and_drop</span>(<span class="n">source</span>, <span class="n">target</span>)
-        <span class="n">在source</span>　<span class="n">element</span>　<span class="n">左击并保持</span>
-        <span class="n">然后移动到目标元素并且是否鼠标</span>
+    <span class="nx">drag_and_drop</span><span class="p">(</span><span class="nx">source</span><span class="p">,</span> <span class="nx">target</span><span class="p">)</span>
+        <span class="err">在</span><span class="nx">source</span><span class="err">　</span><span class="nx">element</span><span class="err">　左击并保持</span>
+        <span class="err">然后移动到目标元素并且是否鼠标</span>
 
-        <span class="n">Args:</span> * <span class="n">source:</span> <span class="n">鼠标按下的元素</span>
-            　* <span class="n">target:</span>　<span class="n">鼠标移动到元素</span>
-            　
-    <span class="n">drag_and_drop_by_offset</span>(<span class="n">source</span>, <span class="n">xoffset</span>, <span class="n">yoffset</span>)
-        <span class="n">左击点击source</span> <span class="n">element</span>,
-        <span class="n">然后</span>，<span class="n">移动到目标偏移地址</span>，<span class="n">并释放鼠标</span>
+        <span class="nx">Args</span><span class="o">:</span> <span class="o">*</span> <span class="nx">source</span><span class="o">:</span> <span class="err">鼠标按下的元素</span>
+            <span class="err">　</span><span class="o">*</span> <span class="nx">target</span><span class="o">:</span><span class="err">　鼠标移动到元素</span>
+            <span class="err">　</span>
+    <span class="nx">drag_and_drop_by_offset</span><span class="p">(</span><span class="nx">source</span><span class="p">,</span> <span class="nx">xoffset</span><span class="p">,</span> <span class="nx">yoffset</span><span class="p">)</span>
+        <span class="err">左击点击</span><span class="nx">source</span> <span class="nx">element</span><span class="p">,</span>
+        <span class="err">然后，移动到目标偏移地址，并释放鼠标</span>
 
-        <span class="n">Args:</span> * <span class="n">source:</span> <span class="n">鼠标点击的元素</span>
-              * <span class="n">xoffset:</span> <span class="n">元素移动的X偏移量</span>
-              * <span class="n">yoffset:</span> <span class="n">元素移动的Ｙ偏移量</span>
+        <span class="nx">Args</span><span class="o">:</span> <span class="o">*</span> <span class="nx">source</span><span class="o">:</span> <span class="err">鼠标点击的元素</span>
+              <span class="o">*</span> <span class="nx">xoffset</span><span class="o">:</span> <span class="err">元素移动的</span><span class="nx">X</span><span class="err">偏移量</span>
+              <span class="o">*</span> <span class="nx">yoffset</span><span class="o">:</span> <span class="err">元素移动的Ｙ偏移量</span>
 
-    <span class="n">key_down</span>(<span class="nb">value</span>, <span class="n">element</span>=<span class="n">None</span>)
-        <span class="n">仅发送一个按键</span>，<span class="n">不释放</span>(<span class="n">多用于组合键</span>）
-        <span class="n">需要和修饰键一起使用</span>（<span class="n">控制</span>，<span class="n">alt和shift</span>)
-        <span class="n">Aargs:</span>
-            * <span class="n">value:</span> <span class="n">被发送的修饰键</span>，<span class="n">在Keys类中定义</span>
-            * <span class="n">element:</span> <span class="n">发送键作用的元素</span>。<span class="n">如果为空</span>，<span class="n">则向作用于当前焦点元素</span>
+    <span class="nx">key_down</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">element</span><span class="o">=</span><span class="nx">None</span><span class="p">)</span>
+        <span class="err">仅发送一个按键，不释放</span><span class="p">(</span><span class="err">多用于组合键）</span>
+        <span class="err">需要和修饰键一起使用（控制，</span><span class="nx">alt</span><span class="err">和</span><span class="nx">shift</span><span class="p">)</span>
+        <span class="nx">Aargs</span><span class="o">:</span>
+            <span class="o">*</span> <span class="nx">value</span><span class="o">:</span> <span class="err">被发送的修饰键，在</span><span class="nx">Keys</span><span class="err">类中定义</span>
+            <span class="o">*</span> <span class="nx">element</span><span class="o">:</span> <span class="err">发送键作用的元素。如果为空，则向作用于当前焦点元素</span>
 
-        <span class="n">例如</span>，<span class="n">按下ctrl</span><span class="o">+</span><span class="n">c:</span>
-            <span class="n">ActionChains</span>(<span class="n">driver</span>).<span class="n">key_down</span>(<span class="n">Keys</span>.<span class="k">CONTROL</span>).<span class="n">send_keys</span>(<span class="s">'c'</span>).<span class="n">key_up</span>(<span class="n">Keys</span>.<span class="k">CONTROL</span>).<span class="n">perform</span>()
+        <span class="err">例如，按下</span><span class="nx">ctrl</span><span class="o">+</span><span class="nx">c</span>:
+            <span class="kt">ActionChains</span><span class="p">(</span><span class="nx">driver</span><span class="p">).</span><span class="nx">key_down</span><span class="p">(</span><span class="nx">Keys</span><span class="p">.</span><span class="nx">CONTROL</span><span class="p">).</span><span class="nx">send_keys</span><span class="p">(</span><span class="s1">'c'</span><span class="p">).</span><span class="nx">key_up</span><span class="p">(</span><span class="nx">Keys</span><span class="p">.</span><span class="nx">CONTROL</span><span class="p">).</span><span class="nx">perform</span><span class="p">()</span>
 
-    <span class="n">key_up</span>(<span class="nb">value</span>, <span class="n">element</span>=<span class="n">None</span>)
-        <span class="n">释放修饰键</span>
-        <span class="n">Aargs:</span> 
-            * <span class="n">value:</span> <span class="n">发送的修饰键盘</span>，<span class="n">在Keys类中定义</span>。
-            * <span class="n">element:</span> <span class="n">作用于的元素</span>，<span class="n">如果为空</span>，<span class="n">默认作用于当前焦点元素</span>
-        <span class="n">例如</span>，<span class="n">按下ctrl</span><span class="o">+</span><span class="n">c:</span>
-            <span class="n">ActionChains</span>(<span class="n">driver</span>).<span class="n">key_down</span>(<span class="n">Keys</span>.<span class="k">CONTROL</span>).<span class="n">send_keys</span>(<span class="s">'c'</span>).<span class="n">key_up</span>(<span class="n">Keys</span>.<span class="k">CONTROL</span>).<span class="n">perform</span>()
+    <span class="nx">key_up</span><span class="p">(</span><span class="nx">value</span><span class="p">,</span> <span class="nx">element</span><span class="o">=</span><span class="nx">None</span><span class="p">)</span>
+        <span class="err">释放修饰键</span>
+        <span class="nx">Aargs</span><span class="o">:</span> 
+            <span class="o">*</span> <span class="nx">value</span><span class="o">:</span> <span class="err">发送的修饰键盘，在</span><span class="nx">Keys</span><span class="err">类中定义。</span>
+            <span class="o">*</span> <span class="nx">element</span><span class="o">:</span> <span class="err">作用于的元素，如果为空，默认作用于当前焦点元素</span>
+        <span class="err">例如，按下</span><span class="nx">ctrl</span><span class="o">+</span><span class="nx">c</span>:
+            <span class="kt">ActionChains</span><span class="p">(</span><span class="nx">driver</span><span class="p">).</span><span class="nx">key_down</span><span class="p">(</span><span class="nx">Keys</span><span class="p">.</span><span class="nx">CONTROL</span><span class="p">).</span><span class="nx">send_keys</span><span class="p">(</span><span class="s1">'c'</span><span class="p">).</span><span class="nx">key_up</span><span class="p">(</span><span class="nx">Keys</span><span class="p">.</span><span class="nx">CONTROL</span><span class="p">).</span><span class="nx">perform</span><span class="p">()</span>
 
-    <span class="n">move_by_offset</span>(<span class="n">xoffset</span>, <span class="n">yoffset</span>)
-        <span class="n">从当前鼠标位置</span>，<span class="n">移动一定的偏移位置</span>
-        <span class="n">Aargs:</span>
-            * <span class="n">xoffset:</span> <span class="n">X偏移量</span>，<span class="n">可以为正或负的整数</span>
-            * <span class="n">yoffset:</span> <span class="n">y偏移量</span>，<span class="n">可以为正或负的整数</span>
+    <span class="nx">move_by_offset</span><span class="p">(</span><span class="nx">xoffset</span><span class="p">,</span> <span class="nx">yoffset</span><span class="p">)</span>
+        <span class="err">从当前鼠标位置，移动一定的偏移位置</span>
+        <span class="nx">Aargs</span><span class="o">:</span>
+            <span class="o">*</span> <span class="nx">xoffset</span>: <span class="kt">X</span><span class="err">偏移量，可以为正或负的整数</span>
+            <span class="o">*</span> <span class="nx">yoffset</span>: <span class="kt">y</span><span class="err">偏移量，可以为正或负的整数</span>
 
-    <span class="n">move_to_element</span>(<span class="n">to_element</span>)
-        <span class="n">移动鼠标到元素的中间</span>
-        <span class="n">Args:</span> * <span class="n">to_element:</span> <span class="n">移动的目标WebElement</span>
+    <span class="nx">move_to_element</span><span class="p">(</span><span class="nx">to_element</span><span class="p">)</span>
+        <span class="err">移动鼠标到元素的中间</span>
+        <span class="nx">Args</span><span class="o">:</span> <span class="o">*</span> <span class="nx">to_element</span><span class="o">:</span> <span class="err">移动的目标</span><span class="nx">WebElement</span>
 
-    <span class="n">move_to_element_with_offset</span>(<span class="n">to_element</span>, <span class="n">xoffset</span>, <span class="n">yoffset</span>)
-        <span class="n">指定元素偏移一定量</span>
-            <span class="n">偏移量相对于元素的左上角</span>
-        <span class="n">Args:</span> * <span class="n">to_elemnt:</span> <span class="n">被移动的WebElement</span>
-              * <span class="n">xoffset:</span> <span class="n">x偏移量</span>
-              * <span class="n">yoffset:</span> <span class="n">y偏移量</span>
+    <span class="nx">move_to_element_with_offset</span><span class="p">(</span><span class="nx">to_element</span><span class="p">,</span> <span class="nx">xoffset</span><span class="p">,</span> <span class="nx">yoffset</span><span class="p">)</span>
+        <span class="err">指定元素偏移一定量</span>
+            <span class="err">偏移量相对于元素的左上角</span>
+        <span class="nx">Args</span><span class="o">:</span> <span class="o">*</span> <span class="nx">to_elemnt</span><span class="o">:</span> <span class="err">被移动的</span><span class="nx">WebElement</span>
+              <span class="o">*</span> <span class="nx">xoffset</span>: <span class="kt">x</span><span class="err">偏移量</span>
+              <span class="o">*</span> <span class="nx">yoffset</span>: <span class="kt">y</span><span class="err">偏移量</span>
 
-    <span class="n">perform</span>()
-        <span class="n">执行所有存储的操作</span>
+    <span class="nx">perform</span><span class="p">()</span>
+        <span class="err">执行所有存储的操作</span>
 
-    <span class="n">release</span>(<span class="n">on_element</span>=<span class="n">None</span>)
-        <span class="n">释放作用于元素的按键</span>
-        <span class="n">Args:</span> * <span class="n">on_element:</span> <span class="n">指定作用的元素</span>，<span class="n">如果为空</span>，<span class="n">释放当前鼠标作用的位置</span>
+    <span class="nx">release</span><span class="p">(</span><span class="nx">on_element</span><span class="o">=</span><span class="nx">None</span><span class="p">)</span>
+        <span class="err">释放作用于元素的按键</span>
+        <span class="nx">Args</span><span class="o">:</span> <span class="o">*</span> <span class="nx">on_element</span><span class="o">:</span> <span class="err">指定作用的元素，如果为空，释放当前鼠标作用的位置</span>
 
-    <span class="n">send_keys</span>(*<span class="n">keys_to_send</span>)
-        <span class="n">发送按键到当前焦点元素</span>
-        <span class="n">Args:</span> * <span class="n">keys_to_send:</span> <span class="n">发送的按键</span>。<span class="n">修饰键常量可以在</span>‘<span class="n">Keys'类中找到</span>
+    <span class="nx">send_keys</span><span class="p">(</span><span class="o">*</span><span class="nx">keys_to_send</span><span class="p">)</span>
+        <span class="err">发送按键到当前焦点元素</span>
+        <span class="nx">Args</span><span class="o">:</span> <span class="o">*</span> <span class="nx">keys_to_send</span><span class="o">:</span> <span class="err">发送的按键。修饰键常量可以在‘</span><span class="nx">Keys</span><span class="s1">'类中找到</span>
 
-    <span class="n">send_keys_to_element</span>(<span class="n">element</span>, *<span class="n">keys_to_send</span>)
-        <span class="n">发送按键到一个元素</span>
-        <span class="n">Args:</span> * <span class="n">element:</span> <span class="n">发送按键作用的元素</span>
-              * <span class="n">keys_to_send:</span> <span class="n">发送的按键类型</span>，<span class="n">修饰键常量可以在</span>“<span class="n">Keys'类中找到</span>。
+<span class="s1">    send_keys_to_element(element, *keys_to_send)</span>
+<span class="s1">        发送按键到一个元素</span>
+<span class="s1">        Args: * element: 发送按键作用的元素</span>
+<span class="s1">              * keys_to_send: 发送的按键类型，修饰键常量可以在“Keys'</span><span class="err">类中找到。</span>
 </pre></div>
 <p>Top<a href="">^</a></p>
 <p>上一篇<a href="https://king32783784.github.io/2015/01/18/selenium/">Selenium主题6</a>

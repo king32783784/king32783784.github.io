@@ -122,6 +122,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework 用户手册(四)
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../../../../2017/04/01/Robot/" title="Robot Framework 用户手册(三)">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework 用户手册(三)
@@ -143,12 +149,6 @@
                             <a class="hide-overflow" href="../../../../2017/03/24/Robot/" title="Robot Framework快速入门">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework快速入门
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../../../../2017/03/22/itest/" title="Itest测试工具介绍">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Itest测试工具介绍
                             </a>
                         </li>
                     <li>
@@ -309,6 +309,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
+                            <span class="badge pull-right categorybadge">5</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -333,13 +340,6 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
-                            <span class="badge pull-right categorybadge">4</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -503,26 +503,26 @@ Runtime: 209 ms
 <h4 id="jie-jue-fang-fa-er">解决方法二：</h4>
 <p>同样采用数字拆分后组合</p>
 <p>代码：</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">Solution</span>(<span class="n">object</span>):
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Solution</span><span class="p">(</span><span class="nx">object</span><span class="p">)</span><span class="o">:</span>
 
-    <span class="n">def</span> <span class="n">isPalindrome</span>(<span class="k">self</span>, <span class="o">x</span>):
+    <span class="nx">def</span> <span class="nx">isPalindrome</span><span class="p">(</span><span class="nx">self</span><span class="p">,</span> <span class="nx">x</span><span class="p">)</span><span class="o">:</span>
 
-        <span class="s">"""</span>
-<span class="s">        :type x: int</span>
-<span class="s">        :rtype: bool</span>
-<span class="s">        """</span>
-        <span class="n">z</span>=<span class="o">x</span>
-        <span class="k">if</span> <span class="o">x</span> &lt; <span class="mi">0</span>:
-            <span class="k">return</span> <span class="nb">False</span>
-        <span class="n">else:</span>
-            <span class="n">y</span> = <span class="mi">0</span>
-            <span class="k">while</span> <span class="o">x</span> != <span class="mi">0</span>:
-                <span class="n">y</span> = <span class="n">y</span> * <span class="mi">10</span> + <span class="o">x</span> % <span class="mi">10</span>
-                <span class="o">x</span> /= <span class="mi">10</span>
-            <span class="k">if</span> <span class="n">z</span> == <span class="n">y:</span>
-                <span class="k">return</span> <span class="nb">True</span>
-            <span class="n">else:</span>
-                <span class="k">return</span> <span class="nb">False</span>
+        <span class="s2">"""</span>
+<span class="s2">        :type x: int</span>
+<span class="s2">        :rtype: bool</span>
+<span class="s2">        """</span>
+        <span class="nx">z</span><span class="o">=</span><span class="nx">x</span>
+        <span class="k">if</span> <span class="nx">x</span> <span class="o">&lt;</span> <span class="nx">0</span>:
+            <span class="kt">return</span> <span class="nx">False</span>
+        <span class="k">else</span><span class="o">:</span>
+            <span class="nx">y</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">while</span> <span class="nx">x</span> <span class="o">!=</span> <span class="nx">0</span>:
+                <span class="kt">y</span> <span class="o">=</span> <span class="nx">y</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="nx">x</span> <span class="o">%</span> <span class="mi">10</span>
+                <span class="nx">x</span> <span class="o">/=</span> <span class="mi">10</span>
+            <span class="k">if</span> <span class="nx">z</span> <span class="o">==</span> <span class="nx">y</span>:
+                <span class="kt">return</span> <span class="nx">True</span>
+            <span class="k">else</span><span class="o">:</span>
+                <span class="k">return</span> <span class="nx">False</span>
 </pre></div>
 <p>leetcode测试结果：
 11507 / 11507 test cases passed.
@@ -547,31 +547,31 @@ Explanation:
 <h1 id="jie-jue-fang-fa_2">解决方法</h1>
 <p>两个数字按位进行或运算，结果不同的为１，相同为０，然后求结果中为１的位数，即为两个数的汉明距离</p>
 <p>代码</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">Solution</span>(<span class="n">object</span>):
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Solution</span><span class="p">(</span><span class="nx">object</span><span class="p">)</span><span class="o">:</span>
 
-    <span class="n">def</span> <span class="n">hammingDistance</span>(<span class="k">self</span>, <span class="o">x</span>, <span class="n">y</span>):
+    <span class="nx">def</span> <span class="nx">hammingDistance</span><span class="p">(</span><span class="nx">self</span><span class="p">,</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span><span class="o">:</span>
 
-        <span class="s">"""</span>
+        <span class="s2">"""</span>
 
-<span class="s">        :type x: int</span>
+<span class="s2">        :type x: int</span>
 
-<span class="s">        :type y: int</span>
+<span class="s2">        :type y: int</span>
 
-<span class="s">        :rtype: int</span>
+<span class="s2">        :rtype: int</span>
 
-<span class="s">        """</span>
+<span class="s2">        """</span>
 
-        <span class="n">n</span> = <span class="o">x</span> ^ <span class="n">y</span>
+        <span class="nx">n</span> <span class="o">=</span> <span class="nx">x</span> <span class="o">^</span> <span class="nx">y</span>
 
-        <span class="nb">num</span>=<span class="mi">0</span>
+        <span class="nx">num</span><span class="o">=</span><span class="mi">0</span>
 
-        <span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="n">bin</span>(<span class="n">n</span>)[<span class="mi">2</span>:]:
+        <span class="k">for</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">bin</span><span class="p">(</span><span class="nx">n</span><span class="p">)[</span><span class="mi">2</span><span class="o">:</span><span class="p">]</span><span class="o">:</span>
 
-            <span class="k">if</span> <span class="n">i</span> <span class="k">is</span> <span class="s">"1"</span>:
+            <span class="k">if</span> <span class="nx">i</span> <span class="nx">is</span> <span class="s2">"1"</span><span class="o">:</span>
 
-                <span class="nb">num</span> += <span class="mi">1</span>
+                <span class="nx">num</span> <span class="o">+=</span> <span class="mi">1</span>
 
-        <span class="k">return</span> <span class="nb">num</span>
+        <span class="k">return</span> <span class="nx">num</span>
 </pre></div>
 <p>测试结果：</p>
 <p>149 / 149 test cases passed.

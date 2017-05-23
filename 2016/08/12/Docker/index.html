@@ -122,6 +122,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework 用户手册(四)
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../../../../2017/04/01/Robot/" title="Robot Framework 用户手册(三)">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework 用户手册(三)
@@ -143,12 +149,6 @@
                             <a class="hide-overflow" href="../../../../2017/03/24/Robot/" title="Robot Framework快速入门">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework快速入门
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../../../../2017/03/22/itest/" title="Itest测试工具介绍">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Itest测试工具介绍
                             </a>
                         </li>
                     <li>
@@ -309,6 +309,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
+                            <span class="badge pull-right categorybadge">5</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -333,13 +340,6 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
-                            <span class="badge pull-right categorybadge">4</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -469,11 +469,11 @@
 </ul>
 <p>比如，把真实的uid=1000映射成容器内的uid=0</p>
 <div class="highlight"><pre><span></span>$ cat /proc/2465/uid_map
-     <span class="m">0</span>       <span class="m">1000</span>          1
+     <span class="m">0</span>       <span class="m">1000</span>          <span class="m">1</span>
 </pre></div>
 <p>再比如下面的示例：表示把namespace内部从0开始的uid映射到外部从0开始的uid，其最大范围是无符号32位整形</p>
 <div class="highlight"><pre><span></span>$ cat /proc/<span class="nv">$$</span>/uid_map
-     <span class="m">0</span>          <span class="m">0</span>          4294967295
+     <span class="m">0</span>          <span class="m">0</span>          <span class="m">4294967295</span>
 </pre></div>
 <p>另外，需要注意的是：</p>
 <ul>
@@ -591,9 +591,9 @@
 </pre></div>
 <p>上面的程序，我们用了一个pipe来对父子进程进行同步，为什么要这样做？因为子进程中有一个execv的系统调用，这个系统调用会把当前子进程的进程空间给全部覆盖掉，我们希望在execv之前就做好user namespace的uid/gid的映射，这样，execv运行的/bin/bash就会因为我们设置了uid为0的inside-uid而变成#号的提示符。</p>
 <p>整个程序的运行效果如下：</p>
-<div class="highlight"><pre><span></span><span class="nt">hchen</span><span class="k">@ubuntu</span><span class="o">:~$</span> <span class="nt">id</span>
+<div class="highlight"><pre><span></span><span class="nt">hchen</span><span class="p">@</span><span class="k">ubuntu</span><span class="o">:~$</span> <span class="nt">id</span>
 <span class="nt">uid</span><span class="o">=</span><span class="nt">1000</span><span class="o">(</span><span class="nt">hchen</span><span class="o">)</span> <span class="nt">gid</span><span class="o">=</span><span class="nt">1000</span><span class="o">(</span><span class="nt">hchen</span><span class="o">)</span> <span class="nt">groups</span><span class="o">=</span><span class="nt">1000</span><span class="o">(</span><span class="nt">hchen</span><span class="o">)</span>
-<span class="nt">hchen</span><span class="k">@ubuntu</span><span class="o">:~$</span> <span class="o">./</span><span class="nt">user</span> <span class="err">#</span><span class="o">&lt;</span><span class="nt">--</span><span class="err">以</span><span class="nt">hchen</span><span class="err">用户运行</span>
+<span class="nt">hchen</span><span class="p">@</span><span class="k">ubuntu</span><span class="o">:~$</span> <span class="o">./</span><span class="nt">user</span> <span class="err">#</span><span class="o">&lt;</span><span class="nt">--</span><span class="err">以</span><span class="nt">hchen</span><span class="err">用户运行</span>
 <span class="nt">Parent</span><span class="o">:</span> <span class="nt">eUID</span> <span class="o">=</span> <span class="nt">1000</span><span class="p">;</span>  <span class="nt">eGID</span> <span class="o">=</span> <span class="nt">1000</span><span class="o">,</span> <span class="nt">UID</span><span class="o">=</span><span class="nt">1000</span><span class="o">,</span> <span class="nt">GID</span><span class="o">=</span><span class="nt">1000</span>
 <span class="nt">Parent</span> <span class="cp">[</span> <span class="mi">3262</span><span class="cp">]</span> <span class="nt">-</span> <span class="nt">start</span> <span class="nt">a</span> <span class="nt">container</span><span class="o">!</span>
 <span class="nt">Parent</span> <span class="cp">[</span> <span class="mi">3262</span><span class="cp">]</span> <span class="nt">-</span> <span class="nt">Container</span> <span class="cp">[</span> <span class="mi">3263</span><span class="cp">]</span><span class="o">!</span>
@@ -602,7 +602,7 @@
 <span class="nt">Container</span><span class="o">:</span> <span class="nt">eUID</span> <span class="o">=</span> <span class="nt">0</span><span class="p">;</span>  <span class="nt">eGID</span> <span class="o">=</span> <span class="nt">0</span><span class="o">,</span> <span class="nt">UID</span><span class="o">=</span><span class="nt">0</span><span class="o">,</span> <span class="nt">GID</span><span class="o">=</span><span class="nt">0</span> <span class="err">#</span><span class="o">&lt;</span><span class="nt">---Container</span><span class="err">里的</span><span class="nt">UID</span><span class="o">/</span><span class="nt">GID</span><span class="err">都为</span><span class="nt">0</span><span class="err">了</span>
 <span class="nt">Container</span> <span class="cp">[</span>    <span class="mi">1</span><span class="cp">]</span> <span class="nt">-</span> <span class="nt">setup</span> <span class="nt">hostname</span><span class="o">!</span>
 
-<span class="nt">root</span><span class="k">@container</span><span class="o">:~</span><span class="err">#</span> <span class="nt">id</span> <span class="err">#</span><span class="o">&lt;</span><span class="nt">----</span><span class="err">我们可以看到容器里的用户和命令行提示符是</span><span class="nt">root</span><span class="err">用户了</span>
+<span class="nt">root</span><span class="p">@</span><span class="k">container</span><span class="o">:~</span><span class="err">#</span> <span class="nt">id</span> <span class="err">#</span><span class="o">&lt;</span><span class="nt">----</span><span class="err">我们可以看到容器里的用户和命令行提示符是</span><span class="nt">root</span><span class="err">用户了</span>
 <span class="nt">uid</span><span class="o">=</span><span class="nt">0</span><span class="o">(</span><span class="nt">root</span><span class="o">)</span> <span class="nt">gid</span><span class="o">=</span><span class="nt">0</span><span class="o">(</span><span class="nt">root</span><span class="o">)</span> <span class="nt">groups</span><span class="o">=</span><span class="nt">0</span><span class="o">(</span><span class="nt">root</span><span class="o">),</span><span class="nt">65534</span><span class="o">(</span><span class="nt">nogroup</span><span class="o">)</span>
 <span class="err">虽然容器里是</span><span class="nt">root</span><span class="err">，但其实这个容器的</span><span class="o">/</span><span class="nt">bin</span><span class="o">/</span><span class="nt">bash</span><span class="err">进程是以一个普通用户</span><span class="nt">hchen</span><span class="err">来运行的。这样一来，我们容器的安全性会得到提高。</span>
 </pre></div>
@@ -684,8 +684,8 @@ ip netns exec <span class="cp">${</span><span class="n">container</span><span cl
 <p>让我们运行一下上篇中的那个pid.mnt的程序（也就是PID Namespace中那个mount proc的程序），然后不要退出。</p>
 <div class="highlight"><pre><span></span>$ sudo ./pid.mnt
 <span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for</span> hchen:
-Parent <span class="o">[</span> 4599<span class="o">]</span> - start a container!
-Container <span class="o">[</span>    1<span class="o">]</span> - inside the container!
+Parent <span class="o">[</span> <span class="m">4599</span><span class="o">]</span> - start a container!
+Container <span class="o">[</span>    <span class="m">1</span><span class="o">]</span> - inside the container!
 </pre></div>
 <p>我们到另一个shell中查看一下父子进程的PID：</p>
 <div class="highlight"><pre><span></span>hchen@ubuntu:~$ pstree -p 4599

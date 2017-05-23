@@ -122,6 +122,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework 用户手册(四)
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../../../../2017/04/01/Robot/" title="Robot Framework 用户手册(三)">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework 用户手册(三)
@@ -143,12 +149,6 @@
                             <a class="hide-overflow" href="../../../../2017/03/24/Robot/" title="Robot Framework快速入门">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework快速入门
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../../../../2017/03/22/itest/" title="Itest测试工具介绍">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Itest测试工具介绍
                             </a>
                         </li>
                     <li>
@@ -309,6 +309,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
+                            <span class="badge pull-right categorybadge">5</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -333,13 +340,6 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
-                            <span class="badge pull-right categorybadge">4</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -521,7 +521,7 @@ python http不支持压缩，httplib2支持</p>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">response</span><span class="o">.</span><span class="n">status</span> <span class="c1"># request()方法返回两个值，一个是httplib2.Response对象，包含了服务器返回的所有http头，另一个是status</span>
 <span class="mi">200</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">content</span><span class="p">[:</span><span class="mi">52</span><span class="p">]</span><span class="err">　　</span><span class="c1"># content变量包含了返回的数据</span>
-<span class="n">b</span><span class="s2">"&lt;?xml version='1.0' encoding='utf-8'?&gt;</span><span class="se">\r\n</span><span class="s2">&lt;feed xmlns="</span>
+<span class="sa">b</span><span class="s2">"&lt;?xml version='1.0' encoding='utf-8'?&gt;</span><span class="se">\r\n</span><span class="s2">&lt;feed xmlns="</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
 <span class="mi">3070</span>
 </pre></div>
@@ -584,7 +584,7 @@ False
 <span class="o">&gt;&gt;&gt;</span> <span class="n">h</span> <span class="o">=</span> <span class="n">httplib2</span><span class="o">.</span><span class="n">Http</span><span class="p">(</span><span class="s1">'.cache'</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">response</span><span class="p">,</span> <span class="n">content</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s1">'http://diveintopython3.org/'</span><span class="p">)</span> <span class="c1"># 第一次请求该页面，httplib2在请求时发出较少的头，没啥要处理的</span>
 <span class="n">connect</span><span class="p">:</span> <span class="p">(</span><span class="n">diveintopython3</span><span class="o">.</span><span class="n">org</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>
-<span class="n">send</span><span class="p">:</span> <span class="n">b</span><span class="s1">'GET / HTTP/1.1</span>
+<span class="n">send</span><span class="p">:</span> <span class="sa">b</span><span class="s1">'GET / HTTP/1.1</span>
 <span class="n">Host</span><span class="p">:</span> <span class="n">diveintopython3</span><span class="o">.</span><span class="n">org</span>
 <span class="n">accept</span><span class="o">-</span><span class="n">encoding</span><span class="p">:</span> <span class="n">deflate</span><span class="p">,</span> <span class="n">gzip</span>
 <span class="n">user</span><span class="o">-</span><span class="n">agent</span><span class="p">:</span> <span class="n">Python</span><span class="o">-</span><span class="n">httplib2</span><span class="o">/</span><span class="err">$</span><span class="n">Rev</span><span class="p">:</span> <span class="mi">259</span> <span class="err">$</span><span class="s1">'</span>
@@ -607,7 +607,7 @@ False
 
 <span class="o">&gt;&gt;&gt;</span> <span class="n">response</span><span class="p">,</span> <span class="n">content</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s1">'http://diveintopython3.org/'</span><span class="p">)</span><span class="c1"># 再次请求这个页面</span>
 <span class="n">connect</span><span class="p">:</span> <span class="p">(</span><span class="n">diveintopython3</span><span class="o">.</span><span class="n">org</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>
-<span class="n">send</span><span class="p">:</span> <span class="n">b</span><span class="s1">'GET / HTTP/1.1</span>
+<span class="n">send</span><span class="p">:</span> <span class="sa">b</span><span class="s1">'GET / HTTP/1.1</span>
 <span class="n">Host</span><span class="p">:</span> <span class="n">diveintopython3</span><span class="o">.</span><span class="n">org</span>
 <span class="k">if</span><span class="o">-</span><span class="n">none</span><span class="o">-</span><span class="n">match</span><span class="p">:</span> <span class="s2">"7f806d-1a01-9fb97900"</span><span class="err">　</span><span class="c1"># httplib2将Etag validator通过if-none-match头发送回服务器</span>
 <span class="k">if</span><span class="o">-</span><span class="n">modified</span><span class="o">-</span><span class="n">since</span><span class="p">:</span> <span class="n">Tue</span><span class="p">,</span> <span class="mo">02</span> <span class="n">Jun</span> <span class="mi">2009</span> <span class="mo">02</span><span class="p">:</span><span class="mi">51</span><span class="p">:</span><span class="mi">48</span> <span class="n">GMT</span> <span class="c1"># httplib2将Last-Modified validator通过if-modfied-since发送回服务器</span>
@@ -625,26 +625,26 @@ False
 </pre></div>
 <p><strong>HTTP2LIB处理压缩</strong></p>
 <p>http2lib支持deflate或gzip格式。</p>
-<div class="highlight"><pre><span></span><span class="x">&gt;&gt;&gt; response, content = h.request('http://diveintopython3.org/')</span>
-<span class="x">connect: (diveintopython3.org, 80)</span>
-<span class="x">send: b'GET / HTTP/1.1</span>
-<span class="x">Host: diveintopython3.org</span>
-<span class="x">accept-encoding: deflate, gzip </span><span class="err">#</span><span class="x"> 每次httplib2发送请求，都包含了accept-encoding头来告诉服务器它能处理的deflate或gzip压缩</span>
-<span class="x">user-agent: Python-httplib2/</span><span class="p">$</span><span class="nv">Rev</span><span class="x">: 259 </span><span class="p">$</span><span class="x">'</span>
-<span class="x">reply: 'HTTP/1.1 200 OK'</span>
-<span class="x">&gt;&gt;&gt; print(dict(response.items()))</span>
-<span class="err">{</span><span class="x">'-content-encoding': 'gzip',   </span><span class="err">#</span><span class="x"> 服务器返回了gzip压缩格式的数据</span>
-<span class="x"> 'accept-ranges': 'bytes',</span>
-<span class="x"> 'connection': 'close',</span>
-<span class="x"> 'content-length': '6657',</span>
-<span class="x"> 'content-location': 'http://diveintopython3.org/',</span>
-<span class="x"> 'content-type': 'text/html',</span>
-<span class="x"> 'date': 'Tue, 02 Jun 2009 03:26:54 GMT',</span>
-<span class="x"> 'etag': '"7f806d-1a01-9fb97900"',</span>
-<span class="x"> 'last-modified': 'Tue, 02 Jun 2009 02:51:48 GMT',</span>
-<span class="x"> 'server': 'Apache',</span>
-<span class="x"> 'status': '304',</span>
-<span class="x"> 'vary': 'Accept-Encoding,User-Agent'}</span>
+<div class="highlight"><pre><span></span>&gt;&gt;&gt; response, content = h.request('http://diveintopython3.org/')
+connect: (diveintopython3.org, 80)
+send: b'GET / HTTP/1.1
+Host: diveintopython3.org
+accept-encoding: deflate, gzip # 每次httplib2发送请求，都包含了accept-encoding头来告诉服务器它能处理的deflate或gzip压缩
+user-agent: Python-httplib2/$Rev: 259 $'
+reply: 'HTTP/1.1 200 OK'
+&gt;&gt;&gt; print(dict(response.items()))
+{'-content-encoding': 'gzip',   # 服务器返回了gzip压缩格式的数据
+ 'accept-ranges': 'bytes',
+ 'connection': 'close',
+ 'content-length': '6657',
+ 'content-location': 'http://diveintopython3.org/',
+ 'content-type': 'text/html',
+ 'date': 'Tue, 02 Jun 2009 03:26:54 GMT',
+ 'etag': '"7f806d-1a01-9fb97900"',
+ 'last-modified': 'Tue, 02 Jun 2009 02:51:48 GMT',
+ 'server': 'Apache',
+ 'status': '304',
+ 'vary': 'Accept-Encoding,User-Agent'}
 </pre></div>
 <p><strong>HTTPLIB2处理重定向</strong></p>
 <div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">httplib2</span>
@@ -652,12 +652,12 @@ False
 <span class="o">&gt;&gt;&gt;</span> <span class="n">h</span> <span class="o">=</span> <span class="n">httplib2</span><span class="o">.</span><span class="n">Http</span><span class="p">(</span><span class="s1">'.cache'</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">response</span><span class="p">,</span> <span class="n">content</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s1">'http://diveintopython3.org/examples/feed-302.xml'</span><span class="p">)</span>  <span class="c1"># 这个url没有feed,但设置让服务器发出一个正确的重定向</span>
 <span class="n">connect</span><span class="p">:</span> <span class="p">(</span><span class="n">diveintopython3</span><span class="o">.</span><span class="n">org</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>
-<span class="n">send</span><span class="p">:</span> <span class="n">b</span><span class="s1">'GET /examples/feed-302.xml HTTP/1.1 　# 请求</span>
+<span class="n">send</span><span class="p">:</span> <span class="sa">b</span><span class="s1">'GET /examples/feed-302.xml HTTP/1.1 　# 请求</span>
 <span class="n">Host</span><span class="p">:</span> <span class="n">diveintopython3</span><span class="o">.</span><span class="n">org</span>
 <span class="n">accept</span><span class="o">-</span><span class="n">encoding</span><span class="p">:</span> <span class="n">deflate</span><span class="p">,</span> <span class="n">gzip</span>
 <span class="n">user</span><span class="o">-</span><span class="n">agent</span><span class="p">:</span> <span class="n">Python</span><span class="o">-</span><span class="n">httplib2</span><span class="o">/</span><span class="err">$</span><span class="n">Rev</span><span class="p">:</span> <span class="mi">259</span> <span class="err">$</span><span class="s1">'</span>
 <span class="n">reply</span><span class="p">:</span> <span class="s1">'HTTP/1.1 302 Found'</span> <span class="c1"># 响应包含了一个Location头给出实际的URL</span>
-<span class="n">send</span><span class="p">:</span> <span class="n">b</span><span class="s1">'GET /examples/feed.xml HTTP/1.1 # httplib2立即跟随重定向，发出一个新的Location（包含正确的地址）</span>
+<span class="n">send</span><span class="p">:</span> <span class="sa">b</span><span class="s1">'GET /examples/feed.xml HTTP/1.1 # httplib2立即跟随重定向，发出一个新的Location（包含正确的地址）</span>
 <span class="n">Host</span><span class="p">:</span> <span class="n">diveintopython3</span><span class="o">.</span><span class="n">org</span>
 <span class="n">accept</span><span class="o">-</span><span class="n">encoding</span><span class="p">:</span> <span class="n">deflate</span><span class="p">,</span> <span class="n">gzip</span>
 <span class="n">user</span><span class="o">-</span><span class="n">agent</span><span class="p">:</span> <span class="n">Python</span><span class="o">-</span><span class="n">httplib2</span><span class="o">/</span><span class="err">$</span><span class="n">Rev</span><span class="p">:</span> <span class="mi">259</span> <span class="err">$</span><span class="s1">'</span>
@@ -680,52 +680,52 @@ False
  <span class="s1">'content-type'</span><span class="p">:</span> <span class="s1">'application/xml'</span><span class="p">}</span>
 </pre></div>
 <p>你得到的response给了你最终URL的相关信息，如果希望那些最后重定向到最终URL中间的URL的信息呢？</p>
-<div class="highlight"><pre><span></span><span class="x">&gt;&gt;&gt; response.previous </span><span class="err">#</span><span class="x"> response.previous 属性持有前一个响应对象的引用</span>
-<span class="err">{</span><span class="x">'status': '302',</span>
-<span class="x"> 'content-length': '228',</span>
-<span class="x"> 'content-location': 'http://diveintopython3.org/examples/feed-302.xml',</span>
-<span class="x"> 'expires': 'Thu, 04 Jun 2009 02:21:41 GMT',</span>
-<span class="x"> 'server': 'Apache',</span>
-<span class="x"> 'connection': 'close',</span>
-<span class="x"> 'location': 'http://diveintopython3.org/examples/feed.xml',</span>
-<span class="x"> 'cache-control': 'max-age=86400',</span>
-<span class="x"> 'date': 'Wed, 03 Jun 2009 02:21:41 GMT',</span>
-<span class="x"> 'content-type': 'text/html; charset=iso-8859-1'}</span>
-<span class="x">&gt;&gt;&gt; type(response)  </span><span class="err">#</span><span class="x"> response和response.previous都是httplib2.Response对象</span>
-<span class="x">&lt;class 'httplib2.Response'&gt;</span>
-<span class="x">&gt;&gt;&gt; type(response.previous)</span>
-<span class="x">&lt;class 'httplib2.Response'&gt;</span>
-<span class="x">&gt;&gt;&gt; response.previous.previous  </span><span class="err">#</span><span class="x"> 如果重定向多次，该方法可以追溯</span>
-<span class="x">&gt;&gt;&gt;</span>
+<div class="highlight"><pre><span></span>&gt;&gt;&gt; response.previous # response.previous 属性持有前一个响应对象的引用
+{'status': '302',
+ 'content-length': '228',
+ 'content-location': 'http://diveintopython3.org/examples/feed-302.xml',
+ 'expires': 'Thu, 04 Jun 2009 02:21:41 GMT',
+ 'server': 'Apache',
+ 'connection': 'close',
+ 'location': 'http://diveintopython3.org/examples/feed.xml',
+ 'cache-control': 'max-age=86400',
+ 'date': 'Wed, 03 Jun 2009 02:21:41 GMT',
+ 'content-type': 'text/html; charset=iso-8859-1'}
+&gt;&gt;&gt; type(response)  # response和response.previous都是httplib2.Response对象
+&lt;class 'httplib2.Response'&gt;
+&gt;&gt;&gt; type(response.previous)
+&lt;class 'httplib2.Response'&gt;
+&gt;&gt;&gt; response.previous.previous  # 如果重定向多次，该方法可以追溯
+&gt;&gt;&gt;
 
-<span class="x">&gt;&gt;&gt; response2, content2 = h.request('http://diveintopython3.org/examples/feed-302.xml')  </span><span class="err">#</span><span class="x"> 同一个URL,同一个httplib2.Http对象</span>
-<span class="x">connect: (diveintopython3.org, 80)</span>
-<span class="x">send: b'GET /examples/feed-302.xml HTTP/1.1 </span><span class="err">#</span><span class="x"> 302影响没有缓存，所以httplib2对同一个URL再一次发送请求</span>
-<span class="x">Host: diveintopython3.org</span>
-<span class="x">accept-encoding: deflate, gzip</span>
-<span class="x">user-agent: Python-httplib2/</span><span class="p">$</span><span class="nv">Rev</span><span class="x">: 259 </span><span class="p">$</span><span class="x">'</span>
-<span class="x">reply: 'HTTP/1.1 302 Found' </span><span class="err">#</span><span class="x"> 再一次，返回302.但是没有继续进行。一旦httplib2收到302Found状态码，再发送新的请求前检查都缓存数据仍然可用</span>
-<span class="x">&gt;&gt;&gt; content2 == content </span>
-<span class="x">True</span>
+&gt;&gt;&gt; response2, content2 = h.request('http://diveintopython3.org/examples/feed-302.xml')  # 同一个URL,同一个httplib2.Http对象
+connect: (diveintopython3.org, 80)
+send: b'GET /examples/feed-302.xml HTTP/1.1 # 302影响没有缓存，所以httplib2对同一个URL再一次发送请求
+Host: diveintopython3.org
+accept-encoding: deflate, gzip
+user-agent: Python-httplib2/$Rev: 259 $'
+reply: 'HTTP/1.1 302 Found' # 再一次，返回302.但是没有继续进行。一旦httplib2收到302Found状态码，再发送新的请求前检查都缓存数据仍然可用
+&gt;&gt;&gt; content2 == content 
+True
 </pre></div>
 <p>永久重定向</p>
-<div class="highlight"><pre><span></span><span class="x">&gt;&gt;&gt; response, content = h.request('http://diveintopython3.org/examples/feed-301.xml') </span><span class="err">#</span><span class="x"> 请求一个不存在的URL,设置服务器执行一个永久重定向到正确URL</span>
-<span class="x">connect: (diveintopython3.org, 80)</span>
-<span class="x">send: b'GET /examples/feed-301.xml HTTP/1.1</span>
-<span class="x">Host: diveintopython3.org</span>
-<span class="x">accept-encoding: deflate, gzip</span>
-<span class="x">user-agent: Python-httplib2/</span><span class="p">$</span><span class="nv">Rev</span><span class="x">: 259 </span><span class="p">$</span><span class="x">'</span>
-<span class="x">reply: 'HTTP/1.1 301 Moved Permanently' </span><span class="err">#</span><span class="x"> 状态码301,但是再次注意什么没发生，因为本地已缓存</span>
-<span class="x">&gt;&gt;&gt; response.fromcache          　</span><span class="err">#</span><span class="x"> httplib2跟随重定向到缓存里</span>
-<span class="x">True</span>
+<div class="highlight"><pre><span></span>&gt;&gt;&gt; response, content = h.request('http://diveintopython3.org/examples/feed-301.xml') # 请求一个不存在的URL,设置服务器执行一个永久重定向到正确URL
+connect: (diveintopython3.org, 80)
+send: b'GET /examples/feed-301.xml HTTP/1.1
+Host: diveintopython3.org
+accept-encoding: deflate, gzip
+user-agent: Python-httplib2/$Rev: 259 $'
+reply: 'HTTP/1.1 301 Moved Permanently' # 状态码301,但是再次注意什么没发生，因为本地已缓存
+&gt;&gt;&gt; response.fromcache          　# httplib2跟随重定向到缓存里
+True
 
 
-<span class="err">#</span><span class="x"> continued from the previous example</span>
-<span class="x">&gt;&gt;&gt; response2, content2 = h.request('http://diveintopython3.org/examples/feed-301.xml') </span><span class="err">#</span><span class="x"> 这是临时和永久重定向的区别：一旦httplib2跟随了一个永久的重定向，后续的都会到定向的URL</span>
-<span class="x">&gt;&gt;&gt; response2.fromcache                                                                 </span><span class="err">#</span><span class="x"> 数据从本地缓存获取</span>
-<span class="x">True</span>
-<span class="x">&gt;&gt;&gt; content2 == content</span>
-<span class="x">True</span>
+# continued from the previous example
+&gt;&gt;&gt; response2, content2 = h.request('http://diveintopython3.org/examples/feed-301.xml') # 这是临时和永久重定向的区别：一旦httplib2跟随了一个永久的重定向，后续的都会到定向的URL
+&gt;&gt;&gt; response2.fromcache                                                                 # 数据从本地缓存获取
+True
+&gt;&gt;&gt; content2 == content
+True
 </pre></div>
 <p><strong>HTTP GET之外</strong></p>
 <p>HTTP web服务不限于GET请求。当你要修改服务器上的数据时，就需要POST请求。再发布前，需要进行身份的验证，httplib2支持SSL和HTTP Basic Authentication.

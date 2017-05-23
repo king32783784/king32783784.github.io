@@ -122,6 +122,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework 用户手册(四)
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../../../../2017/04/01/Robot/" title="Robot Framework 用户手册(三)">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework 用户手册(三)
@@ -143,12 +149,6 @@
                             <a class="hide-overflow" href="../../../../2017/03/24/Robot/" title="Robot Framework快速入门">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework快速入门
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../../../../2017/03/22/itest/" title="Itest测试工具介绍">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Itest测试工具介绍
                             </a>
                         </li>
                     <li>
@@ -309,6 +309,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
+                            <span class="badge pull-right categorybadge">5</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -333,13 +340,6 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
-                            <span class="badge pull-right categorybadge">4</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -471,10 +471,10 @@
 <p>选择默认的内容进行安装，直至完成。默认的安装路径会是/SPECjvm2008</p>
 <h5 id="23diao-shi">2.3调试</h5>
 <p>在/etc/profile中加入环境变量</p>
-<div class="highlight"><pre><span></span><span class="x">JAVA_HOME=/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0/</span>
-<span class="x">CLASSPATH=.：</span><span class="p">$</span><span class="nv">JAVA_HOME</span><span class="x">/lib/tools.jar：/lib.dt.jar</span>
-<span class="x">PATH=</span><span class="p">$</span><span class="nv">JAVA_HOME</span><span class="x">/bin：</span><span class="p">$</span><span class="nv">PATH</span><span class="x"></span>
-<span class="x">export JAVA_HOME CLASSPATH PATH</span>
+<div class="highlight"><pre><span></span>JAVA_HOME=/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0/
+CLASSPATH=.：$JAVA_HOME/lib/tools.jar：/lib.dt.jar
+PATH=$JAVA_HOME/bin：$PATH
+export JAVA_HOME CLASSPATH PATH
 </pre></div>
 <p>保存后，执行 source /etc/profile即可。</p>
 <p>安装目录下有一个脚本，linux对应的是run-specjvm.sh，windows对应的是 run-specjvm.cmd</p>

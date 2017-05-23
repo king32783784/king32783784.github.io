@@ -122,6 +122,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework 用户手册(四)
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../../../../2017/04/01/Robot/" title="Robot Framework 用户手册(三)">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework 用户手册(三)
@@ -143,12 +149,6 @@
                             <a class="hide-overflow" href="../../../../2017/03/24/Robot/" title="Robot Framework快速入门">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework快速入门
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../../../../2017/03/22/itest/" title="Itest测试工具介绍">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Itest测试工具介绍
                             </a>
                         </li>
                     <li>
@@ -309,6 +309,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
+                            <span class="badge pull-right categorybadge">5</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -333,13 +340,6 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
-                            <span class="badge pull-right categorybadge">4</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -958,7 +958,7 @@ generate text.g -$(subst output,,$@) &gt; $@
 
 <span class="err">emacs</span> <span class="err">-f</span> <span class="err">batch-byte-compile</span> <span class="k">$&lt;</span>
 
-<span class="k">$(</span><span class="nv">filter</span> %.<span class="nv">o</span>,<span class="k">$</span>(<span class="nv">files</span><span class="k">)</span><span class="err">)表示调用Makefile的filter函数，过滤“$filter”集，只要其中模式为“%.o”的内容。其的它内容，我就不用多说了吧。这个例字展示了Makefile中更大的弹性。</span>
+<span class="k">$(</span><span class="nv">filter</span> %.<span class="nv">o</span>,<span class="k">$(</span><span class="nv">files</span><span class="k">))</span><span class="err">表示调用Makefile的filter函数，过滤“$filter”集，只要其中模式为“%.o”的内容。其的它内容，我就不用多说了吧。这个例字展示了Makefile中更大的弹性。</span>
 </pre></div>
 <h5 id="8-zi-dong-sheng-cheng-yi-lai-xing">8、自动生成依赖性</h5>
 <p>在Makefile中，我们的依赖关系可能会需要包含一系列的头文件，比如，如果我们的main.c中有一句“#include "defs.h"”，那么我们的依赖关系应该是：</p>
@@ -1297,13 +1297,13 @@ a := $($($(z)))
 </pre></div>
 <p>这个例子中，“<span class="math">\((\)</span>(<span class="math">\((z)))”扩展为“\)</span>(<span class="math">\((y))”，而其再次被扩展为“\)</span>(<span class="math">\((subst 1,2,\)</span>(x)))”。<span class="math">\((x)的值是“variable1”，subst函数把“variable1”中的所有“1”字串替换成“2”字串，于是，“variable1”变成“variable2”，再取其值，所以，最终，\)</span>(a)的值就是$(variable2)的值—— “Hello”。（喔，好不容易）</p>
 <p>在这种方式中，或要可以使用多个变量来组成一个变量的名字，然后再取其值：</p>
-<div class="highlight"><pre><span></span><span class="x">first_second = Hello</span>
+<div class="highlight"><pre><span></span>first_second = Hello
 
-<span class="x">a = first</span>
+a = first
 
-<span class="x">b = second</span>
+b = second
 
-<span class="x">all = </span><span class="p">$($</span><span class="nv">a_</span><span class="p">$</span><span class="nv">b</span><span class="p">)</span><span class="x"></span>
+all = $($a_$b)
 </pre></div>
 <p>这里的“<span class="math">\(a_\)</span>b”组成了“first_second”，于是，$(all)的值就是“Hello”。</p>
 <p>再来看看结合第一种技术的例子：</p>
@@ -1681,8 +1681,8 @@ $(sort &lt;list&gt; )
 <div class="highlight"><pre><span></span>$(wordlist &lt;s&gt;,&lt;e&gt;,&lt;text&gt; )
 </pre></div>
 <p>名称：取单词串函数——wordlist。</p>
-<p>功能：从字符串<text>中取从<s>开始到<e>的单词串。<s>和<e>是一个数字。</e></s></e></s></text></p>
-<p>返回：返回字符串<text>中从<s>到<e>的单词字串。如果<s>比<text>中的单词数要大，那么返回空字符串。如果<e>大于<text>的单词数，那么返回从<s>开始，到<text>结束的单词串。</text></s></text></e></text></s></e></s></text></p>
+<p>功能：从字符串<text>中取从<s>开始到<e>的单词串。<s>和<e>是一个数字。</e></s></e></s></text></p><s><s>
+<p>返回：返回字符串<text>中从<s>到<e>的单词字串。如果<s>比<text>中的单词数要大，那么返回空字符串。如果<e>大于<text>的单词数，那么返回从<s>开始，到<text>结束的单词串。</text></s></text></e></text></s></e></s></text></p><s><s><s>
 <p>示例： $(wordlist 2, 3, foo bar baz)返回值是“bar baz”。</p>
 <div class="highlight"><pre><span></span>$(words &lt;text&gt; )
 </pre></div>
@@ -1936,8 +1936,8 @@ endif
 <p>“-B”</p>
 <p>“--always-make”</p>
 <p>认为所有的目标都需要更新（重编译）。</p>
-<p>“-C </p><dir>”</dir><p></p>
-<p>“--directory=</p><dir>”</dir><p></p>
+<p>“-C </p><dir>”<p></p>
+<p>“--directory=</p><dir>”<p></p>
 <p>指定读取makefile的目录。如果有多个“-C”参数，make的解释是后面的路径以前面的作为相对路径，并以最后的目录作为被指定目录。如：“make –C ~hchen/test –C prog”等价于“make –C ~hchen/test/prog”。</p>
 <p>“—debug[=<options>]”</options></p>
 <p>输出make的调试信息。它有几种不同的级别可供选择，如果没有参数，那就是输出最简单的调试信息。下面是<options>的取值：</options></p>
@@ -1962,8 +1962,8 @@ endif
 <p>“-i”</p>
 <p>“--ignore-errors”</p>
 <p>在执行时忽略所有的错误。</p>
-<p>“-I </p><dir>”</dir><p></p>
-<p>“--include-dir=</p><dir>”</dir><p></p>
+<p>“-I </p><dir>”<p></p>
+<p>“--include-dir=</p><dir>”<p></p>
 <p>指定一个被包含makefile的搜索目标。可以使用多个“-I”参数来指定多个目录。</p>
 <p>“-j [<jobsnum>]”</jobsnum></p>
 <p>“--jobs[=<jobsnum>]”</jobsnum></p>
@@ -2378,7 +2378,7 @@ rm -f bar.o
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +
@@ -2414,7 +2414,7 @@ rm -f bar.o
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-</script></body>
+</script></dir></dir></dir></dir></s></s></s></s></s></body>
                 </div>
                 <footer class="text-right">
                     <p>by others</p>

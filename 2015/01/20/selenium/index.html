@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="李鹏" />
         <meta name="keywords" content="Selenium" />
-        <meta name="description" content="Alert 警告相关的实现 class selenium.webdriver.common.alert.Alert(driver) Bases: object 允许使用alerts. 使用这个类作为与alert互动的接口。它包括dismissing(忽略），accepting(接受），inputting（输入）和获取警告提示的文本信息的方法。 接受／忽略警报信息： Alert(driver).accpet() Alert(driver).dismiss() 往警报信息中输入： name_prompt = Alert(driver)name_prompt.send_keys(&#34;Willian Shakesphere&#34;) name_prompt.accept() 读取警报信息作为验证： alert_text = Alert(driver).text self.assertEqual(&#34;Do you wish to quit ..." />
+        <meta name="description" content="Alert 警告相关的实现 class selenium.webdriver.common.alert.Alert(driver) Bases: object 允许使用alerts. 使用这个类作为与alert互动的接口。它包括dismissing(忽略），accepting(接受），inputting（输入）和获取警告提示的文本信息的方法。 接受／忽略警报信息： Alert(driver).accpet() Alert(driver).dismiss() 往警报信息中输入： name_prompt = Alert(driver)name_prompt.send_keys(&#34;Willian Shakesphere&#34;) name_prompt.accept() 读取警报信息作为验证： alert_text = Alert(driver).text self.assertEqual(&#34;Do ..." />
 
 <!-- Open Graph tags -->
 <meta property="og:site_name" content="路漫求索"/>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="selenium-API-2"/>
     <meta property="og:url" content="../../../../2015/01/20/selenium/"/>
-    <meta property="og:description" content="Alert 警告相关的实现 class selenium.webdriver.common.alert.Alert(driver) Bases: object 允许使用alerts. 使用这个类作为与alert互动的接口。它包括dismissing(忽略），accepting(接受），inputting（输入）和获取警告提示的文本信息的方法。 接受／忽略警报信息： Alert(driver).accpet() Alert(driver).dismiss() 往警报信息中输入： name_prompt = Alert(driver)name_prompt.send_keys(&#34;Willian Shakesphere&#34;) name_prompt.accept() 读取警报信息作为验证： alert_text = Alert(driver).text self.assertEqual(&#34;Do you wish to quit ..."/>
+    <meta property="og:description" content="Alert 警告相关的实现 class selenium.webdriver.common.alert.Alert(driver) Bases: object 允许使用alerts. 使用这个类作为与alert互动的接口。它包括dismissing(忽略），accepting(接受），inputting（输入）和获取警告提示的文本信息的方法。 接受／忽略警报信息： Alert(driver).accpet() Alert(driver).dismiss() 往警报信息中输入： name_prompt = Alert(driver)name_prompt.send_keys(&#34;Willian Shakesphere&#34;) name_prompt.accept() 读取警报信息作为验证： alert_text = Alert(driver).text self.assertEqual(&#34;Do ..."/>
     <meta property="article:published_time" content="2015-01-20" />
     <meta property="article:section" content="自动化测试-Selenium" />
         <meta property="article:tag" content="Selenium" />
@@ -122,6 +122,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework 用户手册(四)
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../../../../2017/04/01/Robot/" title="Robot Framework 用户手册(三)">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework 用户手册(三)
@@ -143,12 +149,6 @@
                             <a class="hide-overflow" href="../../../../2017/03/24/Robot/" title="Robot Framework快速入门">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework快速入门
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../../../../2017/03/22/itest/" title="Itest测试工具介绍">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Itest测试工具介绍
                             </a>
                         </li>
                     <li>
@@ -309,6 +309,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
+                            <span class="badge pull-right categorybadge">5</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -333,13 +340,6 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
-                            <span class="badge pull-right categorybadge">4</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -457,39 +457,39 @@
                 <div class="entry-content">
                     <body><h3 id="alert">Alert</h3>
 <p>警告相关的实现</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">selenium</span>.<span class="n">webdriver</span>.<span class="n">common</span>.<span class="n">alert</span>.<span class="n">Alert</span>(<span class="n">driver</span>)
-    <span class="n">Bases:</span> <span class="n">object</span>
-    <span class="n">允许使用alerts</span>.
-    <span class="n">使用这个类作为与alert互动的接口</span>。<span class="n">它包括dismissing</span>(<span class="n">忽略</span>），<span class="n">accepting</span>(<span class="n">接受</span>），<span class="n">inputting</span>（<span class="n">输入</span>）<span class="n">和获取警告提示的文本信息的方法</span>。
-    <span class="n">接受</span>／<span class="n">忽略警报信息</span>：
-        <span class="n">Alert</span>(<span class="n">driver</span>).<span class="n">accpet</span>()
-        <span class="n">Alert</span>(<span class="n">driver</span>).<span class="n">dismiss</span>()
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">selenium</span><span class="p">.</span><span class="nx">webdriver</span><span class="p">.</span><span class="nx">common</span><span class="p">.</span><span class="nx">alert</span><span class="p">.</span><span class="nx">Alert</span><span class="p">(</span><span class="nx">driver</span><span class="p">)</span>
+    <span class="nx">Bases</span>: <span class="kt">object</span>
+    <span class="err">允许使用</span><span class="nx">alerts</span><span class="p">.</span>
+    <span class="err">使用这个类作为与</span><span class="nx">alert</span><span class="err">互动的接口。它包括</span><span class="nx">dismissing</span><span class="p">(</span><span class="err">忽略），</span><span class="nx">accepting</span><span class="p">(</span><span class="err">接受），</span><span class="nx">inputting</span><span class="err">（输入）和获取警告提示的文本信息的方法。</span>
+    <span class="err">接受／忽略警报信息：</span>
+        <span class="nx">Alert</span><span class="p">(</span><span class="nx">driver</span><span class="p">).</span><span class="nx">accpet</span><span class="p">()</span>
+        <span class="nx">Alert</span><span class="p">(</span><span class="nx">driver</span><span class="p">).</span><span class="nx">dismiss</span><span class="p">()</span>
 
-    <span class="n">往警报信息中输入</span>：
-        <span class="n">name_prompt</span> = <span class="n">Alert</span>(<span class="n">driver</span>)<span class="n">name_prompt</span>.<span class="n">send_keys</span>(<span class="s">"Willian Shakesphere"</span>)
-        <span class="n">name_prompt</span>.<span class="n">accept</span>()
+    <span class="err">往警报信息中输入：</span>
+        <span class="nx">name_prompt</span> <span class="o">=</span> <span class="nx">Alert</span><span class="p">(</span><span class="nx">driver</span><span class="p">)</span><span class="nx">name_prompt</span><span class="p">.</span><span class="nx">send_keys</span><span class="p">(</span><span class="s2">"Willian Shakesphere"</span><span class="p">)</span>
+        <span class="nx">name_prompt</span><span class="p">.</span><span class="nx">accept</span><span class="p">()</span>
 
-    <span class="n">读取警报信息作为验证</span>：
-        <span class="n">alert_text</span> = <span class="n">Alert</span>(<span class="n">driver</span>).<span class="n">text</span> <span class="k">self</span>.<span class="n">assertEqual</span>(<span class="s">"Do you wish to quit?"</span>, <span class="n">alert_text</span>)
+    <span class="err">读取警报信息作为验证：</span>
+        <span class="nx">alert_text</span> <span class="o">=</span> <span class="nx">Alert</span><span class="p">(</span><span class="nx">driver</span><span class="p">).</span><span class="nx">text</span> <span class="nx">self</span><span class="p">.</span><span class="nx">assertEqual</span><span class="p">(</span><span class="s2">"Do you wish to quit?"</span><span class="p">,</span> <span class="nx">alert_text</span><span class="p">)</span>
 
-    <span class="n">accept</span>()
-        <span class="n">接受可用的警报信息</span>
-        <span class="n">Usage::</span> <span class="n">Alert</span>(<span class="n">driver</span>).<span class="n">accept</span>() <span class="c c-Singleline"># 确认一个警告提示框</span>
+    <span class="nx">accept</span><span class="p">()</span>
+        <span class="err">接受可用的警报信息</span>
+        <span class="nx">Usage</span><span class="o">::</span> <span class="nx">Alert</span><span class="p">(</span><span class="nx">driver</span><span class="p">).</span><span class="nx">accept</span><span class="p">()</span> <span class="err">#</span> <span class="err">确认一个警告提示框</span>
 
-    <span class="n">authenticate</span>(<span class="n">username</span>, <span class="n">password</span>)
-        <span class="n">发送用户名</span>／<span class="n">密码到身份验证框</span>（<span class="n">例如Basic</span> <span class="n">HTTP</span> <span class="n">Auth</span>),<span class="n">隐性发送</span>“<span class="n">clicks</span> <span class="nb">ok</span>"
-        <span class="n">用法::</span> <span class="n">driver</span>.<span class="n">switch_to</span>.<span class="n">alert</span>.<span class="n">authenticate</span>(<span class="s">'cheese'</span>, <span class="s">'secretGouda'</span>)
-        <span class="n">参数</span>：　－<span class="n">username:</span> <span class="n">用户名对话框的字符串</span>　-<span class="n">password:</span>　<span class="n">密码对话框的字符串</span>
+    <span class="nx">authenticate</span><span class="p">(</span><span class="nx">username</span><span class="p">,</span> <span class="nx">password</span><span class="p">)</span>
+        <span class="err">发送用户名／密码到身份验证框（例如</span><span class="nx">Basic</span> <span class="nx">HTTP</span> <span class="nx">Auth</span><span class="p">),</span><span class="err">隐性发送“</span><span class="nx">clicks</span> <span class="nx">ok</span><span class="err">"</span>
+        <span class="err">用法</span><span class="o">::</span> <span class="nx">driver</span><span class="p">.</span><span class="nx">switch_to</span><span class="p">.</span><span class="nx">alert</span><span class="p">.</span><span class="nx">authenticate</span><span class="p">(</span><span class="s1">'cheese'</span><span class="p">,</span> <span class="s1">'secretGouda'</span><span class="p">)</span>
+        <span class="err">参数：　－</span><span class="nx">username</span><span class="o">:</span> <span class="err">用户名对话框的字符串　</span><span class="o">-</span><span class="nx">password</span><span class="o">:</span><span class="err">　密码对话框的字符串</span>
 
-    <span class="n">dismiss</span>()
-        <span class="n">忽略警报</span>
+    <span class="nx">dismiss</span><span class="p">()</span>
+        <span class="err">忽略警报</span>
 
-    <span class="n">send_keys</span>(<span class="n">keysToSend</span>)
-        <span class="n">向Alert发送键</span>
-        <span class="n">Aargs:</span> *<span class="n">keysToSend:</span> <span class="n">发送给Alert的文本</span>
+    <span class="nx">send_keys</span><span class="p">(</span><span class="nx">keysToSend</span><span class="p">)</span>
+        <span class="err">向</span><span class="nx">Alert</span><span class="err">发送键</span>
+        <span class="nx">Aargs</span><span class="o">:</span> <span class="o">*</span><span class="nx">keysToSend</span><span class="o">:</span> <span class="err">发送给</span><span class="nx">Alert</span><span class="err">的文本</span>
 
-    <span class="n">text</span>
-        <span class="n">获取警报的文本</span>
+    <span class="nx">text</span>
+        <span class="err">获取警报的文本</span>
 </pre></div>
 <h3 id="te-shu-jian">特殊键</h3>
 <p>该键实现如下
@@ -563,24 +563,24 @@
 </pre></div>
 <h3 id="ding-wei-yuan-su">定位元素</h3>
 <p>有很多特征可以用于元素定位，实现如下：</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">selenium</span>.<span class="n">webdriver</span>.<span class="n">common</span>.<span class="nb">by</span>.<span class="n">By</span>
-    <span class="n">Bases:object</span>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">selenium</span><span class="p">.</span><span class="nx">webdriver</span><span class="p">.</span><span class="nx">common</span><span class="p">.</span><span class="nx">by</span><span class="p">.</span><span class="nx">By</span>
+    <span class="nx">Bases</span>:<span class="kt">object</span>
 
-    <span class="n">CLASS_NAME</span>=<span class="s">'class name'</span>
+    <span class="nx">CLASS_NAME</span><span class="o">=</span><span class="s1">'class name'</span>
 
-    <span class="n">CSS_SELECTOR</span>=<span class="s">'css selector'</span>
+    <span class="nx">CSS_SELECTOR</span><span class="o">=</span><span class="s1">'css selector'</span>
 
-    <span class="n">ID</span>=<span class="s">'id'</span>
+    <span class="nx">ID</span><span class="o">=</span><span class="s1">'id'</span>
 
-    <span class="n">LINK_TEXT</span>=<span class="s">'link text'</span>
+    <span class="nx">LINK_TEXT</span><span class="o">=</span><span class="s1">'link text'</span>
 
-    <span class="n">NAME</span>=<span class="s">'name'</span>
+    <span class="nx">NAME</span><span class="o">=</span><span class="s1">'name'</span>
 
-    <span class="n">PARTIAL_LINK_TEXT</span>=<span class="s">'partial link text'</span>
+    <span class="nx">PARTIAL_LINK_TEXT</span><span class="o">=</span><span class="s1">'partial link text'</span>
 
-    <span class="n">TAG_NAME</span>=<span class="s">'tag name'</span>
+    <span class="nx">TAG_NAME</span><span class="o">=</span><span class="s1">'tag name'</span>
 
-    <span class="n">XPATH</span>=<span class="s">'xpath'</span>
+    <span class="nx">XPATH</span><span class="o">=</span><span class="s1">'xpath'</span>
 </pre></div>
 <h3 id="desired-capabilities">Desired Capabilities</h3>
 <p>Desired Capabilities实现如下：</p>
@@ -673,35 +673,35 @@ selenium.webdriver.common.utils.join_host_port(host, port)
         处理元素键入的值
 </pre></div>
 <h3 id="firefox-webdriver">Firefox WebDriver</h3>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">selenium</span>.<span class="n">webdriver</span>.<span class="n">firefox</span>.<span class="n">webdriver</span>.<span class="n">WebDriver</span>(<span class="n">firefox_profile</span>=<span class="n">None</span>, <span class="n">firefox_binary</span>=<span class="n">None</span>,
-<span class="n">timeout</span>=<span class="mi">30</span>, <span class="n">capabilities</span>=<span class="n">None</span>, <span class="n">proxy</span>=<span class="n">None</span>, <span class="n">executable_path</span>=<span class="s">'wires'</span>, <span class="n">firefox_options</span>=<span class="n">None</span>)
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">selenium</span><span class="p">.</span><span class="nx">webdriver</span><span class="p">.</span><span class="nx">firefox</span><span class="p">.</span><span class="nx">webdriver</span><span class="p">.</span><span class="nx">WebDriver</span><span class="p">(</span><span class="nx">firefox_profile</span><span class="o">=</span><span class="nx">None</span><span class="p">,</span> <span class="nx">firefox_binary</span><span class="o">=</span><span class="nx">None</span><span class="p">,</span>
+<span class="nx">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="nx">capabilities</span><span class="o">=</span><span class="nx">None</span><span class="p">,</span> <span class="nx">proxy</span><span class="o">=</span><span class="nx">None</span><span class="p">,</span> <span class="nx">executable_path</span><span class="o">=</span><span class="s1">'wires'</span><span class="p">,</span> <span class="nx">firefox_options</span><span class="o">=</span><span class="nx">None</span><span class="p">)</span>
 
-    <span class="n">Base:</span> <span class="n">selenium</span>.<span class="n">webdriver</span>.<span class="n">remote</span>.<span class="n">webdriver</span>.<span class="n">WebDriver</span>
-    <span class="n">quit</span>()
-       <span class="n">退出driver并每一个相关窗口</span>
+    <span class="nx">Base</span>: <span class="kt">selenium.webdriver.remote.webdriver.WebDriver</span>
+    <span class="nx">quit</span><span class="p">()</span>
+       <span class="err">退出</span><span class="nx">driver</span><span class="err">并每一个相关窗口</span>
 
-    <span class="n">set_context</span>(<span class="nb">context</span>)
+    <span class="nx">set_context</span><span class="p">(</span><span class="nx">context</span><span class="p">)</span>
 
-    <span class="n">NATIVE_EVENTS_ALLOWED</span>=<span class="nb">True</span>
+    <span class="nx">NATIVE_EVENTS_ALLOWED</span><span class="o">=</span><span class="nx">True</span>
 
-    <span class="n">firefox_profile</span>
+    <span class="nx">firefox_profile</span>
 </pre></div>
 <h4 id="chrome-webdriver">Chrome WebDriver</h4>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">selenium</span>.<span class="n">webdriver</span>.<span class="n">chrome</span>.<span class="n">webdriver</span>.<span class="n">WebDriver</span>(<span class="n">executable_path</span>=<span class="s">'chromedriver'</span>, <span class="n">prot</span>=<span class="mi">0</span>,
-<span class="n">chrome_options</span>=<span class="n">None</span>, <span class="n">service_args</span>=<span class="n">None</span>, <span class="n">desired_capabilities</span>=<span class="n">None</span>, <span class="n">service_log_path</span>=<span class="n">None</span>)
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">selenium</span><span class="p">.</span><span class="nx">webdriver</span><span class="p">.</span><span class="nx">chrome</span><span class="p">.</span><span class="nx">webdriver</span><span class="p">.</span><span class="nx">WebDriver</span><span class="p">(</span><span class="nx">executable_path</span><span class="o">=</span><span class="s1">'chromedriver'</span><span class="p">,</span> <span class="nx">prot</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="nx">chrome_options</span><span class="o">=</span><span class="nx">None</span><span class="p">,</span> <span class="nx">service_args</span><span class="o">=</span><span class="nx">None</span><span class="p">,</span> <span class="nx">desired_capabilities</span><span class="o">=</span><span class="nx">None</span><span class="p">,</span> <span class="nx">service_log_path</span><span class="o">=</span><span class="nx">None</span><span class="p">)</span>
 
-    <span class="n">Bases:</span> <span class="n">selenium</span>.<span class="n">webdriver</span>.<span class="n">remote</span>.<span class="n">webdriver</span>.<span class="n">WebDriver</span>
+    <span class="nx">Bases</span>: <span class="kt">selenium.webdriver.remote.webdriver.WebDriver</span>
 
-    <span class="n">控制ChromeDriver</span>,<span class="n">并允许drive</span>　<span class="n">browser</span>.
-    <span class="n">Chromedriver下载地址</span>[<span class="n">http:</span>//<span class="n">chromedriver</span>.<span class="n">storage</span>.<span class="n">googleapis</span>.<span class="n">com</span><span class="o">/</span><span class="nb">index</span>.<span class="n">html</span>](<span class="n">http:</span>//<span class="n">chromedriver</span>.<span class="n">storage</span>.<span class="n">googleapis</span>.<span class="n">com</span><span class="o">/</span><span class="nb">index</span>.<span class="n">html</span>)
+    <span class="err">控制</span><span class="nx">ChromeDriver</span><span class="p">,</span><span class="err">并允许</span><span class="nx">drive</span><span class="err">　</span><span class="nx">browser</span><span class="p">.</span>
+    <span class="nx">Chromedriver</span><span class="err">下载地址</span><span class="p">[</span><span class="nx">http</span><span class="o">:</span><span class="c1">//chromedriver.storage.googleapis.com/index.html](http://chromedriver.storage.googleapis.com/index.html)</span>
 
-    <span class="n">create_options</span>()
+    <span class="nx">create_options</span><span class="p">()</span>
 
-    <span class="n">launch_app</span>(<span class="n">id</span>)
-       <span class="n">启动由id指定的Chrome</span> <span class="n">app</span>.
+    <span class="nx">launch_app</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span>
+       <span class="err">启动由</span><span class="nx">id</span><span class="err">指定的</span><span class="nx">Chrome</span> <span class="nx">app</span><span class="p">.</span>
 
-    <span class="n">quit</span>()
-       <span class="n">关闭浏览器和关闭启动ChromeDriver时启动的ChromeDriver</span>.
+    <span class="nx">quit</span><span class="p">()</span>
+       <span class="err">关闭浏览器和关闭启动</span><span class="nx">ChromeDriver</span><span class="err">时启动的</span><span class="nx">ChromeDriver</span><span class="p">.</span>
 </pre></div>
 <p>Top<a href="">^</a></p>
 <p>上一篇<a href="https://king32783784.github.io/2015/01/19/selenium/">Selenium主题7</a>

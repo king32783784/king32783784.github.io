@@ -122,6 +122,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework 用户手册(四)
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../../../../2017/04/01/Robot/" title="Robot Framework 用户手册(三)">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework 用户手册(三)
@@ -143,12 +149,6 @@
                             <a class="hide-overflow" href="../../../../2017/03/24/Robot/" title="Robot Framework快速入门">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework快速入门
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../../../../2017/03/22/itest/" title="Itest测试工具介绍">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Itest测试工具介绍
                             </a>
                         </li>
                     <li>
@@ -309,6 +309,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
+                            <span class="badge pull-right categorybadge">5</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -333,13 +340,6 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
-                            <span class="badge pull-right categorybadge">4</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -564,7 +564,7 @@ redhat
 <span class="sd">        Simple collection of infomation for a Linux Distribution</span>
 <span class="sd">        '''</span>
 
-        <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="n">release</span><span class="p">,</span> <span class="n">arch</span><span class="p">):</span>
+        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">version</span><span class="p">,</span> <span class="n">release</span><span class="p">,</span> <span class="n">arch</span><span class="p">):</span>
             <span class="sd">'''</span>
 <span class="sd">            Initalizes a new Linux Distro</span>
 <span class="sd">            :param name: 一个简单的区别于其他发型版的名字</span>
@@ -581,7 +581,7 @@ redhat
             <span class="bp">self</span><span class="o">.</span><span class="n">release</span> <span class="o">=</span> <span class="n">release</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">arch</span> <span class="o">=</span> <span class="n">arch</span>
 
-        <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># [Difference between __str__ and __repr__ in Python](http://stackoverflow.com/questions/1436703/difference-between-str-and-repr-in-python)</span>
+        <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># [Difference between __str__ and __repr__ in Python](http://stackoverflow.com/questions/1436703/difference-between-str-and-repr-in-python)</span>
             <span class="k">return</span> <span class="s1">'&lt;LinuxDistro: name=</span><span class="si">%s</span><span class="s1">, version=</span><span class="si">%s</span><span class="s1">, release=</span><span class="si">%s</span><span class="s1">, arch=</span><span class="si">%s</span><span class="s1">&gt;'</span> <span class="o">%</span> <span class="p">(</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">release</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">arch</span><span class="p">)</span>
 
@@ -615,7 +615,7 @@ redhat
         <span class="c1">#:指定发行版版本</span>
         <span class="n">CHECK_VERSION_REGEX</span> <span class="o">=</span> <span class="bp">None</span>
 
-        <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
 
         <span class="k">def</span> <span class="nf">check_name_for_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> 
@@ -799,7 +799,7 @@ redhat
         <span class="n">CHECK_FILE_CONTAINS</span> <span class="o">=</span> <span class="s1">'Red Hat'</span>
         <span class="n">CHECK_FILE_DISTRO_NAME</span> <span class="o">=</span> <span class="s1">'redhat'</span>
         <span class="n">CHECK_VERSION_REGEX</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
-            <span class="s1">r'Red Hat Enterprise Linux Server release(\d{1,2})\.(\d{1,2}).*'</span><span class="p">)</span>
+            <span class="sa">r</span><span class="s1">'Red Hat Enterprise Linux Server release(\d{1,2})\.(\d{1,2}).*'</span><span class="p">)</span>
 
     <span class="k">class</span> <span class="nc">CentosProbe</span><span class="p">(</span><span class="n">RedHatProbe</span><span class="p">):</span>
         <span class="sd">'''</span>
@@ -809,7 +809,7 @@ redhat
         <span class="n">CHECK_FILE</span> <span class="o">=</span> <span class="s1">'/etc/redhat-release'</span>
         <span class="n">CHECK_FILE_CONTAINS</span> <span class="o">=</span> <span class="s1">'CentOS'</span>
         <span class="n">CHECK_FILE_DISTRO_NAME</span> <span class="o">=</span> <span class="s1">'centos'</span>
-        <span class="n">CHECK_VERSION_REGEX</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">r'CentOS release(\d{1,2})\.(\d{1,2}).*'</span><span class="p">)</span>
+        <span class="n">CHECK_VERSION_REGEX</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">'CentOS release(\d{1,2})\.(\d{1,2}).*'</span><span class="p">)</span>
 
     <span class="k">class</span> <span class="nc">FedoraProbe</span><span class="p">(</span><span class="n">RedHatProbe</span><span class="p">):</span>
 
@@ -819,7 +819,7 @@ redhat
         <span class="n">CHECK_FILE</span> <span class="o">=</span> <span class="s1">'/etc/fedora-release'</span>
         <span class="n">CHECK_FILE_CONTAINS</span> <span class="o">=</span> <span class="s1">'Fedora'</span>
         <span class="n">CHECK_FILE_DISTRO_NAME</span> <span class="o">=</span> <span class="s1">'fedora'</span>
-        <span class="n">CHECK_VERSION_REGEX</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">r'Fedora release (\d{1,2}).*'</span><span class="p">)</span>
+        <span class="n">CHECK_VERSION_REGEX</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">'Fedora release (\d{1,2}).*'</span><span class="p">)</span>
 
 
     <span class="k">class</span> <span class="nc">DebianProbe</span><span class="p">(</span><span class="n">Probe</span><span class="p">):</span>
@@ -839,13 +839,13 @@ redhat
         <span class="n">CHECK_FILE</span> <span class="o">=</span> <span class="s1">'/etc/os-release'</span>
         <span class="n">CHECK_FILE_CONTAINS</span> <span class="o">=</span> <span class="s1">'Ubuntu'</span>
         <span class="n">CHECK_FILE_DISTRO_NAME</span> <span class="o">=</span> <span class="s1">'ubuntu'</span>
-        <span class="n">CHECK_VERSION_REGEX</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">r'VERSION_ID="(\d+.\d+)"'</span><span class="p">)</span>
+        <span class="n">CHECK_VERSION_REGEX</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">'VERSION_ID="(\d+.\d+)"'</span><span class="p">)</span>
 
 
     <span class="k">class</span> <span class="nc">SuseProbe</span><span class="p">(</span><span class="n">Probe</span><span class="p">):</span>
         <span class="n">CHECK_FILE</span> <span class="o">=</span> <span class="s1">'/etc/SuSE-release'</span>
         <span class="n">CHECK_FILE_DISTRO_NAME</span> <span class="o">=</span> <span class="s1">'sles'</span>
-        <span class="n">CHECK_VERSION_REGEX</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">r'SUSE.*\nVERSION = (.*)\nPATCHLEVEL = (.*)'</span><span class="p">)</span>
+        <span class="n">CHECK_VERSION_REGEX</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">'SUSE.*\nVERSION = (.*)\nPATCHLEVEL = (.*)'</span><span class="p">)</span>
 
 
     <span class="c1">#: 已注册probes列表</span>
@@ -892,7 +892,7 @@ redhat
         <span class="sd">'''</span>
 <span class="sd">        发行版最低发行要求</span>
 <span class="sd">　　　　 '''</span>
-        <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">min_version</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>     <span class="n">min_release</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">arch</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">min_version</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>     <span class="n">min_release</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">arch</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">min_version</span> <span class="o">=</span> <span class="n">min_version</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">min_release</span> <span class="o">=</span> <span class="n">min_release</span>

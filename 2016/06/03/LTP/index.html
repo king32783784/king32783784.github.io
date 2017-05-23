@@ -122,6 +122,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework 用户手册(四)
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../../../../2017/04/01/Robot/" title="Robot Framework 用户手册(三)">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework 用户手册(三)
@@ -143,12 +149,6 @@
                             <a class="hide-overflow" href="../../../../2017/03/24/Robot/" title="Robot Framework快速入门">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework快速入门
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../../../../2017/03/22/itest/" title="Itest测试工具介绍">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Itest测试工具介绍
                             </a>
                         </li>
                     <li>
@@ -309,6 +309,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
+                            <span class="badge pull-right categorybadge">5</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -333,13 +340,6 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
-                            <span class="badge pull-right categorybadge">4</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -553,12 +553,12 @@ Determine type of FILEs.
 <p>Test05：测试文件命令是否可以识别C程序文本
      使用test2类似方法测试c程序文本</p>
 <p>Test06：测试文件命令是否可以识别ELF二进制可执行文件</p>
-<div class="highlight"><pre><span></span><span class="x">1）使用readelf确定主机是大端还是小端,并分别为字符串“MSB”或“LSB”分配TEST_ARCH</span>
-<span class="x">2）将小C程序写入已知的“.c”文件</span>
-<span class="x">3）使用“cc” Ex：cc xyz xyz.c</span>
-<span class="x">4）使用file命令获取对象文件的类型</span>
-<span class="x">5）在file输出中，grep ELF .*-bit </span><span class="p">$</span><span class="nv">TEST_ARCH</span><span class="x"> executable, .* 字符。</span>
-<span class="x">6）如果上述命令成功，则将测试声明为PASS</span>
+<div class="highlight"><pre><span></span>1）使用readelf确定主机是大端还是小端,并分别为字符串“MSB”或“LSB”分配TEST_ARCH
+2）将小C程序写入已知的“.c”文件
+3）使用“cc” Ex：cc xyz xyz.c
+4）使用file命令获取对象文件的类型
+5）在file输出中，grep ELF .*-bit $TEST_ARCH executable, .* 字符。
+6）如果上述命令成功，则将测试声明为PASS
 </pre></div>
 <p>Test07：测试文件命令是否可以识别tar文件</p>
 <div class="highlight"><pre><span></span>1）将文本写入三个不同的文件
@@ -582,71 +582,71 @@ Determine type of FILEs.
 </pre></div>
 <h5 id="dai-ma-pian-duan">代码片段</h5>
 <p>测试file命令能识别出ASCII文本文件。</p>
-<div class="highlight"><pre><span></span><span class="x">export TCID=file01</span>
-<span class="x">export TST_COUNT=1</span>
+<div class="highlight"><pre><span></span>export TCID=file01
+export TST_COUNT=1
 
-<span class="p">$</span><span class="nv">LTPBIN</span><span class="x">/tst_resm TINFO "TEST </span><span class="err">#</span><span class="x">1:file command recogizes ASCII text files" </span><span class="err">#</span><span class="x"> log信息</span>
+$LTPBIN/tst_resm TINFO "TEST #1:file command recogizes ASCII text files" # log信息
 
-<span class="x">cat &gt; </span><span class="p">$</span><span class="nv">LTPTMP</span><span class="x">/test_file.txt &lt;&lt;EOF</span>
-<span class="x">this is a text file</span>
-<span class="x">to test file command</span>
-<span class="x">EOF                          </span><span class="err">#</span><span class="x"> 制作txt文本文件</span>
+cat &gt; $LTPTMP/test_file.txt &lt;&lt;EOF
+this is a text file
+to test file command
+EOF                          # 制作txt文本文件
 
-<span class="cp">##</span><span class="c">执行file命令并检查输出。</span><span class="x"></span>
+##执行file命令并检查输出。
 
-<span class="x">file </span><span class="p">$</span><span class="nv">LTPTMP</span><span class="x">/test_file.txt &gt; </span><span class="p">$</span><span class="nv">LTPTMP</span><span class="x">/file.out 2&gt;&amp;1</span>
+file $LTPTMP/test_file.txt &gt; $LTPTMP/file.out 2&gt;&amp;1
 
-<span class="x">if [ </span><span class="p">$</span><span class="x">? -eq 0 ]  </span><span class="err">#</span><span class="x"> 判断返回值是否为０，验证file命令执行是否成功</span>
-<span class="x">then</span>
-<span class="x">    grep -q "ASCII text" </span><span class="p">$</span><span class="nv">LTPTMP</span><span class="x">/file.out </span><span class="err">#</span><span class="x"> 匹配输出类型是否整齐</span>
-<span class="x">    if [ </span><span class="p">$</span><span class="x">? -eq 0 ]</span>
-<span class="x">    then</span>
-<span class="x">        </span><span class="p">$</span><span class="nv">LTPBIN</span><span class="x">/test_resm TPASS "file: Recognised ASCII file correctly"</span>
-<span class="x">        rm -f </span><span class="p">$</span><span class="nv">LTPTMP</span><span class="x">/test_file.txt</span>
-<span class="x">    else</span>
-<span class="x">        </span><span class="p">$</span><span class="nv">LTPBIN</span><span class="x">/tst_res TFAIL </span><span class="p">$</span><span class="nv">LTPTMP</span><span class="x">/file.out \</span>
-<span class="x">            "file: Failed to recognise ASCII file correctlyi. Reason:"</span>
-<span class="x">        TFAILCNT=</span><span class="p">$((</span> <span class="p">$</span><span class="nv">TFAILCNT</span><span class="err">+</span><span class="m">1</span> <span class="p">))</span><span class="x"> </span><span class="cp">#</span><span class="nf">error</span><span class="x"> code＋１</span>
-<span class="x">    fi</span>
-<span class="x">else</span>
-<span class="x">     </span><span class="p">$</span><span class="nv">LTPBIN</span><span class="x">/tst_res TFAIL </span><span class="p">$</span><span class="nv">LTPTMP</span><span class="x">/file.out  \</span>
-<span class="x">            "file: failed to recognize ASCII file correctly\t\t"</span>
-<span class="x">     TFAILCNT=</span><span class="p">$((</span> <span class="p">$</span><span class="nv">TFAILCNT</span><span class="err">+</span><span class="m">1</span> <span class="p">))</span><span class="x"></span>
-<span class="x">fi</span>
+if [ $? -eq 0 ]  # 判断返回值是否为０，验证file命令执行是否成功
+then
+    grep -q "ASCII text" $LTPTMP/file.out # 匹配输出类型是否整齐
+    if [ $? -eq 0 ]
+    then
+        $LTPBIN/test_resm TPASS "file: Recognised ASCII file correctly"
+        rm -f $LTPTMP/test_file.txt
+    else
+        $LTPBIN/tst_res TFAIL $LTPTMP/file.out \
+            "file: Failed to recognise ASCII file correctlyi. Reason:"
+        TFAILCNT=$(( $TFAILCNT+1 )) #error code＋１
+    fi
+else
+     $LTPBIN/tst_res TFAIL $LTPTMP/file.out  \
+            "file: failed to recognize ASCII file correctly\t\t"
+     TFAILCNT=$(( $TFAILCNT+1 ))
+fi
 </pre></div>
 <h1 id="test-2_2">TEST #2</h1>
 <h1 id="ce-shi-shi-fou-shi-bie-shelljiao-ben">测试是否识别shell脚本</h1>
-<div class="highlight"><pre><span></span><span class="x">export TCID=file02</span>
-<span class="x">export TST_COUNT=2</span>
+<div class="highlight"><pre><span></span>export TCID=file02
+export TST_COUNT=2
 
-<span class="p">$</span><span class="nv">LTPBIN</span><span class="x">/tst_resm TINFO "TEST </span><span class="err">#</span><span class="x">2: file command recognizes bash shell scripts"</span>
+$LTPBIN/tst_resm TINFO "TEST #2: file command recognizes bash shell scripts"
 
-<span class="x">cat &gt; </span><span class="p">$</span><span class="nv">LTPTMP</span><span class="x">/bash_script.sh &lt;&lt;EOF</span>
-<span class="err">#</span><span class="x">! /bin/bash</span>
+cat &gt; $LTPTMP/bash_script.sh &lt;&lt;EOF
+#! /bin/bash
 
-<span class="x">echo "this is a shell script"</span>
-<span class="x">echo "used to test file command"</span>
+echo "this is a shell script"
+echo "used to test file command"
 
-<span class="x">EOF</span>
+EOF
 
-<span class="x">file </span><span class="p">$</span><span class="nv">LTPTMP</span><span class="x">/bash_script.sh &gt; </span><span class="p">$</span><span class="nv">LTPTMP</span><span class="x">/file.out 2&gt;&amp;1</span>
+file $LTPTMP/bash_script.sh &gt; $LTPTMP/file.out 2&gt;&amp;1
 
-<span class="x">if [ </span><span class="p">$</span><span class="x">? -eq 0 ]</span>
-<span class="x">then</span>
-<span class="x">    grep -q "Bourne-Again shell script" </span><span class="p">$</span><span class="nv">LTPTMP</span><span class="x">/file.out</span>
-<span class="x">    if [ </span><span class="p">$</span><span class="x">? -eq 0 ]</span>
-<span class="x">    then</span>
-<span class="x">        </span><span class="p">$</span><span class="nv">LTPBIN</span><span class="x">/tst_resm TPASS "file: Recognised bash shell script correctly"</span>
-<span class="x">        rm -f </span><span class="p">$</span><span class="nv">LTPTMP</span><span class="x">/bash_script.sh</span>
-<span class="x">    else</span>
-<span class="x">        </span><span class="p">$</span><span class="nv">LTPBIN</span><span class="x">/tst_res TFAIL </span><span class="p">$</span><span class="nv">LTPTMP</span><span class="x">/file.out \</span>
-<span class="x">            "file: Failed to recognise bash shell script. Reason"</span>
-<span class="x">        TFAILCNT=</span><span class="p">$((</span> <span class="p">$</span><span class="nv">TFAILCNT</span><span class="err">+</span><span class="m">1</span> <span class="p">))</span><span class="x"></span>
-<span class="x">    fi</span>
-<span class="x">else</span>
-<span class="x">    </span><span class="p">$</span><span class="nv">LTPBIN</span><span class="x">/tst_resm TFAIL "file: Failed to recognize bash shell script"</span>
-<span class="x">    TFAILCNT=</span><span class="p">$((</span> <span class="p">$</span><span class="nv">TFAILCNT</span><span class="err">+</span><span class="m">1</span> <span class="p">))</span><span class="x"></span>
-<span class="x">fi</span>
+if [ $? -eq 0 ]
+then
+    grep -q "Bourne-Again shell script" $LTPTMP/file.out
+    if [ $? -eq 0 ]
+    then
+        $LTPBIN/tst_resm TPASS "file: Recognised bash shell script correctly"
+        rm -f $LTPTMP/bash_script.sh
+    else
+        $LTPBIN/tst_res TFAIL $LTPTMP/file.out \
+            "file: Failed to recognise bash shell script. Reason"
+        TFAILCNT=$(( $TFAILCNT+1 ))
+    fi
+else
+    $LTPBIN/tst_resm TFAIL "file: Failed to recognize bash shell script"
+    TFAILCNT=$(( $TFAILCNT+1 ))
+fi
 </pre></div>
 <p>其他测试代码同上面类似，不再一一分析。</p></body>
                 </div>

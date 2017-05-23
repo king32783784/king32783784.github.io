@@ -122,6 +122,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework 用户手册(四)
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../../../../2017/04/01/Robot/" title="Robot Framework 用户手册(三)">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework 用户手册(三)
@@ -143,12 +149,6 @@
                             <a class="hide-overflow" href="../../../../2017/03/24/Robot/" title="Robot Framework快速入门">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework快速入门
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../../../../2017/03/22/itest/" title="Itest测试工具介绍">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Itest测试工具介绍
                             </a>
                         </li>
                     <li>
@@ -309,6 +309,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
+                            <span class="badge pull-right categorybadge">5</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -333,13 +340,6 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
-                            <span class="badge pull-right categorybadge">4</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -587,48 +587,48 @@
 4.删除属性时，会调用__delattr__()
 5.如果定义了__getattr__()或__getattribute__()，__dir__()方法将会非常有用</p>
 <p>__getattr__()和__getattribute__()方法的区别非常细微，但非常重要。</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">Dynamo:</span>
-    <span class="n">def</span> <span class="n">__getattr__</span>(<span class="k">self</span>, <span class="nb">key</span>):
-        <span class="k">if</span> <span class="nb">key</span> == <span class="s">'color'</span>:
-            <span class="k">return</span> <span class="s">'PapayaWhip'</span> <span class="c c-Singleline"># 属性名称以字符串的形式传入__getattr()__方法</span>
-        <span class="n">else:</span>　　　　　　　　<span class="c c-Singleline"># 如果属性名称未知，触发异常</span>
-            <span class="n">raise</span> <span class="n">AttributeError</span>
-&gt;&gt;&gt; <span class="n">dyn</span> = <span class="n">Dynamo</span>()
-&gt;&gt;&gt; <span class="n">dyn</span>.<span class="n">color</span>  <span class="c c-Singleline"># dyn没有名为color的属性，获取时将调用__getattr__()</span>
- <span class="s">'PapayaWhip'</span>
-&gt;&gt;&gt; <span class="n">dyn</span>.<span class="n">color</span> = <span class="s">'LemonChiffon'</span> <span class="c c-Singleline"># 显示的设置了color属性后，不再调用__getattr__方法。</span>
-&gt;&gt;&gt; <span class="n">dyn</span>.<span class="n">color</span>
- <span class="s">'LemonChiffon'</span>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Dynamo</span>:
+    <span class="kt">def</span> <span class="nx">__getattr__</span><span class="p">(</span><span class="nx">self</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span><span class="o">:</span>
+        <span class="k">if</span> <span class="nx">key</span> <span class="o">==</span> <span class="s1">'color'</span><span class="o">:</span>
+            <span class="k">return</span> <span class="s1">'PapayaWhip'</span> <span class="err">#</span> <span class="err">属性名称以字符串的形式传入</span><span class="nx">__getattr</span><span class="p">()</span><span class="nx">__</span><span class="err">方法</span>
+        <span class="k">else</span><span class="o">:</span><span class="err">　　　　　　　　#</span> <span class="err">如果属性名称未知，触发异常</span>
+            <span class="nx">raise</span> <span class="nx">AttributeError</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nx">dyn</span> <span class="o">=</span> <span class="nx">Dynamo</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nx">dyn</span><span class="p">.</span><span class="nx">color</span>  <span class="err">#</span> <span class="nx">dyn</span><span class="err">没有名为</span><span class="nx">color</span><span class="err">的属性，获取时将调用</span><span class="nx">__getattr__</span><span class="p">()</span>
+ <span class="s1">'PapayaWhip'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nx">dyn</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="s1">'LemonChiffon'</span> <span class="err">#</span> <span class="err">显示的设置了</span><span class="nx">color</span><span class="err">属性后，不再调用</span><span class="nx">__getattr__</span><span class="err">方法。</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nx">dyn</span><span class="p">.</span><span class="nx">color</span>
+ <span class="s1">'LemonChiffon'</span>
 </pre></div>
 <p>另一方面，__getattribute__()方法是直接的，无条件的。</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">SuperDynamo:</span>
-    <span class="n">def</span> <span class="n">__getattribute__</span>(<span class="k">self</span>, <span class="nb">key</span>):
-        <span class="k">if</span> <span class="nb">key</span> == <span class="s">'color'</span>:
-            <span class="k">return</span> <span class="s">'PapayaWhip'</span>
-        <span class="n">else:</span>
-            <span class="n">raise</span> <span class="n">AttributeError</span>
-&gt;&gt;&gt; <span class="n">dyn</span> = <span class="n">SuperDynamo</span>()
-&gt;&gt;&gt; <span class="n">dyn</span>.<span class="n">color</span> <span class="c c-Singleline"># 直接调用__getattribute__()，返回color</span>
- <span class="s">'PapayaWhip'</span>
-&gt;&gt;&gt; <span class="n">dyn</span>.<span class="n">color</span> = <span class="s">'LemonChiffon'</span>
-&gt;&gt;&gt; <span class="n">dyn</span>.<span class="n">color</span>  <span class="c c-Singleline"># 虽然显示的设置了color属性，但仍然会调用__getattribute__()</span>
- <span class="s">'PapayaWhip'</span>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">SuperDynamo</span>:
+    <span class="kt">def</span> <span class="nx">__getattribute__</span><span class="p">(</span><span class="nx">self</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span><span class="o">:</span>
+        <span class="k">if</span> <span class="nx">key</span> <span class="o">==</span> <span class="s1">'color'</span><span class="o">:</span>
+            <span class="k">return</span> <span class="s1">'PapayaWhip'</span>
+        <span class="k">else</span><span class="o">:</span>
+            <span class="nx">raise</span> <span class="nx">AttributeError</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nx">dyn</span> <span class="o">=</span> <span class="nx">SuperDynamo</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nx">dyn</span><span class="p">.</span><span class="nx">color</span> <span class="err">#</span> <span class="err">直接调用</span><span class="nx">__getattribute__</span><span class="p">()</span><span class="err">，返回</span><span class="nx">color</span>
+ <span class="s1">'PapayaWhip'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nx">dyn</span><span class="p">.</span><span class="nx">color</span> <span class="o">=</span> <span class="s1">'LemonChiffon'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nx">dyn</span><span class="p">.</span><span class="nx">color</span>  <span class="err">#</span> <span class="err">虽然显示的设置了</span><span class="nx">color</span><span class="err">属性，但仍然会调用</span><span class="nx">__getattribute__</span><span class="p">()</span>
+ <span class="s1">'PapayaWhip'</span>
 </pre></div>
 <p>如果定义了类的__getattribute__()方法，你可能还想定义一个__setattr__()方法，需要两则之间进行协同，以跟踪属性的值。
 必须特别小心__getattribute__()方法，因为python在查找类的方法名称时也将对其进行调用</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">Rastan:</span>
-    <span class="n">def</span> <span class="n">__getattribute__</span>(<span class="k">self</span>, <span class="nb">key</span>):
-        <span class="n">raise</span> <span class="n">AttributeError</span>  <span class="c c-Singleline"># 定义了一个总是触发异常的__getattribute__方法</span>
+<div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Rastan</span>:
+    <span class="kt">def</span> <span class="nx">__getattribute__</span><span class="p">(</span><span class="nx">self</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span><span class="o">:</span>
+        <span class="nx">raise</span> <span class="nx">AttributeError</span>  <span class="err">#</span> <span class="err">定义了一个总是触发异常的</span><span class="nx">__getattribute__</span><span class="err">方法</span>
 
-    <span class="n">def</span> <span class="n">swim</span>(<span class="k">self</span>)：
-        <span class="nb">pass</span>
+    <span class="nx">def</span> <span class="nx">swim</span><span class="p">(</span><span class="nx">self</span><span class="p">)</span><span class="err">：</span>
+        <span class="nx">pass</span>
 
-&gt;&gt;&gt; <span class="n">hero</span> = <span class="n">Rastan</span>()
-&gt;&gt;&gt; <span class="n">hero</span>.<span class="n">swim</span>() <span class="c c-Singleline"># 调用hero.swim()时，python将在Rastan类查找swim()方法。该查找将执行整个__getattribute__()方法，因为所有的属性和方法查找都通过__getattribute__()方法。</span>
-<span class="n">Traceback</span> (<span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="k">last</span>):
-<span class="n">File</span> <span class="s">"&lt;stdin&gt;"</span>, <span class="n">line</span> <span class="mi">1</span>, <span class="n">in</span> <span class="s">&lt;module&gt;</span>
-<span class="n">File</span> <span class="s">"&lt;stdin&gt;"</span>, <span class="n">line</span> <span class="mi">3</span>, <span class="n">in</span> <span class="n">__getattribute__</span>
-<span class="n">AttributeError</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nx">hero</span> <span class="o">=</span> <span class="nx">Rastan</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nx">hero</span><span class="p">.</span><span class="nx">swim</span><span class="p">()</span> <span class="err">#</span> <span class="err">调用</span><span class="nx">hero</span><span class="p">.</span><span class="nx">swim</span><span class="p">()</span><span class="err">时，</span><span class="nx">python</span><span class="err">将在</span><span class="nx">Rastan</span><span class="err">类查找</span><span class="nx">swim</span><span class="p">()</span><span class="err">方法。该查找将执行整个</span><span class="nx">__getattribute__</span><span class="p">()</span><span class="err">方法，因为所有的属性和方法查找都通过</span><span class="nx">__getattribute__</span><span class="p">()</span><span class="err">方法。</span>
+<span class="nx">Traceback</span> <span class="p">(</span><span class="nx">most</span> <span class="nx">recent</span> <span class="nx">call</span> <span class="nx">last</span><span class="p">)</span><span class="o">:</span>
+<span class="nx">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="nx">line</span> <span class="mi">1</span><span class="p">,</span> <span class="k">in</span> <span class="o">&lt;</span><span class="nx">module</span><span class="o">&gt;</span>
+<span class="nx">File</span> <span class="s2">"&lt;stdin&gt;"</span><span class="p">,</span> <span class="nx">line</span> <span class="mi">3</span><span class="p">,</span> <span class="k">in</span> <span class="nx">__getattribute__</span>
+<span class="nx">AttributeError</span>
 </pre></div>
 <h4 id="xing-wei-fang-shi-he-han-shu-lei-si-de-lei">行为方式和函数类似的类</h4>
 <p>可以让类的实例变得可调用-就想函数可以调用一样-通过定义__call__()方法</p>
