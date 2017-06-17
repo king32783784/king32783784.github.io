@@ -122,9 +122,9 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
-                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                            <a class="hide-overflow" href="../../../../2017/06/17/网络/" title="网络速率统计的几个示例">
                                 <i class="fa fa-file-text padding-small"></i>
-                                Robot Framework 用户手册(四)
+                                网络速率统计的几个示例
                             </a>
                         </li>
                         <li class="">
@@ -309,13 +309,6 @@
                         </a>
                     </li>
                     <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
-                            <span class="badge pull-right categorybadge">5</span>
-                        </a>
-                    </li>
-                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -340,6 +333,13 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
+                            <span class="badge pull-right categorybadge">4</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -396,6 +396,13 @@
                         <a href="../../../../category/mongodb.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             Mongodb
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/tong-xin-xiang-guan.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            通信相关
                             <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
@@ -608,9 +615,9 @@ SIGABRT {si_signo=SIGABRT, si_code=SI_TKILL, si_pid=18489, si_uid=0} ---
 <p><strong>什么是头文件呢？</strong></p>
 <p>在C语言家族程序中，头文件被大量使用。一般而言，每个C++/C程序通常由头文件(header files)和定义文件(definition files)组成。头文件作为一种包含功能函数、数据接口声明的载体文件，主要用于保存程序的声明(declaration)，而定义文件用于保存程序的实现 (implementation)</p>
 <p _="
-" printf_hello="printf(“Hello" world_="world!”);
-">让我们来看，经典程序 “Hello world!”　
-定义文件名“First.c”
+" printf_hello="printf(&ldquo;Hello" world_="world!&rdquo;);
+">让我们来看，经典程序 &ldquo;Hello world!&rdquo;　
+定义文件名&ldquo;First.c&rdquo;
     main()</p>
 <div class="highlight"><pre><span></span>&lt;sample-1&gt;
 </pre></div>
@@ -618,7 +625,7 @@ SIGABRT {si_signo=SIGABRT, si_code=SI_TKILL, si_pid=18489, si_uid=0} ---
 <p>文件名 First.c　变形</p>
 <div class="highlight"><pre><span></span>printStr()
 {
-    printf(“Hello world!”);
+    printf(&ldquo;Hello world!&rdquo;);
 }
 main()
 {
@@ -636,7 +643,7 @@ printStr()
 
 printStr()
 {
-    printf(“Hello world!”);
+    printf(&ldquo;Hello world!&rdquo;);
 }
 
 &lt;sample-3&gt;
@@ -646,15 +653,15 @@ printStr()
 文件名 First.c</p>
 <div class="highlight"><pre><span></span>play2()
 {
-  ……………….
+  &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.
   play1()
-  ………………..
+  &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..
 }
 play1()
 {
-    ……………………..
+    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..
     play2()
-    ……………………
+    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;
 }
 main()
 {
@@ -670,15 +677,15 @@ main()
 play2();
 play2()
 {
-    ……………….
+    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.
     play1()
-    ………………..
+    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..
 }
 play1()
 {
-    ……………………..
+    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..
     play2()
-    ……………………
+    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;
 );
 }
 main()
@@ -694,18 +701,18 @@ main()
 play2();
 </pre></div>
 <p>文件名 First.C</p>
-<div class="highlight"><pre><span></span>#include “first.h”
+<div class="highlight"><pre><span></span>#include &ldquo;first.h&rdquo;
 play2()
 {
-    ……………….
+    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.
     play1()
-    ………………..
+    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..
 }
 play1()
 {
-    ……………………..
+    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;..
     play2()
-    ……………………
+    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;&hellip;
 );
 }
 main()
@@ -722,9 +729,9 @@ play1()
 <p>sencond.c文件</p>
 <div class="highlight"><pre><span></span>***()
 {
-    …………….
+    &hellip;&hellip;&hellip;&hellip;&hellip;.
     Play();
-    ……………….
+    &hellip;&hellip;&hellip;&hellip;&hellip;&hellip;.
 }
 
 &lt;sample-7&gt;

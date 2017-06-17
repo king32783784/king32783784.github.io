@@ -122,9 +122,9 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
-                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                            <a class="hide-overflow" href="../../../../2017/06/17/网络/" title="网络速率统计的几个示例">
                                 <i class="fa fa-file-text padding-small"></i>
-                                Robot Framework 用户手册(四)
+                                网络速率统计的几个示例
                             </a>
                         </li>
                         <li class="">
@@ -309,13 +309,6 @@
                         </a>
                     </li>
                     <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
-                            <span class="badge pull-right categorybadge">5</span>
-                        </a>
-                    </li>
-                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -340,6 +333,13 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
+                            <span class="badge pull-right categorybadge">4</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -396,6 +396,13 @@
                         <a href="../../../../category/mongodb.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             Mongodb
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/tong-xin-xiang-guan.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            通信相关
                             <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
@@ -493,7 +500,7 @@
 </pre></div>
 <p>说明：检查页面的DOM上是否存在指定元素。该元素并不需要是可见的。 locator - 用于找到元素的元组，包括找到元素的方式和值.
 返回找到元素。</p>
-<p>用法：例如判断当前页面是否存在id为“kw"的元素，presence_of_located((By.ID, "kw"))</p>
+<p>用法：例如判断当前页面是否存在id为&ldquo;kw"的元素，presence_of_located((By.ID, "kw"))</p>
 <p>By中包含ID、XPATH、LINK_TEXT、 PARTIAL_LINK_TEXT、NAME、TAG_NAME、CLASS_NAME、CSS_SELECTOR</p>
 <p>_find_elemnt()用于查找元素，简单看一下_find_elment()方法的实现：</p>
 <div class="highlight"><pre><span></span>def _find_element(driver, by)
@@ -518,7 +525,7 @@
 <p>说明：期望检查元素是否出现在页面的DOM上并可见。 可见性意味着元素不仅显示，而且具有大于0的高度和宽度。
 locator - 用于找到元素的元组，包括找到元素的方式和值.
 返回找到的元素</p>
-<p>方法：例如判断当前页面是否存在name为“wd"的元素，并且该元素可视，visibility_of_element_located((By.NAME, "wd"))</p>
+<p>方法：例如判断当前页面是否存在name为&ldquo;wd"的元素，并且该元素可视，visibility_of_element_located((By.NAME, "wd"))</p>
 <p>调用_element_if_visible()方法检查元素是否存在并可视</p>
 <div class="highlight"><pre><span></span>def _element_if_visible(element, visibility=True):
     retrun element if element.is_displayed() == visibility else False
@@ -573,7 +580,7 @@ def __call__(self, driver):
             <span class="kt">return</span> <span class="nx">False</span>
 </pre></div>
 <p>说明： 期望检查给定的文本是否存在于指定的element.locator的text中。存在返回True,不存在返回false.
-用法： 例如检查名称为”tj_trhao123"的元素文本中是否包含"hao123",((By.NAME, "tj_trhao123"), "hao123"))</p>
+用法： 例如检查名称为&rdquo;tj_trhao123"的元素文本中是否包含"hao123",((By.NAME, "tj_trhao123"), "hao123"))</p>
 <h5 id="text_to_be_present_in_element_value">text_to_be_present_in_element_value</h5>
 <div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">text_to_be_present_in_element_value</span><span class="p">(</span><span class="nx">object</span><span class="p">)</span><span class="o">:</span>
     <span class="nx">def</span> <span class="nx">__init__</span><span class="p">(</span><span class="nx">self</span><span class="p">,</span> <span class="nx">locator</span><span class="p">,</span> <span class="nx">text_</span><span class="p">)</span><span class="o">:</span>
@@ -592,7 +599,7 @@ def __call__(self, driver):
             <span class="kt">return</span> <span class="nx">False</span>
 </pre></div>
 <p>说明： 期望检查给定文本是否存在于元素的定位器定位到元素的文本中。存在返回True，不存在返回false。
-用法： 判断"百度一下“，是否存在于id为su的元素的”value"属性值中，text_to_be_present_in_element_value((By.ID, "su"), "百度一下"))</p>
+用法： 判断"百度一下&ldquo;，是否存在于id为su的元素的&rdquo;value"属性值中，text_to_be_present_in_element_value((By.ID, "su"), "百度一下"))</p>
 <p>从代码中可以看到同样是通过_find_element找到元素，并且通过get_attribute获取元素值。</p>
 <h5 id="frame_to_be_available_and_switch_to_it">frame_to_be_available_and_switch_to_it</h5>
 <div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">frame_to_be_available_and_switch_to_it</span><span class="p">(</span><span class="nx">object</span><span class="p">)</span><span class="o">:</span>

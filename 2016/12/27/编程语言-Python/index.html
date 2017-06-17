@@ -122,9 +122,9 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
-                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                            <a class="hide-overflow" href="../../../../2017/06/17/网络/" title="网络速率统计的几个示例">
                                 <i class="fa fa-file-text padding-small"></i>
-                                Robot Framework 用户手册(四)
+                                网络速率统计的几个示例
                             </a>
                         </li>
                         <li class="">
@@ -309,13 +309,6 @@
                         </a>
                     </li>
                     <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
-                            <span class="badge pull-right categorybadge">5</span>
-                        </a>
-                    </li>
-                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -340,6 +333,13 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
+                            <span class="badge pull-right categorybadge">4</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -396,6 +396,13 @@
                         <a href="../../../../category/mongodb.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             Mongodb
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/tong-xin-xiang-guan.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            通信相关
                             <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
@@ -485,7 +492,7 @@ $ python shelve_existing.py
 <span class="o">{</span><span class="s1">'int'</span>: <span class="m">10</span>, <span class="s1">'float'</span>: <span class="m">9</span>.5, <span class="s1">'string'</span>: <span class="s1">'Sample data'</span><span class="o">}</span>
 </pre></div>
 <p>dbm模块不支持多个应用同时写入同一数据库，如果客户端或程序不会修改shelf,请指定shelve以只读方式打开数据库。</p>
-<div class="highlight"><pre><span></span>s = shelve.open('test_shelf.db', flag='r')   # 打开时指定flag＝‘r'，只读模式打开
+<div class="highlight"><pre><span></span>s = shelve.open('test_shelf.db', flag='r')   # 打开时指定flag＝&lsquo;r'，只读模式打开
 try:
     existing =  s['key1']
 finally:

@@ -122,9 +122,9 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
-                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                            <a class="hide-overflow" href="../../../../2017/06/17/网络/" title="网络速率统计的几个示例">
                                 <i class="fa fa-file-text padding-small"></i>
-                                Robot Framework 用户手册(四)
+                                网络速率统计的几个示例
                             </a>
                         </li>
                         <li class="">
@@ -309,13 +309,6 @@
                         </a>
                     </li>
                     <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
-                            <span class="badge pull-right categorybadge">5</span>
-                        </a>
-                    </li>
-                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -340,6 +333,13 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
+                            <span class="badge pull-right categorybadge">4</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -396,6 +396,13 @@
                         <a href="../../../../category/mongodb.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             Mongodb
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/tong-xin-xiang-guan.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            通信相关
                             <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
@@ -496,9 +503,9 @@
 <p>Source: 软件包的名字，如stress-1.0.4.tar.gz 可以使用Source1、Source2等多个，后面也可以使用%{source1}等引用</p>
 </li>
 <li>
-<p>BuildRoot:安装或编译时使用的“虚拟目录",考虑到多用户环境，一般%{_tmppath}/%{name}-%{version}-%{release}-root
+<p>BuildRoot:安装或编译时使用的&ldquo;虚拟目录",考虑到多用户环境，一般%{_tmppath}/%{name}-%{version}-%{release}-root
 或%{_tmppath}/%{name}-%{version}-%{release}-buildroot-%(%{__id_u} -n}
-该参数非常重要，因为在生成rpm的过程中，执行make install时就会把软件安装到上述的路径中，在打包的时候，同样依赖“虚拟目录”为“根目录”进行操作。后面可使用$RPM_BUILD_ROOT 方式引用。
+该参数非常重要，因为在生成rpm的过程中，执行make install时就会把软件安装到上述的路径中，在打包的时候，同样依赖&ldquo;虚拟目录&rdquo;为&ldquo;根目录&rdquo;进行操作。后面可使用$RPM_BUILD_ROOT 方式引用。
 %description: 软件包详细说明，可以多行 </p>
 </li>
 <li>
@@ -516,7 +523,7 @@
 <li>
 <p>Requires: 该rpm包所依赖的软件包名称，可以用&gt;=或&lt;=表示大于或小于某一特定版本，例如：
 libpng-devel &gt;= 1.0.20 zlib 
-※“&gt;=”号两边需用空格隔开，而不同软件名称也用空格分开
+※&ldquo;&gt;=&rdquo;号两边需用空格隔开，而不同软件名称也用空格分开
 还有例如PreReq、Requires(pre)、Requires(post)、Requires(preun)、Requires(postun)、BuildRequires等都是针对不同阶段的依赖指定 </p>
 </li>
 <li>
@@ -692,7 +699,7 @@ rm -rf $RPM_BUILD_DIR/%{name}-%{version}
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +

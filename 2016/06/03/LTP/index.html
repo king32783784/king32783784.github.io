@@ -122,9 +122,9 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
-                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                            <a class="hide-overflow" href="../../../../2017/06/17/网络/" title="网络速率统计的几个示例">
                                 <i class="fa fa-file-text padding-small"></i>
-                                Robot Framework 用户手册(四)
+                                网络速率统计的几个示例
                             </a>
                         </li>
                         <li class="">
@@ -309,13 +309,6 @@
                         </a>
                     </li>
                     <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
-                            <span class="badge pull-right categorybadge">5</span>
-                        </a>
-                    </li>
-                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -340,6 +333,13 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
+                            <span class="badge pull-right categorybadge">4</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -396,6 +396,13 @@
                         <a href="../../../../category/mongodb.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             Mongodb
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/tong-xin-xiang-guan.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            通信相关
                             <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
@@ -532,7 +539,7 @@ Determine type of FILEs.
 <div class="highlight"><pre><span></span>1）将文本写入已知文件
 2）使用'file'命令获取已知文件的类型
 例如：文件xyz.txt
-3）grep为关键字“ASCII文本”的输出
+3）grep为关键字&ldquo;ASCII文本&rdquo;的输出
 'file'命令
 4）如果上述步骤成功，则将测试声明为PASS,否则为fail
 </pre></div>
@@ -540,7 +547,7 @@ Determine type of FILEs.
 <div class="highlight"><pre><span></span>1）将一个小shell脚本写入一个已知文件
 2）使用'file'命令获取已知文件的类型
 例如：文件xyz.sh
-3）从'file'命令的输出中Grep关键字“Bourne-Again shell脚本”
+3）从'file'命令的输出中Grep关键字&ldquo;Bourne-Again shell脚本&rdquo;
 
 4）如果上述步骤成功，则将测试声明为PASS,否则为fail
 </pre></div>
@@ -553,31 +560,31 @@ Determine type of FILEs.
 <p>Test05：测试文件命令是否可以识别C程序文本
      使用test2类似方法测试c程序文本</p>
 <p>Test06：测试文件命令是否可以识别ELF二进制可执行文件</p>
-<div class="highlight"><pre><span></span>1）使用readelf确定主机是大端还是小端,并分别为字符串“MSB”或“LSB”分配TEST_ARCH
-2）将小C程序写入已知的“.c”文件
-3）使用“cc” Ex：cc xyz xyz.c
+<div class="highlight"><pre><span></span>1）使用readelf确定主机是大端还是小端,并分别为字符串&ldquo;MSB&rdquo;或&ldquo;LSB&rdquo;分配TEST_ARCH
+2）将小C程序写入已知的&ldquo;.c&rdquo;文件
+3）使用&ldquo;cc&rdquo; Ex：cc xyz xyz.c
 4）使用file命令获取对象文件的类型
 5）在file输出中，grep ELF .*-bit $TEST_ARCH executable, .* 字符。
 6）如果上述命令成功，则将测试声明为PASS
 </pre></div>
 <p>Test07：测试文件命令是否可以识别tar文件</p>
 <div class="highlight"><pre><span></span>1）将文本写入三个不同的文件
- 2）使用“tar”命令存档文件
+ 2）使用&ldquo;tar&rdquo;命令存档文件
 例如：tar -cf ...
-3）使用“file”命令获取归档文件的类型
+3）使用&ldquo;file&rdquo;命令获取归档文件的类型
 例如：文件xyz.tar
-4）grep从上面的'file'命令的输出的中匹配字符串“tar”
+4）grep从上面的'file'命令的输出的中匹配字符串&ldquo;tar&rdquo;
 5）声明测试为PASS，如果上面的步骤成功，否则声明测试为FAIL
 </pre></div>
 <p>Test08：测试文件命令是否可以tar zip文件</p>
 <div class="highlight"><pre><span></span>1）将文本写入三个不同的文件
-2）使用“tar”命令存档文件
+2）使用&ldquo;tar&rdquo;命令存档文件
   例如：tar -cf ...
 3）使用'gzip'命令来压缩tar文件
  例如：gzip -f xyz.tar
-4）使用“file”命令获取归档文件的类型
+4）使用&ldquo;file&rdquo;命令获取归档文件的类型
    例如：文件xyz.tar.gz
-5）grep从上面的文件commnand字符串“gzip压缩数据，。*”
+5）grep从上面的文件commnand字符串&ldquo;gzip压缩数据，。*&rdquo;
 6）声明测试为PASS，如果上面的步骤成功，否则声明测试为FAIL
 </pre></div>
 <h5 id="dai-ma-pian-duan">代码片段</h5>

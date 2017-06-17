@@ -122,9 +122,9 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
-                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                            <a class="hide-overflow" href="../../../../2017/06/17/网络/" title="网络速率统计的几个示例">
                                 <i class="fa fa-file-text padding-small"></i>
-                                Robot Framework 用户手册(四)
+                                网络速率统计的几个示例
                             </a>
                         </li>
                         <li class="">
@@ -309,13 +309,6 @@
                         </a>
                     </li>
                     <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
-                            <span class="badge pull-right categorybadge">5</span>
-                        </a>
-                    </li>
-                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -340,6 +333,13 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
+                            <span class="badge pull-right categorybadge">4</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -396,6 +396,13 @@
                         <a href="../../../../category/mongodb.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             Mongodb
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/tong-xin-xiang-guan.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            通信相关
                             <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
@@ -463,7 +470,7 @@
 </pre></div>
 <p>编译器在处理这个代码之前会对MAXTIME进行替换为1000。
 宏定义类同于简单的文本替换，而不是变量。</p>
-<p><strong>2.define的“函数定义”</strong></p>
+<p><strong>2.define的&ldquo;函数定义&rdquo;</strong></p>
 <p>define可以像函数那样接受一些参数，如下：</p>
 <div class="highlight"><pre><span></span>#define max(x,y)(x)&gt;(y)?(x):(y);
 </pre></div>
@@ -493,7 +500,7 @@ stmt1;/
 stmt2;/
 }while(0) /*(no trailing;)*/
 </pre></div>
-<p>每行换行时加上换行符“/”</p>
+<p>每行换行时加上换行符&ldquo;/&rdquo;</p>
 <p><strong>4.条件编译</strong></p>
 <p>在大规模的开发中，define最重要的功能就是条件编译。也就是本文的用法。</p>
 <div class="highlight"><pre><span></span><span class="cp">#ifdef UCLINU</span>
@@ -520,12 +527,12 @@ stmt2;/
 <p>例如
     #ifndef <strong>headerfileXXX</strong>
     #define <strong>headerfileXXX</strong>
-    …
+    &hellip;
     //文件内容
-    …
+    &hellip;
     #endif</p>
 <p><strong>7.define命令的一些高级用法</strong></p>
-<p>define中的三个特殊符号“#” “##” “#@”，前面提到过但未解释。</p>
+<p>define中的三个特殊符号&ldquo;#&rdquo; &ldquo;##&rdquo; &ldquo;#@&rdquo;，前面提到过但未解释。</p>
 <div class="highlight"><pre><span></span>#define Conn(x,y) x##y
 </pre></div>
 <p>x##y 表示什么？ 表示x连接y,</p>

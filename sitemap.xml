@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://king32783784.github.io/</loc>
-<lastmod>2017-05-23T23:39:37-00:00</lastmod>
+<lastmod>2017-06-17T19:47:17-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>http://king32783784.github.io/archives.html</loc>
-<lastmod>2017-05-23T23:39:37-00:00</lastmod>
+<lastmod>2017-06-17T19:47:17-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>http://king32783784.github.io/tags.html</loc>
-<lastmod>2017-05-23T23:39:37-00:00</lastmod>
+<lastmod>2017-06-17T19:47:17-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
 
 <url>
 <loc>http://king32783784.github.io/categories.html</loc>
-<lastmod>2017-05-23T23:39:37-00:00</lastmod>
+<lastmod>2017-06-17T19:47:17-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
@@ -81,8 +81,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://king32783784.github.io/2017/04/03/Robot/</loc>
-<lastmod>2017-04-03T00:00:00+08:00</lastmod>
+<loc>http://king32783784.github.io/2017/06/17/网络/</loc>
+<lastmod>2017-06-17T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -879,13 +879,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://king32783784.github.io/category/zi-dong-hua-ce-shi-robot.html</loc>
-<lastmod>2017-04-03T00:00:00+08:06</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.6</priority>
-</url>
-
-<url>
 <loc>http://king32783784.github.io/category/ce-shi.html</loc>
 <lastmod>2017-03-11T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -909,6 +902,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://king32783784.github.io/category/xing-neng-ce-shi.html</loc>
 <lastmod>2016-08-11T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.6</priority>
+</url>
+
+<url>
+<loc>http://king32783784.github.io/category/zi-dong-hua-ce-shi-robot.html</loc>
+<lastmod>2017-04-01T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
@@ -970,6 +970,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://king32783784.github.io/category/tong-xin-xiang-guan.html</loc>
+<lastmod>2017-06-17T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.6</priority>
+</url>
+
+<url>
 <loc>http://king32783784.github.io/category/web.html</loc>
 <lastmod>2014-06-01T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -1013,7 +1020,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://king32783784.github.io/tag/framework.html</loc>
-<lastmod>2017-04-03T00:00:00+08:06</lastmod>
+<lastmod>2017-04-01T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
@@ -1112,6 +1119,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://king32783784.github.io/tag/makefile.html</loc>
 <lastmod>2013-08-01T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.6</priority>
+</url>
+
+<url>
+<loc>http://king32783784.github.io/tag/rate.html</loc>
+<lastmod>2017-06-17T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
@@ -1216,7 +1230,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://king32783784.github.io/author/li-peng.html</loc>
-<lastmod>2017-04-03T00:00:00+08:06</lastmod>
+<lastmod>2017-06-17T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.6</priority>
 </url>
@@ -1236,13 +1250,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://king32783784.github.io/2017/04/01/Robot/</loc>
-<lastmod>2017-04-01T00:00:00+08:00</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
 <loc>http://king32783784.github.io/2017/03/24/Robot/</loc>
 <lastmod>2017-03-24T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
@@ -1264,34 +1271,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://king32783784.github.io/2017/03/24/Robot/</loc>
-<lastmod>2017-03-24T00:00:00+08:00</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://king32783784.github.io/2017/03/31/Robot/</loc>
-<lastmod>2017-03-31T00:00:00+08:00</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://king32783784.github.io/2017/04/03/Robot/</loc>
-<lastmod>2017-04-03T00:00:00+08:00</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://king32783784.github.io/2017/03/26/Robot/</loc>
-<lastmod>2017-03-26T00:00:00+08:00</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
 <loc>http://king32783784.github.io/2017/04/01/Robot/</loc>
 <lastmod>2017-04-01T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
@@ -1301,13 +1280,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://king32783784.github.io/2017/03/24/Robot/</loc>
 <lastmod>2017-03-24T00:00:00+08:00</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://king32783784.github.io/2017/04/03/Robot/</loc>
-<lastmod>2017-04-03T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -1341,13 +1313,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://king32783784.github.io/2017/04/03/Robot/</loc>
-<lastmod>2017-04-03T00:00:00+08:00</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
 <loc>http://king32783784.github.io/2017/04/01/Robot/</loc>
 <lastmod>2017-04-01T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
@@ -1357,13 +1322,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://king32783784.github.io/2017/03/31/Robot/</loc>
 <lastmod>2017-03-31T00:00:00+08:00</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://king32783784.github.io/2017/04/03/Robot/</loc>
-<lastmod>2017-04-03T00:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>

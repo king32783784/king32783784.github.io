@@ -121,9 +121,9 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
-                            <a class="hide-overflow" href="../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                            <a class="hide-overflow" href="../2017/06/17/网络/" title="网络速率统计的几个示例">
                                 <i class="fa fa-file-text padding-small"></i>
-                                Robot Framework 用户手册(四)
+                                网络速率统计的几个示例
                             </a>
                         </li>
                         <li class="">
@@ -308,13 +308,6 @@
                         </a>
                     </li>
                     <li >
-                        <a href="../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
-                            <span class="badge pull-right categorybadge">5</span>
-                        </a>
-                    </li>
-                    <li >
                         <a href="../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -339,6 +332,13 @@
                         <a href="../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
+                            <span class="badge pull-right categorybadge">4</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -399,6 +399,13 @@
                         </a>
                     </li>
                     <li >
+                        <a href="../category/tong-xin-xiang-guan.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            通信相关
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="../category/web.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             Web
@@ -443,45 +450,61 @@
     <div class="col-lg-9">
             <article>
                 <h2>
-                    <a href="../2017/04/03/Robot/">Robot Framework 用户手册(四)</a>
+                    <a href="../2017/06/17/网络/">网络速率统计的几个示例</a>
 <div class="post-info">
     <div class="publish-info-block">
         <small>
             <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2017-04-03T00:00:00+08:00"> 2017-04-03 一</time>
+                <i class="fa fa-calendar padding-small"></i><time datetime="2017-06-17T00:00:00+08:00"> 2017-06-17 六</time>
             </span>
             <span class="category">
-                <i class="fa fa-folder-open padding-small"></i><a href="../category/zi-dong-hua-ce-shi-robot.html">自动化测试-Robot</a>
+                <i class="fa fa-folder-open padding-small"></i><a href="../category/tong-xin-xiang-guan.html">通信相关</a>
             </span>
             <span class="tags">
                 <i class="fa fa-tags padding-small"></i>
-                <a href="../tag/framework.html">Framework</a>            </span>
+                <a href="../tag/rate.html">rate</a>            </span>
         </small>
     </div>
 </div><!-- /.post-info -->                </h2>
                 <div class="summary">
-                    <body><h3 id="23-chuang-jian-ce-shi-tao-jian">2.3 创建测试套件</h3>
-<p>RF可以在测试用例文件中保存，这些测试文件可以组织成测试目录。这些测试文件和目录可以创建分层次的测试套件结构。</p>
-<h4 id="231-ce-shi-yong-li-wen-jian">2.3.1 测试用例文件</h4>
-<p>RF在测试用例文件中通过测试用例表格创建测试用例。测试用例文件会从它本身包含的测试用例中自动创建测试用例套件。测试用例文件中包含的测试用例理论上没有上限，但建议最好不要超过10个，除非用例是只包含一个单独的高级关键字的数据驱动测试方法。</p>
-<p>下面测试表的设置方法适用于测试集：</p>
-<ul>
-<li>
-<p>文档</p>
-<p>用于指定测试套件文档</p>
-</li>
-<li>
-<p>元数据</p>
-<p>用于设置自由套件元数据作为名称-值对</p>
-</li>
-<li>
-<p>套件Setup, 套件Teardown</p>
-<p>指定套件setup和teardown</p>
-</li>
-</ul>
-<h4 id="232-ce-shi-tao-jian-mu-lu">2.3.2 测试套件目录</h4>
-<div class="highlight"><pre><span></span>测试用例文件可以组织成目录，这些目录用来创建更高级别的测试套件。测试集创建不能包含其他测试用例目录，但可以包含其他测试集中的用例。
-</pre></div></body>
+                    <body><p>最近新换了工作，新公司是一家做通信领域的公司(baicells)。虽然仍旧是从事测试开发相关的工作，
+但通信领域毕竟是新手，所以最近一直在恶补相关基础知识，耽误了文章的更新。</p>
+<p>本文主要分享几个系统下统计网络速率的几个小方法，供参考。</p>
+<h3 id="1wang-luo-she-bei">1.网络设备</h3>
+<p>该方法比较简单直接，不借助其他工具，直接读取一定时间间隔的网络收发数据量，然后进行速率计算。
+优点是简单粗暴，通用性比较强。
+缺点只能按照网络设备进行统计，不能按照接口进行划分。</p>
+<p>代码如下：</p>
+<table class="table highlighttable table-striped table-hover"><tbody><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30 ...</pre></div></td></tr></tbody></table></body>
                 </div>
             </article>
             <hr/>

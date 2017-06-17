@@ -122,9 +122,9 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
-                            <a class="hide-overflow" href="../../../../2017/04/03/Robot/" title="Robot Framework 用户手册(四)">
+                            <a class="hide-overflow" href="../../../../2017/06/17/网络/" title="网络速率统计的几个示例">
                                 <i class="fa fa-file-text padding-small"></i>
-                                Robot Framework 用户手册(四)
+                                网络速率统计的几个示例
                             </a>
                         </li>
                         <li class="">
@@ -309,13 +309,6 @@
                         </a>
                     </li>
                     <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试-Robot
-                            <span class="badge pull-right categorybadge">5</span>
-                        </a>
-                    </li>
-                    <li >
                         <a href="../../../../category/ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             测试
@@ -340,6 +333,13 @@
                         <a href="../../../../category/xing-neng-ce-shi.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             性能测试
+                            <span class="badge pull-right categorybadge">4</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
                             <span class="badge pull-right categorybadge">4</span>
                         </a>
                     </li>
@@ -396,6 +396,13 @@
                         <a href="../../../../category/mongodb.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             Mongodb
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/tong-xin-xiang-guan.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            通信相关
                             <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
@@ -463,27 +470,27 @@
 <p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/wireshark01.png?raw=true" width="480"/></p>
 <p>例如，在捕获筛选器选择enp1s0.
 点击enp1s0后，就可以看到实时的接收的报文。
-上端面板每一行对应一个网络报文，默认显示报文接收时间（相对开始抓取的时间点），源和目标IP地址，使用协议和报文相关信息。点击某一行可以在下面两个窗口看到更多信息。“+”图标显示报文里面每一层的详细信息。底端窗口同时以十六进制和ASCII码的方式列出报文内容。</p>
+上端面板每一行对应一个网络报文，默认显示报文接收时间（相对开始抓取的时间点），源和目标IP地址，使用协议和报文相关信息。点击某一行可以在下面两个窗口看到更多信息。&ldquo;+&rdquo;图标显示报文里面每一层的详细信息。底端窗口同时以十六进制和ASCII码的方式列出报文内容。</p>
 <p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/wireshark02.png?raw=true" width="480"/></p>
 <p>需要停止的时候，点击左上角的停止按键。
 色彩标识：
-进行到这里已经看到报文以绿色，蓝色，黑色显示出来。Wireshark通过颜色让各种流量的报文一目了然。比如默认绿色是TCP报文，深蓝色是DNS，浅蓝是UDP，黑色标识出有问题的TCP报文——比如乱序报文。</p>
+进行到这里已经看到报文以绿色，蓝色，黑色显示出来。Wireshark通过颜色让各种流量的报文一目了然。比如默认绿色是TCP报文，深蓝色是DNS，浅蓝是UDP，黑色标识出有问题的TCP报文&mdash;&mdash;比如乱序报文。</p>
 <p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/wireshark03.png?raw=true" width="480"/></p>
 <h3 id="bao-wen-yang-ben">报文样本</h3>
 <p>打开一个抓取文件相当简单，在主界面上点击Open并浏览文件即可。也可以在Wireshark里保存自己的抓包文件并稍后打开</p>
 <h3 id="guo-lu-bao-wen">过滤报文</h3>
 <p>如果正在尝试分析问题，比如打电话的时候某一程序发送的报文，可以关闭所有其他使用网络的应用来减少流量。但还是可能有大批报文需要筛选，这时要用到Wireshark过滤器。</p>
-<p>最基本的方式就是在窗口顶端过滤栏输入并点击Apply（或按下回车）。例如，输入“dns”就会只看到DNS报文。输入的时候，Wireshark会帮助自动完成过滤条件</p>
+<p>最基本的方式就是在窗口顶端过滤栏输入并点击Apply（或按下回车）。例如，输入&ldquo;dns&rdquo;就会只看到DNS报文。输入的时候，Wireshark会帮助自动完成过滤条件</p>
 <p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/wireshark04.png?raw=true" width="480"/></p>
 <p>也可以点击分析菜单选择显示筛选器来创建新的过滤条件。</p>
 <p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/wireshark05.png?raw=true" width="480"/></p>
 <p>另一件很有趣的事情是你可以右键报文并选择Follow TCP Stream。
 你会看到在服务器和目标端之间的全部会话。</p>
 <p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/wireshark06.png?raw=true" width="480"/></p>
-<p>关闭窗口之后，你会发现过滤条件自动被引用了——Wireshark显示构成会话的报文。</p>
+<p>关闭窗口之后，你会发现过滤条件自动被引用了&mdash;&mdash;Wireshark显示构成会话的报文。</p>
 <h3 id="jian-cha-bao-wen">检查报文</h3>
 <p>选中一条报文，就可以深入挖掘它的内容了。</p>
-<p>也可以在这里创建过滤条件——只需右键细节并使用Apply as Filter子菜单，就可以根据此细节创建过滤条件。</p>
+<p>也可以在这里创建过滤条件&mdash;&mdash;只需右键细节并使用Apply as Filter子菜单，就可以根据此细节创建过滤条件。</p>
 <p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/wireshark07.png?raw=true" width="480"/></p></body>
                 </div>
                 <footer class="text-right">
