@@ -121,6 +121,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../2017/08/19/Multue/" title="Multue测试工具介绍">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Multue测试工具介绍
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../2017/06/17/网络/" title="网络速率统计的几个示例">
                                 <i class="fa fa-file-text padding-small"></i>
                                 网络速率统计的几个示例
@@ -142,12 +148,6 @@
                             <a class="hide-overflow" href="../2017/03/26/Robot/" title="Robot Framework 用户手册(一)">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework 用户手册(一)
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../2017/03/24/Robot/" title="Robot Framework快速入门">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Robot Framework快速入门
                             </a>
                         </li>
                     <li>
@@ -412,6 +412,13 @@
                             <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
+                    <li >
+                        <a href="../category/zi-dong-hua-ce-shi-gong-ju.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试工具
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
                 </ul></li>
                 
             </ul>
@@ -448,6 +455,46 @@
 </section>
 <div class="row">
     <div class="col-lg-9">
+            <article>
+                <h2>
+                    <a href="../2017/08/19/Multue/">Multue测试工具介绍</a>
+<div class="post-info">
+    <div class="publish-info-block">
+        <small>
+            <span class="published">
+                <i class="fa fa-calendar padding-small"></i><time datetime="2017-08-19T00:00:00+08:00"> 2017-08-19 六</time>
+            </span>
+            <span class="category">
+                <i class="fa fa-folder-open padding-small"></i><a href="../category/zi-dong-hua-ce-shi-gong-ju.html">自动化测试工具</a>
+            </span>
+            <span class="tags">
+                <i class="fa fa-tags padding-small"></i>
+                <a href="../tag/multue.html">Multue</a>            </span>
+        </small>
+    </div>
+</div><!-- /.post-info -->                </h2>
+                <div class="summary">
+                    <body><h3 id="ji-ben-jie-shao">基本介绍</h3>
+<p>本文介绍了本人前段时间开发的基站多UE的业务测试工具。</p>
+<h3 id="zhi-zuo-mu-de">制作目的</h3>
+<p>基站产品开发过程中，会对基站的业务性能及稳定性进行测试。该测试项目在每个迭代版本中进行多次验证测试。测试环境比较复杂，涉及多个UE（比如32、96甚至更多).测试时需要对多个CPU进行业务传输测试。
+测试过程中，还需要关注基站的状态、UE的状态、业务传输速率等指标。该测试一般持续比较长的时间如7*24H，单纯靠人工测试，比较浪费人力和精力。因此在此需求上开发了Multue的自动化测试工具。</p>
+<h3 id="zhi-chi-gong-neng">支持功能</h3>
+<p>该工具主要支持以下功能：</p>
+<ul>
+<li>1． 支持多UE（96UE，可扩展）进行FTP上传/下载业务测试；</li>
+<li>2． 支持测试时长设定，测试过程中，因UE或基站异常造成业务中断，环境恢复后，业务可以自动恢复（支持常用的排错处理）；</li>
+<li>3． 支持定制UE进行业务测试，支持指定UE进行上传/下载业务；</li>
+<li>4． 支持业务测试和监控分离，可以只进行测试或只进行监控
+      监控内容包括：基站监控状态监控和UE监控，具体见下文。</li>
+</ul>
+<p>主界面如下图：</p>
+<h3 id="jian-dan-shi-xian-shuo-ming">简单实现说明</h3>
+<p>该工具的实现主要包括：</p>
+<h4 id="1-ye-wu-ce-shi-bu-fen">1. 业务测试部分 ...</h4></body>
+                </div>
+            </article>
+            <hr/>
             <article>
                 <h2>
                     <a href="../2017/06/17/网络/">网络速率统计的几个示例</a>
@@ -648,41 +695,6 @@ Setting Variables
 <li>内置了对变量的支持，特别适用于不同环境下的测试；</li>
 <li>支持标签分类和选择性执行测试用例;</li>
 <li>实现与源代码控制的轻松集成 ...</li></ul></body>
-                </div>
-            </article>
-            <hr/>
-            <article>
-                <h2>
-                    <a href="../2017/03/24/Robot/">Robot Framework快速入门</a>
-<div class="post-info">
-    <div class="publish-info-block">
-        <small>
-            <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2017-03-24T00:00:00+08:00"> 2017-03-24 五</time>
-            </span>
-            <span class="category">
-                <i class="fa fa-folder-open padding-small"></i><a href="../category/zi-dong-hua-ce-shi-robot.html">自动化测试-Robot</a>
-            </span>
-            <span class="tags">
-                <i class="fa fa-tags padding-small"></i>
-                <a href="../tag/framework.html">Framework</a>            </span>
-        </small>
-    </div>
-</div><!-- /.post-info -->                </h2>
-                <div class="summary">
-                    <body><h3 id="guan-yu">关于</h3>
-<p>本文主要介绍了Robot Framework的重要组件。可以快速浏览该文和相关示例来了解该框架。该框架重要的特性，本文都会涉及。本文主要翻译于RF官方快速文档及个人理解。</p>
-<h3 id="rfgai-shu">RF概述</h3>
-<p>RF框架是用于验收测试和验收测试驱动开发（ATDD)的通用开源测试框架。它具备易于使用的表格测试数据语法，并且使用关键字驱动测试的方法。它的测试功能可以通过使用python或java实现的测试库来进行扩展，用户可以使用用于创建测试用例的相同语法从现有的关键字创建新的更高级别的关键字。</p>
-<p>RF框架独立于操作系统和应用程序。核心框架是使用python实现的，可以在jython(JVM)和IronPython(.NET)上运行。该框架具有丰富的生态系统，包括作为单独项目开发的各种通用测试库和工具。</p>
-<p>关于RF和其生态系统的更多信息，参阅<a href="http://robotframework.org">http://robotframework.org</a>.后续，本站也会进行更详细的梳理。</p>
-<h3 id="ying-yong-yan-shi">应用演示</h3>
-<p>本文的应用示例程序是传统登录示例的一个变体：它是基于一个命令行的python编写的身份验证服务器。该应用程序允许用户做以下三件事：
- * 创建一个有效密码的账号
- * 使用有效的用户名和密码登陆
- * 更改现有账号的密码</p>
-<p>应用程序本身在sut/login.py文件中，可以使用命令python sut/login.py执行。尝试使用不存在的用户账号或密码无效登录会导致相同的错误信息：</p>
-<div class="highlight"><pre><span></span>&gt; python sut/login.py ...</pre></div></body>
                 </div>
             </article>
         <div class="btn-more text-right">
