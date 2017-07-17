@@ -471,7 +471,7 @@
                 <div class="entry-content">
                     <body><p>前面，我们介绍了Linux Namespace，但是Namespace解决的问题主要是环境隔离的问题，这只是虚拟化中最最基础的一步，我们还需要解决对计算机资源使用上的隔离。也就是说，虽然你通过Namespace把我Jail到一个特定的环境中去了，但是我在其中的进程使用用CPU、内存、磁盘等这些计算资源其实还是可以随心所欲的。所以，我们希望对进程进行资源利用上的限制或控制。这就是Linux CGroup出来了的原因。</p>
 <p>Linux CGroup全称Linux Control Group， 是Linux内核的一个功能，用来限制，控制与分离一个进程组群的资源（如CPU、内存、磁盘输入输出等）。这个项目最早是由Google的工程师在2006年发起（主要是Paul Menage和Rohit Seth），最早的名称为进程容器（process containers）。在2007年时，因为在Linux内核中，容器（container）这个名词太过广泛，为避免混乱，被重命名为cgroup，并且被合并到2.6.24版的内核中去。然后，其它开始了他的发展。
-Linux CGroupCgroup 可​​​让​​​您​​​为​​​系​​​统​​​中​​​所​​​运​​​行​​​任​​​务​​​（进​​​程​​​）的​​​用​​​户​​​定​​​义​​​组​​​群​​​分​​​配​​​资​​​源​​​ &mdash; 比​​​如​​​ CPU 时​​​间​​​、​​​系​​​统​​​内​​​存​​​、​​​网​​​络​​​带​​​宽​​​或​​​者​​​这​​​些​​​资​​​源​​​</p>
+Linux CGroupCgroup 可​​​让​​​您​​​为​​​系​​​统​​​中​​​所​​​运​​​行​​​任​​​务​​​（进​​​程​​​）的​​​用​​​户​​​定​​​义​​​组​​​群​​​分​​​配​​​资​​​源​​​ — 比​​​如​​​ CPU 时​​​间​​​、​​​系​​​统​​​内​​​存​​​、​​​网​​​络​​​带​​​宽​​​或​​​者​​​这​​​些​​​资​​​源​​​</p>
 <p>的​​​组​​​合​​​。​​​您​​​可​​​以​​​监​​​控​​​您​​​配​​​置​​​的​​​ cgroup，拒​​​绝​​​ cgroup 访​​​问​​​某​​​些​​​资​​​源​​​，甚​​​至​​​在​​​运​​​行​​​的​​​系​​​统​​​中​​​动​​​态​​​配​​​置​​​您​​​的​​​ cgroup。</p>
 <p>主要提供了如下功能：</p>
 <ul>
@@ -517,7 +517,7 @@ net_prio /sys/fs/cgroup/net_prio
 perf_event /sys/fs/cgroup/perf_event
 hugetlb /sys/fs/cgroup/hugetlb
 </pre></div>
-<p>我们可以看到，在/sys/fs下有一个cgroup的目录，这个目录下还有很多子目录，比如： cpu，cpuset，memory，blkio&hellip;&hellip;这些，这些都是cgroup的子系统。分别用于干不同的事的。</p>
+<p>我们可以看到，在/sys/fs下有一个cgroup的目录，这个目录下还有很多子目录，比如： cpu，cpuset，memory，blkio……这些，这些都是cgroup的子系统。分别用于干不同的事的。</p>
 <p>如果你没有看到上述的目录，你可以自己mount，下面给了一个示例：</p>
 <div class="highlight"><pre><span></span>mkdir cgroup
 mount -t tmpfs cgroup_root ./cgroup
@@ -791,7 +791,7 @@ Reahat Resource Management Guide
 Fixing control groups
 The unified control group hierarchy in 3.16
 Cgroup v2(PDF)</p>
-<p>转自<a href="http://coolshell.cn/articles/17049.html">酷 壳 &ndash; COOLSHELL</a></p></body>
+<p>转自<a href="http://coolshell.cn/articles/17049.html">酷 壳 – COOLSHELL</a></p></body>
                 </div>
                 <footer class="text-right">
                     <p>by 陈皓</p>

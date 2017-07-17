@@ -485,19 +485,19 @@
 <p>最后以1步长进行排序（此时就是简单的插入排序了）。 步长串行</p>
 <p>步长的选择是希尔排序的重要部分。只要最终步长为1任何步长串行都可以工作。算法最开始以一定的步长进行排序。然后会继续以一定步长进行排序，最终算法以步长为1进行排序。当步长为1时，算法变为插入排序，这就保证了数据一定会被排序。</p>
 <p>Donald Shell 最初建议步长选择为\frac{n}{2}并且对步长取半直到步长达到 1。虽然这样取可以比\mathcal{O}(n^2)类的算法（插入排序）更好，但这样仍然有减少平均时间和最差时间的余地。 可能希尔排序最重要的地方在于当用较小步长排序后，以前用的较大步长仍然是有序的。比如，如果一个数列以步长5进行了排序然后再以步长3进行排序，那么该数列不仅是以步长3有序，而且是以步长5有序。如果不是这样，那么算法在迭代过程中会打乱以前的顺序，那就不会以如此短的时间完成排序了。 步长串行 最坏情况下复杂度 {n/2^i} \mathcal{O}(n^2) 2^k - 1 \mathcal{O}(n^{3/2}) 2^i 3^j \mathcal{O}( n\log^2 n )</p>
-<p>已知的最好步长串行是由Sedgewick提出的 (1, 5, 19, 41, 109,...)，该串行的项来自 9 * 4^i - 9 * 2^i + 1 和 4^i - 3 * 2^i + 1 这两个算式[1].这项研究也表明&ldquo;比较在希尔排序中是最主要的操作，而不是交换。&rdquo;用这样步长串行的希尔排序比插入排序和堆排序都要快，甚至在小数组中比快速排序还快，但是在涉及大量数据时希尔排序还是比快速排序慢。</p>
-<p>另一个在大数组中表现优异的步长串行是(斐波那契数列除去0和1将剩余的数以黄金分区比的两倍的幂进行运算得到的数列)：（1, 9, 34, 182, 836, 4025, 19001, 90358, 428481, 2034035, 9651787, 45806244, 217378076, 1031612713, &hellip;）[2] 伪代码</p>
+<p>已知的最好步长串行是由Sedgewick提出的 (1, 5, 19, 41, 109,...)，该串行的项来自 9 * 4^i - 9 * 2^i + 1 和 4^i - 3 * 2^i + 1 这两个算式[1].这项研究也表明“比较在希尔排序中是最主要的操作，而不是交换。”用这样步长串行的希尔排序比插入排序和堆排序都要快，甚至在小数组中比快速排序还快，但是在涉及大量数据时希尔排序还是比快速排序慢。</p>
+<p>另一个在大数组中表现优异的步长串行是(斐波那契数列除去0和1将剩余的数以黄金分区比的两倍的幂进行运算得到的数列)：（1, 9, 34, 182, 836, 4025, 19001, 90358, 428481, 2034035, 9651787, 45806244, 217378076, 1031612713, …）[2] 伪代码</p>
 <div class="highlight"><pre><span></span><span class="n">input</span><span class="o">:</span> <span class="n">an</span> <span class="n">array</span> <span class="n">a</span> <span class="n">of</span> <span class="n">length</span> <span class="n">n</span> <span class="k">with</span> <span class="n">array</span> <span class="n">elements</span> <span class="n">numbered</span> <span class="mi">0</span> <span class="n">to</span> <span class="n">n</span> <span class="o">?</span> <span class="mi">1</span>
-<span class="n">inc</span> <span class="err">&larr;</span> <span class="n">round</span><span class="o">(</span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="o">)</span>
+<span class="n">inc</span> <span class="err">←</span> <span class="n">round</span><span class="o">(</span><span class="n">n</span><span class="o">/</span><span class="mi">2</span><span class="o">)</span>
 <span class="k">while</span> <span class="n">inc</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">do</span><span class="o">:</span>
     <span class="k">for</span> <span class="n">i</span> <span class="o">=</span> <span class="n">inc</span> <span class="o">..</span> <span class="n">n</span> <span class="o">?</span> <span class="mi">1</span> <span class="k">do</span><span class="o">:</span>
-        <span class="n">temp</span> <span class="err">&larr;</span> <span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
-        <span class="n">j</span> <span class="err">&larr;</span> <span class="n">i</span>
-        <span class="k">while</span> <span class="n">j</span> <span class="err">&ge;</span> <span class="n">inc</span> <span class="n">and</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span> <span class="o">?</span> <span class="n">inc</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">temp</span> <span class="k">do</span><span class="o">:</span>
-            <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="err">&larr;</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span> <span class="o">?</span> <span class="n">inc</span><span class="o">]</span>
-            <span class="n">j</span> <span class="err">&larr;</span> <span class="n">j</span> <span class="o">?</span> <span class="n">inc</span>
-            <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="err">&larr;</span> <span class="n">temp</span>
-    <span class="n">inc</span> <span class="err">&larr;</span> <span class="n">round</span><span class="o">(</span><span class="n">inc</span> <span class="o">/</span> <span class="mf">2.2</span><span class="o">)</span>
+        <span class="n">temp</span> <span class="err">←</span> <span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
+        <span class="n">j</span> <span class="err">←</span> <span class="n">i</span>
+        <span class="k">while</span> <span class="n">j</span> <span class="err">≥</span> <span class="n">inc</span> <span class="n">and</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span> <span class="o">?</span> <span class="n">inc</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">temp</span> <span class="k">do</span><span class="o">:</span>
+            <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="err">←</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span> <span class="o">?</span> <span class="n">inc</span><span class="o">]</span>
+            <span class="n">j</span> <span class="err">←</span> <span class="n">j</span> <span class="o">?</span> <span class="n">inc</span>
+            <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="err">←</span> <span class="n">temp</span>
+    <span class="n">inc</span> <span class="err">←</span> <span class="n">round</span><span class="o">(</span><span class="n">inc</span> <span class="o">/</span> <span class="mf">2.2</span><span class="o">)</span>
 </pre></div>
 <h3 id="er-dai-ma-shi-li">（二）代码示例</h3>
 <h4 id="1cshi-li-dai-ma">（1）C示例代码</h4>

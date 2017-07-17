@@ -471,11 +471,11 @@
                 <div class="entry-content">
                     <body><h3 id="zi-ding-yi-yuan-lei">自定义元类</h3>
 <p>元类的主要目的就是为了当创建类时能够自动地改变类。通常，你会为API做这样的事情，你希望可以创建符合当前上下文的类。假想一个很傻的例子，你决定在你的模块里所有的类的属性都应该是大写形式。有好几种方法可以办到，但其中一种就是通过在模块级别设定__metaclass__。采用这种方法，这个模块中的所有类都会通过这个元类来创建，我们只需要告诉元类把所有的属性都改成大写形式就万事大吉了。</p>
-<p>幸运的是，__metaclass__实际上可以被任意调用，它并不需要是一个正式的类（我知道，某些名字里带有&lsquo;class&rsquo;的东西并不需要是一个class，画画图理解下，这很有帮助）。所以，我们这里就先以一个简单的函数作为例子开始。</p>
-<div class="highlight"><pre><span></span><span class="err">#</span> <span class="err">元类会自动将你通常传给&ldquo;</span><span class="nx">type</span><span class="s2">"的参数作为自己的参数传入</span>
+<p>幸运的是，__metaclass__实际上可以被任意调用，它并不需要是一个正式的类（我知道，某些名字里带有‘class’的东西并不需要是一个class，画画图理解下，这很有帮助）。所以，我们这里就先以一个简单的函数作为例子开始。</p>
+<div class="highlight"><pre><span></span><span class="err">#</span> <span class="err">元类会自动将你通常传给“</span><span class="nx">type</span><span class="s2">"的参数作为自己的参数传入</span>
 <span class="s2">def upper_attr(future_class_name, future_class_parents, future_class_attr)</span>
-<span class="s2">    """</span><span class="err">返回一个类对象，将属性都转为大写形式&rdquo;&ldquo;&rdquo;</span>
-    <span class="err">#</span> <span class="err">选择所有不以&ldquo;</span><span class="nx">__</span><span class="s2">"的属性</span>
+<span class="s2">    """</span><span class="err">返回一个类对象，将属性都转为大写形式”“”</span>
+    <span class="err">#</span> <span class="err">选择所有不以“</span><span class="nx">__</span><span class="s2">"的属性</span>
 <span class="s2">    attrs = ((name, value) for name, value in future_class_attr.items() if not name.startswith('__'))</span>
 
 <span class="s2"># 将他们转为大写形式</span>
@@ -498,7 +498,7 @@
 <span class="err">#</span> <span class="err">打印</span><span class="s2">"bip"</span>
 </pre></div>
 <p>下面是用一个真正的class作为元类。</p>
-<div class="highlight"><pre><span></span><span class="err">#</span> <span class="err">记住，</span> <span class="err">&lsquo;</span><span class="nx">type</span><span class="s1">'实际上是一个类， 就像&lsquo;str'</span><span class="err">和&rsquo;</span><span class="kr">int</span><span class="s1">'一样</span>
+<div class="highlight"><pre><span></span><span class="err">#</span> <span class="err">记住，</span> <span class="err">‘</span><span class="nx">type</span><span class="s1">'实际上是一个类， 就像‘str'</span><span class="err">和’</span><span class="kr">int</span><span class="s1">'一样</span>
 <span class="s1"># 所以，可以从type继承</span>
 <span class="s1">class UpperAttrMetaClass(type):</span>
 <span class="s1">    # __new__是在__init__之前被调用的特殊方法</span>
@@ -544,7 +544,7 @@
         <span class="k">return</span> <span class="nx">supper</span><span class="p">(</span><span class="nx">UpperAttrMetaclass</span><span class="p">,</span> <span class="nx">cls</span><span class="p">).</span><span class="nx">__new__</span><span class="p">(</span><span class="nx">cls</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">bases</span><span class="p">,</span> <span class="nx">uppercase_attr</span><span class="p">)</span>
 </pre></div>
 <p>就是这样，除此之外，关于元类真的没有别的可说的了。使用到元类的代码比较复杂，这背后的原因并不是因为元类本身，而是因为你通常会使用元类去做一些晦涩的事情，依赖于自身，
-控制继承等等。确实，用元类搞些&rdquo;黑魔法&ldquo;是特别有用的，因而会搞出复杂的东西来。但就元类本身而言，其实是很简单的：</p>
+控制继承等等。确实，用元类搞些”黑魔法“是特别有用的，因而会搞出复杂的东西来。但就元类本身而言，其实是很简单的：</p>
 <ul>
 <li>1) 拦截类的创建</li>
 <li>2) 修改类</li>
@@ -561,7 +561,7 @@
 </ul>
 <h3 id="shi-yao-di-fang-shi-yong-yuan-lei">什么地方使用元类？</h3>
 <p>现在回到主题，究竟为什么会使用这样一种容易出错而且晦涩的特效？一般来说，根本就用不上它：</p>
-<div class="highlight"><pre><span></span>&ldquo;元类就是深度的魔法，99%的用户应该根本不必为此操心。如果你想搞清楚究竟是否需要用到元类，那么你就不需要它。那些实际用到元类的人都非常清楚地知道他们需要做什么，而且根本不需要解释为什么要用元类。&rdquo;  &mdash;&mdash; Python界的领袖 Tim Peters
+<div class="highlight"><pre><span></span>“元类就是深度的魔法，99%的用户应该根本不必为此操心。如果你想搞清楚究竟是否需要用到元类，那么你就不需要它。那些实际用到元类的人都非常清楚地知道他们需要做什么，而且根本不需要解释为什么要用元类。”  —— Python界的领袖 Tim Peters
 </pre></div>
 <p>元类的主要用途是创建API。一个典型的例子是Django ORM. 它允许你像这样定义：</p>
 <div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">Person</span><span class="p">(</span><span class="nx">models</span><span class="p">.</span><span class="nx">Model</span><span class="p">)</span><span class="o">:</span>
