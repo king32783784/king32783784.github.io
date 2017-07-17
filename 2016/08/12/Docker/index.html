@@ -622,11 +622,11 @@
 </pre></div>
 <p>我们注意到，User Namespace是以普通用户运行，但是别的Namespace需要root权限，那么，如果我要同时使用多个Namespace，该怎么办呢？一般来说，我们先用一般用户创建User Namespace，然后把这个一般用户映射成root，在容器内用root来创建其它的Namesapce。</p>
 <h4 id="network-namespace">Network Namespace</h4>
-<p>Network的Namespace比较啰嗦。在Linux下，我们一般用ip命令创建Network Namespace（Docker的源码中，它没有用ip命令，而是自己实现了ip命令内的一些功能——是用了Raw Socket发些“奇怪”的数据，呵呵）。这里，我还是用ip命令讲解一下。</p>
-<p>首先，我们先看个图，下面这个图基本上就是Docker在宿主机上的网络示意图（其中的物理网卡并不准确，因为docker可能会运行在一个VM中，所以，这里所谓的“物理网卡”其实也就是一个有可以路由的IP的网卡）</p>
+<p>Network的Namespace比较啰嗦。在Linux下，我们一般用ip命令创建Network Namespace（Docker的源码中，它没有用ip命令，而是自己实现了ip命令内的一些功能&mdash;&mdash;是用了Raw Socket发些&ldquo;奇怪&rdquo;的数据，呵呵）。这里，我还是用ip命令讲解一下。</p>
+<p>首先，我们先看个图，下面这个图基本上就是Docker在宿主机上的网络示意图（其中的物理网卡并不准确，因为docker可能会运行在一个VM中，所以，这里所谓的&ldquo;物理网卡&rdquo;其实也就是一个有可以路由的IP的网卡）</p>
 <p><img alt="" class="img-responsive" src="https://king32783784.github.io/lipeng/tmpfile/network.namespace.jpg"/></p>
 <p>上图中，Docker使用了一个私有网段，172.40.1.0，docker还可能会使用10.0.0.0和192.168.0.0这两个私有网段，关键看你的路由表中是否配置了，如果没有配置，就会使用，如果你的路由表配置了所有私有网段，那么docker启动时就会出错了。</p>
-<p>当你启动一个Docker容器后，你可以使用ip link show或ip addr show来查看当前宿主机的网络情况（我们可以看到有一个docker0，还有一个veth22a38e6的虚拟网卡——给容器用的）：</p>
+<p>当你启动一个Docker容器后，你可以使用ip link show或ip addr show来查看当前宿主机的网络情况（我们可以看到有一个docker0，还有一个veth22a38e6的虚拟网卡&mdash;&mdash;给容器用的）：</p>
 <div class="highlight"><pre><span></span>hchen@ubuntu:~$ ip link show
 1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state ...
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -690,7 +690,7 @@ ip netns exec <span class="cp">${</span><span class="n">container</span><span cl
 ip netns exec <span class="cp">${</span><span class="n">container</span><span class="o">-</span><span class="n">pid</span><span class="cp">}</span> ip addr add <span class="cp">${</span><span class="n">ROUTEABLE_IP</span><span class="cp">}</span> dev eth1 ;
 </pre></div>
 <p>上面的示例是我们为正在运行的docker容器，增加一个eth1的网卡，并给了一个静态的可被外部访问到的IP地址。</p>
-<p>这个需要把外部的“物理网卡”配置成混杂模式，这样这个eth1网卡就会向外通过ARP协议发送自己的Mac地址，然后外部的交换机就会把到这个IP地址的包转到“物理网卡”上，因为是混杂模式，所以eth1就能收到相关的数据，一看，是自己的，那么就收到。这样，Docker容器的网络就和外部通了。</p>
+<p>这个需要把外部的&ldquo;物理网卡&rdquo;配置成混杂模式，这样这个eth1网卡就会向外通过ARP协议发送自己的Mac地址，然后外部的交换机就会把到这个IP地址的包转到&ldquo;物理网卡&rdquo;上，因为是混杂模式，所以eth1就能收到相关的数据，一看，是自己的，那么就收到。这样，Docker容器的网络就和外部通了。</p>
 <p>当然，无论是Docker的NAT方式，还是混杂模式都会有性能上的问题，NAT不用说了，存在一个转发的开销，混杂模式呢，网卡上收到的负载都会完全交给所有的虚拟网卡上，于是就算一个网卡上没有数据，但也会被其它网卡上的数据所影响。</p>
 <p>这两种方式都不够完美，我们知道，真正解决这种网络问题需要使用VLAN技术，于是Google的同学们为Linux内核实现了一个IPVLAN的驱动，这基本上就是为Docker量身定制的。</p>
 <h4 id="namespacewen-jian">Namespace文件</h4>
@@ -727,7 +727,7 @@ lrwxrwxrwx 1 root root 0  4月  7 22:01 user -&gt; user:[4026531837]
 lrwxrwxrwx 1 root root 0  4月  7 22:01 uts -&gt; uts:[4026532521]
 </pre></div>
 <p>我们可以看到，其中的ipc，net，user是同一个ID，而mnt,pid,uts都是不一样的。如果两个进程指向的namespace编号相同，就说明他们在同一个namespace下，否则则在不同namespace里面。</p>
-<p>这些文件还有另一个作用，那就是，一旦这些文件被打开，只要其fd被占用着，那么就算PID所属的所有进程都已经结束，创建的namespace也会一直存在。比如：我们可以通过：mount –bind /proc/4600/ns/uts ~/uts 来hold这个namespace。</p>
+<p>这些文件还有另一个作用，那就是，一旦这些文件被打开，只要其fd被占用着，那么就算PID所属的所有进程都已经结束，创建的namespace也会一直存在。比如：我们可以通过：mount &ndash;bind /proc/4600/ns/uts ~/uts 来hold这个namespace。</p>
 <p>另外，我们在上篇中讲过一个setns的系统调用，其函数声明如下：</p>
 <div class="highlight"><pre><span></span>int setns(int fd, int nstype);
 </pre></div>
@@ -738,7 +738,7 @@ setns(fd, 0); // 加入新的namespace
 <p>参考文档</p>
 <p><a href="http://lwn.net/Articles/531114/">Namespaces in operation</a></p>
 <p><a href="http://man7.org/linux/man-pages/man7/namespaces.7.html">Linux Namespace Man Page</a></p>
-<p><a href="http://crosbymichael.com/creating-containers-part-1.html">Creat Containers – Part 1</a></p>
+<p><a href="http://crosbymichael.com/creating-containers-part-1.html">Creat Containers &ndash; Part 1</a></p>
 <p><a href="https://blog.yadutaf.fr/2013/12/22/introduction-to-linux-namespaces-part-1-uts/">Introduction to Linux namespaces</a></p>
 <p>（全文完）</p></body>
                 </div>

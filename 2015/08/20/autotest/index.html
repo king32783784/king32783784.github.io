@@ -470,7 +470,7 @@
             <div class="col-lg-9">
                 <div class="entry-content">
                     <body><p><img class="img-responsive" height="280" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" width="480"/></p>
-<p>Autoserv 是“自动化机器控制“的框架
+<p>Autoserv 是&ldquo;自动化机器控制&ldquo;的框架
 Autoserv 目的是控制机器，它可以：</p>
 <ul>
 <li>电源管理</li>
@@ -544,7 +544,7 @@ ssh运行命令，通过scp进行文件传输。</p>
 <p>Site host 是一个空类，可以添加特殊的方法或支持所以类型hostts的属性。它定义在server/hosts/site_host_py文件中，不过可能是空的。
 创建这样的一个类的灵感来自于如更新bios，侦测硬件版本或一些对普通用户不常用的操作。</p>
 <h4 id="kvmguest">KVMGuest</h4>
-<p>KVMGuest 表示可以运行程序的KVM 虚拟机。　它必须绑定到其他host, 这些机器实际上运行于虚拟层。KVMGuest和SSHHost非常类似，但它可以通过hardreset方法（Guest中）调用hypervisor的命令去实现”硬复位“.可以通过查看<a href="">KVM section</a>查看更多的KVM和KVMguest信息。</p>
+<p>KVMGuest 表示可以运行程序的KVM 虚拟机。　它必须绑定到其他host, 这些机器实际上运行于虚拟层。KVMGuest和SSHHost非常类似，但它可以通过hardreset方法（Guest中）调用hypervisor的命令去实现&rdquo;硬复位&ldquo;.可以通过查看<a href="">KVM section</a>查看更多的KVM和KVMguest信息。</p>
 <h4 id="bootloader">Bootloader</h4>
 <p>Boottool 是一个查询和修改bootloader文件的perl脚本。Autoserv提供Bootloader类，是围绕boottool的包装。Ａutoserv 在需要时会第一时间将boottool脚本自动复制到一个临时目录。可以通过查看server/hosts/bootloader.py查看支持方法的信息。其中最重要的一个方法是add_kernel()</p>
 <p>当添加了一个新内核是，boottool会复用上一个内核的命令行及配置，来实现一个新的启动项菜单。</p>
@@ -568,7 +568,7 @@ ssh运行命令，通过scp进行文件传输。</p>
 <ul>
 <li>run()运行一个控制文件的语法如下：run(control_file, results_dir, host).control_file 参数支持get()和intallableObject相同类型的值。</li>
 </ul>
-<p>下面是一个Autoserv控制文件和运行Autotest job的例子。测试结果会传输到server的“job_results"目录下。
+<p>下面是一个Autoserv控制文件和运行Autotest job的例子。测试结果会传输到server的&ldquo;job_results"目录下。
     remote_host = hosts.SSHHost("192.168.1.1")</p>
 <div class="highlight"><pre><span></span>at = autotest.Autotest()
 at.get("/var/local/autotest/client")
