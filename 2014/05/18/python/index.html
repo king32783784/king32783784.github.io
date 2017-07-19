@@ -372,13 +372,6 @@
                         </a>
                     </li>
                     <li >
-                        <a href="../../../../category/gong-ju.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            工具
-                            <span class="badge pull-right categorybadge">2</span>
-                        </a>
-                    </li>
-                    <li >
                         <a href="../../../../category/suan-fa.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             算法
@@ -390,6 +383,20 @@
                             <i class="fa fa-folder-open padding-small"></i>
                             unix环境编程
                             <span class="badge pull-right categorybadge">2</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-gong-ju.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试工具
+                            <span class="badge pull-right categorybadge">2</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/gong-ju.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            工具
+                            <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
                     <li >
@@ -410,13 +417,6 @@
                         <a href="../../../../category/web.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             Web
-                            <span class="badge pull-right categorybadge">1</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-gong-ju.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试工具
                             <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
@@ -642,7 +642,7 @@ XML文档中第一个元素叫做根元素，每份XML文档只能有一个根�
 &gt;&gt;&gt; all_links[3].attrib
 {'href': 'http://diveintomark.org/archives/2008/12/18/give-part-1-container-formats', 'type': 'text/html', 'rel': 'alternate'}
 </pre></div>
-<p>ElementTree的findall()方法是其一个非常强大的特性,但它的查询方式有些出乎意料，&ldquo;有限的XPath支持"  XPath是一种用于查询XML文档的W3C标准。另外一个第三方库对ElementTree的API进行了扩展，提供了对XPath的全面支持。</p>
+<p>ElementTree的findall()方法是其一个非常强大的特性,但它的查询方式有些出乎意料，“有限的XPath支持"  XPath是一种用于查询XML文档的W3C标准。另外一个第三方库对ElementTree的API进行了扩展，提供了对XPath的全面支持。</p>
 <p><strong>LXML</strong></p>
 <p>lxml是一个开源的第三方库，以流行的libxml2解析器为基础开发。它提供了对XPath1.0的全面支持。</p>
 <div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span> <span class="c1"># 导入lxml，和ElementTree提供相同的API</span>
@@ -661,7 +661,7 @@ XML文档中第一个元素叫做根元素，每份XML文档只能有一个根�
 <p>lxml不只是一个更快速的ElementTree,它的findall()方法能够支持更加复杂的表达式。</p>
 <div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">lxml.etree</span> <span class="c1"># 直接导入了lxml.etree，强调这些特性只限于lxml</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">tree</span> <span class="o">=</span> <span class="n">lxml</span><span class="o">.</span><span class="n">etree</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">'feed.xml'</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">tree</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">'.//{http://www.w3.org/2005/Atom}*[@href]'</span><span class="p">)</span><span class="c1"># 查找整个文档范围内搜索命名空间Atom中具有href属性的元素 {http://www.w3.org/2005/Atom}指示"搜索范围仅在命名空间Atom中。&rdquo;*表示&ldquo;任意本地名的元素&rdquo;[@href]表示含有href属性&ldquo;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">tree</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s1">'.//{http://www.w3.org/2005/Atom}*[@href]'</span><span class="p">)</span><span class="c1"># 查找整个文档范围内搜索命名空间Atom中具有href属性的元素 {http://www.w3.org/2005/Atom}指示"搜索范围仅在命名空间Atom中。”*表示“任意本地名的元素”[@href]表示含有href属性“</span>
 <span class="p">[</span><span class="o">&lt;</span><span class="n">Element</span> <span class="p">{</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">2005</span><span class="o">/</span><span class="n">Atom</span><span class="p">}</span><span class="n">link</span> <span class="n">at</span> <span class="mh">0x7fc09bd99088</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">Element</span> <span class="p">{</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">2005</span><span class="o">/</span><span class="n">Atom</span><span class="p">}</span><span class="n">link</span> <span class="n">at</span> <span class="mh">0x7fc09bd99108</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">Element</span> <span class="p">{</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">2005</span><span class="o">/</span><span class="n">Atom</span><span class="p">}</span><span class="n">link</span> <span class="n">at</span> <span class="mh">0x7fc09bd990c8</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">Element</span> <span class="p">{</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">2005</span><span class="o">/</span><span class="n">Atom</span><span class="p">}</span><span class="n">link</span> <span class="n">at</span> <span class="mh">0x7fc09bd92f08</span><span class="o">&gt;</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">tree</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">".//{http://www.w3.org/2005/Atom}*[@href='http://diveintomark.org/']"</span><span class="p">)</span> <span class="c1"># 查找所有包含href属性并且值为"http://diveintomark.org/"的Atom元素</span>
 <span class="p">[</span><span class="o">&lt;</span><span class="n">Element</span> <span class="p">{</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">2005</span><span class="o">/</span><span class="n">Atom</span><span class="p">}</span><span class="n">link</span> <span class="n">at</span> <span class="mh">0x7fc09bd99088</span><span class="o">&gt;</span><span class="p">]</span>
@@ -673,7 +673,7 @@ XML文档中第一个元素叫做根元素，每份XML文档只能有一个根�
 <div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">lxml.etree</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">tree</span> <span class="o">=</span> <span class="n">lxml</span><span class="o">.</span><span class="n">etree</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">'feed.xml'</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">NSMAP</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">'atom'</span><span class="p">:</span> <span class="s1">'http://www.w3.org/2005/Atom'</span><span class="p">}</span> <span class="c1"># 要查询命名空间的元素，定义一个命名空间前缀映射。</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">entries</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">".//atom:category[@term='accessibility']/.."</span><span class="p">,</span> <span class="n">namespaces</span><span class="o">=</span><span class="n">NSMAP</span><span class="p">)</span> <span class="c1">#  XPath查询请求。这个XPath表达式目的在于搜索category元素，并且该元素包含值为accessibility的term属性&rdquo;/.."意思是返回找到的category元素的父元素。这条语句会找到所有包含&lt;category term = 'accessibility'&gt;作为子元素的条目</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">entries</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">".//atom:category[@term='accessibility']/.."</span><span class="p">,</span> <span class="n">namespaces</span><span class="o">=</span><span class="n">NSMAP</span><span class="p">)</span> <span class="c1">#  XPath查询请求。这个XPath表达式目的在于搜索category元素，并且该元素包含值为accessibility的term属性”/.."意思是返回找到的category元素的父元素。这条语句会找到所有包含&lt;category term = 'accessibility'&gt;作为子元素的条目</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">entries</span> <span class="c1"># xpath()函数返回一个ElementTree对象列表</span>
 <span class="p">[</span><span class="o">&lt;</span><span class="n">Element</span> <span class="p">{</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">w3</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mi">2005</span><span class="o">/</span><span class="n">Atom</span><span class="p">}</span><span class="n">entry</span> <span class="n">at</span> <span class="mh">0x7fc09bd99188</span><span class="o">&gt;</span><span class="p">]</span> 
 <span class="o">&gt;&gt;&gt;</span> <span class="n">entry</span> <span class="o">=</span> <span class="n">entries</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>

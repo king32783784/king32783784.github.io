@@ -372,13 +372,6 @@
                         </a>
                     </li>
                     <li >
-                        <a href="../../../../category/gong-ju.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            工具
-                            <span class="badge pull-right categorybadge">2</span>
-                        </a>
-                    </li>
-                    <li >
                         <a href="../../../../category/suan-fa.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             算法
@@ -390,6 +383,20 @@
                             <i class="fa fa-folder-open padding-small"></i>
                             unix环境编程
                             <span class="badge pull-right categorybadge">2</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-gong-ju.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试工具
+                            <span class="badge pull-right categorybadge">2</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/gong-ju.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            工具
+                            <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
                     <li >
@@ -410,13 +417,6 @@
                         <a href="../../../../category/web.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             Web
-                            <span class="badge pull-right categorybadge">1</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-gong-ju.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试工具
                             <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
@@ -499,7 +499,7 @@ $ python shelve_existing.py
 <span class="o">{</span><span class="s1">'int'</span>: <span class="m">10</span>, <span class="s1">'float'</span>: <span class="m">9</span>.5, <span class="s1">'string'</span>: <span class="s1">'Sample data'</span><span class="o">}</span>
 </pre></div>
 <p>dbm模块不支持多个应用同时写入同一数据库，如果客户端或程序不会修改shelf,请指定shelve以只读方式打开数据库。</p>
-<div class="highlight"><pre><span></span>s = shelve.open('test_shelf.db', flag='r')   # 打开时指定flag＝&lsquo;r'，只读模式打开
+<div class="highlight"><pre><span></span>s = shelve.open('test_shelf.db', flag='r')   # 打开时指定flag＝‘r'，只读模式打开
 try:
     existing =  s['key1']
 finally:

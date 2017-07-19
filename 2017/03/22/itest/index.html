@@ -16,7 +16,7 @@
     <meta property="og:url" content="../../../../2017/03/22/itest/"/>
     <meta property="og:description" content="基本介绍 本文介绍了itest(自研测试工具）的制作目的、测试范围、常用功能、测试方法。该工具目前处于开发阶段，仍有部分功能未实现，存在一些稳定性、兼容性的问题。 制作目的 进行linux系统测试时，需要进行系统信息抓取、功能性测试、性能测试、稳定性测试。其中信息抓取、性能测试、稳定性测试大部分情况下需要进行多轮次的测试。比如系统信息抓取包含系统软硬件信息的多个方面如 cpu信息、gcc信息等等；性能测试包括cpu、内存、内核等等；稳定性测试包括io、多线程、图形、内核等等；功能测试包括内核系统调用、常用服务/命令（主要包括目前自动化实现的部分）。这些可以自动化实现的测试，之前我们多多少少的都做了一些测试脚本进行了实现，itest制作的目的是为了整合这些测试，并且提供一个简单操作的GUI界面。主界面如下 测试范围 itest目前支持的测试包括： 系统信息抓取 包括：硬件信息抓取和系统核心组件信息抓取。硬件信息主要包括：处理器、主板、BIOS、内存、北桥 ..."/>
     <meta property="article:published_time" content="2017-03-22" />
-    <meta property="article:section" content="工具" />
+    <meta property="article:section" content="自动化测试工具" />
         <meta property="article:tag" content="itest" />
         <meta property="article:author" content="李鹏" />
         <meta property="og:image"
@@ -371,13 +371,6 @@
                             <span class="badge pull-right categorybadge">3</span>
                         </a>
                     </li>
-                    <li class="active">
-                        <a href="../../../../category/gong-ju.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            工具
-                            <span class="badge pull-right categorybadge">2</span>
-                        </a>
-                    </li>
                     <li >
                         <a href="../../../../category/suan-fa.html">
                             <i class="fa fa-folder-open padding-small"></i>
@@ -390,6 +383,20 @@
                             <i class="fa fa-folder-open padding-small"></i>
                             unix环境编程
                             <span class="badge pull-right categorybadge">2</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="../../../../category/zi-dong-hua-ce-shi-gong-ju.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试工具
+                            <span class="badge pull-right categorybadge">2</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/gong-ju.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            工具
+                            <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
                     <li >
@@ -410,13 +417,6 @@
                         <a href="../../../../category/web.html">
                             <i class="fa fa-folder-open padding-small"></i>
                             Web
-                            <span class="badge pull-right categorybadge">1</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="../../../../category/zi-dong-hua-ce-shi-gong-ju.html">
-                            <i class="fa fa-folder-open padding-small"></i>
-                            自动化测试工具
                             <span class="badge pull-right categorybadge">1</span>
                         </a>
                     </li>
@@ -454,7 +454,7 @@
                 <i class="fa fa-calendar padding-small"></i><time datetime="2017-03-22T00:00:00+08:00"> 2017-03-22 三</time>
             </span>
             <span class="category">
-                <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/gong-ju.html">工具</a>
+                <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/zi-dong-hua-ce-shi-gong-ju.html">自动化测试工具</a>
             </span>
             <span class="tags">
                 <i class="fa fa-tags padding-small"></i>
@@ -498,7 +498,7 @@
 <p>邮件订阅功能，性能测试和稳定性测试大部分需要较长的时间，而且都是无人值守的测试。为了实现第一时间掌握测试结果的需求，考虑实现邮件订阅功能，将需要了解测试结果人员的邮件添加到邮件订阅列表，测试完成后，itest会自动将测试报告以邮件的形式发送给订阅者，设置界面如下：</p>
 <p><img class="img-responsive" height="240" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/itest-mail.png?raw=true" width="320"/></p>
 <p>测试项目选择，itest可以根据自己的测试需求，选择对应的测试项目，如只进行性能测试中的cpu性能测试，只需勾选对应测试项目即可。如下图</p>
-<p><img class="img-responsive" height="240" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/itest-itemcheck.png?raw=true" width="320"/></p>
+<p><img class="img-responsive" height="240" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/itest-itemcheak.png?raw=true" width="320"/></p>
 <p>部分测试项目包含多个测试工具或测试点，可以根据需要进行定制，如下图：</p>
 <p><img class="img-responsive" height="240" src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/itest-itemset.png?raw=true" width="320"/></p>
 <p>具体的测试项目同样支持测试参数的指定，如iozone,需要设置测试文件大小、测试模式、测试块大小、测试次数、测试线程数数等参数，设置方法如下图：</p>
