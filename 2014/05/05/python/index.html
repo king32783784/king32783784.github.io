@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="李鹏" />
         <meta name="keywords" content="Python-Tips" />
-        <meta name="description" content="Tips15 python中所有正则表达式相关功能都包含在re模块中 ^匹配字符串开始 $匹配字符串结尾 re模块最基本的方法是search()函数 pattern = &#39;^M?M?M?\(&#39; # ^表示从字符串开头匹配 M?重复３次，匹配0-3次Ｍ字符，\) 匹配字符传结束 ？表示匹配是可选的 pattern = &#39;^M?M?M?(CM|CD|D?C?C?C?)$&#39; # &#34;|&#34;表示是可选的，一旦CM匹配成功，后面的均被忽略 {N,M} {1,4} 匹配１到４个前面的模式 pattern = &#39;^M{0,3}\(&#39; 和前面的 &#39;^M?^M?^m?\)&#39;等同 python允许使用松散正则表达式。特点：空白符被忽略。空格、制表符和回车不会被匹配，匹配时需要加转义字符“\&#34; 注释信息被忽略 ...if (!document.getElementById(&#39;mathjaxscript_pelican_#%@#$@#&#39;)) { var align = &#34;center&#34;, indent = &#34;0em&#34;, linebreak = &#34;false&#34;; if (false) { align = (screen.width if (!document.getElementById(&#39;mathjaxscript_pelican_#%@#$@#&#39;)) { var align = &#34;center&#34;, indent = &#34;0em&#34;, linebreak = &#34;false&#34;; if (false) { align = (screen.width" />
+        <meta name="description" content="Tips15 python中所有正则表达式相关功能都包含在re模块中 ^匹配字符串开始 $匹配字符串结尾 re模块最基本的方法是search()函数 pattern = &#39;^M?M?M?\(&#39; # ^表示从字符串开头匹配 M?重复３次，匹配0-3次Ｍ字符，\) 匹配字符传结束 ？表示匹配是可选的 pattern = &#39;^M?M?M?(CM|CD|D?C?C?C?)$&#39; # &#34;|&#34;表示是可选的，一旦CM匹配成功，后面的均被忽略 {N,M} {1,4} 匹配１到４个前面的模式 pattern = &#39;^M{0,3}\(&#39; 和前面的 &#39;^M?^M?^m?\)&#39;等同 python允许使用松散正则表达式。特点：空白符被忽略。空格、制表符和回车不会被匹配，匹配时需要加转义字符“\&#34; 注释信息被忽略 ..." />
 
 <!-- Open Graph tags -->
 <meta property="og:site_name" content="路漫求索"/>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="Python-Tips(三）"/>
     <meta property="og:url" content="../../../../2014/05/05/python/"/>
-    <meta property="og:description" content="Tips15 python中所有正则表达式相关功能都包含在re模块中 ^匹配字符串开始 $匹配字符串结尾 re模块最基本的方法是search()函数 pattern = &#39;^M?M?M?\(&#39; # ^表示从字符串开头匹配 M?重复３次，匹配0-3次Ｍ字符，\) 匹配字符传结束 ？表示匹配是可选的 pattern = &#39;^M?M?M?(CM|CD|D?C?C?C?)$&#39; # &#34;|&#34;表示是可选的，一旦CM匹配成功，后面的均被忽略 {N,M} {1,4} 匹配１到４个前面的模式 pattern = &#39;^M{0,3}\(&#39; 和前面的 &#39;^M?^M?^m?\)&#39;等同 python允许使用松散正则表达式。特点：空白符被忽略。空格、制表符和回车不会被匹配，匹配时需要加转义字符“\&#34; 注释信息被忽略 ...if (!document.getElementById(&#39;mathjaxscript_pelican_#%@#$@#&#39;)) { var align = &#34;center&#34;, indent = &#34;0em&#34;, linebreak = &#34;false&#34;; if (false) { align = (screen.width if (!document.getElementById(&#39;mathjaxscript_pelican_#%@#$@#&#39;)) { var align = &#34;center&#34;, indent = &#34;0em&#34;, linebreak = &#34;false&#34;; if (false) { align = (screen.width"/>
+    <meta property="og:description" content="Tips15 python中所有正则表达式相关功能都包含在re模块中 ^匹配字符串开始 $匹配字符串结尾 re模块最基本的方法是search()函数 pattern = &#39;^M?M?M?\(&#39; # ^表示从字符串开头匹配 M?重复３次，匹配0-3次Ｍ字符，\) 匹配字符传结束 ？表示匹配是可选的 pattern = &#39;^M?M?M?(CM|CD|D?C?C?C?)$&#39; # &#34;|&#34;表示是可选的，一旦CM匹配成功，后面的均被忽略 {N,M} {1,4} 匹配１到４个前面的模式 pattern = &#39;^M{0,3}\(&#39; 和前面的 &#39;^M?^M?^m?\)&#39;等同 python允许使用松散正则表达式。特点：空白符被忽略。空格、制表符和回车不会被匹配，匹配时需要加转义字符“\&#34; 注释信息被忽略 ..."/>
     <meta property="article:published_time" content="2014-05-05" />
     <meta property="article:section" content="编程语言-Python" />
         <meta property="article:tag" content="Python-Tips" />
@@ -227,13 +227,13 @@
                             开源项目
                         </a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="../../../../pages/links.html">
                             <i class="fa fa-file-text padding-small"></i>
                             常用链接
                         </a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="../../../../pages/Reference material.html">
                             <i class="fa fa-file-text padding-small"></i>
                             参考资料
@@ -451,7 +451,7 @@
     <div class="publish-info-block">
         <small>
             <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2014-05-05T00:00:00+08:00"> 2014-05-05 Mon</time>
+                <i class="fa fa-calendar padding-small"></i><time datetime="2014-05-05T00:00:00+08:00"> 2014-05-05 一</time>
             </span>
             <span class="category">
                 <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/bian-cheng-yu-yan-python.html">编程语言-Python</a>
@@ -469,7 +469,7 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    <body><p><strong>Tips15</strong></p>
+                    <p><strong>Tips15</strong></p>
 <ul>
 <li>
 <p>python中所有正则表达式相关功能都包含在re模块中</p>
@@ -520,23 +520,27 @@
 </li>
 </ul>
 <p>如果不明确字符串开始的地方：</p>
-<div class="highlight"><pre><span></span>phonePattern = re.compile(r'(\d{3})\D*(\d{3})\D*(\d{4})\D*(\d*)$')
+<div class="highlight"><pre><span></span>phonePattern = re.compile(r&#39;(\d{3})\D*(\d{3})\D*(\d{4})\D*(\d*)$&#39;)
 </pre></div>
+
+
 <p>松散正则表达式会清晰一点：</p>
-<div class="highlight"><pre><span></span>phonePattern = re.compile(r'''
+<div class="highlight"><pre><span></span>phonePattern = re.compile(r&#39;&#39;&#39;
     (\d{3})    # 先匹配３个数字（如８００）
-    \D*        # 这个区域是任意非数字的字符如（"-")
+    \D*        # 这个区域是任意非数字的字符如（&quot;-&quot;)
     (\d{3})     # 匹配三个数字如（555)
     \D*        #任意非数字的字符
     (\d{4})    # 匹配４个数字如（1212)
     \D*        # 任意非数字的字符
     (\d*)      # 任何数字字符
     $          # 字符结束
-    ''', re.VERBOSE)
+    &#39;&#39;&#39;, re.VERBOSE)
 
-例如　phone.Pattern.search('work 1-(800) 555.1212 #1234').groups()
-('800','555','1212','1234')
+例如　phone.Pattern.search(&#39;work 1-(800) 555.1212 #1234&#39;).groups()
+(&#39;800&#39;,&#39;555&#39;,&#39;1212&#39;,&#39;1234&#39;)
 </pre></div>
+
+
 <p><strong>Tips16</strong></p>
 <ul>
 <li>
@@ -636,7 +640,7 @@ yield 的作用就是把一个函数变成一个 generator，带有 yield 的函
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-</script></body>
+</script>
                 </div>
                 <footer class="text-right">
                     <p>by 李鹏</p>
