@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>路漫求索</title><link>http://king32783784.github.io/</link><description>生活不止眼前的苟且，还有诗和远方 &lt;a href="pages/aboutme.html"&gt;More...&lt;/a&gt;</description><lastBuildDate>Sat, 11 Mar 2017 00:00:00 +0800</lastBuildDate><item><title>测试的行业危机</title><link>http://king32783784.github.io/2017/03/11/%E6%B5%8B%E8%AF%95/</link><description>&lt;p&gt;经常看到网上时不时吵起“测试人员如何转产品”、“QA的长期职业规划”等文章，对于QA工程师而言，貌似都是老生常谈的内容了。原本抱着在某个“特殊时刻”（马桶上）消磨时光的心态点开了这篇文章，居然在如此“恶劣”的环境下用时15min耐心看完了之后，又返回电脑前默默把它左击放入收藏夹。&lt;/p&gt;
+<rss version="2.0"><channel><title>路漫求索</title><link>http://lipeng886.github.io/</link><description>生活不止眼前的苟且，还有诗和远方 &lt;a href="pages/aboutme.html"&gt;More...&lt;/a&gt;</description><lastBuildDate>Sat, 11 Mar 2017 00:00:00 +0800</lastBuildDate><item><title>测试的行业危机</title><link>http://lipeng886.github.io/2017/03/11/%E6%B5%8B%E8%AF%95/</link><description>&lt;p&gt;经常看到网上时不时吵起“测试人员如何转产品”、“QA的长期职业规划”等文章，对于QA工程师而言，貌似都是老生常谈的内容了。原本抱着在某个“特殊时刻”（马桶上）消磨时光的心态点开了这篇文章，居然在如此“恶劣”的环境下用时15min耐心看完了之后，又返回电脑前默默把它左击放入收藏夹。&lt;/p&gt;
 &lt;p&gt;到底这篇文章讲了什么呢？快收起小马步，听听华为资深测试专家怎么看待测试的行业危机：&lt;/p&gt;
 &lt;p&gt;入职华为以来，一直做的是测试工作，这种危机感在近几年愈发强烈，一直想总结一下，但又担心总结不好，动摇军心。但该面对的早晚要面对，需改变的也要尽早改变，一定要有革自己命的勇气。&lt;/p&gt;
 &lt;h3&gt;危机的预兆&lt;/h3&gt;
@@ -76,7 +76,7 @@
 &lt;p&gt;千万千万不要把自己只当成找bug的工程师，而是服务质量和产品品质的守护者&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;转自：http://qa.baidu.com/academy/detail/article/133#article-comment-wrap&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Others</dc:creator><pubDate>Sat, 11 Mar 2017 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2017-03-11:2017/03/11/测试/</guid><category>测试</category></item><item><title>测试分类</title><link>http://king32783784.github.io/2017/03/10/%E6%B5%8B%E8%AF%95/</link><description>&lt;p&gt;测试的方法有千千万万种，但以下几种是你必须深刻了解的：&lt;/p&gt;
+&lt;p&gt;转自：http://qa.baidu.com/academy/detail/article/133#article-comment-wrap&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Others</dc:creator><pubDate>Sat, 11 Mar 2017 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2017-03-11:2017/03/11/测试/</guid><category>测试</category></item><item><title>测试分类</title><link>http://lipeng886.github.io/2017/03/10/%E6%B5%8B%E8%AF%95/</link><description>&lt;p&gt;测试的方法有千千万万种，但以下几种是你必须深刻了解的：&lt;/p&gt;
 &lt;h3&gt;功能测试（Function Testing）&lt;/h3&gt;
 &lt;p&gt;功能测试就是对产品的各功能进行验证，根据功能测试用例，逐项测试，检查产品是否达到用户要求的功能。功能测试也叫黑盒测试或数据驱动测试，只需考虑需要测试的各个功能，不需要考虑整个软件的内部结构及代码.一般从软件产品的界面、架构出发，按照需求编写出来的测试用例，输入数据在预期结果和实际结果之间进行评测，进而提出更加使产品达到用户使用的要求。&lt;/p&gt;
 &lt;p&gt;在小型移动开发团队中，这个环节一般由产品经理或开发自己负责，查看自己提的需求有没有被实现。比较大的团队会有正规测试人员进行这项工作。&lt;/p&gt;
@@ -110,7 +110,7 @@
 &lt;h3&gt;验收测试（Acceptance Testing）&lt;/h3&gt;
 &lt;p&gt;验收测试是部署软件之前的最后一个测试操作。在软件产品完成了单元测试、集成测试和系统测试等之后，产品发布之前所进行的软件测试活动。它是技术测试的最后一个阶段，也称为交付测试。验收测试的目的是确保软件准备就绪，并且可以让最终用户将其用于执行软件的既定功能和任务。经集成测试后，已经按照设计把所有的模块组装成一个完整的软件系统，接口错误也已经基本排除了，接着就应该进一步验证软件的有效性，这就是验收测试的任务，即软件的功能和性能如同用户所合理期待的那样。
   工程及其他相关领域中，验收测试是指确认一系统是否符合设计规格或契约之需求内容的测试，可能会包括化学测试、物理测试或是性能测试。在系统工程中验收测试可能包括在系统（例如一套软件系统、许多机械零件或是一批化学制品）交付前的黑箱测试。软件开发者常会将系统开发者进行的验收测试和客户在接受产品前进行的验收测试分开。后者一般会称为使用者验收测试、终端客户测试、实机（验收）测试、现场（验收）测试。在进行主要测试程序之前，常用冒烟测试作为一个此阶段的验收测试。&lt;/p&gt;
-&lt;p&gt;转自：http://qa.baidu.com/academy/detail/article/141&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Others</dc:creator><pubDate>Fri, 10 Mar 2017 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2017-03-10:2017/03/10/测试/</guid><category>测试</category></item><item><title>北京折叠－郝景芳</title><link>http://king32783784.github.io/2016/09/01/bei-jing-zhe-die-hao-jing-fang/</link><description>&lt;h2&gt;第一幕&lt;/h2&gt;
+&lt;p&gt;转自：http://qa.baidu.com/academy/detail/article/141&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Others</dc:creator><pubDate>Fri, 10 Mar 2017 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2017-03-10:2017/03/10/测试/</guid><category>测试</category></item><item><title>北京折叠－郝景芳</title><link>http://lipeng886.github.io/2016/09/01/bei-jing-zhe-die-hao-jing-fang/</link><description>&lt;h2&gt;第一幕&lt;/h2&gt;
 &lt;p&gt;&lt;img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/W3UPOU6IG2.jpg" height="280" width="420"&gt;&lt;/p&gt;
 &lt;p&gt;清晨4:50，老刀穿过熙熙攘攘的步行街，去找彭蠡。&lt;/p&gt;
 &lt;p&gt;从垃圾站下班之后，老刀回家洗了个澡，换了衣服。白色衬衫和褐色裤子，这是他唯一一套体面衣服，衬衫袖口磨了边，他把袖子卷到胳膊肘。老刀四十八岁，没结婚，已经过了注意外表的年龄，又没人照顾起居，这一套衣服留着穿了很多年，每次穿一天，回家就脱了叠上。他在垃圾站上班，没必要穿得体面，偶尔参加谁家小孩的婚礼，才拿出来穿在身上。这一次他不想脏兮兮地见陌生人。他在垃圾站连续工作了五小时，很担心身上会有味道。&lt;/p&gt;
@@ -379,7 +379,7 @@
 &lt;p&gt;他从衣服的内衬掏出一张一万块的钞票，虚弱地递给老太太。老太太目瞪口呆，阿贝、阑阑看得傻了。他不想解释，摆摆手回到自己的房间。&lt;/p&gt;
 &lt;p&gt;摇篮里，糖糖刚刚睡醒，正迷糊着揉眼睛。他看着糖糖的脸，疲倦了一天的心软下来。他想起最初在垃圾站门口抱起糖糖时，她那张脏兮兮的哭累了的小脸。他从没后悔将她抱来。她笑了，吧唧了一下小嘴。他觉得自己还是幸运的。尽管伤了腿，但毕竟没被抓住，还带了钱回来。他不知道糖糖什么时候才能学会唱歌跳舞，成为一个淑女。&lt;/p&gt;
 &lt;p&gt;他看看时间，该去上班了。&lt;/p&gt;
-&lt;p&gt;（全文完）&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">others</dc:creator><pubDate>Thu, 01 Sep 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-09-01:2016/09/01/bei-jing-zhe-die-hao-jing-fang/</guid><category>杂文</category></item><item><title>Docker基础技术：Linux Namespace（下）</title><link>http://king32783784.github.io/2016/08/12/Docker/</link><description>&lt;p&gt;在 &lt;a href="https://king32783784.github.io/lipeng/2016/08/11/Docker/"&gt;Docker基础技术：Linux Namespace（上篇)&lt;/a&gt;中我们了解了，UTD、IPC、PID、Mount 四个namespace，我们模仿Docker做了一个相当相当山寨的镜像。在这一篇中，主要想向大家介绍Linux的User和Network的Namespace。&lt;/p&gt;
+&lt;p&gt;（全文完）&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">others</dc:creator><pubDate>Thu, 01 Sep 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2016-09-01:2016/09/01/bei-jing-zhe-die-hao-jing-fang/</guid><category>杂文</category></item><item><title>Docker基础技术：Linux Namespace（下）</title><link>http://lipeng886.github.io/2016/08/12/Docker/</link><description>&lt;p&gt;在 &lt;a href="https://king32783784.github.io/lipeng/2016/08/11/Docker/"&gt;Docker基础技术：Linux Namespace（上篇)&lt;/a&gt;中我们了解了，UTD、IPC、PID、Mount 四个namespace，我们模仿Docker做了一个相当相当山寨的镜像。在这一篇中，主要想向大家介绍Linux的User和Network的Namespace。&lt;/p&gt;
 &lt;p&gt;好，下面我们就介绍一下还剩下的这两个Namespace。&lt;/p&gt;
 &lt;h4&gt;User Namespace&lt;/h4&gt;
 &lt;p&gt;&lt;strong&gt;User Namespace&lt;/strong&gt; 主要是用了CLONE_NEWUSER的参数。使用了这个参数后，内部看到的UID和GID已经与外部不同了，默认显示为65534。那是因为容器找不到其真正的UID所以，设置上了最大的UID（其设置定义在/proc/sys/kernel/overflowuid）。&lt;/p&gt;
@@ -676,7 +676,7 @@ setns(fd, 0); // 加入新的namespace
 &lt;p&gt;&lt;a href="http://man7.org/linux/man-pages/man7/namespaces.7.html"&gt;Linux Namespace Man Page&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://crosbymichael.com/creating-containers-part-1.html"&gt;Creat Containers – Part 1&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://blog.yadutaf.fr/2013/12/22/introduction-to-linux-namespaces-part-1-uts/"&gt;Introduction to Linux namespaces&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;（全文完）&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">others</dc:creator><pubDate>Fri, 12 Aug 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-08-12:2016/08/12/Docker/</guid><category>Docker</category></item><item><title>Docker基础技术：Linux Namespace（上）</title><link>http://king32783784.github.io/2016/08/11/Docker/</link><description>&lt;p&gt;时下最热的技术莫过于Docker了，很多人都觉得Docker是个新技术，其实不然，Docker除了其编程语言用go比较新外，其实它还真不是个新东西，也就是个新瓶装旧酒的东西，所谓的The New “Old Stuff”。Docker和Docker衍生的东西用到了很多很酷的技术，我会用几篇 文章来把这些技术给大家做个介绍，希望通过这些文章大家可以自己打造一个山寨版的docker。&lt;/p&gt;
+&lt;p&gt;（全文完）&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">others</dc:creator><pubDate>Fri, 12 Aug 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2016-08-12:2016/08/12/Docker/</guid><category>Docker</category></item><item><title>Docker基础技术：Linux Namespace（上）</title><link>http://lipeng886.github.io/2016/08/11/Docker/</link><description>&lt;p&gt;时下最热的技术莫过于Docker了，很多人都觉得Docker是个新技术，其实不然，Docker除了其编程语言用go比较新外，其实它还真不是个新东西，也就是个新瓶装旧酒的东西，所谓的The New “Old Stuff”。Docker和Docker衍生的东西用到了很多很酷的技术，我会用几篇 文章来把这些技术给大家做个介绍，希望通过这些文章大家可以自己打造一个山寨版的docker。&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/PYHO3G128V.jpg" height="280" width="420"&gt;&lt;/p&gt;
 &lt;p&gt;当然，文章的风格一定会尊重时下的“流行”——我们再也没有整块整块的时间去看书去专研，而我们只有看微博微信那样的碎片时间（那怕我们有整块的时间，也被那些在手机上的APP碎片化了）。所以，这些文章的风格必然坚持“马桶风格”（希望简单到占用你拉一泡屎就时间，而且你还不用动脑子，并能学到些东西）&lt;/p&gt;
 &lt;p&gt;废话少说，我们开始。先从Linux Namespace开始。&lt;/p&gt;
@@ -1133,7 +1133,7 @@ awk  env  groups  head  id  mesg  sort  strace  tail  top  uniq  vi  wc  xargs
 &lt;p&gt;接下来的事情，你可以自己玩了，我相信你的想像力 。：）&lt;/p&gt;
 &lt;p&gt;在下一篇，我将向你介绍User Namespace、Network Namespace以及Namespace的其它东西。&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://www.vimlinux.com/2016/08/12/Docker/"&gt;Docker基础技术：Linux Namespace（下)&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;（上篇完，请参看下篇）&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">others</dc:creator><pubDate>Thu, 11 Aug 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-08-11:2016/08/11/Docker/</guid><category>Docker</category></item><item><title>如何做性能测试</title><link>http://king32783784.github.io/2016/08/11/Performance/</link><description>&lt;p&gt;偶然间看到了阿里中间件Dubbo的性能测试报告，我觉得这份性能测试报告让人觉得做这性能测试的人根本不懂性能测试，我觉得这份报告会把大众带沟里去，所以，想写下这篇文章，做一点科普。&lt;/p&gt;
+&lt;p&gt;（上篇完，请参看下篇）&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">others</dc:creator><pubDate>Thu, 11 Aug 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2016-08-11:2016/08/11/Docker/</guid><category>Docker</category></item><item><title>如何做性能测试</title><link>http://lipeng886.github.io/2016/08/11/Performance/</link><description>&lt;p&gt;偶然间看到了阿里中间件Dubbo的性能测试报告，我觉得这份性能测试报告让人觉得做这性能测试的人根本不懂性能测试，我觉得这份报告会把大众带沟里去，所以，想写下这篇文章，做一点科普。&lt;/p&gt;
 &lt;p&gt;首先，这份测试报告里的主要问题如下：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -1182,7 +1182,7 @@ awk  env  groups  head  id  mesg  sort  strace  tail  top  uniq  vi  wc  xargs
 &lt;p&gt;&lt;strong&gt;是不是很繁锁？是的，只因为，这是工程，工程是一门科学，科学是严谨的。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;欢迎大家也分享一下你们性能测试的经验和方法。&lt;/p&gt;
 &lt;p&gt;（全文完）&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;（本文来源于酷 壳 – CoolShell.cn ，请勿用于任何商业用途）&lt;/em&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">others</dc:creator><pubDate>Thu, 11 Aug 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-08-11:2016/08/11/Performance/</guid><category>性能测试</category></item><item><title>Makefile中文手册</title><link>http://king32783784.github.io/2013/08/01/Makefile/</link><description>&lt;h4&gt;一 概述&lt;/h4&gt;
+&lt;p&gt;&lt;em&gt;（本文来源于酷 壳 – CoolShell.cn ，请勿用于任何商业用途）&lt;/em&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">others</dc:creator><pubDate>Thu, 11 Aug 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2016-08-11:2016/08/11/Performance/</guid><category>性能测试</category></item><item><title>Makefile中文手册</title><link>http://lipeng886.github.io/2013/08/01/Makefile/</link><description>&lt;h4&gt;一 概述&lt;/h4&gt;
 &lt;p&gt;什么是makefile？或许很多Winodws的程序员都不知道这个东西，因为那些Windows的IDE都为你做了这个工作，但我觉得要作一个好的和 professional的程序员，makefile还是要懂。这就好像现在有这么多的HTML的编辑器，但如果你想成为一个专业人士，你还是要了解HTML的标识的含义。特别在Unix下的软件编译，你就不能不自己写makefile了，会不会写makefile，从一个侧面说明了一个人是否具备完成大型工程的能力。&lt;/p&gt;
 &lt;p&gt;因为，makefile关系到了整个工程的编译规则。一个工程中的源文件不计数，其按类型、功能、模块分别放在若干个目录中，makefile定义了一系列的规则来指定，哪些文件需要先编译，哪些文件需要后编译，哪些文件需要重新编译，甚至于进行更复杂的功能操作，因为 makefile就像一个Shell脚本一样，其中也可以执行操作系统的命令。&lt;/p&gt;
 &lt;p&gt;makefile带来的好处就是——“自动化编译”，一旦写好，只需要一个make命令，整个工程完全自动编译，极大的提高了软件开发的效率。make是一个命令工具，是一个解释makefile中指令的命令工具，一般来说，大多数的IDE都有这个命令，比如：Delphi的make，Visual C++的nmake，Linux下GNU的make。可见，makefile都成为了一种在工程方面的编译方法。&lt;/p&gt;
@@ -3451,7 +3451,7 @@ rm -f bar.o
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +
@@ -3487,4 +3487,4 @@ rm -f bar.o
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">others</dc:creator><pubDate>Thu, 01 Aug 2013 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2013-08-01:2013/08/01/Makefile/</guid><category>Makefile</category></item></channel></rss>
+&lt;/script&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">others</dc:creator><pubDate>Thu, 01 Aug 2013 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2013-08-01:2013/08/01/Makefile/</guid><category>Makefile</category></item></channel></rss>
