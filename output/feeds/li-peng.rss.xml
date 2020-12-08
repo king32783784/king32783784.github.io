@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>路漫求索</title><link>http://king32783784.github.io/</link><description>生活不止眼前的苟且，还有诗和远方 &lt;a href="pages/aboutme.html"&gt;More...&lt;/a&gt;</description><lastBuildDate>Sat, 19 Aug 2017 00:00:00 +0800</lastBuildDate><item><title>Multue测试工具介绍</title><link>http://king32783784.github.io/2017/08/19/Multue/</link><description>&lt;h3&gt;基本介绍&lt;/h3&gt;
+<rss version="2.0"><channel><title>路漫求索</title><link>http://lipeng886.github.io/</link><description>生活不止眼前的苟且，还有诗和远方 &lt;a href="pages/aboutme.html"&gt;More...&lt;/a&gt;</description><lastBuildDate>Sat, 19 Aug 2017 00:00:00 +0800</lastBuildDate><item><title>Multue测试工具介绍</title><link>http://lipeng886.github.io/2017/08/19/Multue/</link><description>&lt;h3&gt;基本介绍&lt;/h3&gt;
 &lt;p&gt;本文介绍了本人前段时间开发的基站多UE的业务测试工具。&lt;/p&gt;
 &lt;h3&gt;制作目的&lt;/h3&gt;
 &lt;p&gt;基站产品开发过程中，会对基站的业务性能及稳定性进行测试。该测试项目在每个迭代版本中进行多次验证测试。测试环境比较复杂，涉及多个UE（比如32、96甚至更多).测试时需要对多个CPE进行业务传输测试。
@@ -55,7 +55,7 @@ CPE已附着，设置相关路由使测试控制机通过指定CPE连接到FTP�
 &lt;/ul&gt;
 &lt;h3&gt;项目地址&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://github.com/king32783784/MultiueTest.git"&gt;MultiueTest&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;目前该工具仍投入生产环境中使用，但仍然存在一些问题和需改进优化的地方，欢迎大家提出发现的bug和建议。谢谢：&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sat, 19 Aug 2017 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2017-08-19:2017/08/19/Multue/</guid><category>Multue</category></item><item><title>网络速率统计的几个示例</title><link>http://king32783784.github.io/2017/06/17/%E7%BD%91%E7%BB%9C/</link><description>&lt;p&gt;最近新换了工作，新公司是一家做通信领域的公司(baicells)。虽然仍旧是从事测试开发相关的工作，
+&lt;p&gt;目前该工具仍投入生产环境中使用，但仍然存在一些问题和需改进优化的地方，欢迎大家提出发现的bug和建议。谢谢：&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sat, 19 Aug 2017 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2017-08-19:2017/08/19/Multue/</guid><category>Multue</category></item><item><title>网络速率统计的几个示例</title><link>http://lipeng886.github.io/2017/06/17/%E7%BD%91%E7%BB%9C/</link><description>&lt;p&gt;最近新换了工作，新公司是一家做通信领域的公司(baicells)。虽然仍旧是从事测试开发相关的工作，
 但通信领域毕竟是新手，所以最近一直在恶补相关基础知识，耽误了文章的更新。&lt;/p&gt;
 &lt;p&gt;本文主要分享几个系统下统计网络速率的几个小方法，供参考。&lt;/p&gt;
 &lt;h3&gt;1.网络设备&lt;/h3&gt;
@@ -381,7 +381,7 @@ CPE已附着，设置相关路由使测试控制机通过指定CPE连接到FTP�
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;后续会继续总结分享一些工作中用到的测试方法，敬请期待。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sat, 17 Jun 2017 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2017-06-17:2017/06/17/网络/</guid><category>rate</category></item><item><title>Robot Framework 用户手册(三)</title><link>http://king32783784.github.io/2017/04/01/Robot/</link><description>&lt;h2&gt;2.2 创建测试用例&lt;/h2&gt;
+&lt;p&gt;后续会继续总结分享一些工作中用到的测试方法，敬请期待。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sat, 17 Jun 2017 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2017-06-17:2017/06/17/网络/</guid><category>rate</category></item><item><title>Robot Framework 用户手册(三)</title><link>http://lipeng886.github.io/2017/04/01/Robot/</link><description>&lt;h2&gt;2.2 创建测试用例&lt;/h2&gt;
 &lt;h3&gt;2.2.1  测试用例语法&lt;/h3&gt;
 &lt;h4&gt;基本语法&lt;/h4&gt;
 &lt;p&gt;测试用例是使用可用的关键字构造的测试用例表。关键字可以从测试库或资源文件中导入，或则通过测试用例的关键字表本身创建。&lt;/p&gt;
@@ -575,7 +575,7 @@ Run Program
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +
@@ -611,7 +611,7 @@ Run Program
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sat, 01 Apr 2017 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2017-04-01:2017/04/01/Robot/</guid><category>Framework</category></item><item><title>Robot Framework 用户手册(二)</title><link>http://king32783784.github.io/2017/03/31/Robot/</link><description>&lt;h3&gt;2.1.3 测试数据表&lt;/h3&gt;
+&lt;/script&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sat, 01 Apr 2017 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2017-04-01:2017/04/01/Robot/</guid><category>Framework</category></item><item><title>Robot Framework 用户手册(二)</title><link>http://lipeng886.github.io/2017/03/31/Robot/</link><description>&lt;h3&gt;2.1.3 测试数据表&lt;/h3&gt;
 &lt;p&gt;测试数据为下表所示的４种结构。测试数据表通过表中第一个区域被识别。被识别的表名是Settings, Variables, Test Cases, Keywords.匹配区分大小写，并且支持Setting和Test Case的变体。&lt;/p&gt;
 &lt;p&gt;不同的测试数据表&lt;/p&gt;
 &lt;table&gt;
@@ -1114,7 +1114,7 @@ For loop
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +
@@ -1150,7 +1150,7 @@ For loop
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 31 Mar 2017 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2017-03-31:2017/03/31/Robot/</guid><category>Framework</category></item><item><title>Robot Framework 用户手册(一)</title><link>http://king32783784.github.io/2017/03/26/Robot/</link><description>&lt;p&gt;以下内容主要参考RobotFramework官方用户手册文档。&lt;/p&gt;
+&lt;/script&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 31 Mar 2017 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2017-03-31:2017/03/31/Robot/</guid><category>Framework</category></item><item><title>Robot Framework 用户手册(一)</title><link>http://lipeng886.github.io/2017/03/26/Robot/</link><description>&lt;p&gt;以下内容主要参考RobotFramework官方用户手册文档。&lt;/p&gt;
 &lt;h3&gt;1.1 介绍&lt;/h3&gt;
 &lt;p&gt;RF框架是用于验收测试和验收测试驱动开发（ATDD)的通用开源测试框架。它具备易于使用的表格测试数据语法，并且使用关键字驱动测试的方法。它的测试功能可以通过使用python或java实现的测试库来进行扩展，用户可以使用用于创建测试用例的相同语法从现有的关键字创建新的更高级别的关键字。&lt;/p&gt;
 &lt;p&gt;RF框架独立于操作系统和应用程序。核心框架是使用python实现的，可以在jython(JVM)和IronPython(.NET)上运行。该框架具有丰富的生态系统，包括作为单独项目开发的各种通用测试库和工具。&lt;/p&gt;
@@ -1629,7 +1629,7 @@ approach.
 &lt;p&gt;RF需要使用UTF-8编码来保存含非ASCII字符的reST文件。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;REST中源文件的语法错误&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;如果reStructuredText文档语法不正确（格式不正确的表为例），解析时会失败，并且找不到测试用例。当执行单一的reST文件时，RF会在终端显示错误。当执行一个目录，解析错误通常会被忽略。&lt;/p&gt;
-&lt;p&gt;从机器人框架2.9.2开始，SEVERE级以下的错误，为避免对非标准指令和其他标记的影响被忽略。这样会掩盖真正的错误，但他们可以在正常处理文件时看到。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sun, 26 Mar 2017 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2017-03-26:2017/03/26/Robot/</guid><category>Framework</category></item><item><title>Robot Framework快速入门</title><link>http://king32783784.github.io/2017/03/24/Robot/</link><description>&lt;h3&gt;关于&lt;/h3&gt;
+&lt;p&gt;从机器人框架2.9.2开始，SEVERE级以下的错误，为避免对非标准指令和其他标记的影响被忽略。这样会掩盖真正的错误，但他们可以在正常处理文件时看到。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sun, 26 Mar 2017 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2017-03-26:2017/03/26/Robot/</guid><category>Framework</category></item><item><title>Robot Framework快速入门</title><link>http://lipeng886.github.io/2017/03/24/Robot/</link><description>&lt;h3&gt;关于&lt;/h3&gt;
 &lt;p&gt;本文主要介绍了Robot Framework的重要组件。可以快速浏览该文和相关示例来了解该框架。该框架重要的特性，本文都会涉及。本文主要翻译于RF官方快速文档及个人理解。&lt;/p&gt;
 &lt;h3&gt;RF概述&lt;/h3&gt;
 &lt;p&gt;RF框架是用于验收测试和验收测试驱动开发（ATDD)的通用开源测试框架。它具备易于使用的表格测试数据语法，并且使用关键字驱动测试的方法。它的测试功能可以通过使用python或java实现的测试库来进行扩展，用户可以使用用于创建测试用例的相同语法从现有的关键字创建新的更高级别的关键字。&lt;/p&gt;
@@ -2320,7 +2320,7 @@ robot --exclude database QuickStart.rst
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +
@@ -2356,7 +2356,7 @@ robot --exclude database QuickStart.rst
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 24 Mar 2017 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2017-03-24:2017/03/24/Robot/</guid><category>Framework</category></item><item><title>Itest测试工具介绍</title><link>http://king32783784.github.io/2017/03/22/itest/</link><description>&lt;h3&gt;基本介绍&lt;/h3&gt;
+&lt;/script&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 24 Mar 2017 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2017-03-24:2017/03/24/Robot/</guid><category>Framework</category></item><item><title>Itest测试工具介绍</title><link>http://lipeng886.github.io/2017/03/22/itest/</link><description>&lt;h3&gt;基本介绍&lt;/h3&gt;
 &lt;p&gt;本文介绍了itest(自研测试工具）的制作目的、测试范围、常用功能、测试方法。该工具目前处于开发阶段，仍有部分功能未实现，存在一些稳定性、兼容性的问题。&lt;/p&gt;
 &lt;h3&gt;制作目的&lt;/h3&gt;
 &lt;p&gt;进行linux系统测试时，需要进行系统信息抓取、功能性测试、性能测试、稳定性测试。其中信息抓取、性能测试、稳定性测试大部分情况下需要进行多轮次的测试。比如系统信息抓取包含系统软硬件信息的多个方面如 cpu信息、gcc信息等等；性能测试包括cpu、内存、内核等等；稳定性测试包括io、多线程、图形、内核等等；功能测试包括内核系统调用、常用服务/命令（主要包括目前自动化实现的部分）。这些可以自动化实现的测试，之前我们多多少少的都做了一些测试脚本进行了实现，itest制作的目的是为了整合这些测试，并且提供一个简单操作的GUI界面。主界面如下&lt;/p&gt;
@@ -2403,7 +2403,7 @@ robot --exclude database QuickStart.rst
 &lt;p&gt;目前该工具已在桌面4.0系列的产品进行了测试验证，其他产品暂未进行兼容测试。该工具后台主要由python实现，前端由pyqt实现。对系统的主要依赖包括pyqt(UI界面）、pandoc（报告制作）、selenium（浏览器测试）等模块。测试时依赖网络(部分测试工具需要进行依赖包的安装，测试工具的下载）。&lt;/p&gt;
 &lt;p&gt;项目地址：&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.com/king32783784/itest"&gt;itest&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/king32783784/itest/issues"&gt;已知bug&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Wed, 22 Mar 2017 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2017-03-22:2017/03/22/itest/</guid><category>itest</category></item><item><title>位操作</title><link>http://king32783784.github.io/2017/02/23/python/</link><description>&lt;p&gt;最近碰到一个问题，是取一个数的反数，所以整理了一下位操作。
+&lt;p&gt;&lt;a href="https://github.com/king32783784/itest/issues"&gt;已知bug&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Wed, 22 Mar 2017 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2017-03-22:2017/03/22/itest/</guid><category>itest</category></item><item><title>位操作</title><link>http://lipeng886.github.io/2017/02/23/python/</link><description>&lt;p&gt;最近碰到一个问题，是取一个数的反数，所以整理了一下位操作。
 计算机系统中所有的数据都是以二进制的形式存储的。位运算其实就是直接对在内存中的二进制数据进行操作，因此数据处理会比较快。
 在实际编程中，如果能合理运用位操作，能提高运行效率，解决一些复杂问题。&lt;/p&gt;
 &lt;h3&gt;位操作基础&lt;/h3&gt;
@@ -2704,7 +2704,7 @@ x=-x 例如 1 -1 -12 12
             list2.append(temp)
     print getsingle(list1)
     print getsingle(list2)
-&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Thu, 23 Feb 2017 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2017-02-23:2017/02/23/python/</guid><category>Python</category></item><item><title>python实现awk域简单例子</title><link>http://king32783784.github.io/2017/02/20/python/</link><description>&lt;h3&gt;问题&lt;/h3&gt;
+&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Thu, 23 Feb 2017 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2017-02-23:2017/02/23/python/</guid><category>Python</category></item><item><title>python实现awk域简单例子</title><link>http://lipeng886.github.io/2017/02/20/python/</link><description>&lt;h3&gt;问题&lt;/h3&gt;
 &lt;p&gt;ltp功能验证测试的结果的文本（截取片段）格式为：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gh"&gt;Test Start Time: Tue Feb 14 15:47:55 2017&lt;/span&gt;
 &lt;span class="gh"&gt;-----------------------------------------&lt;/span&gt;
@@ -2929,7 +2929,7 @@ Pass case list is [&amp;#39;abort01&amp;#39;, &amp;#39;accept01&amp;#39;, &amp;#
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;两则执行的效率差不多，python版本稍快。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 20 Feb 2017 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2017-02-20:2017/02/20/python/</guid><category>Python</category></item><item><title>类常用内置方法(二）</title><link>http://king32783784.github.io/2017/02/13/python/</link><description>&lt;p&gt;python的类中包含很多内置的方法。&lt;/p&gt;
+&lt;p&gt;两则执行的效率差不多，python版本稍快。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 20 Feb 2017 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2017-02-20:2017/02/20/python/</guid><category>Python</category></item><item><title>类常用内置方法(二）</title><link>http://lipeng886.github.io/2017/02/13/python/</link><description>&lt;p&gt;python的类中包含很多内置的方法。&lt;/p&gt;
 &lt;h3&gt;内置方法列表&lt;/h3&gt;
 &lt;p&gt;以下是一些基本的内置方法，后面还会列举一些其他的方法。&lt;/p&gt;
 &lt;table&gt;
@@ -3147,7 +3147,7 @@ Pass case list is [&amp;#39;abort01&amp;#39;, &amp;#39;accept01&amp;#39;, &amp;#
     &lt;span class="n"&gt;fruit&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;grow&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  &lt;span class="c1"&gt;# 输出结果： grow...&lt;/span&gt;
     &lt;span class="n"&gt;Fruit&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;grow&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  &lt;span class="c1"&gt;# 输出结果： grow...&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 13 Feb 2017 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2017-02-13:2017/02/13/python/</guid><category>Python</category></item><item><title>类常用内置方法</title><link>http://king32783784.github.io/2017/01/23/python/</link><description>&lt;p&gt;python的类中包含很多内置的方法。&lt;/p&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 13 Feb 2017 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2017-02-13:2017/02/13/python/</guid><category>Python</category></item><item><title>类常用内置方法</title><link>http://lipeng886.github.io/2017/01/23/python/</link><description>&lt;p&gt;python的类中包含很多内置的方法。&lt;/p&gt;
 &lt;h3&gt;内置方法列表&lt;/h3&gt;
 &lt;p&gt;以下是一些基本的内置方法，后面还会列举一些其他的方法。&lt;/p&gt;
 &lt;table&gt;
@@ -3359,7 +3359,7 @@ myclass = MyClass(&lt;em&gt;args, &lt;/em&gt;*kwargs)&lt;/p&gt;
 &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;打印结果显示&lt;/span&gt;&lt;span class="nx"&gt;foo&lt;/span&gt;&lt;span class="err"&gt;其实是&lt;/span&gt;&lt;span class="nx"&gt;Stranger&lt;/span&gt;&lt;span class="err"&gt;类的实例&lt;/span&gt;
 &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;因此可以这么描述&lt;/span&gt;&lt;span class="nx"&gt;__new__&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="err"&gt;和&lt;/span&gt;&lt;span class="nx"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="err"&gt;的区别，在新式类中&lt;/span&gt;&lt;span class="nx"&gt;__new__&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="err"&gt;方法才是真正的实例化方法，为类提供外壳制作出实例框架，然后调用该框架内的构造方法&lt;/span&gt;&lt;span class="nx"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="err"&gt;使其丰满。&lt;/span&gt;
 &lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;如果以建房子做比喻，&lt;/span&gt; &lt;span class="nx"&gt;__new__&lt;/span&gt;&lt;span class="err"&gt;方法负责开发地皮，打下地基，并将原料存放在工地。而&lt;/span&gt;&lt;span class="nx"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="err"&gt;方法负责从工地取材料建造出地皮开发招标书中规定的大楼，&lt;/span&gt;&lt;span class="nx"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="err"&gt;负责大楼的详细设计建造，装修使其可交付给客户。&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 23 Jan 2017 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2017-01-23:2017/01/23/python/</guid><category>Python</category></item><item><title>python metaclass(下）</title><link>http://king32783784.github.io/2017/01/15/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80-Python/</link><description>&lt;h3&gt;自定义元类&lt;/h3&gt;
+&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 23 Jan 2017 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2017-01-23:2017/01/23/python/</guid><category>Python</category></item><item><title>python metaclass(下）</title><link>http://lipeng886.github.io/2017/01/15/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80-Python/</link><description>&lt;h3&gt;自定义元类&lt;/h3&gt;
 &lt;p&gt;元类的主要目的就是为了当创建类时能够自动地改变类。通常，你会为API做这样的事情，你希望可以创建符合当前上下文的类。假想一个很傻的例子，你决定在你的模块里所有的类的属性都应该是大写形式。有好几种方法可以办到，但其中一种就是通过在模块级别设定__metaclass__。采用这种方法，这个模块中的所有类都会通过这个元类来创建，我们只需要告诉元类把所有的属性都改成大写形式就万事大吉了。&lt;/p&gt;
 &lt;p&gt;幸运的是，__metaclass__实际上可以被任意调用，它并不需要是一个正式的类（我知道，某些名字里带有‘class’的东西并不需要是一个class，画画图理解下，这很有帮助）。所以，我们这里就先以一个简单的函数作为例子开始。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;#&lt;/span&gt; &lt;span class="err"&gt;元类会自动将你通常传给“&lt;/span&gt;&lt;span class="nx"&gt;type&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;的参数作为自己的参数传入&lt;/span&gt;
@@ -3497,7 +3497,7 @@ print guy.age
 &lt;p&gt;当你需要动态修改类时，最好使用上面的两种技术。当然，绝大部分情况下是不需要动态修改类的。&lt;/p&gt;
 &lt;p&gt;《完》&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/10/03/python/"&gt;python metaclass(上)&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/WBB0EXYSWE.jpg" height="320" width="540"&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sun, 15 Jan 2017 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2017-01-15:2017/01/15/编程语言-Python/</guid><category>Python</category></item><item><title>python shelve</title><link>http://king32783784.github.io/2016/12/27/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80-Python/</link><description>&lt;p&gt;本文对shelve模块进行说明。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/WBB0EXYSWE.jpg" height="320" width="540"&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sun, 15 Jan 2017 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2017-01-15:2017/01/15/编程语言-Python/</guid><category>Python</category></item><item><title>python shelve</title><link>http://lipeng886.github.io/2016/12/27/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80-Python/</link><description>&lt;p&gt;本文对shelve模块进行说明。&lt;/p&gt;
 &lt;p&gt;shelve模块实现了对任意可被pickle的python对象进行持久存储，并提供了类字典的API使用。&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/4C0XUNHJ7C.jpg" height="280" width="420"&gt;&lt;/p&gt;
 &lt;h3&gt;简介&lt;/h3&gt;
@@ -3598,7 +3598,7 @@ $ python shelve_writeback.py
 &lt;p&gt;虽然使用writeback模式可用减少出错几率，也能更加透明化对象的持久性。但是，不是每种情况都要使用writeback模式。原因看到前面的示例，应该能猜到。当shelf打开时，缓存就要占用额外的内存。
 并且，当shelf关闭时，同样会对缓存中的对象再次写回数据库，增加了开销。即使没有进行改变，仍然会进行数据写回。比较好的方式是，确认需要写入数据时，再设置writeback,读数据时设置只读或默认即可。&lt;/p&gt;
 &lt;h3&gt;指定shelf类型&lt;/h3&gt;
-&lt;p&gt;上面的例子全部使用默认的shelf实现。使用shelve.open()直接代替一种shelf实现，是常见用法, 尤其是在不关心用哪种数据库存储数据的时候. 然而, 有时常会关心它. 如果是在这种情况下, 通常就会直接使用DbfilenameShelf或者BsdDbShelf, 更或者是通过Shelf的子类来解决问题.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Tue, 27 Dec 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-12-27:2016/12/27/编程语言-Python/</guid><category>Python</category></item><item><title>sqlite3 - SQLite数据库DB-API 2.0接口</title><link>http://king32783784.github.io/2016/12/25/python/</link><description>&lt;h3&gt;简介&lt;/h3&gt;
+&lt;p&gt;上面的例子全部使用默认的shelf实现。使用shelve.open()直接代替一种shelf实现，是常见用法, 尤其是在不关心用哪种数据库存储数据的时候. 然而, 有时常会关心它. 如果是在这种情况下, 通常就会直接使用DbfilenameShelf或者BsdDbShelf, 更或者是通过Shelf的子类来解决问题.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Tue, 27 Dec 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2016-12-27:2016/12/27/编程语言-Python/</guid><category>Python</category></item><item><title>sqlite3 - SQLite数据库DB-API 2.0接口</title><link>http://lipeng886.github.io/2016/12/25/python/</link><description>&lt;h3&gt;简介&lt;/h3&gt;
 &lt;p&gt;SQLite 是一个Ｃ库，它提供了一个轻量级的基于磁盘的数据库，不需要一个单独的服务进程。允许使用非标准的SQL查询语言的变体访问数据库。
 一些应用程序可以使用SQLite进行存储内部数据。也可以使用SQLite建立应用原型，随后再将数据或代码移植到大型的数据库，比如PostgreSQL或Ｏracle.&lt;/p&gt;
 &lt;p&gt;sqlite3模块由Gerhard Haring编写，提供了一个sql接口，该接口和&lt;a href="https://www.python.org/dev/peps/pep-0249/"&gt;PEP 249&lt;/a&gt;描述的DB-API 2.0规范兼容。&lt;/p&gt;
@@ -3738,7 +3738,7 @@ Tutorial, reference and examples for learning SQL syntax.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;sqlite3.enable_callback_tracebacks(flag)&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;默认情况下你不会在用户定义的函数、 聚合、 转换器、 授权者回调等地方得到回溯对象（调用栈对象）。如果想要调试它们，将flag设置为True调用此函数。之后可以在sys.stderr通过回调得到回溯。使用False来再次禁用该功能。&lt;/p&gt;
-&lt;p&gt;&amp;lt;未完待续&amp;gt;    &lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sun, 25 Dec 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-12-25:2016/12/25/python/</guid><category>Python</category></item><item><title>python数据存储</title><link>http://king32783784.github.io/2016/12/24/python/</link><description>&lt;h3&gt;存储方式&lt;/h3&gt;
+&lt;p&gt;&amp;lt;未完待续&amp;gt;    &lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sun, 25 Dec 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2016-12-25:2016/12/25/python/</guid><category>Python</category></item><item><title>python数据存储</title><link>http://lipeng886.github.io/2016/12/24/python/</link><description>&lt;h3&gt;存储方式&lt;/h3&gt;
 &lt;p&gt;Python的数据存储主要是以下六类：普通文件、DBM文件、Pickled对象存储、shelve对象存储、对象数据库存储、关系数据库存储。&lt;/p&gt;
 &lt;h4&gt;DBM文件&lt;/h4&gt;
 &lt;p&gt;普通文件不解释了，DBM就是把字符串的键值对存储在文件里：&lt;/p&gt;
@@ -3983,7 +3983,7 @@ place = models.OneToOneField(Place&amp;quot;)
 
 
 &lt;p&gt;SQLAlchemy框架还有一个衍生产品——Elixir，在SQLAlchemy的基础上对其映射方式做了些封装，使得实体类的定义有点类似Django中的定义方式。&lt;/p&gt;
-&lt;p&gt;话说Django的ORM与它的其他模块结合的很紧密，不好单独使用；SQLAlchemy虽然强大，但风格不太喜欢，所以下一步打算深入两个ORM框架的代码，看看他们是怎么实现的。一方面好抉择用哪一个，另外也可以看看在自己的应用中能否自己做一个简单的ORM。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sat, 24 Dec 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-12-24:2016/12/24/python/</guid><category>Python</category></item><item><title>pyqt基本操作(三）</title><link>http://king32783784.github.io/2016/11/15/python/</link><description>&lt;h3&gt;对话框&lt;/h3&gt;
+&lt;p&gt;话说Django的ORM与它的其他模块结合的很紧密，不好单独使用；SQLAlchemy虽然强大，但风格不太喜欢，所以下一步打算深入两个ORM框架的代码，看看他们是怎么实现的。一方面好抉择用哪一个，另外也可以看看在自己的应用中能否自己做一个简单的ORM。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sat, 24 Dec 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2016-12-24:2016/12/24/python/</guid><category>Python</category></item><item><title>pyqt基本操作(三）</title><link>http://lipeng886.github.io/2016/11/15/python/</link><description>&lt;h3&gt;对话框&lt;/h3&gt;
 &lt;p&gt;PyQT提供基本的消息框和标准对话框。在PyQt也可以根据需要创建自定义的对话框。&lt;/p&gt;
 &lt;p&gt;使用PyQt提供的类和方法可以创建和使用消息框、标准对话框等。标准对话框包含基本的打开，关闭，字体选择对话框和颜色选择对话框等。&lt;/p&gt;
 &lt;h4&gt;消息框&lt;/h4&gt;
@@ -4401,7 +4401,7 @@ place = models.OneToOneField(Place&amp;quot;)
 &lt;span class="n"&gt;demo&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;MyWindow&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="n"&gt;demo&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exec_&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Tue, 15 Nov 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-11-15:2016/11/15/python/</guid><category>pyqt</category></item><item><title>pyqt基本操作(二）</title><link>http://king32783784.github.io/2016/11/14/python/</link><description>&lt;h3&gt;单行文本和多行文本&lt;/h3&gt;
+&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Tue, 15 Nov 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2016-11-15:2016/11/15/python/</guid><category>pyqt</category></item><item><title>pyqt基本操作(二）</title><link>http://lipeng886.github.io/2016/11/14/python/</link><description>&lt;h3&gt;单行文本和多行文本&lt;/h3&gt;
 &lt;p&gt;PyQt中提供了单行文本框和多行文本框。使用QtGui.QLineEdit可以创建单行文本框。使用QtGui.QTextEdit可以创建多行文本框。&lt;/p&gt;
 &lt;h4&gt;单行文本框&lt;/h4&gt;
 &lt;p&gt;使用QtGui.QLineEdit可以创建单行文本框，通过修改其属性可以将其设置为密码框。当创建单行文本后，可以使用以下的方法设置文本框的属性或对文本框中的内容进行操作。&lt;/p&gt;
@@ -4833,7 +4833,7 @@ app.exec_()
 &lt;span class="n"&gt;win&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exec_&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 14 Nov 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-11-14:2016/11/14/python/</guid><category>pyqt</category></item><item><title>pyqt基本操作</title><link>http://king32783784.github.io/2016/11/13/python/</link><description>&lt;p&gt;pyqt是对Qt的封装。Ｑt是面向对象的图形用户界面库，可以在多个操作系统上使用。&lt;/p&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 14 Nov 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2016-11-14:2016/11/14/python/</guid><category>pyqt</category></item><item><title>pyqt基本操作</title><link>http://lipeng886.github.io/2016/11/13/python/</link><description>&lt;p&gt;pyqt是对Qt的封装。Ｑt是面向对象的图形用户界面库，可以在多个操作系统上使用。&lt;/p&gt;
 &lt;h3&gt;PyQt基本操作&lt;/h3&gt;
 &lt;h4&gt;基本的界面：&lt;/h4&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
@@ -5263,7 +5263,7 @@ app.exec_()
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;运行效果如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/king32783784/king32783784.github.io/master/tmpfile/pyqt04.png" height="280" width="420"&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sun, 13 Nov 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-11-13:2016/11/13/python/</guid><category>pyqt</category></item><item><title>Avocado-编写Avocado测试</title><link>http://king32783784.github.io/2016/11/12/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/</link><description>&lt;h3&gt;编写Avocado测试&lt;/h3&gt;
+&lt;p&gt;&lt;img src="https://raw.githubusercontent.com/king32783784/king32783784.github.io/master/tmpfile/pyqt04.png" height="280" width="420"&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sun, 13 Nov 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2016-11-13:2016/11/13/python/</guid><category>pyqt</category></item><item><title>Avocado-编写Avocado测试</title><link>http://lipeng886.github.io/2016/11/12/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/</link><description>&lt;h3&gt;编写Avocado测试&lt;/h3&gt;
 &lt;p&gt;现在我们开始使用python编写Avocado测试，测试继承于avocado.Test.&lt;/p&gt;
 &lt;h4&gt;基本例子&lt;/h4&gt;
 &lt;p&gt;创建一个时间测试，sleeptest,测试非常简单，只是sleep一会：&lt;/p&gt;
@@ -5497,7 +5497,7 @@ Empty &lt;span class="nb"&gt;test&lt;/span&gt; ID. A &lt;span class="nb"&gt;test
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +
@@ -5533,7 +5533,7 @@ Empty &lt;span class="nb"&gt;test&lt;/span&gt; ID. A &lt;span class="nb"&gt;test
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sat, 12 Nov 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-11-12:2016/11/12/自动化测试/</guid><category>Avocado</category></item><item><title>Avocado-入门</title><link>http://king32783784.github.io/2016/11/03/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/</link><description>&lt;h3&gt;1.Avocado 安装&lt;/h3&gt;
+&lt;/script&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sat, 12 Nov 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2016-11-12:2016/11/12/自动化测试/</guid><category>Avocado</category></item><item><title>Avocado-入门</title><link>http://lipeng886.github.io/2016/11/03/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/</link><description>&lt;h3&gt;1.Avocado 安装&lt;/h3&gt;
 &lt;h4&gt;1.1 通过包安装&lt;/h4&gt;
 &lt;p&gt;像&lt;span id = 'avocado02'&gt;Fedora&lt;/span&gt;可以通过rpm包进行安装，其他通过RPM管理的发行版需要自己制作相关包。Avocado同样支持DEP包的安装可以在contrib/packages/debian找到。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Fedora&lt;/strong&gt;&lt;/p&gt;
@@ -5821,7 +5821,7 @@ UI输出被抑制，只显示作业日志，这使得它成为测试开发和调
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +
@@ -5857,7 +5857,7 @@ UI输出被抑制，只显示作业日志，这使得它成为测试开发和调
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Thu, 03 Nov 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-11-03:2016/11/03/自动化测试/</guid><category>Avocado</category></item><item><title>Avocado User’s Guide</title><link>http://king32783784.github.io/2016/11/01/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/</link><description>&lt;h3&gt;Avocado 用户指南&lt;/h3&gt;
+&lt;/script&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Thu, 03 Nov 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2016-11-03:2016/11/03/自动化测试/</guid><category>Avocado</category></item><item><title>Avocado User’s Guide</title><link>http://lipeng886.github.io/2016/11/01/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/</link><description>&lt;h3&gt;Avocado 用户指南&lt;/h3&gt;
 &lt;p&gt;内容：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="#avocado01"&gt;关于Avocado&lt;/a&gt;&lt;/li&gt;
@@ -6019,7 +6019,7 @@ UI输出被抑制，只显示作业日志，这使得它成为测试开发和调
 &lt;p&gt;Avocado尽可能尝试遵守标准的Python测试技术。 使用Avocado API编写的测试是从unittest类派生，而添加了适合于功能和性能测试的其他方法。 测试运行器旨在帮助人们运行测试，同时提供各种系统和日志记录工具。&lt;/p&gt;
 &lt;p&gt;接下来的专题，会按照本文的目录详细介绍Avocado&lt;/p&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;下一篇&lt;a href="https://king32783784.github.io/2016/11/03/自动化测试"&gt;Avocado-入门&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Tue, 01 Nov 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-11-01:2016/11/01/自动化测试/</guid><category>Avocado</category></item><item><title>python metaclass(上）</title><link>http://king32783784.github.io/2016/10/03/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80-Python/</link><description>&lt;h3&gt;类也是对象&lt;/h3&gt;
+&lt;p&gt;下一篇&lt;a href="https://king32783784.github.io/2016/11/03/自动化测试"&gt;Avocado-入门&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Tue, 01 Nov 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2016-11-01:2016/11/01/自动化测试/</guid><category>Avocado</category></item><item><title>python metaclass(上）</title><link>http://lipeng886.github.io/2016/10/03/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80-Python/</link><description>&lt;h3&gt;类也是对象&lt;/h3&gt;
 &lt;p&gt;在理解元类之前，需要先掌握python中的类。Python中的类的概念借鉴于Smalltalk, 显得有些奇特。大多数编程语言中，类就是一组用来描述如何生成一个对象的代码段。在Python中这一点仍然成立：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; class ObjectCreator(object):
 ...     pass
@@ -6254,7 +6254,7 @@ def upper_attr(future_class_name, future_class_parents, future__class_attr)
 
 
 &lt;p&gt;下一篇&lt;a href="https://king32783784.github.io/2017/01/15/python/"&gt;python metaclass(下)&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/WBB0EXYSWE.jpg" height="320" width="540"&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 03 Oct 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-10-03:2016/10/03/编程语言-Python/</guid><category>Python</category></item><item><title>LTP－kernel-syscalls-accept()</title><link>http://king32783784.github.io/2016/08/05/LTP/</link><description>&lt;h4&gt;accept用例分析&lt;/h4&gt;
+&lt;p&gt;&lt;img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/WBB0EXYSWE.jpg" height="320" width="540"&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 03 Oct 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2016-10-03:2016/10/03/编程语言-Python/</guid><category>Python</category></item><item><title>LTP－kernel-syscalls-accept()</title><link>http://lipeng886.github.io/2016/08/05/LTP/</link><description>&lt;h4&gt;accept用例分析&lt;/h4&gt;
 &lt;p&gt;case本身说明：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Verify that accept() returns the proper errno for various failure cases
 &lt;/pre&gt;&lt;/div&gt;
@@ -6546,7 +6546,7 @@ TEST_LOOPING是int usc_test_looping(int counter)函数，该函数后面的文�
 &lt;p&gt;然后将tdat中的对应参数，分别执行accept函数，如果预期的返回值不符或则返回值小于0且和预期的错误类型不匹配，则调用tst_resm()，进行出错处理。tst_resm将在后面进行分析。如果符合预期，则打印TPASS，然后调用tdat[testno].clearnup()分别清理环境。&lt;/p&gt;
 &lt;p&gt;最后调用cleanup()清理，tst_exit()退出，tst_exit()在单独分析ltp测试框架时分析。&lt;/p&gt;
 &lt;p&gt;到此，我们就清楚accept测试的内容了。&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/H01L2BILXC.jpg" height="280" width="420"&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 05 Aug 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-08-05:2016/08/05/LTP/</guid><category>LTP</category></item><item><title>LTP－kernel-syscalls-abort</title><link>http://king32783784.github.io/2016/08/02/LTP/</link><description>&lt;p&gt;从本文开始，开始分析kernel部分的测试用例，该部分测试用例大部分为Ｃ语言编写，因此会穿插加入一定的Ｃ语言或unix环境编程的知识。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/H01L2BILXC.jpg" height="280" width="420"&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 05 Aug 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2016-08-05:2016/08/05/LTP/</guid><category>LTP</category></item><item><title>LTP－kernel-syscalls-abort</title><link>http://lipeng886.github.io/2016/08/02/LTP/</link><description>&lt;p&gt;从本文开始，开始分析kernel部分的测试用例，该部分测试用例大部分为Ｃ语言编写，因此会穿插加入一定的Ｃ语言或unix环境编程的知识。&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/I0T0E4Y826.jpg" height="280" width="420"&gt;&lt;/p&gt;
 &lt;h4&gt;abort&lt;/h4&gt;
 &lt;p&gt;设计说明&lt;/p&gt;
@@ -7282,7 +7282,7 @@ rlim_t rlim_max;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;abort测试分析结束。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Tue, 02 Aug 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-08-02:2016/08/02/LTP/</guid><category>LTP</category></item><item><title>LTP－kernel-syscalls</title><link>http://king32783784.github.io/2016/08/01/LTP/</link><description>&lt;h4&gt;syscalls&lt;/h4&gt;
+&lt;p&gt;abort测试分析结束。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Tue, 02 Aug 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2016-08-02:2016/08/02/LTP/</guid><category>LTP</category></item><item><title>LTP－kernel-syscalls</title><link>http://lipeng886.github.io/2016/08/01/LTP/</link><description>&lt;h4&gt;syscalls&lt;/h4&gt;
 &lt;p&gt;ltp中kernel测试比重很大，尤其是syscalls，包括一下用例：
 注：测试内容分析时补充。&lt;/p&gt;
 &lt;table&gt;
@@ -8778,7 +8778,7 @@ rlim_t rlim_max;
 &lt;p&gt;shmctl  控制共享内存&lt;/p&gt;
 &lt;p&gt;shmget  获取共享内存&lt;/p&gt;
 &lt;p&gt;shmat   连接共享内存&lt;/p&gt;
-&lt;p&gt;shmdt   拆卸共享内存&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 01 Aug 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-08-01:2016/08/01/LTP/</guid><category>LTP</category></item><item><title>LTP－Command-file</title><link>http://king32783784.github.io/2016/06/03/LTP/</link><description>&lt;h4&gt;file&lt;/h4&gt;
+&lt;p&gt;shmdt   拆卸共享内存&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 01 Aug 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2016-08-01:2016/08/01/LTP/</guid><category>LTP</category></item><item><title>LTP－Command-file</title><link>http://lipeng886.github.io/2016/06/03/LTP/</link><description>&lt;h4&gt;file&lt;/h4&gt;
 &lt;p&gt;file　用例主要用于测试file命令。&lt;/p&gt;
 &lt;h5&gt;file命令介绍&lt;/h5&gt;
 &lt;p&gt;file命令可以通过查看文件内容来找出特定类型的文件，在UNIX/ Linux系统中，文件类型并不是由文件扩展名来决定的(windows中却正是这么做的),file命令的目的是从多个文件中收集文件类型统计信息。&lt;/p&gt;
@@ -8995,7 +8995,7 @@ fi
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;其他测试代码同上面类似，不再一一分析。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 03 Jun 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-06-03:2016/06/03/LTP/</guid><category>LTP</category></item><item><title>LTP－Command</title><link>http://king32783784.github.io/2016/06/02/LTP/</link><description>&lt;p&gt;本节将重点分析commands部分的用例。&lt;/p&gt;
+&lt;p&gt;其他测试代码同上面类似，不再一一分析。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 03 Jun 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2016-06-03:2016/06/03/LTP/</guid><category>LTP</category></item><item><title>LTP－Command</title><link>http://lipeng886.github.io/2016/06/02/LTP/</link><description>&lt;p&gt;本节将重点分析commands部分的用例。&lt;/p&gt;
 &lt;h4&gt;Command主要用例&lt;/h4&gt;
 &lt;p&gt;主要case包括：&lt;/p&gt;
 &lt;table&gt;
@@ -9422,7 +9422,7 @@ fi
 &lt;p&gt;(28) Signal SIGQUIT&lt;/p&gt;
 &lt;p&gt;(29) Signal SIGHUP; ar should not remove archive that existed before invocation.&lt;/p&gt;
 &lt;p&gt;(30) Signal SIGINIT; ar should not remove archive that existed before invocation.&lt;/p&gt;
-&lt;p&gt;(31) Signal SIGQUIT; ar should not remove archive that existed before invocation.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Thu, 02 Jun 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-06-02:2016/06/02/LTP/</guid><category>LTP</category></item><item><title>LTP－Case list</title><link>http://king32783784.github.io/2016/06/01/LTP/</link><description>&lt;p&gt;该topic将深入分析ltp的测试内容，着重于具体每个case的测试内容及测试方法。通过对ltp case的分析，加强linux系统的理解和用例设计。本节主要整理ltp的包括测试case的类型和case列表。&lt;/p&gt;
+&lt;p&gt;(31) Signal SIGQUIT; ar should not remove archive that existed before invocation.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Thu, 02 Jun 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2016-06-02:2016/06/02/LTP/</guid><category>LTP</category></item><item><title>LTP－Case list</title><link>http://lipeng886.github.io/2016/06/01/LTP/</link><description>&lt;p&gt;该topic将深入分析ltp的测试内容，着重于具体每个case的测试内容及测试方法。通过对ltp case的分析，加强linux系统的理解和用例设计。本节主要整理ltp的包括测试case的类型和case列表。&lt;/p&gt;
 &lt;h3&gt;整体情况&lt;/h3&gt;
 &lt;p&gt;case主要分为”commands"、“kdump"、"kernel"、"misc"、"network"、"open_posix_testsuite"、"realtime"、"lib"等部分，主要内容如下：&lt;/p&gt;
 &lt;table&gt;
@@ -9823,7 +9823,7 @@ fi
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;接下来会深入分析每个case的具体测试目的及内容。ltp测试用例主要采用shell和Ｃ编写。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Wed, 01 Jun 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-06-01:2016/06/01/LTP/</guid><category>LTP</category></item><item><title>Python-HOWTOS(一）</title><link>http://king32783784.github.io/2016/03/11/python-howtosyi/</link><description>&lt;p&gt;Python HOWTOS 是一些单一的、特定的主题并试图覆盖python大部分内容，参考linux howto形成的集合，部分内容比python库包含更多的内容。
+&lt;p&gt;接下来会深入分析每个case的具体测试目的及内容。ltp测试用例主要采用shell和Ｃ编写。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Wed, 01 Jun 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2016-06-01:2016/06/01/LTP/</guid><category>LTP</category></item><item><title>Python-HOWTOS(一）</title><link>http://lipeng886.github.io/2016/03/11/python-howtosyi/</link><description>&lt;p&gt;Python HOWTOS 是一些单一的、特定的主题并试图覆盖python大部分内容，参考linux howto形成的集合，部分内容比python库包含更多的内容。
 目前，包括这些topic.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;将python2代码移植到python3&lt;/li&gt;
@@ -9891,7 +9891,7 @@ fi
 &lt;h5&gt;Use continuous integration to stay compatible_idioms&lt;/h5&gt;
 &lt;p&gt;待补&lt;/p&gt;
 &lt;h4&gt;Dropping Python2 support completely&lt;/h4&gt;
-&lt;p&gt;待补&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 11 Mar 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-03-11:2016/03/11/python-howtosyi/</guid><category>python-howtos</category></item><item><title>Python-tips01</title><link>http://king32783784.github.io/2016/01/01/effective-python/</link><description>&lt;h3&gt;确认python版本&lt;/h3&gt;
+&lt;p&gt;待补&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 11 Mar 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2016-03-11:2016/03/11/python-howtosyi/</guid><category>python-howtos</category></item><item><title>Python-tips01</title><link>http://lipeng886.github.io/2016/01/01/effective-python/</link><description>&lt;h3&gt;确认python版本&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;目前两个版本活跃状态，python2和python3&lt;/li&gt;
 &lt;li&gt;python有很多流行的运行环境，如cpython jython ironpython以及  pypy&lt;/li&gt;
@@ -9977,7 +9977,7 @@ python2中，如果str只包含7位ASCII，Unicode和str实例成了同一种类
 为了解决这个问题，我们必须用二进制写入模式（'wb')来开启操作的文件。以下方式同时适用Python2和Python3:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;with open(&amp;#39;/tmp/random.bin&amp;#39;, &amp;#39;wb&amp;#39;) as f:
     f.write(os.urandom(10))
-&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 01 Jan 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-01-01:2016/01/01/effective-python/</guid><category>python</category></item><item><title>PyUnit(一）</title><link>http://king32783784.github.io/2016/01/01/python/</link><description>&lt;h3&gt;PyUnit简介&lt;/h3&gt;
+&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 01 Jan 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2016-01-01:2016/01/01/effective-python/</guid><category>python</category></item><item><title>PyUnit(一）</title><link>http://lipeng886.github.io/2016/01/01/python/</link><description>&lt;h3&gt;PyUnit简介&lt;/h3&gt;
 &lt;p&gt;PyUnit是Python 2.1版本新增功能。&lt;/p&gt;
 &lt;p&gt;Python单元测试框架，又叫PyUnit。是JUnit的Python实现，是由Kent Beck和Erich Gamma共同开发的。同样，JUnit是Kent的Smalltalk测试框架的Java实现。PyUnit和JUnit都是各自怨言的标准测试框架。&lt;/p&gt;
 &lt;p&gt;PyUnit模块支持自动化测试，通用的setup和shutdown的代码，测试用例整合为测试集，还有独立的测试报告框架。PyUnit提供的类能够很容易的使以上特性应用于测试。PyUnit是借由以下概念支持单元测试的：&lt;/p&gt;
@@ -10091,7 +10091,7 @@ test_shuffle (__main__.TestSequenceFunctions) ... ok
 
 
 &lt;p&gt;测试用例通过继承unittest.TestCase创建。测试用例中3个独立的测试函数以"test"为开头命名。通过使用这种命名方式，执行器可以知道哪些方法是测试方法。&lt;/p&gt;
-&lt;p&gt;3个测试方法同样调用assertEqual()函数来检查预期结果；调用assertTrue()函数来判断条件；调用assertRaises()函数来验证是否触发了预期的异常。这3个方法作为断言语句判断用例执行正确性，以便于执行器收集测试结果并产生测试报告。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 01 Jan 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2016-01-01:2016/01/01/python/</guid><category>Pyunit</category></item><item><title>leetcode - Number Complement</title><link>http://king32783784.github.io/2015/12/04/python/</link><description>&lt;h3&gt;Number Complement&lt;/h3&gt;
+&lt;p&gt;3个测试方法同样调用assertEqual()函数来检查预期结果；调用assertTrue()函数来判断条件；调用assertRaises()函数来验证是否触发了预期的异常。这3个方法作为断言语句判断用例执行正确性，以便于执行器收集测试结果并产生测试报告。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 01 Jan 2016 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2016-01-01:2016/01/01/python/</guid><category>Pyunit</category></item><item><title>leetcode - Number Complement</title><link>http://lipeng886.github.io/2015/12/04/python/</link><description>&lt;h3&gt;Number Complement&lt;/h3&gt;
 &lt;p&gt;问题描述&lt;/p&gt;
 &lt;p&gt;Given a positive integer, output its complement number. The complement strategy is to flip the bits of its binary representation.&lt;/p&gt;
 &lt;p&gt;Note:
@@ -10259,7 +10259,7 @@ You may assume the input string will only contain letters of alphabet.&lt;/p&gt;
                     &lt;span class="nx"&gt;finallist&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;i&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 
             &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nx"&gt;finallist&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 04 Dec 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-12-04:2015/12/04/python/</guid><category>Python- Palindrome Number</category></item><item><title>leetcode - Palindrome Number &amp; Hamming Distance</title><link>http://king32783784.github.io/2015/12/03/python/</link><description>&lt;h3&gt;Palindrome Number&lt;/h3&gt;
+&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 04 Dec 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2015-12-04:2015/12/04/python/</guid><category>Python- Palindrome Number</category></item><item><title>leetcode - Palindrome Number &amp; Hamming Distance</title><link>http://lipeng886.github.io/2015/12/03/python/</link><description>&lt;h3&gt;Palindrome Number&lt;/h3&gt;
 &lt;h4&gt;问题描述&lt;/h4&gt;
 &lt;p&gt;Determine whether an integer is a palindrome. Do this without extra space.
 判断一个整型数字是否为回文。并且不能再占用额外空间&lt;/p&gt;
@@ -10390,7 +10390,7 @@ Explanation:
 &lt;p&gt;测试结果：&lt;/p&gt;
 &lt;p&gt;149 / 149 test cases passed.
 Status: Accepted
-Runtime: 39 ms&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Thu, 03 Dec 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-12-03:2015/12/03/python/</guid><category>Python- Palindrome Number</category></item><item><title>leetcode - Reverse Integer</title><link>http://king32783784.github.io/2015/12/02/python/</link><description>&lt;h4&gt;问题描述&lt;/h4&gt;
+Runtime: 39 ms&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Thu, 03 Dec 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2015-12-03:2015/12/03/python/</guid><category>Python- Palindrome Number</category></item><item><title>leetcode - Reverse Integer</title><link>http://lipeng886.github.io/2015/12/02/python/</link><description>&lt;h4&gt;问题描述&lt;/h4&gt;
 &lt;p&gt;Reverse digits of an integer.&lt;/p&gt;
 &lt;p&gt;Example1: x = 123, return 321
 Example2: x = -123, return -321&lt;/p&gt;
@@ -10584,7 +10584,7 @@ Runtime: 52 ms
 1032 / 1032 test cases passed.
 Status: Accepted
 Runtime: 46 ms
-在提交的python语言的答案中，速度已接近最优结果。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Wed, 02 Dec 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-12-02:2015/12/02/python/</guid><category>Reverse Integer</category></item><item><title>leetcode - Two Sum</title><link>http://king32783784.github.io/2015/12/01/python/</link><description>&lt;h4&gt;问题描述&lt;/h4&gt;
+在提交的python语言的答案中，速度已接近最优结果。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Wed, 02 Dec 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2015-12-02:2015/12/02/python/</guid><category>Reverse Integer</category></item><item><title>leetcode - Two Sum</title><link>http://lipeng886.github.io/2015/12/01/python/</link><description>&lt;h4&gt;问题描述&lt;/h4&gt;
 &lt;p&gt;Given an array of integers, return indices of the two numbers such that they add up to a specific target.&lt;/p&gt;
 &lt;p&gt;You may assume that each input would have exactly one solution, and you may not use the same element twice.&lt;/p&gt;
 &lt;p&gt;Example:
@@ -10648,7 +10648,7 @@ return [0, 1]&lt;/p&gt;
                 dict[value] = i
                      # 将当前值和对应索引保存到字典&lt;/p&gt;
 &lt;p&gt;该示例运行leetcode的测试代码的时间为346ms。
-减少示例一替换和获取索引值的耗时。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Tue, 01 Dec 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-12-01:2015/12/01/python/</guid><category>Python-Two Sum</category></item><item><title>Autotest-client Package(1)</title><link>http://king32783784.github.io/2015/11/01/autotest/</link><description>&lt;p&gt;&lt;img src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" height="280" width="480"&gt;&lt;/p&gt;
+减少示例一替换和获取索引值的耗时。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Tue, 01 Dec 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2015-12-01:2015/12/01/python/</guid><category>Python-Two Sum</category></item><item><title>Autotest-client Package(1)</title><link>http://lipeng886.github.io/2015/11/01/autotest/</link><description>&lt;p&gt;&lt;img src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" height="280" width="480"&gt;&lt;/p&gt;
 &lt;h3&gt;autotest_local 模块&lt;/h3&gt;
 &lt;p&gt;class autotest.client.autotest_local.AutotestLocalAPP&lt;/p&gt;
 &lt;p&gt;本地自动测试，指定一个control文件启动测试&lt;/p&gt;
@@ -10735,7 +10735,7 @@ return [0, 1]&lt;/p&gt;
 
 
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/20/autotest/"&gt;Autotest： Autotest-Autotest Remote (Autoserv)(三）&amp;gt;&amp;gt;&lt;/a&gt;
-下一篇&lt;a href=""&gt;Autotest:&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sun, 01 Nov 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-11-01:2015/11/01/autotest/</guid><category>autotest</category></item><item><title>Autotest-Autotest Remote (Autoserv)(三）</title><link>http://king32783784.github.io/2015/08/22/autotest/</link><description>&lt;p&gt;&lt;img src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" height="280" width="480"&gt;&lt;/p&gt;
+下一篇&lt;a href=""&gt;Autotest:&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sun, 01 Nov 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2015-11-01:2015/11/01/autotest/</guid><category>autotest</category></item><item><title>Autotest-Autotest Remote (Autoserv)(三）</title><link>http://lipeng886.github.io/2015/08/22/autotest/</link><description>&lt;p&gt;&lt;img src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" height="280" width="480"&gt;&lt;/p&gt;
 &lt;h3&gt;Running Autotest In a Guest&lt;/h3&gt;
 &lt;p&gt;接下来看一下虚拟机guest执行一次测试的列子。control文件有点特别的是需要在host中运行OProfile收集运行时的信息。使用oprofile前，需要在guest安装。
 给KVm指定一个IP，就会有一个虚拟机生成。试图运行虚拟机里面的oprofile，但没有成功。最后，选项"opcontrol --setup"应根据host中vmlinux位置调整。&lt;/p&gt;
@@ -10878,7 +10878,7 @@ def install_kvm(kvm_on_host_var_name, host, source, addresses):
 
 
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/21/autotest/"&gt;Autotest： Autotest-Autotest Remote (Autoserv)(二）&amp;gt;&amp;gt;&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/08/23/autotest/"&gt;Autotest:Autotest-client Package(1)&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sat, 22 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-08-22:2015/08/22/autotest/</guid><category>autotest</category></item><item><title>Autotest-Autotest Remote (Autoserv)(二）</title><link>http://king32783784.github.io/2015/08/21/autotest/</link><description>&lt;p&gt;&lt;img src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" height="280" width="480"&gt;&lt;/p&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/08/23/autotest/"&gt;Autotest:Autotest-client Package(1)&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sat, 22 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2015-08-22:2015/08/22/autotest/</guid><category>autotest</category></item><item><title>Autotest-Autotest Remote (Autoserv)(二）</title><link>http://lipeng886.github.io/2015/08/21/autotest/</link><description>&lt;p&gt;&lt;img src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" height="280" width="480"&gt;&lt;/p&gt;
 &lt;h3&gt;KVM支持&lt;/h3&gt;
 &lt;p&gt;如前所述，Autoserv 支持控制虚拟机。这个对象设计的可以支持虚拟机管理/hypervisors。一开始，只支持kvm,为了支持KVM，你需要做：
     1.创建虚拟机，运行在虚拟层的机器
@@ -11063,7 +11063,7 @@ iface vhost2 inet static
 &lt;/ul&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/20/autotest/"&gt;Autotest： Autotest-Autotest Remote (Autoserv)(一）&amp;gt;&amp;gt;&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/08/22/autotest/"&gt;Autotest:Autotest-Autotest Remote (Autoserv)(三）&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 21 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-08-21:2015/08/21/autotest/</guid><category>autotest</category></item><item><title>Autotest-Autotest Remote (Autoserv)（一）</title><link>http://king32783784.github.io/2015/08/20/autotest/</link><description>&lt;p&gt;&lt;img src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" height="280" width="480"&gt;&lt;/p&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/08/22/autotest/"&gt;Autotest:Autotest-Autotest Remote (Autoserv)(三）&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 21 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2015-08-21:2015/08/21/autotest/</guid><category>autotest</category></item><item><title>Autotest-Autotest Remote (Autoserv)（一）</title><link>http://lipeng886.github.io/2015/08/20/autotest/</link><description>&lt;p&gt;&lt;img src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" height="280" width="480"&gt;&lt;/p&gt;
 &lt;p&gt;Autoserv 是“自动化机器控制“的框架
 Autoserv 目的是控制机器，它可以：&lt;/p&gt;
 &lt;ul&gt;
@@ -11235,7 +11235,7 @@ print &amp;quot;Done&amp;quot;
 &lt;p&gt;未完待续&lt;/p&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/19/autotest/"&gt;Autotest：Autotest-others&amp;gt;&amp;gt;&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/08/21/autotest/"&gt;Autotest:Autotest-Autotest Remote (Autoserv)(二）&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Thu, 20 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-08-20:2015/08/20/autotest/</guid><category>autotest</category></item><item><title>Autotest-others</title><link>http://king32783784.github.io/2015/08/19/autotest/</link><description>&lt;p&gt;&lt;img src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" height="280" width="480"&gt;&lt;/p&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/08/21/autotest/"&gt;Autotest:Autotest-Autotest Remote (Autoserv)(二）&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Thu, 20 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2015-08-20:2015/08/20/autotest/</guid><category>autotest</category></item><item><title>Autotest-others</title><link>http://lipeng886.github.io/2015/08/19/autotest/</link><description>&lt;p&gt;&lt;img src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" height="280" width="480"&gt;&lt;/p&gt;
 &lt;h2&gt;执行外部测试&lt;/h2&gt;
 &lt;p&gt;autotest可以像执行自身测试一样执行外部测试．&lt;/p&gt;
 &lt;h3&gt;执行测试&lt;/h3&gt;
@@ -11289,7 +11289,7 @@ key2=value2
 &lt;p&gt;下篇将开始介绍Remote (Former Server)．&lt;/p&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/18/autotest/"&gt;Autotest：Autotest-add test&amp;gt;&amp;gt;&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/08/20/autotest/"&gt;Autotest:Autotest-Autotest Remote (Autoserv)&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Wed, 19 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-08-19:2015/08/19/autotest/</guid><category>autotest</category></item><item><title>Autotest-Linux distribution detection</title><link>http://king32783784.github.io/2015/08/18/autotest/</link><description>&lt;p&gt;&lt;img src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" height="280" width="480"&gt;&lt;/p&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/08/20/autotest/"&gt;Autotest:Autotest-Autotest Remote (Autoserv)&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Wed, 19 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2015-08-19:2015/08/19/autotest/</guid><category>autotest</category></item><item><title>Autotest-Linux distribution detection</title><link>http://lipeng886.github.io/2015/08/18/autotest/</link><description>&lt;p&gt;&lt;img src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" height="280" width="480"&gt;&lt;/p&gt;
 &lt;h2&gt;linux发行版检测&lt;/h2&gt;
 &lt;p&gt;Autotest有个功能,就是让测试清晰了解到它运行在什么样的发行版上.
 这个功能是由probe类群的实现和注册实现的.
@@ -11758,7 +11758,7 @@ redhat
 
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/17/autotest/"&gt;Autotest：Autotest-Using and developing job profilers&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/08/19/autotest/"&gt;Autotest:Autotest-others&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Tue, 18 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-08-18:2015/08/18/autotest/</guid><category>autotest</category></item><item><title>Autotest-Using and developing job profilers</title><link>http://king32783784.github.io/2015/08/17/autotest/</link><description>&lt;p&gt;&lt;img src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" height="280" width="480"&gt;&lt;/p&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/08/19/autotest/"&gt;Autotest:Autotest-others&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Tue, 18 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2015-08-18:2015/08/18/autotest/</guid><category>autotest</category></item><item><title>Autotest-Using and developing job profilers</title><link>http://lipeng886.github.io/2015/08/17/autotest/</link><description>&lt;p&gt;&lt;img src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" height="280" width="480"&gt;&lt;/p&gt;
 &lt;h2&gt;使用和添加测试分析器&lt;/h2&gt;
 &lt;p&gt;添加一个分析器和添加一个测试项目类似.每个分析器都有自己的子目录(client/profilers或你可以查看profilers/),一个标准例子:&lt;/p&gt;
 &lt;ul&gt;
@@ -11851,7 +11851,7 @@ self.cmd = self.srcdir + &amp;#39;/sys-utils/readprofile&amp;#39;
 &lt;p&gt;只需要在profilers下创建一个新目录,然后添加自己的控制文件,源码和控制脚本.最简单的方式是直接复制已有的readprofile.py为mytest.py,并且修改顶部的类名.&lt;/p&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/16/autotest/"&gt;Autotest：Autotest-add test&amp;gt;&amp;gt;&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/08/18/autotest/"&gt;Autotest:Autotest-Linux distribution detection&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 17 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-08-17:2015/08/17/autotest/</guid><category>autotest</category></item><item><title>Autotest-add test</title><link>http://king32783784.github.io/2015/08/16/autotest/</link><description>&lt;p&gt;&lt;img src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" height="280" width="480"&gt;&lt;/p&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/08/18/autotest/"&gt;Autotest:Autotest-Linux distribution detection&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 17 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2015-08-17:2015/08/17/autotest/</guid><category>autotest</category></item><item><title>Autotest-add test</title><link>http://lipeng886.github.io/2015/08/16/autotest/</link><description>&lt;p&gt;&lt;img src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" height="280" width="480"&gt;&lt;/p&gt;
 &lt;h2&gt;测试模块开发&lt;/h2&gt;
 &lt;p&gt;测试模块必需是独立的单元，包含测试需要的所有内容（除了调用测试框架的）&lt;/p&gt;
 &lt;p&gt;测试模块需要：&lt;/p&gt;
@@ -11939,7 +11939,7 @@ nprocs = 4
 &lt;p&gt;只需创建测试下一个新的子目录，并添加自己的控制文件，源代码和包装。 比较简单的做法是,复制dbench.py ​​为mytest.py ,然后对它进行编辑.&lt;/p&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/15/autotest/"&gt;Autotest：Autotest-Control file specification&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/08/17/autotest/"&gt;Autotest:Using and developing job profilers&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sun, 16 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-08-16:2015/08/16/autotest/</guid><category>autotest</category></item><item><title>Autotest-Control file specification</title><link>http://king32783784.github.io/2015/08/15/autotest/</link><description>&lt;p&gt;&lt;img src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" height="280" width="480"&gt;&lt;/p&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/08/17/autotest/"&gt;Autotest:Using and developing job profilers&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sun, 16 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2015-08-16:2015/08/16/autotest/</guid><category>autotest</category></item><item><title>Autotest-Control file specification</title><link>http://lipeng886.github.io/2015/08/15/autotest/</link><description>&lt;p&gt;&lt;img src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" height="280" width="480"&gt;&lt;/p&gt;
 &lt;h2&gt;Control file specification&lt;/h2&gt;
 &lt;p&gt;该篇主要介绍control文件的标准.该标准主要为了使自定义的control文件能够提供前端或测试所需要的信息,并且能够通过前端修改.
 主要内容:&lt;/p&gt;
@@ -12092,7 +12092,7 @@ parallel_simple(run, machines)
 
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/14/autotest/"&gt;Autotest:Autotest-client control&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/08/16/autotest/"&gt;Autotest:Autotest-add test&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sat, 15 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-08-15:2015/08/15/autotest/</guid><category>autotest</category></item><item><title>Autotest-client control</title><link>http://king32783784.github.io/2015/08/14/autotest/</link><description>&lt;p&gt;&lt;img src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" height="280" width="480"&gt;&lt;/p&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/08/16/autotest/"&gt;Autotest:Autotest-add test&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sat, 15 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2015-08-15:2015/08/15/autotest/</guid><category>autotest</category></item><item><title>Autotest-client control</title><link>http://lipeng886.github.io/2015/08/14/autotest/</link><description>&lt;p&gt;&lt;img src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" height="280" width="480"&gt;&lt;/p&gt;
 &lt;h2&gt;Client Control files&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;主要内容&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -12288,7 +12288,7 @@ job.parallel([first_task], [second_task])
 &lt;p&gt;并行任务执行在自己的地址空间,你不比担心.但是毕竟是运行在同一台物理机中.仍然需要主要避免访问同一资源,如相同的文件.&lt;/p&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/13/autotest02/"&gt;Autotest：Autotest-Local&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/08/15/autotest/"&gt;Autotest：Autotest-Control file specification&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 14 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-08-14:2015/08/14/autotest/</guid><category>autotest</category></item><item><title>Autotest-Local</title><link>http://king32783784.github.io/2015/08/13/autotest02/</link><description>&lt;p&gt;&lt;img src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" height="280" width="480"&gt;&lt;/p&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/08/15/autotest/"&gt;Autotest：Autotest-Control file specification&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 14 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2015-08-14:2015/08/14/autotest/</guid><category>autotest</category></item><item><title>Autotest-Local</title><link>http://lipeng886.github.io/2015/08/13/autotest02/</link><description>&lt;p&gt;&lt;img src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" height="280" width="480"&gt;&lt;/p&gt;
 &lt;h2&gt;Local (Former Client)&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;主要内容&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -12341,7 +12341,7 @@ sudo rm -rf client/results
 &lt;p&gt;&lt;strong&gt;注意,尽量在一个测试机或虚拟机执行,不然会丢失之前系统的启动设置.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/08/12/Autotest01/"&gt;Autotest：Autotest-summary&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/08/14/autotest/"&gt;Autotest：Autotest-client control&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Thu, 13 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-08-13:2015/08/13/autotest02/</guid><category>autotest</category></item><item><title>Autotest-summary</title><link>http://king32783784.github.io/2015/08/12/Autotest01/</link><description>&lt;p&gt;&lt;img src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" height="280" width="480"&gt;&lt;/p&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/08/14/autotest/"&gt;Autotest：Autotest-client control&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Thu, 13 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2015-08-13:2015/08/13/autotest02/</guid><category>autotest</category></item><item><title>Autotest-summary</title><link>http://lipeng886.github.io/2015/08/12/Autotest01/</link><description>&lt;p&gt;&lt;img src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/autotestlogo.png?raw=true" height="280" width="480"&gt;&lt;/p&gt;
 &lt;p&gt;Autotest是一个开源的自动化测试框架.设计目的是为了测试Linux内核,同样可以用来检查新的硬件,虚拟化测试以及linux平台用户空间程序.它遵循GPL协议,并有大量的开发组织成员,其中包括像谷歌,IBM,红帽等.
 Avocado,是Autotest开发组,开发的下一代的自动化测试框架.详细信息参考&lt;a href="http://avocado-framework.github.io/"&gt;Avocado&lt;/a&gt;,后续有时间会再对Avocado进行介绍.
 本专题主要介绍以下内容:&lt;/p&gt;
@@ -12420,7 +12420,7 @@ Autotest通过 Web 前端或者命令行工具提交测试任务， Autotest Ser
 &lt;li&gt;Frontends：允许用户运行作业并且方便地使测试结果可视化。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;下一篇&lt;a href="https://king32783784.github.io/2015/08/13/autotest02/"&gt;Autotest：Autotest-Local&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Wed, 12 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-08-12:2015/08/12/Autotest01/</guid><category>autotest</category></item><item><title>selenium-expected_conditions源码分析</title><link>http://king32783784.github.io/2015/02/03/selenium/</link><description>&lt;h4&gt;expected_conditions 模块的源码分析&lt;/h4&gt;
+&lt;p&gt;下一篇&lt;a href="https://king32783784.github.io/2015/08/13/autotest02/"&gt;Autotest：Autotest-Local&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Wed, 12 Aug 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2015-08-12:2015/08/12/Autotest01/</guid><category>autotest</category></item><item><title>selenium-expected_conditions源码分析</title><link>http://lipeng886.github.io/2015/02/03/selenium/</link><description>&lt;h4&gt;expected_conditions 模块的源码分析&lt;/h4&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;selenium.common.exceptions&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;NoSuchElementException&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;selenium.common.exceptions&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;NoSuchFrameException&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;selenium.common.exceptions&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;StateElementReferenceException&lt;/span&gt;
@@ -12749,7 +12749,7 @@ def __call__(self, driver):
 
 
 &lt;p&gt;说明：判断是否有弹窗（一般为警告信息）。有返回alert,没有返回False.&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/X0VEL34U0E.jpg" height="280" width="480"&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Tue, 03 Feb 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-02-03:2015/02/03/selenium/</guid><category>Selenium</category></item><item><title>selenium-Sample(五）</title><link>http://king32783784.github.io/2015/02/01/selenium/</link><description>&lt;h4&gt;示例10 不同等待方法示例&lt;/h4&gt;
+&lt;p&gt;&lt;img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/X0VEL34U0E.jpg" height="280" width="480"&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Tue, 03 Feb 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2015-02-03:2015/02/03/selenium/</guid><category>Selenium</category></item><item><title>selenium-Sample(五）</title><link>http://lipeng886.github.io/2015/02/01/selenium/</link><description>&lt;h4&gt;示例10 不同等待方法示例&lt;/h4&gt;
 &lt;p&gt;等待方法包括多种策略，具体参见前面文章。&lt;/p&gt;
 &lt;p&gt;示例代码：&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;  1
@@ -13225,7 +13225,7 @@ def __call__(self, driver):
 &lt;p&gt;示例中覆盖了expected_condition类中的大部分等待方式。包括title_is 、title_contains、presence_of_element_located、visibility_of_element_located、visibility_of、presence_of_all_elements_located、text_to_be_present_in_element、text_to_be_present_in_element_value、frame_to_be_available_and_switch_to_it、invisibility_of_element_located、element_to_be_clickable-it is Displayed and Enabled、staleness_of、element_to_be_selected、element_located_to_be_selected、element_selection_state_to_be、element_located_selection_state_to_be、alert_is_present
 及implicitly_wait.&lt;/p&gt;
 &lt;p&gt;下一篇会研究一下expected_condition中各个类的实现。&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/T0EGHT3KZM.jpg" height="280" width="480"&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sun, 01 Feb 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-02-01:2015/02/01/selenium/</guid><category>Selenium</category></item><item><title>selenium-Sample(四）</title><link>http://king32783784.github.io/2015/01/26/selenium/</link><description>&lt;h4&gt;示例9 各种元素定位方法&lt;/h4&gt;
+&lt;p&gt;&lt;img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/T0EGHT3KZM.jpg" height="280" width="480"&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sun, 01 Feb 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2015-02-01:2015/02/01/selenium/</guid><category>Selenium</category></item><item><title>selenium-Sample(四）</title><link>http://lipeng886.github.io/2015/01/26/selenium/</link><description>&lt;h4&gt;示例9 各种元素定位方法&lt;/h4&gt;
 &lt;p&gt;下面的例子将展示webdriver 元素定位的几种方式。包括id、name、xpath、link_tetx、partial_link_text、tag_name、class_name、css_selector等。&lt;/p&gt;
 &lt;p&gt;代码：&lt;/p&gt;
 &lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;  1
@@ -13450,7 +13450,7 @@ def __call__(self, driver):
 &lt;p&gt;示例代码比较简单，就不在一一解释，主要覆盖了几种元素定位方式，可能在页面中找这些元素定位的特征反而比较费劲。&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/I0T0E4Y826.jpg" height="280" width="480"&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/25/selenium/"&gt;selenium-Sample(三)&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/01/27/selenium/"&gt;selenium-Sample(五)&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 26 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-26:2015/01/26/selenium/</guid><category>Selenium</category></item><item><title>selenium-Sample(三）</title><link>http://king32783784.github.io/2015/01/25/selenium/</link><description>&lt;h4&gt;示例５　拖放drag和drop&lt;/h4&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/01/27/selenium/"&gt;selenium-Sample(五)&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 26 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2015-01-26:2015/01/26/selenium/</guid><category>Selenium</category></item><item><title>selenium-Sample(三）</title><link>http://lipeng886.github.io/2015/01/25/selenium/</link><description>&lt;h4&gt;示例５　拖放drag和drop&lt;/h4&gt;
 &lt;p&gt;代码：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
 
@@ -13624,7 +13624,7 @@ action_chains.drag_and_drop(element, target).perform()　#执行拖放
 &lt;p&gt;说明：  cookie格式为字典包括"name"和“value"两个键值对。add_cookie方法将cookie添加到cookies中。&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/WBB0EXYSWE.jpg" height="380" width="420"&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/24/selenium/"&gt;selenium-Sample(二)&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/01/26/selenium/"&gt;selenium-Sample(四)&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sun, 25 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-25:2015/01/25/selenium/</guid><category>Selenium</category></item><item><title>selenium-Sample(二）</title><link>http://king32783784.github.io/2015/01/24/selenium/</link><description>&lt;h3&gt;常见应用的示例&lt;/h3&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/01/26/selenium/"&gt;selenium-Sample(四)&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sun, 25 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2015-01-25:2015/01/25/selenium/</guid><category>Selenium</category></item><item><title>selenium-Sample(二）</title><link>http://lipeng886.github.io/2015/01/24/selenium/</link><description>&lt;h3&gt;常见应用的示例&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;Sample List&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;填写表单示例1-自动设置bugzilla Simple Search&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;填写表单示例2-自动设置bugzilla Advanced Search&lt;/strong&gt;&lt;/p&gt;
@@ -13912,7 +13912,7 @@ doclick方法实现对选定元素的点击。&lt;/p&gt;
 
 &lt;p&gt;通过一个字典将选择框的name属性和要选择的项目列表传入。通过遍历，将两个项目复选。&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/23/selenium/"&gt;selenium-Sample(一)&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/01/25/selenium/"&gt;selenium-Sample(二)&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sat, 24 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-24:2015/01/24/selenium/</guid><category>Selenium</category></item><item><title>selenium-Sample(一）</title><link>http://king32783784.github.io/2015/01/23/selenium/</link><description>&lt;h3&gt;应用示例&lt;/h3&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/01/25/selenium/"&gt;selenium-Sample(二)&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sat, 24 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2015-01-24:2015/01/24/selenium/</guid><category>Selenium</category></item><item><title>selenium-Sample(一）</title><link>http://lipeng886.github.io/2015/01/23/selenium/</link><description>&lt;h3&gt;应用示例&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;1.通过selenium爬取"https://stocksnap.io/"上的图片。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;简要说明，通过selenium打开firefox浏览器，导航到指定网址；然后定位到图片源地址，并保存；然后调用urllib模块，下载图片到指定位置。&lt;/p&gt;
 &lt;p&gt;代码如下：&lt;/p&gt;
@@ -14147,7 +14147,7 @@ actions.perform()
 
 &lt;p&gt;未完待续&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/22/selenium/"&gt;Selenium主题10&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/01/24/selenium/"&gt;selenium-Sample(二)&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 23 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-23:2015/01/23/selenium/</guid><category>Selenium</category></item><item><title>selenium-常见问题</title><link>http://king32783784.github.io/2015/01/22/selenium/</link><description>&lt;h3&gt;1.常见问题&lt;/h3&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/01/24/selenium/"&gt;selenium-Sample(二)&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 23 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2015-01-23:2015/01/23/selenium/</guid><category>Selenium</category></item><item><title>selenium-常见问题</title><link>http://lipeng886.github.io/2015/01/22/selenium/</link><description>&lt;h3&gt;1.常见问题&lt;/h3&gt;
 &lt;h4&gt;1.1 如何使用ChromeDriver?&lt;/h4&gt;
 &lt;p&gt;下载最新的chromedriver&lt;a href="https://sites.google.com/a/chromium.org/chromedriver/downloads"&gt;chromedriver from download page&lt;/a&gt;,解压文件：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;unzip chromedriver_linux32_x.x.x.x.zip
@@ -14233,7 +14233,7 @@ Selenium 将XPath查询委派给浏览器自己的XPath引擎查询，所以Sele
 
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/21/selenium/"&gt;Selenium主题9&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;下一篇&lt;a href="https://king32783784.github.io/2015/01/23/selenium/"&gt;selenium-Sample(一)&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Thu, 22 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-22:2015/01/22/selenium/</guid><category>Selenium</category></item><item><title>selenium-Remote WebDriver</title><link>http://king32783784.github.io/2015/01/21/selenium/</link><description>&lt;h3&gt;Remote WebDriver&lt;/h3&gt;
+&lt;p&gt;下一篇&lt;a href="https://king32783784.github.io/2015/01/23/selenium/"&gt;selenium-Sample(一)&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Thu, 22 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2015-01-22:2015/01/22/selenium/</guid><category>Selenium</category></item><item><title>selenium-Remote WebDriver</title><link>http://lipeng886.github.io/2015/01/21/selenium/</link><description>&lt;h3&gt;Remote WebDriver&lt;/h3&gt;
 &lt;p&gt;WebDriver实现。&lt;/p&gt;
 &lt;p&gt;class selenium.webdriver.remote.webdriver.WebDriver(command_executor='http://127.0.0.1:4444/wd/hub', desired_capabilities=None, browser_profile=None, proxy=None, keep_alive=False, file_detector=None)&lt;/p&gt;
 &lt;p&gt;Bases: object
@@ -14823,7 +14823,7 @@ until_not(method, message=&amp;#39;&amp;#39;)
 
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/20/selenium/"&gt;Selenium主题8&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/01/22/selenium/"&gt;Selenium主题10&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Wed, 21 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-21:2015/01/21/selenium/</guid><category>Selenium</category></item><item><title>selenium-API-2</title><link>http://king32783784.github.io/2015/01/20/selenium/</link><description>&lt;h3&gt;Alert&lt;/h3&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/01/22/selenium/"&gt;Selenium主题10&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Wed, 21 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2015-01-21:2015/01/21/selenium/</guid><category>Selenium</category></item><item><title>selenium-API-2</title><link>http://lipeng886.github.io/2015/01/20/selenium/</link><description>&lt;h3&gt;Alert&lt;/h3&gt;
 &lt;p&gt;警告相关的实现&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;class&lt;/span&gt; &lt;span class="nx"&gt;selenium&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;webdriver&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;common&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;alert&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;Alert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;driver&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="nx"&gt;Bases&lt;/span&gt;: &lt;span class="kt"&gt;object&lt;/span&gt;
@@ -15087,7 +15087,7 @@ selenium.webdriver.common.utils.join_host_port(host, port)
 
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/19/selenium/"&gt;Selenium主题7&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/01/21/selenium/"&gt;Selenium主题9&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Tue, 20 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-20:2015/01/20/selenium/</guid><category>Selenium</category></item><item><title>selenium-API</title><link>http://king32783784.github.io/2015/01/19/selenium/</link><description>&lt;h3&gt;WebDriver API&lt;/h3&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/01/21/selenium/"&gt;Selenium主题9&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Tue, 20 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2015-01-20:2015/01/20/selenium/</guid><category>Selenium</category></item><item><title>selenium-API</title><link>http://lipeng886.github.io/2015/01/19/selenium/</link><description>&lt;h3&gt;WebDriver API&lt;/h3&gt;
 &lt;p&gt;注：这不是官方API文档，官方在这：&lt;a href="https://seleniumhq.github.io/selenium/docs/api/py/api.html"&gt;Selenium Documentation&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;本篇覆盖了Selenium Webdriver的所有接口。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;推荐导入样式&lt;/strong&gt;
@@ -15401,7 +15401,7 @@ stacktrace=None)&lt;/p&gt;
 
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/18/selenium/"&gt;Selenium主题6&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/01/20/selenium/"&gt;Selenium主题8&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 19 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-19:2015/01/19/selenium/</guid><category>Selenium</category></item><item><title>selenium-页面对象</title><link>http://king32783784.github.io/2015/01/18/selenium/</link><description>&lt;h3&gt;一、页面对象&lt;/h3&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/01/20/selenium/"&gt;Selenium主题8&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 19 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2015-01-19:2015/01/19/selenium/</guid><category>Selenium</category></item><item><title>selenium-页面对象</title><link>http://lipeng886.github.io/2015/01/18/selenium/</link><description>&lt;h3&gt;一、页面对象&lt;/h3&gt;
 &lt;p&gt;该篇是介绍页面对象设计模式的方法。页面对象是Web应用程序用户界面的区域，测试时主要在此区域。&lt;/p&gt;
 &lt;p&gt;使用页面对象模式的好处：&lt;/p&gt;
 &lt;ul&gt;
@@ -15524,7 +15524,7 @@ locators.py：&lt;/p&gt;
 
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/17/selenium/"&gt;Selenium主题5&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/01/19/selenium/"&gt;Selenium主题7&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sun, 18 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-18:2015/01/18/selenium/</guid><category>Selenium</category></item><item><title>selenium-等待</title><link>http://king32783784.github.io/2015/01/17/selenium/</link><description>&lt;h3&gt;一、等待&lt;/h3&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/01/19/selenium/"&gt;Selenium主题7&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sun, 18 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2015-01-18:2015/01/18/selenium/</guid><category>Selenium</category></item><item><title>selenium-等待</title><link>http://lipeng886.github.io/2015/01/17/selenium/</link><description>&lt;h3&gt;一、等待&lt;/h3&gt;
 &lt;p&gt;目前大多数网络应用都在使用AJAX技术。当浏览器加载一个页面，页面上的元素可能分多次进行加载。这会导致元素定位困难，如果元素没有在DOM中出现，则会触发ElementNotVisibleException异常。通过等待，我们可以解决这个问题。等待提供了设置操作间的时间间隔－元素定位直接或其他元素操作。&lt;/p&gt;
 &lt;p&gt;Selenium Webdriver 提供了等待的两种类型，implicit和explicit。显式等待是使webdriver在操作之间有确定的时间等待。隐式等待是使WebDriver 去间隔的轮询DOM，尝试定位到元素。&lt;/p&gt;
 &lt;h4&gt;1.显式等待&lt;/h4&gt;
@@ -15587,7 +15587,7 @@ element = wait.until(EC.element_to_be_clickable(By.ID, 'someid')))&lt;/p&gt;
 
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/16/selenium/"&gt;Selenium主题4&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/01/18/selenium/"&gt;Selenium主题6&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sat, 17 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-17:2015/01/17/selenium/</guid><category>Selenium</category></item><item><title>selenium-元素定位</title><link>http://king32783784.github.io/2015/01/16/selenium/</link><description>&lt;h3&gt;元素定位&lt;/h3&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/01/18/selenium/"&gt;Selenium主题6&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sat, 17 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2015-01-17:2015/01/17/selenium/</guid><category>Selenium</category></item><item><title>selenium-元素定位</title><link>http://lipeng886.github.io/2015/01/16/selenium/</link><description>&lt;h3&gt;元素定位&lt;/h3&gt;
 &lt;p&gt;提供很多种方式去定位页面的元素。可以从中选择一个适合的用于测试。Selenium 提供了以下方法用于定位页面元素：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;*find_element_by_id
 *find_element_by_name
@@ -15807,7 +15807,7 @@ clear_button = driver.find_element_by_xpath(&amp;quot;//form[@id=&amp;#39;loginF
 
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/15/selenium/"&gt;Selenium主题3&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/01/17/selenium/"&gt;Selenium主题5&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 16 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-16:2015/01/16/selenium/</guid><category>Selenium</category></item><item><title>selenium-常用方法</title><link>http://king32783784.github.io/2015/01/15/selenium/</link><description>&lt;h3&gt;一 导航&lt;/h3&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/01/17/selenium/"&gt;Selenium主题5&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 16 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2015-01-16:2015/01/16/selenium/</guid><category>Selenium</category></item><item><title>selenium-常用方法</title><link>http://lipeng886.github.io/2015/01/15/selenium/</link><description>&lt;h3&gt;一 导航&lt;/h3&gt;
 &lt;p&gt;使用WebDriver第一件想做的事情就是导航到指定链接。通常可以调用get方法去实现：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;driver.get(&amp;quot;http://www.google.com&amp;quot;)
 &lt;/pre&gt;&lt;/div&gt;
@@ -15973,7 +15973,7 @@ driver.get_cookies()
 
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/14/selenium/"&gt;Selenium主题2&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/01/16/selenium/"&gt;Selenium主题4&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Thu, 15 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-15:2015/01/15/selenium/</guid><category>Selenium</category></item><item><title>selenium-入门</title><link>http://king32783784.github.io/2015/01/14/selenium/</link><description>&lt;h3&gt;入门&lt;/h3&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/01/16/selenium/"&gt;Selenium主题4&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Thu, 15 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2015-01-15:2015/01/15/selenium/</guid><category>Selenium</category></item><item><title>selenium-入门</title><link>http://lipeng886.github.io/2015/01/14/selenium/</link><description>&lt;h3&gt;入门&lt;/h3&gt;
 &lt;h4&gt;简单用法&lt;/h4&gt;
 &lt;p&gt;如果已经具备了Selenium＆Python，可以这样开始使用：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;selenium&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;webdriver&lt;/span&gt;
@@ -16287,7 +16287,7 @@ code:&lt;/p&gt;
 
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;上一篇&lt;a href="https://king32783784.github.io/2015/01/13/selenium/"&gt;Selenium主题1&lt;/a&gt;
-下一篇&lt;a href="https://king32783784.github.io/2015/01/15/selenium/"&gt;Selenium主题3&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Wed, 14 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-14:2015/01/14/selenium/</guid><category>Selenium</category></item><item><title>selenium-基本介绍</title><link>http://king32783784.github.io/2015/01/13/selenium/</link><description>&lt;p&gt;该topic将开始学习selenium的使用。主要内容如下&lt;/p&gt;
+下一篇&lt;a href="https://king32783784.github.io/2015/01/15/selenium/"&gt;Selenium主题3&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Wed, 14 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2015-01-14:2015/01/14/selenium/</guid><category>Selenium</category></item><item><title>selenium-基本介绍</title><link>http://lipeng886.github.io/2015/01/13/selenium/</link><description>&lt;p&gt;该topic将开始学习selenium的使用。主要内容如下&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;1.安装&lt;/li&gt;
 &lt;li&gt;2.入门&lt;/li&gt;
@@ -16328,7 +16328,7 @@ Selenium&amp;amp;python提供了直观的ＡＰＩ访问Selenium WebDrivers如fi
 如果java支持，可以通过下面命令来启动Selenium server:
     java -jar selenium-server-standalone-2.x.x.jar&lt;/p&gt;
 &lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;下一篇&lt;a href="https://king32783784.github.io/2015/01/14/selenium/"&gt;selenium-专题２&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Tue, 13 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-13:2015/01/13/selenium/</guid><category>Selenium</category></item><item><title>selenium-浏览器性能测试</title><link>http://king32783784.github.io/2015/01/12/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/</link><description>&lt;p&gt;浏览器是系统下比较常用的软件，在linux系统比较常用的是firefox、chrome.如何评估浏览器的基础性能？有很多评测网站进行了这边的测试。
+&lt;p&gt;下一篇&lt;a href="https://king32783784.github.io/2015/01/14/selenium/"&gt;selenium-专题２&amp;gt;&amp;gt;&amp;gt;&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Tue, 13 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2015-01-13:2015/01/13/selenium/</guid><category>Selenium</category></item><item><title>selenium-浏览器性能测试</title><link>http://lipeng886.github.io/2015/01/12/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/</link><description>&lt;p&gt;浏览器是系统下比较常用的软件，在linux系统比较常用的是firefox、chrome.如何评估浏览器的基础性能？有很多评测网站进行了这边的测试。
 如
 &lt;em&gt; &lt;a href="http://css4-selectors.com/browser-selector-test/"&gt;CSS&lt;/a&gt;
 &lt;/em&gt; &lt;a href="http://acid3.acidtests.org/"&gt;acid3&lt;/a&gt;
@@ -16553,7 +16553,7 @@ browser-run.py:&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;```                                                                                                     &lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 12 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2015-01-12:2015/01/12/自动化测试/</guid><category>Selenium</category></item><item><title>测试风险识别</title><link>http://king32783784.github.io/2014/10/17/%E9%A3%8E%E9%99%A9%E6%8E%A7%E5%88%B6/</link><description>&lt;h3&gt;前言&lt;/h3&gt;
+&lt;p&gt;```                                                                                                     &lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 12 Jan 2015 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2015-01-12:2015/01/12/自动化测试/</guid><category>Selenium</category></item><item><title>测试风险识别</title><link>http://lipeng886.github.io/2014/10/17/%E9%A3%8E%E9%99%A9%E6%8E%A7%E5%88%B6/</link><description>&lt;h3&gt;前言&lt;/h3&gt;
 &lt;p&gt;Google所提供的开源Web应用可以分析项目信息，包括测试用例、代码变更、产品缺陷等，以确定Capabilities矩阵中的高风险区域。下图引用自James Whittaker在GTAC 2010的闭幕演讲的幻灯片，是Chrome OS的Capabilities矩阵的热点图（heap map）。图中绿色表示低风险区域，红色表示高风险区域，粉红色和橙色则表示风险居于前两者之间。测试人员可以根据热点图，更好地确定测试优先级，将有限的资源运用在最需要的地方。&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://raw.githubusercontent.com/king32783784/king32783784.github.io/master/tmpfile/201204230733037356.jpg" height="160" width="540"&gt;&lt;/p&gt;
 &lt;h3&gt;风险分析&lt;/h3&gt;
@@ -16601,7 +16601,7 @@ browser-run.py:&lt;/p&gt;
 &lt;p&gt;(4) 仔细思索高风险的区域，咨询可能的回滚和恢复进制。&lt;/p&gt;
 &lt;p&gt;(5) 推动开发人员对高风险区域的识别和测试，毕竟他们是最了解的一群人。&lt;/p&gt;
 &lt;p&gt;(6) 时间存在限制时，要优先进行重要特性的测试&lt;/p&gt;
-&lt;p&gt;总结，测试建模、风险分析、风险缓解都应该建立在对产品的详细了解的基础上。对产品的了解不应只留在产品需求定义和外部表现上，也要深入到产品的内部，对其内部实现上也要做到深入了解。只有做到这点，才能够创建准确、全面的测试计划、编写出可操作的测试用例、识别出产品的风险、提出合理的风险缓解的策略。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 17 Oct 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2014-10-17:2014/10/17/风险控制/</guid><category>test</category></item><item><title>测试建模</title><link>http://king32783784.github.io/2014/10/11/%E6%B5%8B%E8%AF%95/</link><description>&lt;h3&gt;简介&lt;/h3&gt;
+&lt;p&gt;总结，测试建模、风险分析、风险缓解都应该建立在对产品的详细了解的基础上。对产品的了解不应只留在产品需求定义和外部表现上，也要深入到产品的内部，对其内部实现上也要做到深入了解。只有做到这点，才能够创建准确、全面的测试计划、编写出可操作的测试用例、识别出产品的风险、提出合理的风险缓解的策略。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 17 Oct 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2014-10-17:2014/10/17/风险控制/</guid><category>test</category></item><item><title>测试建模</title><link>http://lipeng886.github.io/2014/10/11/%E6%B5%8B%E8%AF%95/</link><description>&lt;h3&gt;简介&lt;/h3&gt;
 &lt;p&gt;ACC（Attributes Components Capability）是Google测试团队使用的一种建模方法，用来快速地建立产品的模型，以指导下一步的测试计划和设计。在Google内部，ACC得到较普遍的应用，一些工程师还开发了支持ACC模型的Web应用，并将其开源。&lt;/p&gt;
 &lt;p&gt;ACC的指导原则如下：&lt;/p&gt;
 &lt;ul&gt;
@@ -16904,7 +16904,7 @@ extra组件包括k3b、clouldmusic、bullet、opencv、golang...&lt;/p&gt;
 | 设置 | 设置菜单直观 | | 只包含相关菜单 | 设置项之间互不干扰 | 功能设置准确，包含全部相关设置 | |
 | 软件包 |  | | 软件包和软件分类中的软件菜单一一对应 | 软件菜单和软件包相对独立 | 软件包全部能够正确安装、卸载、升级且之间互不干扰 | |&lt;/p&gt;
 &lt;p&gt;总结：&lt;/p&gt;
-&lt;p&gt;ACC测试建模至上而下，从产品的特质到组件，再到能力（功能）进行解析，可以快速、准确的生成一个产品测试计划。另外，对于比较大的系统产品，比如linux发行版，可以先进行大模块的划分，然后再进行各个组件的建模。像操作系统产品是多个组件或产品集成而来。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sat, 11 Oct 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2014-10-11:2014/10/11/测试/</guid><category>ACC</category></item><item><title>Spec2006使用说明</title><link>http://king32783784.github.io/2014/10/10/linux/</link><description>&lt;h3&gt;一、工具介绍&lt;/h3&gt;
+&lt;p&gt;ACC测试建模至上而下，从产品的特质到组件，再到能力（功能）进行解析，可以快速、准确的生成一个产品测试计划。另外，对于比较大的系统产品，比如linux发行版，可以先进行大模块的划分，然后再进行各个组件的建模。像操作系统产品是多个组件或产品集成而来。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sat, 11 Oct 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2014-10-11:2014/10/11/测试/</guid><category>ACC</category></item><item><title>Spec2006使用说明</title><link>http://lipeng886.github.io/2014/10/10/linux/</link><description>&lt;h3&gt;一、工具介绍&lt;/h3&gt;
 &lt;p&gt;SPEC CPU 2006 benchmark是SPEC新一代的行业标准化的CPU测试基准套件。重点测试系统的处理器，内存子系统和编译器。这个基准测试套件包括的SPECint基准和SPECfp基准。 其中SPECint2006基准包含12个不同的基准测试和SPECfp2006年基准包含19个不同的基准测试。SPEC设计了这个套件提供了一个比较标准的计算密集型，高性能的跨硬件的CPU测试工具。在SPEC CPU 2006基准有几种不同的方法来衡量计算机性能。 一种方式是测量计算机完成单一任务的速度; 另一种方式吞吐量，容量或速率的测量。
 说明：由于spec2006支持多种类型操作系统。以下安装、测试、移植等介绍均基于Unix 和其他的 Unix-like system如linux。Windows系统不在此范围内。&lt;/p&gt;
 &lt;h4&gt;1.spec2006与spec2000的对比简要说明&lt;/h4&gt;
@@ -17342,7 +17342,7 @@ specinvoke -h
 
 
 &lt;p&gt;如果自动化编译出现问题，可以手动编译每个测试工具。编译方法为进入对应的工具包，手动编译。&lt;/p&gt;
-&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 10 Oct 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2014-10-10:2014/10/10/linux/</guid><category>benchmark</category></item><item><title>SpecJvm2008使用说明</title><link>http://king32783784.github.io/2014/09/15/linux/</link><description>&lt;h3&gt;SPECJVM2008使用方法&lt;/h3&gt;
+&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 10 Oct 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2014-10-10:2014/10/10/linux/</guid><category>benchmark</category></item><item><title>SpecJvm2008使用说明</title><link>http://lipeng886.github.io/2014/09/15/linux/</link><description>&lt;h3&gt;SPECJVM2008使用方法&lt;/h3&gt;
 &lt;h4&gt;1.工具介绍&lt;/h4&gt;
 &lt;p&gt;SPECjvm2008 （Java Virtual Machine Benchmark）是一个评估JRE运行性能的基准测试套件。包含几个现实生活中的应用和专注于核心java功能的基准的测量基准套件。该套件侧重于JRE执行一个单一的应用程序；它反映了硬件处理器和内存子系统的性能，与文件系统I/O和网络I/O关系不大。SPECjvm2008负载模仿各种常见用途的应用计算。这些特征反映了这一基准适用于测量基本 Java 性能上种类繁多的客户端和服务器系统。
 套件包含21个基准测试，其中每个基准测试均包含一个2分钟的热身测试和4分钟的正式测试。由于测试过程中程序并不中断基准测试的执行，所以测试时间至少为126分钟，根据Java性能的不同，测试时间会有所不同。关于21个基准测试的具体内容将在文档最后进行介绍。&lt;/p&gt;
@@ -17514,7 +17514,7 @@ xml.validation  在规定时间内，多线程迭代测试xml schema验证，得
 &lt;p&gt;2）哪些参数有官方要求？&lt;/p&gt;
 &lt;p&gt;默认配置文件props/specjvm.properties 里，注释了Permitted for的就是。&lt;/p&gt;
 &lt;p&gt;3）如何指定配置文件路径？&lt;/p&gt;
-&lt;p&gt;-pf指定配置文件路径，默认使用的是安装目录下的 props/specjvm.properties，（日志里会打印出使用文件的路径）&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 15 Sep 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2014-09-15:2014/09/15/linux/</guid><category>benchmark</category></item><item><title>Linux Test Project(一)</title><link>http://king32783784.github.io/2014/09/12/ltp/</link><description>&lt;h2&gt;Testing Linux, one syscall at a time.&lt;/h2&gt;
+&lt;p&gt;-pf指定配置文件路径，默认使用的是安装目录下的 props/specjvm.properties，（日志里会打印出使用文件的路径）&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 15 Sep 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2014-09-15:2014/09/15/linux/</guid><category>benchmark</category></item><item><title>Linux Test Project(一)</title><link>http://lipeng886.github.io/2014/09/12/ltp/</link><description>&lt;h2&gt;Testing Linux, one syscall at a time.&lt;/h2&gt;
 &lt;p&gt;LTP是从SGI开始的,后由IBM 思科 富士通 SUSE Redhat等组织开发的.该工具的目标是建立一个测试套件用来验证linux的可靠性,健壮性及稳定性.LTP测试套件包含了linux内核及相关功能的工具.&lt;/p&gt;
 &lt;p&gt;本文主要介绍关于ltp的一些基本信息.&lt;/p&gt;
 &lt;p&gt;LTP项目主页:&lt;a href="https://linux-test-project.github.io/#"&gt;ltp&lt;/a&gt;&lt;/p&gt;
@@ -17801,7 +17801,7 @@ Top:&lt;/p&gt;
 &lt;p&gt;压力测试是一种破坏性的测试，即系统在非正常的、超负荷的条件下的运行情况 。用来评估在超越最大负载的情况下系统将如何运行，是系统在正常的情况下对某种负载强度的承受能力的考验 。&lt;/p&gt;
 &lt;p&gt;为什么要进行压力测试？&lt;/p&gt;
 &lt;p&gt;通常我们用压力测试来判断系统的稳定性和可靠性。&lt;/p&gt;
-&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 12 Sep 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2014-09-12:2014/09/12/ltp/</guid><category>LTP</category></item><item><title>http协议</title><link>http://king32783784.github.io/2014/06/01/http/</link><description>&lt;h3&gt;前言&lt;/h3&gt;
+&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 12 Sep 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2014-09-12:2014/09/12/ltp/</guid><category>LTP</category></item><item><title>http协议</title><link>http://lipeng886.github.io/2014/06/01/http/</link><description>&lt;h3&gt;前言&lt;/h3&gt;
 &lt;p&gt;协议指计算机通信网络中两台计算机之前通信共同遵守的约定或规则。http协议就是通信协议的一种，它允许将超文本标记语言(html)文档从web服务器传送到客户端的浏览器。&lt;/p&gt;
 &lt;h3&gt;Web服务器、浏览器、代理服务器&lt;/h3&gt;
 &lt;p&gt;打开浏览器，输入URL，就能看到指定的网页。后台是怎么实现的呢？
@@ -17963,7 +17963,7 @@ Set-Cookie: 用于把cookie发送到客户端浏览器，每一个写入cookie�
 &lt;p&gt;&lt;strong&gt;Location&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Location&lt;/p&gt;
 &lt;p&gt;作用：用于重定向一个新的位置, 包含新的URL地址&lt;/p&gt;
-&lt;p&gt;实例请看304状态实例&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sun, 01 Jun 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2014-06-01:2014/06/01/http/</guid><category>web</category></item><item><title>Python-Tips(十三)</title><link>http://king32783784.github.io/2014/05/31/python/</link><description>&lt;h3&gt;Tips 28&lt;/h3&gt;
+&lt;p&gt;实例请看304状态实例&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sun, 01 Jun 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2014-06-01:2014/06/01/http/</guid><category>web</category></item><item><title>Python-Tips(十三)</title><link>http://lipeng886.github.io/2014/05/31/python/</link><description>&lt;h3&gt;Tips 28&lt;/h3&gt;
 &lt;p&gt;python类中包含很多特殊方法，这些方法让类用起来如同序列、字典、函数、迭代器，甚至像个数字。&lt;/p&gt;
 &lt;h4&gt;基础知识&lt;/h4&gt;
 &lt;p&gt;最常见的就是__init__()。&lt;/p&gt;
@@ -18486,7 +18486,7 @@ __enter__方法将始终返回self，这是with语块将用于调用属性和方
 &lt;td&gt;MyABC.__subclasshook__(C)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
-&lt;/table&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sat, 31 May 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2014-05-31:2014/05/31/python/</guid><category>Python-tips</category></item><item><title>Python-Tips(十二)</title><link>http://king32783784.github.io/2014/05/28/python/</link><description>&lt;h3&gt;Tips 27&lt;/h3&gt;
+&lt;/table&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sat, 31 May 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2014-05-31:2014/05/31/python/</guid><category>Python-tips</category></item><item><title>Python-Tips(十二)</title><link>http://lipeng886.github.io/2014/05/28/python/</link><description>&lt;h3&gt;Tips 27&lt;/h3&gt;
 &lt;p&gt;本文继续上一个tips，python2与python3的差异。&lt;/p&gt;
 &lt;h4&gt;RAW_INPUT()和INPUT()&lt;/h4&gt;
 &lt;p&gt;python2有两个全局函数，用在命令行请求用户输入。第一个叫input()，它等待用户输入一个python表达式(然后返回结果)。第二个叫做raw_input(),用户输入什么他就返回什么。python3 通过input替代了他们。&lt;/p&gt;
@@ -18860,7 +18860,7 @@ __enter__方法将始终返回self，这是with语块将用于调用属性和方
 &lt;td&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
-&lt;/table&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Wed, 28 May 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2014-05-28:2014/05/28/python/</guid><category>Python-tips</category></item><item><title>Python-Tips(十一)</title><link>http://king32783784.github.io/2014/05/27/python/</link><description>&lt;h3&gt;Tips 27&lt;/h3&gt;
+&lt;/table&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Wed, 28 May 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2014-05-28:2014/05/28/python/</guid><category>Python-tips</category></item><item><title>Python-Tips(十一)</title><link>http://lipeng886.github.io/2014/05/27/python/</link><description>&lt;h3&gt;Tips 27&lt;/h3&gt;
 &lt;p&gt;几乎所有的python2程序都需要一些修改才能正常的运行在python3的环境下。为了简化这个转换过程，Python3自带了一个2to3的实用脚本.这个脚本会将python2程序源文件作为输入，然后自动转换到python３．但并不是所有内容都可以自动转换。&lt;/p&gt;
 &lt;h4&gt;print语句&lt;/h4&gt;
 &lt;p&gt;python2中print是一个语句，不论想输出什么，直接放到print关键字后面即可。python3里，print()是一个函数，像其他函数一样，print()需要你将要输出的东西作为参数传给它。&lt;/p&gt;
@@ -19538,7 +19538,7 @@ python2里，你可以用intern()函数作用在一个字符串上来限定inter
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;&amp;lt;未完待续&amp;gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Tue, 27 May 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2014-05-27:2014/05/27/python/</guid><category>Python-tips</category></item><item><title>Python-Tips(十)</title><link>http://king32783784.github.io/2014/05/26/python-%E6%89%93%E5%8C%85/</link><description>&lt;h3&gt;Tips 26&lt;/h3&gt;
+&lt;p&gt;&amp;lt;未完待续&amp;gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Tue, 27 May 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2014-05-27:2014/05/27/python/</guid><category>Python-tips</category></item><item><title>Python-Tips(十)</title><link>http://lipeng886.github.io/2014/05/26/python-%E6%89%93%E5%8C%85/</link><description>&lt;h3&gt;Tips 26&lt;/h3&gt;
 &lt;p&gt;脚本、库、框架或应用程序编写完成后，如果想与别人共享，这时就需要进行打包。&lt;/p&gt;
 &lt;p&gt;python3自带Distutils的打包框架，它包含了许多功能：构建工具（开发者使用),安装工具(用户使用),数据包格式(为搜索引擎准备)等，它集成了python安装包索引
 ("PyPI"),一个开源python类库的中央资料库。这些Distutils的不同功能以setup 脚本为中心，一般被命名为setup.py。&lt;/p&gt;
@@ -19650,7 +19650,7 @@ recursive-include docs *.html *.css *.png *.gif　# recursive-include命令需�
 &lt;li&gt;Fabric&lt;/li&gt;
 &lt;li&gt;py2exe&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;具体的项目中，可以根据需要，选择对应的打包方式。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 26 May 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2014-05-26:2014/05/26/python-打包/</guid><category>Python-tips</category></item><item><title>Python-Tips(九)</title><link>http://king32783784.github.io/2014/05/24/python/</link><description>&lt;h3&gt;Tips 25&lt;/h3&gt;
+&lt;p&gt;具体的项目中，可以根据需要，选择对应的打包方式。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 26 May 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2014-05-26:2014/05/26/python-打包/</guid><category>Python-tips</category></item><item><title>Python-Tips(九)</title><link>http://lipeng886.github.io/2014/05/24/python/</link><description>&lt;h3&gt;Tips 25&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;HTTP WEB&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;http web服务是指以编程的方式直接使用HTTP操作从远程服务器发送和接收数据。如果从服务器获取数据使用HTTP GET;如果向服务器上传数据使用HTTP POST.一些高级的HTTP Web服务 API允许使用HTTP put 和HTTP delete创建、修改和删除数据。数据格式同常是xml或json，可以实现创建好并静态的存储下来，或则由服务器端脚本动态生成，并且所有主要原因都包含http库用于下载数据。调试也比较方便，http web服务中每一个资源都有一个唯一的地址(以url的形式存在),可以在浏览器中加载并立即看到原始的数据。&lt;/p&gt;
 &lt;p&gt;python3的htpp.client是实现http协议的底层库
@@ -20003,7 +20003,7 @@ POST请求和GET请求不同，因为它包含payload，是你要发送到服务
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;python的网络功能还是比较强大的，以后再分享python网络爬虫。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sat, 24 May 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2014-05-24:2014/05/24/python/</guid><category>Python-Tips</category></item><item><title>Python-Tips(八)</title><link>http://king32783784.github.io/2014/05/22/python/</link><description>&lt;h3&gt;Tips 24&lt;/h3&gt;
+&lt;p&gt;python的网络功能还是比较强大的，以后再分享python网络爬虫。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sat, 24 May 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2014-05-24:2014/05/24/python/</guid><category>Python-Tips</category></item><item><title>Python-Tips(八)</title><link>http://lipeng886.github.io/2014/05/22/python/</link><description>&lt;h3&gt;Tips 24&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;序列化对象&lt;/strong&gt;&lt;/p&gt;
 &lt;h4&gt;pickle&lt;/h4&gt;
 &lt;p&gt;序列化的概念很简单，内存里面的数据，想保存下来。下次使用时，又能容易恢复，而且不想使用大型的数据库。这种情况下，pickle模块是理想的，它是python标准库的一部分，所以总是可用的。它的大部分和python解释器本身一样是用C编写的，可用存储任意复杂的python数据结构。&lt;/p&gt;
@@ -20100,7 +20100,7 @@ json同样要注意编码格式&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Python中还有其他一些序列化对象的如dbm、shelve等等&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Thu, 22 May 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2014-05-22:2014/05/22/python/</guid><category>Python-Tips</category></item><item><title>Python-Tips(七）</title><link>http://king32783784.github.io/2014/05/18/python/</link><description>&lt;h3&gt;Tips 23&lt;/h3&gt;
+&lt;p&gt;Python中还有其他一些序列化对象的如dbm、shelve等等&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Thu, 22 May 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2014-05-22:2014/05/22/python/</guid><category>Python-Tips</category></item><item><title>Python-Tips(七）</title><link>http://lipeng886.github.io/2014/05/18/python/</link><description>&lt;h3&gt;Tips 23&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;XML&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;XML是一种描述层次结构话数据的方法。XML文档包含由起始和结束标签分割的一个或多个元素。下面这个就是个简单的XML文件：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;foo&amp;gt;&lt;/span&gt;     # 这是foo元素的起始标签
@@ -20362,7 +20362,7 @@ XML文档中第一个元素叫做根元素，每份XML文档只能有一个根�
 
 
 &lt;p&gt;&lt;strong&gt;解析损坏的XML&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;不再说明了，尽量保证xml格式符合标准吧&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sun, 18 May 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2014-05-18:2014/05/18/python/</guid><category>Python-Tips</category></item><item><title>Python-Tips(七）</title><link>http://king32783784.github.io/2014/05/13/python/</link><description>&lt;h3&gt;Tips 22&lt;/h3&gt;
+&lt;p&gt;不再说明了，尽量保证xml格式符合标准吧&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sun, 18 May 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2014-05-18:2014/05/18/python/</guid><category>Python-Tips</category></item><item><title>Python-Tips(七）</title><link>http://lipeng886.github.io/2014/05/13/python/</link><description>&lt;h3&gt;Tips 22&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;文件操作&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;读取文件之前，需要打开，打开文件比较简单：&lt;/p&gt;
 &lt;p&gt;a_file = open('roman2.py', encoding='utf-8')&lt;/p&gt;
@@ -20524,7 +20524,7 @@ sys.stdout和sys.stderr都是流对象，但他们都只支持写入，试图调
 
 &lt;p&gt;with语句块结束了，python告诉每一个上下文管理器完成他们应该离开上下文环境时该做的事。这些上下文环境形成一个后进先出的栈。当一个上下文环境离开时，第二个上下文环境将sys.stdout的值恢复到原来的状态，然后第一个上下文环境关闭out.log文件。由于标准输出已经被恢复，所以再调用print()函数会输出到终端上。
 　
- RedirectsStdoutTo上下文环境的side effect,该类是用户自定义的上下文管理器。任何类只要定义了__enter__()和__exit__()就可以变成上下文管理器。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Tue, 13 May 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2014-05-13:2014/05/13/python/</guid><category>Python-Tips</category></item><item><title>Python-Tips(六）</title><link>http://king32783784.github.io/2014/05/10/python/</link><description>&lt;h3&gt;Tips 21&lt;/h3&gt;
+ RedirectsStdoutTo上下文环境的side effect,该类是用户自定义的上下文管理器。任何类只要定义了__enter__()和__exit__()就可以变成上下文管理器。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Tue, 13 May 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2014-05-13:2014/05/13/python/</guid><category>Python-Tips</category></item><item><title>Python-Tips(六）</title><link>http://lipeng886.github.io/2014/05/10/python/</link><description>&lt;h3&gt;Tips 21&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;重构&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;前面将了测试驱动开发，但就算尽全力编写的单元测试，仍然会遇到错误。仍然会有考虑不全面的测试用例。
 比如前面的实现的转换数字的程序，如果输入空字符，会触发InvalidRomanNumeralError例外。
@@ -20625,7 +20625,7 @@ M{0,4}对4000+数字的支持
 &lt;li&gt;编写用于检查坏输入并做出正确失败响应的测试&lt;/li&gt;
 &lt;li&gt;编写并更新测试用例反映新需求&lt;/li&gt;
 &lt;li&gt;重构以提升性能、可扩展性、可读性、可维护性及补充特性&lt;/li&gt;
-&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sat, 10 May 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2014-05-10:2014/05/10/python/</guid><category>Python-Tips</category></item><item><title>Python-Tips(五）</title><link>http://king32783784.github.io/2014/05/07/python/</link><description>&lt;h3&gt;Tips 20&lt;/h3&gt;
+&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sat, 10 May 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2014-05-10:2014/05/10/python/</guid><category>Python-Tips</category></item><item><title>Python-Tips(五）</title><link>http://lipeng886.github.io/2014/05/07/python/</link><description>&lt;h3&gt;Tips 20&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;TDD／单元测试&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;例子要求
 1.只有一种正确的途径用阿拉伯数字表示罗马数字。
@@ -20977,7 +20977,7 @@ def test_malformed_antecedents(self):
     ----------------------------------------------------------------------
     Ran 10 tests in 0.038s
     OK&lt;/p&gt;
-&lt;p&gt;测试驱动开发(TDD)方法的好处不言而喻。所以会测试的开发才是好开发。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Wed, 07 May 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2014-05-07:2014/05/07/python/</guid><category>Python-Tips</category></item><item><title>Python-Tips(四）</title><link>http://king32783784.github.io/2014/05/06/python/</link><description>&lt;h2&gt;Tips19&lt;/h2&gt;
+&lt;p&gt;测试驱动开发(TDD)方法的好处不言而喻。所以会测试的开发才是好开发。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Wed, 07 May 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2014-05-07:2014/05/07/python/</guid><category>Python-Tips</category></item><item><title>Python-Tips(四）</title><link>http://lipeng886.github.io/2014/05/06/python/</link><description>&lt;h2&gt;Tips19&lt;/h2&gt;
 &lt;h3&gt;斐波那契生成器&lt;/h3&gt;
 &lt;p&gt;每个数字都是前两个数字的和&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;def fib(max):
@@ -21346,7 +21346,7 @@ True
 &lt;p&gt;5.使用itertools.permutations()函数计算所有可能的解法&lt;/p&gt;
 &lt;p&gt;6.使用translate()字符串方法将所有可能的解转换成python表达式&lt;/p&gt;
 &lt;p&gt;7.使用eval()函数通过求值python表达式来检验解法&lt;/p&gt;
-&lt;p&gt;8.返回第一个求值结果为True的解法&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Tue, 06 May 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2014-05-06:2014/05/06/python/</guid><category>Python-Tips</category></item><item><title>Python-Tips(三）</title><link>http://king32783784.github.io/2014/05/05/python/</link><description>&lt;p&gt;&lt;strong&gt;Tips15&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;8.返回第一个求值结果为True的解法&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Tue, 06 May 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2014-05-06:2014/05/06/python/</guid><category>Python-Tips</category></item><item><title>Python-Tips(三）</title><link>http://lipeng886.github.io/2014/05/05/python/</link><description>&lt;p&gt;&lt;strong&gt;Tips15&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;python中所有正则表达式相关功能都包含在re模块中&lt;/p&gt;
@@ -21481,7 +21481,7 @@ yield 的作用就是把一个函数变成一个 generator，带有 yield 的函
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +
@@ -21517,7 +21517,7 @@ yield 的作用就是把一个函数变成一个 generator，带有 yield 的函
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 05 May 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2014-05-05:2014/05/05/python/</guid><category>Python-Tips</category></item><item><title>Python-Tips(二）</title><link>http://king32783784.github.io/2014/05/03/python/</link><description>&lt;p&gt;&lt;strong&gt;Tips11&lt;/strong&gt;&lt;/p&gt;
+&lt;/script&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 05 May 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2014-05-05:2014/05/05/python/</guid><category>Python-Tips</category></item><item><title>Python-Tips(二）</title><link>http://lipeng886.github.io/2014/05/03/python/</link><description>&lt;p&gt;&lt;strong&gt;Tips11&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;字典是无序的键值对, {};dict["键"]="值",反之不成立&lt;/p&gt;
@@ -21640,7 +21640,7 @@ for f in sorted(set(basket)):
 &lt;li&gt;
 &lt;p&gt;python2中.py文件默认的编码方式为ASCII, Python3编码默认为utf-8;一般字符编码的重载声明:# -&lt;em&gt;- coding: utf-8 -&lt;/em&gt;-&lt;/p&gt;
 &lt;/li&gt;
-&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sat, 03 May 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2014-05-03:2014/05/03/python/</guid><category>Python-Tips</category></item><item><title>Python-Tips(一）</title><link>http://king32783784.github.io/2014/05/01/python/</link><description>&lt;p&gt;&lt;strong&gt;Tips01&lt;/strong&gt;&lt;/p&gt;
+&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sat, 03 May 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2014-05-03:2014/05/03/python/</guid><category>Python-Tips</category></item><item><title>Python-Tips(一）</title><link>http://lipeng886.github.io/2014/05/01/python/</link><description>&lt;p&gt;&lt;strong&gt;Tips01&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;通过使用sys.path.insert(0,new_path)，你可以插入一个新的目录到sys.path列表的第一项，从而使其出现在Python搜索路径的开头。&lt;/li&gt;
 &lt;/ul&gt;
@@ -21757,7 +21757,7 @@ except ImportError:
 &lt;li&gt;
 &lt;p&gt;和列表、元组一样，空集合为假，非空为真&lt;/p&gt;
 &lt;/li&gt;
-&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Thu, 01 May 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2014-05-01:2014/05/01/python/</guid><category>Python-Tips</category></item><item><title>Reboot test脚本</title><link>http://king32783784.github.io/2014/03/01/stablity/</link><description>&lt;p&gt;为了验证操作系统启动的稳定性，需要进行500次启动测试，便写了脚本实现。&lt;/p&gt;
+&lt;/ul&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Thu, 01 May 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2014-05-01:2014/05/01/python/</guid><category>Python-Tips</category></item><item><title>Reboot test脚本</title><link>http://lipeng886.github.io/2014/03/01/stablity/</link><description>&lt;p&gt;为了验证操作系统启动的稳定性，需要进行500次启动测试，便写了脚本实现。&lt;/p&gt;
 &lt;p&gt;脚本如下：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;HOME=`pwd`
 sleep 15
@@ -21812,7 +21812,7 @@ else
     rm /etc/reboot.sh
     sed -i &amp;#39;$d&amp;#39; /etc/profile
 fi
-&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sat, 01 Mar 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2014-03-01:2014/03/01/stablity/</guid><category>shell</category></item><item><title>diff 和 patch</title><link>http://king32783784.github.io/2013/11/01/patch/</link><description>&lt;p&gt;如果hack了开源代码，为了方便分享（如提交Bug）或自己留存使用，一般都要制作一个补丁（Patch）。在从源码安装软件时，也难免要应用些别人做好的补丁。本文介绍如何制作和应用补丁。&lt;/p&gt;
+&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sat, 01 Mar 2014 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2014-03-01:2014/03/01/stablity/</guid><category>shell</category></item><item><title>diff 和 patch</title><link>http://lipeng886.github.io/2013/11/01/patch/</link><description>&lt;p&gt;如果hack了开源代码，为了方便分享（如提交Bug）或自己留存使用，一般都要制作一个补丁（Patch）。在从源码安装软件时，也难免要应用些别人做好的补丁。本文介绍如何制作和应用补丁。&lt;/p&gt;
 &lt;p&gt;制作补丁和打补丁分别需要用到diff和patch。&lt;/p&gt;
 &lt;h4&gt;diff&lt;/h4&gt;
 &lt;p&gt;diff可以比较两个东西，并可同时记录下二者的区别。制作补丁时的一般用法和常见选项为：&lt;/p&gt;
@@ -22057,7 +22057,7 @@ patching file test0
 patching file test1
 $ ls
 prj0name  test0
-&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 01 Nov 2013 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2013-11-01:2013/11/01/patch/</guid><category>Linux</category></item><item><title>RPM打包与SPEC分析（二）</title><link>http://king32783784.github.io/2013/10/13/rpm/</link><description>&lt;p&gt;本文大体描述一下rpm打包过程和一些实践。&lt;/p&gt;
+&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Fri, 01 Nov 2013 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2013-11-01:2013/11/01/patch/</guid><category>Linux</category></item><item><title>RPM打包与SPEC分析（二）</title><link>http://lipeng886.github.io/2013/10/13/rpm/</link><description>&lt;p&gt;本文大体描述一下rpm打包过程和一些实践。&lt;/p&gt;
 &lt;h3&gt;一.RPM制作流程&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -22196,7 +22196,7 @@ vi stress.spec #内容见文末
 &lt;span class="nf"&gt;%changelog&lt;/span&gt;
 &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;Wed&lt;/span&gt; &lt;span class="n"&gt;Mar&lt;/span&gt; &lt;span class="mo"&gt;01&lt;/span&gt; &lt;span class="mi"&gt;2017&lt;/span&gt; &lt;span class="n"&gt;penglee&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mf"&gt;1.0.4&lt;/span&gt;
 &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Rebuild&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt;  &lt;span class="n"&gt;release&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sun, 13 Oct 2013 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2013-10-13:2013/10/13/rpm/</guid><category>Linux</category></item><item><title>RPM打包与SPEC分析（一）</title><link>http://king32783784.github.io/2013/10/09/rpm/</link><description>&lt;p&gt;本文主要分析spec文件的编写。&lt;/p&gt;
+&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sun, 13 Oct 2013 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2013-10-13:2013/10/13/rpm/</guid><category>Linux</category></item><item><title>RPM打包与SPEC分析（一）</title><link>http://lipeng886.github.io/2013/10/09/rpm/</link><description>&lt;p&gt;本文主要分析spec文件的编写。&lt;/p&gt;
 &lt;h3&gt;概述&lt;/h3&gt;
 &lt;p&gt;rpm是Red Hat包管理器，rpm 包有五种基本操作：安装、卸载、升级、查询、验证。&lt;/p&gt;
 &lt;ul&gt;
@@ -22455,7 +22455,7 @@ rm -rf $RPM_BUILD_DIR/%{name}-%{version}
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +
@@ -22491,7 +22491,7 @@ rm -rf $RPM_BUILD_DIR/%{name}-%{version}
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Wed, 09 Oct 2013 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2013-10-09:2013/10/09/rpm/</guid><category>Linux</category></item><item><title>PMON启动信息详解</title><link>http://king32783784.github.io/2013/08/29/pmon/</link><description>&lt;p&gt;&lt;img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/P5LS1TUY3V.jpg" height="280" width="420"&gt;&lt;/p&gt;
+&lt;/script&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Wed, 09 Oct 2013 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2013-10-09:2013/10/09/rpm/</guid><category>Linux</category></item><item><title>PMON启动信息详解</title><link>http://lipeng886.github.io/2013/08/29/pmon/</link><description>&lt;p&gt;&lt;img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/P5LS1TUY3V.jpg" height="280" width="420"&gt;&lt;/p&gt;
 &lt;p&gt;启动过程：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;PMON2000 MIPS Initializing. Standby... /*CPU  Initializing*/
 
@@ -24155,7 +24155,7 @@ total ram pages initialed 0
 [    0.000000] 
 [    0.000000] 
 [    0.000000] Code: 00431024  144000c6  00000000 &amp;lt;6a430007&amp;gt; 6e430000  24020000  0060902d  144000b0  00a0202d 
-[    0.000000] Kernel panic - not syncing: Attempted to kill the idle task!&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Thu, 29 Aug 2013 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2013-08-29:2013/08/29/pmon/</guid><category>pmon</category></item><item><title>快速排序</title><link>http://king32783784.github.io/2013/07/01/sort/</link><description>&lt;h4&gt;1.快速排序&lt;/h4&gt;
+[    0.000000] Kernel panic - not syncing: Attempted to kill the idle task!&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Thu, 29 Aug 2013 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2013-08-29:2013/08/29/pmon/</guid><category>pmon</category></item><item><title>快速排序</title><link>http://lipeng886.github.io/2013/07/01/sort/</link><description>&lt;h4&gt;1.快速排序&lt;/h4&gt;
 &lt;p&gt;对于一个给定的数组，从中选择一个元素，以该元素为界将其余元素划分为两个子集，
 一个子集的所有元素都小于该元素，另一个子集的元素都大于或等于该元素，
 对两个子集递归执行这一过程，当某个子集中的元素小于二时，
@@ -24196,7 +24196,7 @@ total ram pages initialed 0
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 01 Jul 2013 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2013-07-01:2013/07/01/sort/</guid><category>算法</category></item><item><title>高性能计算机系统浮点性能测试</title><link>http://king32783784.github.io/2013/06/12/linpack/</link><description>&lt;p&gt;&lt;img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/P5LS1TUY3V.jpg" height="280" width="420"&gt;&lt;/p&gt;
+&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 01 Jul 2013 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2013-07-01:2013/07/01/sort/</guid><category>算法</category></item><item><title>高性能计算机系统浮点性能测试</title><link>http://lipeng886.github.io/2013/06/12/linpack/</link><description>&lt;p&gt;&lt;img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/P5LS1TUY3V.jpg" height="280" width="420"&gt;&lt;/p&gt;
 &lt;h3&gt;一　工具介绍&lt;/h3&gt;
 &lt;p&gt;Linpack现在在国际上已经成为最流行的用于测试高性能计算机系统浮点性能的benchmark。通过利用高性能计算机，用高斯消元法求解N元一次稠密线性代数方程组的测试，评价高性能计算机的浮点性能。HPL是针对现代并行计算机提出的测试方式。用户在不修改任意测试程序的基础上，可以调节问题规模大小N(矩阵大小)、使用到的CPU数目、使用各种优化方法等来执行该测试程序，以获取最佳的性能。HPL采用高斯消元法求解线性方程组。当求解问题规模为N时，浮点运算次数为(2/3 * N^3－2&lt;em&gt;N^2)。因此，只要给出问题规模N，测得系统计算时间T，峰值=计算量(2/3 * N^3－2&lt;/em&gt;N^2)/计算时间T，测试结果以浮点运算每秒（Flops）给出。
 实测浮点峰值是指Linpack测试值，也就是说在这台机器上运行Linpack测试程序，通过各种调优方法得到的最优的测试结果。实际上在实际程序运行过程中，几乎不可能达到实测浮点峰值，更不用说达到理论浮点峰值了。这两个值只是作为衡量机器性能的一个指标，用来表明机器处理能力的一个标尺和潜能的度量。&lt;/p&gt;
@@ -24718,7 +24718,7 @@ root@mng l_mpi_p_3.1.038]# ./install.sh
     mathjaxscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' }, Macros: {} }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +
@@ -24754,7 +24754,7 @@ root@mng l_mpi_p_3.1.038]# ./install.sh
         "}";
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Wed, 12 Jun 2013 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2013-06-12:2013/06/12/linpack/</guid><category>benchmark</category></item><item><title>通过printf函数简单实现解析不定参数表</title><link>http://king32783784.github.io/2013/05/27/C/</link><description>&lt;p&gt;&lt;img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/P5LS1TUY3V.jpg" height="280" width="420"&gt;&lt;/p&gt;
+&lt;/script&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Wed, 12 Jun 2013 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2013-06-12:2013/06/12/linpack/</guid><category>benchmark</category></item><item><title>通过printf函数简单实现解析不定参数表</title><link>http://lipeng886.github.io/2013/05/27/C/</link><description>&lt;p&gt;&lt;img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/280h/P5LS1TUY3V.jpg" height="280" width="420"&gt;&lt;/p&gt;
 &lt;p&gt;先看代码，&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;minprintf&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;#include&amp;lt;stdarg.h&amp;gt;
@@ -24987,7 +24987,7 @@ void va_end(va_list ap);
 &lt;p&gt;for(p =fmt;&lt;em&gt;p;p++),p初始为&lt;/em&gt;fmt ,即指向ap前一个参数,通过对p的循环实现ap指针遍历省略的参数表.&lt;/p&gt;
 &lt;p&gt;就有了下面的switch,来讨论可能出现的参数.&lt;/p&gt;
 &lt;p&gt;最后通过va_end(ap),将ap指向NULL.避免出现异常.注意:，应该养成，关闭指针的习惯.&lt;/p&gt;
-&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 27 May 2013 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2013-05-27:2013/05/27/C/</guid><category>C</category></item><item><title>wireshark使用指南</title><link>http://king32783784.github.io/2011/11/01/Tool/</link><description>&lt;h3&gt;工具安装&lt;/h3&gt;
+&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 27 May 2013 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2013-05-27:2013/05/27/C/</guid><category>C</category></item><item><title>wireshark使用指南</title><link>http://lipeng886.github.io/2011/11/01/Tool/</link><description>&lt;h3&gt;工具安装&lt;/h3&gt;
 &lt;p&gt;大部分linux系统都有对应的软件包，直接按照软件安装即可。
 比如： yum install wireshark&lt;/p&gt;
 &lt;h3&gt;抓取报文&lt;/h3&gt;
@@ -25016,7 +25016,7 @@ void va_end(va_list ap);
 &lt;h3&gt;检查报文&lt;/h3&gt;
 &lt;p&gt;选中一条报文，就可以深入挖掘它的内容了。&lt;/p&gt;
 &lt;p&gt;也可以在这里创建过滤条件——只需右键细节并使用Apply as Filter子菜单，就可以根据此细节创建过滤条件。&lt;/p&gt;
-&lt;p&gt;&lt;img src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/wireshark07.png?raw=true" height="280" width="480"&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Tue, 01 Nov 2011 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2011-11-01:2011/11/01/Tool/</guid><category>wireshark</category></item><item><title>C-宏定义</title><link>http://king32783784.github.io/2011/08/15/C/</link><description>&lt;p&gt;&lt;strong&gt;1.简单的宏定义&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/wireshark07.png?raw=true" height="280" width="480"&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Tue, 01 Nov 2011 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2011-11-01:2011/11/01/Tool/</guid><category>wireshark</category></item><item><title>C-宏定义</title><link>http://lipeng886.github.io/2011/08/15/C/</link><description>&lt;p&gt;&lt;strong&gt;1.简单的宏定义&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;#define MAXTIME 1000
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -25253,7 +25253,7 @@ __cplusplus：当编写C++程序时该标识符被定义。
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h1&gt;define的这些高级用法在Linux内核源代码很多处出现，可阅读参考内核源代码。&lt;/h1&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 15 Aug 2011 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2011-08-15:2011/08/15/C/</guid><category>C</category></item><item><title>C-结构体声明</title><link>http://king32783784.github.io/2011/07/11/C/</link><description>&lt;p&gt;&lt;strong&gt;结构体声明&lt;/strong&gt;&lt;/p&gt;
+&lt;h1&gt;define的这些高级用法在Linux内核源代码很多处出现，可阅读参考内核源代码。&lt;/h1&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 15 Aug 2011 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2011-08-15:2011/08/15/C/</guid><category>C</category></item><item><title>C-结构体声明</title><link>http://lipeng886.github.io/2011/07/11/C/</link><description>&lt;p&gt;&lt;strong&gt;结构体声明&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;例如：
     struct Student
     {
@@ -25309,7 +25309,7 @@ TEST_T gst  = {.c=“12345”}; /*有选择的初始化成员。*/
 &lt;p&gt;&lt;strong&gt;为什么要初始化&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;1、对局部变量初始化可以防止随机值产生的危害。&lt;/p&gt;
 &lt;p&gt;2、对全局变量初始化可以告诉编译器，这是一个定义，而不是一个声明。（如果两个c中有相同的全局变量定义，且没有初始化，编译器会认为第二个是声明而不是定义。）&lt;/p&gt;
-&lt;p&gt;声明和定义的区别在于是否分配内存进行存储。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 11 Jul 2011 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2011-07-11:2011/07/11/C/</guid><category>C</category></item><item><title>常用shell命令</title><link>http://king32783784.github.io/2011/01/01/cmds/</link><description>&lt;h4&gt;Linux常用命令备忘&lt;/h4&gt;
+&lt;p&gt;声明和定义的区别在于是否分配内存进行存储。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 11 Jul 2011 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2011-07-11:2011/07/11/C/</guid><category>C</category></item><item><title>常用shell命令</title><link>http://lipeng886.github.io/2011/01/01/cmds/</link><description>&lt;h4&gt;Linux常用命令备忘&lt;/h4&gt;
 &lt;p&gt;&lt;strong&gt;1.查找大于100M的文件&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;find / -type f -size +100M
 &lt;/pre&gt;&lt;/div&gt;
@@ -25319,7 +25319,7 @@ TEST_T gst  = {.c=“12345”}; /*有选择的初始化成员。*/
 &lt;p&gt;sed ':label;N;s/\n/ /;t label'&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;3.在文本指定行首加空格&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;:10,20 s/^/    /g 在第10行知第20行每行前面加四个空格，用于缩进。&lt;/p&gt;
-&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sat, 01 Jan 2011 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2011-01-01:2011/01/01/cmds/</guid><category>shell</category></item><item><title>信号</title><link>http://king32783784.github.io/2009/10/12/UNIX/</link><description>&lt;p&gt;&lt;strong&gt;信号&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sat, 01 Jan 2011 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2011-01-01:2011/01/01/cmds/</guid><category>shell</category></item><item><title>信号</title><link>http://lipeng886.github.io/2009/10/12/UNIX/</link><description>&lt;p&gt;&lt;strong&gt;信号&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;我们运行如下命令，可看到Linux支持的信号列表：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class="nb"&gt;kill&lt;/span&gt; -l1&lt;span class="o"&gt;)&lt;/span&gt; SIGHUP        &lt;span class="m"&gt;2&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGINT        &lt;span class="m"&gt;3&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGQUIT       &lt;span class="m"&gt;4&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGILL &lt;span class="m"&gt;5&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGTRAP       &lt;span class="m"&gt;6&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGABRT       &lt;span class="m"&gt;7&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGBUS        &lt;span class="m"&gt;8&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGFPE &lt;span class="m"&gt;9&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGKILL      &lt;span class="m"&gt;10&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGUSR1      &lt;span class="m"&gt;11&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGSEGV      &lt;span class="m"&gt;12&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGUSR213&lt;span class="o"&gt;)&lt;/span&gt; SIGPIPE      &lt;span class="m"&gt;14&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGALRM      &lt;span class="m"&gt;15&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGTERM      &lt;span class="m"&gt;17&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGCHLD18&lt;span class="o"&gt;)&lt;/span&gt; SIGCONT      &lt;span class="m"&gt;19&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGSTOP      &lt;span class="m"&gt;20&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGTSTP      &lt;span class="m"&gt;21&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGTTIN22&lt;span class="o"&gt;)&lt;/span&gt; SIGTTOU      &lt;span class="m"&gt;23&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGURG       &lt;span class="m"&gt;24&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGXCPU      &lt;span class="m"&gt;25&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGXFSZ26&lt;span class="o"&gt;)&lt;/span&gt; SIGVTALRM    &lt;span class="m"&gt;27&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGPROF      &lt;span class="m"&gt;28&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGWINCH     &lt;span class="m"&gt;29&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGIO30&lt;span class="o"&gt;)&lt;/span&gt; SIGPWR       &lt;span class="m"&gt;31&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGSYS       &lt;span class="m"&gt;34&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGRTMIN     &lt;span class="m"&gt;35&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGRTMIN+136&lt;span class="o"&gt;)&lt;/span&gt; SIGRTMIN+2   &lt;span class="m"&gt;37&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGRTMIN+3   &lt;span class="m"&gt;38&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGRTMIN+4   &lt;span class="m"&gt;39&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGRTMIN+540&lt;span class="o"&gt;)&lt;/span&gt; SIGRTMIN+6   &lt;span class="m"&gt;41&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGRTMIN+7   &lt;span class="m"&gt;42&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGRTMIN+8   &lt;span class="m"&gt;43&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGRTMIN+944&lt;span class="o"&gt;)&lt;/span&gt; SIGRTMIN+10 &lt;span class="m"&gt;45&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGRTMIN+11 &lt;span class="m"&gt;46&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGRTMIN+12 &lt;span class="m"&gt;47&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGRTMIN+1348&lt;span class="o"&gt;)&lt;/span&gt; SIGRTMIN+14 &lt;span class="m"&gt;49&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGRTMIN+15 &lt;span class="m"&gt;50&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGRTMAX-14 &lt;span class="m"&gt;51&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGRTMAX-1352&lt;span class="o"&gt;)&lt;/span&gt; SIGRTMAX-12 &lt;span class="m"&gt;53&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGRTMAX-11 &lt;span class="m"&gt;54&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGRTMAX-10 &lt;span class="m"&gt;55&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGRTMAX-956&lt;span class="o"&gt;)&lt;/span&gt; SIGRTMAX-8   &lt;span class="m"&gt;57&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGRTMAX-7   &lt;span class="m"&gt;58&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGRTMAX-6   &lt;span class="m"&gt;59&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGRTMAX-560&lt;span class="o"&gt;)&lt;/span&gt; SIGRTMAX-4   &lt;span class="m"&gt;61&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGRTMAX-3   &lt;span class="m"&gt;62&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGRTMAX-2   &lt;span class="m"&gt;63&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt; SIGRTMAX-164&lt;span class="o"&gt;)&lt;/span&gt; SIGRTMAX
 &lt;/pre&gt;&lt;/div&gt;
@@ -25417,7 +25417,7 @@ TEST_T gst  = {.c=“12345”}; /*有选择的初始化成员。*/
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;在3秒内向这个程序发送SIGUSR1，只有第一个被接收到，而SIGRTMIN则不会有这样的问题。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 12 Oct 2009 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2009-10-12:2009/10/12/UNIX/</guid><category>unix编程</category></item><item><title>原子操作</title><link>http://king32783784.github.io/2009/10/10/UNIX/</link><description>&lt;h4&gt;一、追加至一个文件&lt;/h4&gt;
+&lt;p&gt;在3秒内向这个程序发送SIGUSR1，只有第一个被接收到，而SIGRTMIN则不会有这样的问题。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Mon, 12 Oct 2009 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2009-10-12:2009/10/12/UNIX/</guid><category>unix编程</category></item><item><title>原子操作</title><link>http://lipeng886.github.io/2009/10/10/UNIX/</link><description>&lt;h4&gt;一、追加至一个文件&lt;/h4&gt;
 &lt;p&gt;一个进程，将数据添加到一个文件尾端。早期不支持open的O_APPEND选项。所有程序被编写成下列形式&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;if (lseek(fd, 0L, 2 ) &amp;lt; 0) /* position to EOF*/
 
@@ -25468,7 +25468,7 @@ ssize_t pwrite(int filedes, const void *buf, size_t nbytes, off_t offset);
 
 &lt;p&gt;如果在open和creat之间，另一个进程创建了该文件，那么就会引起问题。例如，若在这两个函数调用之间，另一个进程创建了该文件，并且写进了一些数据。然后，原先的进程执行这段程序的creat。刚由另一个进程写上去的数据就会被擦除。这样两则合并为一个原子操作，就不会发生该问题。&lt;/p&gt;
 &lt;p&gt;一般而言，原子操作，指的是由多步组成的操作，如果操作原子地执行，那么执行完所有步骤，要么不执行，不可能只执行一部分。&lt;/p&gt;
-&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sat, 10 Oct 2009 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2009-10-10:2009/10/10/UNIX/</guid><category>unix编程</category></item><item><title>排序-希尔排序法</title><link>http://king32783784.github.io/2009/10/01/%E6%8E%92%E5%BA%8F/</link><description>&lt;h3&gt;（一）算法讲解&lt;/h3&gt;
+&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Sat, 10 Oct 2009 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2009-10-10:2009/10/10/UNIX/</guid><category>unix编程</category></item><item><title>排序-希尔排序法</title><link>http://lipeng886.github.io/2009/10/01/%E6%8E%92%E5%BA%8F/</link><description>&lt;h3&gt;（一）算法讲解&lt;/h3&gt;
 &lt;p&gt;原始的算法实现在最坏的情况下需要进行O(n2)的比较和交换。V. Pratt的书[1] 对算法进行了少量修改，可以使得性能提升至O(n log2 n)。这比最好的比较算法的O(n log n)要差一些。&lt;/p&gt;
 &lt;p&gt;希尔排序通过将比较的全部元素分为几个区域来提升插入排序的性能。这样可以让一个元素可以一次性地朝最终位置前进一大步。然后算法再取越来越小的步长进行排序，算法的最后一步就是普通的插入排序，但是到了这步，需排序的数据几乎是已排好的了（此时插入排序较快）。&lt;/p&gt;
 &lt;p&gt;假设有一个很小的数据在一个已按升序排好序的数组的末端。如果用复杂度为O(n2)的排序（冒泡排序或插入排序），可能会进行n次的比较和交换才能将该数据移至正确位置。而希尔排序会用较大的步长移动数据，所以小数据只需进行少数比较和交换即可到正确位置。&lt;/p&gt;
@@ -25568,4 +25568,4 @@ ssize_t pwrite(int filedes, const void *buf, size_t nbytes, off_t offset);
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Thu, 01 Oct 2009 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:king32783784.github.io,2009-10-01:2009/10/01/排序/</guid><category>算法</category></item></channel></rss>
+&lt;p&gt;Top&lt;a href=""&gt;^&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">李鹏</dc:creator><pubDate>Thu, 01 Oct 2009 00:00:00 +0800</pubDate><guid isPermaLink="false">tag:lipeng886.github.io,2009-10-01:2009/10/01/排序/</guid><category>算法</category></item></channel></rss>

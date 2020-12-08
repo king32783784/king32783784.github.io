@@ -11,13 +11,13 @@
 <!-- Open Graph tags -->
 <meta property="og:site_name" content="路漫求索"/>
     <meta property="og:type" content="article"/>
-    <meta property="og:title" content="通过printf函数简单实现解析不定参数表"/>
-    <meta property="og:url" content="./2013/05/27/C/"/>
-    <meta property="og:description" content="先看代码， minprintf #include&lt;stdarg.h&gt; /*minprintf:minimal printf with variable argument list */ void minprintf(char *fmt,...) { va_list ap; /*points to unnamed arg in turn */ char *p, *sval; int ival; double dval; va_start(ap,fmt); /*make ap point to 1st unamed arg*/ for (p = fmt; *p; p++) { if (*p != &#39;%&#39;) { putchar(*p ..."/>
-    <meta property="article:published_time" content="2013-05-27" />
-    <meta property="article:section" content="编程语言-C" />
-        <meta property="article:tag" content="C" />
-        <meta property="article:author" content="李鹏" />
+    <meta property="og:title" content="如何做性能测试"/>
+    <meta property="og:url" content="./2016/08/11/Performance/"/>
+    <meta property="og:description" content="偶然间看到了阿里中间件Dubbo的性能测试报告，我觉得这份性能测试报告让人觉得做这性能测试的人根本不懂性能测试，我觉得这份报告会把大众带沟里去，所以，想写下这篇文章，做一点科普。 首先，这份测试报告里的主要问题如下： 用的全是平均值。老实说，平均值是非常不靠谱的。 响应时间没有和吞吐量TPS/QPS挂钩。而只是测试了低速率的情况，这是完全错误的。 响应时间和吞吐量没有和成功率挂钩。 为什么平均值不靠谱 关于平均值为什么不靠谱，我相信大家读新闻的时候经常可以看到，平均工资，平均房价，平均支出，等等这样的字眼，你就知道为什么平均值不靠谱了。（这些都是数学游戏，对于理工科的同学来说，天生应该有免疫力） 软件的性能测试也一样，平均数也是不靠谱的，这里可以参看这篇详细的文章《Why Averages Suck and Percentiles are Great》，我在这里简单说一下。 我们知道，性能测试时，测试得到的结果数据不总是一样的，而是有高有低的，如果算平均值就会出现这样的情况，假如，测试了10次，有9次是1ms，而有1次是1s，那么平均数据就是100ms，很明显，这完全不能反应性能测试的情况 ..."/>
+    <meta property="article:published_time" content="2016-08-11" />
+    <meta property="article:section" content="性能测试" />
+        <meta property="article:tag" content="性能测试" />
+        <meta property="article:author" content="others" />
         <meta property="og:image"
               content="./favicon.png"/>
 
@@ -66,12 +66,12 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-share-small" class="collapse ">
                     <li>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=./2013/05/27/C/" title="Share via Facebook" target="popup">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=./2016/08/11/Performance/" title="Share via Facebook" target="popup">
                             <i class="fa fa-facebook-square padding-small"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="https://plus.google.com/share?url=./2013/05/27/C/" title="Share via Google+" target="popup">
+                        <a href="https://plus.google.com/share?url=./2016/08/11/Performance/" title="Share via Google+" target="popup">
                             <i class="fa fa-google-plus padding-small"></i>
                         </a>
                     </li>
@@ -89,13 +89,13 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-social-small" class="collapse ">
                     <li>
-                        <a href="mailto:peng.li@i-soft.com.cn" title="EMAIL"><i class="fa fa-envelope-square fa-lg padding-small"></i></a>
+                        <a href="mailto:lipengb@uniontech.com" title="EMAIL"><i class="fa fa-envelope-square fa-lg padding-small"></i></a>
                     </li>
                     <li>
-                        <a href="https://github.com/king32783784" title="GitHub"><i class="fa fa-github-square fa-lg padding-small"></i></a>
+                        <a href="https://github.com/lipeng886" title="GitHub"><i class="fa fa-github-square fa-lg padding-small"></i></a>
                     </li>
                     <li>
-                        <a href="http://king32783784.github.io/feeds/atom.xml" title="RSS"><i class="fa fa-rss-square fa-lg padding-small"></i></a>
+                        <a href="http://lipeng886.github.io/feeds/atom.xml" title="RSS"><i class="fa fa-rss-square fa-lg padding-small"></i></a>
                     </li>
                 </ul></li>
                 <li class="nav-divider"></li>
@@ -166,13 +166,13 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-share" class="sidebar_submenu collapse ">
                     <li>
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=./2013/05/27/C/" target="popup">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=./2016/08/11/Performance/" target="popup">
                             <i class="fa fa-facebook-square padding-small"></i>
                             Facebook
                         </a>
                     </li>
                     <li>
-                        <a href="https://plus.google.com/share?url=./2013/05/27/C/" target="popup">
+                        <a href="https://plus.google.com/share?url=./2016/08/11/Performance/" target="popup">
                             <i class="fa fa-google-plus padding-small"></i>
                             Google+
                         </a>
@@ -193,19 +193,19 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-social" class="sidebar_submenu collapse ">
                     <li>
-                        <a href="mailto:peng.li@i-soft.com.cn" title="EMAIL">
+                        <a href="mailto:lipengb@uniontech.com" title="EMAIL">
                             <i class="fa fa-envelope-square fa-lg padding-small"></i>
                             EMAIL
                         </a>
                     </li>
                     <li>
-                        <a href="https://github.com/king32783784" title="GitHub">
+                        <a href="https://github.com/lipeng886" title="GitHub">
                             <i class="fa fa-github-square fa-lg padding-small"></i>
                             GitHub
                         </a>
                     </li>
                     <li>
-                        <a href="http://king32783784.github.io/feeds/atom.xml" title="RSS">
+                        <a href="http://lipeng886.github.io/feeds/atom.xml" title="RSS">
                             <i class="fa fa-rss-square fa-lg padding-small"></i>
                             RSS
                         </a>
@@ -226,13 +226,13 @@
                             开源项目
                         </a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="./pages/links.html">
                             <i class="fa fa-file-text padding-small"></i>
                             常用链接
                         </a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="./pages/Reference material.html">
                             <i class="fa fa-file-text padding-small"></i>
                             参考资料
@@ -445,661 +445,661 @@
     <div class="col-lg-9">
             <article>
                 <h4>
-                    <time datetime="2017-08-19T00:00:00+08:00"> 2017-08-19 Sat</time>
+                    <time datetime="2017-08-19T00:00:00+08:00"> 2017-08-19 六</time>
                     <a href="./2017/08/19/Multue/">Multue测试工具介绍</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2017-06-17T00:00:00+08:00"> 2017-06-17 Sat</time>
+                    <time datetime="2017-06-17T00:00:00+08:00"> 2017-06-17 六</time>
                     <a href="./2017/06/17/网络/">网络速率统计的几个示例</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2017-04-01T00:00:00+08:00"> 2017-04-01 Sat</time>
+                    <time datetime="2017-04-01T00:00:00+08:00"> 2017-04-01 六</time>
                     <a href="./2017/04/01/Robot/">Robot Framework 用户手册(三)</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2017-03-31T00:00:00+08:00"> 2017-03-31 Fri</time>
+                    <time datetime="2017-03-31T00:00:00+08:00"> 2017-03-31 五</time>
                     <a href="./2017/03/31/Robot/">Robot Framework 用户手册(二)</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2017-03-26T00:00:00+08:00"> 2017-03-26 Sun</time>
+                    <time datetime="2017-03-26T00:00:00+08:00"> 2017-03-26 日</time>
                     <a href="./2017/03/26/Robot/">Robot Framework 用户手册(一)</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2017-03-24T00:00:00+08:00"> 2017-03-24 Fri</time>
+                    <time datetime="2017-03-24T00:00:00+08:00"> 2017-03-24 五</time>
                     <a href="./2017/03/24/Robot/">Robot Framework快速入门</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2017-03-22T00:00:00+08:00"> 2017-03-22 Wed</time>
+                    <time datetime="2017-03-22T00:00:00+08:00"> 2017-03-22 三</time>
                     <a href="./2017/03/22/itest/">Itest测试工具介绍</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2017-03-11T00:00:00+08:00"> 2017-03-11 Sat</time>
+                    <time datetime="2017-03-11T00:00:00+08:00"> 2017-03-11 六</time>
                     <a href="./2017/03/11/测试/">测试的行业危机 <转></a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2017-03-10T00:00:00+08:00"> 2017-03-10 Fri</time>
+                    <time datetime="2017-03-10T00:00:00+08:00"> 2017-03-10 五</time>
                     <a href="./2017/03/10/测试/">测试分类<转></a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2017-03-03T00:00:00+08:00"> 2017-03-03 Fri</time>
+                    <time datetime="2017-03-03T00:00:00+08:00"> 2017-03-03 五</time>
                     <a href="./2017/03/03/docker/">DOCKER基础技术：LINUX CGROUP(转载）</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2017-02-23T00:00:00+08:00"> 2017-02-23 Thu</time>
+                    <time datetime="2017-02-23T00:00:00+08:00"> 2017-02-23 四</time>
                     <a href="./2017/02/23/python/">位操作</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2017-02-20T00:00:00+08:00"> 2017-02-20 Mon</time>
+                    <time datetime="2017-02-20T00:00:00+08:00"> 2017-02-20 一</time>
                     <a href="./2017/02/20/python/">python实现awk域简单例子</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2017-02-13T00:00:00+08:00"> 2017-02-13 Mon</time>
+                    <time datetime="2017-02-13T00:00:00+08:00"> 2017-02-13 一</time>
                     <a href="./2017/02/13/python/">类常用内置方法(二）</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2017-01-23T00:00:00+08:00"> 2017-01-23 Mon</time>
+                    <time datetime="2017-01-23T00:00:00+08:00"> 2017-01-23 一</time>
                     <a href="./2017/01/23/python/">类常用内置方法</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2017-01-15T00:00:00+08:00"> 2017-01-15 Sun</time>
+                    <time datetime="2017-01-15T00:00:00+08:00"> 2017-01-15 日</time>
                     <a href="./2017/01/15/编程语言-Python/">python metaclass(下）</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2016-12-30T00:00:00+08:00"> 2016-12-30 Fri</time>
+                    <time datetime="2016-12-30T00:00:00+08:00"> 2016-12-30 五</time>
                     <a href="./2016/12/30/其他/">技术人员的发展之路</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2016-12-27T00:00:00+08:00"> 2016-12-27 Tue</time>
+                    <time datetime="2016-12-27T00:00:00+08:00"> 2016-12-27 二</time>
                     <a href="./2016/12/27/编程语言-Python/">python shelve</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2016-12-25T00:00:00+08:00"> 2016-12-25 Sun</time>
+                    <time datetime="2016-12-25T00:00:00+08:00"> 2016-12-25 日</time>
                     <a href="./2016/12/25/python/">sqlite3 - SQLite数据库DB-API 2.0接口</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2016-12-24T00:00:00+08:00"> 2016-12-24 Sat</time>
+                    <time datetime="2016-12-24T00:00:00+08:00"> 2016-12-24 六</time>
                     <a href="./2016/12/24/python/">python数据存储</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2016-12-01T00:00:00+08:00"> 2016-12-01 Thu</time>
+                    <time datetime="2016-12-01T00:00:00+08:00"> 2016-12-01 四</time>
                     <a href="./2016/12/01/mongodb/">Mongodb-linux安装</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2016-11-15T00:00:00+08:00"> 2016-11-15 Tue</time>
+                    <time datetime="2016-11-15T00:00:00+08:00"> 2016-11-15 二</time>
                     <a href="./2016/11/15/python/">pyqt基本操作(三）</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2016-11-14T00:00:00+08:00"> 2016-11-14 Mon</time>
+                    <time datetime="2016-11-14T00:00:00+08:00"> 2016-11-14 一</time>
                     <a href="./2016/11/14/python/">pyqt基本操作(二）</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2016-11-13T00:00:00+08:00"> 2016-11-13 Sun</time>
+                    <time datetime="2016-11-13T00:00:00+08:00"> 2016-11-13 日</time>
                     <a href="./2016/11/13/python/">pyqt基本操作</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2016-11-12T00:00:00+08:00"> 2016-11-12 Sat</time>
+                    <time datetime="2016-11-12T00:00:00+08:00"> 2016-11-12 六</time>
                     <a href="./2016/11/12/自动化测试/">Avocado-编写Avocado测试</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2016-11-03T00:00:00+08:00"> 2016-11-03 Thu</time>
+                    <time datetime="2016-11-03T00:00:00+08:00"> 2016-11-03 四</time>
                     <a href="./2016/11/03/自动化测试/">Avocado-入门</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2016-11-01T00:00:00+08:00"> 2016-11-01 Tue</time>
+                    <time datetime="2016-11-01T00:00:00+08:00"> 2016-11-01 二</time>
                     <a href="./2016/11/01/自动化测试/">Avocado User’s Guide</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2016-10-03T00:00:00+08:00"> 2016-10-03 Mon</time>
+                    <time datetime="2016-10-03T00:00:00+08:00"> 2016-10-03 一</time>
                     <a href="./2016/10/03/编程语言-Python/">python metaclass(上）</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2016-09-01T00:00:00+08:00"> 2016-09-01 Thu</time>
+                    <time datetime="2016-09-01T00:00:00+08:00"> 2016-09-01 四</time>
                     <a href="./2016/09/01/bei-jing-zhe-die-hao-jing-fang/">北京折叠－郝景芳</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2016-08-12T00:00:00+08:00"> 2016-08-12 Fri</time>
+                    <time datetime="2016-08-12T00:00:00+08:00"> 2016-08-12 五</time>
                     <a href="./2016/08/12/Docker/">Docker基础技术：Linux Namespace（下）<转></a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2016-08-11T00:00:00+08:00"> 2016-08-11 Thu</time>
+                    <time datetime="2016-08-11T00:00:00+08:00"> 2016-08-11 四</time>
                     <a href="./2016/08/11/Docker/">Docker基础技术：Linux Namespace（上）<转></a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2016-08-11T00:00:00+08:00"> 2016-08-11 Thu</time>
+                    <time datetime="2016-08-11T00:00:00+08:00"> 2016-08-11 四</time>
                     <a href="./2016/08/11/Performance/">如何做性能测试<转></a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2016-08-05T00:00:00+08:00"> 2016-08-05 Fri</time>
+                    <time datetime="2016-08-05T00:00:00+08:00"> 2016-08-05 五</time>
                     <a href="./2016/08/05/LTP/">LTP－kernel-syscalls-accept()</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2016-08-02T00:00:00+08:00"> 2016-08-02 Tue</time>
+                    <time datetime="2016-08-02T00:00:00+08:00"> 2016-08-02 二</time>
                     <a href="./2016/08/02/LTP/">LTP－kernel-syscalls-abort</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2016-08-01T00:00:00+08:00"> 2016-08-01 Mon</time>
+                    <time datetime="2016-08-01T00:00:00+08:00"> 2016-08-01 一</time>
                     <a href="./2016/08/01/LTP/">LTP－kernel-syscalls</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2016-06-03T00:00:00+08:00"> 2016-06-03 Fri</time>
+                    <time datetime="2016-06-03T00:00:00+08:00"> 2016-06-03 五</time>
                     <a href="./2016/06/03/LTP/">LTP－Command-file</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2016-06-02T00:00:00+08:00"> 2016-06-02 Thu</time>
+                    <time datetime="2016-06-02T00:00:00+08:00"> 2016-06-02 四</time>
                     <a href="./2016/06/02/LTP/">LTP－Command</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2016-06-01T00:00:00+08:00"> 2016-06-01 Wed</time>
+                    <time datetime="2016-06-01T00:00:00+08:00"> 2016-06-01 三</time>
                     <a href="./2016/06/01/LTP/">LTP－Case list</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2016-03-11T00:00:00+08:00"> 2016-03-11 Fri</time>
+                    <time datetime="2016-03-11T00:00:00+08:00"> 2016-03-11 五</time>
                     <a href="./2016/03/11/python-howtosyi/">Python-HOWTOS(一）</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2016-01-01T00:00:00+08:00"> 2016-01-01 Fri</time>
+                    <time datetime="2016-01-01T00:00:00+08:00"> 2016-01-01 五</time>
                     <a href="./2016/01/01/effective-python/">Python-tips01</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2016-01-01T00:00:00+08:00"> 2016-01-01 Fri</time>
+                    <time datetime="2016-01-01T00:00:00+08:00"> 2016-01-01 五</time>
                     <a href="./2016/01/01/python/">PyUnit(一）</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2015-12-04T00:00:00+08:00"> 2015-12-04 Fri</time>
+                    <time datetime="2015-12-04T00:00:00+08:00"> 2015-12-04 五</time>
                     <a href="./2015/12/04/python/">leetcode - Number Complement</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2015-12-03T00:00:00+08:00"> 2015-12-03 Thu</time>
+                    <time datetime="2015-12-03T00:00:00+08:00"> 2015-12-03 四</time>
                     <a href="./2015/12/03/python/">leetcode - Palindrome Number & Hamming Distance</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2015-12-02T00:00:00+08:00"> 2015-12-02 Wed</time>
+                    <time datetime="2015-12-02T00:00:00+08:00"> 2015-12-02 三</time>
                     <a href="./2015/12/02/python/">leetcode - Reverse Integer</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2015-12-01T00:00:00+08:00"> 2015-12-01 Tue</time>
+                    <time datetime="2015-12-01T00:00:00+08:00"> 2015-12-01 二</time>
                     <a href="./2015/12/01/python/">leetcode - Two Sum</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2015-11-01T00:00:00+08:00"> 2015-11-01 Sun</time>
+                    <time datetime="2015-11-01T00:00:00+08:00"> 2015-11-01 日</time>
                     <a href="./2015/11/01/autotest/">Autotest-client Package(1)</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2015-08-22T00:00:00+08:00"> 2015-08-22 Sat</time>
+                    <time datetime="2015-08-22T00:00:00+08:00"> 2015-08-22 六</time>
                     <a href="./2015/08/22/autotest/">Autotest-Autotest Remote (Autoserv)(三）</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2015-08-21T00:00:00+08:00"> 2015-08-21 Fri</time>
+                    <time datetime="2015-08-21T00:00:00+08:00"> 2015-08-21 五</time>
                     <a href="./2015/08/21/autotest/">Autotest-Autotest Remote (Autoserv)(二）</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2015-08-20T00:00:00+08:00"> 2015-08-20 Thu</time>
+                    <time datetime="2015-08-20T00:00:00+08:00"> 2015-08-20 四</time>
                     <a href="./2015/08/20/autotest/">Autotest-Autotest Remote (Autoserv)（一）</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2015-08-19T00:00:00+08:00"> 2015-08-19 Wed</time>
+                    <time datetime="2015-08-19T00:00:00+08:00"> 2015-08-19 三</time>
                     <a href="./2015/08/19/autotest/">Autotest-others</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2015-08-18T00:00:00+08:00"> 2015-08-18 Tue</time>
+                    <time datetime="2015-08-18T00:00:00+08:00"> 2015-08-18 二</time>
                     <a href="./2015/08/18/autotest/">Autotest-Linux distribution detection</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2015-08-17T00:00:00+08:00"> 2015-08-17 Mon</time>
+                    <time datetime="2015-08-17T00:00:00+08:00"> 2015-08-17 一</time>
                     <a href="./2015/08/17/autotest/">Autotest-Using and developing job profilers</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2015-08-16T00:00:00+08:00"> 2015-08-16 Sun</time>
+                    <time datetime="2015-08-16T00:00:00+08:00"> 2015-08-16 日</time>
                     <a href="./2015/08/16/autotest/">Autotest-add test</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2015-08-15T00:00:00+08:00"> 2015-08-15 Sat</time>
+                    <time datetime="2015-08-15T00:00:00+08:00"> 2015-08-15 六</time>
                     <a href="./2015/08/15/autotest/">Autotest-Control file specification</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2015-08-14T00:00:00+08:00"> 2015-08-14 Fri</time>
+                    <time datetime="2015-08-14T00:00:00+08:00"> 2015-08-14 五</time>
                     <a href="./2015/08/14/autotest/">Autotest-client control</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2015-08-13T00:00:00+08:00"> 2015-08-13 Thu</time>
+                    <time datetime="2015-08-13T00:00:00+08:00"> 2015-08-13 四</time>
                     <a href="./2015/08/13/autotest02/">Autotest-Local</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2015-08-12T00:00:00+08:00"> 2015-08-12 Wed</time>
+                    <time datetime="2015-08-12T00:00:00+08:00"> 2015-08-12 三</time>
                     <a href="./2015/08/12/Autotest01/">Autotest-summary</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2015-02-03T00:00:00+08:00"> 2015-02-03 Tue</time>
+                    <time datetime="2015-02-03T00:00:00+08:00"> 2015-02-03 二</time>
                     <a href="./2015/02/03/selenium/">selenium-expected_conditions源码分析</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2015-02-01T00:00:00+08:00"> 2015-02-01 Sun</time>
+                    <time datetime="2015-02-01T00:00:00+08:00"> 2015-02-01 日</time>
                     <a href="./2015/02/01/selenium/">selenium-Sample(五）</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2015-01-26T00:00:00+08:00"> 2015-01-26 Mon</time>
+                    <time datetime="2015-01-26T00:00:00+08:00"> 2015-01-26 一</time>
                     <a href="./2015/01/26/selenium/">selenium-Sample(四）</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2015-01-25T00:00:00+08:00"> 2015-01-25 Sun</time>
+                    <time datetime="2015-01-25T00:00:00+08:00"> 2015-01-25 日</time>
                     <a href="./2015/01/25/selenium/">selenium-Sample(三）</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2015-01-24T00:00:00+08:00"> 2015-01-24 Sat</time>
+                    <time datetime="2015-01-24T00:00:00+08:00"> 2015-01-24 六</time>
                     <a href="./2015/01/24/selenium/">selenium-Sample(二）</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2015-01-23T00:00:00+08:00"> 2015-01-23 Fri</time>
+                    <time datetime="2015-01-23T00:00:00+08:00"> 2015-01-23 五</time>
                     <a href="./2015/01/23/selenium/">selenium-Sample(一）</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2015-01-22T00:00:00+08:00"> 2015-01-22 Thu</time>
+                    <time datetime="2015-01-22T00:00:00+08:00"> 2015-01-22 四</time>
                     <a href="./2015/01/22/selenium/">selenium-常见问题</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2015-01-21T00:00:00+08:00"> 2015-01-21 Wed</time>
+                    <time datetime="2015-01-21T00:00:00+08:00"> 2015-01-21 三</time>
                     <a href="./2015/01/21/selenium/">selenium-Remote WebDriver</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2015-01-20T00:00:00+08:00"> 2015-01-20 Tue</time>
+                    <time datetime="2015-01-20T00:00:00+08:00"> 2015-01-20 二</time>
                     <a href="./2015/01/20/selenium/">selenium-API-2</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2015-01-19T00:00:00+08:00"> 2015-01-19 Mon</time>
+                    <time datetime="2015-01-19T00:00:00+08:00"> 2015-01-19 一</time>
                     <a href="./2015/01/19/selenium/">selenium-API</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2015-01-18T00:00:00+08:00"> 2015-01-18 Sun</time>
+                    <time datetime="2015-01-18T00:00:00+08:00"> 2015-01-18 日</time>
                     <a href="./2015/01/18/selenium/">selenium-页面对象</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2015-01-17T00:00:00+08:00"> 2015-01-17 Sat</time>
+                    <time datetime="2015-01-17T00:00:00+08:00"> 2015-01-17 六</time>
                     <a href="./2015/01/17/selenium/">selenium-等待</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2015-01-16T00:00:00+08:00"> 2015-01-16 Fri</time>
+                    <time datetime="2015-01-16T00:00:00+08:00"> 2015-01-16 五</time>
                     <a href="./2015/01/16/selenium/">selenium-元素定位</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2015-01-15T00:00:00+08:00"> 2015-01-15 Thu</time>
+                    <time datetime="2015-01-15T00:00:00+08:00"> 2015-01-15 四</time>
                     <a href="./2015/01/15/selenium/">selenium-常用方法</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2015-01-14T00:00:00+08:00"> 2015-01-14 Wed</time>
+                    <time datetime="2015-01-14T00:00:00+08:00"> 2015-01-14 三</time>
                     <a href="./2015/01/14/selenium/">selenium-入门</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2015-01-13T00:00:00+08:00"> 2015-01-13 Tue</time>
+                    <time datetime="2015-01-13T00:00:00+08:00"> 2015-01-13 二</time>
                     <a href="./2015/01/13/selenium/">selenium-基本介绍</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2015-01-12T00:00:00+08:00"> 2015-01-12 Mon</time>
+                    <time datetime="2015-01-12T00:00:00+08:00"> 2015-01-12 一</time>
                     <a href="./2015/01/12/自动化测试/">selenium-浏览器性能测试</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2014-10-17T00:00:00+08:00"> 2014-10-17 Fri</time>
+                    <time datetime="2014-10-17T00:00:00+08:00"> 2014-10-17 五</time>
                     <a href="./2014/10/17/风险控制/">测试风险识别</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2014-10-11T00:00:00+08:00"> 2014-10-11 Sat</time>
+                    <time datetime="2014-10-11T00:00:00+08:00"> 2014-10-11 六</time>
                     <a href="./2014/10/11/测试/">测试建模</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2014-10-10T00:00:00+08:00"> 2014-10-10 Fri</time>
+                    <time datetime="2014-10-10T00:00:00+08:00"> 2014-10-10 五</time>
                     <a href="./2014/10/10/linux/">Spec2006使用说明</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2014-09-15T00:00:00+08:00"> 2014-09-15 Mon</time>
+                    <time datetime="2014-09-15T00:00:00+08:00"> 2014-09-15 一</time>
                     <a href="./2014/09/15/linux/">SpecJvm2008使用说明</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2014-09-12T00:00:00+08:00"> 2014-09-12 Fri</time>
+                    <time datetime="2014-09-12T00:00:00+08:00"> 2014-09-12 五</time>
                     <a href="./2014/09/12/ltp/">Linux Test Project(一)</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2014-06-01T00:00:00+08:00"> 2014-06-01 Sun</time>
+                    <time datetime="2014-06-01T00:00:00+08:00"> 2014-06-01 日</time>
                     <a href="./2014/06/01/http/">http协议</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2014-05-31T00:00:00+08:00"> 2014-05-31 Sat</time>
+                    <time datetime="2014-05-31T00:00:00+08:00"> 2014-05-31 六</time>
                     <a href="./2014/05/31/python/">Python-Tips(十三)</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2014-05-28T00:00:00+08:00"> 2014-05-28 Wed</time>
+                    <time datetime="2014-05-28T00:00:00+08:00"> 2014-05-28 三</time>
                     <a href="./2014/05/28/python/">Python-Tips(十二)</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2014-05-27T00:00:00+08:00"> 2014-05-27 Tue</time>
+                    <time datetime="2014-05-27T00:00:00+08:00"> 2014-05-27 二</time>
                     <a href="./2014/05/27/python/">Python-Tips(十一)</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2014-05-26T00:00:00+08:00"> 2014-05-26 Mon</time>
+                    <time datetime="2014-05-26T00:00:00+08:00"> 2014-05-26 一</time>
                     <a href="./2014/05/26/python-打包/">Python-Tips(十)</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2014-05-24T00:00:00+08:00"> 2014-05-24 Sat</time>
+                    <time datetime="2014-05-24T00:00:00+08:00"> 2014-05-24 六</time>
                     <a href="./2014/05/24/python/">Python-Tips(九)</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2014-05-22T00:00:00+08:00"> 2014-05-22 Thu</time>
+                    <time datetime="2014-05-22T00:00:00+08:00"> 2014-05-22 四</time>
                     <a href="./2014/05/22/python/">Python-Tips(八)</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2014-05-18T00:00:00+08:00"> 2014-05-18 Sun</time>
+                    <time datetime="2014-05-18T00:00:00+08:00"> 2014-05-18 日</time>
                     <a href="./2014/05/18/python/">Python-Tips(七）</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2014-05-13T00:00:00+08:00"> 2014-05-13 Tue</time>
+                    <time datetime="2014-05-13T00:00:00+08:00"> 2014-05-13 二</time>
                     <a href="./2014/05/13/python/">Python-Tips(七）</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2014-05-10T00:00:00+08:00"> 2014-05-10 Sat</time>
+                    <time datetime="2014-05-10T00:00:00+08:00"> 2014-05-10 六</time>
                     <a href="./2014/05/10/python/">Python-Tips(六）</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2014-05-07T00:00:00+08:00"> 2014-05-07 Wed</time>
+                    <time datetime="2014-05-07T00:00:00+08:00"> 2014-05-07 三</time>
                     <a href="./2014/05/07/python/">Python-Tips(五）</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2014-05-06T00:00:00+08:00"> 2014-05-06 Tue</time>
+                    <time datetime="2014-05-06T00:00:00+08:00"> 2014-05-06 二</time>
                     <a href="./2014/05/06/python/">Python-Tips(四）</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2014-05-05T00:00:00+08:00"> 2014-05-05 Mon</time>
+                    <time datetime="2014-05-05T00:00:00+08:00"> 2014-05-05 一</time>
                     <a href="./2014/05/05/python/">Python-Tips(三）</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2014-05-03T00:00:00+08:00"> 2014-05-03 Sat</time>
+                    <time datetime="2014-05-03T00:00:00+08:00"> 2014-05-03 六</time>
                     <a href="./2014/05/03/python/">Python-Tips(二）</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2014-05-01T00:00:00+08:00"> 2014-05-01 Thu</time>
+                    <time datetime="2014-05-01T00:00:00+08:00"> 2014-05-01 四</time>
                     <a href="./2014/05/01/python/">Python-Tips(一）</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2014-03-01T00:00:00+08:00"> 2014-03-01 Sat</time>
+                    <time datetime="2014-03-01T00:00:00+08:00"> 2014-03-01 六</time>
                     <a href="./2014/03/01/stablity/">Reboot test脚本</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2013-11-01T00:00:00+08:00"> 2013-11-01 Fri</time>
+                    <time datetime="2013-11-01T00:00:00+08:00"> 2013-11-01 五</time>
                     <a href="./2013/11/01/patch/">diff 和 patch</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2013-10-13T00:00:00+08:00"> 2013-10-13 Sun</time>
+                    <time datetime="2013-10-13T00:00:00+08:00"> 2013-10-13 日</time>
                     <a href="./2013/10/13/rpm/">RPM打包与SPEC分析（二）</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2013-10-09T00:00:00+08:00"> 2013-10-09 Wed</time>
+                    <time datetime="2013-10-09T00:00:00+08:00"> 2013-10-09 三</time>
                     <a href="./2013/10/09/rpm/">RPM打包与SPEC分析（一）</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2013-08-29T00:00:00+08:00"> 2013-08-29 Thu</time>
+                    <time datetime="2013-08-29T00:00:00+08:00"> 2013-08-29 四</time>
                     <a href="./2013/08/29/pmon/">PMON启动信息详解</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2013-08-01T00:00:00+08:00"> 2013-08-01 Thu</time>
+                    <time datetime="2013-08-01T00:00:00+08:00"> 2013-08-01 四</time>
                     <a href="./2013/08/01/Makefile/">Makefile中文手册</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2013-07-01T00:00:00+08:00"> 2013-07-01 Mon</time>
+                    <time datetime="2013-07-01T00:00:00+08:00"> 2013-07-01 一</time>
                     <a href="./2013/07/01/sort/">快速排序</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2013-06-12T00:00:00+08:00"> 2013-06-12 Wed</time>
+                    <time datetime="2013-06-12T00:00:00+08:00"> 2013-06-12 三</time>
                     <a href="./2013/06/12/linpack/">高性能计算机系统浮点性能测试</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2013-05-27T00:00:00+08:00"> 2013-05-27 Mon</time>
+                    <time datetime="2013-05-27T00:00:00+08:00"> 2013-05-27 一</time>
                     <a href="./2013/05/27/C/">通过printf函数简单实现解析不定参数表</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2012-01-01T00:00:00+08:00"> 2012-01-01 Sun</time>
+                    <time datetime="2012-01-01T00:00:00+08:00"> 2012-01-01 日</time>
                     <a href="./2012/01/01/other/">转载：程序员技术练级攻略</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2011-11-01T00:00:00+08:00"> 2011-11-01 Tue</time>
+                    <time datetime="2011-11-01T00:00:00+08:00"> 2011-11-01 二</time>
                     <a href="./2011/11/01/Tool/">wireshark使用指南</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2011-08-15T00:00:00+08:00"> 2011-08-15 Mon</time>
+                    <time datetime="2011-08-15T00:00:00+08:00"> 2011-08-15 一</time>
                     <a href="./2011/08/15/C/">C-宏定义</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2011-07-11T00:00:00+08:00"> 2011-07-11 Mon</time>
+                    <time datetime="2011-07-11T00:00:00+08:00"> 2011-07-11 一</time>
                     <a href="./2011/07/11/C/">C-结构体声明</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2011-01-01T00:00:00+08:00"> 2011-01-01 Sat</time>
+                    <time datetime="2011-01-01T00:00:00+08:00"> 2011-01-01 六</time>
                     <a href="./2011/01/01/cmds/">常用shell命令</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2009-10-12T00:00:00+08:00"> 2009-10-12 Mon</time>
+                    <time datetime="2009-10-12T00:00:00+08:00"> 2009-10-12 一</time>
                     <a href="./2009/10/12/UNIX/">信号</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2009-10-10T00:00:00+08:00"> 2009-10-10 Sat</time>
+                    <time datetime="2009-10-10T00:00:00+08:00"> 2009-10-10 六</time>
                     <a href="./2009/10/10/UNIX/">原子操作</a>
                 </h4>
             </article>
             <article>
                 <h4>
-                    <time datetime="2009-10-01T00:00:00+08:00"> 2009-10-01 Thu</time>
+                    <time datetime="2009-10-01T00:00:00+08:00"> 2009-10-01 四</time>
                     <a href="./2009/10/01/排序/">排序-希尔排序法</a>
                 </h4>
             </article>

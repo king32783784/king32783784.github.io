@@ -90,13 +90,13 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-social-small" class="collapse ">
                     <li>
-                        <a href="mailto:peng.li@i-soft.com.cn" title="EMAIL"><i class="fa fa-envelope-square fa-lg padding-small"></i></a>
+                        <a href="mailto:lipengb@uniontech.com" title="EMAIL"><i class="fa fa-envelope-square fa-lg padding-small"></i></a>
                     </li>
                     <li>
-                        <a href="https://github.com/king32783784" title="GitHub"><i class="fa fa-github-square fa-lg padding-small"></i></a>
+                        <a href="https://github.com/lipeng886" title="GitHub"><i class="fa fa-github-square fa-lg padding-small"></i></a>
                     </li>
                     <li>
-                        <a href="http://king32783784.github.io/feeds/atom.xml" title="RSS"><i class="fa fa-rss-square fa-lg padding-small"></i></a>
+                        <a href="http://lipeng886.github.io/feeds/atom.xml" title="RSS"><i class="fa fa-rss-square fa-lg padding-small"></i></a>
                     </li>
                 </ul></li>
                 <li class="nav-divider"></li>
@@ -194,19 +194,19 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-social" class="sidebar_submenu collapse ">
                     <li>
-                        <a href="mailto:peng.li@i-soft.com.cn" title="EMAIL">
+                        <a href="mailto:lipengb@uniontech.com" title="EMAIL">
                             <i class="fa fa-envelope-square fa-lg padding-small"></i>
                             EMAIL
                         </a>
                     </li>
                     <li>
-                        <a href="https://github.com/king32783784" title="GitHub">
+                        <a href="https://github.com/lipeng886" title="GitHub">
                             <i class="fa fa-github-square fa-lg padding-small"></i>
                             GitHub
                         </a>
                     </li>
                     <li>
-                        <a href="http://king32783784.github.io/feeds/atom.xml" title="RSS">
+                        <a href="http://lipeng886.github.io/feeds/atom.xml" title="RSS">
                             <i class="fa fa-rss-square fa-lg padding-small"></i>
                             RSS
                         </a>
@@ -227,13 +227,13 @@
                             开源项目
                         </a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="../../../../pages/links.html">
                             <i class="fa fa-file-text padding-small"></i>
                             常用链接
                         </a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="../../../../pages/Reference material.html">
                             <i class="fa fa-file-text padding-small"></i>
                             参考资料
@@ -451,7 +451,7 @@
     <div class="publish-info-block">
         <small>
             <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2014-03-01T00:00:00+08:00"> 2014-03-01 Sat</time>
+                <i class="fa fa-calendar padding-small"></i><time datetime="2014-03-01T00:00:00+08:00"> 2014-03-01 六</time>
             </span>
             <span class="category">
                 <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/linux.html">Linux</a>
@@ -469,7 +469,7 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    <body><p>为了验证操作系统启动的稳定性，需要进行500次启动测试，便写了脚本实现。</p>
+                    <p>为了验证操作系统启动的稳定性，需要进行500次启动测试，便写了脚本实现。</p>
 <p>脚本如下：</p>
 <div class="highlight"><pre><span></span>HOME=`pwd`
 sleep 15
@@ -477,11 +477,11 @@ desktop_x86_4x(){
 if [ ! -f /etc/reboot.sh ];then
     cp -rf $HOME/reboot.sh /etc/
 fi
-if grep "reboot.sh" /etc/profile &gt; /dev/null;
+if grep &quot;reboot.sh&quot; /etc/profile &gt; /dev/null;
 then
    break;
 else
-   echo "/bin/sh /etc/reboot.sh &amp;" &gt;&gt; /etc/profile
+   echo &quot;/bin/sh /etc/reboot.sh &amp;&quot; &gt;&gt; /etc/profile
 fi
 if id rebootuser &gt; /dev/null 2&gt;&amp;1; then
 break
@@ -491,9 +491,9 @@ passwd rebootuser &lt;&lt; TEST
 abc123
 abc123
 TEST
-echo "[Autologin]" &gt;&gt; /etc/sddm.conf
-echo "Session=plasma.desktop" &gt;&gt; /etc/sddm.conf
-echo "User=rebootuser" &gt;&gt; /etc/sddm.conf
+echo &quot;[Autologin]&quot; &gt;&gt; /etc/sddm.conf
+echo &quot;Session=plasma.desktop&quot; &gt;&gt; /etc/sddm.conf
+echo &quot;User=rebootuser&quot; &gt;&gt; /etc/sddm.conf
 fi
 }
 
@@ -508,23 +508,23 @@ if [ ! -f /etc/tmpbash ];then
 fi
 
 if [ ! -f /home/rebootuser/reboot.log ]; then
-    echo "Total=$1 , Times=0 , start at `date`" &gt;&gt; /home/rebootuser/reboot.log
+    echo &quot;Total=$1 , Times=0 , start at `date`&quot; &gt;&gt; /home/rebootuser/reboot.log
     chmod 777 /home/rebootuser/reboot.log
 fi
 
 times=`cat /etc/tmpbash`
 
-n=`cat /home/rebootuser/reboot.log | awk -F, '{print $2}' | awk -F= '{print $2}' | tail -1`
+n=`cat /home/rebootuser/reboot.log | awk -F, &#39;{print $2}&#39; | awk -F= &#39;{print $2}&#39; | tail -1`
 if (( $n &lt; $times ));then
     N=$(($n + 1))
-    echo " Total=$times , Times=$N , reboot at `date`" &gt;&gt; /home/rebootuser/reboot.log
+    echo &quot; Total=$times , Times=$N , reboot at `date`&quot; &gt;&gt; /home/rebootuser/reboot.log
     sleep 60
     reboot
 else
     rm /etc/reboot.sh
-    sed -i '$d' /etc/profile
+    sed -i &#39;$d&#39; /etc/profile
 fi
-</pre></div></body>
+</pre></div>
                 </div>
                 <footer class="text-right">
                     <p>by 李鹏</p>

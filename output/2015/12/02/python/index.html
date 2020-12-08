@@ -90,13 +90,13 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-social-small" class="collapse ">
                     <li>
-                        <a href="mailto:peng.li@i-soft.com.cn" title="EMAIL"><i class="fa fa-envelope-square fa-lg padding-small"></i></a>
+                        <a href="mailto:lipengb@uniontech.com" title="EMAIL"><i class="fa fa-envelope-square fa-lg padding-small"></i></a>
                     </li>
                     <li>
-                        <a href="https://github.com/king32783784" title="GitHub"><i class="fa fa-github-square fa-lg padding-small"></i></a>
+                        <a href="https://github.com/lipeng886" title="GitHub"><i class="fa fa-github-square fa-lg padding-small"></i></a>
                     </li>
                     <li>
-                        <a href="http://king32783784.github.io/feeds/atom.xml" title="RSS"><i class="fa fa-rss-square fa-lg padding-small"></i></a>
+                        <a href="http://lipeng886.github.io/feeds/atom.xml" title="RSS"><i class="fa fa-rss-square fa-lg padding-small"></i></a>
                     </li>
                 </ul></li>
                 <li class="nav-divider"></li>
@@ -194,19 +194,19 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-social" class="sidebar_submenu collapse ">
                     <li>
-                        <a href="mailto:peng.li@i-soft.com.cn" title="EMAIL">
+                        <a href="mailto:lipengb@uniontech.com" title="EMAIL">
                             <i class="fa fa-envelope-square fa-lg padding-small"></i>
                             EMAIL
                         </a>
                     </li>
                     <li>
-                        <a href="https://github.com/king32783784" title="GitHub">
+                        <a href="https://github.com/lipeng886" title="GitHub">
                             <i class="fa fa-github-square fa-lg padding-small"></i>
                             GitHub
                         </a>
                     </li>
                     <li>
-                        <a href="http://king32783784.github.io/feeds/atom.xml" title="RSS">
+                        <a href="http://lipeng886.github.io/feeds/atom.xml" title="RSS">
                             <i class="fa fa-rss-square fa-lg padding-small"></i>
                             RSS
                         </a>
@@ -227,13 +227,13 @@
                             开源项目
                         </a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="../../../../pages/links.html">
                             <i class="fa fa-file-text padding-small"></i>
                             常用链接
                         </a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="../../../../pages/Reference material.html">
                             <i class="fa fa-file-text padding-small"></i>
                             参考资料
@@ -451,7 +451,7 @@
     <div class="publish-info-block">
         <small>
             <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2015-12-02T00:00:00+08:00"> 2015-12-02 Wed</time>
+                <i class="fa fa-calendar padding-small"></i><time datetime="2015-12-02T00:00:00+08:00"> 2015-12-02 三</time>
             </span>
             <span class="category">
                 <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/leetcode.html">leetcode</a>
@@ -469,7 +469,7 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    <body><h4 id="wen-ti-miao-shu">问题描述</h4>
+                    <h4>问题描述</h4>
 <p>Reverse digits of an integer.</p>
 <p>Example1: x = 123, return 321
 Example2: x = -123, return -321</p>
@@ -478,11 +478,11 @@ Example2: x = -123, return -321</p>
 The input is assumed to be a 32-bit signed integer. Your function should return 0 when the reversed integer overflows.</p>
 <p>Subscribe to see which companies asked this question.</p>
 <p>将数字反转，注意如果反转后数字溢出（超出32位有符号数的范围），返回0</p>
-<h4 id="jie-jue-fang-fa-yi">解决方法一</h4>
+<h4>解决方法一</h4>
 <p>直观的方法，将数字转换为字符，将字符直接反转。负数时需进行“-”的处理。特殊情况为-9到9，不用反转；反转时如100后面为0的数字转变为001，但此处是数字，所以应打印1。
 python进行字符转int时自动进行了处理。</p>
 <p>代码：</p>
-<table class="table highlighttable table-striped table-hover"><tbody><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -532,13 +532,13 @@ python进行字符转int时自动进行了处理。</p>
 
     <span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
 
-        <span class="sd">"""</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">        :type x: int</span>
 
 <span class="sd">        :rtype: int</span>
 
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
 
@@ -553,30 +553,33 @@ python进行字符转int时自动进行了处理。</p>
                 <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
         <span class="k">else</span><span class="p">:</span>
-           <span class="c1"># 负数，增加"-"的处理</span>
+           <span class="c1"># 负数，增加&quot;-&quot;的处理</span>
             <span class="n">x</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
-            <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="s2">"-"</span><span class="o">+</span><span class="n">x</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">2147483647</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">+</span><span class="n">x</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">2147483647</span><span class="p">:</span>
 
                 <span class="k">return</span> <span class="mi">0</span>
 
             <span class="k">else</span><span class="p">:</span>
 
-                <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="s2">"-"</span><span class="o">+</span><span class="n">x</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+                <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">+</span><span class="n">x</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">a</span> <span class="o">=</span> <span class="n">Solution</span><span class="p">()</span>
     <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">reverse</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 </pre></div>
-</td></tr></tbody></table>
+</td></tr></table>
+
 <p>运行结果： 54321
 leetcode case测试结果：</p>
 <div class="highlight"><pre><span></span>1032 / 1032 test cases passed.
 Status: Accepted
 Runtime: 52 ms
 </pre></div>
+
+
 <p>解决方法二：</p>
 <p>321 
 321%10 取最后一位1
@@ -589,7 +592,7 @@ Runtime: 52 ms
 12</em>10 +3
 至少往下移动一位即*10</p>
 <p>代码：</p>
-<table class="table highlighttable table-striped table-hover"><tbody><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -624,10 +627,10 @@ Runtime: 52 ms
 <span class="c1"># *-*coding=utf-8*-*</span>
 <span class="k">class</span> <span class="nc">Solution</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="sd">"""</span>
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        :type x: int</span>
 <span class="sd">        :rtype: int</span>
-<span class="sd">        """</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">y</span><span class="o">=</span><span class="mi">0</span>
         <span class="k">if</span> <span class="o">-</span><span class="mi">10</span> <span class="o">&lt;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">x</span>
@@ -648,18 +651,19 @@ Runtime: 52 ms
                  <span class="k">return</span> <span class="o">-</span><span class="n">y</span>
              <span class="k">else</span><span class="p">:</span>
                  <span class="k">return</span> <span class="mi">0</span>
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="n">a</span> <span class="o">=</span> <span class="n">Solution</span><span class="p">()</span>
     <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">reverse</span><span class="p">(</span><span class="o">-</span><span class="mi">12345</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 </pre></div>
-</td></tr></tbody></table>
+</td></tr></table>
+
 <p>运行结果 -54321</p>
 <p>leetcode测试结果：
 1032 / 1032 test cases passed.
 Status: Accepted
 Runtime: 46 ms
-在提交的python语言的答案中，速度已接近最优结果。</p></body>
+在提交的python语言的答案中，速度已接近最优结果。</p>
                 </div>
                 <footer class="text-right">
                     <p>by 李鹏</p>
@@ -768,11 +772,6 @@ Runtime: 46 ms
 <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2127927"></script>
 <!-- UY END -->
             </div>
-    <div id="scrollspy">
-        <div class="col-lg-3 nav nav-stacked hidden-xs hidden-sm" data-spy="affix" data-offset-top="135">
-            <div id="toc"><ul><li><a class="toc-href" href="#" title="leetcode - Reverse Integer">leetcode - Reverse Integer</a><ul><li><a class="toc-href" href="#wen-ti-miao-shu" title="问题描述">问题描述</a></li><li><a class="toc-href" href="#jie-jue-fang-fa-yi" title="解决方法一">解决方法一</a></li></ul></li></ul></div>
-        </div>
-    </div>
         </div>
     </article>
 </section>

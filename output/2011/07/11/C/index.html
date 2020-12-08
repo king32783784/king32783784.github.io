@@ -90,13 +90,13 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-social-small" class="collapse ">
                     <li>
-                        <a href="mailto:peng.li@i-soft.com.cn" title="EMAIL"><i class="fa fa-envelope-square fa-lg padding-small"></i></a>
+                        <a href="mailto:lipengb@uniontech.com" title="EMAIL"><i class="fa fa-envelope-square fa-lg padding-small"></i></a>
                     </li>
                     <li>
-                        <a href="https://github.com/king32783784" title="GitHub"><i class="fa fa-github-square fa-lg padding-small"></i></a>
+                        <a href="https://github.com/lipeng886" title="GitHub"><i class="fa fa-github-square fa-lg padding-small"></i></a>
                     </li>
                     <li>
-                        <a href="http://king32783784.github.io/feeds/atom.xml" title="RSS"><i class="fa fa-rss-square fa-lg padding-small"></i></a>
+                        <a href="http://lipeng886.github.io/feeds/atom.xml" title="RSS"><i class="fa fa-rss-square fa-lg padding-small"></i></a>
                     </li>
                 </ul></li>
                 <li class="nav-divider"></li>
@@ -194,19 +194,19 @@
                 </li>
                 <li class="panel anti-panel"><ul id="collapse-social" class="sidebar_submenu collapse ">
                     <li>
-                        <a href="mailto:peng.li@i-soft.com.cn" title="EMAIL">
+                        <a href="mailto:lipengb@uniontech.com" title="EMAIL">
                             <i class="fa fa-envelope-square fa-lg padding-small"></i>
                             EMAIL
                         </a>
                     </li>
                     <li>
-                        <a href="https://github.com/king32783784" title="GitHub">
+                        <a href="https://github.com/lipeng886" title="GitHub">
                             <i class="fa fa-github-square fa-lg padding-small"></i>
                             GitHub
                         </a>
                     </li>
                     <li>
-                        <a href="http://king32783784.github.io/feeds/atom.xml" title="RSS">
+                        <a href="http://lipeng886.github.io/feeds/atom.xml" title="RSS">
                             <i class="fa fa-rss-square fa-lg padding-small"></i>
                             RSS
                         </a>
@@ -227,13 +227,13 @@
                             开源项目
                         </a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="../../../../pages/links.html">
                             <i class="fa fa-file-text padding-small"></i>
                             常用链接
                         </a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="../../../../pages/Reference material.html">
                             <i class="fa fa-file-text padding-small"></i>
                             参考资料
@@ -451,7 +451,7 @@
     <div class="publish-info-block">
         <small>
             <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2011-07-11T00:00:00+08:00"> 2011-07-11 Mon</time>
+                <i class="fa fa-calendar padding-small"></i><time datetime="2011-07-11T00:00:00+08:00"> 2011-07-11 一</time>
             </span>
             <span class="category">
                 <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/bian-cheng-yu-yan-c.html">编程语言-C</a>
@@ -469,7 +469,7 @@
         <div class="row">
             <div class="col-lg-9">
                 <div class="entry-content">
-                    <body><p><strong>结构体声明</strong></p>
+                    <p><strong>结构体声明</strong></p>
 <p>例如：
     struct Student
     {
@@ -486,32 +486,46 @@
     char c[10];
 }TEST_T;
 </pre></div>
+
+
 <p><strong>初始化</strong></p>
 <p>1.初始化的就是定义一个结构体变量，并且给它赋值比如：</p>
 <div class="highlight"><pre><span></span>TEST_T gst  = {1, “12345”}; /*可以初始化，设置i为1，c为一个字符串.*/
 TEST_T gst  = {1}; /*初始化个数少于实际个数时，只初始化前面的成员。*/
 TEST_T gst  = {.c=“12345”}; /*有选择的初始化成员。*/
 </pre></div>
+
+
 <p>2、复合字面量。</p>
-<div class="highlight"><pre><span></span>gst = (TEST_T){122, "1256"}; /*这是一个赋值语句，也可以作为初始化。可以出现在程序的任何地方。*/
+<div class="highlight"><pre><span></span>gst = (TEST_T){122, &quot;1256&quot;}; /*这是一个赋值语句，也可以作为初始化。可以出现在程序的任何地方。*/
 </pre></div>
+
+
 <p>当然也可以使用复合字面量来初始化：</p>
-<div class="highlight"><pre><span></span>gst = (TEST_T){.i=122, .c="123"};
+<div class="highlight"><pre><span></span>gst = (TEST_T){.i=122, .c=&quot;123&quot;};
 </pre></div>
+
+
 <p>3、结构体数组</p>
 <p>可以用多个大括号括起来：</p>
 <div class="highlight"><pre><span></span>TEST_T gst[10] = \{\{\},\{\},\{\},\{\}\}
 </pre></div>
+
+
 <p>也可以初始化其中的一个元素：</p>
 <div class="highlight"><pre><span></span>TEST_T gst[10] = {[2]={}, [3]={}}
 </pre></div>
+
+
 <p>也可以使用复合字面量：</p>
 <div class="highlight"><pre><span></span>TEST_T gst[10] = {[2].i=0, [3].i={}}
 </pre></div>
+
+
 <p><strong>为什么要初始化</strong></p>
 <p>1、对局部变量初始化可以防止随机值产生的危害。</p>
 <p>2、对全局变量初始化可以告诉编译器，这是一个定义，而不是一个声明。（如果两个c中有相同的全局变量定义，且没有初始化，编译器会认为第二个是声明而不是定义。）</p>
-<p>声明和定义的区别在于是否分配内存进行存储。</p></body>
+<p>声明和定义的区别在于是否分配内存进行存储。</p>
                 </div>
                 <footer class="text-right">
                     <p>by 李鹏</p>
