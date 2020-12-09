@@ -1,0 +1,968 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="李鹏" />
+        <meta name="keywords" content="Lua" />
+        <meta name="description" content="快速学lua 目录 运行语法注释变量控制语句while循环if-else分支for 循环until循环函数递归闭包函数的返回值局部函数TableMetaTable 和 MetaMethod“面向对象”模块参考 运行 首先，我们需要知道，Lua是类C的，所以，他是大小写字符敏感的。 下面是Lua的Hello World。注意：Lua脚本的语句的分号是可选的，这个和GO语言很类似。 print(&#34;Hello World&#34;) 你可以像python一样，在命令行上运行lua命令后进入lua的shell中执行语句。 chenhao-air:lua chenhao$ lua Lua 5.2.2 Copyright ..." />
+
+<!-- Open Graph tags -->
+<meta property="og:site_name" content="路漫求索"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Multue测试工具介绍"/>
+    <meta property="og:url" content="../../../../2020/12/06/Lua/"/>
+    <meta property="og:description" content="快速学lua 目录 运行语法注释变量控制语句while循环if-else分支for 循环until循环函数递归闭包函数的返回值局部函数TableMetaTable 和 MetaMethod“面向对象”模块参考 运行 首先，我们需要知道，Lua是类C的，所以，他是大小写字符敏感的。 下面是Lua的Hello World。注意：Lua脚本的语句的分号是可选的，这个和GO语言很类似。 print(&#34;Hello World&#34;) 你可以像python一样，在命令行上运行lua命令后进入lua的shell中执行语句。 chenhao-air:lua chenhao$ lua Lua 5.2.2 Copyright ..."/>
+    <meta property="article:published_time" content="2020-12-06" />
+    <meta property="article:section" content="编程语言-Lua" />
+        <meta property="article:tag" content="Lua" />
+        <meta property="article:author" content="李鹏" />
+        <meta property="og:image"
+              content="../../../../favicon.png"/>
+
+    <title>Multue测试工具介绍 - 路漫求索</title>
+
+        <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
+
+    <link href="../../../../theme/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../../../../theme/css/pygments/colorful.css" rel="stylesheet" />
+    
+    <link href="../../../../theme/css/pelican-twitchy.min.css" rel="stylesheet" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <!-- Feeds -->
+        <link href="../../../../feeds/atom.xml" type="application/atom+xml" rel="alternate"
+              title="路漫求索 ATOM Feed" />
+</head>
+<body data-spy="scroll" data-target="#scrollspy">
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper-small" class="twitchy-background">
+            <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
+                <li>
+        <a href="../../../.." title="路漫求索" class="collapsed">
+            <span class="glyphicon glyphicon-home"></span>
+        </a>
+    </li>
+                <li class="nav-divider"></li>
+                <li>
+        <a href="../../../../archives.html" title="最新文章" class="collapsed">
+            <span class="glyphicon glyphicon-th-list"></span>
+        </a>
+    </li>
+                
+                <li class="nav-divider"></li>
+                <li id="share-small">
+                    <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-share-small" title="分享" class="collapsed">
+                        <i class="fa fa-share-alt padding-small"></i>
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-share-small" class="collapse ">
+                    <li>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2020/12/06/Lua/" title="Share via Facebook" target="popup">
+                            <i class="fa fa-facebook-square padding-small"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/share?url=../../../../2020/12/06/Lua/" title="Share via Google+" target="popup">
+                            <i class="fa fa-google-plus padding-small"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" title="Share via Twitter" target="popup">
+                            <i class="fa fa-twitter-square padding-small"></i>
+                        </a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-social-small" title="Social" class="collapsed">
+                        <i class="fa fa-users padding-small"></i>
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-social-small" class="collapse ">
+                    <li>
+                        <a href="mailto:lipengb@uniontech.com" title="EMAIL"><i class="fa fa-envelope-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/lipeng886" title="GitHub"><i class="fa fa-github-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="http://lipeng886.github.io/feeds/atom.xml" title="RSS"><i class="fa fa-rss-square fa-lg padding-small"></i></a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+        <a href="#" title="Back to top" class="collapsed">
+            <span class="fa fa-arrow-up"></span>
+        </a>
+    </li>
+            </ul>
+        </div>
+        <div id="sidebar-wrapper" class="twitchy-background">
+            <ul id="accordion" class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="../../../../">
+<img src="../../../../sitelogo.png" width="200" alt="Sitelogo"/>                     </a>
+                </li>
+                    <li class="nav-divider"></li>
+                    <li>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-latest">
+                            <span class="glyphicon glyphicon-th-list padding-small"></span>
+                            最新文章
+                        </a>
+                    </li>
+                    <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
+                        <li class="active">
+                            <a class="hide-overflow" href="../../../../2020/12/06/Lua/" title="Multue测试工具介绍">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Multue测试工具介绍
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="../../../../2017/08/19/Multue/" title="Multue测试工具介绍">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Multue测试工具介绍
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="../../../../2017/06/17/网络/" title="网络速率统计的几个示例">
+                                <i class="fa fa-file-text padding-small"></i>
+                                网络速率统计的几个示例
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="../../../../2017/04/01/Robot/" title="Robot Framework 用户手册(三)">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework 用户手册(三)
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="../../../../2017/03/31/Robot/" title="Robot Framework 用户手册(二)">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework 用户手册(二)
+                            </a>
+                        </li>
+                    <li>
+                        <a href="../../../../archives.html">
+                            <i class="fa fa-arrow-right padding-small"></i>
+                            更多
+                        </a>
+                    </li>
+                    </ul></li>
+                <li class="nav-divider"></li>
+                <li id="share">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-share" title="Share" class="collapsed">
+                        <i class="fa fa-share-alt padding-small"></i>
+                        分享
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-share" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2020/12/06/Lua/" target="popup">
+                            <i class="fa fa-facebook-square padding-small"></i>
+                            Facebook
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/share?url=../../../../2020/12/06/Lua/" target="popup">
+                            <i class="fa fa-google-plus padding-small"></i>
+                            Google+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" target="popup">
+                            <i class="fa fa-twitter-square padding-small"></i>
+                            Twitter
+                        </a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-social">
+                        <i class="fa fa-users padding-small"></i>
+                        联系
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-social" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="mailto:lipengb@uniontech.com" title="EMAIL">
+                            <i class="fa fa-envelope-square fa-lg padding-small"></i>
+                            EMAIL
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/lipeng886" title="GitHub">
+                            <i class="fa fa-github-square fa-lg padding-small"></i>
+                            GitHub
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://lipeng886.github.io/feeds/atom.xml" title="RSS">
+                            <i class="fa fa-rss-square fa-lg padding-small"></i>
+                            RSS
+                        </a>
+                    </li>
+                </ul></li>
+                
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-pages">
+                        <i class="fa fa-folder-open padding-small"></i>
+                       站内导航
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-pages" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="../../../../pages/opensource.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            开源项目
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../../pages/links.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            常用链接
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="../../../../pages/Reference material.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            参考资料
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../../pages/todo list.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            Todo List
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../../pages/tools.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            工具集
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../../pages/aboutme.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            About me
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../../pages/doc.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            专题文档
+                        </a>
+                    </li>
+                </ul></li>
+                
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-categories">
+                        <i class="fa fa-folder-open padding-small"></i>
+                        文章分类
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-categories" class="sidebar_submenu collapse ">
+                    <li >
+                        <a href="../../../../category/bian-cheng-yu-yan-python.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            编程语言-Python
+                            <span class="badge pull-right categorybadge">26</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-selenium.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Selenium
+                            <span class="badge pull-right categorybadge">17</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-autotest.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Autotest
+                            <span class="badge pull-right categorybadge">12</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-ltp.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-LTP
+                            <span class="badge pull-right categorybadge">7</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/linux.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Linux
+                            <span class="badge pull-right categorybadge">6</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/ce-shi.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            测试
+                            <span class="badge pull-right categorybadge">4</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/leetcode.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            leetcode
+                            <span class="badge pull-right categorybadge">4</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/qi-ta.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            其他
+                            <span class="badge pull-right categorybadge">4</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/xing-neng-ce-shi.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            性能测试
+                            <span class="badge pull-right categorybadge">4</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
+                            <span class="badge pull-right categorybadge">4</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/bian-cheng-yu-yan-c.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            编程语言-C
+                            <span class="badge pull-right categorybadge">3</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/dockerzhuan-ti.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Docker专题
+                            <span class="badge pull-right categorybadge">3</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/python-pyqt.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Python-pyqt
+                            <span class="badge pull-right categorybadge">3</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-avocado.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Avocado
+                            <span class="badge pull-right categorybadge">3</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/suan-fa.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            算法
+                            <span class="badge pull-right categorybadge">2</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/unixhuan-jing-bian-cheng.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            unix环境编程
+                            <span class="badge pull-right categorybadge">2</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-gong-ju.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试工具
+                            <span class="badge pull-right categorybadge">2</span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="../../../../category/bian-cheng-yu-yan-lua.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            编程语言-Lua
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/gong-ju.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            工具
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/mongodb.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Mongodb
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/tong-xin-xiang-guan.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            通信相关
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/web.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Web
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                </ul></li>
+                
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <!-- open/close sidebar -->
+        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
+            <span id="right-arrow" class="glyphicon glyphicon-chevron-right"  title="expand sidebar"></span>
+            <span id="left-arrow" class="glyphicon glyphicon-chevron-left" title="minimize sidebar"></span>
+        </a>
+       <!-- /open/close sidebar -->
+       <!--访问统计 -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+<section id="content">
+    <article>
+        <div class="row">
+            <div class="col-lg-9">
+                <header class="page-header">
+                    <h1>
+                        <a href="../../../../2020/12/06/Lua/"
+                           rel="bookmark"
+                           title="Permalink to Multue测试工具介绍">
+                            Multue测试工具介绍
+                        </a>
+                        <small>
+<div class="post-info">
+    <div class="publish-info-block">
+        <small>
+            <span class="published">
+                <i class="fa fa-calendar padding-small"></i><time datetime="2020-12-06T00:00:00+08:00"> 2020-12-06 日</time>
+            </span>
+            <span class="category">
+                <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/bian-cheng-yu-yan-lua.html">编程语言-Lua</a>
+            </span>
+            <span class="tags">
+                <i class="fa fa-tags padding-small"></i>
+                <a href="../../../../tag/lua.html">Lua</a>            </span>
+        </small>
+    </div>
+</div><!-- /.post-info -->                        </small>
+                    </h1>
+                </header>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="entry-content">
+                    <h2>快速学lua</h2>
+<div id="ez-toc-container" class="ez-toc-v2_0_11 counter-hierarchy counter-decimal ez-toc-grey">
+<div class="ez-toc-title-container">
+<p class="ez-toc-title">目录</p>
+<span class="ez-toc-title-toggle"><a class="ez-toc-pull-right ez-toc-btn ez-toc-btn-xs ez-toc-btn-default ez-toc-toggle"><i class="ez-toc-glyphicon ez-toc-icon-toggle"></i></a></span></div>
+<nav><ul class="ez-toc-list ez-toc-list-level-1"><li class="ez-toc-page-1 ez-toc-heading-level-4"><a class="ez-toc-link ez-toc-heading-1" href="#%E8%BF%90%E8%A1%8C" title="运行">运行</a></li><li class="ez-toc-page-1 ez-toc-heading-level-4"><a class="ez-toc-link ez-toc-heading-2" href="#%E8%AF%AD%E6%B3%95" title="语法">语法</a><ul class="ez-toc-list-level-5"><li class="ez-toc-heading-level-5"><a class="ez-toc-link ez-toc-heading-3" href="#%E6%B3%A8%E9%87%8A" title="注释">注释</a></li><li class="ez-toc-page-1 ez-toc-heading-level-5"><a class="ez-toc-link ez-toc-heading-4" href="#%E5%8F%98%E9%87%8F" title="变量">变量</a></li></ul></li><li class="ez-toc-page-1 ez-toc-heading-level-4"><a class="ez-toc-link ez-toc-heading-5" href="#%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5" title="控制语句">控制语句</a><ul class="ez-toc-list-level-5"><li class="ez-toc-heading-level-5"><a class="ez-toc-link ez-toc-heading-6" href="#while%E5%BE%AA%E7%8E%AF" title="while循环">while循环</a></li><li class="ez-toc-page-1 ez-toc-heading-level-5"><a class="ez-toc-link ez-toc-heading-7" href="#ifelse%E5%88%86%E6%94%AF" title="if-else分支">if-else分支</a></li><li class="ez-toc-page-1 ez-toc-heading-level-5"><a class="ez-toc-link ez-toc-heading-8" href="#for_%E5%BE%AA%E7%8E%AF" title="for 循环">for 循环</a></li><li class="ez-toc-page-1 ez-toc-heading-level-5"><a class="ez-toc-link ez-toc-heading-9" href="#until%E5%BE%AA%E7%8E%AF" title="until循环">until循环</a></li></ul></li><li class="ez-toc-page-1 ez-toc-heading-level-4"><a class="ez-toc-link ez-toc-heading-10" href="#%E5%87%BD%E6%95%B0" title="函数">函数</a><ul class="ez-toc-list-level-5"><li class="ez-toc-heading-level-5"><a class="ez-toc-link ez-toc-heading-11" href="#%E9%80%92%E5%BD%92" title="递归">递归</a></li><li class="ez-toc-page-1 ez-toc-heading-level-5"><a class="ez-toc-link ez-toc-heading-12" href="#%E9%97%AD%E5%8C%85" title="闭包">闭包</a></li><li class="ez-toc-page-1 ez-toc-heading-level-5"><a class="ez-toc-link ez-toc-heading-13" href="#%E5%87%BD%E6%95%B0%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC" title="函数的返回值">函数的返回值</a></li><li class="ez-toc-page-1 ez-toc-heading-level-5"><a class="ez-toc-link ez-toc-heading-14" href="#%E5%B1%80%E9%83%A8%E5%87%BD%E6%95%B0" title="局部函数">局部函数</a></li></ul></li><li class="ez-toc-page-1 ez-toc-heading-level-4"><a class="ez-toc-link ez-toc-heading-15" href="#Table" title="Table">Table</a></li><li class="ez-toc-page-1 ez-toc-heading-level-4"><a class="ez-toc-link ez-toc-heading-16" href="#MetaTable_%E5%92%8C_MetaMethod" title="MetaTable 和 MetaMethod">MetaTable 和 MetaMethod</a></li><li class="ez-toc-page-1 ez-toc-heading-level-4"><a class="ez-toc-link ez-toc-heading-17" href="#%E2%80%9C%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E2%80%9D" title="“面向对象”">“面向对象”</a></li><li class="ez-toc-page-1 ez-toc-heading-level-4"><a class="ez-toc-link ez-toc-heading-18" href="#%E6%A8%A1%E5%9D%97" title="模块">模块</a></li><li class="ez-toc-page-1 ez-toc-heading-level-4"><a class="ez-toc-link ez-toc-heading-19" href="#%E5%8F%82%E8%80%83" title="参考">参考</a></li></ul></nav></div>
+
+<h4><span class="ez-toc-section" id="%E8%BF%90%E8%A1%8C"></span>运行<span class="ez-toc-section-end"></span></h4>
+
+<p>首先，我们需要知道，Lua是类C的，所以，他是大小写字符敏感的。</p>
+
+<p>下面是Lua的Hello World。注意：Lua脚本的语句的分号是可选的，这个和<a title="Go 语言简介（上）— 语法" href="https://coolshell.cn/articles/8460.html" target="_blank">GO语言很类似</a>。</p>
+
+<p><code data-enlighter-language="c" class="EnlighterJSRAW">print(&quot;Hello World&quot;)</code></p>
+
+<p>你可以像python一样，在命令行上运行lua命令后进入lua的shell中执行语句。</p>
+
+<p><pre data-enlighter-language="shell" class="EnlighterJSRAW">chenhao-air:lua chenhao$ lua
+Lua 5.2.2  Copyright (C) 1994-2013 Lua.org, PUC-Rio
+&gt; print(&quot;Hello, World&quot;)
+Hello, World
+&gt; </pre></p>
+<p><span id="more-10739"></span></p>
+<p>也可以把脚本存成一个文件，用如下命令行来运行。</p>
+<p><code data-enlighter-language="shell" class="EnlighterJSRAW">&gt;lua  file.lua</code></p>
+<p>或是像shell一样运行：</p>
+<p><pre data-enlighter-language="shell" class="EnlighterJSRAW">chenhao-air:lua chenhao$ cat hello.lua
+#!/usr/local/bin/lua
+print(&quot;Hello, World&quot;)
+chenhao-air:lua chenhao$ chmod +x hello.lua
+chenhao-air:test chenhao$ ./hello.lua
+Hello, World</pre></p>
+<h4><span class="ez-toc-section" id="%E8%AF%AD%E6%B3%95"></span>语法<span class="ez-toc-section-end"></span></h4>
+<h5><span class="ez-toc-section" id="%E6%B3%A8%E9%87%8A"></span>注释<span class="ez-toc-section-end"></span></h5>
+<p><code data-enlighter-language="c" class="EnlighterJSRAW">-- 两个减号是行注释</code></p>
+<p>&nbsp;</p>
+<p><pre data-enlighter-language="c" class="EnlighterJSRAW">--[[
+ 这是块注释
+ 这是块注释
+ --]]</pre></p>
+<h5><span class="ez-toc-section" id="%E5%8F%98%E9%87%8F"></span>变量<span class="ez-toc-section-end"></span></h5>
+<p>Lua的数字只有double型，64bits，你不必担心Lua处理浮点数会慢（除非大于100,000,000,000,000），或是会有精度问题。</p>
+<p>你可以以如下的方式表示数字，0x开头的16进制和C是很像的。</p>
+<p><pre data-enlighter-language="c" class="EnlighterJSRAW">
+num = 1024
+num = 3.0
+num = 3.1416
+num = 314.16e-2
+num = 0.31416E1
+num = 0xff
+num = 0x56
+</pre></p>
+<p>字符串你可以用单引号，也可以用双引号，还支持C类型的转义，比如： &#8216;\a&#8217; （响铃）， &#8216;\b&#8217; （退格）， &#8216;\f&#8217; （表单）， &#8216;\n&#8217; （换行）， &#8216;\r&#8217; （回车）， &#8216;\t&#8217; （横向制表）， &#8216;\v&#8217; （纵向制表）， &#8216;\\&#8217; （反斜杠）， &#8216;\&#8221;&#8216; （双引号）， 以及 &#8216;\&#8221; （单引号)</p>
+<p>下面的四种方式定义了完全相同的字符串（其中的两个中括号可以用于定义有换行的字符串）</p>
+<p><pre data-enlighter-language="c" class="EnlighterJSRAW">
+a = &#039;alo\n123&quot;&#039;
+a = &quot;alo\n123\&quot;&quot;
+a = &#039;\97lo\10&#092;&#048;4923&quot;&#039;
+a = [[alo
+123&quot;]]</pre></p>
+<p>C语言中的NULL在Lua中是nil，比如你访问一个没有声明过的变量，就是nil，比如下面的v的值就是nil</p>
+<p><code data-enlighter-language="c" class="EnlighterJSRAW">v = UndefinedVariable</code></p>
+<p>布尔类型只有nil和false是 false，数字0啊，‘’空字符串（&#8217;\0&#8217;）都是true！</p>
+<p>另外，需要注意的是：lua中的变量如果没有特殊说明，全是全局变量，那怕是语句块或是函数里。变量前加local关键字的是局部变量。</p>
+<p><pre data-enlighter-language="c" class="EnlighterJSRAW">theGlobalVar = 50
+local theLocalVar = &quot;local variable&quot;</pre></p>
+<h4><span class="ez-toc-section" id="%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5"></span>控制语句<span class="ez-toc-section-end"></span></h4>
+<p>不多说了，直接看代码吧（注意：Lua没有++或是+=这样的操作）</p>
+<h5><span class="ez-toc-section" id="while%E5%BE%AA%E7%8E%AF"></span>while循环<span class="ez-toc-section-end"></span></h5>
+<p><pre data-enlighter-language="c" class="EnlighterJSRAW">sum = 0
+num = 1
+while num &lt;= 100 do
+    sum = sum + num
+    num = num + 1
+end
+print(&quot;sum =&quot;,sum)</pre></p>
+<h5><span class="ez-toc-section" id="ifelse%E5%88%86%E6%94%AF"></span>if-else分支<span class="ez-toc-section-end"></span></h5>
+<p><pre data-enlighter-language="c" class="EnlighterJSRAW">if age == 40 and sex ==&quot;Male&quot; then
+    print(&quot;男人四十一枝花&quot;)
+elseif age &gt; 60 and sex ~=&quot;Female&quot; then
+    print(&quot;old man without country!&quot;)
+elseif age &lt; 20 then
+    io.write(&quot;too young, too naive!\n&quot;)
+else
+    local age = io.read()
+    print(&quot;Your age is &quot;..age)
+end</pre></p>
+<p>上面的语句不但展示了if-else语句，也展示了<br />
+1）“～=”是不等于，而不是!=<br />
+2）io库的分别从stdin和stdout读写的read和write函数<br />
+3）字符串的拼接操作符“..”</p>
+<p>另外，条件表达式中的与或非为分是：and, or, not关键字。</p>
+<h5><span class="ez-toc-section" id="for_%E5%BE%AA%E7%8E%AF"></span>for 循环<span class="ez-toc-section-end"></span></h5>
+<p><pre data-enlighter-language="c" class="EnlighterJSRAW">sum = 0
+for i = 1, 100 do
+    sum = sum + i
+end</pre></p>
+<p>&nbsp;</p>
+<p><pre data-enlighter-language="c" class="EnlighterJSRAW">sum = 0
+for i = 1, 100, 2 do
+    sum = sum + i
+end</pre></p>
+<p>&nbsp;</p>
+<p><pre data-enlighter-language="c" class="EnlighterJSRAW">sum = 0
+for i = 100, 1, -2 do
+    sum = sum + i
+end</pre></p>
+<h5><span class="ez-toc-section" id="until%E5%BE%AA%E7%8E%AF"></span>until循环<span class="ez-toc-section-end"></span></h5>
+<p><pre data-enlighter-language="c" class="EnlighterJSRAW">sum = 2
+repeat
+   sum = sum ^ 2 --幂操作
+   print(sum)
+until sum &gt;1000</pre></p>
+<h4><span class="ez-toc-section" id="%E5%87%BD%E6%95%B0"></span>函数<span class="ez-toc-section-end"></span></h4>
+<p>Lua的函数和Javascript的很像</p>
+<h5><span class="ez-toc-section" id="%E9%80%92%E5%BD%92"></span>递归<span class="ez-toc-section-end"></span></h5>
+<p><pre data-enlighter-language="c" class="EnlighterJSRAW">function fib(n)
+  if n &lt; 2 then return 1 end
+  return fib(n - 2) + fib(n - 1)
+end</pre></p>
+<h5><span class="ez-toc-section" id="%E9%97%AD%E5%8C%85"></span>闭包<span class="ez-toc-section-end"></span></h5>
+<p>同样，Javascript附体！</p>
+<p><pre data-enlighter-language="c" class="EnlighterJSRAW">function newCounter()
+    local i = 0
+    return function()     -- anonymous function
+       i = i + 1
+        return i
+    end
+end
+
+c1 = newCounter()
+print(c1()) --&gt; 1
+print(c1()) --&gt; 2</pre></p>
+
+<p>&nbsp;</p>
+
+<p><pre data-enlighter-language="c" class="EnlighterJSRAW">function myPower(x)
+    return function(y) return y^x end
+end
+
+power2 = myPower(2)
+power3 = myPower(3)
+
+print(power2(4)) --4 的 2 次方
+print(power3(5)) --5 的 3 次方</pre></p>
+
+<h5><span class="ez-toc-section" id="%E5%87%BD%E6%95%B0%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC"></span>函数的返回值<span class="ez-toc-section-end"></span></h5>
+
+<p>和<a title="Go 语言简介（上）— 语法" href="https://coolshell.cn/articles/8460.html" target="_blank">Go语言一样</a>，可以一条语句上赋多个值，如：</p>
+
+<p><code data-enlighter-language="c" class="EnlighterJSRAW">name, age, bGay = &quot;haoel&quot;, 37, false, &quot;haoel@hotmail.com&quot;</code></p>
+
+<p>上面的代码中，因为只有3个变量，所以第四个值被丢弃。</p>
+
+<p>函数也可以返回多个值：</p>
+
+<p><pre data-enlighter-language="c" class="EnlighterJSRAW">function getUserInfo(id)
+    print(id)
+    return &quot;haoel&quot;, 37, &quot;haoel@hotmail.com&quot;, &quot;https://coolshell.cn&quot;
+end
+
+name, age, email, website, bGay = getUserInfo()
+
+</pre></p>
+<p>注意：上面的示例中，因为没有传id，所以函数中的id输出为nil，因为没有返回bGay，所以bGay也是nil。</p>
+<h5><span class="ez-toc-section" id="%E5%B1%80%E9%83%A8%E5%87%BD%E6%95%B0"></span>局部函数<span class="ez-toc-section-end"></span></h5>
+<p>函数前面加上local就是局部函数，其实，Lua中的函数和Javascript中的一个德行。</p>
+<p>比如：下面的两个函数是一样的：</p>
+<p><pre data-enlighter-language="c" class="EnlighterJSRAW">function foo(x) return x^2 end
+foo = function(x) return x^2 end</pre></p>
+<h4><span class="ez-toc-section" id="Table"></span>Table<span class="ez-toc-section-end"></span></h4>
+<p>所谓Table其实就是一个Key Value的数据结构，它很像Javascript中的Object，或是PHP中的数组，在别的语言里叫Dict或Map，Table长成这个样子：</p>
+<p><code data-enlighter-language="c" class="EnlighterJSRAW">haoel = {name=&quot;ChenHao&quot;, age=37, handsome=True}</code></p>
+<p>下面是table的CRUD操作：</p>
+<p><pre data-enlighter-language="c" class="EnlighterJSRAW">haoel.website=&quot;https://coolshell.cn/&quot;
+local age = haoel.age
+haoel.handsome = false
+haoel.name=nil</pre></p>
+<p>上面看上去像C/C++中的结构体，但是name,age, handsome, website都是key。你还可以像下面这样写义Table：</p>
+<p><code data-enlighter-language="c" class="EnlighterJSRAW">t = {[20]=100, [&#039;name&#039;]=&quot;ChenHao&quot;, [3.14]=&quot;PI&quot;} </code></p>
+<p>这样就更像Key Value了。于是你可以这样访问：t[20]，t[&#8220;name&#8221;], t[3.14]。</p>
+<p>我们再来看看数组：</p>
+<p><code data-enlighter-language="c" class="EnlighterJSRAW">arr = {10,20,30,40,50}</code></p>
+<p>这样看上去就像数组了。但其实其等价于：</p>
+<p><code data-enlighter-language="c" class="EnlighterJSRAW">arr = {[1]=10, [2]=20, [3]=30, [4]=40, [5]=50}</code></p>
+<p>所以，你也可以定义成不同的类型的数组，比如：</p>
+<p><code data-enlighter-language="c" class="EnlighterJSRAW">arr = {&quot;string&quot;, 100, &quot;haoel&quot;, function() print(&quot;coolshell.cn&quot;) end}</code></p>
+<p>注：其中的函数可以这样调用：arr[4]()。</p>
+<p>我们可以看到Lua的下标不是从0开始的，是从1开始的。</p>
+<p><pre data-enlighter-language="c" class="EnlighterJSRAW">for i=1, #arr do
+    print(arr[i])
+end</pre></p>
+<p>注：上面的程序中：#arr的意思就是arr的长度。</p>
+<p>注：前面说过，Lua中的变量，如果没有local关键字，全都是全局变量，Lua也是用Table来管理全局变量的，Lua把这些全局变量放在了一个叫“_G”的Table里。</p>
+<p>我们可以用如下的方式来访问一个全局变量（假设我们这个全局变量名叫globalVar）：</p>
+<p><pre data-enlighter-language="c" class="EnlighterJSRAW">_G.globalVar
+_G[&quot;globalVar&quot;]</pre></p>
+<p>我们可以通过下面的方式来遍历一个Table。</p>
+<p><pre data-enlighter-language="c" class="EnlighterJSRAW">for k, v in pairs(t) do
+    print(k, v)
+end</pre></p>
+<h4><span class="ez-toc-section" id="MetaTable_%E5%92%8C_MetaMethod"></span>MetaTable 和 MetaMethod<span class="ez-toc-section-end"></span></h4>
+<p>MetaTable和MetaMethod是Lua中的重要的语法，MetaTable主要是用来做一些类似于C++重载操作符式的功能。</p>
+<p>比如，我们有两个分数：</p>
+<p><pre data-enlighter-language="c" class="EnlighterJSRAW">fraction_a = {numerator=2, denominator=3}
+fraction_b = {numerator=4, denominator=7}</pre></p>
+<p>我们想实现分数间的相加：2/3 + 4/7，我们如果要执行： fraction_a + fraction_b，会报错的。</p>
+<p>所以，我们可以动用MetaTable，如下所示：</p>
+<p><pre data-enlighter-language="c" class="EnlighterJSRAW">fraction_op={}
+function fraction_op.__add(f1, f2)
+    ret = {}
+    ret.numerator = f1.numerator * f2.denominator + f2.numerator * f1.denominator
+    ret.denominator = f1.denominator * f2.denominator
+    return ret
+end
+</pre></p>
+<p>为之前定义的两个table设置MetaTable：（其中的setmetatble是库函数）</p>
+<p><pre data-enlighter-language="c" class="EnlighterJSRAW">setmetatable(fraction_a, fraction_op)
+setmetatable(fraction_b, fraction_op)</pre></p>
+<p>于是你就可以这样干了：（调用的是fraction_op.__add()函数）</p>
+<p><code data-enlighter-language="c" class="EnlighterJSRAW">fraction_s = fraction_a + fraction_b</code></p>
+<p>至于__add这是MetaMethod，这是Lua内建约定的，其它的还有如下的MetaMethod：</p>
+<pre>__add(a, b)                     对应表达式 a + b
+__sub(a, b)                     对应表达式 a - b
+__mul(a, b)                     对应表达式 a * b
+__div(a, b)                     对应表达式 a / b
+__mod(a, b)                     对应表达式 a % b
+__pow(a, b)                     对应表达式 a ^ b
+__unm(a)                        对应表达式 -a
+__concat(a, b)                  对应表达式 a .. b
+__len(a)                        对应表达式 #a
+__eq(a, b)                      对应表达式 a == b
+__lt(a, b)                      对应表达式 a &lt; b
+__le(a, b)                      对应表达式 a &lt;= b
+__index(a, b)                   对应表达式 a.b
+__newindex(a, b, c)             对应表达式 a.b = c
+__call(a, ...)                  对应表达式 a(...)</pre>
+<h4><span class="ez-toc-section" id="%E2%80%9C%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E2%80%9D"></span>“面向对象”<span class="ez-toc-section-end"></span></h4>
+<p>上面我们看到有__index这个重载，这个东西主要是重载了find key的操作。这操作可以让Lua变得有点面向对象的感觉，让其有点像Javascript的prototype。</p>
+<p>所谓__index，说得明确一点，如果我们有两个对象a和b，我们想让b作为a的prototype只需要：</p>
+<p><code data-enlighter-language="c" class="EnlighterJSRAW">setmetatable(a, {__index = b})</code></p>
+<p>例如下面的示例：你可以用一个Window_Prototype的模板加上__index的MetaMethod来创建另一个实例：</p>
+<p><pre data-enlighter-language="c" class="EnlighterJSRAW">Window_Prototype = {x=0, y=0, width=100, height=100}
+MyWin = {title=&quot;Hello&quot;}
+setmetatable(MyWin, {__index = Window_Prototype})</pre></p>
+<p>于是：MyWin中就可以访问x, y, width, height的东东了。（注：当表要索引一个值时如table[key], Lua会首先在table本身中查找key的值, 如果没有并且这个table存在一个带有__index属性的Metatable, 则Lua会按照__index所定义的函数逻辑查找）</p>
+<p>有了以上的基础，我们可以来说说所谓的Lua的面向对象。</p>
+<p><pre data-enlighter-language="c" class="EnlighterJSRAW">Person={}
+
+function Person:new(p)
+local obj = p
+if (obj == nil) then
+obj = {name=&quot;ChenHao&quot;, age=37, handsome=true}
+end
+self.\_\_index = self
+return setmetatable(obj, self)
+end
+
+function Person:toString()
+return self.name ..&quot; : &quot;.. self.age ..&quot; : &quot;.. (self.handsome and &quot;handsome&quot; or &quot;ugly&quot;)
+end
+
+</pre></p>
+<p>上面我们可以看到有一个new方法和一个toString的方法。其中：</p>
+<p>1）self 就是 Person，Person:new(p)，相当于Person.new(self, p)<br />
+2）new方法的self.__index = self 的意图是怕self被扩展后改写，所以，让其保持原样<br />
+3）setmetatable这个函数返回的是第一个参数的值。</p>
+<p>于是：我们可以这样调用：</p>
+<p><pre data-enlighter-language="c" class="EnlighterJSRAW">me = Person:new()
+print(me:toString())
+
+kf = Person:new{name=&quot;King&#039;s fucking&quot;, age=70, handsome=false}
+print(kf:toString())
+
+</pre></p>
+<p>继承如下，我就不多说了，Lua和Javascript很相似，都是在Prototype的实例上改过来改过去的。</p>
+<p><pre data-enlighter-language="c" class="EnlighterJSRAW">Student = Person:new()
+
+function Student:new()
+newObj = {year = 2013}
+self.\_\_index = self
+return setmetatable(newObj, self)
+end
+
+function Student:toString()
+return &quot;Student : &quot;.. self.year..&quot; : &quot; .. self.name
+end</pre></p>
+
+<h4><span class="ez-toc-section" id="%E6%A8%A1%E5%9D%97"></span>模块<span class="ez-toc-section-end"></span></h4>
+
+<p>我们可以直接使用require(&#8220;model_name&#8221;)来载入别的lua文件，文件的后缀是.lua。载入的时候就直接执行那个文件了。比如：</p>
+
+<p>我们有一个hello.lua的文件：</p>
+
+<p><code data-enlighter-language="c" class="EnlighterJSRAW">print(&quot;Hello, World!&quot;)</code></p>
+
+<p>如果我们：require(&#8220;hello&#8221;)，那么就直接输出Hello, World！了。</p>
+
+<p>注意：<br />
+1）require函数，载入同样的lua文件时，只有第一次的时候会去执行，后面的相同的都不执行了。<br />
+2）如果你要让每一次文件都会执行的话，你可以使用dofile(&#8220;hello&#8221;)函数<br />
+3）如果你要玩载入后不执行，等你需要的时候执行时，你可以使用 loadfile()函数，如下所示：</p>
+
+<p><pre data-enlighter-language="c" class="EnlighterJSRAW">local hello = loadfile(&quot;hello&quot;)
+... ...
+... ...
+hello()</pre></p>
+<p>loadfile(&#8220;hello&#8221;)后，文件并不执行，我们把文件赋给一个变量hello，当hello()时，才真的执行。（我们多希望JavaScript也有这样的功能）</p>
+<p>当然，更为标准的玩法如下所示。</p>
+<p>假设我们有一个文件叫mymod.lua，内容如下：</p>
+<p><pre data-enlighter-language="c" class="EnlighterJSRAW">local HaosModel = {}
+
+local function getname()
+return &quot;Hao Chen&quot;
+end
+
+function HaosModel.Greeting()
+print(&quot;Hello, My name is &quot;..getname())
+end
+
+return HaosModel</pre></p>
+
+<p>于是我们可以这样使用：</p>
+
+<p><pre data-enlighter-language="c" class="EnlighterJSRAW">local hao_model = require(&quot;mymod&quot;)
+hao_model.Greeting()</pre></p>
+<p>其实，require干的事就如下：（所以你知道为什么我们的模块文件要写成那样了）</p>
+<p><pre data-enlighter-language="c" class="EnlighterJSRAW">local hao_model = (function ()
+  --mymod.lua文件的内容--
+end)()</pre></p>
+<h4><span class="ez-toc-section" id="%E5%8F%82%E8%80%83"></span>参考<span class="ez-toc-section-end"></span></h4>
+<p>如果你还比较喜欢Lua的话，下面是几个在线文章你可以继续学习之：</p>
+<ul>
+<li><a href="http://manual.luaer.cn/" rel="nofollow">manual.luaer.cn</a> lua在线手册</li>
+<li><a href="http://book.luaer.cn/" rel="nofollow">book.luaer.cn</a> lua在线lua学习教程</li>
+<li><a href="http://www.codingnow.com/2000/download/lua_manual.html" rel="nofollow">lua参考手册</a>Lua参考手册的中文翻译（云风翻译版本）</li>
+</ul>
+<p>关于Lua的标库，你可以看看官方文档：<a href="http://lua-users.org/wiki/StringLibraryTutorial" target="_blank">string</a>，  <a href="http://lua-users.org/wiki/TableLibraryTutorial" target="_blank">table</a>， <a href="http://lua-users.org/wiki/MathLibraryTutorial" target="_blank">math</a>， <a href="http://lua-users.org/wiki/IoLibraryTutorial" target="_blank">io</a>， <a href="http://lua-users.org/wiki/OsLibraryTutorial" target="_blank">os</a>。</p>
+<p>（全文完）<!--
+                </div>
+                <footer class="text-right">
+                    <p>by 李鹏</p>
+                </footer>
+  <!-- css -->
+  <style type="text/css">
+      .center {
+          text-align: center;
+      }
+      .hidden {
+          display: none;
+      }
+    .donate_bar a.btn_donate{
+      display: inline-block;
+      width: 80px;
+      height:80px;
+      background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;
+      _background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;
+
+      <!-- http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif
+           因为本 hexo 生成的博客所用的 theme 的 a:hover 带动画效果，
+         为了在让打赏按钮显示效果正常 而 添加了以下几行 css，
+         嵌入其它博客时不一定要它们。 -->
+      -webkit-transition: background 0s;
+      -moz-transition: background 0s;
+      -o-transition: background 0s;
+      -ms-transition: background 0s;
+      transition: background 0s;
+      <!-- /让打赏按钮的效果显示正常 而 添加的几行 css 到此结束 -->
+    }
+
+    .donate_bar a.btn_donate:hover{ background-position: 0px -82px;}
+    .donate_bar .donate_txt {
+      display: block;
+      color: #9d9d9d;
+      font: 14px/2 "Microsoft Yahei";
+    }
+    .bold{ font-weight: bold; }
+  </style>
+  <!-- /css -->
+
+    <!-- Donate Module -->
+    <div id="donate_module">
+
+  <!-- btn_donate & tips -->
+  <div id="donate_board" class="donate_bar center">
+      <br>
+      ------------------------------------------------------------------------------------------------------------------------------
+      <br>
+    <a id="btn_donate" class="btn_donate" target="_self" href="javascript:;" title="Donate 打赏"></a>
+    <span class="donate_txt">
+      <Enjoy it ? Donate me !  欣赏此文？求鼓励，求支持！>
+    </span>
+      
+    
+  </div>
+  <!-- /btn_donate & tips -->
+
+  <!-- donate guide -->
+    
+  <div id="donate_guide" class="donate_bar center hidden">
+        <br>
+      ------------------------------------------------------------------------------------------------------------------------------
+      <br>
+
+    <a href="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/wechart.png?raw=true" title="用微信扫一扫哦~" class="fancybox" rel="article0">
+      <img src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/wechart.png?raw=true" title="微信打赏 Colin" height="320px" width="auto"/>
+    </a>
+        
+        &nbsp;&nbsp;
+   <a href="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/alipay.png?raw=true" title="用支付宝扫一扫即可~" class="fancybox" rel="article0">
+      <img src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/alipay.png?raw=true" title="支付宝打赏 Colin" height="320px" width="auto"/>
+    </a>
+
+    <span class="donate_txt">
+      <Enjoy it ? Donate me !  欣赏此文？求鼓励，求支持！>
+    </span>
+
+  </div>
+  <!-- /donate guide -->
+
+  <!-- donate script -->
+  <script type="text/javascript">
+    document.getElementById('btn_donate').onclick = function() {
+      $('#donate_board').addClass('hidden');
+      $('#donate_guide').removeClass('hidden');
+    }
+
+    function donate_on_web(){
+      $('#donate').submit();
+        }
+
+    var original_window_onload = window.onload;
+        window.onload = function () {
+            if (original_window_onload) {
+                original_window_onload();
+            }
+            document.getElementById('donate_board_wdg').className = 'hidden';
+    }
+  </script>
+  <!-- /donate script -->
+</div>
+<!-- /Donate Module -->
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2127927"></script>
+<!-- UY END -->
+            </div>
+        </div>
+    </article>
+</section>
+
+<!--"-->
+<footer>
+    <hr>
+    <div class="row">
+        <div class="col-lg-9 text-center">
+            <p><small>
+                <a href="http://www.reliablecounter.com" target="_blank"><img src="https://www.reliablecounter.com/count.php?page=vimlinux.com/17142058&digit=style/plain/3/&reloads=0" alt="" title="" border="0"></a><br /><a href="http://www.lapshock.com/best-trackball-mouse-2018/" target="_blank" style="font-family: Geneva, Arial; font-size: 9px; color: #330010; text-decoration: none;">trackball</a>
+                Copyright</a>  </a>
+                <!--&middot;-->                    &copy;2009 李鹏
+            </small></p>
+        </div>
+    </div>
+</footer>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery Version 1.11.2 -->
+    <script src="../../../../theme/js/jquery-1.11.2.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../../../theme/js/bootstrap.min.js"></script>
+    <!-- twitchy Script -->
+    <script src="../../../../theme/js/pelican_twitchy.min.js"></script>
+    <!-- Begin Cookie Consent https://silktide.com/tools/cookie-consent/ -->
+    <script>
+        window.cookieconsent_options = {
+            message: "This site uses Cookies. If you continue without changing your settings, it is assumed that you are happy to receive all cookies from this website.",
+            learnMore: "More info",
+            link: null,
+            dismiss: "Got it!",
+            theme: "../../../../theme/css/cookieconsent/dark-floating.css",
+        };
+    </script>
+    <script src="../../../../theme/js/cookieconsent.min.js"></script>
+    <!-- End Cookie Consent -->
+
+</body>
+</html>
