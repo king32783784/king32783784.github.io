@@ -10,7 +10,7 @@
 
 &lt;p&gt;首先，我们需要知道，Lua是类C的，所以，他是大小写字符敏感的。&lt;/p&gt;
 
-&lt;p&gt;下面是Lua的Hello World。注意：Lua脚本的语句的分号是可选的，这个和&lt;a title="Go 语言简介（上）— 语法" href="https://coolshell.cn/articles/8460.html" target="_blank"&gt;GO语言很类似&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;下面是Lua的Hello World。注意：Lua脚本的语句的分号是可选的，这个和&lt;a title="Go 语言简介（上）— 语法" href="http://shouce.jb51.net/gopl-zh/" target="_blank"&gt;GO语言很类似&lt;/a&gt;。&lt;/p&gt;
 
 &lt;p&gt;&lt;code data-enlighter-language="c" class="EnlighterJSRAW"&gt;print(&amp;quot;Hello World&amp;quot;)&lt;/code&gt;&lt;/p&gt;
 
