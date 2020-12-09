@@ -10,7 +10,7 @@
         <meta name="description" content="Tips 21 重构 前面将了测试驱动开发，但就算尽全力编写的单元测试，仍然会遇到错误。仍然会有考虑不全面的测试用例。 比如前面的实现的转换数字的程序，如果输入空字符，会触发InvalidRomanNumeralError例外。 在出现错误后，应该在修复前写出一个导致该失败情形的测试用例。 class FromRomanBadInput(unittest.TestCase): def testBlank(self): &#39;&#39;&#39;from_roman should fail with blank string&#39;&#39;&#39; self.assertRaises(roman2.InvalidRomanNumeralError, roman2.form_roman, &#39;&#39;) 执行测试用例会失败，现在可以修复这个bug。 if not s: raise InvalidRomanNumberalError(&#39;Input can not be blank&#39;) 然后测试成功 正常情况下，罗马数字中任何一个字符在同一行中不得重复出现三次以上，但通过一行4个Ｍ字符来代表4000,这样就可以把数字范围才能够１..3999转为１..4999 ..." />
 
 <!-- Open Graph tags -->
-<meta property="og:site_name" content="路漫求索"/>
+<meta property="og:site_name" content="Hi, World"/>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="Python-Tips(六）"/>
     <meta property="og:url" content="../../../../2014/05/10/python/"/>
@@ -22,7 +22,7 @@
         <meta property="og:image"
               content="../../../../favicon.png"/>
 
-    <title>Python-Tips(六） - 路漫求索</title>
+    <title>Python-Tips(六） - Hi, World</title>
 
         <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
 
@@ -40,7 +40,7 @@
     
     <!-- Feeds -->
         <link href="../../../../feeds/atom.xml" type="application/atom+xml" rel="alternate"
-              title="路漫求索 ATOM Feed" />
+              title="Hi, World ATOM Feed" />
 </head>
 <body data-spy="scroll" data-target="#scrollspy">
     <div id="wrapper">
@@ -48,7 +48,7 @@
         <div id="sidebar-wrapper-small" class="twitchy-background">
             <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
                 <li>
-        <a href="../../../.." title="路漫求索" class="collapsed">
+        <a href="../../../.." title="Hi, World" class="collapsed">
             <span class="glyphicon glyphicon-home"></span>
         </a>
     </li>

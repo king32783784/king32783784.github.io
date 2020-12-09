@@ -10,7 +10,7 @@
         <meta name="description" content="本文对shelve模块进行说明。 shelve模块实现了对任意可被pickle的python对象进行持久存储，并提供了类字典的API使用。 简介 当使用关系数据库太重时，shelve模块可以为python对象提供了一个简单的持久的存储选择。它就像字典一样，通过关键字访问shelf对象，其值经过pickle,写入anydbm创建和管理的数据库。在使用时，可以自己定义一些存储结构使其存储较复杂的数据。 创建shelf对象 最简单的使用shelve模块的方式是通过DbfilenameShelf类。使用函数shelve.open()(使用的是anydbm）来存储数据。可以使用类或简单的调用： import shelve s = shelve.open(&#39;test_shelf.db&#39;) # 创建test_shelf.db文件进行存储 try: s[&#39;key1&#39;] = {&#39;int&#39;:10, &#39;float&#39;:9.5, &#39;string&#39;: &#39;Sample Data&#39;} # 写入key1，值可以是python支持的对象，看起来和字典的用法一样 finally: s.close() 访问已存储的数据，打开shelf,可以像字典一样进行使用。 s = shelve ..." />
 
 <!-- Open Graph tags -->
-<meta property="og:site_name" content="路漫求索"/>
+<meta property="og:site_name" content="Hi, World"/>
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="python shelve"/>
     <meta property="og:url" content="../../../../2016/12/27/编程语言-Python/"/>
@@ -22,7 +22,7 @@
         <meta property="og:image"
               content="../../../../favicon.png"/>
 
-    <title>python shelve - 路漫求索</title>
+    <title>python shelve - Hi, World</title>
 
         <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
 
@@ -40,7 +40,7 @@
     
     <!-- Feeds -->
         <link href="../../../../feeds/atom.xml" type="application/atom+xml" rel="alternate"
-              title="路漫求索 ATOM Feed" />
+              title="Hi, World ATOM Feed" />
 </head>
 <body data-spy="scroll" data-target="#scrollspy">
     <div id="wrapper">
@@ -48,7 +48,7 @@
         <div id="sidebar-wrapper-small" class="twitchy-background">
             <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
                 <li>
-        <a href="../../../.." title="路漫求索" class="collapsed">
+        <a href="../../../.." title="Hi, World" class="collapsed">
             <span class="glyphicon glyphicon-home"></span>
         </a>
     </li>
