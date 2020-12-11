@@ -1,0 +1,1042 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="李鹏" />
+        <meta name="keywords" content="Python" />
+        <meta name="description" content="⽣成器（Generators） ⾸先我们要理解迭代器(iterators)。根据维基百科，迭代器是⼀个让程序员可以遍历⼀个容 器（特别是列表）的对象。然⽽，⼀个迭代器在遍历并读取⼀个容器的数据元素时，并不 会执⾏⼀个迭代。你可能有点晕了，那我们来个慢动作。换句话说这⾥有三个部分： 可迭代对象(Iterable) 迭代器(Iterator) 迭代(Iteration) 上⾯这些部分互相联系。我们会先各个击破来讨论他们，然后再讨论⽣成器 可迭代对象(Iterable) Python 中任意的对象，只要它定义了可以返回⼀个迭代器的 __iter__ ⽅法，或者定义了 可以⽀持下标索引的__getitem__⽅法(这些双下划线⽅法会在其他章节中全⾯解释)， 那么它就是⼀个可迭代对象 ..." />
+
+<!-- Open Graph tags -->
+<meta property="og:site_name" content="Hi, World"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="迭代器和装饰器"/>
+    <meta property="og:url" content="../../../../2020/12/11/Python/"/>
+    <meta property="og:description" content="⽣成器（Generators） ⾸先我们要理解迭代器(iterators)。根据维基百科，迭代器是⼀个让程序员可以遍历⼀个容 器（特别是列表）的对象。然⽽，⼀个迭代器在遍历并读取⼀个容器的数据元素时，并不 会执⾏⼀个迭代。你可能有点晕了，那我们来个慢动作。换句话说这⾥有三个部分： 可迭代对象(Iterable) 迭代器(Iterator) 迭代(Iteration) 上⾯这些部分互相联系。我们会先各个击破来讨论他们，然后再讨论⽣成器 可迭代对象(Iterable) Python 中任意的对象，只要它定义了可以返回⼀个迭代器的 __iter__ ⽅法，或者定义了 可以⽀持下标索引的__getitem__⽅法(这些双下划线⽅法会在其他章节中全⾯解释)， 那么它就是⼀个可迭代对象 ..."/>
+    <meta property="article:published_time" content="2020-12-11" />
+    <meta property="article:section" content="编程语言-python" />
+        <meta property="article:tag" content="Python" />
+        <meta property="article:author" content="李鹏" />
+        <meta property="og:image"
+              content="../../../../favicon.png"/>
+
+    <title>迭代器和装饰器 - Hi, World</title>
+
+        <link rel="stylesheet" href="../../../../theme/css/bootstrap.sandstone.min.css" type="text/css"/>
+
+    <link href="../../../../theme/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../../../../theme/css/pygments/colorful.css" rel="stylesheet" />
+    
+    <link href="../../../../theme/css/pelican-twitchy.min.css" rel="stylesheet" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <!-- Feeds -->
+        <link href="../../../../feeds/atom.xml" type="application/atom+xml" rel="alternate"
+              title="Hi, World ATOM Feed" />
+</head>
+<body data-spy="scroll" data-target="#scrollspy">
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper-small" class="twitchy-background">
+            <ul id="accordion-small" class="sidebar-nav sidebar-nav-small">
+                <li>
+        <a href="../../../.." title="Hi, World" class="collapsed">
+            <span class="glyphicon glyphicon-home"></span>
+        </a>
+    </li>
+                <li class="nav-divider"></li>
+                <li>
+        <a href="../../../../archives.html" title="最新文章" class="collapsed">
+            <span class="glyphicon glyphicon-th-list"></span>
+        </a>
+    </li>
+                
+                <li class="nav-divider"></li>
+                <li id="share-small">
+                    <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-share-small" title="分享" class="collapsed">
+                        <i class="fa fa-share-alt padding-small"></i>
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-share-small" class="collapse ">
+                    <li>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2020/12/11/Python/" title="Share via Facebook" target="popup">
+                            <i class="fa fa-facebook-square padding-small"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/share?url=../../../../2020/12/11/Python/" title="Share via Google+" target="popup">
+                            <i class="fa fa-google-plus padding-small"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" title="Share via Twitter" target="popup">
+                            <i class="fa fa-twitter-square padding-small"></i>
+                        </a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion-small" href="#collapse-social-small" title="Social" class="collapsed">
+                        <i class="fa fa-users padding-small"></i>
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-social-small" class="collapse ">
+                    <li>
+                        <a href="mailto:lipengb@uniontech.com" title="EMAIL"><i class="fa fa-envelope-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/lipeng886" title="GitHub"><i class="fa fa-github-square fa-lg padding-small"></i></a>
+                    </li>
+                    <li>
+                        <a href="http://lipeng886.github.io/feeds/atom.xml" title="RSS"><i class="fa fa-rss-square fa-lg padding-small"></i></a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+        <a href="#" title="Back to top" class="collapsed">
+            <span class="fa fa-arrow-up"></span>
+        </a>
+    </li>
+            </ul>
+        </div>
+        <div id="sidebar-wrapper" class="twitchy-background">
+            <ul id="accordion" class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="../../../../">
+<img src="../../../../sitelogo.png" width="200" alt="Sitelogo"/>                     </a>
+                </li>
+                    <li class="nav-divider"></li>
+                    <li>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse-latest">
+                            <span class="glyphicon glyphicon-th-list padding-small"></span>
+                            最新文章
+                        </a>
+                    </li>
+                    <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
+                        <li class="active">
+                            <a class="hide-overflow" href="../../../../2020/12/11/Python/" title="迭代器和装饰器">
+                                <i class="fa fa-file-text padding-small"></i>
+                                迭代器和装饰器
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="../../../../2020/12/06/Lua/" title="快速学Lua">
+                                <i class="fa fa-file-text padding-small"></i>
+                                快速学Lua
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="../../../../2017/08/19/Multue/" title="Multue测试工具介绍">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Multue测试工具介绍
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="../../../../2017/06/17/网络/" title="网络速率统计的几个示例">
+                                <i class="fa fa-file-text padding-small"></i>
+                                网络速率统计的几个示例
+                            </a>
+                        </li>
+                        <li class="">
+                            <a class="hide-overflow" href="../../../../2017/04/01/Robot/" title="Robot Framework 用户手册(三)">
+                                <i class="fa fa-file-text padding-small"></i>
+                                Robot Framework 用户手册(三)
+                            </a>
+                        </li>
+                    <li>
+                        <a href="../../../../archives.html">
+                            <i class="fa fa-arrow-right padding-small"></i>
+                            更多
+                        </a>
+                    </li>
+                    </ul></li>
+                <li class="nav-divider"></li>
+                <li id="share">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-share" title="Share" class="collapsed">
+                        <i class="fa fa-share-alt padding-small"></i>
+                        分享
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-share" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=../../../../2020/12/11/Python/" target="popup">
+                            <i class="fa fa-facebook-square padding-small"></i>
+                            Facebook
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/share?url=../../../../2020/12/11/Python/" target="popup">
+                            <i class="fa fa-google-plus padding-small"></i>
+                            Google+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" target="popup">
+                            <i class="fa fa-twitter-square padding-small"></i>
+                            Twitter
+                        </a>
+                    </li>
+                </ul></li>
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-social">
+                        <i class="fa fa-users padding-small"></i>
+                        联系
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-social" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="mailto:lipengb@uniontech.com" title="EMAIL">
+                            <i class="fa fa-envelope-square fa-lg padding-small"></i>
+                            EMAIL
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/lipeng886" title="GitHub">
+                            <i class="fa fa-github-square fa-lg padding-small"></i>
+                            GitHub
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://lipeng886.github.io/feeds/atom.xml" title="RSS">
+                            <i class="fa fa-rss-square fa-lg padding-small"></i>
+                            RSS
+                        </a>
+                    </li>
+                </ul></li>
+                
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-pages">
+                        <i class="fa fa-folder-open padding-small"></i>
+                       站内导航
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-pages" class="sidebar_submenu collapse ">
+                    <li>
+                        <a href="../../../../pages/opensource.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            开源项目
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../../pages/links.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            常用链接
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="../../../../pages/Reference material.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            参考资料
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../../pages/todo list.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            Todo List
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../../pages/tools.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            工具集
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../../pages/aboutme.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            About me
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../../../pages/doc.html">
+                            <i class="fa fa-file-text padding-small"></i>
+                            专题文档
+                        </a>
+                    </li>
+                </ul></li>
+                
+                <li class="nav-divider"></li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse-categories">
+                        <i class="fa fa-folder-open padding-small"></i>
+                        文章分类
+                    </a>
+                </li>
+                <li class="panel anti-panel"><ul id="collapse-categories" class="sidebar_submenu collapse ">
+                    <li class="active">
+                        <a href="../../../../category/bian-cheng-yu-yan-python.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            编程语言-python
+                            <span class="badge pull-right categorybadge">27</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-selenium.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Selenium
+                            <span class="badge pull-right categorybadge">17</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-autotest.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Autotest
+                            <span class="badge pull-right categorybadge">12</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-ltp.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-LTP
+                            <span class="badge pull-right categorybadge">7</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/linux.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Linux
+                            <span class="badge pull-right categorybadge">6</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/ce-shi.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            测试
+                            <span class="badge pull-right categorybadge">4</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/leetcode.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            leetcode
+                            <span class="badge pull-right categorybadge">4</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/qi-ta.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            其他
+                            <span class="badge pull-right categorybadge">4</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/xing-neng-ce-shi.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            性能测试
+                            <span class="badge pull-right categorybadge">4</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-robot.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Robot
+                            <span class="badge pull-right categorybadge">4</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/bian-cheng-yu-yan-c.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            编程语言-C
+                            <span class="badge pull-right categorybadge">3</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/dockerzhuan-ti.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Docker专题
+                            <span class="badge pull-right categorybadge">3</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/python-pyqt.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Python-pyqt
+                            <span class="badge pull-right categorybadge">3</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-avocado.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试-Avocado
+                            <span class="badge pull-right categorybadge">3</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/suan-fa.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            算法
+                            <span class="badge pull-right categorybadge">2</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/unixhuan-jing-bian-cheng.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            unix环境编程
+                            <span class="badge pull-right categorybadge">2</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/zi-dong-hua-ce-shi-gong-ju.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            自动化测试工具
+                            <span class="badge pull-right categorybadge">2</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/bian-cheng-yu-yan-lua.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            编程语言-Lua
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/gong-ju.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            工具
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/mongodb.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Mongodb
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/tong-xin-xiang-guan.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            通信相关
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                    <li >
+                        <a href="../../../../category/web.html">
+                            <i class="fa fa-folder-open padding-small"></i>
+                            Web
+                            <span class="badge pull-right categorybadge">1</span>
+                        </a>
+                    </li>
+                </ul></li>
+                
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <!-- open/close sidebar -->
+        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
+            <span id="right-arrow" class="glyphicon glyphicon-chevron-right"  title="expand sidebar"></span>
+            <span id="left-arrow" class="glyphicon glyphicon-chevron-left" title="minimize sidebar"></span>
+        </a>
+       <!-- /open/close sidebar -->
+       <!--访问统计 -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+<section id="content">
+    <article>
+        <div class="row">
+            <div class="col-lg-9">
+                <header class="page-header">
+                    <h1>
+                        <a href="../../../../2020/12/11/Python/"
+                           rel="bookmark"
+                           title="Permalink to 迭代器和装饰器">
+                            迭代器和装饰器
+                        </a>
+                        <small>
+<div class="post-info">
+    <div class="publish-info-block">
+        <small>
+            <span class="published">
+                <i class="fa fa-calendar padding-small"></i><time datetime="2020-12-11T00:00:00+08:00"> 2020-12-11 五</time>
+            </span>
+            <span class="category">
+                <i class="fa fa-folder-open padding-small"></i><a href="../../../../category/bian-cheng-yu-yan-python.html">编程语言-python</a>
+            </span>
+            <span class="tags">
+                <i class="fa fa-tags padding-small"></i>
+                <a href="../../../../tag/python.html">Python</a>            </span>
+        </small>
+    </div>
+</div><!-- /.post-info -->                        </small>
+                    </h1>
+                </header>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="entry-content">
+                    <h1>⽣成器（Generators）</h1>
+<p>⾸先我们要理解迭代器(iterators)。根据维基百科，迭代器是⼀个让程序员可以遍历⼀个容
+器（特别是列表）的对象。然⽽，⼀个迭代器在遍历并读取⼀个容器的数据元素时，并不
+会执⾏⼀个迭代。你可能有点晕了，那我们来个慢动作。换句话说这⾥有三个部分：</p>
+<ul>
+<li>可迭代对象(Iterable)</li>
+<li>迭代器(Iterator)</li>
+<li>迭代(Iteration)</li>
+</ul>
+<p>上⾯这些部分互相联系。我们会先各个击破来讨论他们，然后再讨论⽣成器</p>
+<h2>可迭代对象(Iterable)</h2>
+<p>Python 中任意的对象，只要它定义了可以返回⼀个迭代器的 <code>__iter__</code> ⽅法，或者定义了
+可以⽀持下标索引的<code>__getitem__</code>⽅法(这些双下划线⽅法会在其他章节中全⾯解释)，
+那么它就是⼀个可迭代对象。简单说，可迭代对象就是能提供迭代器的任意对象。那迭代 器又是什么呢？</p>
+<h2>迭代器(Iterator)</h2>
+<p>任意对象，只要定义了 next(Python2) 或者<code>__next__</code>⽅法，它就是⼀个迭代器。就这么简单。现在我们来理解迭代(iteration)</p>
+<h2>迭代(Iteration)</h2>
+<p>⽤简单的话讲，它就是从某个地⽅（⽐如⼀个列表）取出⼀个元素的过程。当我们使⽤⼀
+个循环来遍历某个东西时，这个过程本⾝就叫迭代。现在既然我们有了这些术语的基本理解</p>
+<h2>⽣成器(Generators)</h2>
+<p>⽣成器也是⼀种迭代器，但是你只能对其迭代⼀次。这是因为它们并没有把所有的值存在内存中，⽽是在运⾏时⽣成值。你通过遍历来使⽤它们，要么⽤⼀个“for”循环，要么将它们传递给任意可以进⾏迭代的函数和结构。⼤多数时候⽣成器是以函数来实现的。然⽽，它们并不返回⼀个值，⽽是 yield(暂且译作“⽣出”)⼀个值。这⾥有个⽣成器函数的简单
+例⼦：</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generator_function</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="n">i</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">generator_function</span><span class="p">():</span>
+<span class="k">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="c1"># Output: 0</span>
+<span class="c1"># 1</span>
+<span class="c1"># 2</span>
+<span class="c1"># 3</span>
+<span class="c1"># 4</span>
+<span class="c1"># 5</span>
+<span class="c1"># 6</span>
+<span class="c1"># 7</span>
+<span class="c1"># 8</span>
+<span class="c1"># 9</span>
+</pre></div>
+
+
+<p>这个案例并不是⾮常实⽤。⽣成器最佳应⽤场景是：你不想同⼀时间将所有计算出来的⼤
+量结果集分配到内存当中，特别是结果集⾥还包含循环。
+译者注：这样做会消耗⼤量资源
+许多 Python 2 ⾥的标准库函数都会返回列表，⽽ Python 3 都修改成了返回⽣成器，因为⽣成
+器占⽤更少的资源。</p>
+<p>下⾯是⼀个计算斐波那契数列的⽣成器：</p>
+<div class="highlight"><pre><span></span><span class="c1"># generator version</span>
+<span class="k">def</span> <span class="nf">fibon</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="n">a</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="n">Now</span> <span class="n">we</span> <span class="n">can</span> <span class="n">use</span> <span class="n">it</span> <span class="n">like</span> <span class="n">this</span><span class="p">:</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">fibon</span><span class="p">(</span><span class="mi">1000000</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+
+<p>⽤这种⽅式，我们可以不⽤担⼼它会使⽤⼤量资源。然⽽，之前如果我们这样来实现的
+话：</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fibon</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+
+
+<p>这也许会在计算很⼤的输⼊参数时，⽤尽所有的资源。我们已经讨论过⽣成器使⽤⼀次迭 代，但我们并没有测试过。在测试前你需要再知道⼀个 Python 内置函数：next()。它允 许我们获取⼀个序列的下⼀个元素。那我们来验证下我们的理解：</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generator_function</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="n">i</span>
+<span class="n">gen</span> <span class="o">=</span> <span class="n">generator_function</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">gen</span><span class="p">))</span>
+<span class="c1"># Output: 0 print(next(gen))</span>
+<span class="c1"># Output: 1 print(next(gen))</span>
+<span class="c1"># Output: 2 print(next(gen))</span>
+<span class="c1"># Output: Traceback (most recent call last):</span>
+<span class="c1"># File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span>
+<span class="c1"># StopIteration</span>
+</pre></div>
+
+
+<p>我们可以看到，在 yield 掉所有的值后，next()触发了⼀个 StopIteration 的异常。 基本上这个异常告诉我们，所有的值都已经被 yield 完了。你也许会奇怪，为什么我们在 使⽤ for 循环时没有这个异常呢？啊哈，答案很简单。for 循环会⾃动捕捉到这个异常并 停⽌调⽤ next()。你知不知道 Python 中⼀些内置数据类型也⽀持迭代哦？我们这就去看 看：</p>
+<div class="highlight"><pre><span></span><span class="n">my_string</span> <span class="o">=</span> <span class="s2">&quot;Yasoob&quot;</span>
+<span class="nb">next</span><span class="p">(</span><span class="n">my_string</span><span class="p">)</span>
+<span class="c1"># Output: Traceback (most recent call last):</span>
+<span class="c1"># File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span>
+<span class="c1"># TypeError: str object is not an iterator</span>
+</pre></div>
+
+
+<p>好吧，这不是我们预期的。这个异常说那个 str 对象不是⼀个迭代器。对，就是这样！它 是⼀个可迭代对象，⽽不是⼀个迭代器。这意味着它⽀持迭代，但我们不能直接对其进⾏ 迭代操作。那我们怎样才能对它实施迭代呢？是时候学习下另⼀个内置函数，iter。它 将根据⼀个可迭代对象返回⼀个迭代器对象。这⾥是我们如何使⽤它：</p>
+<div class="highlight"><pre><span></span><span class="n">my_string</span> <span class="o">=</span> <span class="s2">&quot;Yasoob&quot;</span>
+<span class="n">my_iter</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">my_string</span><span class="p">)</span>
+<span class="nb">next</span><span class="p">(</span><span class="n">my_iter</span><span class="p">)</span>
+<span class="c1"># Output: &#39;Y&#39;</span>
+</pre></div>
+
+
+<p>现在好多啦。我肯定你已经爱上了学习⽣成器。⼀定要记住，想要完全掌握这个概念，你 只有使⽤它。确保你按照这个模式，并在⽣成器对你有意义的任何时候都使⽤它。你绝对 不会失望的！</p>
+<h1>装饰器</h1>
+<p>装饰器(Decorators)是 Python 的⼀个重要部分。简单地说：他们是修改其他函数的功能的函 数。他们有助于让我们的代码更简短，也更 Pythonic（Python 范⼉）。⼤多数初学者不知 道在哪⼉使⽤它们，所以我将要分享下，哪些区域⾥装饰器可以让你的代码更简洁。 ⾸先，让我们讨论下如何写你⾃⼰的装饰器。 这可能是最难掌握的概念之⼀。我们会每次只讨论⼀个步骤，这样你能完全理解它。</p>
+<h2>⼀切皆对象</h2>
+<p>⾸先我们来理解下 Python 中的函数</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;yasoob&quot;</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">&quot;hi &quot;</span> <span class="o">+</span> <span class="n">name</span>
+<span class="k">print</span><span class="p">(</span><span class="n">hi</span><span class="p">())</span>
+<span class="c1"># output: &#39;hi yasoob&#39;</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="c1"># 我们甚⾄可以将⼀个函数赋值给⼀个变量，⽐如 greet = hi</span>
+<span class="c1"># 我们这⾥没有在使⽤⼩括号，因为我们并不是在调⽤hi函数</span>
+<span class="c1"># ⽽是在将它放在greet变量⾥头。我们尝试运⾏下这个 print(greet())</span>
+<span class="c1"># output: &#39;hi yasoob&#39;</span>
+<span class="c1"># 如果我们删掉旧的hi函数，看看会发⽣什么！</span>
+<span class="k">del</span> <span class="n">hi</span>
+<span class="k">print</span><span class="p">(</span><span class="n">hi</span><span class="p">())</span>
+<span class="c1">#outputs: NameError print(greet())</span>
+<span class="c1">#outputs: &#39;hi yasoob&#39;</span>
+</pre></div>
+
+
+<h2>在函数中定义函数</h2>
+<p>刚才那些就是函数的基本知识了。我们来让你的知识更进⼀步。在 Python 中我们可以在⼀ 个函数中定义另⼀个函数：</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;yasoob&quot;</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;now you are inside the hi() function&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">greet</span><span class="p">():</span>
+        <span class="k">return</span> <span class="s2">&quot;now you are in the greet() function&quot;</span>
+    <span class="k">def</span> <span class="nf">welcome</span><span class="p">():</span>
+        <span class="k">return</span> <span class="s2">&quot;now you are in the welcome() function&quot;</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">greet</span><span class="p">())</span> <span class="k">print</span><span class="p">(</span><span class="n">welcome</span><span class="p">())</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;now you are back in the hi() function&quot;</span><span class="p">)</span>
+<span class="n">hi</span><span class="p">()</span>
+<span class="c1">#output:now you are inside the hi() function # now you are in the greet() function</span>
+<span class="c1"># now you are in the welcome() function</span>
+<span class="c1"># now you are back in the hi() function</span>
+<span class="c1"># 上⾯展示了⽆论何时你调⽤hi(), greet()和welcome()将会同时被调⽤。</span>
+<span class="c1"># 然后greet()和welcome()函数在hi()函数之外是不能访问的，⽐如：</span>
+<span class="n">greet</span><span class="p">()</span> <span class="c1">#outputs: NameError: name &#39;greet&#39; is not defined</span>
+</pre></div>
+
+
+<p>那现在我们知道了可以在函数中定义另外的函数。也就是说：我们可以创建嵌套的函数。 现在你需要再多学⼀点，就是函数也能返回函数。</p>
+<h2>从函数中返回函数</h2>
+<p>其实并不需要在⼀个函数⾥去执⾏另⼀个函数，我们也可以将其作为输出返回出来：</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;yasoob&quot;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">greet</span><span class="p">():</span>
+        <span class="k">return</span> <span class="s2">&quot;now you are in the greet() function&quot;</span>
+
+    <span class="k">def</span> <span class="nf">welcome</span><span class="p">():</span>
+        <span class="k">return</span> <span class="s2">&quot;now you are in the welcome() function&quot;</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;yasoob&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">greet</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">welcome</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">hi</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="c1">#outputs: &lt;function greet at 0x7f2143c01500&gt;</span>
+<span class="c1">#上⾯清晰地展示了`a`现在指向到hi()函数中的greet()函数</span>
+<span class="c1">#现在试试这个 print(a())</span>
+<span class="c1">#outputs: now you are in the greet() function</span>
+</pre></div>
+
+
+<p>再次看看这个代码。在 if/else 语句中我们返回 greet 和 welcome，⽽不是 greet()和 welcome()。为什么那样？这是因为当你把⼀对⼩括号放在后⾯，这个函数就会执⾏； 然⽽如果你不放括号在它后⾯，那它可以被到处传递，并且可以赋值给别的变量⽽不去执 ⾏它。 你明⽩了吗？让我再稍微多解释点细节。 当我们写下 a = hi()，hi()会被执⾏，⽽由于 name 参数默认是 yasoob，所以函 数 greet 被返回了。如果我们把语句改为 a = hi(name = "ali")，那么 welcome 函数 将被返回。我们还可以打印出 hi()()，这会输出 now you are in the greet() function。</p>
+<h2>将函数作为参数传给另⼀个函数</h2>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hi</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">&quot;hi yasoob!&quot;</span>
+<span class="k">def</span> <span class="nf">doSomethingBeforeHi</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;I am doing some boring work before executing hi()&quot;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">func</span><span class="p">())</span>
+<span class="n">doSomethingBeforeHi</span><span class="p">(</span><span class="n">hi</span><span class="p">)</span>
+<span class="c1">#outputs:I am doing some boring work before executing hi()</span>
+<span class="c1"># hi yasoob!</span>
+</pre></div>
+
+
+<p>现在你已经具备所有必需知识，来进⼀步学习装饰器真正是什么了。装饰器让你在⼀个函 数的前后去执⾏代码。</p>
+<h2>你的第⼀个装饰器</h2>
+<p>在上⼀个例⼦⾥，其实我们已经创建了⼀个装饰器！现在我们修改下上⼀个装饰器，并编 写⼀个稍微更有⽤点的程序：</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">a_new_decorator</span><span class="p">(</span><span class="n">a_func</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">wrapTheFunction</span><span class="p">():</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;I am doing some boring work before executing a_func()&quot;</span>
+        <span class="n">a_func</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;I am doing some boring work after executing a_func()&quot;</span>
+    <span class="k">return</span> <span class="n">wrapTheFunction</span>
+
+<span class="k">def</span> <span class="nf">a_function_requiring_decoration</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;I am the function which needs some decoration to remove my foul smell&quot;</span>
+
+<span class="n">a_function_requiring_decoration</span><span class="p">()</span>
+<span class="c1">#outputs: &quot;I am the function which needs some decoration to remove my foul smell&quot;</span>
+
+<span class="n">a_function_requiring_decoration</span> <span class="o">=</span> <span class="n">a_new_decorator</span><span class="p">(</span><span class="n">a_function_requiring_decoration</span><span class="p">)</span>
+<span class="c1">#now a_function_requiring_decoration is wrapped by wrapTheFunction()</span>
+
+<span class="n">a_function_requiring_decoration</span><span class="p">()</span>
+<span class="c1">#outputs:I am doing some boring work before executing a_func()</span>
+<span class="c1"># I am the function which needs some decoration to remove my foul smell</span>
+<span class="c1"># I am doing some boring work after executing a_func()</span>
+</pre></div>
+
+
+<p>你看明⽩了吗？我们刚刚应⽤了之前学习到的原理。这正是 python 中装饰器做的事情！它 们封装⼀个函数，并且⽤这样或者那样的⽅式来修改它的⾏为。现在你也许疑惑，我们在 代码⾥并没有使⽤@符号？那只是⼀个简短的⽅式来⽣成⼀个被装饰的函数。这⾥是我们 如何使⽤@来运⾏之前的代码</p>
+<div class="highlight"><pre><span></span><span class="nd">@a_new_decorator</span>
+<span class="k">def</span> <span class="nf">a_function_requiring_decoration</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Hey you! Decorate me!&quot;&quot;&quot;</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;I am the function which needs some decoration to &quot;</span>
+          <span class="s2">&quot;remove my foul smell&quot;</span><span class="p">)</span>
+
+<span class="n">a_function_requiring_decoration</span><span class="p">()</span>
+<span class="c1">#outputs: I am doing some boring work before executing a_func()</span>
+<span class="c1">#         I am the function which needs some decoration to remove my foul smell</span>
+<span class="c1">#         I am doing some boring work after executing a_func()</span>
+
+<span class="c1">#the @a_new_decorator is just a short way of saying:</span>
+<span class="n">a_function_requiring_decoration</span> <span class="o">=</span> <span class="n">a_new_decorator</span><span class="p">(</span><span class="n">a_function_requiring_decoration</span><span class="p">)</span>
+</pre></div>
+
+
+<p>希望你现在对 Python 装饰器的工作原理有一个基本的理解。如果我们运行如下代码会存在一个问题：</p>
+<div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">a_function_requiring_decoration</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="c1"># Output: wrapTheFunction</span>
+</pre></div>
+
+
+<p>这并不是我们想要的！Ouput 输出应该是“a_function_requiring_decoration”。这里的函数被 warpTheFunction 替代了。它重写了我们函数的名字和注释文档(docstring)。幸运的是 Python 提供给我们一个简单的函数来解决这个问题，那就是 functools.wraps。我们修改上一个例子来使用 functools.wraps：</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+
+<span class="k">def</span> <span class="nf">a_new_decorator</span><span class="p">(</span><span class="n">a_func</span><span class="p">):</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">a_func</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">wrapTheFunction</span><span class="p">():</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;I am doing some boring work before executing a_func()&quot;</span><span class="p">)</span>
+        <span class="n">a_func</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;I am doing some boring work after executing a_func()&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">wrapTheFunction</span>
+
+<span class="nd">@a_new_decorator</span>
+<span class="k">def</span> <span class="nf">a_function_requiring_decoration</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Hey yo! Decorate me!&quot;&quot;&quot;</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;I am the function which needs some decoration to &quot;</span>
+          <span class="s2">&quot;remove my foul smell&quot;</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">a_function_requiring_decoration</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="c1"># Output: a_function_requiring_decoration</span>
+</pre></div>
+
+
+<p>现在好多了。我们接下来学习装饰器的一些常用场景。</p>
+<p>蓝本规范:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+<span class="k">def</span> <span class="nf">decorator_name</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">decorated</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">can_run</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;Function will not run&quot;</span>
+        <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">decorated</span>
+
+<span class="nd">@decorator_name</span>
+<span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
+    <span class="k">return</span><span class="p">(</span><span class="s2">&quot;Function is running&quot;</span><span class="p">)</span>
+
+<span class="n">can_run</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="k">print</span><span class="p">(</span><span class="n">func</span><span class="p">())</span>
+<span class="c1"># Output: Function is running</span>
+
+<span class="n">can_run</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="k">print</span><span class="p">(</span><span class="n">func</span><span class="p">())</span>
+<span class="c1"># Output: Function will not run</span>
+</pre></div>
+
+
+<p>注意：@wraps 接受一个函数来进行装饰，并加入了复制函数名称、注释文档、参数列表等等的功能。这可以让我们在装饰器里面访问在装饰之前的函数的属性。</p>
+<h2>使用场景</h2>
+<p>现在我们来看一下装饰器在哪些地方特别耀眼，以及使用它可以让一些事情管理起来变得更简单。</p>
+<h3>授权(Authorization)</h3>
+<p>装饰器能有助于检查某个人是否被授权去使用一个 web 应用的端点(endpoint)。它们被大量使用于 Flask 和 Django web 框架中。这里是一个例子来使用基于装饰器的授权：</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+
+<span class="k">def</span> <span class="nf">requires_auth</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">decorated</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">auth</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">authorization</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">auth</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">check_auth</span><span class="p">(</span><span class="n">auth</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="n">auth</span><span class="o">.</span><span class="n">password</span><span class="p">):</span>
+            <span class="n">authenticate</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">decorated</span>
+</pre></div>
+
+
+<h3>日志(Logging)</h3>
+<p>日志是装饰器运用的另一个亮点。这是个例子：</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+
+<span class="k">def</span> <span class="nf">logit</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">with_logging</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="s2">&quot; was called&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">with_logging</span>
+
+<span class="nd">@logit</span>
+<span class="k">def</span> <span class="nf">addition_func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+   <span class="sd">&quot;&quot;&quot;Do some math.&quot;&quot;&quot;</span>
+   <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span>
+
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">addition_func</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="c1"># Output: addition_func was called</span>
+</pre></div>
+
+
+<p>我敢肯定你已经在思考装饰器的一个其他聪明用法了。</p>
+<h2>带参数的装饰器</h2>
+<p>来想想这个问题，难道@wraps 不也是个装饰器吗？但是，它接收一个参数，就像任何普通的函数能做的那样。那么，为什么我们不也那样做呢？</p>
+<p>这是因为，当你使用@my_decorator 语法时，你是在应用一个以单个函数作为参数的一个包裹函数。记住，Python 里每个东西都是一个对象，而且这包括函数！记住了这些，我们可以编写一下能返回一个包裹函数的函数。</p>
+<h3>在函数中嵌入装饰器</h3>
+<p>我们回到日志的例子，并创建一个包裹函数，能让我们指定一个用于输出的日志文件。</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+
+<span class="k">def</span> <span class="nf">logit</span><span class="p">(</span><span class="n">logfile</span><span class="o">=</span><span class="s1">&#39;out.log&#39;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">logging_decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">wrapped_function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="n">log_string</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="s2">&quot; was called&quot;</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">log_string</span><span class="p">)</span>
+            <span class="c1"># 打开logfile，并写入内容</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">logfile</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">opened_file</span><span class="p">:</span>
+                <span class="c1"># 现在将日志打到指定的logfile</span>
+                <span class="n">opened_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">log_string</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">wrapped_function</span>
+    <span class="k">return</span> <span class="n">logging_decorator</span>
+
+<span class="nd">@logit</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">myfunc1</span><span class="p">():</span>
+    <span class="k">pass</span>
+
+<span class="n">myfunc1</span><span class="p">()</span>
+<span class="c1"># Output: myfunc1 was called</span>
+<span class="c1"># 现在一个叫做 out.log 的文件出现了，里面的内容就是上面的字符串</span>
+
+<span class="nd">@logit</span><span class="p">(</span><span class="n">logfile</span><span class="o">=</span><span class="s1">&#39;func2.log&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">myfunc2</span><span class="p">():</span>
+    <span class="k">pass</span>
+
+<span class="n">myfunc2</span><span class="p">()</span>
+<span class="c1"># Output: myfunc2 was called</span>
+<span class="c1"># 现在一个叫做 func2.log 的文件出现了，里面的内容就是上面的字符串</span>
+</pre></div>
+
+
+<h3>装饰器类</h3>
+<p>现在我们有了能用于正式环境的 logit 装饰器，但当我们的应用的某些部分还比较脆弱时，异常也许是需要更紧急关注的事情。比方说有时你只想打日志到一个文件。而有时你想把引起你注意的问题发送到一个 email，同时也保留日志，留个记录。这是一个使用继承的场景，但目前为止我们只看到过用来构建装饰器的函数。</p>
+<p>幸运的是，类也可以用来构建装饰器。那我们现在以一个类而不是一个函数的方式，来重新构建 logit。</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+
+<span class="k">class</span> <span class="nc">logit</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logfile</span><span class="o">=</span><span class="s1">&#39;out.log&#39;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logfile</span> <span class="o">=</span> <span class="n">logfile</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
+        <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">wrapped_function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="n">log_string</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="s2">&quot; was called&quot;</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">log_string</span><span class="p">)</span>
+            <span class="c1"># 打开logfile并写入</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logfile</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">opened_file</span><span class="p">:</span>
+                <span class="c1"># 现在将日志打到指定的文件</span>
+                <span class="n">opened_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">log_string</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="c1"># 现在，发送一个通知</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">notify</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">wrapped_function</span>
+
+    <span class="k">def</span> <span class="nf">notify</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># logit只打日志，不做别的</span>
+        <span class="k">pass</span>
+</pre></div>
+
+
+<p>这个实现有一个附加优势，在于比嵌套函数的方式更加整洁，而且包裹一个函数还是使用跟以前一样的语法：</p>
+<div class="highlight"><pre><span></span><span class="nd">@logit</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">myfunc1</span><span class="p">():</span>
+    <span class="k">pass</span>
+</pre></div>
+
+
+<p>现在，我们给 logit 创建子类，来添加 email 的功能(虽然 email 这个话题不会在这里展开)。</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">email_logit</span><span class="p">(</span><span class="n">logit</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    一个logit的实现版本，可以在函数调用时发送email给管理员</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="s1">&#39;admin@myproject.com&#39;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="n">email</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">email_logit</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">notify</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># 发送一封email到self.email</span>
+        <span class="c1"># 这里就不做实现了</span>
+        <span class="k">pass</span>
+</pre></div>
+
+
+<p>从现在起，@email_logit 将会和@logit 产生同样的效果，但是在打日志的基础上，还会多发送一封邮件给管理员。</p>
+                </div>
+                <footer class="text-right">
+                    <p>by 李鹏</p>
+                </footer>
+  <!-- css -->
+  <style type="text/css">
+      .center {
+          text-align: center;
+      }
+      .hidden {
+          display: none;
+      }
+    .donate_bar a.btn_donate{
+      display: inline-block;
+      width: 80px;
+      height:80px;
+      background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;
+      _background: url("http://7xsl28.com1.z0.glb.clouddn.com/btn_reward.gif") no-repeat;
+
+      <!-- http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif
+           因为本 hexo 生成的博客所用的 theme 的 a:hover 带动画效果，
+         为了在让打赏按钮显示效果正常 而 添加了以下几行 css，
+         嵌入其它博客时不一定要它们。 -->
+      -webkit-transition: background 0s;
+      -moz-transition: background 0s;
+      -o-transition: background 0s;
+      -ms-transition: background 0s;
+      transition: background 0s;
+      <!-- /让打赏按钮的效果显示正常 而 添加的几行 css 到此结束 -->
+    }
+
+    .donate_bar a.btn_donate:hover{ background-position: 0px -82px;}
+    .donate_bar .donate_txt {
+      display: block;
+      color: #9d9d9d;
+      font: 14px/2 "Microsoft Yahei";
+    }
+    .bold{ font-weight: bold; }
+  </style>
+  <!-- /css -->
+
+    <!-- Donate Module -->
+    <div id="donate_module">
+
+  <!-- btn_donate & tips -->
+  <div id="donate_board" class="donate_bar center">
+      <br>
+      ------------------------------------------------------------------------------------------------------------------------------
+      <br>
+    <a id="btn_donate" class="btn_donate" target="_self" href="javascript:;" title="Donate 打赏"></a>
+    <span class="donate_txt">
+      <Enjoy it ? Donate me !  欣赏此文？求鼓励，求支持！>
+    </span>
+      
+    
+  </div>
+  <!-- /btn_donate & tips -->
+
+  <!-- donate guide -->
+    
+  <div id="donate_guide" class="donate_bar center hidden">
+        <br>
+      ------------------------------------------------------------------------------------------------------------------------------
+      <br>
+
+    <a href="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/wechart.png?raw=true" title="用微信扫一扫哦~" class="fancybox" rel="article0">
+      <img src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/wechart.png?raw=true" title="微信打赏 Colin" height="320px" width="auto"/>
+    </a>
+        
+        &nbsp;&nbsp;
+   <a href="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/alipay.png?raw=true" title="用支付宝扫一扫即可~" class="fancybox" rel="article0">
+      <img src="https://github.com/king32783784/king32783784.github.io/blob/master/tmpfile/alipay.png?raw=true" title="支付宝打赏 Colin" height="320px" width="auto"/>
+    </a>
+
+    <span class="donate_txt">
+      <Enjoy it ? Donate me !  欣赏此文？求鼓励，求支持！>
+    </span>
+
+  </div>
+  <!-- /donate guide -->
+
+  <!-- donate script -->
+  <script type="text/javascript">
+    document.getElementById('btn_donate').onclick = function() {
+      $('#donate_board').addClass('hidden');
+      $('#donate_guide').removeClass('hidden');
+    }
+
+    function donate_on_web(){
+      $('#donate').submit();
+        }
+
+    var original_window_onload = window.onload;
+        window.onload = function () {
+            if (original_window_onload) {
+                original_window_onload();
+            }
+            document.getElementById('donate_board_wdg').className = 'hidden';
+    }
+  </script>
+  <!-- /donate script -->
+</div>
+<!-- /Donate Module -->
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2127927"></script>
+<!-- UY END -->
+            </div>
+        </div>
+    </article>
+</section>
+
+<!--"-->
+<footer>
+    <hr>
+    <div class="row">
+        <div class="col-lg-9 text-center">
+            <p><small>
+                <a href="http://www.reliablecounter.com" target="_blank"><img src="https://www.reliablecounter.com/count.php?page=vimlinux.com/17142058&digit=style/plain/3/&reloads=0" alt="" title="" border="0"></a><br /><a href="http://www.lapshock.com/best-trackball-mouse-2018/" target="_blank" style="font-family: Geneva, Arial; font-size: 9px; color: #330010; text-decoration: none;">trackball</a>
+                Copyright</a>  </a>
+                <!--&middot;-->                    &copy;2009 李鹏
+            </small></p>
+        </div>
+    </div>
+</footer>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery Version 1.11.2 -->
+    <script src="../../../../theme/js/jquery-1.11.2.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../../../theme/js/bootstrap.min.js"></script>
+    <!-- twitchy Script -->
+    <script src="../../../../theme/js/pelican_twitchy.min.js"></script>
+    <!-- Begin Cookie Consent https://silktide.com/tools/cookie-consent/ -->
+    <script>
+        window.cookieconsent_options = {
+            message: "This site uses Cookies. If you continue without changing your settings, it is assumed that you are happy to receive all cookies from this website.",
+            learnMore: "More info",
+            link: null,
+            dismiss: "Got it!",
+            theme: "../../../../theme/css/cookieconsent/dark-floating.css",
+        };
+    </script>
+    <script src="../../../../theme/js/cookieconsent.min.js"></script>
+    <!-- End Cookie Consent -->
+
+</body>
+</html>

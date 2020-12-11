@@ -121,6 +121,12 @@
                     </li>
                     <li class="panel anti-panel"><ul id="collapse-latest" class="sidebar_submenu collapse in">
                         <li class="">
+                            <a class="hide-overflow" href="../2020/12/11/Python/" title="迭代器和装饰器">
+                                <i class="fa fa-file-text padding-small"></i>
+                                迭代器和装饰器
+                            </a>
+                        </li>
+                        <li class="">
                             <a class="hide-overflow" href="../2020/12/06/Lua/" title="快速学Lua">
                                 <i class="fa fa-file-text padding-small"></i>
                                 快速学Lua
@@ -142,12 +148,6 @@
                             <a class="hide-overflow" href="../2017/04/01/Robot/" title="Robot Framework 用户手册(三)">
                                 <i class="fa fa-file-text padding-small"></i>
                                 Robot Framework 用户手册(三)
-                            </a>
-                        </li>
-                        <li class="">
-                            <a class="hide-overflow" href="../2017/03/31/Robot/" title="Robot Framework 用户手册(二)">
-                                <i class="fa fa-file-text padding-small"></i>
-                                Robot Framework 用户手册(二)
                             </a>
                         </li>
                     <li>
@@ -275,8 +275,8 @@
                     <li >
                         <a href="../category/bian-cheng-yu-yan-python.html">
                             <i class="fa fa-folder-open padding-small"></i>
-                            编程语言-Python
-                            <span class="badge pull-right categorybadge">26</span>
+                            编程语言-python
+                            <span class="badge pull-right categorybadge">27</span>
                         </a>
                     </li>
                     <li >
@@ -464,6 +464,42 @@
     <div class="col-lg-9">
             <article>
                 <h2>
+                    <a href="../2020/12/11/Python/">迭代器和装饰器</a>
+<div class="post-info">
+    <div class="publish-info-block">
+        <small>
+            <span class="published">
+                <i class="fa fa-calendar padding-small"></i><time datetime="2020-12-11T00:00:00+08:00"> 2020-12-11 五</time>
+            </span>
+            <span class="category">
+                <i class="fa fa-folder-open padding-small"></i><a href="../category/bian-cheng-yu-yan-python.html">编程语言-python</a>
+            </span>
+            <span class="tags">
+                <i class="fa fa-tags padding-small"></i>
+                <a href="../tag/python.html">Python</a>            </span>
+        </small>
+    </div>
+</div><!-- /.post-info -->                </h2>
+                <div class="summary">
+                    <h1>⽣成器（Generators）</h1>
+<p>⾸先我们要理解迭代器(iterators)。根据维基百科，迭代器是⼀个让程序员可以遍历⼀个容
+器（特别是列表）的对象。然⽽，⼀个迭代器在遍历并读取⼀个容器的数据元素时，并不
+会执⾏⼀个迭代。你可能有点晕了，那我们来个慢动作。换句话说这⾥有三个部分：</p>
+<ul>
+<li>可迭代对象(Iterable)</li>
+<li>迭代器(Iterator)</li>
+<li>迭代(Iteration)</li>
+</ul>
+<p>上⾯这些部分互相联系。我们会先各个击破来讨论他们，然后再讨论⽣成器</p>
+<h2>可迭代对象(Iterable)</h2>
+<p>Python 中任意的对象，只要它定义了可以返回⼀个迭代器的 <code>__iter__</code> ⽅法，或者定义了
+可以⽀持下标索引的<code>__getitem__</code>⽅法(这些双下划线⽅法会在其他章节中全⾯解释)，
+那么它就是⼀个可迭代对象 ...</p>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2>
                     <a href="../2020/12/06/Lua/">快速学Lua</a>
 <div class="post-info">
     <div class="publish-info-block">
@@ -641,68 +677,6 @@ Valid Login
 Setting Variables
     Do Something    first argument    second argument 
     <span class="cp">${</span><span class="n">value ...</span></pre></div>
-                </div>
-            </article>
-            <hr/>
-            <article>
-                <h2>
-                    <a href="../2017/03/31/Robot/">Robot Framework 用户手册(二)</a>
-<div class="post-info">
-    <div class="publish-info-block">
-        <small>
-            <span class="published">
-                <i class="fa fa-calendar padding-small"></i><time datetime="2017-03-31T00:00:00+08:00"> 2017-03-31 五</time>
-            </span>
-            <span class="category">
-                <i class="fa fa-folder-open padding-small"></i><a href="../category/zi-dong-hua-ce-shi-robot.html">自动化测试-Robot</a>
-            </span>
-            <span class="tags">
-                <i class="fa fa-tags padding-small"></i>
-                <a href="../tag/framework.html">Framework</a>            </span>
-        </small>
-    </div>
-</div><!-- /.post-info -->                </h2>
-                <div class="summary">
-                    <h3>2.1.3 测试数据表</h3>
-<p>测试数据为下表所示的４种结构。测试数据表通过表中第一个区域被识别。被识别的表名是Settings, Variables, Test Cases, Keywords.匹配区分大小写，并且支持Setting和Test Case的变体。</p>
-<p>不同的测试数据表</p>
-<table>
-<thead>
-<tr>
-<th>Table</th>
-<th>Used for</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Settings</td>
-<td>(1)导入测试库、资源文件和变量文件；(2)定义测试集和测试用例的元数据</td>
-</tr>
-<tr>
-<td>Variables</td>
-<td>定义可以用于测试数据任何地方的变量</td>
-</tr>
-<tr>
-<td>Test Cases</td>
-<td>从可用的关键字中创建测试用例</td>
-</tr>
-<tr>
-<td>Keywords</td>
-<td>通过底层关键字创建用户关键字</td>
-</tr>
-</tbody>
-</table>
-<h3>2.1.4 数据分析规则</h3>
-<h4>忽略数据</h4>
-<p>当RF分析测试数据时，以下将被忽略：</p>
-<ul>
-<li>第一部分中所有不以可识别表头开始的内容</li>
-<li>第一部分除了表第一行之外的任何内容</li>
-<li>第一个表之外的所有内容。如果数据表之间插入的数据，也会被忽略</li>
-<li>所有用于增加表可读性的空行，也会被忽略</li>
-<li>所有行结束时的空单元格也被忽略</li>
-<li>所有单个(\)转义符</li>
-<li>所有(#)字符后面的字符 ...</li></ul>
                 </div>
             </article>
         <div class="btn-more text-right">
